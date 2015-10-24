@@ -1,0 +1,32 @@
+{
+  "name": "<example-project>",
+  "version": "1.0.0",
+  "description": "",
+  "homepage": "http://www.<example-project>.fi",
+  "main": "index.js",
+  "config": {
+    "theme": "web/app/themes/<example-project>"
+  },
+  "scripts": {
+    "update": "bundle && composer install && (cd $npm_package_config_theme; yarn)",
+    "build": "cd $npm_package_config_theme; yarn run build:production",
+    "test": "npm run lint",
+    "lint": "npm run lint:composer && npm run lint:twig && npm run lint:php && npm run lint:theme",
+    "lint:composer": "composer validate --no-check-all",
+    "lint:twig": "./vendor/bin/twig-lint lint --only-print-errors $npm_package_config_theme",
+    "lint:php": "find config/ $npm_package_config_theme -not -path '*/vendor/*' -type f -name '*.php' -exec php -l {} \\; | grep -v 'No syntax errors detected'; test ${PIPESTATUS[0]} -eq 0",
+    "lint:theme": "cd $npm_package_config_theme; yarn run lint"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:generoi/<example-project>.git"
+  },
+  "authors": [
+    "Christoffer Björkskog <christoffer@genero.fi>",
+    "Oskar Schöldström <oskar@genero.fi>"
+  ],
+  "license": "UNLICENSED",
+  "bugs": {
+    "url": "https://github.com/generoi/<example-project>/issues"
+  }
+}

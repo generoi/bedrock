@@ -1,0 +1,105 @@
+---
+# This file should be kept without site specific overrides, place them in
+# vagrant.config.yml. That way when Drupal VM updates are brought in, this file
+# can be overriden without manual inspection.
+
+# Needs to match with what we have in .env and vagrant_synced_folders.
+drupal_core_path: "/var/www/wordpress/web"
+drupal_domain: "{{ vagrant_hostname }}"
+drupal_db_user: wordpress
+drupal_db_password: wordpress
+drupal_db_name: wordpress
+
+# Disable Drupal specific features.
+drupal_build_composer_project: false
+drupal_install_site: false
+configure_drush_aliases: false
+
+apache_vhost_php_fpm_parameters: |
+    <FilesMatch \.php$>
+      SetHandler "proxy:fcgi://{{ php_fpm_listen }}"
+    </FilesMatch>
+    SetEnv DEVELOPMENT true
+
+apache_mods_enabled:
+  - expires.load
+  - ssl.load
+  - rewrite.load
+  - proxy.load
+  - proxy_fcgi.load
+  - headers.load
+
+apache_vhosts:
+  - servername: "{{ drupal_domain }}"
+    serveralias: "www.{{ drupal_domain }} static.{{ drupal_domain }}"
+    documentroot: "{{ drupal_core_path }}"
+    extra_parameters: "{{ apache_vhost_php_fpm_parameters }}"
+
+  - servername: "adminer.{{ vagrant_hostname }}"
+    documentroot: "{{ adminer_install_dir }}"
+    extra_parameters: "{{ apache_vhost_php_fpm_parameters }}"
+
+  - servername: "xhprof.{{ vagrant_hostname }}"
+    documentroot: "{{ php_xhprof_html_dir }}"
+    extra_parameters: "{{ apache_vhost_php_fpm_parameters }}"
+
+  - servername: "pimpmylog.{{ vagrant_hostname }}"
+    documentroot: "{{ pimpmylog_install_dir }}"
+    extra_parameters: "{{ apache_vhost_php_fpm_parameters }}"
+
+  - servername: "{{ vagrant_ip }}"
+    serveralias: "dashboard.{{ vagrant_hostname }}"
+    documentroot: "{{ dashboard_install_dir }}"
+    extra_parameters: "{{ apache_vhost_php_fpm_parameters }}"
+
+apache_vhost_ssl_addition:
+  certificate_file: "/etc/ssl/certs/ssl-cert-snakeoil.pem"
+  certificate_key_file: "/etc/ssl/private/ssl-cert-snakeoil.key"
+
+# Generate a SSL virtual host for every regular vhost.
+apache_vhosts_ssl: "{% set vhosts = [] %}{% for vhost in apache_vhosts %}{% if vhosts.append(vhost|combine(apache_vhost_ssl_addition)) %}{% endif %}{% endfor %}{{ vhosts }}"
+
+installed_extras:
+  - adminer
+  # - blackfire
+  # - drupalconsole
+  # - drush
+  # - elasticsearch
+  # - java
+  - mailhog
+  # - memcached
+  # - newrelic
+  # - nodejs
+  # - pimpmylog
+  # - redis
+  # - ruby
+  # - selenium
+  # - solr
+  - tideways
+  - upload-progress
+  # - varnish
+  # - xdebug
+  # - xhprof
+
+# Add any extra apt or yum packages you would like installed.
+extra_packages:
+  - libjpeg-turbo-progs
+  - optipng
+  - gifsicle
+  - webp
+
+# Use mariadb as we do on JNT.
+mysql_packages:
+  - mariadb-client
+  - mariadb-server
+  - python-mysqldb
+
+composer_global_packages:
+  - { name: hirak/prestissimo, release: '^0.3' }
+  - { name: wp-cli/wp-cli, release: '^1.0.0' }
+
+post_provision_scripts:
+  - "{{ config_dir }}/../vendor/generoi/genero-conf/post-provisioning/dotfiles.sh"
+  - "{{ config_dir }}/../vendor/generoi/genero-conf/post-provisioning/wordpress.sh"
+
+post_provision_tasks_dir: "{{ config_dir }}/../vendor/generoi/genero-conf/post-provisioning/tasks/*"

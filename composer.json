@@ -27,27 +27,94 @@
     "preferred-install": "dist"
   },
   "repositories": [
-    {
-      "type": "composer",
-      "url": "https://wpackagist.org"
-    }
+    { "type": "composer", "url": "https://wpackagist.org" },
+    { "type": "composer", "url": "https://wp-languages.github.io/" },
+    { "type": "vcs", "url": "https://github.com/generoi/advanced-custom-fields-pro.git" },
+    { "type": "vcs", "url": "https://github.com/generoi/gravityforms" },
+    { "type": "vcs", "url": "https://github.com/generoi/wp-timber-extended" },
+    { "type": "vcs", "url": "https://github.com/generoi/acf-post-type-chooser" },
+    { "type": "vcs", "url": "https://github.com/generoi/wp-genero-analytics.git" },
+    { "type": "vcs", "url": "https://github.com/generoi/wp-genero-adjustments.git" },
+    { "type": "vcs", "url": "https://github.com/generoi/widget-options-extended.git" },
+    { "type": "vcs", "url": "https://github.com/generoi/genero-conf.git" },
+    { "type": "vcs", "url": "https://github.com/generoi/wp-xhprof.git" },
+    { "type": "vcs", "url": "https://github.com/generoi/acfml.git" },
+    { "type": "vcs", "url": "https://github.com/generoi/git-hooks.git" }
   ],
   "require": {
     "php": ">=5.6",
     "composer/installers": "~1.2.0",
+    "koodimonni/composer-dropin-installer": "*",
     "vlucas/phpdotenv": "^2.0.1",
     "johnpbloch/wordpress": "4.8.1",
     "oscarotero/env": "^1.1.0",
-    "roots/wp-password-bcrypt": "1.0.0"
+    "roots/wp-password-bcrypt": "1.0.0",
+
+    "koodimonni-language/fi": "*",
+    "koodimonni-language/sv_se": "*",
+
+    "wpackagist-plugin/akismet": "~3.2",
+    "wpackagist-plugin/regenerate-thumbnails": "~2.2",
+    "wpackagist-plugin/wp-mail-smtp": "~0.10",
+    "wpackagist-plugin/scalable-vector-graphics-svg": "~3.2",
+    "wpackagist-plugin/custom-post-type-ui": "~1.4",
+    "wpackagist-plugin/simple-custom-post-order": "~2.3",
+    "wpackagist-plugin/wp-sanitize-file-name-plus": "~1.0",
+    "wpackagist-plugin/tinymce-advanced": "~4.4",
+    "wpackagist-plugin/wp-smartcrop": "~1.3",
+    "wpackagist-plugin/black-studio-tinymce-widget": "~2.3",
+    "generoi/wp-genero-adjustments": "~1.0",
+
+    "wpackagist-plugin/timber-library": "1.3.0",
+    "generoi/wp-timber-extended": "~1.0.0-alpha",
+
+    "wpackagist-plugin/widget-options": "~3.3",
+    "generoi/widget-options-extended": "~2.0",
+
+    "wpackagist-plugin/wordpress-seo": "~4.0",
+    "wpackagist-plugin/google-analytics-for-wordpress": "~6.0",
+    "wpackagist-plugin/duracelltomi-google-tag-manager": "~1.4",
+    "wpackagist-plugin/redirection": "~2.4",
+    "generoi/wp-genero-analytics": "~1.1",
+
+    "generoi/gravityforms": "~2.1",
+    "generoi/advanced-custom-fields-pro": "~5.5",
+    "wpackagist-plugin/acf-image-crop-add-on": "~1.4",
+    "reyhoun/acf-post-type-chooser": "dev-master",
+
+    "wpackagist-plugin/wp-super-cache": "~1.4",
+    "wpackagist-plugin/autoptimize": "~2.1",
+    "wpackagist-plugin/wp-performance-pack": "~1.10",
+    "wpackagist-plugin/ewww-image-optimizer": "~3.2",
+
+    "wpackagist-plugin/debug-bar": "~0.8",
+    "wpackagist-plugin/kint-debugger": "~1.0",
+    "generoi/wp-xhprof": "^0.1.2",
+
+    "cweagans/composer-patches": "~1.0",
+    "generoi/genero-conf": "~1.0"
   },
   "require-dev": {
-    "squizlabs/php_codesniffer": "^2.5.1"
+    "squizlabs/php_codesniffer": "^2.5.1",
+    "geerlingguy/drupal-vm": "~4.4.5",
+    "asm89/twig-lint": "^1.0.2",
+    "generoi/git-hooks": "^1.0.0"
   },
   "extra": {
+    "dropin-paths": {
+      "web/app/languages/": ["vendor:koodimonni-language"],
+      "web/app/languages/plugins/": ["vendor:koodimonni-plugin-language"],
+      "web/app/languages/themes/": ["vendor:koodimonni-theme-language"]
+    },
     "installer-paths": {
       "web/app/mu-plugins/{$name}/": ["type:wordpress-muplugin"],
       "web/app/plugins/{$name}/": ["type:wordpress-plugin"],
       "web/app/themes/{$name}/": ["type:wordpress-theme"]
+    },
+    "patches": {
+      "wpackagist-plugin/timber-library": {
+        "Fix v3.0.0 analyze_url image paths": "config/patches/timber-analyze_url.patch"
+      }
     },
     "wordpress-install-dir": "web/wp"
   },
@@ -58,5 +125,8 @@
     "test": [
       "vendor/bin/phpcs"
     ]
+  },
+  "suggest": {
+    "hirak/prestissimo": "^0.3"
   }
 }

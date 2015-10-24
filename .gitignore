@@ -1,14 +1,19 @@
+# OS X .gitignore
+.DS_Store
+.AppleDouble
+.LSOverride
+
 # Application
 web/app/plugins/*
 !web/app/plugins/.gitkeep
 web/app/mu-plugins/*/
+web/app/languages/*
 web/app/upgrade
 web/app/uploads/*
 !web/app/uploads/.gitkeep
 
 # WordPress
 web/wp
-web/.htaccess
 
 # Dotenv
 .env
@@ -18,3 +23,21 @@ web/.htaccess
 # Composer
 vendor/*
 !vendor/.gitkeep
+
+# Node Package Manager
+node_modules
+npm-debug.log
+
+# Vagrant
+.vagrant
+
+# Logs
+log
+*.log
+
+# Sensitive files
+*.sql
+
+# Local configuration
+Vagrantfile.local
+local.config.yml
