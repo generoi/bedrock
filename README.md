@@ -1,6 +1,6 @@
-# [Bedrock](https://roots.io/bedrock/)
-[![Packagist](https://img.shields.io/packagist/v/roots/bedrock.svg?style=flat-square)](https://packagist.org/packages/roots/bedrock)
-[![Build Status](https://img.shields.io/travis/roots/bedrock.svg?style=flat-square)](https://travis-ci.org/roots/bedrock)
+# <example-project>
+
+> **Note, here's a [diff of commits availabe upstream](https://github.com/generoi/bedrock/compare/genero...roots:master)**
 
 Bedrock is a modern WordPress stack that helps you get started with the best development tools and project structure.
 
@@ -27,8 +27,99 @@ See a complete working example in the [roots-example-project.com repo](https://g
 
 * PHP >= 5.6
 * Composer - [Install](https://getcomposer.org/doc/00-intro.md#installation-linux-unix-osx)
+* Ansible 2.2.0.0 or higher
+* Vagrant 1.8.7 or higher
+* An updated verison of VirtualBox (on OS X)
+* node
+* yarn
+* bundler
 
 ## Installation
+
+### Local development
+
+    git clone --recursive git@github.com:generoi/<example-project>.git <example-project>
+    cd <example-project>
+
+    # Setup git hooks
+    git config core.hooksPath "vendor/generoi/git-hooks/hooks"
+
+    # Set the GitHub OAuth token for generoi-deploy (check any of our managed
+    # sites composer.json for the value).
+    # $ composer config github-oauth.github.com abcdefghijklmnopqrstuvwxyz
+
+    # Install dependencies
+    bundle
+    composer install
+
+    # Setup the ENV variables (pre-configured for the VM)
+    cp .env.example .env
+
+    # Build the VM
+    vagrant up
+
+    # To sync files from your computer to the virtual machine, run
+    vagrant rsync-auto
+
+    # Install theme dependencies
+    cd web/app/themes/example
+    yarn
+    composer install
+
+#### Add SSH configurations for the remote hosts
+
+For you to be able to access the remote hosts with WP-CLI you need to add the
+following to your `~/.ssh/config` file.
+
+    Host <example-project>.dev
+      StrictHostKeyChecking no
+      IdentityFile ~/.vagrant.d/insecure_private_key
+      ForwardAgent yes
+
+    Host <example-project>.fi
+      ForwardAgent yes
+      ProxyCommand ssh deploy@minasithil.genero.fi nc %h %p 2> /dev/null
+
+#### Using WP-CLI locally
+
+Install WP-CLI
+
+    composer global require wp-cli/wp-cli
+
+Usage (eg how to import a db from local)
+
+    wp @dev db cli < dump.sql
+
+### minasanor.genero.fi
+
+#### Clone the git repo
+
+Do this in you /var/www/u/USERNAME/ forlder on the dev server, unless you use
+a VM on your own machine with vagrant, than this will be the "site" folder....
+
+    git clone --recursive git@github.com:generoi/<example-project>.git <example-project>
+
+#### Fetch what is needed
+
+Fetch both the needed php (to build the site with its plugins and fetch wp
+core) and ruby code (that capistrano needs) by running
+
+    bundle
+    composer install
+
+    cd web/app/themes/<example-project>
+    yarn
+    composer install
+
+if composer complains, do the composer udpate using the `--ignore-platform-reqs` flag
+
+    composer update --ignore-platform-reqs
+
+if capistrano complains that somethings is missing, it might be that you need
+to run bundle again if the Capfile has been updated what it requires but it has
+not yet been fetched
+
+#### Set up database and Wordpress
 
 1. Create a new project in a new folder for your project:
 
@@ -58,16 +149,112 @@ See a complete working example in the [roots-example-project.com repo](https://g
 
 5. Access WP admin at `http://example.com/wp/wp-admin`
 
+## Setup a new repository
+
+1. Clone the repo
+
+    ```sh
+    git clone --recursive git@github.com:generoi/bedrock.git foobar
+    ```
+
+2. Clone the theme
+
+    ```sh
+    cd foobar/web/app/themes;
+
+    git clone git@github.com:generoi/sage.git foobar
+
+    cd foobar
+
+    # Delete the git files
+    rm -rf .git
+
+    # Install dependencies
+    yarn
+    composer install
+
+    # Return to the root of the project
+    cd -
+    ```
+
+3. Setup repo
+
+    ```sh
+    # Install dependencies
+    bundle
+    composer install
+
+    # Setup git hooks
+    git config core.hooksPath "vendor/generoi/git-hooks/hooks"
+
+    # Setup the ENV variables (pre-configured for the VM)
+    cp .env.example .env
+    ```
+
+4. Rename everything (relies on your theme being named the same as the repository)
+
+    ```sh
+    # Search and replace all references to the project
+    find . -type f -print0 | xargs -0 sed -i 's/<example-project>/foobar/g'
+
+    # You need to manually setup the production host in:
+    # - `Makefile`
+    # - `config/deploy/production.rb`
+    # - `wp-cli.yml`
+    ```
+
+5. Setup the new remote git repository
+
+    ```sh
+    # Remove the existing master branch (bedrocks own)
+    git branch -D master
+
+    # Switch to a new master branch for this project
+    git checkout -b master
+
+    # Create a new repository on github
+    open https://github.com/organizations/generoi/repositories/new
+
+    # Set origin url to to the newly created github repository
+    git remote set-url origin git@github.com:generoi/<example-project>.git
+
+    # Push the code
+    git push -u origin master
+    ```
+
+6. Setup the VM
+
+    ```sh
+    # Change the VM IP to something unique
+    vim config/vagrant.config.yml
+
+    # Build the VM
+    vagrant up
+
+    # To sync files from your computer to the virtual machine, run
+    vagrant rsync-auto
+    ```
+
 ## Deploys
 
-There are two methods to deploy Bedrock sites out of the box:
+    ```sh
+    # Deploy to staging
+    cap staging deploy
 
-* [Trellis](https://github.com/roots/trellis)
-* [bedrock-capistrano](https://github.com/roots/bedrock-capistrano)
+    # Deploy to production
+    cap production deploy
 
-Any other deployment method can be used as well with one requirement:
+    # Clear all caches on production
+    cap production wp:cache
+    # Clear only WP Super Cache cache
+    cap production wp:cache:wpsc
 
-`composer install` must be run as part of the deploy process.
+    # Deploy assets only
+    cap production assets:push
+
+    # Open a shell on production server
+    cap production ssh
+    ```
 
 ## Documentation
 

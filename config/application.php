@@ -52,9 +52,30 @@ define('DB_NAME', env('DB_NAME'));
 define('DB_USER', env('DB_USER'));
 define('DB_PASSWORD', env('DB_PASSWORD'));
 define('DB_HOST', env('DB_HOST') ?: 'localhost');
-define('DB_CHARSET', 'utf8mb4');
-define('DB_COLLATE', '');
+define('DB_CHARSET', 'utf8');
+define('DB_COLLATE', 'utf8_unicode_ci');
 $table_prefix = env('DB_PREFIX') ?: 'wp_';
+
+/**
+ * Multisite
+ */
+/** Step 1: Uncomment this line and visit: /wp/wp-admin/network.php */
+// define('WP_ALLOW_MULTISITE', true);
+/** Step 3: Edit your .env to include DOMAIN_CURRENT_SITE, eg. drupal-vm.dev */
+/** Step 4: Uncomment the following lines */
+// define('MULTISITE', true);
+// define('SUBDOMAIN_INSTALL', true);
+// define('DOMAIN_CURRENT_SITE', env('DOMAIN_CURRENT_SITE'));
+// define('PATH_CURRENT_SITE', '/');
+// define('SITE_ID_CURRENT_SITE', 1);
+// define('BLOG_ID_CURRENT_SITE', 1);
+/** Step 5: Uncomment the multisite lines in web/.htaccess */
+// define('ADMIN_COOKIE_PATH', '/');
+// define('COOKIE_DOMAIN', '');
+// define('COOKIEPATH', '');
+// // Used by LOGGED_IN_COOKIE and needs to be available for front-end
+// // otherwise Customizer fails.
+// define('SITECOOKIEPATH', '/');
 
 /**
  * Authentication Unique Keys and Salts
@@ -74,6 +95,7 @@ define('NONCE_SALT', env('NONCE_SALT'));
 define('AUTOMATIC_UPDATER_DISABLED', true);
 define('DISABLE_WP_CRON', env('DISABLE_WP_CRON') ?: false);
 define('DISALLOW_FILE_EDIT', true);
+define('WPCACHEHOME', WP_CONTENT_DIR . '/plugins/wp-super-cache/');
 
 /**
  * Bootstrap WordPress
