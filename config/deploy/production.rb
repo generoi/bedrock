@@ -9,9 +9,9 @@ set :app_url, 'http://www.<example-project>.fi'
 # Supports bulk-adding hosts to roles, the primary
 # server in each group is considered to be the first
 # unless any hosts have the primary property set.
-role :app, %w{deploy@<example-project>.fi}
-role :web, %w{deploy@<example-project>.fi}
-role :db,  %w{deploy@<example-project>.fi}
+role :app, %w{deploy@go2-1.multi.fi}
+role :web, %w{deploy@go2-1.multi.fi}
+role :db,  %w{deploy@go2-1.multi.fi}
 
 set :ssh_options, {
   forward_agent: true

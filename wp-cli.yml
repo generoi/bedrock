@@ -28,5 +28,5 @@ require:
   url: <example-project>.web.staging.minasithil.genero.fi
 
 @production:
-  ssh: deploy@<example-project>.fi/home/www/<example-project>/deploy/current/web/wp
-  url: www.<example-project>.fi
+  ssh: deploy@go2-1.multi.fi/home/www/<example-project>/deploy/current/web/wp
+  url: <example-project>.fi
