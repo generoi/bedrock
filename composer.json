@@ -73,7 +73,7 @@
 
     "wpackagist-plugin/wordpress-seo": "~4.0",
     "wpackagist-plugin/google-analytics-for-wordpress": "~6.0",
-    "wpackagist-plugin/duracelltomi-google-tag-manager": "~1.4",
+    "wpackagist-plugin/google-tag-manager": "~1.0.2",
     "wpackagist-plugin/redirection": "~2.4",
     "generoi/wp-genero-analytics": "~1.1",
 
