@@ -27,22 +27,13 @@
     "preferred-install": "dist",
     "github-oauth": {
       "github.com": "81d7f7609c3c05337685edd9518108e631894f86"
-    }
+    },
+    "secure-http": false
   },
   "repositories": [
     { "type": "composer", "url": "https://wpackagist.org" },
     { "type": "composer", "url": "https://wp-languages.github.io/" },
-    { "type": "vcs", "url": "https://github.com/generoi/advanced-custom-fields-pro.git" },
-    { "type": "vcs", "url": "https://github.com/generoi/gravityforms" },
-    { "type": "vcs", "url": "https://github.com/generoi/wp-timber-extended" },
-    { "type": "vcs", "url": "https://github.com/generoi/acf-post-type-chooser" },
-    { "type": "vcs", "url": "https://github.com/generoi/wp-genero-analytics.git" },
-    { "type": "vcs", "url": "https://github.com/generoi/wp-genero-adjustments.git" },
-    { "type": "vcs", "url": "https://github.com/generoi/widget-options-extended.git" },
-    { "type": "vcs", "url": "https://github.com/generoi/genero-conf.git" },
-    { "type": "vcs", "url": "https://github.com/generoi/wp-xhprof.git" },
-    { "type": "vcs", "url": "https://github.com/generoi/acfml.git" },
-    { "type": "vcs", "url": "https://github.com/generoi/git-hooks.git" }
+    { "type": "composer", "url": "http://packagist.minasithil.genero.fi/" }
   ],
   "require": {
     "php": ">=5.6",
