@@ -4,7 +4,7 @@ PRODUCTION_HOST ?= <example-project>.fi
 LOCAL_HOST ?= localhost:3000
 STAGING_HOST ?= <example-project>.web.staging.minasithil.genero.fi
 
-PRODUCTION_REMOTE_HOST ?= deploy@<production-host>:/home/www/<example-project>
+PRODUCTION_REMOTE_HOST ?= deploy@go2-1.multi.fi:/home/www/<example-project>
 STAGING_REMOTE_HOST ?= deploy@minasithil.genero.fi:/var/www/staging/<example-project>
 
 WP_CLI_HOST ?= dev

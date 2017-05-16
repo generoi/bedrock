@@ -44,10 +44,6 @@ See a complete working example in the [roots-example-project.com repo](https://g
     # Setup git hooks
     git config core.hooksPath "vendor/generoi/git-hooks/hooks"
 
-    # Set the GitHub OAuth token for generoi-deploy (check any of our managed
-    # sites composer.json for the value).
-    # $ composer config github-oauth.github.com abcdefghijklmnopqrstuvwxyz
-
     # Install dependencies
     bundle
     composer install
@@ -62,7 +58,7 @@ See a complete working example in the [roots-example-project.com repo](https://g
     vagrant rsync-auto
 
     # Install theme dependencies
-    cd web/app/themes/example
+    cd web/app/themes/<example-project>
     yarn
     composer install
 

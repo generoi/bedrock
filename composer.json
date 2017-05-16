@@ -24,7 +24,10 @@
     "forum": "https://discourse.roots.io/category/bedrock"
   },
   "config": {
-    "preferred-install": "dist"
+    "preferred-install": "dist",
+    "github-oauth": {
+      "github.com": "81d7f7609c3c05337685edd9518108e631894f86"
+    }
   },
   "repositories": [
     { "type": "composer", "url": "https://wpackagist.org" },
