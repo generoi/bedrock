@@ -27,13 +27,12 @@
     "preferred-install": "dist",
     "github-oauth": {
       "github.com": "81d7f7609c3c05337685edd9518108e631894f86"
-    },
-    "secure-http": false
+    }
   },
   "repositories": [
     { "type": "composer", "url": "https://wpackagist.org" },
     { "type": "composer", "url": "https://wp-languages.github.io/" },
-    { "type": "composer", "url": "http://packagist.minasithil.genero.fi/" }
+    { "type": "composer", "url": "https://packagist.minasithil.genero.fi/" }
   ],
   "require": {
     "php": ">=5.6",
