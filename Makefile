@@ -17,6 +17,9 @@ SSH_ARGS ?= -o ForwardAgent=yes -o "ProxyCommand ssh deploy@minasithil.genero.fi
 
 all:
 
+.env: .env.example
+	cp $< $@
+
 # Database --------------------------------------------------------------------
 #
 # To get a dump from the VM run `make database.sql`
@@ -30,7 +33,7 @@ wp-search-replace:
 	wp @$(TARGET) search-replace --recurse-objects --network '$(DEV_HOST)' '$(TARGET_HOST)'
 	wp @$(TARGET) search-replace --recurse-objects --network '$(PRODUCTION_HOST)' '$(TARGET_HOST)'
 
-wp-pull-db:
+wp-pull-db: .env
 	make db-clean WP_CLI_HOST=$(SOURCE) $(DATABASE_EXPORT)
 	cat $(DATABASE_EXPORT) | wp @$(TARGET) db cli
 	make $(TARGET)-db-search-replace db-clean
