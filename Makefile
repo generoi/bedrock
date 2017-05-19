@@ -75,11 +75,11 @@ production-db-search-replace: wp-search-replace
 production-pull-db: SOURCE=production
 production-pull-db: TARGET=dev
 production-pull-db: wp-pull-db
+production-pull-db: dev-plugins
 
 production-push-db: SOURCE=dev
 production-push-db: TARGET=production
 production-push-db: wp-push-db
-production-push-db: dev-plugins
 
 production-pull-files: RSYNC_SSH=$(SSH_ARGS)
 production-pull-files: SOURCE=$(PRODUCTION_REMOTE_HOST)/deploy/current/web/app/uploads/
@@ -100,7 +100,7 @@ staging-db-search-replace: wp-search-replace
 staging-pull-db: SOURCE=staging
 staging-pull-db: TARGET=dev
 staging-pull-db: wp-pull-db
-staging-push-db: dev-plugins
+staging-pull-db: dev-plugins
 
 staging-push-db: SOURCE=dev
 staging-push-db: TARGET=staging
