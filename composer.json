@@ -86,7 +86,7 @@
 
     "cweagans/composer-patches": "~1.0",
     "generoi/genero-conf": "~1.0",
-    "generoi/genero-status": "~0.0.7"
+    "generoi/genero-status": "*"
   },
   "require-dev": {
     "squizlabs/php_codesniffer": "^2.5.1",
