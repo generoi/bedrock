@@ -11,6 +11,7 @@ web/app/languages/*
 web/app/upgrade
 web/app/uploads/*
 !web/app/uploads/.gitkeep
+web/genero-status.php
 
 # WordPress
 web/wp

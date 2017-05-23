@@ -85,7 +85,8 @@
     "generoi/wp-xhprof": "^0.1.2",
 
     "cweagans/composer-patches": "~1.0",
-    "generoi/genero-conf": "~1.0"
+    "generoi/genero-conf": "~1.0",
+    "generoi/genero-status": "~0.0.7"
   },
   "require-dev": {
     "squizlabs/php_codesniffer": "^2.5.1",
@@ -97,7 +98,8 @@
     "dropin-paths": {
       "web/app/languages/": ["vendor:koodimonni-language"],
       "web/app/languages/plugins/": ["vendor:koodimonni-plugin-language"],
-      "web/app/languages/themes/": ["vendor:koodimonni-theme-language"]
+      "web/app/languages/themes/": ["vendor:koodimonni-theme-language"],
+      "web/": ["package:generoi/genero-status:genero-status.php"]
     },
     "installer-paths": {
       "web/app/mu-plugins/{$name}/": ["type:wordpress-muplugin"],
