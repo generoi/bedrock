@@ -90,7 +90,7 @@
   },
   "require-dev": {
     "squizlabs/php_codesniffer": "^2.5.1",
-    "geerlingguy/drupal-vm": "~4.4.5",
+    "geerlingguy/drupal-vm": "~4.5.0",
     "asm89/twig-lint": "^1.0.2",
     "generoi/git-hooks": "^1.0.0"
   },
