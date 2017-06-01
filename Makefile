@@ -11,7 +11,7 @@ WP_CLI_HOST ?= dev
 DATABASE_EXPORT ?= database.sql
 
 DEV_PLUGINS ?= debug-bar kint-debugger
-PROD_PLUGINS ?= wp-mail-stmp
+PROD_PLUGINS ?= wp-mail-smtp
 
 SSH_ARGS ?= -o ForwardAgent=yes -o "ProxyCommand ssh deploy@minasithil.genero.fi nc %h %p 2> /dev/null"
 
