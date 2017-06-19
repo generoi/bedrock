@@ -2,6 +2,8 @@ set :stage,     :staging
 set :app_url,   'http://<example-project>.web.staging.minasithil.genero.fi'
 set :deploy_to, '/var/www/staging/<example-project>'
 set :wpcli_cmd, '/home/deploy/.composer/vendor/bin/wp'
+set :user,      'deploy'
+set :group,     'www-data'
 
 # Simple Role Syntax
 # ==================

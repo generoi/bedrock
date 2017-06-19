@@ -3,6 +3,8 @@ require 'net/ssh/proxy/command'
 
 set :stage,   :production
 set :app_url, 'http://www.<example-project>.fi'
+set :user,    'deploy'
+set :group,   'apache'
 
 # Simple Role Syntax
 # ==================

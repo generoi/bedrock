@@ -213,6 +213,40 @@ not yet been fetched
     vagrant rsync-auto
     ```
 
+7. Setup staging evironment
+
+    ```sh
+    # Configure the staging environment
+    vim config/deploy/staging.rb
+    vim wp-cli.yml
+    vim Makefile
+
+    # Setup the directory structure
+    cap staging wp:setup
+
+    # Deploy your code, files and database
+    cap staging deploy
+    make staging-push-db
+    make staging-push-files
+    ```
+
+8. Setup production evironment
+
+    ```sh
+    # Configure the production environment
+    vim config/deploy/production.rb
+    vim wp-cli.yml
+    vim Makefile
+
+    # Setup the directory structure
+    cap production wp:setup
+
+    # Deploy your code, files and database
+    cap production deploy
+    make production-push-db
+    make production-push-files
+    ```
+
 ## Deploys
 
     ```sh
