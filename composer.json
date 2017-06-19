@@ -25,6 +25,7 @@
   },
   "config": {
     "preferred-install": "dist",
+    "theme-dir": "web/app/themes/<example-project>",
     "github-oauth": {
       "github.com": "81d7f7609c3c05337685edd9518108e631894f86"
     }
@@ -117,9 +118,32 @@
     "post-root-package-install": [
       "php -r \"copy('.env.example', '.env');\""
     ],
+    "post-install-cmd": [
+      "cd $(composer config theme-dir); composer install --no-dev --no-interaction --quiet --optimize-autoloader"
+    ],
+    "post-update-cmd": [
+      "bundle",
+      "git config core.hooksPath \"vendor/generoi/git-hooks/hooks\"",
+      "@post-install-cmd",
+      "cd $(composer config theme-dir); yarn"
+    ],
+
+    "build": "cd $(composer config theme-dir); yarn run build",
+    "build:production": "cd $(composer config theme-dir); yarn run build:production",
+    "build:development": "@build",
+
     "test": [
-      "vendor/bin/phpcs"
-    ]
+      "@composer validate",
+      "@lint"
+    ],
+    "lint": [
+      "@lint:twig",
+      "@lint:php",
+      "@lint:theme"
+    ],
+    "lint:twig": "twig-lint lint --only-print-errors $(composer config theme-dir)",
+    "lint:php": "find config/ $(composer config theme-dir) -not -path '*/vendor/*' -type f -name '*.php' -exec php -l {} \\; | grep -v 'No syntax errors detected'; test ${PIPESTATUS[0]} -eq 0",
+    "lint:theme": "cd $(composer config theme-dir); yarn run lint"
   },
   "suggest": {
     "hirak/prestissimo": "^0.3"
