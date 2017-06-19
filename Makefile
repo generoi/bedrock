@@ -35,10 +35,10 @@ $(DATABASE_EXPORT):
 	wp @$(WP_CLI_HOST) db export - >| $(DATABASE_EXPORT)
 
 wp-search-replace:
+	wp @$(TARGET) search-replace --recurse-objects --network '$(PRODUCTION_HOST)' '$(TARGET_HOST)'
 	wp @$(TARGET) search-replace --recurse-objects --network '$(STAGING_HOST)' '$(TARGET_HOST)'
 	wp @$(TARGET) search-replace --recurse-objects --network '$(LOCAL_HOST)' '$(TARGET_HOST)'
 	wp @$(TARGET) search-replace --recurse-objects --network '$(DEV_HOST)' '$(TARGET_HOST)'
-	wp @$(TARGET) search-replace --recurse-objects --network '$(PRODUCTION_HOST)' '$(TARGET_HOST)'
 
 wp-pull-db: .env
 	make db-clean WP_CLI_HOST=$(SOURCE) $(DATABASE_EXPORT)
