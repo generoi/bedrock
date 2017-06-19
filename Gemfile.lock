@@ -40,9 +40,9 @@ PLATFORMS
 DEPENDENCIES
   capistrano (~> 3.7.0)
   capistrano-composer
-  capistrano-genero!
+  capistrano-genero (~> 1.0.0)!
   capistrano-nc (~> 0.1)
   capistrano-ssh-doctor (~> 1.0)
 
 BUNDLED WITH
-   1.14.6
+   1.15.1
