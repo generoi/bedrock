@@ -21,6 +21,12 @@ all:
 .env: .env.example
 	cp $< $@
 
+confirm-action:
+	@read -r -n 1 -p "Are you sure you want to proceed? [y/N]" REPLY && \
+	[[ $$REPLY =~ ^[Yy]$$ ]] || exit 1;
+
+.PHONY: all confirm-action
+
 # Database --------------------------------------------------------------------
 #
 # To get a dump from the VM run `make database.sql`
@@ -81,6 +87,7 @@ production-pull-db: dev-plugins
 
 production-push-db: SOURCE=dev
 production-push-db: TARGET=production
+production-push-db: confirm-action
 production-push-db: wp-push-db
 
 production-pull-files: RSYNC_SSH=$(SSH_ARGS)
@@ -107,6 +114,7 @@ staging-pull-db: dev-plugins
 
 staging-push-db: SOURCE=dev
 staging-push-db: TARGET=staging
+staging-push-db: confirm-action
 staging-push-db: wp-push-db
 
 staging-pull-files: RSYNC_SSH=-o ForwardAgent=yes
