@@ -31,9 +31,8 @@ set :composer_install_flags,  '--no-dev --no-interaction --quiet --optimize-auto
 
 # Assets
 set :assets_dist_path,        -> { "#{fetch(:theme_dir)}/dist" }
-set :assets_compile,          'npm run build'
-# @todo vendor should be fetched on remote.
-set :assets_output,           -> { [fetch(:assets_dist_path), "#{fetch(:theme_dir)}/vendor"] }
+set :assets_compile,          'composer build:production'
+set :assets_output,           -> { [fetch(:assets_dist_path)] }
 
 # Sanity check
 before 'deploy:starting', 'deploy:check:pushed'
@@ -51,5 +50,9 @@ after 'deploy:published', 'wp:cache:timber'
 after 'deploy:published', 'wp:cache:autoptimize'
 after 'deploy:published', 'wp:cache:wpsc'
 
-# Clear the locally compiled dist/ assets.
-after 'deploy:finishing', 'wp:cache:dist'
+# Re-build non-production assets.
+after 'deploy:finishing', 'assets:rebuild' do
+  run_locally do
+    execute :composer, 'build'
+  end
+end

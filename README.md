@@ -41,26 +41,14 @@ See a complete working example in the [roots-example-project.com repo](https://g
     git clone --recursive git@github.com:generoi/<example-project>.git <example-project>
     cd <example-project>
 
-    # Setup git hooks
-    git config core.hooksPath "vendor/generoi/git-hooks/hooks"
-
     # Install dependencies
-    bundle
     composer install
-
-    # Setup the ENV variables (pre-configured for the VM)
-    cp .env.example .env
 
     # Build the VM
     vagrant up
 
     # To sync files from your computer to the virtual machine, run
     vagrant rsync-auto
-
-    # Install theme dependencies
-    cd web/app/themes/<example-project>
-    yarn
-    composer install
 
 #### Add SSH configurations for the remote hosts
 
@@ -100,11 +88,6 @@ a VM on your own machine with vagrant, than this will be the "site" folder....
 Fetch both the needed php (to build the site with its plugins and fetch wp
 core) and ruby code (that capistrano needs) by running
 
-    bundle
-    composer install
-
-    cd web/app/themes/<example-project>
-    yarn
     composer install
 
 if composer complains, do the composer udpate using the `--ignore-platform-reqs` flag
@@ -177,7 +160,6 @@ not yet been fetched
 
     ```sh
     # Install dependencies
-    bundle
     composer install
 
     # Setup git hooks
