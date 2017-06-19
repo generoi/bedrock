@@ -14,6 +14,7 @@ DEV_PLUGINS ?= debug-bar kint-debugger
 PROD_PLUGINS ?= wp-mail-smtp
 
 SSH_ARGS ?= -o ForwardAgent=yes -o "ProxyCommand ssh deploy@minasithil.genero.fi nc %h %p 2> /dev/null"
+RSYNC_ARGS ?= --chmod=ug=rwX
 
 all:
 
@@ -47,26 +48,25 @@ wp-push-db: $(DATABASE_EXPORT)
 db-clean:
 	rm -f $(DATABASE_EXPORT)
 
-.PHONY: wp-search-replace wp-pull-db db-clean
+.PHONY: wp-search-replace wp-pull-db wp-push-db db-clean
 
 # Files -----------------------------------------------------------------------
 
 # Fetches the dev environments files to the local filesystem
 wp-fetch-files:
 	vagrant ssh-config --host default > /tmp/vagrant-ssh-config
-	rsync -r -e 'ssh -F /tmp/vagrant-ssh-config' default:/var/www/wordpress/web/app/uploads/ web/app/uploads/
+	rsync -r $(RSYNC_ARGS) -e 'ssh -F /tmp/vagrant-ssh-config' default:/var/www/wordpress/web/app/uploads/ web/app/uploads/
 	rm -f /tmp/vagrant-ssh-config
 
 # Pulls the remote files first into the local filesystem and then to the dev filesystem
 wp-pull-files:
-	rsync -v -r -e 'ssh $(RSYNC_SSH)' $(SOURCE) $(TARGET)
+	rsync -v -r $(RSYNC_ARGS) -e 'ssh $(RSYNC_SSH)' $(SOURCE) $(TARGET)
 	vagrant ssh-config --host default >| /tmp/vagrant-ssh-config
-	rsync -v -r --no-perms --no-owner --no-group --verbose -e 'ssh -F /tmp/vagrant-ssh-config' $(TARGET) default:/var/www/wordpress/$(TARGET)
+	rsync -v -r $(RSYNC_ARGS) --no-perms --no-owner --no-group --verbose -e 'ssh -F /tmp/vagrant-ssh-config' $(TARGET) default:/var/www/wordpress/$(TARGET)
 
 # Push the files in the dev environment to the remote filesystem
 wp-push-files: wp-fetch-files
-	rsync -v -r --no-perms --no-owner --no-group -e 'ssh $(RSYNC_SSH)' $(SOURCE) $(TARGET)
-
+	rsync -v -r $(RSYNC_ARGS) --no-perms --no-owner --no-group -e 'ssh $(RSYNC_SSH)' $(SOURCE) $(TARGET)
 
 # Production tasks ------------------------------------------------------------
 
@@ -84,6 +84,7 @@ production-push-db: TARGET=production
 production-push-db: wp-push-db
 
 production-pull-files: RSYNC_SSH=$(SSH_ARGS)
+production-pull-files: RSYNC_ARGS=--chmod=ugo=rwX
 production-pull-files: SOURCE=$(PRODUCTION_REMOTE_HOST)/deploy/current/web/app/uploads/
 production-pull-files: TARGET=web/app/uploads/
 production-pull-files: wp-pull-files
@@ -109,6 +110,7 @@ staging-push-db: TARGET=staging
 staging-push-db: wp-push-db
 
 staging-pull-files: RSYNC_SSH=-o ForwardAgent=yes
+staging-pull-files: RSYNC_ARGS=--chmod=ugo=rwX
 staging-pull-files: SOURCE=$(STAGING_REMOTE_HOST)/current/web/app/uploads/
 staging-pull-files: TARGET=web/app/uploads/
 staging-pull-files: wp-pull-files
