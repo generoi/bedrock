@@ -48,8 +48,7 @@
     "koodimonni-language/sv_se": "*",
 
     "wpackagist-plugin/akismet": "~3.2",
-    "wpackagist-plugin/regenerate-thumbnails": "~2.2",
-    "wpackagist-plugin/wp-mail-smtp": "~0.10",
+    "wpackagist-plugin/wp-mail-smtp": "^0.10",
     "wpackagist-plugin/scalable-vector-graphics-svg": "~3.2",
     "wpackagist-plugin/custom-post-type-ui": "~1.4",
     "wpackagist-plugin/simple-custom-post-order": "~2.3",
@@ -57,33 +56,37 @@
     "wpackagist-plugin/tinymce-advanced": "~4.4",
     "wpackagist-plugin/wp-smartcrop": "~1.3",
     "wpackagist-plugin/black-studio-tinymce-widget": "~2.3",
-    "generoi/wp-genero-adjustments": "~1.0",
-
-    "wpackagist-plugin/timber-library": "1.3.0",
-    "generoi/wp-timber-extended": "~1.0.0-alpha",
-
+    "generoi/wp-genero-adjustments": "~1.0.0",
+    "wpackagist-plugin/timber-library": "~1.3.2",
+    "wpackagist-plugin/popups": "~1.7.1",
     "wpackagist-plugin/widget-options": "~3.3",
-    "generoi/widget-options-extended": "~2.0",
-
-    "wpackagist-plugin/wordpress-seo": "~4.0",
-    "wpackagist-plugin/google-analytics-for-wordpress": "~6.0",
-    "wpackagist-plugin/google-tag-manager": "~1.0.2",
-    "wpackagist-plugin/redirection": "~2.4",
-    "generoi/wp-genero-analytics": "~1.1",
-
     "generoi/gravityforms": "~2.1",
     "generoi/advanced-custom-fields-pro": "~5.5",
     "wpackagist-plugin/acf-image-crop-add-on": "~1.4",
-    "reyhoun/acf-post-type-chooser": "dev-master",
+
+    "wpackagist-plugin/wordpress-seo": "~4.0",
+    "wpackagist-plugin/google-analytics-for-wordpress": "~6.0",
+    "wpackagist-plugin/google-tag-manager": "~1.0",
+    "wpackagist-plugin/redirection": "~2.4",
+    "generoi/wp-genero-analytics": "~1.2.0",
+
+    "generoi/polylang-pro": "~2.1",
+    "wpackagist-plugin/integrate-gravity-forms-polylang": "^0.3",
+    "wpackagist-plugin/theme-translation-for-polylang": "^2.0.0",
 
     "wpackagist-plugin/wp-super-cache": "~1.4",
     "wpackagist-plugin/autoptimize": "~2.1",
-    "wpackagist-plugin/wp-performance-pack": "~1.10",
+    "wpackagist-plugin/wp-performance-pack": "~2.0",
     "wpackagist-plugin/ewww-image-optimizer": "~3.2",
 
-    "wpackagist-plugin/debug-bar": "~0.8",
+    "generoi/wp-timber-extended": "~1.0.0-beta",
+    "generoi/widget-options-extended": "~2.1.0-alpha",
+    "generoi/popups-extended": "^0.0.4",
+
+    "wpackagist-plugin/debug-bar": "^0.9",
     "wpackagist-plugin/kint-debugger": "~1.0",
-    "generoi/wp-xhprof": "^0.1.2",
+    "wpackagist-plugin/regenerate-thumbnails": "~2.2",
+    "generoi/wp-xhprof": "^0.1",
 
     "cweagans/composer-patches": "~1.0",
     "generoi/genero-conf": "~1.0",
@@ -106,11 +109,6 @@
       "web/app/mu-plugins/{$name}/": ["type:wordpress-muplugin"],
       "web/app/plugins/{$name}/": ["type:wordpress-plugin"],
       "web/app/themes/{$name}/": ["type:wordpress-theme"]
-    },
-    "patches": {
-      "wpackagist-plugin/timber-library": {
-        "Fix v3.0.0 analyze_url image paths": "config/patches/timber-analyze_url.patch"
-      }
     },
     "wordpress-install-dir": "web/wp"
   },
