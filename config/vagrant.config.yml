@@ -37,3 +37,6 @@ vagrant_memory: 1024
 
 # PHP Configuration. Currently-supported versions: 5.6, 7.0, 7.1
 # php_version: "5.6"
+php_xdebug_idekey: sublime.xdebug
+# XDebug configuration. Disable for better performance.
+php_xdebug_default_enable: 1
