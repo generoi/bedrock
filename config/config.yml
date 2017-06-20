@@ -12,6 +12,7 @@ drupal_db_name: wordpress
 
 # Disable Drupal specific features.
 drupal_build_composer_project: false
+drupal_composer_dependencies: []
 drupal_install_site: false
 configure_drush_aliases: false
 
@@ -86,7 +87,7 @@ installed_extras:
   - tideways
   - upload-progress
   # - varnish
-  # - xdebug
+  - xdebug
   # - xhprof
 
 # Add any extra apt or yum packages you would like installed.
@@ -106,8 +107,6 @@ composer_global_packages:
   - { name: hirak/prestissimo, release: '^0.3' }
   - { name: wp-cli/wp-cli, release: '^1.0.0' }
 
-post_provision_scripts:
-  - "{{ config_dir }}/../vendor/generoi/genero-conf/post-provisioning/dotfiles.sh"
-  - "{{ config_dir }}/../vendor/generoi/genero-conf/post-provisioning/wordpress.sh"
-
-post_provision_tasks_dir: "{{ config_dir }}/../vendor/generoi/genero-conf/post-provisioning/tasks/*"
+# @see https://github.com/geerlingguy/drupal-vm/issues/1437
+generoi_conf_path: "{{ config_dir }}/../vendor/generoi/genero-conf"
+post_provision_tasks_dir: "{{ generoi_conf_path }}/post-provisioning/wordpress.yml"
