@@ -22,7 +22,7 @@ all:
 	cp $< $@
 
 confirm-action:
-	@read -r -n 1 -p "Are you sure you want to proceed? [y/N]" REPLY && \
+	@read -r -n 1 -p "Are you sure you want to proceed execution on $(TARGET_HOST)? [y/N]" REPLY && \
 	[[ $$REPLY =~ ^[Yy]$$ ]] || exit 1;
 
 .PHONY: all confirm-action
@@ -39,6 +39,12 @@ wp-search-replace:
 	wp @$(TARGET) search-replace --recurse-objects --network '$(STAGING_HOST)' '$(TARGET_HOST)'
 	wp @$(TARGET) search-replace --recurse-objects --network '$(LOCAL_HOST)' '$(TARGET_HOST)'
 	wp @$(TARGET) search-replace --recurse-objects --network '$(DEV_HOST)' '$(TARGET_HOST)'
+
+wp-https-to-http:
+	wp @$(TARGET) search-replace --recurse-objects --network 'https://$(TARGET_HOST)' 'http://$(TARGET_HOST)'
+
+wp-http-to-https:
+	wp @$(TARGET) search-replace --recurse-objects --network 'http://$(TARGET_HOST)' 'https://$(TARGET_HOST)'
 
 wp-pull-db: .env
 	make db-clean WP_CLI_HOST=$(SOURCE) $(DATABASE_EXPORT)
@@ -82,13 +88,17 @@ production-db-search-replace: wp-search-replace
 
 production-pull-db: SOURCE=production
 production-pull-db: TARGET=dev
+production-pull-db: TARGET_HOST=$(DEV_HOST)
 production-pull-db: wp-pull-db
+production-pull-db: wp-https-to-http
 production-pull-db: dev-plugins
 
 production-push-db: SOURCE=dev
 production-push-db: TARGET=production
+production-push-db: TARGET_HOST=$(PRODUCTION_HOST)
 production-push-db: confirm-action
 production-push-db: wp-push-db
+# production-push-db: wp-http-to-https
 
 production-pull-files: RSYNC_SSH=$(SSH_ARGS)
 production-pull-files: RSYNC_ARGS=--chmod=ugo=rwX
@@ -109,13 +119,17 @@ staging-db-search-replace: wp-search-replace
 
 staging-pull-db: SOURCE=staging
 staging-pull-db: TARGET=dev
+staging-pull-db: TARGET_HOST=$(DEV_HOST)
 staging-pull-db: wp-pull-db
+staging-pull-db: wp-https-to-http
 staging-pull-db: dev-plugins
 
 staging-push-db: SOURCE=dev
 staging-push-db: TARGET=staging
+staging-push-db: TARGET_HOST=$(STAGING_HOST)
 staging-push-db: confirm-action
 staging-push-db: wp-push-db
+# staging-push-db: wp-http-to-https
 
 staging-pull-files: RSYNC_SSH=-o ForwardAgent=yes
 staging-pull-files: RSYNC_ARGS=--chmod=ugo=rwX
