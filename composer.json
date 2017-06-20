@@ -119,11 +119,14 @@
     "post-install-cmd": [
       "cd $(composer config theme-dir); composer install --no-dev --no-interaction --quiet --optimize-autoloader"
     ],
-    "post-update-cmd": [
+
+    "install:development": [
+      "@composer install",
+      "@post-install-cmd",
       "bundle",
       "git config core.hooksPath \"vendor/generoi/git-hooks/hooks\"",
-      "@post-install-cmd",
-      "cd $(composer config theme-dir); yarn"
+      "cd $(composer config theme-dir); yarn",
+      "cp -n .env.example .env || true"
     ],
 
     "build": "cd $(composer config theme-dir); yarn run build",
@@ -132,9 +135,6 @@
 
     "test": [
       "@composer validate",
-      "@lint"
-    ],
-    "lint": [
       "@lint:twig",
       "@lint:php",
       "@lint:theme"
