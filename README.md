@@ -42,13 +42,20 @@ See a complete working example in the [roots-example-project.com repo](https://g
     cd <example-project>
 
     # Install dependencies
-    composer install
+    composer install:development
+
+    # Build theme assets
+    composer build
 
     # Build the VM
     vagrant up
 
     # To sync files from your computer to the virtual machine, run
     vagrant rsync-auto
+
+    # Fetch the remote database and uploads
+    make production-pull-db
+    make production-pull-files
 
 #### Add SSH configurations for the remote hosts
 
@@ -88,7 +95,7 @@ a VM on your own machine with vagrant, than this will be the "site" folder....
 Fetch both the needed php (to build the site with its plugins and fetch wp
 core) and ruby code (that capistrano needs) by running
 
-    composer install
+    composer install:development
 
 if composer complains, do the composer udpate using the `--ignore-platform-reqs` flag
 
@@ -156,20 +163,7 @@ not yet been fetched
     cd -
     ```
 
-3. Setup repo
-
-    ```sh
-    # Install dependencies
-    composer install
-
-    # Setup git hooks
-    git config core.hooksPath "vendor/generoi/git-hooks/hooks"
-
-    # Setup the ENV variables (pre-configured for the VM)
-    cp .env.example .env
-    ```
-
-4. Rename everything (relies on your theme being named the same as the repository)
+3. Rename everything (relies on your theme being named the same as the repository)
 
     ```sh
     # Search and replace all references to the project
@@ -179,6 +173,17 @@ not yet been fetched
     # - `Makefile`
     # - `config/deploy/production.rb`
     # - `wp-cli.yml`
+    ```
+
+
+4. Setup repo
+
+    ```sh
+    # Install development dependencies
+    composer install:development
+
+    # Build theme assets
+    composer build
     ```
 
 5. Setup the new remote git repository
