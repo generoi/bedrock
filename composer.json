@@ -144,6 +144,11 @@
     "lint:theme": "cd $(composer config theme-dir); yarn run lint"
   },
   "suggest": {
-    "hirak/prestissimo": "^0.3"
+    "hirak/prestissimo": "^0.3",
+    "wpackagist-plugin/contextual-related-posts": "^2.4.1",
+    "wpackagist-plugin/tailor": "^1.7.9",
+    "generoi/tailor-foundation": "^0.0.1-alpha3",
+    "generoi/facetwp": "^2.8.4",
+    "generoi/searchwp": "^2.8.6"
   }
 }
