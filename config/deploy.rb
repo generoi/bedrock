@@ -45,7 +45,7 @@ before 'deploy:updated', 'composer:install'
 after 'deploy:updated', 'assets:push'
 
 # Clear the cache
-after 'deploy:published', 'wp:cache:objectcache'
+# after 'deploy:published', 'wp:cache:objectcache'
 after 'deploy:published', 'wp:cache:timber'
 after 'deploy:published', 'wp:cache:autoptimize'
 after 'deploy:published', 'wp:cache:wpsc'
