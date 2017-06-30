@@ -62,13 +62,14 @@
     "wpackagist-plugin/popups": "~1.7.1",
     "wpackagist-plugin/widget-options": "~3.3",
     "generoi/gravityforms": "~2.1",
-    "generoi/advanced-custom-fields-pro": "~5.5",
+    "generoi/advanced-custom-fields-pro": "~5.6-beta",
 
     "wpackagist-plugin/wordpress-seo": "~4.0",
     "wpackagist-plugin/google-analytics-for-wordpress": "~6.0",
     "wpackagist-plugin/google-tag-manager": "~1.0",
     "wpackagist-plugin/redirection": "~2.4",
     "generoi/wp-genero-analytics": "~1.2.0",
+    "generoi/wp-hubspot": "~0.0.2",
 
     "generoi/polylang-pro": "~2.1",
     "wpackagist-plugin/integrate-gravity-forms-polylang": "^0.3",
@@ -94,7 +95,7 @@
   },
   "require-dev": {
     "squizlabs/php_codesniffer": "^2.5.1",
-    "geerlingguy/drupal-vm": "~4.5.0",
+    "geerlingguy/drupal-vm": "~4.6.0",
     "asm89/twig-lint": "^1.0.2",
     "generoi/git-hooks": "^1.0.0"
   },
