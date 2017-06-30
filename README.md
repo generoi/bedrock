@@ -41,7 +41,7 @@ See a complete working example in the [roots-example-project.com repo](https://g
     git clone --recursive git@github.com:generoi/<example-project>.git <example-project>
     cd <example-project>
 
-    # Install dependencies
+    # Install composer dependencies with development tools
     composer install:development
 
     # Build theme assets
@@ -254,24 +254,24 @@ not yet been fetched
 
 ## Deploys
 
-    ```sh
-    # Deploy to staging
-    cap staging deploy
+```sh
+# Deploy to staging
+cap staging deploy
 
-    # Deploy to production
-    cap production deploy
+# Deploy to production
+cap production deploy
 
-    # Clear all caches on production
-    cap production wp:cache
-    # Clear only WP Super Cache cache
-    cap production wp:cache:wpsc
+# Clear all caches on production
+cap production wp:cache
+# Clear only WP Super Cache cache
+cap production wp:cache:wpsc
 
-    # Deploy assets only
-    cap production assets:push
+# Deploy assets only
+cap production assets:push
 
-    # Open a shell on production server
-    cap production ssh
-    ```
+# Open a shell on production server
+cap production ssh
+```
 
 ## Documentation
 
