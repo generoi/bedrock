@@ -49,6 +49,7 @@
 
     "wpackagist-plugin/akismet": "~3.2",
     "wpackagist-plugin/wp-mail-smtp": "^0.10",
+    "wpackagist-plugin/limit-login-attempts-reloaded": "^2.6.1",
     "wpackagist-plugin/scalable-vector-graphics-svg": "~3.2",
     "wpackagist-plugin/custom-post-type-ui": "~1.4",
     "wpackagist-plugin/simple-custom-post-order": "~2.3",
