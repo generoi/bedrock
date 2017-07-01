@@ -120,6 +120,22 @@ RewriteRule . /index.php [L]
 # </IfModule>
 # END WordPress Multisite
 
+# Security harderning.
+<IfModule mod_rewrite.c>
+  # Allow whitelisted files.
+  RewriteCond %{REQUEST_URI} !^index\.php$
+  RewriteCond %{REQUEST_URI} !^genero-status\.php$
+  RewriteCond %{REQUEST_URI} !^/wp/wp-includes/ms-files.php$
+  # Allow plugins (too many bad practices).
+  RewriteCond %{REQUEST_URI} !^/app/plugins/[^/]/
+  # Allow wp-admin/ except for wp-admin/includes
+  RewriteCond %{REQUEST_URI} !^/wp/wp-admin/(?!includes/)
+  # Allow root wp/ PHP files.
+  RewriteCond %{REQUEST_URI} !^/wp/[^/]+\.php$
+  # Block all other PHP files.
+  RewriteRule ^.*\.php($|/) - [F,L]
+</IfModule>
+
 # Various header fixes.
 <IfModule mod_headers.c>
   # Disable content sniffing, since it's an attack vector.
