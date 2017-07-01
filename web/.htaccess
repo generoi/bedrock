@@ -126,8 +126,10 @@ RewriteRule . /index.php [L]
   RewriteCond %{REQUEST_URI} !^index\.php$
   RewriteCond %{REQUEST_URI} !^genero-status\.php$
   RewriteCond %{REQUEST_URI} !^/wp/wp-includes/ms-files.php$
-  # Allow plugins (too many bad practices).
-  RewriteCond %{REQUEST_URI} !^/app/plugins/[^/]/
+  # Allow plugins.
+  # RewriteCond %{REQUEST_URI} !^/app/plugins/[^/]/
+  # Whitelist plugins.
+  RewriteCond %{REQUEST_URI} !^/app/cache/autoptimize/
   # Allow wp-admin/ except for wp-admin/includes
   RewriteCond %{REQUEST_URI} !^/wp/wp-admin/(?!includes/)
   # Allow root wp/ PHP files.
