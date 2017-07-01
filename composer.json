@@ -83,7 +83,7 @@
 
     "generoi/wp-timber-extended": "~1.0.0-beta",
     "generoi/widget-options-extended": "~2.1.0-alpha",
-    "generoi/popups-extended": "^0.0.4",
+    "generoi/popups-extended": "^0.0.5",
 
     "wpackagist-plugin/debug-bar": "^0.9",
     "wpackagist-plugin/kint-debugger": "~1.0",
