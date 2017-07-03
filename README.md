@@ -8,6 +8,8 @@ Much of the philosophy behind Bedrock is inspired by the [Twelve-Factor App](htt
 
 ## Features
 
+### Roots
+
 * Better folder structure
 * Dependency management with [Composer](http://getcomposer.org)
 * Easy WordPress configuration with environment specific files
@@ -15,13 +17,15 @@ Much of the philosophy behind Bedrock is inspired by the [Twelve-Factor App](htt
 * Autoloader for mu-plugins (use regular plugins as mu-plugins)
 * Enhanced security (separated web root and secure passwords with [wp-password-bcrypt](https://github.com/roots/wp-password-bcrypt))
 
-Use [Trellis](https://github.com/roots/trellis) for additional features:
+### Genero
 
-* Easy development environments with [Vagrant](http://www.vagrantup.com/)
-* Easy server provisioning with [Ansible](http://www.ansible.com/) (Ubuntu 16.04, PHP 7.1, MariaDB)
-* One-command deploys
-
-See a complete working example in the [roots-example-project.com repo](https://github.com/roots/roots-example-project.com).
+* Drupal based security enhancements in `.htaccess` *(note: by default we block direct access to all PHP files, and whitelist the few that are allowed).*
+* Long term expire headers for production in `.htaccess` *(disabled in development)*.
+* Capistrano using our [capistrano-tasks](https://github.com/generoi/capistrano-tasks/) gem.
+* A `Makefile` for pulling and pushing uploads/databases between environments.
+* A Vagrant environment using [Drupal VM](http://docs.drupalvm.com).
+* Composer tasks for building and linting the project. If needed you can customize these for your project.
+* Access to remote environments through [`wp-cli`](https://github.com/wp-cli/wp-cli) *(see [`wp-cli.yml`](https://github.com/generoi/bedrock/blob/genero/wp-cli.yml) for a few manual steps to improve DX)*.
 
 ## Requirements
 
@@ -30,13 +34,11 @@ See a complete working example in the [roots-example-project.com repo](https://g
 * Ansible 2.2.0.0 or higher
 * Vagrant 1.8.7 or higher
 * An updated verison of VirtualBox (on OS X)
-* node
-* yarn
-* bundler
+* NodeJS
+* Yarn
+* Bundler
 
-## Installation
-
-### Local development
+## Local project development
 
     git clone --recursive git@github.com:generoi/<example-project>.git <example-project>
     cd <example-project>
@@ -81,31 +83,10 @@ Usage (eg how to import a db from local)
 
     wp @dev db cli < dump.sql
 
-### minasanor.genero.fi
+## roots/bedrock's own setup instructions
 
-#### Clone the git repo
 
-Do this in you /var/www/u/USERNAME/ forlder on the dev server, unless you use
-a VM on your own machine with vagrant, than this will be the "site" folder....
-
-    git clone --recursive git@github.com:generoi/<example-project>.git <example-project>
-
-#### Fetch what is needed
-
-Fetch both the needed php (to build the site with its plugins and fetch wp
-core) and ruby code (that capistrano needs) by running
-
-    composer install:development
-
-if composer complains, do the composer udpate using the `--ignore-platform-reqs` flag
-
-    composer update --ignore-platform-reqs
-
-if capistrano complains that somethings is missing, it might be that you need
-to run bundle again if the Capfile has been updated what it requires but it has
-not yet been fetched
-
-#### Set up database and Wordpress
+#### Installation
 
 1. Create a new project in a new folder for your project:
 
@@ -135,9 +116,9 @@ not yet been fetched
 
 5. Access WP admin at `http://example.com/wp/wp-admin`
 
-## Setup a new repository
+## Create a new project and Git repository
 
-1. Clone the repo
+1. Clone this repository
 
     ```sh
     git clone --recursive git@github.com:generoi/bedrock.git foobar
@@ -146,7 +127,7 @@ not yet been fetched
 2. Clone the theme
 
     ```sh
-    cd foobar/web/app/themes;
+    cd foobar/web/app/themes
 
     git clone git@github.com:generoi/sage.git foobar
 
@@ -160,7 +141,7 @@ not yet been fetched
     composer install
 
     # Return to the root of the project
-    cd -
+    cd ../../../..
     ```
 
 3. Rename everything (relies on your theme being named the same as the repository)
@@ -175,8 +156,7 @@ not yet been fetched
     # - `wp-cli.yml`
     ```
 
-
-4. Setup repo
+4. Build the assets and install all dependencies
 
     ```sh
     # Install development dependencies
@@ -218,7 +198,7 @@ not yet been fetched
     vagrant rsync-auto
     ```
 
-7. Setup staging evironment
+7. Setup the staging evironment
 
     ```sh
     # Configure the staging environment
@@ -233,9 +213,12 @@ not yet been fetched
     cap staging deploy
     make staging-push-db
     make staging-push-files
+
+    # Deploy once more with database available
+    cap staging deploy
     ```
 
-8. Setup production evironment
+8. Setup the production evironment
 
     ```sh
     # Configure the production environment
@@ -250,9 +233,12 @@ not yet been fetched
     cap production deploy
     make production-push-db
     make production-push-files
+
+    # Deploy once more with database available
+    cap production deploy
     ```
 
-## Deploys
+## Deploying
 
 ```sh
 # Deploy to staging
