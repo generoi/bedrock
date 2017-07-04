@@ -125,6 +125,7 @@ RewriteRule . /index.php [L]
   # Allow whitelisted files.
   RewriteCond %{REQUEST_URI} !^index\.php$
   RewriteCond %{REQUEST_URI} !^genero-status\.php$
+  RewriteCond %{REQUEST_URI} !^wp-clear-cache\.php$
   RewriteCond %{REQUEST_URI} !^/wp/wp-includes/ms-files.php$
   # Allow plugins.
   # RewriteCond %{REQUEST_URI} !^/app/plugins/[^/]/
