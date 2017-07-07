@@ -12,7 +12,7 @@ set :branch, :master
 set :deploy_to, -> { "/home/www/#{fetch(:customer_username)}/deploy" }
 
 # Use :debug for more verbose output when troubleshooting
-set :log_level, :info
+# set :log_level, :debug
 
 # Apache users with .htaccess files:
 # it needs to be added to linked_files so it persists across deploys:
@@ -36,7 +36,6 @@ set :assets_output,           -> { [fetch(:assets_dist_path)] }
 
 # Sanity check
 before 'deploy:starting', 'deploy:check:pushed'
-before 'deploy:starting', 'deploy:check:assets'
 before 'deploy:starting', 'deploy:check:sshagent'
 
 # Install plugins

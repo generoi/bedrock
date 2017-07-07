@@ -131,8 +131,8 @@
       "cp -n .env.example .env || true"
     ],
 
-    "build": "cd $(composer config theme-dir); yarn run build",
-    "build:production": "cd $(composer config theme-dir); yarn run build:production",
+    "build": "cd $(composer config theme-dir); yarn run build -- --no-progress",
+    "build:production": "cd $(composer config theme-dir); yarn run build:production -- --no-progress",
     "build:development": "@build",
 
     "test": [
