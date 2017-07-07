@@ -131,6 +131,7 @@ RewriteRule . /index.php [L]
   # RewriteCond %{REQUEST_URI} !^/app/plugins/[^/]/
   # Whitelist plugins.
   RewriteCond %{REQUEST_URI} !^/app/cache/autoptimize/
+  RewriteCond %{REQUEST_URI} !^/app/plugins/wp-xhprof/xhprof/xhprof_html/index.php$
   # Allow wp-admin/ except for wp-admin/includes
   RewriteCond %{REQUEST_URI} !^/wp/wp-admin/(?!includes/)
   # Allow root wp/ PHP files.
