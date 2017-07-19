@@ -63,6 +63,7 @@
     "wpackagist-plugin/popups": "~1.7.1",
     "wpackagist-plugin/widget-options": "~3.3",
     "generoi/gravityforms": "~2.1",
+    "generoi/gravityformsrestapi": "~2.0-rc",
     "generoi/advanced-custom-fields-pro": "~5.6-beta",
 
     "wpackagist-plugin/wordpress-seo": "~5.0",
