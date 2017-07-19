@@ -98,7 +98,7 @@
     "squizlabs/php_codesniffer": "^2.5.1",
     "geerlingguy/drupal-vm": "~4.6.0",
     "asm89/twig-lint": "^1.0.2",
-    "generoi/git-hooks": "^1.0.0"
+    "brainmaestro/composer-git-hooks": "^2.2"
   },
   "extra": {
     "dropin-paths": {
@@ -106,6 +106,10 @@
       "web/app/languages/plugins/": ["vendor:koodimonni-plugin-language"],
       "web/app/languages/themes/": ["vendor:koodimonni-theme-language"],
       "web/": ["package:generoi/genero-status:genero-status.php"]
+    },
+    "hooks": {
+      "pre-commit": "composer test",
+      "post-merge": "composer install:development"
     },
     "installer-paths": {
       "web/app/mu-plugins/{$name}/": ["type:wordpress-muplugin"],
@@ -118,32 +122,31 @@
     "post-root-package-install": [
       "php -r \"copy('.env.example', '.env');\""
     ],
-    "post-install-cmd": [
-      "cd $(composer config theme-dir); composer install --no-dev --no-interaction --quiet --optimize-autoloader"
-    ],
+    "post-install-cmd": "cd $(composer config theme-dir) && composer install --no-dev --no-interaction --quiet --optimize-autoloader",
+    "post-update-cmd": "cghooks update",
 
     "install:development": [
       "@composer install",
       "@post-install-cmd",
+      "cghooks update",
       "bundle",
-      "git config core.hooksPath \"vendor/generoi/git-hooks/hooks\"",
-      "cd $(composer config theme-dir); yarn",
+      "cd $(composer config theme-dir) && yarn",
       "cp -n .env.example .env || true"
     ],
 
-    "build": "cd $(composer config theme-dir); yarn run build -- --no-progress",
-    "build:production": "cd $(composer config theme-dir); yarn run build:production -- --no-progress",
+    "build": "cd $(composer config theme-dir) && yarn run build -- --no-progress",
+    "build:production": "cd $(composer config theme-dir) && yarn run build:production -- --no-progress",
     "build:development": "@build",
 
     "test": [
-      "@composer validate",
+      "@composer validate --no-check-all",
       "@lint:twig",
       "@lint:php",
       "@lint:theme"
     ],
     "lint:twig": "twig-lint lint --only-print-errors $(composer config theme-dir)",
     "lint:php": "find config/ $(composer config theme-dir) -not -path '*/vendor/*' -type f -name '*.php' -exec php -l {} \\; | grep -v 'No syntax errors detected'; test ${PIPESTATUS[0]} -eq 0",
-    "lint:theme": "cd $(composer config theme-dir); yarn run lint"
+    "lint:theme": "cd $(composer config theme-dir) && yarn run lint"
   },
   "suggest": {
     "hirak/prestissimo": "^0.3",
