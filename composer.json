@@ -123,12 +123,12 @@
       "php -r \"copy('.env.example', '.env');\""
     ],
     "post-install-cmd": "cd $(composer config theme-dir) && composer install --no-dev --no-interaction --quiet --optimize-autoloader",
-    "post-update-cmd": "cghooks update",
+    "post-update-cmd": "vendor/bin/cghooks update",
 
     "install:development": [
       "@composer install",
       "@post-install-cmd",
-      "cghooks update",
+      "vendor/bin/cghooks update",
       "bundle",
       "cd $(composer config theme-dir) && yarn",
       "cp -n .env.example .env || true"
