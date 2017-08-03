@@ -47,7 +47,7 @@
     "koodimonni-language/fi": "*",
     "koodimonni-language/sv_se": "*",
 
-    "wpackagist-plugin/akismet": "~3.2",
+    "wpackagist-plugin/akismet": "~3.3",
     "wpackagist-plugin/wp-mail-smtp": "^0.10",
     "wpackagist-plugin/limit-login-attempts-reloaded": "^2.6.1",
     "wpackagist-plugin/scalable-vector-graphics-svg": "~3.2",
@@ -64,14 +64,13 @@
     "wpackagist-plugin/widget-options": "~3.3",
     "generoi/gravityforms": "~2.1",
     "generoi/gravityformsrestapi": "~2.0-rc",
-    "generoi/advanced-custom-fields-pro": "~5.6-beta",
+    "generoi/advanced-custom-fields-pro": "~5.6",
 
     "wpackagist-plugin/wordpress-seo": "~5.0",
     "wpackagist-plugin/google-analytics-for-wordpress": "~6.0",
     "wpackagist-plugin/google-tag-manager": "~1.0",
     "wpackagist-plugin/redirection": "~2.4",
-    "generoi/wp-genero-analytics": "~1.2.0",
-    "generoi/wp-hubspot": "~0.0.2",
+    "generoi/wp-genero-analytics": "~1.3.0",
 
     "generoi/polylang-pro": "~2.1",
     "wpackagist-plugin/integrate-gravity-forms-polylang": "^0.3",
@@ -155,6 +154,7 @@
     "wpackagist-plugin/tailor": "^1.7.9",
     "generoi/tailor-foundation": "^0.0.1-alpha3",
     "generoi/facetwp": "^2.8.4",
-    "generoi/searchwp": "^2.8.6"
+    "generoi/searchwp": "^2.8.6",
+    "generoi/wp-hubspot": "~0.0.2"
   }
 }
