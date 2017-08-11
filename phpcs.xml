@@ -2,8 +2,10 @@
 <ruleset name="Roots">
   <description>Roots Coding Standards</description>
 
-  <!-- Scan only files in config directory -->
+  <!-- Scan only mu-plugins and files in config/ directory -->
+  <!-- If a third party mu-plugin is required, exclude it with exclude-pattern below -->
   <file>config/</file>
+  <file>web/app/mu-plugins/</file>
 
   <!-- Scan only PHP files -->
   <arg name="extensions" value="php"/>
