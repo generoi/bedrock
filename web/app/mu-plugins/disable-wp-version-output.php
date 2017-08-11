@@ -1,9 +1,9 @@
 <?php
 /**
- * Remove the version number of WP so that hackers cant use that to their advantage
- * inspired by https://premium.wpmudev.org/blog/how-to-hide-your-wordpress-version-number/
- * and
- * http://frankiejarrett.com/2012/05/how-to-hide-your-wordpress-version-number-completely/
+ * Remove the version number of WP so that hackers cant use that to their
+ * advantage.
+ * @see https://premium.wpmudev.org/blog/how-to-hide-your-wordpress-version-number/
+ * @see http://frankiejarrett.com/2012/05/how-to-hide-your-wordpress-version-number-completely/
  */
 
 
@@ -12,8 +12,9 @@
  *  <meta name="generator" content="WordPress 4.3.1" />
  *  on both the markup of all themes used, and in the RSS feed
  */
-add_filter('the_generator', function () {return '';});
-
+add_filter('the_generator', function () {
+    return '';
+});
 
 /**
  * We also need to remove wp version number from the script and css loaders.
@@ -32,14 +33,15 @@ add_filter('the_generator', function () {return '';});
  * @filter script_loader_src
  * @filter style_loader_src
  */
-function genero_remove_wp_version_strings( $src ) {
-     global $wp_version;
-     parse_str(parse_url($src, PHP_URL_QUERY), $query);
-     if ( !empty($query['ver']) && $query['ver'] === $wp_version ) {
-          $src = remove_query_arg('ver', $src);
-          $src = add_query_arg('xyz',crypt($wp_version, 'somesalt'), $src);
-     }
-     return $src;
+function genero_remove_wp_version_strings($src)
+{
+    global $wp_version;
+    parse_str(parse_url($src, PHP_URL_QUERY), $query);
+    if (!empty($query['ver']) && $query['ver'] === $wp_version) {
+        $src = remove_query_arg('ver', $src);
+        $src = add_query_arg('xyz', crypt($wp_version, 'somesalt'), $src);
+    }
+    return $src;
 }
-add_filter( 'script_loader_src', 'genero_remove_wp_version_strings' );
-add_filter( 'style_loader_src', 'genero_remove_wp_version_strings' );
+add_filter('script_loader_src', 'genero_remove_wp_version_strings');
+add_filter('style_loader_src', 'genero_remove_wp_version_strings');
