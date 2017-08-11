@@ -2,8 +2,8 @@
 <ruleset name="Roots">
   <description>Roots Coding Standards</description>
 
-  <!-- Scan all files in directory -->
-  <file>.</file>
+  <!-- Scan only files in config directory -->
+  <file>config/</file>
 
   <!-- Scan only PHP files -->
   <arg name="extensions" value="php"/>

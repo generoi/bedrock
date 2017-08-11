@@ -97,7 +97,6 @@
   "require-dev": {
     "squizlabs/php_codesniffer": "^2.5.1",
     "geerlingguy/drupal-vm": "~4.6.0",
-    "asm89/twig-lint": "^1.0.2",
     "brainmaestro/composer-git-hooks": "^2.2"
   },
   "extra": {
@@ -140,13 +139,11 @@
 
     "test": [
       "@composer validate --no-check-all",
-      "@lint:twig",
       "@lint:php",
       "@lint:theme"
     ],
-    "lint:twig": "twig-lint lint --only-print-errors $(composer config theme-dir)",
-    "lint:php": "find config/ $(composer config theme-dir) -not -path '*/vendor/*' -type f -name '*.php' -exec php -l {} \\; | grep -v 'No syntax errors detected'; test ${PIPESTATUS[0]} -eq 0",
-    "lint:theme": "cd $(composer config theme-dir) && yarn run lint"
+    "lint:php": "phpcs",
+    "lint:theme": "cd $(composer config theme-dir) && yarn run test"
   },
   "suggest": {
     "hirak/prestissimo": "^0.3",
