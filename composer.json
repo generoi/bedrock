@@ -127,7 +127,7 @@
 
     "install:development": [
       "@composer install",
-      "@post-install-cmd",
+      "cd $(composer config theme-dir) && composer install --no-interaction --quiet",
       "vendor/bin/cghooks update",
       "bundle",
       "cd $(composer config theme-dir) && yarn",
