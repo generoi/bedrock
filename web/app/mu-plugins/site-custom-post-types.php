@@ -1,6 +1,6 @@
 <?php
 /*
-Plugin Name:  Register Post Types
+Plugin Name:  Site: Register Post Types
 Plugin URI:   https://genero.fi
 Description:  Register Post Types and Taxonomies for site
 Version:      1.0.0
@@ -9,7 +9,7 @@ Author URI:   https://genero.fi/
 License:      MIT License
 */
 
-namespace Genero\Client;
+namespace Genero\Site;
 
 use PostTypes\PostType;
 
@@ -43,22 +43,33 @@ class CustomPostTypes
      */
     public function init()
     {
-        // $this->postTypes[] = $this->registerCase();
+        $this->postTypes[] = $this->registerPost();
+        $this->postTypes[] = $this->registerPage();
+        // $this->postTypes[] = $this->registerProduct();
     }
 
-    /**
-     * A case Post Type
-     *
-     * @return PostType
-     */
-    public function registerCase()
+    public function registerPost()
     {
-        $case = new PostType('case');
-        $case->taxonomy('client');
-        $case->columns()->hide(['date', 'author']);
-        $case->icon('dashicons-clipboard');
+        $post = new PostType('post');
 
-        return $case;
+        return $post;
+    }
+
+    public function registerPage()
+    {
+        $page = new PostType('page');
+
+        return $page;
+    }
+
+    public function registerProduct()
+    {
+        $product = new PostType('product');
+        // @see https://github.com/jjgrainger/PostTypes/issues/12
+        $product->columns()->populate('product_cat', '__return_null');
+        $product->columns()->populate('product_type', '__return_null');
+
+        return $product;
     }
 }
 
