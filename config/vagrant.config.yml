@@ -22,7 +22,7 @@ vagrant_synced_folders:
     id: wordpress
     type: rsync
     create: true
-    excluded_paths: ['.git/', './vm/', './lib/', '.tmp/', 'node_modules/', 'app/uploads/', 'app/cache/']
+    excluded_paths: ['.git/', './vm/', './lib/', '.tmp/', 'node_modules/', 'app/uploads/', 'app/cache/', 'app/acf-json/']
     options_override:
       rsync__chown: false
       rsync__verbose: true
@@ -30,6 +30,10 @@ vagrant_synced_folders:
         "--verbose", "--archive", "--delete", "--copy-links",
         "--owner", "--group", "--usermap=*:vagrant", "--groupmap=*:www-data",
       ]
+  - local_path: web/app/acf-json
+    destination: /var/www/wordpress/web/app/acf-json
+    type: nfs
+    create: true
 
 # If you want to adjust this, create a local.config.yml file where you override
 # the value. This file is not tracked in git.
