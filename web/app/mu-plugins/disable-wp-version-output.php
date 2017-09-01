@@ -1,4 +1,14 @@
 <?php
+/*
+Plugin Name:  Disable WP Version Output
+Plugin URI:   https://genero.fi
+Description:  Disable WP Version output from assets
+Version:      1.0.0
+Author:       Genero
+Author URI:   https://genero.fi/
+License:      MIT License
+*/
+
 /**
  * Remove the version number of WP so that hackers cant use that to their
  * advantage.
