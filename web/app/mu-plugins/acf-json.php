@@ -9,6 +9,6 @@ Author URI:   https://genero.fi/
 License:      MIT License
 */
 
-add_filter('acf/settings/save_json', function($path) {
+add_filter('acf/settings/save_json', function ($path) {
     return WP_CONTENT_DIR . '/acf-json';
 });
