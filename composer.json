@@ -51,7 +51,6 @@
     "wpackagist-plugin/wp-mail-smtp": "^0.10",
     "wpackagist-plugin/limit-login-attempts-reloaded": "^2.6.1",
     "wpackagist-plugin/scalable-vector-graphics-svg": "~3.2",
-    "wpackagist-plugin/custom-post-type-ui": "~1.4",
     "wpackagist-plugin/simple-custom-post-order": "~2.3",
     "wpackagist-plugin/wp-sanitize-file-name-plus": "~1.0",
     "wpackagist-plugin/tinymce-advanced": "~4.4",
@@ -91,6 +90,7 @@
     "generoi/wp-xhprof": "^0.1",
 
     "cweagans/composer-patches": "~1.0",
+    "jjgrainger/posttypes": "~1.1",
     "generoi/genero-conf": "~1.0",
     "generoi/genero-status": "*"
   },
