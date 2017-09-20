@@ -5,7 +5,9 @@ WP-Cache Config Sample File
 See wp-cache.php for author details.
 */
 
-$wp_cache_refresh_single_only = '1'; //Added by WP-Cache Manager
+$wpsc_save_headers = 0; //Added by WP-Cache Manager
+$cached_direct_pages = array(  ); //Added by WP-Cache Manager
+$wp_cache_refresh_single_only = 1; //Added by WP-Cache Manager
 $wp_cache_make_known_anon = 0; //Added by WP-Cache Manager
 $wp_cache_mod_rewrite = 0; //Added by WP-Cache Manager
 $wp_cache_front_page_checks = 1; //Added by WP-Cache Manager
