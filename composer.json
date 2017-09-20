@@ -37,10 +37,10 @@
   ],
   "require": {
     "php": ">=5.6",
-    "composer/installers": "~1.2.0",
     "koodimonni/composer-dropin-installer": "*",
+    "composer/installers": "^1.4",
     "vlucas/phpdotenv": "^2.0.1",
-    "johnpbloch/wordpress": "4.8.1",
+    "johnpbloch/wordpress": "4.8.2",
     "oscarotero/env": "^1.1.0",
     "roots/wp-password-bcrypt": "1.0.0",
 
@@ -96,7 +96,7 @@
     "generoi/genero-status": "*"
   },
   "require-dev": {
-    "squizlabs/php_codesniffer": "^2.5.1",
+    "squizlabs/php_codesniffer": "^3.0.2",
     "geerlingguy/drupal-vm": "~4.6.0",
     "brainmaestro/composer-git-hooks": "^2.2"
   },
