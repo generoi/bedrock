@@ -1,7 +1,7 @@
 ---
 # Site specific overrides.
 
-vagrant_hostname: <example-project>.dev
+vagrant_hostname: <example-project>.test
 vagrant_machine_name: <example-project>
 # @note: this should be unique per project.
 vagrant_ip: 192.168.87.87
