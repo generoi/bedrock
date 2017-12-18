@@ -21,7 +21,7 @@ require:
 
 @dev:
   ssh: vagrant@<example-project>.dev/var/www/wordpress/web/wp
-  url: <example-project>.dev
+  url: <example-project>.test
 
 @staging:
   ssh: deploy@minasithil.genero.fi/var/www/staging/<example-project>/current/web/wp
