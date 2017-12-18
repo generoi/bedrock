@@ -152,7 +152,7 @@ Usage (eg how to import a db from local)
 
     ```sh
     # Search and replace all references to the project
-    find . \( -wholename ./web/wp -o -wholename ./web/app/plugins -o -name vendor -o -name .git \) -prune -o -type f -print0 | xargs -0 sed -i 's/<example-project>/foobar/g'
+    find . \( -wholename ./web/wp -o -wholename ./web/app/plugins -o -name vendor -o -name .git \) -prune -o -type f -print0 | xargs -0 sed -i '' -e 's/<example-project>/foobar/g'
 
     # You need to manually setup the production host in:
     # - `Makefile`
