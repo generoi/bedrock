@@ -10,7 +10,7 @@ require:
 #
 # Add this to your ~/.ssh/config
 #
-#     Host <example-project>.dev
+#     Host <example-project>.test
 #       StrictHostKeyChecking no
 #       IdentityFile ~/.vagrant.d/insecure_private_key
 #       ForwardAgent yes
@@ -20,7 +20,7 @@ require:
 #       ProxyCommand ssh deploy@minasithil.genero.fi nc %h %p 2> /dev/null
 
 @dev:
-  ssh: vagrant@<example-project>.dev/var/www/wordpress/web/wp
+  ssh: vagrant@<example-project>.test/var/www/wordpress/web/wp
   url: <example-project>.test
 
 @staging:

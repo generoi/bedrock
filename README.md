@@ -68,7 +68,7 @@ Much of the philosophy behind Bedrock is inspired by the [Twelve-Factor App](htt
 For you to be able to access the remote hosts with WP-CLI you need to add the
 following to your `~/.ssh/config` file.
 
-    Host <example-project>.dev
+    Host <example-project>.test
       StrictHostKeyChecking no
       IdentityFile ~/.vagrant.d/insecure_private_key
       ForwardAgent yes

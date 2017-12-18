@@ -1,5 +1,5 @@
 # Include site specific configurations
-DEV_HOST ?= <example-project>.dev
+DEV_HOST ?= <example-project>.test
 PRODUCTION_HOST ?= <example-project>.fi
 LOCAL_HOST ?= localhost:3000
 STAGING_HOST ?= <example-project>.web.staging.minasithil.genero.fi
