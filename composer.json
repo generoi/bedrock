@@ -125,7 +125,12 @@
       "web/app/plugins/{$name}/": ["type:wordpress-plugin"],
       "web/app/themes/{$name}/": ["type:wordpress-theme"]
     },
-    "wordpress-install-dir": "web/wp"
+    "wordpress-install-dir": "web/wp",
+    "patches": {
+      "geerlingguy/drupal-vm": {
+        "Support vagrant DHCP IP assignment with `vagrant-hostmanager`": "https://github.com/geerlingguy/drupal-vm/commit/69dd5a15c056e6d1b622b6b2333680dc2b2658c3.patch"
+      }
+    }
   },
   "scripts": {
     "post-root-package-install": [

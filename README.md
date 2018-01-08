@@ -195,9 +195,6 @@ Usage (eg how to import a db from local)
 6. Setup the VM
 
     ```sh
-    # Change the VM IP to something unique
-    vim config/vagrant.config.yml
-
     # Build the VM
     vagrant up
 

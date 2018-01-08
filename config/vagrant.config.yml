@@ -3,8 +3,6 @@
 
 vagrant_hostname: <example-project>.test
 vagrant_machine_name: <example-project>
-# @note: this should be unique per project.
-vagrant_ip: 192.168.87.87
 
 # If you want to use NFS instead (two-way sync) create a local.config.yml file
 # where you override the vagrant_synced_folders variable with this value. This

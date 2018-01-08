@@ -40,5 +40,4 @@ log
 *.sql
 
 # Local configuration
-Vagrantfile.local
 local.config.yml

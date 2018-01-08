@@ -7,6 +7,12 @@
 vagrant_box: beet/box
 workspace: "/beetbox/workspace/{{ php_version }}"
 
+# Use DHCP assigned  IPs with vagrant-hostmanager
+# Note: requires vagrant-vbguest to be disabled in Vagrantfile.local
+vagrant_ip: dhcp
+vagrant_plugins:
+  - name: vagrant-hostmanager
+
 # Needs to match with what we have in .env and vagrant_synced_folders.
 drupal_core_path: "/var/www/wordpress/web"
 drupal_domain: "{{ vagrant_hostname }}"
