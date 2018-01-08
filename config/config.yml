@@ -3,6 +3,10 @@
 # vagrant.config.yml. That way when Drupal VM updates are brought in, this file
 # can be overriden without manual inspection.
 
+# Use Beetbox as the base image
+vagrant_box: beet/box
+workspace: "/beetbox/workspace/{{ php_version }}"
+
 # Needs to match with what we have in .env and vagrant_synced_folders.
 drupal_core_path: "/var/www/wordpress/web"
 drupal_domain: "{{ vagrant_hostname }}"
