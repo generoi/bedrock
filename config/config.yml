@@ -94,7 +94,7 @@ installed_extras:
   # - ruby
   # - selenium
   # - solr
-  - tideways
+  # - tideways
   - upload-progress
   # - varnish
   - xdebug
