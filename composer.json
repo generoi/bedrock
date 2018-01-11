@@ -57,7 +57,7 @@
     "generoi/wp-timber-extended": "~2.0.0-alpha",
 
     "wpackagist-plugin/akismet": "~4.0",
-    "wpackagist-plugin/wp-mail-smtp": "^0.10",
+    "wpackagist-plugin/wp-mail-smtp": "~1.2",
     "wpackagist-plugin/simple-custom-post-order": "~2.3",
     "wpackagist-plugin/wp-smartcrop": "~1.3",
     "wpackagist-plugin/yoimages": "~0.1.6",
@@ -67,26 +67,26 @@
     "generoi/gravityformsrestapi": "~2.0-rc",
     "wpackagist-plugin/contextual-related-posts": "^2.4.1",
 
-    "wpackagist-plugin/wordpress-seo": "~5.0",
+    "wpackagist-plugin/wordpress-seo": "~6.1",
     "wpackagist-plugin/google-analytics-for-wordpress": "~6.0",
     "wpackagist-plugin/google-tag-manager": "~1.0",
     "wpackagist-plugin/redirection": "~2.4",
     "generoi/wp-genero-analytics": "~1.3.0",
 
-    "generoi/polylang-pro": "~2.1",
+    "generoi/polylang-pro": "~2.2",
     "wpackagist-plugin/integrate-gravity-forms-polylang": "^0.3",
     "wpackagist-plugin/theme-translation-for-polylang": "^2.0.0",
 
     "wpackagist-plugin/wp-super-cache": "~1.5.0",
     "wpackagist-plugin/wp-performance-pack": "~2.0",
-    "wpackagist-plugin/ewww-image-optimizer": "~3.2",
+    "wpackagist-plugin/ewww-image-optimizer": "~4.0",
 
     "generoi/widget-options-extended": "~2.1.0-alpha",
     "generoi/popups-extended": "^0.0.5",
 
     "wpackagist-plugin/debug-bar": "^0.9",
     "wpackagist-plugin/kint-debugger": "~1.0",
-    "wpackagist-plugin/regenerate-thumbnails": "~2.2",
+    "wpackagist-plugin/regenerate-thumbnails": "~3.0",
     "generoi/wp-xhprof": "^0.1",
 
     "cweagans/composer-patches": "~1.0",
