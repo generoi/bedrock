@@ -12,3 +12,8 @@ License:      MIT License
 add_filter('acf/settings/save_json', function ($path) {
     return WP_CONTENT_DIR . '/acf-json';
 });
+
+add_filter('acf/settings/load_json', function ($paths) {
+    $paths[] = WP_CONTENT_DIR . '/acf-json';
+    return $paths;
+});
