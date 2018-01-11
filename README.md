@@ -63,20 +63,6 @@ Much of the philosophy behind Bedrock is inspired by the [Twelve-Factor App](htt
     # you can disable these on a per-commit basis with the -n (--no-verify) flag
     git commit --amend -n
 
-#### Add SSH configurations for the remote hosts
-
-For you to be able to access the remote hosts with WP-CLI you need to add the
-following to your `~/.ssh/config` file.
-
-    Host <example-project>.test
-      StrictHostKeyChecking no
-      IdentityFile ~/.vagrant.d/insecure_private_key
-      ForwardAgent yes
-
-    Host <example-project>.fi
-      ForwardAgent yes
-      ProxyCommand ssh deploy@minasithil.genero.fi nc %h %p 2> /dev/null
-
 #### Using WP-CLI locally
 
 Install WP-CLI

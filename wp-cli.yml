@@ -8,7 +8,7 @@ require:
 # ------------------------
 # Usage: `wp @staging rewrite flush`
 #
-# Add this to your ~/.ssh/config
+# Requires the following in your ~/.ssh/config
 #
 #     Host <example-project>.test
 #       StrictHostKeyChecking no

@@ -121,3 +121,4 @@ post_provision_tasks_dir:
   - "{{ config_dir }}/../vendor/generoi/genero-conf/post-provisioning/tasks/apache-env.yml"
   - "{{ config_dir }}/../vendor/generoi/genero-conf/post-provisioning/tasks/dotfiles.yml"
   - "{{ config_dir }}/../vendor/generoi/genero-conf/post-provisioning/tasks/wp-directories.yml"
+  - "{{ config_dir }}/../vendor/generoi/genero-conf/post-provisioning/tasks/ssh-config.yml"
