@@ -49,8 +49,8 @@
 
     "generoi/advanced-custom-fields-pro": "~5.6",
     "wpackagist-plugin/limit-login-attempts-reloaded": "^2.6.1",
-    "wpackagist-plugin/scalable-vector-graphics-svg": "~3.2",
-    "wpackagist-plugin/timber-library": "~1.4.0",
+    "wpackagist-plugin/scalable-vector-graphics-svg": "~3.4",
+    "wpackagist-plugin/timber-library": "~1.6.0",
     "wpackagist-plugin/wp-sanitize-file-name-plus": "~1.0",
     "generoi/wp-genero-adjustments": "~1.0.0",
     "generoi/wp-hero": "~0.1-alpha",
@@ -61,7 +61,7 @@
     "wpackagist-plugin/simple-custom-post-order": "~2.3",
     "wpackagist-plugin/wp-smartcrop": "~1.3",
     "wpackagist-plugin/yoimages": "~0.1.6",
-    "wpackagist-plugin/popups": "~1.7.1",
+    "wpackagist-plugin/popups": "~1.8",
     "wpackagist-plugin/widget-options": "~3.3",
     "generoi/gravityforms": "~2.1",
     "generoi/gravityformsrestapi": "~2.0-rc",
@@ -82,7 +82,7 @@
     "wpackagist-plugin/ewww-image-optimizer": "~4.0",
 
     "generoi/widget-options-extended": "~2.1.0-alpha",
-    "generoi/popups-extended": "^0.0.5",
+    "generoi/popups-extended": "^1.0.0-alpha",
 
     "wpackagist-plugin/debug-bar": "^0.9",
     "wpackagist-plugin/kint-debugger": "~1.0",
@@ -111,17 +111,7 @@
       "post-merge": "composer install:development"
     },
     "installer-paths": {
-      "web/app/mu-plugins/{$name}/": [
-        "type:wordpress-muplugin",
-        "generoi/advanced-custom-fields-pro",
-        "wpackagist-plugin/limit-login-attempts-reloaded",
-        "wpackagist-plugin/scalable-vector-graphics-svg",
-        "wpackagist-plugin/timber-library",
-        "wpackagist-plugin/wp-sanitize-file-name-plus",
-        "generoi/wp-genero-adjustments",
-        "generoi/wp-hero",
-        "generoi/wp-timber-extended"
-      ],
+      "web/app/mu-plugins/{$name}/": ["type:wordpress-muplugin"],
       "web/app/plugins/{$name}/": ["type:wordpress-plugin"],
       "web/app/themes/{$name}/": ["type:wordpress-theme"]
     },
