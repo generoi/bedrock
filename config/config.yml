@@ -20,6 +20,11 @@ drupal_db_user: wordpress
 drupal_db_password: wordpress
 drupal_db_name: wordpress
 
+drupalvm_cron_jobs:
+  - name: 'WordPress Cron'
+    minute: '*/30'
+    job: "cd {{ drupal_core_path }} && wp cron event run --due-now --quiet 2>/dev/null"
+
 # Disable Drupal specific features.
 drupal_build_composer_project: false
 drupal_composer_dependencies: []
