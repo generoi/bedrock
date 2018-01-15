@@ -52,6 +52,7 @@
     "wpackagist-plugin/scalable-vector-graphics-svg": "~3.4",
     "wpackagist-plugin/timber-library": "~1.6.0",
     "wpackagist-plugin/wp-sanitize-file-name-plus": "~1.0",
+    "wpackagist-plugin/stream": "~3.2",
     "generoi/wp-genero-adjustments": "~1.0.0",
     "generoi/wp-hero": "~0.1-alpha",
     "generoi/wp-timber-extended": "~2.0.0-alpha",
