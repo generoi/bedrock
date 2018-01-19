@@ -91,7 +91,7 @@
     "generoi/wp-xhprof": "^0.1",
 
     "cweagans/composer-patches": "~1.0",
-    "jjgrainger/posttypes": "~1.1",
+    "jjgrainger/posttypes": "~2.0",
     "generoi/genero-conf": "~1.1",
     "generoi/genero-status": "*"
   },
