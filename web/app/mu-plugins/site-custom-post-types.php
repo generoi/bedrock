@@ -46,11 +46,15 @@ class CustomPostTypes
         $this->postTypes[] = $this->registerPost();
         $this->postTypes[] = $this->registerPage();
         // $this->postTypes[] = $this->registerProduct();
+        // $this->postTypes[] = $this->registerPerson();
+
+        add_action('admin_head', [$this, 'admin_head']);
     }
 
     public function registerPost()
     {
         $post = new PostType('post');
+        $post->register();
 
         return $post;
     }
@@ -58,6 +62,7 @@ class CustomPostTypes
     public function registerPage()
     {
         $page = new PostType('page');
+        $page->register();
 
         return $page;
     }
@@ -65,11 +70,44 @@ class CustomPostTypes
     public function registerProduct()
     {
         $product = new PostType('product');
-        // @see https://github.com/jjgrainger/PostTypes/issues/12
-        $product->columns()->populate('product_cat', '__return_null');
-        $product->columns()->populate('product_type', '__return_null');
+        $product->register();
 
         return $product;
+    }
+
+    public function registerPerson()
+    {
+        $person = new PostType('person', [
+            'has_archive' => false,
+            'supports' => ['title', 'thumbnail'],
+        ]);
+        $person->icon('dashicons-admin-users');
+        $person->taxonomy('department');
+        $person->columns()
+            ->add(['thumbnail' => ''])
+            ->order(['thumbnail' => 1])
+            ->populate('thumbnail', function($column, $post_id) {
+                echo get_the_post_thumbnail($post_id, 'thumbnail');
+            });
+        $person->register();
+
+        $department = new Taxonomy('department');
+        $department->register();
+
+        return $person;
+    }
+
+    public function admin_head()
+    {
+        echo '<style>
+            .wp-list-table th.column-thumbnail { width: 28px; }
+            .wp-list-table td.column-thumbnail img {
+                max-width: 37px;
+                max-height: 37px;
+                width: auto;
+                height: auto;
+            }
+        </style>';
     }
 }
 
