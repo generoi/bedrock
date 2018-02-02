@@ -24,6 +24,9 @@
     "forum": "https://discourse.roots.io/category/bedrock"
   },
   "config": {
+    "platform": {
+      "php": "7.0.10"
+    },
     "preferred-install": "dist",
     "theme-dir": "web/app/themes/<example-project>",
     "github-oauth": {
@@ -36,7 +39,7 @@
     { "type": "composer", "url": "https://packagist.minasithil.genero.fi/" }
   ],
   "require": {
-    "php": ">=5.6",
+    "php": ">=7.0",
     "koodimonni/composer-dropin-installer": "*",
     "composer/installers": "^1.4",
     "vlucas/phpdotenv": "^2.0.1",
