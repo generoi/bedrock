@@ -28,6 +28,7 @@ set :file_permissions_users, [fetch(:customer_username)]
 set :tail_options,            '-n 100 -f'
 set :rsync_options,           '--recursive --times --compress'
 set :composer_install_flags,  '--no-dev --no-interaction --quiet --optimize-autoloader'
+set :opcache_upload_path,     -> { release_path.join('web/apc_clear.php') }
 
 # Assets
 set :assets_dist_path,        -> { "#{fetch(:theme_dir)}/dist" }
@@ -44,9 +45,9 @@ before 'deploy:updated', 'composer:install'
 after 'deploy:updated', 'assets:push'
 
 # Clear the cache
-# after 'deploy:published', 'wp:cache:objectcache'
+# after 'deploy:published', 'cache:apc'
+after 'deploy:published', 'wp:cache:objectcache'
 after 'deploy:published', 'wp:cache:timber'
-# after 'deploy:published', 'wp:cache:autoptimize'
 after 'deploy:published', 'wp:cache:wpsc'
 
 # Re-build non-production assets.
