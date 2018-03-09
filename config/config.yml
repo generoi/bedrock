@@ -37,14 +37,6 @@ apache_vhost_php_fpm_parameters: |
     </FilesMatch>
     SetEnv DEVELOPMENT true
 
-apache_mods_enabled:
-  - expires.load
-  - ssl.load
-  - rewrite.load
-  - proxy.load
-  - proxy_fcgi.load
-  - headers.load
-
 ssl_certificate_file: "/etc/ssl/certs/ssl-cert-snakeoil.pem"
 ssl_certificate_key_file: "/etc/ssl/private/ssl-cert-snakeoil.key"
 
