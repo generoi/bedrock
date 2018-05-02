@@ -75,6 +75,8 @@ apache_vhosts:
 
 apache_vhosts_ssl: "{{ apache_vhosts }}"
 
+php_version: "7.2"
+
 installed_extras:
   - adminer
   # - blackfire
@@ -91,7 +93,7 @@ installed_extras:
   # - ruby
   # - selenium
   # - solr
-  # - tideways
+  - tideways
   - upload-progress
   # - varnish
   - xdebug
