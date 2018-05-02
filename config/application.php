@@ -98,6 +98,7 @@ define('DISALLOW_FILE_EDIT', true);
 define('WPCACHEHOME', WP_CONTENT_DIR . '/plugins/wp-super-cache/');
 define('WP_HIDE_DONATION_BUTTONS', true);
 define('WP_POST_REVISIONS', 10);
+define('EWWW_IMAGE_OPTIMIZER_SKIP_BUNDLE', true);
 
 /**
  * Bootstrap WordPress
