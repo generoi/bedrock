@@ -108,7 +108,11 @@
       "web/app/languages/": ["vendor:koodimonni-language"],
       "web/app/languages/plugins/": ["vendor:koodimonni-plugin-language"],
       "web/app/languages/themes/": ["vendor:koodimonni-theme-language"],
-      "web/": ["package:generoi/genero-status:genero-status.php"]
+      "web/": ["package:generoi/genero-status:genero-status.php"],
+      "web/app/": [
+        "package:wpackagist-plugin/wp-super-cache:advanced-cache.php",
+        "type:wordpress-dropin"
+      ]
     },
     "hooks": {
       "pre-commit": "composer test",
