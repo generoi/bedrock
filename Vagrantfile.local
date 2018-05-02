@@ -1,3 +1,8 @@
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+
 # Disable automatic VirtualBox Guest addition updates for DHCP IP assignments
 # See: https://github.com/geerlingguy/drupal-vm/pull/1559
-config.vbguest.auto_update = false
+if Vagrant.has_plugin?('vagrant-vbguest')
+  config.vbguest.auto_update = false
+end
