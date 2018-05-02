@@ -64,20 +64,12 @@ db-clean:
 
 # Files -----------------------------------------------------------------------
 
-# Fetches the dev environments files to the local filesystem
-wp-fetch-files:
-	vagrant ssh-config --host default > /tmp/vagrant-ssh-config
-	rsync -r $(RSYNC_ARGS) -e 'ssh -F /tmp/vagrant-ssh-config' default:/var/www/wordpress/web/app/uploads/ web/app/uploads/
-	rm -f /tmp/vagrant-ssh-config
-
 # Pulls the remote files first into the local filesystem and then to the dev filesystem
 wp-pull-files:
 	rsync -v -r $(RSYNC_ARGS) -e 'ssh $(RSYNC_SSH)' $(SOURCE) $(TARGET)
-	vagrant ssh-config --host default >| /tmp/vagrant-ssh-config
-	rsync -v -r $(RSYNC_ARGS) --no-perms --no-owner --no-group --verbose -e 'ssh -F /tmp/vagrant-ssh-config' $(TARGET) default:/var/www/wordpress/$(TARGET)
 
 # Push the files in the dev environment to the remote filesystem
-wp-push-files: wp-fetch-files
+wp-push-files:
 	rsync -v -r $(RSYNC_ARGS) --no-perms --no-owner --no-group -e 'ssh $(RSYNC_SSH)' $(SOURCE) $(TARGET)
 
 # Production tasks ------------------------------------------------------------
