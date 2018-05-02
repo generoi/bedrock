@@ -12,6 +12,7 @@ License:      MIT License
 namespace Genero\Site;
 
 use PostTypes\PostType;
+use PostTypes\Taxonomy;
 
 if (!is_blog_installed()) {
     return;
@@ -38,8 +39,15 @@ class CustomPostTypes
         return self::$instance;
     }
 
+    public function __construct()
+    {
+        add_action('init', [$this, 'init'], 100);
+        add_action('admin_head', [$this, 'admin_head']);
+    }
+
     /**
      * Register all post types and their taxonomies.
+     * @note needs to run during `init`.
      */
     public function init()
     {
@@ -47,8 +55,6 @@ class CustomPostTypes
         $this->postTypes[] = $this->registerPage();
         // $this->postTypes[] = $this->registerProduct();
         // $this->postTypes[] = $this->registerPerson();
-
-        add_action('admin_head', [$this, 'admin_head']);
     }
 
     public function registerPost()
@@ -111,4 +117,4 @@ class CustomPostTypes
     }
 }
 
-CustomPostTypes::getInstance()->init();
+CustomPostTypes::getInstance();
