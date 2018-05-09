@@ -46,3 +46,5 @@ vagrant_memory: 1024
 php_xdebug_idekey: sublime.xdebug
 # XDebug configuration. Disable for better performance.
 php_xdebug_default_enable: 1
+# @todo Until next Drupal VM release
+php_xdebug_version: 2.6.0

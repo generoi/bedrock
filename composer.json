@@ -100,7 +100,7 @@
   },
   "require-dev": {
     "squizlabs/php_codesniffer": "^3.0.2",
-    "geerlingguy/drupal-vm": "~4.7.0",
+    "geerlingguy/drupal-vm": "~4.8.0",
     "brainmaestro/composer-git-hooks": "^2.2"
   },
   "extra": {

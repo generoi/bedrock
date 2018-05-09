@@ -93,7 +93,7 @@ installed_extras:
   # - ruby
   # - selenium
   # - solr
-  - tideways
+  # - tideways @todo until next Drupal VM release
   - upload-progress
   # - varnish
   - xdebug
@@ -115,6 +115,9 @@ mysql_packages:
 composer_global_packages:
   - { name: hirak/prestissimo, release: '^0.3' }
   - { name: wp-cli/wp-cli, release: '^1.0.0' }
+
+pre_provision_tasks_dir:
+  - "{{ config_dir }}/../vendor/generoi/genero-conf/pre-provisioning/tasks/beetbox.yml"
 
 post_provision_tasks_dir:
   - "{{ config_dir }}/../vendor/generoi/genero-conf/post-provisioning/tasks/apache-env.yml"
