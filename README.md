@@ -43,8 +43,8 @@ Much of the philosophy behind Bedrock is inspired by the [Twelve-Factor App](htt
     git clone --recursive git@github.com:generoi/<example-project>.git <example-project>
     cd <example-project>
 
-    # Install composer dependencies with development tools
-    robo install:development
+    # Install composer dependencies and development tools
+    composer install:development
 
     # Build the VM
     vagrant up
@@ -71,7 +71,6 @@ Usage (eg how to import a db from local)
     wp @dev db cli < dump.sql
 
 ## roots/bedrock's own setup instructions
-
 
 #### Installation
 
@@ -111,26 +110,7 @@ Usage (eg how to import a db from local)
     composer create-project --repository-url="https://packagist.minasithil.genero.fi" generoi/bedrock:dev-robo your-project-folder-name
     ```
 
-2. Setup the new remote git repository
-
-    ```sh
-    # Remove the existing master branch (bedrocks own)
-    git branch -D master
-
-    # Switch to a new master branch for this project
-    git checkout -b master
-
-    # Create a new repository on github
-    open https://github.com/organizations/generoi/repositories/new
-
-    # Set origin url to to the newly created github repository
-    git remote set-url origin git@github.com:generoi/<example-project>.git
-
-    # Push the code
-    git push -u origin master
-    ```
-
-3. Setup the VM
+2. Setup the VM
 
     ```sh
     # Build the VM
@@ -140,7 +120,7 @@ Usage (eg how to import a db from local)
     vagrant rsync-auto
     ```
 
-4. Setup the staging evironment
+3. Setup the staging evironment
 
     ```sh
     # Configure the staging environment
