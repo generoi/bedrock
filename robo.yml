@@ -1,11 +1,13 @@
 machine_name: <example-project>
 theme_path: 'web/app/themes/${machine_name}'
 organization: generoi
+placeholders:
+  '%files': web/app/uploads/
 env:
   '@dev':
     host: '${machine_name}.test'
     user: vagrant
-    path: '/var/www/wordpress'
+    path: /var/www/wordpress
     url: 'http://${machine_name}.test'
   '@staging':
     host: minasithil.genero.fi
@@ -16,13 +18,9 @@ env:
   '@production':
     host: go2-1.multi.fi
     user: deploy
-    path: '/home/www/stedox/deploy/current'
+    path: '/home/www/${machine_name}/deploy/current'
     ssh: 'ssh -o ForwardAgent=yes -o "ProxyCommand ssh deploy@minasithil.genero.fi nc %h %p 2> /dev/null"'
-    url: 'https://stedox.com'
-
-placeholders:
-  '%files': web/app/uploads/
-
+    url: 'https://${machine_name}.fi'
 command:
   build:
     production:
@@ -39,27 +37,27 @@ command:
     replace:
       options:
         dirs:
-          - 'config'
-          - 'web/app/themes'
-          - 'web/app/mu-plugins'
+          - config
+          - web/app/themes
+          - web/app/mu-plugins
         exclude:
-          - 'robo.yml'
-          - 'dist'
+          - robo.yml
+          - dist
   db:
     options:
       exclude_tables:
-        - 'wp_gf_entry'
-        - 'wp_gf_entry_meta'
-        - 'wp_gf_entry_notes'
-        - 'wp_gf_incomplete_submissions'
-        - 'wp_rg_incomplete_submissions'
-        - 'wp_rg_lead'
-        - 'wp_rg_lead_detail'
-        - 'wp_rg_lead_detail_long'
-        - 'wp_rg_lead_meta'
-        - 'wp_rg_lead_notes'
-        - 'wp_stream'
-        - 'wp_stream_meta'
+        - wp_gf_entry
+        - wp_gf_entry_meta
+        - wp_gf_entry_notes
+        - wp_gf_incomplete_submissions
+        - wp_rg_incomplete_submissions
+        - wp_rg_lead
+        - wp_rg_lead_detail
+        - wp_rg_lead_detail_long
+        - wp_rg_lead_meta
+        - wp_rg_lead_notes
+        - wp_stream
+        - wp_stream_meta
     pull:
       options:
         target: '@dev'
@@ -69,12 +67,11 @@ command:
   files:
     options:
       exclude:
-        - 'gravity_forms/'
+        - gravity_forms/
         - '*.webp'
         - '*-c-*.jpg'
         - '*-c-*.jpeg'
         - '*-c-*.png'
-
 task:
   Remote:
     RsyncAlias:
