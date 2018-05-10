@@ -44,10 +44,7 @@ Much of the philosophy behind Bedrock is inspired by the [Twelve-Factor App](htt
     cd <example-project>
 
     # Install composer dependencies with development tools
-    composer install:development
-
-    # Build theme assets
-    composer build
+    robo install:development
 
     # Build the VM
     vagrant up
@@ -56,10 +53,10 @@ Much of the philosophy behind Bedrock is inspired by the [Twelve-Factor App](htt
     vagrant rsync-auto
 
     # Fetch the remote database and uploads
-    make production-pull-db
-    make production-pull-files
+    robo db:pull @production
+    robo files:pull @production
 
-    # When you run `composer install:development` a set of git hooks will be configured,
+    # When you run `robo build:development` a set of git hooks will be configured,
     # you can disable these on a per-commit basis with the -n (--no-verify) flag
     git commit --amend -n
 
@@ -108,58 +105,13 @@ Usage (eg how to import a db from local)
 
 ## Create a new project and Git repository
 
-1. Clone this repository
+1. Create a new project in a new folder for your project
 
     ```sh
-    git clone --recursive git@github.com:generoi/bedrock.git foobar
+    composer create-project git@github.com:generoi/bedrock.git:robo your-project-folder-name
     ```
 
-2. Clone the theme
-
-    ```sh
-    cd foobar/web/app/themes
-
-    git clone git@github.com:generoi/sage.git foobar
-
-    cd foobar
-
-    # Delete the git files
-    rm -rf .git
-
-    # Install dependencies
-    yarn
-    composer install
-
-    # Return to the root of the project
-    cd ../../../..
-    ```
-
-3. Rename everything (relies on your theme being named the same as the repository)
-
-    ```sh
-    # Search and replace all references to the project (GNU sed)
-    find . \( -wholename ./web/wp -o -wholename ./web/app/plugins -o -name vendor -o -name .git \) -prune -o -type f -print0 | xargs -0 sed -i 's/<example-project>/foobar/g'
-
-    # Search and replace all references to the project (BSD sed)
-    find . \( -wholename ./web/wp -o -wholename ./web/app/plugins -o -name vendor -o -name .git \) -prune -o -type f -print0 | xargs -0 sed -i '' -e 's/<example-project>/foobar/g'
-
-    # You need to manually setup the production host in:
-    # - `Makefile`
-    # - `config/deploy/production.rb`
-    # - `wp-cli.yml`
-    ```
-
-4. Build the assets and install all dependencies
-
-    ```sh
-    # Install development dependencies
-    composer install:development
-
-    # Build theme assets
-    composer build
-    ```
-
-5. Setup the new remote git repository
+2. Setup the new remote git repository
 
     ```sh
     # Remove the existing master branch (bedrocks own)
@@ -178,7 +130,7 @@ Usage (eg how to import a db from local)
     git push -u origin master
     ```
 
-6. Setup the VM
+3. Setup the VM
 
     ```sh
     # Build the VM
@@ -188,21 +140,21 @@ Usage (eg how to import a db from local)
     vagrant rsync-auto
     ```
 
-7. Setup the staging evironment
+4. Setup the staging evironment
 
     ```sh
     # Configure the staging environment
     vim config/deploy/staging.rb
     vim wp-cli.yml
-    vim Makefile
+    vim robo.yml
 
     # Setup the directory structure
     cap staging wp:setup
 
     # Deploy your code, files and database
     cap staging deploy
-    make staging-push-db
-    make staging-push-files
+    robo db:push @staging
+    robo files:push @staging
 
     # Deploy once more with database available
     cap staging deploy
@@ -214,15 +166,15 @@ Usage (eg how to import a db from local)
     # Configure the production environment
     vim config/deploy/production.rb
     vim wp-cli.yml
-    vim Makefile
+    vim robo.yml
 
     # Setup the directory structure
     cap production wp:setup
 
     # Deploy your code, files and database
     cap production deploy
-    make production-push-db
-    make production-push-files
+    robo db:push @staging
+    robo files:push @staging
 
     # Deploy once more with database available
     cap production deploy

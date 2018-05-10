@@ -4,6 +4,7 @@
 
   <!-- Scan only mu-plugins and files in config/ directory -->
   <!-- If a third party mu-plugin is required, exclude it with exclude-pattern below -->
+  <file>RoboFile.php</file>
   <file>config/</file>
   <file>web/app/mu-plugins/</file>
 
@@ -23,4 +24,8 @@
 
   <!-- Use PSR-2 as a base -->
   <rule ref="PSR2"/>
+
+  <rule ref="PSR1.Classes.ClassDeclaration.MissingNamespace">
+    <exclude-pattern>RoboFile.php</exclude-pattern>
+  </rule>
 </ruleset>

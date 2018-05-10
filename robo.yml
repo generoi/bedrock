@@ -1,0 +1,83 @@
+machine_name: <example-project>
+theme_path: 'web/app/themes/${machine_name}'
+organization: generoi
+env:
+  '@dev':
+    host: '${machine_name}.test'
+    user: vagrant
+    path: '/var/www/wordpress'
+    url: 'http://${machine_name}.test'
+  '@staging':
+    host: minasithil.genero.fi
+    user: deploy
+    path: '/var/www/staging/${machine_name}/deploy/current'
+    ssh: 'ssh -o ForwardAgent=yes'
+    url: 'http://${machine_name}.web.staging.minasithil.genero.fi'
+  '@production':
+    host: go2-1.multi.fi
+    user: deploy
+    path: '/home/www/stedox/deploy/current'
+    ssh: 'ssh -o ForwardAgent=yes -o "ProxyCommand ssh deploy@minasithil.genero.fi nc %h %p 2> /dev/null"'
+    url: 'https://stedox.com'
+
+placeholders:
+  '%files': web/app/uploads/
+
+command:
+  build:
+    production:
+      options:
+        npm-script: 'build:production'
+    development:
+      options:
+        npm-script: build
+  setup:
+    theme:
+      options:
+        theme-repository: 'git@github.com:generoi/sage.git'
+  search:
+    replace:
+      options:
+        dirs:
+          - 'config'
+          - 'web/app/themes'
+          - 'web/app/mu-plugins'
+        exclude:
+          - 'robo.yml'
+          - 'dist'
+  db:
+    options:
+      exclude_tables:
+        - 'wp_gf_entry'
+        - 'wp_gf_entry_meta'
+        - 'wp_gf_entry_notes'
+        - 'wp_gf_incomplete_submissions'
+        - 'wp_rg_incomplete_submissions'
+        - 'wp_rg_lead'
+        - 'wp_rg_lead_detail'
+        - 'wp_rg_lead_detail_long'
+        - 'wp_rg_lead_meta'
+        - 'wp_rg_lead_notes'
+        - 'wp_stream'
+        - 'wp_stream_meta'
+    pull:
+      options:
+        target: '@dev'
+    push:
+      options:
+        source: '@dev'
+  files:
+    options:
+      exclude:
+        - 'gravity_forms/'
+        - '*.webp'
+        - '*-c-*.jpg'
+        - '*-c-*.jpeg'
+        - '*-c-*.png'
+
+task:
+  Remote:
+    RsyncAlias:
+      settings:
+        progress: true
+        humanReadable: true
