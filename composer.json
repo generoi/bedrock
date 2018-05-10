@@ -140,6 +140,7 @@
     "test": "Generoi\\Robo\\Composer\\ComposerScript::test",
     "build": "@build:development",
     "build:development": "robo build:development",
-    "build:production": "robo build:production"
+    "build:production": "robo build:production",
+    "install:development": ["@composer install", "robo install:development"]
   }
 }
