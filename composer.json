@@ -141,6 +141,10 @@
     "build": "@build:development",
     "build:development": "robo build:development",
     "build:production": "robo build:production",
-    "install:development": ["@composer install", "robo install:development"]
+    "install:development": [
+      "@composer install",
+      "robo install:development",
+      "vendor/bin/cghooks update"
+    ]
   }
 }
