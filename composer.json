@@ -119,7 +119,7 @@
     },
     "hooks": {
       "pre-commit": "composer test",
-      "post-merge": "robo install:development"
+      "post-merge": "composer install:development"
     },
     "installer-paths": {
       "web/app/mu-plugins/{$name}/": ["type:wordpress-muplugin"],

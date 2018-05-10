@@ -56,7 +56,7 @@ Much of the philosophy behind Bedrock is inspired by the [Twelve-Factor App](htt
     robo db:pull @production
     robo files:pull @production
 
-    # When you run `robo build:development` a set of git hooks will be configured,
+    # When you run `composer install:development` a set of git hooks will be configured,
     # you can disable these on a per-commit basis with the -n (--no-verify) flag
     git commit --amend -n
 
