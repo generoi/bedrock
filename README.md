@@ -107,10 +107,11 @@ Usage (eg how to import a db from local)
 1. Create a new project in a new folder for your project
 
     ```sh
-    echo 'Project directory:'
-    read project
-    composer create-project --keep-vcs --repository-url="https://packagist.minasithil.genero.fi" generoi/bedrock:dev-robo $project
-    cd $project
+    # Prompt, create and enter directory
+    echo 'Project directory:'; read project; composer create-project --keep-vcs --repository-url="https://packagist.minasithil.genero.fi" generoi/bedrock:dev-robo $project; cd $project;
+
+    # Just create
+    composer create-project --keep-vcs --repository-url="https://packagist.minasithil.genero.fi" generoi/bedrock:dev-robo <project-dir>
     ```
 
 2. Setup the VM
