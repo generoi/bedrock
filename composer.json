@@ -97,7 +97,9 @@
     "cweagans/composer-patches": "~1.0",
     "jjgrainger/posttypes": "~2.0",
     "generoi/genero-conf": "~1.1",
-    "generoi/genero-status": "*"
+    "generoi/genero-status": "*",
+    "consolidation/robo": "dev-master",
+    "generoi/robo-genero": "dev-master"
   },
   "require-dev": {
     "squizlabs/php_codesniffer": "^3.0.2",
@@ -132,31 +134,17 @@
     }
   },
   "scripts": {
-    "post-root-package-install": [
-      "php -r \"copy('.env.example', '.env');\""
-    ],
-    "post-install-cmd": "cd $(composer config theme-dir) && composer install --no-dev --no-interaction --quiet --optimize-autoloader",
+    "post-create-project-cmd": "Generoi\\Robo\\Composer\\ComposerScript::postCreateProject",
+    "post-install-cmd": "robo install:production",
     "post-update-cmd": "vendor/bin/cghooks update",
-
+    "test": "Generoi\\Robo\\Composer\\ComposerScript::test",
+    "build": "@build:development",
+    "build:development": "robo build:development",
+    "build:production": "robo build:production",
     "install:development": [
       "@composer install",
-      "cd $(composer config theme-dir) && composer install --no-interaction --quiet",
-      "vendor/bin/cghooks update",
-      "bundle",
-      "cd $(composer config theme-dir) && yarn",
-      "cp -n .env.example .env || true"
-    ],
-
-    "build": "cd $(composer config theme-dir) && yarn run build -- --no-progress",
-    "build:production": "cd $(composer config theme-dir) && yarn run build:production -- --no-progress",
-    "build:development": "@build",
-
-    "test": [
-      "@composer validate --no-check-all",
-      "@lint:php",
-      "@lint:theme"
-    ],
-    "lint:php": "phpcs",
-    "lint:theme": "cd $(composer config theme-dir) && yarn run test"
+      "robo install:development",
+      "vendor/bin/cghooks update"
+    ]
   }
 }

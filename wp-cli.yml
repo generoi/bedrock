@@ -19,14 +19,14 @@ require:
 #       ForwardAgent yes
 #       ProxyCommand ssh deploy@minasithil.genero.fi nc %h %p 2> /dev/null
 
-@dev:
+'@dev':
   ssh: vagrant@<example-project>.test/var/www/wordpress/web/wp
   url: <example-project>.test
 
-@staging:
+'@staging':
   ssh: deploy@minasithil.genero.fi/var/www/staging/<example-project>/current/web/wp
   url: <example-project>.web.staging.minasithil.genero.fi
 
-@production:
+'@production':
   ssh: deploy@go2-1.multi.fi/home/www/<example-project>/deploy/current/web/wp
   url: <example-project>.fi
