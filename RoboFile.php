@@ -1,13 +1,13 @@
 <?php
 
-use Robo\Robo;
-use Generoi\Robo\Task\loadTasks;
-use Generoi\Robo\Command\loadCommands;
+if (file_exists($composer = __DIR__ . '/vendor/autoload.php')) {
+    require_once $composer;
+}
 
 class RoboFile extends \Robo\Tasks
 {
-    use loadTasks;
-    use loadCommands;
+    use \Generoi\Robo\Task\loadTasks;
+    use \Generoi\Robo\Command\loadCommands;
 
     /**
      * Pull uploads directory from remote to local.
