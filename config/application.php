@@ -99,6 +99,8 @@ define('WPCACHEHOME', WP_CONTENT_DIR . '/plugins/wp-super-cache/');
 define('WP_HIDE_DONATION_BUTTONS', true);
 define('WP_POST_REVISIONS', 10);
 define('EWWW_IMAGE_OPTIMIZER_SKIP_BUNDLE', true);
+define('WP_DEFAULT_THEME', '<example-project>/resources');
+define('GF_LICENSE_KEY', 'bfd9ecf084a93333b381861f7c89f96a');
 
 /**
  * Bootstrap WordPress
