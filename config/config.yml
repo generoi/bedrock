@@ -93,7 +93,7 @@ installed_extras:
   # - ruby
   # - selenium
   # - solr
-  # - tideways @todo until next Drupal VM release
+  - tideways
   - upload-progress
   # - varnish
   - xdebug
