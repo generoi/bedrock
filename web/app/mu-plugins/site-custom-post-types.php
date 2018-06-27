@@ -41,8 +41,8 @@ class CustomPostTypes
 
     public function __construct()
     {
-        add_action('init', [$this, 'init'], 100);
-        add_action('admin_head', [$this, 'admin_head']);
+        add_action('init', [$this, 'init'], 9);
+        add_action('admin_head', [$this, 'adminHead']);
     }
 
     /**
@@ -70,6 +70,8 @@ class CustomPostTypes
         $page = new PostType('page');
         $page->register();
 
+        add_post_type_support('page', 'excerpt');
+
         return $page;
     }
 
@@ -92,7 +94,7 @@ class CustomPostTypes
         $person->columns()
             ->add(['thumbnail' => ''])
             ->order(['thumbnail' => 1])
-            ->populate('thumbnail', function($column, $post_id) {
+            ->populate('thumbnail', function ($column, $post_id) {
                 echo get_the_post_thumbnail($post_id, 'thumbnail');
             });
         $person->register();
@@ -103,7 +105,7 @@ class CustomPostTypes
         return $person;
     }
 
-    public function admin_head()
+    public function adminHead()
     {
         echo '<style>
             .wp-list-table th.column-thumbnail { width: 28px; }
