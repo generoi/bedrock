@@ -12,7 +12,7 @@ env:
   '@staging':
     host: minasithil.genero.fi
     user: deploy
-    path: '/var/www/staging/${machine_name}/deploy/current'
+    path: '/var/www/staging/${machine_name}/current'
     ssh: 'ssh -o ForwardAgent=yes'
     url: 'http://${machine_name}.web.staging.minasithil.genero.fi'
   '@production':
