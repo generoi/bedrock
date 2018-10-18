@@ -124,7 +124,7 @@ Usage (eg how to import a db from local)
     vagrant rsync-auto
     ```
 
-3. Setup the staging evironment
+3. Setup the staging environment
 
     ```sh
     # Configure the staging environment
@@ -144,7 +144,7 @@ Usage (eg how to import a db from local)
     cap staging deploy
     ```
 
-8. Setup the production evironment
+8. Setup the production environment
 
     ```sh
     # Configure the production environment
@@ -157,8 +157,8 @@ Usage (eg how to import a db from local)
 
     # Deploy your code, files and database
     cap production deploy
-    robo db:push @staging
-    robo files:push @staging
+    robo db:push @production
+    robo files:push @production
 
     # Deploy once more with database available
     cap production deploy
