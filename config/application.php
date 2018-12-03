@@ -104,7 +104,7 @@ Config::define('DISALLOW_FILE_EDIT', true);
 Config::define('DISALLOW_FILE_MODS', true);
 // Plugin settings
 Config::define('WP_CACHE', true);
-Config::define('WPCACHEHOME', WP_CONTENT_DIR . '/plugins/wp-super-cache/');
+Config::define('WPCACHEHOME', Config::get('WP_CONTENT_DIR') . '/plugins/wp-super-cache/');
 Config::define('WP_HIDE_DONATION_BUTTONS', true);
 Config::define('WP_POST_REVISIONS', 10);
 Config::define('EWWW_IMAGE_OPTIMIZER_SKIP_BUNDLE', true);
