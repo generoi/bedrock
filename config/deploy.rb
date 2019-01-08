@@ -53,6 +53,6 @@ after 'deploy:published', 'wp:cache:wpsc'
 # Re-build non-production assets.
 after 'deploy:finishing', 'assets:rebuild' do
   run_locally do
-    execute :composer, 'build'
+    execute 'composer build'
   end
 end
