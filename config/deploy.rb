@@ -7,8 +7,8 @@ set :theme_dir,         'web/app/themes/<example-project>'
 # This could be overridden in a stage config file
 set :branch, :master
 
-# We are not deploying with deploy user to the JNT server, as the quota would count to that user.
-# We deploy using the customer username,
+# We are not deploying with deploy user to the JNT server, as the quota would
+# count to that user. We deploy using the customer username,
 set :deploy_to, -> { "/home/www/#{fetch(:customer_username)}/deploy" }
 
 # Use :debug for more verbose output when troubleshooting
@@ -20,8 +20,9 @@ set :linked_files, fetch(:linked_files, []).push('.env')
 set :linked_dirs, fetch(:linked_dirs, []).push('web/app/uploads', 'web/app/cache')
 set :shared_settings, '.env'
 
-# We will after the deploy set all uploaded files to have the permissions of the customer
-# So that the quota on the server will be counted towards that user.
+# We will after the deploy set all uploaded files to have the permissions of
+# the customer So that the quota on the server will be counted towards that
+# user.
 set :file_permissions_paths, ['web']
 set :file_permissions_users, [fetch(:customer_username)]
 

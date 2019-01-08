@@ -10,10 +10,8 @@ set :group,     'www-data'
 # Supports bulk-adding hosts to roles, the primary
 # server in each group is considered to be the first
 # unless any hosts have the primary property set.
-role :app, %w{deploy@minasithil.genero.fi}
-role :web, %w{deploy@minasithil.genero.fi}
-role :db,  %w{deploy@minasithil.genero.fi}
+role :app, %w[deploy@minasithil.genero.fi]
+role :web, %w[deploy@minasithil.genero.fi]
+role :db,  %w[deploy@minasithil.genero.fi]
 
-set :ssh_options, {
-  forward_agent: true
-}
+set :ssh_options, forward_agent: true
