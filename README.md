@@ -108,10 +108,10 @@ Usage (eg how to import a db from local)
 
     ```sh
     # Prompt, create and enter directory
-    echo 'Project directory:'; read project; composer create-project --keep-vcs --repository-url="https://packagist.minasithil.genero.fi" generoi/bedrock:dev-robo $project; cd $project;
+    echo 'Project directory:'; read project; composer create-project --keep-vcs --repository-url="https://packagist.minasithil.genero.fi" generoi/bedrock:dev-genero $project; cd $project;
 
     # Just create
-    composer create-project --keep-vcs --repository-url="https://packagist.minasithil.genero.fi" generoi/bedrock:dev-robo <project-dir>
+    composer create-project --keep-vcs --repository-url="https://packagist.minasithil.genero.fi" generoi/bedrock:dev-genero <project-dir>
     ```
 
 2. Setup the VM
