@@ -1,4 +1,4 @@
-machine_name: <example-project>
+machine_name: sage
 theme_path: 'web/app/themes/${machine_name}'
 organization: generoi
 placeholders:
