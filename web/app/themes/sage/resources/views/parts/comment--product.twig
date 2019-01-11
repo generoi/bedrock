@@ -1,0 +1,18 @@
+<div class="comment comment--product" id="comment-{{comment.ID}}">
+  <blockquote class="comment__content">
+    {{comment.comment_content|wpautop}}
+
+    {% if comment.comment_approved == '0' %}
+      <p class="comment__author"><small class="woocommerce-review__awaiting-approval">{{__('Your review is awaiting approval', 'woocommerce')}}</small></p>
+    {% else %}
+      <p class="comment__author">&mdash; {{comment.author.name}}</p>
+    {% endif %}
+  </blockquote>
+  {% if comment.rating and fn('get_option', 'woocommerce_enable_review_rating') == 'yes' %}
+    <div class="comment__rating star-rating">
+      <span style="width:{{(comment.rating / 5) * 100}}%">
+        {{__('%s out of 5', 'woocommerce')|format('<strong>'~comment.rating~'</strong>')}}
+      </span>
+    </div>
+  {% endif %}
+</div>

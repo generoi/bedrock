@@ -1,0 +1,14 @@
+.responsive-embed {
+  // same as video, object, iframe etc.
+  img {
+    position: absolute;
+    top: 0;
+    #{$global-left}: 0;
+    width: 100%;
+    height: 100%;
+  }
+
+  &--nomargin {
+    margin-bottom: 0;
+  }
+}

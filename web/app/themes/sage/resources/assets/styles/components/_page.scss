@@ -1,0 +1,75 @@
+.page {
+  &__title {
+    // Gutters are taken care of by the grid.
+    margin-top: 0;
+    margin-bottom: 0;
+  }
+
+  &__footer,
+  &__title-wrapper,
+  &__content {
+    @extend %u-content-area;
+  }
+
+  // Tailor edit UI
+  #canvas {
+    max-width: none;
+
+    > div {
+      @extend %u-content-area;
+    }
+  }
+
+  &__nav_item {
+    &--next .page__nav_link {
+      margin-left: -1 * get-side($menu-items-padding, left);
+    }
+
+    &--prev .page__nav_link {
+      margin-right: -1 * get-side($menu-items-padding, right);
+      text-align: right;
+    }
+  }
+
+  &__listing {
+    //
+  }
+
+  // Post type: Product
+  &--type-product {
+    .page__title-wrapper {
+      position: relative;
+    }
+
+    .onsale {
+      position: absolute;
+      top: 0;
+      right: 0;
+    }
+
+    .woocommerce-product-rating {
+      .star-rating {
+        float: none;
+        display: inline-block;
+      }
+    }
+  }
+
+  // Post type: Page
+  // ---------------
+  &--type-page {
+    //
+  }
+
+  // Post type: Post
+  // ---------------
+  &--type-post {
+    //
+  }
+
+  // Term type: Category
+  // -------------------
+  &--type-category {
+    //
+  }
+}

@@ -1,0 +1,46 @@
+.teaser {
+  text-align: left;
+
+  a:not(.button) {
+    color: inherit;
+  }
+
+  &__image {
+    img { @extend %u-img-expand; }
+  }
+
+  // Expand full height
+  display: flex;
+  flex-direction: column;
+  flex: 1 0 auto;
+  width: 100%;
+
+  &__link {
+    // Expand full height
+    flex: 1 0 auto;
+    display: flex;
+    flex-direction: column;
+
+    // Override any styling, block links should never be underlined.
+    text-decoration: none !important;
+  }
+
+  &__content {
+    @extend %u-strip-bottom-paddings;
+    // Allow long words to overflow.
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  // Post type: Post
+  // ---------------
+  &--post {
+    //
+  }
+
+  // Term type: Category
+  // -------------------
+  &--category {
+    //
+  }
+}

@@ -1,0 +1,117 @@
+/**
+ * @note Turn off Gravity Form CSS output in settings.
+ * @see src/custom/gravityform.php
+ */
+
+.gchoice_other_field {
+  width: auto;
+  display: inline-block;
+}
+
+img.gform_ajax_spinner {
+  width: auto;
+  margin-left: $global-margin;
+  margin-bottom: get-side($button-margin, bottom);
+}
+
+// Use this as a base if you're not using a wp-gravityforms-timber
+// ---------------------------------------------------------------------------
+ul.gform_fields,
+ul.gfield_radio,
+ul.gfield_checkbox {
+  margin-left: 0;
+  list-style-type: none;
+}
+
+img.gform_ajax_spinner {
+  width: auto;
+  margin-left: 1rem;
+}
+
+// Align radio lists other alternative
+ul.gfield_radio {
+  > li {
+    display: flex;
+    align-items: flex-start;
+  }
+
+  input[type="radio"] {
+    flex: 0 0 auto;
+  }
+
+  input[value="gf_other_choice"] {
+    margin-right: $form-spacing/2;
+    // Rought estimate to center it vertically with the input
+    margin-top: 0.9em;
+  }
+}
+
+ul.gfield_checkbox,
+ul.gfield_radio {
+  margin-bottom: 1rem;
+}
+
+table.gfield_list {
+  border: 0;
+  width: 100%;
+  td:first-child { padding-left: 0; }
+  input { margin-bottom: 0; }
+}
+
+// Style the input-field
+.gfield_error input {
+  @include form-input-error();
+}
+
+// Style eg. the address-components validation message.
+.gfield_description.validation_message {
+  @include form-error();
+
+  display: block;
+}
+
+// Honeypot
+.gform_validation_container {
+  display: none;
+}
+
+.hidden_label {
+  .gfield_label,
+  .hidden_sub_label {
+    display: none;
+  }
+}
+
+// Grid
+// ---------------
+
+ul.gform_fields {
+  @include xy-grid;
+  @include xy-gutters($negative: true, $gutter-position: left right);
+
+  > .gfield {
+    @include xy-cell-base;
+    @include xy-cell-static($vertical: false);
+  }
+
+  $vertical: false;
+
+  // base styles need to all be before the auto and shrink styles
+  @include -zf-each-breakpoint() {
+    @if (type-of($grid-margin-gutters) == 'map' and map-has-key($grid-margin-gutters, $-zf-size) and $-zf-size != $-zf-zero-breakpoint) {
+      > .gfield {
+        @include xy-cell-static($breakpoint: $-zf-size, $vertical: $vertical);
+      }
+    }
+  }
+
+  @include -zf-each-breakpoint() {
+    @if (type-of($grid-margin-gutters) == 'map' and map-has-key($grid-margin-gutters, $-zf-size)) {
+      @each $bp in -zf-breakpoints-less-than($-zf-size) {
+        @include -xy-breakpoint-cell-classes($bp, $-zf-size, $vertical);
+      }
+    }
+
+    @include -xy-breakpoint-cell-classes($-zf-size, $-zf-size, $vertical);
+  }
+}

@@ -1,0 +1,116 @@
+/**
+ * Used by Gravity Form.
+ */
+
+.ui-datepicker {
+  background: $white;
+  border: 1px solid $light-gray;
+  border-radius: $global-radius;
+  box-shadow: 0 3px 5px 0 rgba(50, 50, 50, 0.75);
+  display: none;
+  padding: 0.5rem 1rem;
+  font-size: $small-font-size;
+
+  a {
+    color: $black;
+  }
+
+  .ui-datepicker-header {
+    display: flex;
+    align-items: center;
+
+    .ui-datepicker-prev {
+      order: 1;
+      flex: 0 0 auto;
+      margin-right: 1rem;
+    }
+
+    .ui-datepicker-next {
+      order: 3;
+      flex: 0 0 auto;
+      margin-left: 1rem;
+    }
+
+    .ui-datepicker-title {
+      order: 2;
+      flex: 1 1 0;
+      display: flex;
+
+      select {
+        font-size: 0.9rem;
+        margin-bottom: 0;
+
+        &:first-child {
+          margin-right: 1rem;
+        }
+      }
+    }
+  }
+
+  .ui-datepicker-next,
+  .ui-datepicker-prev {
+    &.ui-state-disabled {
+      display: none;
+    }
+  }
+
+  .ui-icon {
+    color: transparent;
+    cursor: pointer;
+
+    @include fa-icon();
+
+    font-size: 0;
+
+    &::before {
+      color: $anchor-color;
+      font-size: 1rem;
+    }
+  }
+
+  .ui-datepicker-prev .ui-icon::before {
+    content: $fa-var-left-open;
+  }
+
+  .ui-datepicker-next .ui-icon::before {
+    content: $fa-var-right-open;
+  }
+
+  .ui-datepicker-current-day {
+    background-color: $primary-color;
+    border-radius: $global-radius;
+
+    a {
+      color: $white;
+    }
+  }
+
+  .ui-datepicker-today {
+    background-color: $light-gray;
+    border-radius: $global-radius;
+  }
+
+  table {
+    width: 100%;
+    margin-bottom: 0;
+
+    thead,
+    tbody {
+      background-color: inherit;
+      border: 0;
+    }
+
+    tr {
+      background-color: inherit; // foundation
+    }
+
+    td,
+    th {
+      text-align: center;
+    }
+
+    td a {
+      display: block;
+    }
+  }
+}

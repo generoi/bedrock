@@ -1,0 +1,41 @@
+{% if options.css.custom_css %}
+  <style>{{ options.css.custom_css }}</style>
+{% endif %}
+<div
+  class="
+    spu-box
+    reveal
+    reveal--{{ options.type ?: 'default' }}
+    {{ options.css.position ? 'reveal--'~options.css.position }}
+    {{ options.size ? options.size }}
+    {{ options.theme ? 'overlay overlay--'~options.theme }}"
+  id="spu-{{ spu_id }}"
+  data-reveal
+  data-overlay="{{ options.overlay ? 'true' : 'false' }}"
+  data-close-on-click="{{ options.close_on_click ? 'true' : 'false' }}"
+  data-close-on-esc="true"
+  {% if options.animation %}
+    data-animation-in="{{ options.animation }}-in" data-animation-out="{{ options.animation }}-out"
+  {% endif %}
+  {% if options.background_image %}
+    style="background-image:url({{ options.background_image }}); background-size: cover;"
+  {% endif %}
+  data-spu-id="{{ spu_id }}"
+  data-spu-trigger="{{ options.trigger }}"
+  data-spu-trigger-number="{{ options.trigger_number }}"
+  data-spu-auto-hide="{{ options.auto_hide }}"
+  data-spu-cookie="{{ options.cookie }}"
+  data-spu-close-cookie="{{ options['close-cookie'] }}"
+  data-spu-test-mode="{{ options.test_mode }}"
+  data-spu-conversion-close="{{ options.conversion_close }}"
+  data-event-category="{{ options.event_category }}"
+  data-event-label="{{ options.event_label }}"
+>
+  <div class="overlay__foreground reveal__content">
+    {{content}}
+  </div>
+
+  <button class="close-button" data-close aria-label="{{__('Close popup', 'popup-extended')}}" type="button">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>

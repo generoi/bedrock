@@ -1,0 +1,28 @@
+{% extends 'teasers/teaser.twig' %}
+
+{% block teaser %}
+  <article class="card teaser teaser--{{term.taxonomy}}" id="teaser-{{term.ID}}">
+    <a class="teaser__link" href="{{term.link}}">
+      {% block teaser__thumbnail %}
+        {% if term.thumbnail %}
+          <div class="teaser__image">
+            {% block thumbnail term.thumbnail.render(300, 200) %}
+          </div>
+        {% endif %}
+      {% endblock %}
+      <div class="card-section teaser__content-wrapper">
+        {% block teaser__title %}
+          <h6 class="teaser__title">{{term.name}}</h6>
+        {% endblock %}
+        {% block teaser__content %}
+          {% if term.excerpt %}
+            <div class="teaser__content">
+              <p>{{term.excerpt|wptrim}}</p>
+              <p class="teaser__readmore">{{__('Read more', '<example-project>')}}</p>
+            </div>
+          {% endif %}
+        {% endblock %}
+      </div>
+    </a>
+  </article>
+{% endblock %}

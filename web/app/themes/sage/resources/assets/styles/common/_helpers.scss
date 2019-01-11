@@ -1,0 +1,68 @@
+/**
+ * Display an image as a block element spanning the containers full width.
+ */
+%u-img-expand {
+  max-width: none;
+  width: 100%;
+  display: block;
+}
+
+/**
+ * Inherit all colors.
+ */
+%u-color-inherit {
+  a { color: inherit; }
+}
+
+/**
+ * Force remove all link states.
+ * @example
+ * .teaser__link { @extend %u-link-no-state; }
+ */
+%u-link-no-state {
+  text-decoration: none;
+  color: inherit !important;
+
+  &:hover,
+  &:focus {
+    color: inherit !important;
+    text-decoration: none;
+  }
+}
+
+/**
+ * Helper to remove all trailing whitespace from buttons and paragraphs.
+ */
+%u-strip-bottom-paddings {
+  p:last-child,
+  p > .button:last-child { margin-bottom: 0; }
+}
+
+/**
+ * Helper to set the size of an element equal to that of an input field.
+ */
+%u-input-size {
+  $height: input-height();
+
+  height: $height;
+  box-sizing: border-box;
+  margin: 0 0 $form-spacing;
+  padding: $input-padding;
+  font-size: $input-font-size;
+  line-height: $input-line-height;
+}
+
+/**
+ * Get the height of an input field.
+ */
+@function input-height(
+  $font-size: $input-font-size,
+  $line-height: $input-line-height,
+  $padding: $input-padding
+) {
+  @return ($font-size * unitless-calc($line-height)) + (get-side($padding, 'top') + get-side($padding, 'bottom')) - rem-calc(1);
+}
+
+%u-icon {
+  @include fa-icon;
+}

@@ -1,0 +1,34 @@
+{##
+ # @version 3.0.0
+ # @see https://github.com/woocommerce/woocommerce/blob/master/templates/content-product.php
+ #}
+{% extends 'teasers/teaser.twig' %}
+
+{% block teaser %}
+  {{post.set_loop_product()}}
+  <article class="card teaser teaser--{{post.post_type}}" id="teaser-{{post.ID}}">
+    {% do action('woocommerce_before_shop_loop_item') %}
+
+    {% block teaser__thumbnail %}
+      <a class="teaser__link" href="{{post.link}}">{{parent()}}</a>
+    {% endblock %}
+
+    <div class="card-section teaser__content-wrapper">
+      <a class="teaser__link" href="{{post.link}}">
+
+        {% block teaser__title %}
+          {% do action('woocommerce_before_shop_loop_item_title') %}
+          <h6 class="teaser__title">{{post.title}}</h6>
+          {% do action('woocommerce_shop_loop_item_title') %}
+          {% do action('woocommerce_after_shop_loop_item_title') %}
+        {% endblock %}
+
+        {% block teaser__content '' %}
+      </a>
+
+      {{fn('woocommerce_template_loop_add_to_cart')}}
+
+      {% do action('woocommerce_after_shop_loop_item') %}
+    </div>
+  </article>
+{% endblock %}

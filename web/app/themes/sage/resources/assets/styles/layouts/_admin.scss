@@ -1,0 +1,23 @@
+$c-admin-bar-breakpoint: 783px !default;
+
+// Fixes overlapping admin bar
+@media screen and (max-width: 600px) {
+  #wpadminbar {
+    position: fixed !important;
+  }
+}
+
+// Make room for admin bar.
+.reveal.full {
+  @include admin-bar() {
+    margin-top: $-admin-bar-height !important;
+    min-height: calc(100vh - #{$-admin-bar-height}) !important;
+    height: calc(100vh - #{$-admin-bar-height}) !important;
+  }
+}
+
+.admin-bar.sticky-footer {
+  @include admin-bar(false) {
+    min-height: calc(100vh - #{$-admin-bar-height});
+  }
+}

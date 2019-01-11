@@ -1,0 +1,4 @@
+// Fix Popup jQuery UI dialog bug.
+.ui-dialog[aria-describedby="spu_editor"] {
+  z-index: 100102;
+}

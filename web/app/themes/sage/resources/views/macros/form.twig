@@ -1,0 +1,144 @@
+{# Elements ##################################################################}
+
+{% macro label(field) %}
+  {% import _self as form %}
+  {% if field.type %}
+    {% if field.type not in ['hidden', 'html', 'section', 'honeypot'] %}
+      <label for="{{form.input_name(field)}}" {% if field.labelPlacement == 'hidden_label' %}class="is-hidden"{% endif %}>
+        {{field.label}}
+        {% if field.isRequired %}<span class="form-required">*</span>{% endif %}
+      </label>
+    {% endif %}
+  {% else %}
+    <label>{{field}}</label>
+  {% endif %}
+{% endmacro %}
+
+{% macro submit(text) %}
+  {% import _self as form %}
+  <input type="submit" value="{{text}}" class="button button--primary">
+{% endmacro %}
+
+{% macro input(type, field) %}
+  {% import _self as form %}
+  {% if field.id %}
+    <input type="{{type}}" {{form.input_attributes(field)}}>
+  {% else %}
+    <input type="{{type}}" value="{{field}}">
+  {% endif %}
+{% endmacro %}
+
+{% macro textarea(field) %}
+  {% import _self as form %}
+  <textarea {{form.input_attributes(field)}}>{{field.defaultValue}}</textarea>
+{% endmacro %}
+
+{% macro select(field) %}
+  {% import _self as form %}
+  <select {{form.input_attributes(field)}}>
+    {% for choice in field.choices %}
+      <option value="{{choice.value}}"{{choice.isSelected ? ' selected'}}>{{choice.text}}</option>
+    {% endfor %}
+  </select>
+{% endmacro %}
+
+{% macro checkbox(field) %}
+  {% import _self as form %}
+  <ul class="no-bullet">
+    {% for choice in field.choices %}
+      <li>
+        <label>
+          <input type="checkbox" name="{{form.input_name(field, loop.index0)}}" value="{{choice.value}}"{{choice.isSelected ? ' checked'}}>
+          {{choice.text}}
+        </label>
+      </li>
+    {% endfor %}
+  </ul>
+{% endmacro %}
+
+{% macro radio(field) %}
+  {% import _self as form %}
+  <ul class="no-bullet">
+    {% for choice in field.choices %}
+      <li>
+        <label data-input-group="{{form.input_name(field)}}">
+          <input type="radio" name="{{form.input_name(field)}}" value="{{choice.value}}"{{choice.isSelected ? ' checked'}}>
+          {{choice.text}}
+        </label>
+      </li>
+    {% endfor %}
+  </ul>
+{% endmacro %}
+
+{% macro honeypot(field) %}
+  <input type="text" name="{{field.name|default('form-question-answer')}}" autocomplete='off'>
+{% endmacro %}
+
+{# Helpers ###################################################################}
+
+{% macro input_name(field, idx) %}{% spaceless %}
+  {% if (field.inputs) and (idx is not null) %}
+    input_{{field.inputs[idx].id|replace({'.': '_'})}}
+  {% elseif (field.id) %}
+    input_{{field.id}}
+  {% else %}
+    {{field}}
+  {% endif %}
+{% endspaceless %}{% endmacro %}
+
+{# Output <form> attributes. Note that action needs to be set manually #}
+{% macro attributes(form) %}
+  method="post"
+  enctype="multipart/form-data"
+  id="form--{{form.id}}"
+  class="{{form.cssClass}}"
+  {# Support wp-genero-analytics #}
+  {{form.analytics_category ? 'data-genero-analytics data-category="'~form.analytics_category~'"'}}
+  {{form.analytics_label ? 'data-label="'~form.analytics_label~'"'}}
+{% endmacro %}
+
+{# Output input attributes #}
+{% macro input_attributes(field) %}
+  {% import _self as form %}
+  name="{{form.input_name(field)}}"
+  {{field.defaultValue ? 'value="'~ field.defaultValue ~'"'}}
+  {% if field.placeholder %}
+    placeholder="{{field.placeholder}}{{(field.isRequired) and (field.labelPlacement == 'hidden_label') ? ' *'}}"
+  {% endif %}
+  {{field.isRequired ? 'required'}}
+  {{field.multiple ? 'multiple'}}
+  {{field.rangeMin is defined ? 'min="'~field.rangeMin~'"'}}
+  {{field.rangeMax is defined ? 'max="'~field.rangeMax~'"'}}
+  {{field.maxLength ? 'maxlength="'~field.maxLength~'"'}}
+{% endmacro %}
+
+{# Helper to output a Gravityform field #}
+{% macro gform_field(field) %}
+  {% import _self as form %}
+
+  {% if field.type in ['text', 'number', 'email', 'hidden'] %}
+    {{form.input(field.type, field)}}
+  {% elseif field.type == 'website' %}
+    {{form.input('url', field)}}
+  {% elseif field.type == 'phone' %}
+    {{form.input('tel', field)}}
+  {% elseif field.type == 'fileupload' %}
+    {{form.input('file', field)}}
+  {% elseif field.type == 'select' %}
+    {{form.select(field)}}
+  {% elseif field.type == 'textarea' %}
+    {{form.textarea(field)}}
+  {% elseif field.type == 'checkbox' %}
+    {{form.checkbox(field)}}
+  {% elseif field.type == 'radio' %}
+    {{form.radio(field)}}
+  {% elseif field.type == 'honeypot' %}
+    {{form.honeypot(field)}}
+  {% elseif field.type == 'html' %}
+    {{field.content}}
+  {% elseif field.type == 'section' %}
+    <h3>{{field.label}}</h3>
+  {% else %}
+    <p>{{field.type}} is not implemented</p>
+  {% endif %}
+{% endmacro %}

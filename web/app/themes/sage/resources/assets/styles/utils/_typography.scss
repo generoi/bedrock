@@ -1,0 +1,146 @@
+/**
+ * Responsive base font sizes.
+ * @note: Changing this from $global-font-size, resize a lot of elements.
+ */
+$c-font-styles: (
+  small:  ('font-size': 16px, 'line-height': 1.25),
+  medium: ('font-size': 16px, 'line-height': 1.375),
+  large:  ('font-size': 18px, 'line-height': 1.375),
+) !default;
+
+/**
+ * Based on http://typecast.com/blog/a-more-modern-scale-for-web-typography.
+ * If you choose to use this, move it to _variables().
+ */
+$header-styles: (
+  small: (
+    'h1':         ('font-size': 2rem,     'line-height': 1.25),
+    'h2':         ('font-size': 1.625rem, 'line-height': 1.15384615),
+    'h3':         ('font-size': 1.375rem, 'line-height': 1.13636364),
+    'h4':         ('font-size': 1.125rem, 'line-height': 1.111),
+    'h5':         ('font-size': 1rem,     'line-height': 1.111),
+    'h6':         ('font-size': 1rem,     'line-height': 1.111),
+    'blockquote': ('font-size': 1.25rem,  'line-height': 1.25),
+  ),
+  medium: (
+    'h1':         ('font-size': 2.5rem,   'line-height': 1.125),
+    'h2':         ('font-size': 2rem,     'line-height': 1.25),
+    'h3':         ('font-size': 1.5rem,   'line-height': 1.25),
+    'h4':         ('font-size': 1.125rem, 'line-height': 1.222),
+    'h5':         ('font-size': 1rem,     'line-height': 1.222),
+    'h6':         ('font-size': 1rem,     'line-height': 1.222),
+    'blockquote': ('font-size': 1.5rem,   'line-height': 1.25),
+  ),
+  large: (
+    'h1':         ('font-size': 3rem,     'line-height': 1.05),
+    'h2':         ('font-size': 2.25rem,  'line-height': 1.25),
+    'h3':         ('font-size': 1.75rem,  'line-height': 1.25),
+    'h4':         ('font-size': 1.125rem, 'line-height': 1.222),
+    'h5':         ('font-size': 1rem,     'line-height': 1.222),
+    'h6':         ('font-size': 1rem,     'line-height': 1.222),
+    'blockquote': ('font-size': 1.5rem,   'line-height': 1.25),
+  ),
+) !default;
+
+/**
+ * Limit paragraph lengths.
+ */
+$c-paragraph-max-width: 45rem !default;
+
+@each $breakpoint, $font-defs in $c-font-styles {
+  @include breakpoint($breakpoint) {
+    %u-text {
+      $font-size-temp: 1rem;
+
+      @if map-has-key($font-defs, font-size) {
+        $font-size-temp: rem-calc(map-get($font-defs, font-size), 16px);
+
+        font-size: $font-size-temp;
+      }
+
+      @if map-has-key($font-defs, line-height) {
+        line-height: unitless-calc(map-get($font-defs, line-height), $font-size-temp);
+      }
+    }
+  }
+}
+
+/**
+ * Base header styles.
+ */
+%u-header {
+  @include header($styles: null);
+
+  // Prevent long words overflowing on mobile
+  overflow: hidden;
+  overflow-wrap: break-word;
+
+  > a {
+    color: inherit;
+    text-decoration: none;
+  }
+}
+
+/**
+ * Individual header styles without the base heading style.
+ */
+@each $size, $headers in $header-styles {
+  @include breakpoint($size) {
+    @each $header, $header-defs in $headers {
+      %u-#{$header} {
+        @include header-style($header-defs);
+      }
+    }
+  }
+}
+
+%u-h1 {
+  text-transform: uppercase;
+}
+
+/**
+ * Helper to limit words per line.
+ */
+%u-paragraph {
+  max-width: $c-paragraph-max-width;
+  margin-left: auto;
+  margin-right: auto;
+
+  // If within a form, stretch to the forms full size.
+  form & {
+    max-width: none;
+  }
+
+  // Avoid center aligning in WP Editor.
+  body#tinymce & {
+    margin-left: 0;
+  }
+}
+
+/**
+ * Set the container as a content area taking into account Gutenberg/Tailor
+ * classes and allowing content to stretch past the regular grid.
+ */
+%u-content-area {
+  // Break all floats for content following this.
+  @include clearfix();
+
+  > *:not(.no-container):not(.alignfull):not(.alignwide):not(.alignleft):not(.alignright) {
+    @extend %u-paragraph;
+  }
+
+  // Add a gutter to headers in content.
+  > h1,
+  > h2,
+  > h3,
+  > h4 {
+    &:not(:first-child) {
+      @extend %u-spacing-gutter--top;
+    }
+  }
+
+  // Tailor images.
+  .no-container .tailor-image img {
+    width: 100%;
+  }
+}

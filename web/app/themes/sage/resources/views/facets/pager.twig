@@ -1,0 +1,54 @@
+{% if total_pages > 1 %}
+  <ul class="pager pagination" role="navigation">
+    <li class="pager__item pager__item--previous pagination-previous {{page == 1 ? 'disabled' : ''}}">
+      {% if page > 1 %}
+        <a class="pager__link facetwp-page" data-page="{{page - 1}}">{{__('Previous', '<example-project>')}}</a>
+      {% else %}
+        {{__('Previous', '<example-project>')}}
+      {% endif %}
+    </li>
+
+    {% if 3 < page %}
+      <li class="pager__item">
+        <a class="pager__link facetwp-page" data-page="1">1</a>
+      </li>
+      <li class="pager__item ellipsis"></li>
+    {% endif %}
+
+    {% for i in range(2, 1) %}
+      {% if (page - i) > 0 %}
+        <li class="pager__item">
+          <a class="pager__link facetwp-page" data-page="{{page - i}}">{{page - i}}</a>
+        </li>
+      {% endif %}
+    {% endfor %}
+
+    <li class="pager__item pager__item--current">
+      <span class="current">{{page}}</span>
+
+    {% for i in range(1, 2) %}
+      {% if total_pages >= (page + i) %}
+        <li class="pager__item">
+          <a class="pager__link facetwp-page" data-page="{{page + i}}">{{page + i}}</a>
+        </li>
+      {% endif %}
+    {% endfor %}
+
+    {% if total_pages > (page + 2) %}
+      <li class="pager__item ellipsis"></li>
+      <li class="pager__item">
+        <a class="pager__link facetwp-page" data-page="{{total_pages}}">{{total_pages}}</a>
+      </li>
+    {% endif %}
+
+    <li class="pager__item pager__item--next pagination-next {{page == total_pages ? 'disabled' : ''}}">
+
+    {% if page < total_pages %}
+      <a class="pager__link facetwp-page" data-page="{{page + 1}}">{{__('Next', '<example-project>')}}</a>
+    {% else %}
+      {{__('Next', '<example-project>')}}
+    {% endif %}
+
+    </li>
+  </ul>
+{% endif %}

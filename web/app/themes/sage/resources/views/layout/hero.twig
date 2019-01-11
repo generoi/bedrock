@@ -1,0 +1,55 @@
+{% if hero.slides|length %}
+  <div
+    class="slick slick--hero slick--adaptive-height {{hero.slides|length == 1 ? 'slick--no-slider'}}"
+    data-slick='{"dots":true, "arrows":false, "adaptiveHeight":true}'
+    role="region"
+  >
+    {% for slide in hero.slides %}
+      <figure
+        class="slick__slide {{loop.first ? 'is-active'}} slick__slide--{{slide.slide_theme}} overlay overlay--{{slide.slide_overlay}}"
+        style="{{loop.first ?: 'display: none;'}}"
+      >
+        {% if slide.slide_link %}
+          <a
+            class="slick__link"
+            href="{{slide.slide_link.url?:slide.slide_link}}"
+            target="{{slide.slide_link.target}}"
+            data-category="Hero"
+            data-action="Click Link"
+            data-label="{{slide.slide_link.title?:slide.slide_title|striptags}}"
+          >
+        {% endif %}
+
+        <div class="slick__image">
+          {{slide.render_media()}}
+        </div>
+
+        {% if (slide.slide_title) or (slide.slide_content) %}
+          <figcaption class="slick__caption" style="display:none;">
+            <div class="slick__caption-wrapper overlay__foreground grid-container grid-container-padded">
+
+              <div class="slick__caption-title-wrapper">
+                {% block slide__title %}
+                  {% if slide.slide_title %}
+                    <h3 class="slick__caption-title fade-in-down is-animating short-delay h1">{{slide.slide_title}}</h3>
+                  {% endif %}
+                {% endblock %}
+              </div>
+
+              <div class="slick__caption-content">
+                <div class="fade-in is-animating long-delay">
+                  {% block slide__content %}
+                    {{slide.slide_content}}
+                  {% endblock %}
+                </div>
+              </div>
+
+            </div>
+          </figcaption>
+        {% endif %}
+
+        {% if slide.slide_link %}</a>{% endif %}
+      </figure>
+    {% endfor %}
+  </div>
+{% endif %}

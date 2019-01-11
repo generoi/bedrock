@@ -1,0 +1,14 @@
+{% extends 'pages/archive.twig' %}
+
+{% set object = author %}
+{% set taxonomy = 'author' %}
+
+{% block page__title author.display_name %}
+
+{% block page__content %}
+  {% if author.content %}
+    <div class="page__content">
+      {{author.content}}
+    </div>
+  {% endif %}
+{% endblock %}

@@ -1,0 +1,19 @@
+{% extends 'parts/post__comments.twig' %}
+
+{% block comments %}
+  <section class="page__comments grid-x grid-margin-x grid-margin-y comments--{{template_type}} comments--type-{{post.post_type}}" id="comments">
+    <div class="cell">
+      {% if post.comments|length %}
+        {% block comments__listing_loop parent() %}
+      {% else %}
+        <p>{{__('There are no reviews yet.', 'woocommerce')}}</p>
+      {% endif %}
+    </div>
+
+    {% block comments__form %}
+      <div class="page__comments_form cell">
+        {{post.review_form}}
+      </div>
+    {% endblock %}
+  </section>
+{% endblock %}

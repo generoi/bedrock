@@ -1,0 +1,21 @@
+{% if post.prev.link or post.next.link %}
+  <ul class="page__nav menu expanded">
+  {% if post.next %}
+    <li class="page__nav_item--next">
+      <a class="page__nav_link" href="{{post.next.link}}">
+      <i class="fa fa-left-open"></i>
+      <span class="show-for-large">{{post.next.title}}</span>
+      <span class="hide-for-large">{{__('Next', '<example-project>')}}</span>
+    </a></li>
+  {% endif %}
+  {% if post.prev %}
+    <li class="page__nav_item--prev">
+      <a class="page__nav_link" href="{{post.prev.link}}">
+        <span class="show-for-large">{{post.prev.title}}</span>
+        <span class="hide-for-large">{{__('Previous', '<example-project>')}}</span>
+        <i class="fa fa-right-open"></i>
+      </a>
+    </li>
+  {% endif %}
+  </ul>
+{% endif %}

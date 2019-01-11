@@ -1,0 +1,7 @@
+<div class="page__related">
+  {%
+    include ['parts/slideshow--teaser.twig'] with {
+      items: post.related_posts(9)
+    }
+  %}
+</div>

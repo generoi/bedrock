@@ -1,0 +1,146 @@
+/**
+ * Add a line underneath.
+ * @example
+ * .pager__item--current {
+ *   @include underline($color: $pagination-item-color-current);
+ * }
+ */
+$c-underline-color: get-color(primary) !default;
+$c-underline-height: 2px !default;
+$c-underline-size: 75% !default;
+$c-underline-offset: 0.5rem !default;
+$c-underline-hover-color: false !default;
+
+@mixin underline(
+  $color: $c-underline-color,
+  $size: $c-underline-size,
+  $offset: $c-underline-offset,
+  $hover-color: $c-underline-hover-color,
+  $height: $c-underline-height
+) {
+  position: relative;
+  display: inline-block; // @todo questionable.
+
+  &::after {
+    content: '';
+    display: block;
+    background-color: $color;
+    position: absolute;
+    bottom: -1 * (rem-calc($c-underline-height) + rem-calc($offset));
+    height: $c-underline-height;
+    width: $size;
+    // Center align it.
+    left: (100% - $size) / 2;
+  }
+
+  @if $hover-color {
+    @if variable-exists($c-global-transition) {
+      &::after { transition: $c-global-transition; }
+    }
+
+    &:hover::after,
+    &:focus::after {
+      background-color: $hover-color;
+    }
+  }
+}
+
+/**
+ * @see https://github.com/zurb/foundation-sites/pull/9500
+ * @todo remove once added upstream.
+ */
+@mixin header($base: true, $styles: ()) {
+  @if $base {
+    font-family: $header-font-family;
+    font-style: $header-font-style;
+    font-weight: $header-font-weight;
+    color: $header-color;
+    text-rendering: $header-text-rendering;
+
+    small {
+      line-height: 0;
+      color: $header-small-font-color;
+    }
+  }
+
+  @if $styles != null {
+    @include header-style($styles, $base);
+  }
+}
+
+/**
+ * @see https://github.com/zurb/foundation-sites/pull/9500
+ * @todo remove once added upstream.
+ */
+@mixin header-style($styles: (), $base: false) {
+  $font-size-temp: 1rem;
+
+  @if map-has-key($styles, font-size) {
+    $font-size-temp: rem-calc(map-get($styles, font-size));
+
+    font-size: $font-size-temp;
+  } @else if map-has-key($styles, fs) {
+    $font-size-temp: rem-calc(map-get($styles, fs));
+
+    font-size: $font-size-temp;
+  } @else if $base {
+    font-size: $font-size-temp;
+  }
+
+  // Line
+  @if map-has-key($styles, line-height) {
+    line-height: unitless-calc(map-get($styles, line-height), $font-size-temp);
+  } @else if map-has-key($styles, lh) {
+    line-height: unitless-calc(map-get($styles, lh), $font-size-temp);
+  } @else if $base {
+    line-height: unitless-calc($header-lineheight, $font-size-temp);
+  }
+
+  // Margin top
+  @if map-has-key($styles, margin-top) {
+    margin-top: rem-calc(map-get($styles, margin-top));
+  } @else if map-has-key($styles, mt) {
+    margin-top: rem-calc(map-get($styles, mt));
+  } @else if $base {
+    margin-top: 0;
+  }
+
+  // Margin bottom
+  @if map-has-key($styles, margin-bottom) {
+    margin-bottom: rem-calc(map-get($styles, margin-bottom));
+  } @else if map-has-key($styles, mb) {
+    margin-bottom: rem-calc(map-get($styles, mb));
+  } @else if $base {
+    margin-bottom: rem-calc($header-margin-bottom);
+  }
+}
+
+@mixin admin-bar($child: true) {
+  $-admin-bar-height: 46px !global;
+
+  @if $child {
+    body.admin-bar & {
+      @content;
+
+      @include breakpoint($c-admin-bar-breakpoint) {
+        $-admin-bar-height: 32px !global;
+
+        @content;
+      }
+    }
+  } @else {
+    @content;
+
+    @include breakpoint($c-admin-bar-breakpoint) {
+      $-admin-bar-height: 32px !global;
+
+      @content;
+    }
+  }
+}
+
+@mixin u-icon($var) {
+  @extend %u-icon;
+
+  content: $var;
+}

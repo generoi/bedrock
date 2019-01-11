@@ -1,0 +1,10 @@
+/**
+ * WP Smartcrop integration.
+ * @note relies on the image being wrapped in a .responsive-embed.
+ */
+.smartcrop {
+  // We don't use wpsmartcrop logic, we set the object-position using
+  // percentage in image.twig.
+  object-fit: cover;
+  overflow: visible;
+}

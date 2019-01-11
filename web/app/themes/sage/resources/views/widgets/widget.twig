@@ -1,0 +1,16 @@
+{% if widget.title or widget.content or display_widget %}
+  <section class="cell {{widget.class}}" id="{{widget.id}}">
+    {% block widget__title %}
+      {% if widget.title and (not widget.hide_title) %}
+        <h3 class="widget__title">{{widget.title}}</h3>
+      {% endif %}
+    {% endblock %}
+    {% block widget__content %}
+      {% if widget.content %}
+        <div class="widget__content">
+          {{widget.content}}
+        </div>
+      {% endif %}
+    {% endblock %}
+  </section>
+{% endif %}

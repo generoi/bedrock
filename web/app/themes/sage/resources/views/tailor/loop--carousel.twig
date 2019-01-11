@@ -1,0 +1,16 @@
+{% extends 'tailor/loop--list.twig' %}
+
+{% block content %}
+  {%
+    include 'parts/slideshow.twig' with {
+      items: posts,
+      options: get_slick_options([atts.items_per_row, atts.items_per_row_tablet, atts.items_per_row_mobile], {
+        autoplay: atts.autoplay|bool,
+        autoplaySpeed: atts.autoplay_speed|int,
+        arrows: atts.arrows|bool,
+        dots: atts.dots|bool,
+        fade: atts.fade|bool,
+      })
+    }
+  %}
+{% endblock %}

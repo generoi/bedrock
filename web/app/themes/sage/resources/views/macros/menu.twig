@@ -1,0 +1,17 @@
+{% macro recursive_item(item, menu_class, level, max_level) %}
+  {% import _self as menu %}
+  {% set children = item.children %}
+  {% set level = level|default(1) %}
+  {% set max_level = max_level|default(5) %}
+
+  <li class="{{item.class}}">
+    <a href="{{item.link}}" class="{{item.link_class}}">{{item.title}}</a>
+    {% if (children) and (level < max_level) %}
+      <ul class="menu {{menu_class|default('vertical nested')}} {{item.current or item.current_item_ancestor ? 'is-active'}}">
+        {% for child in children %}
+          {{menu.recursive_item(child, menu_class, (level+1), max_level)}}
+        {% endfor %}
+      </ul>
+    {% endif %}
+  </li>
+{% endmacro %}

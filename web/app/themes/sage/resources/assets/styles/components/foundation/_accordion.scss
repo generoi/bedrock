@@ -1,0 +1,10 @@
+.accordion {
+  &-title {
+    outline: none;
+    text-decoration: none;
+  }
+
+  &-content {
+    @extend %u-strip-bottom-paddings;
+  }
+}

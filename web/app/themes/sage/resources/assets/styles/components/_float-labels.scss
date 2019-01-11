@@ -1,0 +1,74 @@
+@mixin float-label-container {
+  position: relative;
+}
+
+@mixin float-label {
+  position: absolute;
+  color: $input-placeholder-color;
+  top: 0;
+  left: 1px; // cursor.
+  transition: all 0.1s;
+  cursor: text;
+  pointer-events: none;
+
+  @extend %u-input-size;
+
+  &.is-active,
+  &.is-focus {
+    $-font-size: 0.75rem;
+
+    color: $form-label-color;
+    top: -($-font-size/2);
+    font-size: $-font-size;
+    line-height: 1;
+    height: auto;
+    cursor: pointer;
+    pointer-events: auto;
+    padding: 0 0.1rem;
+    margin-left: get-side($input-padding, left) - 0.1rem;
+    margin-right: get-side($input-padding, right) - 0.1rem;
+    margin-bottom: 0;
+    background-color: $input-background;
+  }
+
+  &.is-invalid-label {
+    color: $input-error-color;
+  }
+}
+
+@mixin float-label-input {
+  transition: all 0.1s;
+
+  &::placeholder {
+    transition: inherit;
+    opacity: 0;
+  }
+
+  &.is-active::placeholder,
+  &.is-focus::placeholder {
+    opacity: 1;
+  }
+}
+
+@mixin float-label-select {
+  &:not(.is-active):not(.is-focus) {
+    color: transparent;
+  }
+}
+
+.has-float-labels {
+  @include float-label-container;
+
+  label {
+    @include float-label;
+  }
+
+  input,
+  textarea {
+    @include float-label-input;
+  }
+
+  select {
+    @include float-label-select;
+  }
+}

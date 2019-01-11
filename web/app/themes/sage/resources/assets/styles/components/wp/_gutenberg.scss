@@ -1,0 +1,100 @@
+/**
+ * An image, but unlike regular WP Core, there's no wrapping <figure> unless
+ * there's also a caption.
+ */
+.wp-block-image {
+  @extend %wp-caption;
+
+  figcaption {
+    @extend %wp-caption-text;
+  }
+
+  // Override any values inherited from .wp-caption when aligning.
+  @each $alignment in alignnone, alignwide, aligncenter {
+    &.#{$alignment} { @extend %#{$alignment}; }
+  }
+
+  $-sidealign-width: ($c-paragraph-max-width/2);
+  $-sidealign-image-width: ($-sidealign-width/2) + ($global-margin/2);
+
+  &.alignleft {
+    margin-left: calc(50% - #{$-sidealign-width});
+    max-width: calc(50% - #{$-sidealign-image-width});
+  }
+
+  &.alignright {
+    margin-right: calc(50% - #{$-sidealign-width});
+    max-width: calc(50% - #{$-sidealign-image-width});
+  }
+}
+
+/**
+ * Pull quote.
+ */
+.wp-block-pullquote {
+  text-align: center;
+  border: 0;
+
+  p {
+    @extend %u-header;
+    @extend %u-h2;
+  }
+}
+
+/**
+ * Hero image.
+ */
+.wp-block-cover-image {
+  $overlay: 'black';
+
+  .cover-image {
+    background-size: cover;
+    height: 30vw;
+    min-height: 300px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-attachment: fixed;
+    position: relative;
+
+    &::before {
+      @include overlay-background;
+
+      content: '';
+      background-color: map-get($c-overlay-palette, $overlay);
+    }
+
+    @extend %u-bg--#{$overlay};
+
+    h2 {
+      @include overlay-foreground;
+    }
+  }
+}
+
+/**
+ * Gallery of multiple images, use Xy-grid gutters on large screens.
+ */
+.wp-block-gallery {
+  @include xy-grid;
+
+  .blocks-gallery-image {
+    margin-left: auto;
+    margin-right: auto;
+
+    @include breakpoint(medium) {
+      @include xy-cell-base(auto);
+      @include xy-gutters($gutters: $grid-margin-gutters, $gutter-type: margin);
+    }
+  }
+}
+
+/**
+ * Button.
+ */
+.wp-block-button {
+  > a {
+    @extend %u-button;
+  }
+}

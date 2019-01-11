@@ -1,0 +1,10 @@
+.tabs {
+  &-title > a {
+    outline: none;
+    text-decoration: none;
+  }
+
+  &-panel {
+    @extend %u-strip-bottom-paddings;
+  }
+}

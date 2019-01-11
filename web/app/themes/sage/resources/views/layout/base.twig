@@ -1,0 +1,45 @@
+<!doctype html>
+<html class="no-js" {{site.language_attributes}}>
+{% block html_head_container %}
+  <head>
+    {% include 'layout/head.twig' %}
+    {% block head '' %}
+  </head>
+{% endblock %}
+  <body class="{{body_class}} sticky-footer" data-template="{{template_file}}">
+
+    <header id="header" class="l-header headroom sticky-footer__header" data-toggler=".active">
+      {% include 'layout/header.twig' %}
+    </header>
+
+    <div class="sticky-footer__content">
+      <div class="l-hero">
+        {% block hero %}
+          {% embed 'layout/hero.twig' %}{% endembed %}
+        {% endblock %}
+      </div>
+
+      <div role="document">
+        <section id="content" role="main" class="l-content-wrapper fade-in is-animating">
+        {% if password_required %}
+          {% block password %}
+            {% include 'parts/password.twig' %}
+          {% endblock %}
+        {% else %}
+          {% block content %}
+            {{__('Sorry, no content', '<example-project>')}}
+          {% endblock %}
+        {% endif %}
+        </section>
+      </div>
+
+    </div>
+
+    <div class="sticky-footer__footer">
+      <footer id="footer" class="l-footer" role="contentinfo">
+        {% include 'layout/footer.twig' %}
+      </footer>
+    </div>
+    {{ function('wp_footer') }}
+  </body>
+</html>

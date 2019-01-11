@@ -1,0 +1,146 @@
+{##
+ # @version 3.0.0
+ # @see https://github.com/woocommerce/woocommerce/blob/master/templates/content-single-product.php
+ #}
+{% extends 'pages/single.twig' %}
+
+{% block content %}
+  {% do action('woocommerce_before_main_content') %}
+  {{post.set_loop_product()}}
+
+  <article class="{{page_classes|join(' ')}} product" id="post-{{post.ID}}">
+    <div class="grid-x grid-margin-x grid-margin-y align-center">
+      <div class="cell">
+        {# Messages among other things #}
+        {% do action('woocommerce_before_single_product') %}
+
+        {% block breadcrumb parent() %}
+        <div class="page__content-wrapper grid-x grid-margin-x grid-margin-y align-justify">
+          {# Left column: Product title, summary, price, add to cart #}
+          <div class="cell medium-6">
+            {% block page__header %}
+              <div class="page__title-wrapper cell">
+                <h1 class="page__title">{% block page__title parent() %}</h1>
+                {{fn('woocommerce_template_single_price')}}
+                {{fn('woocommerce_show_product_sale_flash')}}
+                {{fn('woocommerce_template_single_rating')}}
+              </div>
+            {% endblock %}
+
+
+            {# Product summary, price #}
+            {% block page__content %}
+
+              {{fn('woocommerce_template_single_sharing')}}
+
+              {% do action('woocommerce_before_single_product_summary') %}
+              {% do action('woocommerce_single_product_summary') %}
+              {% do action('woocommerce_after_single_product_summary') %}
+
+              <div class="page__content cell">
+                <p>{{post.get_preview(30, false, false, true)|wptrim}}</p>
+              </div>
+            {% endblock %}
+
+            {% if post.categories|length %}
+              <div class="grid-x grid-margin-x">
+                <div class="cell shrink">
+                  <h5>{{__('Categories', '<example-project>')}}</h5>
+                </div>
+                <div class="cell auto">
+                  {% include 'parts/post__terms.twig' with { terms: post.categories } %}
+                </div>
+              </div>
+            {% endif %}
+            {% if post.tags|length %}
+              <div class="grid-x grid-margin-x">
+                <div class="cell shrink">
+                  <h5>{{__('Tags', '<example-project>')}}</h5>
+                </div>
+                <div class="cell auto">
+                  {% include 'parts/post__terms.twig' with { terms: post.tags } %}
+                </div>
+              </div>
+            {% endif %}
+
+            {# Add to cart button #}
+            {% if post.in_stock %}
+              {{fn('woocommerce_template_single_add_to_cart')}}
+            {% else %}
+              {{__('Out of stock', '<example-project>')}}
+            {% endif %}
+          </div>
+
+          {# Right column: Product image and gallery #}
+          <div class="cell medium-6">
+            {{fn('woocommerce_show_product_images')}}
+          </div>
+
+          {# Tabs: Content, Additional, Reviews #}
+          <div class="cell">
+            {% if post.tabs|length %}
+              <ul
+                id="product__tabs"
+                class="accordion"
+                data-responsive-accordion-tabs="accordion medium-tabs"
+                data-deep-link="true"
+                data-allow-all-closed="true"
+              >
+                {% for tab in post.tabs %}
+                  <li class="accordion-item {{loop.first ? 'is-active'}}" data-accordion-item>
+                    <a href="#{{tab.name}}" class="accordion-title">{{tab.title}}</a>
+                    <div id="{{tab.name}}" class="accordion-content" data-tab-content>
+                      {{tab.content}}
+                    </div>
+                  </li>
+                {% endfor %}
+              </ul>
+            {% endif %}
+          </div><!-- .cell -->
+
+          {% block page__footer %}
+            <div class="page__footer cell">
+              <div class="grid-x grid-margin-y">
+                {% block sidebar__content_below parent() %}
+              </div>
+            </div>
+          {% endblock %}
+        </div><!-- .page__content-wrapper -->
+      </div><!-- .cell -->
+
+      {# Related: Upsell or Related #}
+      {% block page__after %}
+        {% set related_products = [] %}
+        {% set related_title = __('Related products') %}
+
+        {% if post.upsell_products|length %}
+          {% set related_products = post.upsell_products %}
+          {% set related_title =  __('You might also like the following products') %}
+        {% elseif post.related_products(3)|length %}
+          {% set related_products = post.related_products(3) %}
+        {% endif %}
+
+
+        {% if related_products|length %}
+          <div class="cell" id="page__related">
+            <h3>{{related_title}}</h3>
+            <div class="grid-x grid-margin-x grid-margin-y small-up-2 medium-up-3">
+              {% for item in related_products %}
+                <div class="cell">
+                  {% embed ['teasers/teaser--'~item.post_type~'.twig', 'teasers/teaser.twig'] with { post: item } %}
+                    {% block thumbnail post.thumbnail.src_sizes(foundation_sizes('medium-6 large-4')) ~ parent() %}
+                  {% endembed %}
+                </div>
+              {% endfor %}
+            </div>
+          </div>
+        {% endif %}
+      {% endblock %}
+
+    </div><!-- .grid-x -->
+    {% block page__grid_after '' %}
+  </article>
+
+  {% do action('woocommerce_after_single_product') %}
+  {% do action('woocommerce_after_main_content') %}
+{% endblock %}

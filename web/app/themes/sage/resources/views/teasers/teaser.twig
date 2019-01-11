@@ -1,0 +1,28 @@
+{% block teaser %}
+  <article class="card teaser teaser--{{post.post_type}}" id="teaser-{{post.ID}}">
+    <a class="teaser__link" href="{{post.link}}">
+      {% block teaser__thumbnail %}
+        <div class="teaser__image">
+          {% if post.thumbnail %}
+            {% block thumbnail post.thumbnail.render(300, 200) %}
+          {% else %}
+            {{placeholder(300, 200)}}
+          {% endif %}
+        </div>
+      {% endblock %}
+      <div class="card-section teaser__content-wrapper">
+        {% block teaser__title %}
+          <h6 class="teaser__title">{{post.title}}</h6>
+        {% endblock %}
+        {% block teaser__content %}
+          {% if post.get_preview %}
+            <div class="teaser__content">
+              <p class="teaser__excerpt">{{post.get_preview(30, false, false, true)|wptrim}}</p>
+              <p class="teaser__readmore">{{__('Read more', '<example-project>')}}</p>
+            </div>
+          {% endif %}
+        {% endblock %}
+      </div>
+    </a>
+  </article>
+{% endblock %}

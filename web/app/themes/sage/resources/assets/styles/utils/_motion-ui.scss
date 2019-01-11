@@ -1,0 +1,22 @@
+.is-animating {
+  &.fade-in {
+    @include mui-animation(fade);
+  }
+
+  @each $dir in up, down, left, right {
+    &.fade-in-#{$dir} {
+      @include mui-animation(slide(in, $dir, 200%), fade);
+    }
+
+    &.slide-in-#{$dir} {
+      @include mui-animation(slide(in, $dir, 200%));
+    }
+
+    &.slide-out-#{$dir} {
+      @include mui-animation(slide(out, $dir, 200%));
+    }
+  }
+
+  animation-duration: map-get($motion-ui-speeds, default);
+  animation-fill-mode: both;
+}

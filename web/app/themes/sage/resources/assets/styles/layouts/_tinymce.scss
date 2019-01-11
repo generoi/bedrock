@@ -1,0 +1,7 @@
+body#tinymce {
+  margin: 12px !important;
+  height: auto;
+  width: calc(100% - 24px) !important;
+  // Ignore whatever theme has, use same as wp-content.css
+  font-size: 14px;
+}

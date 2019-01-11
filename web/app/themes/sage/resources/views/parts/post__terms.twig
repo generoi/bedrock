@@ -1,0 +1,9 @@
+{% if terms %}
+  <div class="page__terms">
+    <div class="button-group">
+      {% for term in terms %}
+        <a class="page__terms_link button button--secondary" href="{{term.link}}">{{term.name}}</a>
+      {% endfor %}
+    </div>
+  </div>
+{% endif %}

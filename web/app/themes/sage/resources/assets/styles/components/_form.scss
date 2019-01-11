@@ -1,0 +1,60 @@
+// @see components/hubspot for husbpot forms.
+
+// Fix for our forms as the label is larger than the input.
+input[type="radio"],
+input[type="checkbox"] {
+  margin-top: 0.25em;
+  margin-bottom: 0;
+}
+
+textarea[rows] { height: 150px; }
+
+.input-group input {
+  margin-bottom: 0;
+}
+
+// Form styles
+// ---------------------------------------------------------------------------
+
+/**
+ * Horizontally aligned forms with the submit button on the same level as the
+ * fields.
+ * @note it's easier to use forms/form--horizontal.twig
+ */
+.form--horizontal {
+  form#{&},
+  .hs-form {
+    display: flex;
+    flex-flow: row wrap;
+  }
+
+  .hs-form-field .input {
+    margin-right: 0 !important;
+  }
+
+  .gform_heading {
+    flex: 1 0 100%;
+  }
+
+  .gform_body,
+  .hs-form-field {
+    flex: 1 0 auto;
+  }
+
+  .hs-button,
+  .gform_footer .gform_button {
+    border-radius: 0 $button-radius $button-radius 0;
+    border-left-width: 1px;
+    // @see https://github.com/zurb/foundation-sites/blob/develop/scss/forms/_text.scss
+    $input-height: ($input-font-size * unitless-calc($input-line-height)) + (get-side($input-padding, 'top') + get-side($input-padding, 'bottom')) - rem-calc(1);
+
+    $button-size: map-get($button-sizes, tiny);
+    $padding: (($input-height - $button-size)/2) - rem-calc(1px); // border
+
+    // Important to override HubSpot styling
+    padding-top: $padding !important;
+    padding-bottom: $padding !important;
+    font-size: $button-size !important;
+    line-height: 1;
+  }
+}

@@ -1,0 +1,175 @@
+$c-slick-dot-size: 10px !default;
+$c-slick-nav-size: 40px !default;
+
+.slick {
+  // Not actually a slider (single item).
+  &--no-slider { text-align: center; }
+
+  // Use flexbox to expand all containers.
+  &-list,
+  &-track { display: flex; }
+
+  // Prevent FOUC by hiding content until initialized.
+  &--no-slider,
+  &-initialized {
+    .slick__caption { display: block !important; }
+    .slick__slide { display: flex !important; }
+  }
+
+  &-prev,
+  &-next {
+    z-index: 1;
+    &::before { font-size: $c-slick-nav-size; }
+  }
+  &-prev { left: $global-margin; }
+  &-next { right: $global-margin; }
+
+  &-dots {
+    li {
+      &,
+      button,
+      button::before {
+        width: $c-slick-dot-size;
+        height: $c-slick-dot-size;
+      }
+
+      button::before {
+        font-size: $c-slick-dot-size;
+      }
+    }
+  }
+
+  &-slide { outline: none; }
+  // Override slick.scss
+  &-slide img { display: inline; }
+
+  // Remove trailing whitespace.
+  .responsive-embed { margin-bottom: 0; }
+
+  // Expand video
+  &-slide video {
+    height: auto;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  &__image {
+    display: block;
+    width: 100%;
+
+    // Span full width
+    img {
+      width: 100%;
+      max-width: none;
+    }
+  }
+
+  // Make the link wrap around all the content.
+  &__link {
+    display: flex;
+    flex: 1 0 auto;
+    width: 100%;
+    color: inherit !important;
+  }
+
+  // Center align content.
+  &__caption-wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    @extend %u-strip-bottom-paddings;
+  }
+
+  // Caption is always absolutely positioned on top of image.
+  &__caption,
+  &__caption-wrapper {
+    position: absolute !important;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+  }
+
+  &__slide {
+    height: auto; // Safari height not expanding to containsers size.
+    flex: 1 0 auto; // IE11 fits all slides into the row otherwise.
+    position: relative;
+    margin: 0; // reset figure styling.
+
+    &--boxed {
+      // Hide the overlay.
+      &::before { display: none; }
+
+      .slick__caption-wrapper {
+        right: 20%;
+        bottom: 20%;
+        left: 20%;
+        top: 20%;
+
+        @include breakpoint(medium) {
+          right: auto;
+          bottom: auto;
+          left: 50%;
+          top: 50%;
+          transform: translate(-50%, -50%);
+        }
+
+        padding: $global-padding;
+      }
+    }
+
+    // Move the overlay color to a solid background color on the caption.
+    @each $name, $color in $c-overlay-palette {
+      &--boxed {
+        &.overlay--#{$name} {
+          background: transparent;
+
+          .slick__caption-wrapper {
+            background-color: $color;
+          }
+        }
+      }
+    }
+  }
+
+  // Grid variation adding gutters.
+  &--grid {
+    .slick-list {
+      @include xy-grid;
+      // This is a nested padding grid, we dont want gutters on the edges.
+      @include xy-gutters($negative: true);
+      // @todo width?
+    }
+
+    .slick__slide {
+      @include xy-gutters($gutters: $grid-padding-gutters, $gutter-type: padding);
+    }
+  }
+
+  // Do not expand slick slides, let the height be adaptive.
+  &--adaptive-height {
+    .slick-list,
+    .slick-track { align-items: flex-start; }
+  }
+
+  // Hero style
+  // ----------
+  &--hero {
+    // Move dots within the slider.
+    &.slick-dotted {
+      margin-bottom: 0;
+    }
+
+    .slick-dots {
+      bottom: $global-margin;
+    }
+
+    // Hide play button on iOS
+    video::-webkit-media-controls-start-playback-button {
+      display: none;
+    }
+  }
+}

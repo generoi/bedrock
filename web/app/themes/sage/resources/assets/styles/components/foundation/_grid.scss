@@ -1,0 +1,14 @@
+/**
+ * Streth cell content.
+ */
+.align-stretch > .cell {
+  display: flex;
+  flex-direction: column;
+}
+
+/**
+ * Allow cells content to flex.
+ */
+.cell.align-middle {
+  display: flex;
+}

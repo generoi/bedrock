@@ -1,0 +1,7 @@
+.l-footer {
+  @include spacing($type: section, $side: top, $property: margin);
+
+  @extend %u-spacing-section--vertical;
+  @extend %u-strip-bottom-paddings;
+  @extend %u-bg--primary;
+}

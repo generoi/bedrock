@@ -1,0 +1,20 @@
+html {
+  // Span the full viewport height.
+  min-height: 100%;
+  display: flex;
+}
+
+body {
+  // flex.
+  width: 100%;
+  overflow-y: scroll;
+  // Hide overflowing margins.
+  overflow-x: hidden;
+  // Improve render performance by disabling some gestures.
+  touch-action: manipulation;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
