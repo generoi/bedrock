@@ -33,6 +33,9 @@ npm-debug.log
 # Vagrant
 .vagrant
 
+# Deployer
+.build
+
 # Logs
 log
 *.log

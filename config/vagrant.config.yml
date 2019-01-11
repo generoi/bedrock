@@ -20,7 +20,7 @@ vagrant_synced_folders:
     id: wordpress
     type: rsync
     create: true
-    excluded_paths: ['.git/', '.tmp/', 'node_modules/', '/web/app/uploads/', '/web/app/cache/', '/web/app/acf-json/']
+    excluded_paths: ['.git/', '.tmp/', '/.build/', 'node_modules/', '/web/app/uploads/', '/web/app/cache/', '/web/app/acf-json/']
     options_override:
       rsync__chown: false
       rsync__verbose: true
