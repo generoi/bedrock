@@ -15,7 +15,7 @@ class RoboFile extends \Robo\Tasks
      * @param  string  $source  Source alias eg. `production`
      * @return \Robo\Result
      */
-    public function filesPull(string $source, $options = ['exclude' => null, 'dry-run' => false])
+    public function filesPull(string $source, $options = ['exclude' => null, 'dry-run' => false, 'options' => null])
     {
         return $this->rsyncPull("{$source}:%files", $options);
     }
@@ -26,7 +26,7 @@ class RoboFile extends \Robo\Tasks
      * @param  string  $destination  Destination alias eg. `production`
      * @return \Robo\Result
      */
-    public function filesPush(string $destination, $options = ['exclude' => null, 'dry-run' => true])
+    public function filesPush(string $destination, $options = ['exclude' => null, 'dry-run' => true, 'options' => null])
     {
         return $this->rsyncPush("{$destination}:%files", $options);
     }
