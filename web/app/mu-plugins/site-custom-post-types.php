@@ -41,7 +41,7 @@ class CustomPostTypes
 
     public function __construct()
     {
-        add_action('init', [$this, 'init'], 9);
+        add_action('plugins_loaded', [$this, 'register'], 9);
         add_action('admin_head', [$this, 'adminHead']);
     }
 
@@ -49,7 +49,7 @@ class CustomPostTypes
      * Register all post types and their taxonomies.
      * @note needs to run during `init`.
      */
-    public function init()
+    public function register()
     {
         $this->postTypes[] = $this->registerPost();
         $this->postTypes[] = $this->registerPage();
@@ -70,7 +70,9 @@ class CustomPostTypes
         $page = new PostType('page');
         $page->register();
 
-        add_post_type_support('page', 'excerpt');
+        add_action('init', function () {
+            add_post_type_support('page', 'excerpt');
+        });
 
         return $page;
     }
