@@ -1,0 +1,8 @@
+version: '3.6'
+services:
+  web:
+    volumes:
+      - node_modules:/var/www/html/web/app/themes/<example-project>/node_modules
+
+volumes:
+  node_modules:

@@ -4,6 +4,11 @@ organization: generoi
 placeholders:
   '%files': web/app/uploads/
 env:
+  '@docker':
+    host: '${machine_name}.ddev.local'
+    wpcli: 'ddev exec wp-cli'
+    path: /var/www/html
+    url: 'http://${machine_name}.ddev.local'
   '@dev':
     host: '${machine_name}.test'
     user: vagrant

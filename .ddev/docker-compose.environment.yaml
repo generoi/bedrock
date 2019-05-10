@@ -1,0 +1,8 @@
+version: '3.6'
+services:
+  web:
+    environment:
+      - DATABASE_URL=mysql://db:db@db/db
+      - WP_CORE=/var/www/html/web/wp
+      - WP_HOME=http://<example-project>.ddev.local
+        # - DOMAIN_CURRENT_SITE=<example-project>.ddev.local

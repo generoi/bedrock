@@ -21,6 +21,10 @@ require:
 #       ForwardAgent yes
 #       ProxyCommand ssh deploy@minasithil.genero.fi -W %h:%p
 
+'@docker':
+  path: /var/www/html/web/wp
+  url: <example-project>.ddev.local
+
 '@dev':
   ssh: vagrant@<example-project>.test/var/www/wordpress/web/wp
   url: <example-project>.test
