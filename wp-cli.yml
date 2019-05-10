@@ -1,4 +1,6 @@
 path: web/wp
+server:
+  docroot: web
 
 # Required for WP-CLI 2.4.0 SSH feature.
 require:
