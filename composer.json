@@ -1,0 +1,145 @@
+{
+  "name": "generoi/bedrock",
+  "type": "project",
+  "license": "MIT",
+  "description": "WordPress boilerplate with modern development tools, easier configuration, and an improved folder structure",
+  "homepage": "https://roots.io/bedrock/",
+  "authors": [
+    {
+      "name": "Scott Walkinshaw",
+      "email": "scott.walkinshaw@gmail.com",
+      "homepage": "https://github.com/swalkinshaw"
+    },
+    {
+      "name": "Ben Word",
+      "email": "ben@benword.com",
+      "homepage": "https://github.com/retlehs"
+    }
+  ],
+  "keywords": [
+    "bedrock", "composer", "roots", "wordpress", "wp", "wp-config"
+  ],
+  "support": {
+    "issues": "https://github.com/roots/bedrock/issues",
+    "forum": "https://discourse.roots.io/category/bedrock"
+  },
+  "config": {
+    "platform": {
+      "php": "7.0.10"
+    },
+    "process-timeout": 0,
+    "preferred-install": "dist",
+    "theme-dir": "web/app/themes/<example-project>"
+  },
+  "repositories": [
+    { "type": "composer", "url": "https://wpackagist.org" },
+    { "type": "composer", "url": "https://wp-languages.github.io/" },
+    { "type": "composer", "url": "https://packagist.minasithil.genero.fi/" }
+  ],
+  "require": {
+    "php": ">=7.1",
+    "koodimonni/composer-dropin-installer": "*",
+    "composer/installers": "^1.4",
+    "vlucas/phpdotenv": "^3.0.0",
+    "roots/wordpress": "^5.2",
+    "oscarotero/env": "^1.1.0",
+    "roots/wp-password-bcrypt": "1.0.0",
+    "roots/wp-config": "1.0.0",
+
+    "koodimonni-language/fi": "*",
+    "koodimonni-language/sv_se": "*",
+
+    "generoi/advanced-custom-fields-pro": "~5.6",
+    "wpackagist-plugin/limit-login-attempts-reloaded": "^2.6.1",
+    "wpackagist-plugin/scalable-vector-graphics-svg": "~3.4",
+    "wpackagist-plugin/timber-library": "~1.9.0",
+    "wpackagist-plugin/wp-sanitize-file-name-plus": "~1.0",
+    "wpackagist-plugin/stream": "~3.2",
+    "generoi/wp-genero-adjustments": "~1.1.0",
+    "generoi/wp-hero": "~0.1-alpha",
+    "generoi/wp-timber-extended": "~2.0.0-alpha",
+
+    "wpackagist-plugin/akismet": "~4.0",
+    "wpackagist-plugin/wp-mail-smtp": "~1.2",
+    "wpackagist-plugin/simple-custom-post-order": "~2.3",
+    "wpackagist-plugin/popups": "~1.8",
+    "wpackagist-plugin/widget-options": "~3.3",
+    "generoi/gravityforms": "~2.1",
+
+    "wpackagist-plugin/wordpress-seo": "~9.0",
+    "wpackagist-plugin/google-tag-manager": "~1.0",
+    "wpackagist-plugin/redirection": "~3.2",
+    "generoi/wp-genero-analytics": "~1.4.0",
+    "generoi/wp-genero-cookieconsent": "~1.0-alpha",
+    "generoi/wp-genero-gdpr": "~1.0-alpha",
+
+    "generoi/polylang-pro": "~2.2",
+    "wpackagist-plugin/integrate-gravity-forms-polylang": "^0.4",
+    "wpackagist-plugin/theme-translation-for-polylang": "^2.0.0",
+
+    "wpackagist-plugin/wp-super-cache": "~1.5.0",
+    "wpackagist-plugin/wp-performance-pack": "~2.0",
+    "wpackagist-plugin/ewww-image-optimizer": "~4.0",
+
+    "generoi/widget-options-extended": "~2.1.0-alpha",
+    "generoi/popups-extended": "^1.0.0-alpha",
+
+    "wpackagist-plugin/debug-bar": "^1.0",
+    "wpackagist-plugin/kint-debugger": "~1.0",
+    "wpackagist-plugin/regenerate-thumbnails": "~3.0",
+    "generoi/wp-xhprof": "^0.1",
+
+    "cweagans/composer-patches": "~1.0",
+    "jjgrainger/posttypes": "~2.0",
+    "generoi/genero-conf": "~1.1",
+    "generoi/genero-status": "*",
+    "consolidation/robo": "^1.3",
+    "generoi/robo-genero": "^0.2"
+  },
+  "require-dev": {
+    "squizlabs/php_codesniffer": "^3.0.2",
+    "geerlingguy/drupal-vm": "~4.9.0",
+    "roave/security-advisories": "dev-master",
+    "brainmaestro/composer-git-hooks": "^2.2",
+    "deployer/deployer": "^6.3",
+    "deployer/recipes": "^6.1",
+    "generoi/deployer-genero": "^0.1-alpha"
+  },
+  "extra": {
+    "dropin-paths": {
+      "web/app/languages/": ["vendor:koodimonni-language"],
+      "web/app/languages/plugins/": ["vendor:koodimonni-plugin-language"],
+      "web/app/languages/themes/": ["vendor:koodimonni-theme-language"],
+      "web/": ["package:generoi/genero-status:genero-status.php"],
+      "web/app/": [
+        "package:wpackagist-plugin/wp-super-cache:advanced-cache.php",
+        "type:wordpress-dropin"
+      ]
+    },
+    "hooks": {
+      "pre-commit": "composer test",
+      "post-merge": "composer install:development"
+    },
+    "installer-paths": {
+      "web/app/mu-plugins/{$name}/": ["type:wordpress-muplugin"],
+      "web/app/plugins/{$name}/": ["type:wordpress-plugin"],
+      "web/app/themes/{$name}/": ["type:wordpress-theme"]
+    },
+    "wordpress-install-dir": "web/wp",
+    "patches": {
+      "geerlingguy/drupal-vm": {
+        "Support vagrant DHCP IP assignment with `vagrant-hostmanager`": "https://github.com/geerlingguy/drupal-vm/commit/69dd5a15c056e6d1b622b6b2333680dc2b2658c3.patch"
+      }
+    }
+  },
+  "scripts": {
+    "post-create-project-cmd": "Generoi\\Robo\\Composer\\ComposerScript::postCreateProject",
+    "post-update-cmd": "php -r \"if (is_executable('vendor/bin/cghooks')) exec('vendor/bin/cghooks update');\"",
+    "test": "Generoi\\Robo\\Composer\\ComposerScript::test",
+    "install:development": [
+      "@composer install",
+      "robo install:development",
+      "vendor/bin/cghooks update"
+    ]
+  }
+}
