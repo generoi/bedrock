@@ -37,6 +37,12 @@ vagrant_synced_folders:
     type: nfs
     create: true
 
+# If you need to use cron jobs.
+# drupalvm_cron_jobs:
+#   - name: 'WordPress Cron'
+#     minute: '*/30'
+#     job: "cd {{ drupal_core_path }} && wp cron event run --due-now --quiet 2>/dev/null"
+
 # If you want to adjust this, create a local.config.yml file where you override
 # the value. This file is not tracked in git.
 vagrant_memory: 1024

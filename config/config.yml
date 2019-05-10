@@ -3,10 +3,6 @@
 # vagrant.config.yml. That way when Drupal VM updates are brought in, this file
 # can be overriden without manual inspection.
 
-# Use Beetbox as the base image
-vagrant_box: beet/box
-workspace: "/beetbox/workspace/{{ php_version }}"
-
 # Use DHCP assigned  IPs with vagrant-hostmanager
 # Note: requires vagrant-vbguest to be disabled in Vagrantfile.local
 vagrant_ip: dhcp
@@ -19,11 +15,6 @@ drupal_domain: "{{ vagrant_hostname }}"
 drupal_db_user: wordpress
 drupal_db_password: wordpress
 drupal_db_name: wordpress
-
-drupalvm_cron_jobs:
-  - name: 'WordPress Cron'
-    minute: '*/30'
-    job: "cd {{ drupal_core_path }} && wp cron event run --due-now --quiet 2>/dev/null"
 
 # Disable Drupal specific features.
 drupal_build_composer_project: false
@@ -101,23 +92,15 @@ installed_extras:
 
 # Add any extra apt or yum packages you would like installed.
 extra_packages:
-  - libjpeg-turbo-progs
-  - optipng
-  - gifsicle
-  - webp
-
-# Use mariadb as we do on JNT.
-mysql_packages:
-  - mariadb-client
-  - mariadb-server
-  - python-mysqldb
+  # - libjpeg-turbo-progs
+  # - optipng
+  # - gifsicle
+  # - webp
+  - vim
 
 composer_global_packages:
   - { name: hirak/prestissimo, release: '^0.3' }
   - { name: wp-cli/wp-cli, release: '^1.0.0' }
-
-pre_provision_tasks_dir:
-  - "{{ config_dir }}/../vendor/generoi/genero-conf/pre-provisioning/tasks/beetbox.yml"
 
 post_provision_tasks_dir:
   - "{{ config_dir }}/../vendor/generoi/genero-conf/post-provisioning/tasks/apache-env.yml"
