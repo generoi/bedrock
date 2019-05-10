@@ -104,14 +104,14 @@ task('cache:clear', [
     // 'cachetool:clear:apc',
 ]);
 
-task('build:assets', [
+task('build:assets', function () {
     if (!get('use_quick')) {
         run('cd {{release_path}}/{{theme_dir}} && {{bin/composer}} {{composer_options}}');
         run('cd {{release_path}}/{{theme_dir}} && {{bin/npm}} install --no-audit', ['timeout' => 1000]);
     }
     run('cd {{release_path}}/{{theme_dir}} && {{bin/npm}} run lint');
     run('cd {{release_path}} && {{bin/robo}} build:production');
-]);
+});
 
 desc('Deploy release');
 task('deploy', [
