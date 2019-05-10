@@ -4,36 +4,9 @@
 vagrant_hostname: <example-project>.test
 vagrant_machine_name: <example-project>
 
-# If you want to use NFS instead (two-way sync) create a local.config.yml file
-# where you override the vagrant_synced_folders variable with this value. This
-# file is not tracked in git so the change would be for you alone.
-#
-# vagrant_synced_folders:
-#   - local_path: .
-#     destination: /var/www/wordpress
-#     type: nfs
-#     create: true
-#
 vagrant_synced_folders:
   - local_path: .
     destination: /var/www/wordpress
-    id: wordpress
-    type: rsync
-    create: true
-    excluded_paths: ['.git/', '.tmp/', '/.build/', 'node_modules/', '/web/app/uploads/', '/web/app/cache/', '/web/app/acf-json/']
-    options_override:
-      rsync__chown: false
-      rsync__verbose: true
-      rsync__args: [
-        "--verbose", "--archive", "--delete", "--copy-links",
-        "--owner", "--group", "--usermap=*:vagrant", "--groupmap=*:www-data",
-      ]
-  - local_path: web/app/acf-json
-    destination: /var/www/wordpress/web/app/acf-json
-    type: nfs
-    create: true
-  - local_path: web/app/uploads
-    destination: /var/www/wordpress/web/app/uploads
     type: nfs
     create: true
 
