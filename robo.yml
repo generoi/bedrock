@@ -16,10 +16,9 @@ env:
     ssh: 'ssh -o ForwardAgent=yes'
     url: 'http://${machine_name}.web.staging.minasithil.genero.fi'
   '@production':
-    host: go2-1.multi.fi
+    host: '${machine_name}.fi'
     user: deploy
     path: '/home/www/${machine_name}/deploy/current'
-    ssh: 'ssh -o ForwardAgent=yes -o "ProxyCommand ssh deploy@minasithil.genero.fi nc %h %p 2> /dev/null"'
     url: 'https://${machine_name}.fi'
 command:
   build:
