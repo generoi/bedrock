@@ -21,8 +21,8 @@ Much of the philosophy behind Bedrock is inspired by the [Twelve-Factor App](htt
 
 * Drupal based security enhancements in `.htaccess` *(note: by default we block direct access to all PHP files, and whitelist the few that are allowed).*
 * Long term expire headers for production in `.htaccess` *(disabled in development)*.
-* Capistrano using our [capistrano-tasks](https://github.com/generoi/capistrano-tasks/) gem.
-* A `Makefile` for pulling and pushing uploads/databases between environments.
+* Builds tasks using our [generoi/robo-genero](https://github.com/generoi/robo-genero) package.
+* Deployer tasks using our [generoi/deployer-genero](https://github.com/generoi/deployer-genero) package.
 * A Vagrant environment using [Drupal VM](http://docs.drupalvm.com).
 * Composer tasks for building and linting the project. If needed you can customize these for your project.
 * Access to remote environments through [`wp-cli`](https://github.com/wp-cli/wp-cli) *(see [`wp-cli.yml`](https://github.com/generoi/bedrock/blob/genero/wp-cli.yml) for a few manual steps to improve DX)*.
@@ -35,10 +35,8 @@ Much of the philosophy behind Bedrock is inspired by the [Twelve-Factor App](htt
 * Vagrant 1.8.7 or higher
 * An updated verison of VirtualBox (on OS X)
 * NodeJS
-* Yarn
-* Bundler
 
-## Local project development
+## Local project development (Vagrant)
 
     git clone --recursive git@github.com:generoi/<example-project>.git <example-project>
     cd <example-project>
@@ -49,16 +47,25 @@ Much of the philosophy behind Bedrock is inspired by the [Twelve-Factor App](htt
     # Build the VM
     vagrant up
 
-    # To sync files from your computer to the virtual machine, run
-    vagrant rsync-auto
-
     # Fetch the remote database and uploads
-    robo db:pull @production
-    robo files:pull @production
+    ./vendor/bin/robo db:pull @production
+    ./vendor/bin/robo files:pull @production
 
     # When you run `composer install:development` a set of git hooks will be configured,
     # you can disable these on a per-commit basis with the -n (--no-verify) flag
     git commit --amend -n
+
+## Docker environment with ddev
+
+    # Clone the repository and install the development dependencies as
+    # mentioned in the Vagrant setup instructions
+
+    # Launch the docker container
+    ddev start
+
+    # Fetch the remote database and uploads
+    ./vendor/bin/robo db:pull @production --target=@docker
+    ./vendor/bin/robo files:pull @production
 
 #### Using WP-CLI locally
 
@@ -126,15 +133,14 @@ Usage (eg how to import a db from local)
     vim robo.yml
 
     # Setup the directory structure
-    cap staging wp:setup
+    ./vendor/bin/dep setup staging
 
     # Deploy your code, files and database
-    cap staging deploy
-    robo db:push @staging
-    robo files:push @staging
+    ./vendor/bin/robo db:push @staging
+    ./vendor/bin/robo files:push @staging
 
     # Deploy once more with database available
-    cap staging deploy
+    ./vendor/bin/dep deploy staging --quick
     ```
 
 8. Setup the production environment
@@ -146,36 +152,37 @@ Usage (eg how to import a db from local)
     vim robo.yml
 
     # Setup the directory structure
-    cap production wp:setup
+    ./vendor/bin/dep setup staging
 
     # Deploy your code, files and database
-    cap production deploy
-    robo db:push @production
-    robo files:push @production
+    ./vendor/bin/robo db:push @production
+    ./vendor/bin/robo files:push @production
 
     # Deploy once more with database available
-    cap production deploy
+    ./vendor/bin/dep deploy production --quick
     ```
 
 ## Deploying
 
-```sh
-# Deploy to staging
-cap staging deploy
+See [https://github.com/generoi/deployer-genero](https://github.com/generoi/deployer-genero).
 
-# Deploy to production
-cap production deploy
+```sh
+# Deploy to staging/production
+./vendor/bin/dep deploy staging
+./vendor/bin/dep deploy production
+
+# Each deploy re-installs all NPM packages in the theme, if you haven't made
+# any package.json changes since your last deploy you can use `--quick` flag
+# to skip this step
+./vendor/bin/dep deploy production --quick
 
 # Clear all caches on production
-cap production wp:cache
+./vendor/bin/dep cache:clear production
 # Clear only WP Super Cache cache
-cap production wp:cache:wpsc
-
-# Deploy assets only
-cap production assets:push
+./vendor/bin/dep cache:clear:wpsc production
 
 # Open a shell on production server
-cap production ssh
+./vendor/bin/dep ssh production
 ```
 
 ## Documentation
