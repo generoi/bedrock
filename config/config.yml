@@ -66,6 +66,15 @@ apache_vhosts:
 
 apache_vhosts_ssl: "{{ apache_vhosts }}"
 
+apache_mods_enabled:
+  - env.load
+  - expires.load
+  - headers.load
+  - ssl.load
+  - rewrite.load
+  - proxy.load
+  - proxy_fcgi.load
+
 php_version: "7.2"
 
 installed_extras:
@@ -84,23 +93,19 @@ installed_extras:
   # - ruby
   # - selenium
   # - solr
-  - tideways
-  - upload-progress
+  # - tideways
+  # - upload-progress
   # - varnish
   - xdebug
   # - xhprof
 
 # Add any extra apt or yum packages you would like installed.
 extra_packages:
-  # - libjpeg-turbo-progs
-  # - optipng
-  # - gifsicle
-  # - webp
   - vim
 
 composer_global_packages:
   - { name: hirak/prestissimo, release: '^0.3' }
-  - { name: wp-cli/wp-cli, release: '^1.0.0' }
+  - { name: wp-cli/wp-cli, release: '^2.0.0' }
 
 post_provision_tasks_dir:
   - "{{ config_dir }}/../vendor/generoi/genero-conf/post-provisioning/tasks/apache-env.yml"

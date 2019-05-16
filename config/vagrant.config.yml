@@ -20,10 +20,8 @@ vagrant_synced_folders:
 # the value. This file is not tracked in git.
 vagrant_memory: 1024
 
-# PHP Configuration. Currently-supported versions: 5.6, 7.0, 7.1
-# php_version: "5.6"
-php_xdebug_idekey: sublime.xdebug
+# See http://docs.drupalvm.com/en/latest/extras/xdebug/
+php_xdebug_idekey: VSCODE
+
 # XDebug configuration. Disable for better performance.
 php_xdebug_default_enable: 1
-# @todo Until next Drupal VM release
-php_xdebug_version: 2.6.0
