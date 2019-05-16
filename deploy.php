@@ -14,6 +14,7 @@ require 'vendor/generoi/deployer-genero/wordpress.php';
 $robo = \Grasmash\YamlExpander\Expander::parse(file_get_contents(__DIR__ . '/robo.yml'));
 
 set('scaffold_machine_name', $robo['machine_name']);
+set('scaffold_env_file', __DIR__ . '/.env.example');
 set('theme_dir', $robo['theme_path']);
 set('keep_releases', 5);
 set('branch', 'master');
