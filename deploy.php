@@ -101,13 +101,13 @@ task('cache:clear', [
     'cache:clear:wp:timber',
     'cache:clear:wp:wpsc',
     'cache:clear:wp:objectcache',
-    'cachetool:clear:opcache',
+    // 'cachetool:clear:opcache',
     // 'cachetool:clear:apc',
 ]);
 
 task('build:assets', function () {
+    run('cd {{release_path}}/{{theme_dir}} && {{bin/composer}} {{composer_options}}');
     if (!get('use_quick')) {
-        run('cd {{release_path}}/{{theme_dir}} && {{bin/composer}} {{composer_options}}');
         run('cd {{release_path}}/{{theme_dir}} && {{bin/npm}} install --no-audit', ['timeout' => 1000]);
     }
     run('cd {{release_path}}/{{theme_dir}} && {{bin/npm}} run lint');

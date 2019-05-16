@@ -2,23 +2,16 @@ path: web/wp
 server:
   docroot: web
 
-# Required for WP-CLI 2.4.0 SSH feature.
 require:
   - vendor/generoi/genero-conf/wp/wp-cli-pre-ssh.php
 
-# WP-CLI 2.4.0 SSH feature
-# ------------------------
-# Usage: `wp @staging rewrite flush`
-#
 # Requires the following in your ~/.ssh/config
 #
 #     Host <example-project>.test
 #       StrictHostKeyChecking no
 #       IdentityFile ~/.vagrant.d/insecure_private_key
-#       ForwardAgent yes
 #
 #     Host <example-project>.fi
-#       ForwardAgent yes
 #       ProxyCommand ssh deploy@minasithil.genero.fi -W %h:%p
 
 '@docker':
@@ -36,3 +29,5 @@ require:
 '@production':
   ssh: deploy@<example-project>.fi/home/www/<example-project>/deploy/current/web/wp
   url: <example-project>.fi
+  # bin_path: $HOME/.config/composer/vendor/bin
+  # php_path: /usr/bin/php72
