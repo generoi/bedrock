@@ -136,6 +136,10 @@ Config::define('WPMS_SMTP_AUTH', env('WPMS_SMTP_AUTH') ?: false);
  */
 Config::define('WP_DEBUG_DISPLAY', false);
 Config::define('SCRIPT_DEBUG', false);
+Config::define('WONOLOG_ENABLED', true);
+Config::define('WONOLOG_LOG_DIR', $root_dir . '/log');
+Config::define('WONOLOG_LOG_LEVEL', 'NOTICE');
+Config::define('WONOLOG_MAX_FILES', 30);
 ini_set('display_errors', 0);
 
 /**

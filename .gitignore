@@ -36,7 +36,8 @@ npm-debug.log
 .build
 
 # Logs
-log
+log/*
+!log/.gitkeep
 *.log
 
 # Sensitive files

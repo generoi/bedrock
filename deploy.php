@@ -21,8 +21,9 @@ set('branch', 'master');
 set('default_stage', 'production');
 set('ssh_multiplexing', true);
 
+set('cache_dir', 'web/app/cache');
 set('shared_files', ['.env']);
-set('shared_dirs', ['web/app/uploads', '{{cache_dir}}']);
+set('shared_dirs', ['web/app/uploads', 'log', '{{cache_dir}}']);
 set('writable_dirs', get('shared_dirs'));
 
 set('bin/robo', './vendor/bin/robo');

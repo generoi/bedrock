@@ -86,6 +86,7 @@
     "wpackagist-plugin/popups": "~1.8",
     "generoi/popups-extended": "^1.0.0-alpha",
 
+    "inpsyde/wonolog": "^1.0",
     "mcguffin/acf-quick-edit-fields": "^2.4",
     "wpackagist-plugin/duplicate-post": "^3.2",
     "wpackagist-plugin/debug-bar": "^1.0",
