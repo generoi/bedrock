@@ -51,7 +51,6 @@
 
     "generoi/advanced-custom-fields-pro": "^5.8",
     "wpackagist-plugin/limit-login-attempts-reloaded": "^2.6.1",
-    "wpackagist-plugin/scalable-vector-graphics-svg": "~3.4",
     "wpackagist-plugin/timber-library": "~1.9.0",
     "wpackagist-plugin/wp-sanitize-file-name-plus": "~1.0",
     "wpackagist-plugin/stream": "~3.2",
@@ -89,6 +88,7 @@
     "mcguffin/acf-quick-edit-fields": "^2.4",
     "wpackagist-plugin/duplicate-post": "^3.2",
     "wpackagist-plugin/show-environment-in-admin-bar": "^1.1",
+    "soberwp/intervention": "^1.2",
     "wpackagist-plugin/debug-bar": "^1.0",
     "wpackagist-plugin/kint-debugger": "~1.0",
     "wpackagist-plugin/regenerate-thumbnails": "~3.0",
