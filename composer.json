@@ -88,6 +88,7 @@
 
     "mcguffin/acf-quick-edit-fields": "^2.4",
     "wpackagist-plugin/duplicate-post": "^3.2",
+    "wpackagist-plugin/show-environment-in-admin-bar": "^1.1",
     "wpackagist-plugin/debug-bar": "^1.0",
     "wpackagist-plugin/kint-debugger": "~1.0",
     "wpackagist-plugin/regenerate-thumbnails": "~3.0",
@@ -126,7 +127,7 @@
       "post-merge": "composer install:development"
     },
     "installer-paths": {
-      "web/app/mu-plugins/{$name}/": ["type:wordpress-muplugin"],
+      "web/app/mu-plugins/{$name}/": ["type:wordpress-muplugin", "wpackagist-plugin/show-environment-in-admin-bar"],
       "web/app/plugins/{$name}/": ["type:wordpress-plugin"],
       "web/app/themes/{$name}/": ["type:wordpress-theme"]
     },
