@@ -124,6 +124,26 @@ add_filter('the_seo_framework_custom_post_type_support', function () {
  */
 add_filter('the_seo_framework_show_seo_column', '__return_false');
 
+/**
+ * Show Environment in Admin Bar color is backwards from a clients perspective
+ */
+add_action('wp_enqueue_scripts', __NAMESPACE__ . '\\shc_styling', 11);
+add_action('admin_enqueue_scripts', __NAMESPACE__ . '\\shc_styling', 11);
+
+function shc_styling() {
+    $styles = "
+        #wpadminbar .ab-top-menu .shc-show-env.prod .ab-item,
+        #wpadminbar .ab-top-menu .shc-show-env.prod:hover .ab-item {
+            background-color: #46b450;
+        }
+        #wpadminbar .ab-top-menu .shc-show-env.dev .ab-item,
+        #wpadminbar .ab-top-menu .shc-show-env.dev:hover .ab-item {
+            background-color: #dc3232;
+        }
+    ";
+    wp_add_inline_style('shc-show-env', $styles);
+}
+
 /*
  * @see https://github.com/soberwp/intervention/
  */
