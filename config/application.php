@@ -119,6 +119,8 @@ Config::define('WP_CACHE', true);
 Config::define('WPCACHEHOME', Config::get('WP_CONTENT_DIR') . '/plugins/wp-super-cache/');
 Config::define('WP_HIDE_DONATION_BUTTONS', true);
 Config::define('EWWW_IMAGE_OPTIMIZER_SKIP_BUNDLE', true);
+// Disable ACF Admin UI when in production
+Config::define('ACF_LITE', true);
 // Do not connect Jetpack to a WP account.
 Config::define('JETPACK_DEV_DEBUG', true);
 
