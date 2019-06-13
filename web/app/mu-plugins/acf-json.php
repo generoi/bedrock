@@ -9,6 +9,12 @@ Author URI:   https://genero.fi/
 License:      MIT License
 */
 
+namespace Genero\Site;
+
+if (!is_blog_installed()) {
+    return;
+}
+
 add_filter('acf/settings/save_json', function ($path) {
     return WP_CONTENT_DIR . '/acf-json';
 });
