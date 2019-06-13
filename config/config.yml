@@ -105,7 +105,7 @@ extra_packages:
 
 composer_global_packages:
   - { name: hirak/prestissimo, release: '^0.3' }
-  - { name: wp-cli/wp-cli, release: '^2.0.0' }
+  - { name: wp-cli/wp-cli-bundle, release: '^2.0.0' }
 
 post_provision_tasks_dir:
   - "{{ config_dir }}/../vendor/generoi/genero-conf/post-provisioning/tasks/apache-env.yml"
