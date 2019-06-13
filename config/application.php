@@ -121,6 +121,8 @@ Config::define('WPCACHEHOME', Config::get('WP_CONTENT_DIR') . '/plugins/wp-super
 Config::define('WP_HIDE_DONATION_BUTTONS', true);
 Config::define('EWWW_IMAGE_OPTIMIZER_SKIP_BUNDLE', true);
 Config::define('WP_DEFAULT_THEME', '<example-project>/resources');
+// Do not connect Jetpack to a WP account.
+Config::define('JETPACK_DEV_DEBUG', true);
 
 /** WP Mail SMTP hardcoded configuration */
 Config::define('WPMS_ON', true);
