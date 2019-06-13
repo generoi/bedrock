@@ -9,6 +9,7 @@ vagrant_synced_folders:
     destination: /var/www/wordpress
     type: nfs
     create: true
+    mount_options: ['nolock', 'noatime', 'actimeo=1']
 
 # If you need to use cron jobs.
 # drupalvm_cron_jobs:
