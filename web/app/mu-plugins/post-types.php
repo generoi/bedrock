@@ -1,6 +1,6 @@
 <?php
 /*
-Plugin Name:  Site: Register Post Types
+Plugin Name:  Register Post Types
 Plugin URI:   https://genero.fi
 Description:  Register Post Types and Taxonomies for site
 Version:      1.0.0
@@ -24,7 +24,7 @@ if (!is_blog_installed()) {
  * @see https://github.com/jjgrainger/PostTypes
  * @see https://developer.wordpress.org/resource/dashicons/
  */
-class CustomPostTypes
+class PostTypes
 {
     private static $instance = null;
 
@@ -89,6 +89,7 @@ class CustomPostTypes
     {
         $person = new PostType('person', [
             'has_archive' => false,
+            'show_in_rest' => true,
             'supports' => ['title', 'thumbnail'],
         ]);
         $person->icon('dashicons-admin-users');
@@ -121,4 +122,4 @@ class CustomPostTypes
     }
 }
 
-CustomPostTypes::getInstance();
+PostTypes::getInstance();

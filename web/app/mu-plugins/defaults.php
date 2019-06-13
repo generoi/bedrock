@@ -130,7 +130,8 @@ add_filter('the_seo_framework_show_seo_column', '__return_false');
 add_action('wp_enqueue_scripts', __NAMESPACE__ . '\\shc_styling', 11);
 add_action('admin_enqueue_scripts', __NAMESPACE__ . '\\shc_styling', 11);
 
-function shc_styling() {
+function shc_styling()
+{
     $styles = "
         #wpadminbar .ab-top-menu .shc-show-env.prod .ab-item,
         #wpadminbar .ab-top-menu .shc-show-env.prod:hover .ab-item {
