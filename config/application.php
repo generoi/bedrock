@@ -111,6 +111,7 @@ Config::define('NONCE_SALT', env('NONCE_SALT'));
 Config::define('AUTOMATIC_UPDATER_DISABLED', true);
 Config::define('DISABLE_WP_CRON', env('DISABLE_WP_CRON') ?: false);
 Config::define('WP_POST_REVISIONS', 10);
+Config::define('WP_DEFAULT_THEME', '<example-project>/resources');
 // Disable the plugin and theme file editor in the admin
 Config::define('DISALLOW_FILE_EDIT', true);
 // Disable plugin and theme updates and installation from the admin
@@ -120,7 +121,6 @@ Config::define('WP_CACHE', true);
 Config::define('WPCACHEHOME', Config::get('WP_CONTENT_DIR') . '/plugins/wp-super-cache/');
 Config::define('WP_HIDE_DONATION_BUTTONS', true);
 Config::define('EWWW_IMAGE_OPTIMIZER_SKIP_BUNDLE', true);
-Config::define('WP_DEFAULT_THEME', '<example-project>/resources');
 // Do not connect Jetpack to a WP account.
 Config::define('JETPACK_DEV_DEBUG', true);
 

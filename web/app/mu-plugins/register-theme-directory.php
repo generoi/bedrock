@@ -9,6 +9,8 @@ Author URI:   https://roots.io/
 License:      MIT License
 */
 
+namespace Genero\Site;
+
 if (!defined('WP_DEFAULT_THEME')) {
     register_theme_directory(ABSPATH . 'wp-content/themes');
 }

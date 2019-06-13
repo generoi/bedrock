@@ -9,9 +9,16 @@ Author URI:   https://genero.fi/
 License:      MIT License
 */
 
+namespace Genero\Site;
+
+if (!is_blog_installed()) {
+    return;
+}
+
 /**
  * Remove the version number of WP so that hackers cant use that to their
  * advantage.
+ *
  * @see https://premium.wpmudev.org/blog/how-to-hide-your-wordpress-version-number/
  * @see http://frankiejarrett.com/2012/05/how-to-hide-your-wordpress-version-number-completely/
  */
@@ -53,5 +60,5 @@ function genero_remove_wp_version_strings($src)
     }
     return $src;
 }
-add_filter('script_loader_src', 'genero_remove_wp_version_strings');
-add_filter('style_loader_src', 'genero_remove_wp_version_strings');
+add_filter('script_loader_src', __NAMESPACE__ . '\\genero_remove_wp_version_strings');
+add_filter('style_loader_src', __NAMESPACE__ . '\\genero_remove_wp_version_strings');
