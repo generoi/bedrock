@@ -125,6 +125,20 @@ add_filter('the_seo_framework_custom_post_type_support', function () {
 add_filter('the_seo_framework_show_seo_column', '__return_false');
 
 /**
+ * Add edit page links to admin toolbar when "page for post type" plugin is used.
+ */
+add_action('admin_bar_menu', function () {
+    global $wp_admin_bar;
+    if (function_exists('get_page_for_post_type') && is_archive() && $page_id = get_page_for_post_type()) {
+        $wp_admin_bar->add_node([
+            'id' => 'edit',
+            'title' => get_post_type_object(get_post_type($page_id))->labels->edit_item,
+            'href' => get_edit_post_link($page_id),
+        ]);
+    }
+}, 100);
+
+/**
  * Show Environment in Admin Bar color is backwards from a clients perspective
  */
 add_action('wp_enqueue_scripts', __NAMESPACE__ . '\\shc_styling', 11);

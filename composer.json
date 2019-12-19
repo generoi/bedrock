@@ -53,6 +53,7 @@
     "wpackagist-plugin/post-types-order": "~1.9",
     "wpackagist-plugin/taxonomy-terms-order": "^1.5",
     "wpackagist-plugin/wp-smartcrop": "~2.0",
+    "humanmade/page-for-post-type": "dev-master",
 
     "generoi/gravityforms": "~2.1",
     "generoi/gravityformsgutenberg": "~1.0-rc",
