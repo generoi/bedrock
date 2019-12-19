@@ -110,6 +110,12 @@ add_action('wp_dashboard_setup', function () {
  * Remove nagging notices
  */
 add_filter('pre_site_option_duplicate_post_show_notice', '__return_zero');
+add_filter('pre_option_CPT_configured', '__return_true');
+add_filter('pre_site_option_ewww_image_optimizer_tracking_notice', '__return_true');
+add_filter('pre_site_option_ewww_image_optimizer_enable_help_notice', '__return_true');
+add_filter('pre_option_ewww_image_optimizer_tracking_notice', '__return_true');
+add_filter('pre_option_ewww_image_optimizer_enable_help_notice', '__return_true');
+add_filter('pre_option_scporder_notice', '__return_true');
 remove_action('admin_notices', 'woothemes_updater_notice');
 remove_action('admin_notices', 'widgetopts_admin_notices');
 add_action('admin_head', function () {
