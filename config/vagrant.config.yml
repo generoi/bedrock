@@ -4,10 +4,13 @@
 vagrant_hostname: <example-project>.test
 vagrant_machine_name: <example-project>
 
+# On windows this will automatically be changed to `vboxsf`
+# @see Vagrantfile.local
+vagrant_synced_folder_default_type: nfs
 vagrant_synced_folders:
   - local_path: .
     destination: /var/www/wordpress
-    type: nfs
+    type: "{{ vagrant_synced_folder_default_type }}"
     create: true
     mount_options: ['nolock', 'noatime', 'actimeo=1']
 

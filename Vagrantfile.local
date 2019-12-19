@@ -6,3 +6,13 @@
 if Vagrant.has_plugin?('vagrant-vbguest')
   config.vbguest.auto_update = false
 end
+
+# Swap nfs to vboxsf on Windows.
+if Vagrant::Util::Platform.wsl? || (Vagrant::Util::Platform.windows? && !Vagrant.has_plugin?('vagrant-winnfsd'))
+  config.vm.synced_folders.each do |path, synced_folder|
+    next unless synced_folder[:type] == :nfs
+
+    config.vm.synced_folders[path][:type] = ''.to_sym
+    config.vm.synced_folders[path][:mount_options] = ['dmode=775','fmode=764']
+  end
+end
