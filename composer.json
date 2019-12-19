@@ -43,6 +43,7 @@
     "koodimonni-language/sv_se": "*",
 
     "generoi/advanced-custom-fields-pro": "^5.8",
+    "wpackagist-plugin/safe-svg": "^1.9",
     "wpackagist-plugin/limit-login-attempts-reloaded": "^2.6.1",
     "wpackagist-plugin/timber-library": "~1.13.0",
     "wpackagist-plugin/wp-sanitize-file-name-plus": "~1.0",
