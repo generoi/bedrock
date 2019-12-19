@@ -1,6 +1,6 @@
 # <example-project>
 
-> **Note, here's a [diff of commits availabe upstream](https://github.com/generoi/bedrock/compare/genero...roots:master)**
+> **Note, here's a [diff](https://github.com/generoi/bedrock/compare/genero...roots:master) of upstream commits missing from our bedrock fork**
 
 Bedrock is a modern WordPress stack that helps you get started with the best development tools and project structure.
 
@@ -33,7 +33,7 @@ Much of the philosophy behind Bedrock is inspired by the [Twelve-Factor App](htt
 * Composer - [Install](https://getcomposer.org/doc/00-intro.md#installation-linux-unix-osx)
 * Ansible 2.2.0.0 or higher
 * Vagrant 1.8.7 or higher
-* An updated verison of VirtualBox (on OS X)
+* An updated version of VirtualBox
 * NodeJS
 
 ## Local project development (Vagrant)
@@ -112,6 +112,10 @@ Usage (eg how to import a db from local)
 
     # Just create
     composer create-project --keep-vcs --repository-url="https://packagist.minasithil.genero.fi" generoi/bedrock:dev-genero <project-dir>
+
+    # If you cloned the repo rather than used `create-project` you'll need to
+    # replace the placeholder names with a project machine name.
+    ./vendor/bin/robo search:replace
     ```
 
 2. Setup the VM
@@ -119,9 +123,6 @@ Usage (eg how to import a db from local)
     ```sh
     # Build the VM
     vagrant up
-
-    # To sync files from your computer to the virtual machine, run
-    vagrant rsync-auto
     ```
 
 3. Setup the staging environment
@@ -133,6 +134,7 @@ Usage (eg how to import a db from local)
     vim robo.yml
 
     # Setup the directory structure
+    # For now you'll need to create the database manually.
     ./vendor/bin/dep setup staging
 
     # Deploy your code, files and database
@@ -152,6 +154,7 @@ Usage (eg how to import a db from local)
     vim robo.yml
 
     # Setup the directory structure
+    # For now you'll need to create the database manually.
     ./vendor/bin/dep setup staging
 
     # Deploy your code, files and database
