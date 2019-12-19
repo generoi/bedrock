@@ -6,10 +6,6 @@ require 'recipe/wordpress.php';
 require 'recipe/cachetool.php';
 require 'recipe/rsync.php';
 require 'recipe/deploy/rollback.php';
-require 'vendor/generoi/deployer-genero/common.php';
-require 'vendor/generoi/deployer-genero/build.php';
-require 'vendor/generoi/deployer-genero/setup.php';
-require 'vendor/generoi/deployer-genero/wordpress.php';
 
 $robo = \Grasmash\YamlExpander\Expander::parse(file_get_contents(__DIR__ . '/robo.yml'));
 
@@ -22,8 +18,8 @@ set('default_stage', 'production');
 set('ssh_multiplexing', true);
 
 set('shared_files', ['.env']);
-set('shared_dirs', ['web/app/uploads', '{{cache_dir}}']);
-set('writable_dirs', get('shared_dirs'));
+set('shared_dirs', ['web/app/uploads']);
+set('writable_dirs', array_merge(get('shared_dirs'), ['{{theme_dir}}/storage', 'web/app/cache']));
 
 set('bin/robo', './vendor/bin/robo');
 set('bin/wp', './vendor/bin/wp');
@@ -32,11 +28,29 @@ set('bin/npm', function () {
 });
 
 /**
+ * Deploy configuration
+ */
+set('rsync_src', '{{build_artifact_dir}}');
+set('rsync_dest', '{{release_path}}');
+set('rsync', [
+    'exclude'       => [],
+    'include'       => [],
+    'filter'        => [],
+    'exclude-file'  => false,
+    'include-file'  => false,
+    'filter-file'   => false,
+    'filter-perdir' => false,
+    'flags'         => 'rv',
+    'options'       => ['delete', 'links'],
+    'timeout'       => 3600,
+]);
+
+/**
  * Build configuration
  */
 set('build_repository', __DIR__); // @todo github
-set('build_shared_dirs', ['{{theme_dir}}/node_modules']);
-set('build_copy_dirs', ['{{theme_dir}}/vendor', 'vendor']);
+set('build_shared_dirs', []);
+set('build_copy_dirs', ['{{theme_dir}}/vendor', 'vendor', '{{theme_dir}}/node_modules']);
 set('build_path', __DIR__ . '/.build');
 set('build_artifact_dir', '{{build_path}}/artifact');
 set('build_artifact_exclude', [
@@ -55,23 +69,10 @@ set('build_artifact_exclude', [
     '/Vagrantfile*',
 ]);
 
-/**
- * Deploy configuration
- */
-set('rsync_src', '{{build_artifact_dir}}');
-set('rsync_dest', '{{release_path}}');
-set('rsync', [
-    'exclude'       => [],
-    'include'       => [],
-    'filter'        => [],
-    'exclude-file'  => false,
-    'include-file'  => false,
-    'filter-file'   => false,
-    'filter-perdir' => false,
-    'flags'         => 'rv',
-    'options'       => ['delete'],
-    'timeout'       => 3600,
-]);
+require 'vendor/generoi/deployer-genero/common.php';
+require 'vendor/generoi/deployer-genero/build.php';
+require 'vendor/generoi/deployer-genero/setup.php';
+require 'vendor/generoi/deployer-genero/wordpress.php';
 
 /**
  * Hosts
@@ -80,8 +81,9 @@ if (!empty($prod = $robo['env']['@production'])) {
     host('production')
         ->hostname($prod['host'])
         ->user($prod['user'])
-        // ->set('http_user', 'apache')
         ->set('deploy_path', dirname($prod['path']))
+        // ->set('http_user', 'apache')
+        // ->set('bin/wp', '/usr/local/bin/wp')
         ->set('cachetool', '127.0.0.1:11000');
 }
 
@@ -98,11 +100,11 @@ if (!empty($staging = $robo['env']['@staging'])) {
  */
 desc('Clear caches');
 task('cache:clear', [
-    'cache:clear:wp:timber',
     'cache:clear:wp:wpsc',
+    'cachetool:clear:opcache',
     'cache:clear:wp:objectcache',
-    // 'cachetool:clear:opcache',
-    // 'cachetool:clear:apc',
+    'cache:clear:wp:acorn',
+    'cache:wp:acorn',
 ]);
 
 task('build:assets', function () {
@@ -112,6 +114,7 @@ task('build:assets', function () {
     }
     run('cd {{release_path}}/{{theme_dir}} && {{bin/npm}} run lint');
     run('cd {{release_path}} && {{bin/robo}} build:production');
+    run('ls {{release_path}}/{{theme_dir}}/dist');
 });
 
 desc('Deploy release');
