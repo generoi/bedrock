@@ -29,3 +29,4 @@ php_xdebug_idekey: VSCODE
 
 # XDebug configuration. Disable for better performance.
 php_xdebug_default_enable: 1
+php_xdebug_remote_autostart: "true"
