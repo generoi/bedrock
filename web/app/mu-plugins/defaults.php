@@ -16,6 +16,12 @@ use function \Sober\Intervention\intervention;
 if (!is_blog_installed()) {
     return;
 }
+/**
+ * Entirely disable XMLRPC.
+ */
+if (defined('XMLRPC_REQUEST') && XMLRPC_REQUEST) {
+    exit;
+}
 
 /**
  * Disable dashboard browse-happy requests / widget
