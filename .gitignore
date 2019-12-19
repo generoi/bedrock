@@ -17,6 +17,9 @@ web/genero-status.php
 # WordPress
 web/wp
 
+# Logs
+*.log
+
 # Dotenv
 .env
 .env.*

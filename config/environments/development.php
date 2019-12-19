@@ -18,4 +18,4 @@ Config::define('SHC_SHOW_ENV_DEV', 'dev');
 /** Access /wp/wp-admin/maint/repair.php **/
 Config::define('WP_ALLOW_REPAIR', true);
 
-ini_set('display_errors', 1);
+ini_set('display_errors', '1');

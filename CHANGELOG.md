@@ -1,3 +1,26 @@
+### 1.12.8: 2019-09-05
+
+* Update to WordPress 5.2.3 ([#466](https://github.com/roots/bedrock/pull/466))
+* Remove `phpcs.xml` from `.gitattributes` ([#464](https://github.com/roots/bedrock/pull/464))
+* `ini_set()` fixes ([#463](https://github.com/roots/bedrock/pull/463))
+* Editorconfig updates ([#457](https://github.com/roots/bedrock/pull/457))
+* Bump `composer/installers` ([#462](https://github.com/roots/bedrock/pull/462))
+* Better default composer options ([#456](https://github.com/roots/bedrock/pull/456))
+* Ignore `.log` files ([#440](https://github.com/roots/bedrock/pull/440))
+* Change to CircleCI ([82945d8](https://github.com/roots/bedrock/commit/82945d803d10cb072b7e786e0a81094ccb2d067b), [#460](https://github.com/roots/bedrock/pull/460))
+
+### 1.12.7: 2019-06-19
+
+* Update to WordPress 5.2.2 ([#444](https://github.com/roots/bedrock/pull/444))
+* Bump `oscarotero/env` ([#443](https://github.com/roots/bedrock/pull/443))
+* Bump `vlucas/phpdotenv` ([#442](https://github.com/roots/bedrock/pull/442))
+* Bump `squizlabs/php_codesniffer` ([#441](https://github.com/roots/bedrock/pull/441))
+* Remove unnecessary static variables ([#437](https://github.com/roots/bedrock/pull/437))
+
+### 1.12.6: 2019-05-21
+
+* Update to WordPress 5.2.1 ([#436](https://github.com/roots/bedrock/pull/436))
+
 ### 1.12.5: 2019-05-14
 
 * Disable WordPress' built-in fatal error handler on development ([#432](https://github.com/roots/bedrock/pull/434))
