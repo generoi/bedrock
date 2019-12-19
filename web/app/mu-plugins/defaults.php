@@ -137,6 +137,34 @@ add_filter('the_seo_framework_custom_post_type_support', function () {
 add_filter('the_seo_framework_show_seo_column', '__return_false');
 
 /**
+ * Set SEO Framework metabox priority to low so it's shown at the bottom.
+ */
+add_filter('the_seo_framework_metabox_priority', function () {
+    return 'low';
+});
+add_filter('the_seo_framework_term_metabox_priority', function () {
+    return 100;
+});
+
+/**
+ * Move ACF fields above other fields on taxonomy term forms.
+ */
+add_action('admin_enqueue_scripts', function () {
+    global $wp_filter;
+    $taxonomy = get_current_screen()->taxonomy;
+    if (empty($wp_filter["{$taxonomy}_edit_form"]->callbacks['10'])) {
+        return;
+    }
+    foreach ($wp_filter["{$taxonomy}_edit_form"]->callbacks['10'] as $callback) {
+        if (!empty($callback['function'][0]) && $callback['function'][0] instanceof \acf_form_taxonomy) {
+            remove_action("{$taxonomy}_edit_form", $callback['function'], 10, 2);
+            add_action("{$taxonomy}_edit_form", $callback['function'], 9, 2);
+            break;
+        }
+    }
+}, 11);
+
+/**
  * Add edit page links to admin toolbar when "page for post type" plugin is used.
  */
 add_action('admin_bar_menu', function () {
