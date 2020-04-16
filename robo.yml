@@ -37,6 +37,7 @@ command:
     theme:
       options:
         theme-repository: 'git@github.com:generoi/sage.git'
+        theme-branch: '10.0.0-dev'
   search:
     replace:
       options:
