@@ -67,7 +67,6 @@
     "generoi/wp-genero-gdpr": "~1.0-alpha",
 
     "generoi/polylang-pro": "~2.2",
-    "wpackagist-plugin/integrate-gravity-forms-polylang": "^0.4",
 
     "wpackagist-plugin/wp-super-cache": "~1.7.0",
     "wpackagist-plugin/wp-performance-pack": "~2.0",
