@@ -1,0 +1,26 @@
+---
+- name: Ensure guest ~/.ssh directory exists.
+  file:
+    path: "/home/{{ drupalvm_user }}/.ssh"
+    state: directory
+    owner: "{{ drupalvm_user }}"
+    group: "{{ drupalvm_user }}"
+    mode: 0700
+
+- name: Ensure guest ~/.ssh/config file exists.
+  file:
+    path: "/home/{{ drupalvm_user }}/.ssh/config"
+    state: touch
+    owner: "{{ drupalvm_user }}"
+    group: "{{ drupalvm_user }}"
+    mode: 0600
+
+- name: Add site host entries to guest ~/.ssh/config
+  blockinfile:
+    dest: "/home/{{ drupalvm_user }}/.ssh/config"
+    marker: "# {mark} ANSIBLE MANAGED BLOCK {{ vagrant_machine_name }} remotes"
+    block: |
+      Host go2-1.multi.fi
+        ForwardAgent yes
+        ProxyCommand ssh deploy@minasithil.genero.fi -W %h:%p
+  become: no

@@ -85,3 +85,7 @@ task:
       settings:
         progress: true
         humanReadable: true
+  Wp:
+    WpCliStack:
+      settings:
+        executable: './vendor/bin/wp'

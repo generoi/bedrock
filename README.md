@@ -38,6 +38,8 @@ Much of the philosophy behind Bedrock is inspired by the [Twelve-Factor App](htt
 
 ## Local project development (Vagrant)
 
+#### Working from host machine (macOS)
+
     git clone --recursive git@github.com:generoi/<example-project>.git <example-project>
     cd <example-project>
 
@@ -54,6 +56,40 @@ Much of the philosophy behind Bedrock is inspired by the [Twelve-Factor App](htt
     # When you run `composer install:development` a set of git hooks will be configured,
     # you can disable these on a per-commit basis with the -n (--no-verify) flag
     git commit --amend -n
+
+    # Watch/build theme assets
+    cd web/app/themes/<example-project>
+    npm run build
+    npm run build:production
+    npm run start
+
+#### Working from guest machine (Windows)
+
+    git clone --recursive git@github.com:generoi/<example-project>.git <example-project>
+    cd <example-project>
+
+    # Install composer dependencies
+    composer install
+
+    # Build the VM
+    vagrant up
+
+    # From now on run all commands from within the VM
+    vagrant ssh
+    cd /var/www/wordpress
+
+    # Install theme composer dependencies and development tools
+    composer install:development
+
+    # Fetch the remote database and uploads
+    ./vendor/bin/robo db:sync @production self
+    ./vendor/bin/robo files:pull @production
+
+    # Watch/build theme assets
+    cd web/app/themes/<example-project>
+    npm run build
+    npm run build:production
+    npm run start
 
 ## Docker environment with ddev
 
