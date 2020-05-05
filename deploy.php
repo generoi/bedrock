@@ -51,7 +51,7 @@ set('rsync', [
 set('build_repository', __DIR__); // @todo github
 set('build_shared_dirs', []);
 set('build_copy_dirs', ['{{theme_dir}}/vendor', 'vendor', '{{theme_dir}}/node_modules']);
-set('build_path', __DIR__ . '/.build');
+set('build_path', '/tmp/dep-' . basename(__DIR__));
 set('build_artifact_dir', '{{build_path}}/artifact');
 set('build_artifact_exclude', [
     '.git',
