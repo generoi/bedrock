@@ -32,9 +32,16 @@ Much of the philosophy behind Bedrock is inspired by the [Twelve-Factor App](htt
 * PHP >= 7.2
 * Composer - [Install](https://getcomposer.org/doc/00-intro.md#installation-linux-unix-osx)
 * Vagrant >= 1.8.7
-* VirtualBox >= 6.0.14
+* VirtualBox >= 6.0.14 (=6.0.14 for Windows development)
 * Ansible >= 2.5 (for faster provisioning but not required)
 * Node.js >= 12 (if running commands from the host machine)
+
+# Additional requirements (Windows)
+
+*  Windows Subsystem for Linux (WSL)
+    * https://docs.microsoft.com/en-us/windows/wsl/install-win10
+* Vagrant installed in the WSL     
+    * The version *must match* the version in Windows itself
 
 ## Local project development (Vagrant)
 
@@ -42,7 +49,7 @@ Much of the philosophy behind Bedrock is inspired by the [Twelve-Factor App](htt
 
     git clone --recursive git@github.com:generoi/<example-project>.git <example-project>
     cd <example-project>
-
+    
     # Install composer dependencies and development tools
     composer install:development
 
@@ -63,23 +70,40 @@ Much of the philosophy behind Bedrock is inspired by the [Twelve-Factor App](htt
     npm run build:production
     npm run start
 
-#### Working from guest machine (Windows)
+#### Working from guest machine (Windows WSL)
 
+    # Clone the project
     git clone --recursive git@github.com:generoi/<example-project>.git <example-project>
-    cd <example-project>
-
+        
+    # Start and login to the WSL 
+    Install php 7.2
+    Install composer
+    
+    # Add records to the ssh config...
+    Here instructions what and from where to get them
+    
+    # Set the required environment variables
+    export VAGRANT_WSL_ENABLE_WINDOWS_ACCESS="1" 
+    export PATH="$PATH:/mnt/<windows-drive>/<path-to-the-virtualbox-directory-on-windows>"
+    export VAGRANT_WSL_WINDOWS_ACCESS_USER_HOME_PATH="<your-user-home-directory-on-wsl>"
+    
+    # Make sure you have ssh-agent running and that your new (or existing) public key is installed where needed 
+    eval $(ssh-agent -s)
+    ssh-add <path-to-your-private-key>
+       
+    # Prepare the project 
+    cd /mnt/<drive>/<example-project> (resides on windows drive)
+    
     # Install composer dependencies
-    composer install
-
+    composer install:development
+    
+    # If running into missing php extensions install them, usually with:
+    apt-get install php<version>-<extension> (e.g. apt-get install php7.2-curl)
+    
+    Run composer install:development until no hiccups are encounterd
+        
     # Build the VM
     vagrant up
-
-    # From now on run all commands from within the VM
-    vagrant ssh
-    cd /var/www/wordpress
-
-    # Install theme composer dependencies and development tools
-    composer install:development
 
     # Fetch the remote database and uploads
     ./vendor/bin/robo db:sync @production self
