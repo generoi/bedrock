@@ -29,12 +29,12 @@ Much of the philosophy behind Bedrock is inspired by the [Twelve-Factor App](htt
 
 ## Requirements
 
-* PHP >= 7.1
+* PHP >= 7.2
 * Composer - [Install](https://getcomposer.org/doc/00-intro.md#installation-linux-unix-osx)
-* Ansible 2.2.0.0 or higher
-* Vagrant 1.8.7 or higher
-* An updated version of VirtualBox
-* NodeJS
+* Vagrant >= 1.8.7
+* VirtualBox >= 6.0.14
+* Ansible >= 2.5 (for faster provisioning but not required)
+* Node.js >= 12 (if running commands from the host machine)
 
 ## Local project development (Vagrant)
 
