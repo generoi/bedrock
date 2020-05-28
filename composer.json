@@ -152,7 +152,7 @@
     "test": "Generoi\\Robo\\Composer\\ComposerScript::test",
     "install:development": [
       "@composer install",
-      "robo install:development",
+      "vendor/bin/robo install:development",
       "vendor/bin/cghooks update"
     ]
   }

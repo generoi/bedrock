@@ -76,6 +76,7 @@ apache_mods_enabled:
   - proxy_fcgi.load
 
 php_version: "7.2"
+nodejs_version: "12.x"
 
 installed_extras:
   - adminer
@@ -87,7 +88,7 @@ installed_extras:
   - mailhog
   # - memcached
   # - newrelic
-  # - nodejs
+  - nodejs
   # - pimpmylog
   # - redis
   # - ruby
@@ -112,3 +113,4 @@ post_provision_tasks_dir:
   - "{{ config_dir }}/../vendor/generoi/genero-conf/post-provisioning/tasks/dotfiles.yml"
   - "{{ config_dir }}/../vendor/generoi/genero-conf/post-provisioning/tasks/wp-directories.yml"
   - "{{ config_dir }}/../vendor/generoi/genero-conf/post-provisioning/tasks/ssh-config.yml"
+  - "{{ config_dir }}/provisioning/ssh-config.yml"

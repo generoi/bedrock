@@ -29,14 +29,23 @@ Much of the philosophy behind Bedrock is inspired by the [Twelve-Factor App](htt
 
 ## Requirements
 
-* PHP >= 7.1
+* PHP >= 7.2
 * Composer - [Install](https://getcomposer.org/doc/00-intro.md#installation-linux-unix-osx)
-* Ansible 2.2.0.0 or higher
-* Vagrant 1.8.7 or higher
-* An updated version of VirtualBox
-* NodeJS
+* Vagrant >= 1.8.7
+* VirtualBox >= 6.0.14 (=6.0.14 for Windows development)
+* Ansible >= 2.5 (for faster provisioning but not required)
+* Node.js >= 12 (if running commands from the host machine)
+
+# Additional requirements (Windows)
+
+*  Windows Subsystem for Linux (WSL)
+    * https://docs.microsoft.com/en-us/windows/wsl/install-win10
+* Vagrant installed in the WSL
+    * The version *must match* the version in Windows itself
 
 ## Local project development (Vagrant)
+
+#### Working from host machine (macOS)
 
     git clone --recursive git@github.com:generoi/<example-project>.git <example-project>
     cd <example-project>
@@ -54,6 +63,85 @@ Much of the philosophy behind Bedrock is inspired by the [Twelve-Factor App](htt
     # When you run `composer install:development` a set of git hooks will be configured,
     # you can disable these on a per-commit basis with the -n (--no-verify) flag
     git commit --amend -n
+
+    # Watch/build theme assets
+    cd web/app/themes/<example-project>
+    npm run build
+    npm run build:production
+    npm run start
+
+#### Working with WSL (Windows)
+
+Note: Below "WSL" refers to Windows Subsystem for Linux, and "Windows" refers to
+native, non-WSL Windows.
+
+The basic setup for a Windows + WSL + Vagrant -based solution is as follows:
+
+- Edit your files, manage your repository and access the site in Windows.
+- Run WSL in Windows. WSL is used for installing dependencies and running
+  development commands. Use WSL for all `composer`, `robo` and `npm` commands,
+  in order to avoid vboxsf issues in Vagrant.
+- Run Vagrant in WSL.  Vagrant is used for hosting WordPress and running
+  deployment commands. Use vagrant for the `dep` command, in order to avoid
+  performance issues in WSL.
+
+With WSL and Vagrant installed in Windows, follow these steps:
+
+    # Clone the project
+    git clone --recursive git@github.com:generoi/<example-project>.git <example-project>
+
+    # Start and login to the WSL. The rest of the commands are run in WSL.
+
+    # Install dependencies
+    sudo apt-get install -y git php7.4 php7.4-curl php7.4-mbstring php7.4-xml php7.4-zip
+    # Also install composer
+
+    # TODO: Add records to the ssh config...
+    Here instructions what and from where to get them
+
+    # Set the required environment variables
+    export VAGRANT_WSL_ENABLE_WINDOWS_ACCESS="1"
+    export PATH="$PATH:/mnt/<windows-drive>/<path-to-the-virtualbox-directory-on-windows>"
+    export VAGRANT_WSL_WINDOWS_ACCESS_USER_HOME_PATH="<your-user-home-directory-on-wsl>"
+
+    # Make sure you have ssh-agent running and that your new (or existing)
+    # public key is installed where needed
+    eval $(ssh-agent -s)
+    ssh-add <path-to-your-private-key>
+
+    # Prepare the project (resides on windows drive)
+    cd /mnt/<drive>/<example-project>
+
+    # Install composer dependencies
+    composer install:development
+
+    # Build the VM
+    vagrant up
+
+    # Fetch the remote database and uploads
+    cd web/app/themes/<example-project>
+    ./vendor/bin/robo db:pull @production
+    ./vendor/bin/robo files:pull @production
+
+    # Build and watch theme assets
+    cd web/app/themes/<example-project>
+    npm run build
+    npm run build:production
+    npm run start
+
+In order to be able to access the site in Windows, you'll have to modify your
+hosts files manually, as this is only done in WSL for you. Check the hosts
+configuration in WSL with `cat /etc/hosts` and copy the parts relating to
+`<example-project>.test` to `c:\Windows\System32\drives\etc\hosts` in Windows.
+After that, you can access the site at `http://<example-project>.test`.
+
+When managing your repository in Windows, you'll want to disable git hooks as
+they rely on commands that only work in WSL for you.
+
+If you have trouble accessing symlinked files in Vagrant, such as
+`vendor/bin/dep`, make sure that you have vagrant-vbguest installed in WSL:
+
+    vagrant plugin install vagrant-vbguest
 
 ## Docker environment with ddev
 
