@@ -45,7 +45,6 @@
     "generoi/advanced-custom-fields-pro": "^5.8",
     "wpackagist-plugin/safe-svg": "^1.9",
     "wpackagist-plugin/limit-login-attempts-reloaded": "^2.6.1",
-    "wpackagist-plugin/timber-library": "~1.13.0",
     "wpackagist-plugin/wp-sanitize-file-name-plus": "~1.0",
     "wpackagist-plugin/stream": "~3.2",
     "wpackagist-plugin/wp-mail-smtp": "~1.2",
@@ -53,10 +52,8 @@
     "wpackagist-plugin/post-types-order": "~1.9",
     "wpackagist-plugin/taxonomy-terms-order": "^1.5",
     "wpackagist-plugin/wp-smartcrop": "~2.0",
-    "humanmade/page-for-post-type": "dev-master",
 
     "generoi/gravityforms": "~2.1",
-    "generoi/gravityformsgutenberg": "~1.0-rc",
     "wpackagist-plugin/gf-form-multicolumn": "^3.0",
     "wpackagist-plugin/gravity-forms-google-analytics-event-tracking": "^2.3",
 
@@ -66,14 +63,9 @@
     "generoi/wp-genero-cookieconsent": "~1.0-alpha",
     "generoi/wp-genero-gdpr": "~1.0-alpha",
 
-    "generoi/polylang-pro": "~2.2",
-
     "wpackagist-plugin/wp-super-cache": "~1.7.0",
     "wpackagist-plugin/wp-performance-pack": "~2.0",
     "wpackagist-plugin/ewww-image-optimizer": "~5.0",
-
-    "wpackagist-plugin/popups": "~1.8",
-    "generoi/popups-extended": "^1.0.0-alpha",
 
     "mcguffin/acf-quick-edit-fields": "^3.0",
     "wpackagist-plugin/show-environment-in-admin-bar": "^1.1",
