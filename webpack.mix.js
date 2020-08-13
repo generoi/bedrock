@@ -13,8 +13,8 @@ require('laravel-mix-copy-watched');
  |
  */
 
-mix.setPublicPath('./dist')
-   .browserSync('generogrowth.test');
+// TODO: Use js-yaml to read `machine_name` directly from project-root/robo.yml
+mix.setPublicPath('./dist').browserSync('generogrowth.test');
 
 mix.sass('resources/assets/styles/app.scss', 'styles')
    .sass('resources/assets/styles/editor.scss', 'styles')
