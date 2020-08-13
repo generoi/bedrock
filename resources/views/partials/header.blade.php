@@ -1,4 +1,3 @@
-{{ d($primary_navigation) }}
 <gds-navigation>
   <a slot="logo" href="{{ home_url('/') }}">
     <img src="{{ Roots\asset('images/logo.svg')->uri() }}" alt="{{ __('logo', 'gds') }}" title="{{ __('Go to frontpage', 'gds') }}" />
