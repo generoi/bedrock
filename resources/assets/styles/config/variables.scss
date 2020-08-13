@@ -1,0 +1,51 @@
+@import '~@wordpress/base-styles/breakpoints';
+
+$is-editor: false !default;
+$mq-breakpoints: (
+  mobile: 320px,
+  small: $break-small,
+  medium: $break-medium,
+  large: $break-large,
+  xlarge: $break-xlarge,
+  wide: $break-wide,
+  huge: $break-huge,
+);
+
+$color-names:
+  'white',
+  'ui-background-01',
+  'ui-background-02',
+  'ui-01',
+  'ui-02',
+  'black',
+  'ui-03',
+  'ui-04',
+  'ui-05',
+  'ui-06',
+  'ui-07';
+
+$alignfull-max-width: 1600px;
+
+:root {
+  --content-width: 800px;
+  --alignwide-width: 1200px;
+  --alignfull-width: 1600px;
+  --gutter: var(--spacing-s);
+  --block-gutter: var(--spacing-m);
+  --block-gutter-lg: calc(var(--gutter) * 1.5);
+  --spacing-xxxl: 80px;
+
+  @each $name in $color-names {
+    --color-#{$name}: var(--wp--preset--color--#{$name});
+  }
+
+  @include mq($from: medium) {
+    --gutter: var(--spacing-m);
+  }
+
+  /**
+   * GDS variable overrides.
+   */
+  --gds-card-width: 300px;
+  --gds-media-card-media-height: 220px;
+}

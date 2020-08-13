@@ -1,0 +1,26 @@
+<?php
+
+namespace DummyNamespace;
+
+use Log1x\AcfComposer\Partial;
+use StoutLogic\AcfBuilder\FieldsBuilder;
+
+class DummyClass extends Partial
+{
+    /**
+     * The partial field group.
+     *
+     * @return array
+     */
+    public function fields()
+    {
+        $DummyCamel = new FieldsBuilder('DummySnake');
+
+        $DummyCamel
+            ->addRepeater('items')
+                ->addText('item')
+            ->endRepeater();
+
+        return $DummyCamel;
+    }
+}

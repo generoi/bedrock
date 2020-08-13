@@ -1,0 +1,13 @@
+/**
+ * Styles in this file wont be prefixed with .editor-styles-wrapper unlike editor.scss
+ */
+.block-editor-block-list__block {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+p {
+  font-size: inherit;
+  line-height: inherit;
+}
+/*# sourceMappingURL=editor-overrides.css.map*/

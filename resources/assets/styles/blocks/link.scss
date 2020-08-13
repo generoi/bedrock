@@ -1,0 +1,9 @@
+@use '~genero-design-system/src/components/gds-link' as link;
+
+a {
+  @include link.base;
+}
+
+p a {
+  text-decoration: underline;
+}

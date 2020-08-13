@@ -1,0 +1,24 @@
+.masonry-grid {
+  --grid-gutter-x: var(--gutter);
+  --grid-gutter-y: var(--gutter);
+
+  column-count: 2;
+  column-gap: var(--grid-gutter-x);
+  margin-bottom: calc(var(--grid-gutter-y) / 2 * -1);
+}
+
+@each $name, $breakpoint in $mq-breakpoints {
+  @for $i from 1 through 12 {
+    @include mq($from: $name) {
+      .#{$name}\:#{$i} {
+        column-count: $i;
+        // Override regular grid width definition
+        width: auto;
+      }
+    }
+  }
+}
+
+.column {
+  margin-bottom: var(--grid-gutter-y);
+}

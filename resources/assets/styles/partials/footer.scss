@@ -1,0 +1,41 @@
+.content-info {
+  background-color: var(--color-ui-03);
+  color: var(--color-white);
+  padding: var(--gutter);
+  font-size: 13px;
+
+  .grid {
+    max-width: var(--content-width);
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  h3 {
+    color: inherit;
+    font-family: var(--body-font-family);
+    line-height: var(--body-line-height);
+    font-size: 17px;
+    letter-spacing: 0.85px;
+    font-weight: 900;
+
+    @include mq($from: large) {
+      min-height: 2.6em;
+    }
+  }
+
+  .menu {
+    list-style-type: none;
+    padding-left: 0;
+  }
+
+  a {
+    color: inherit;
+    text-decoration: none;
+    line-height: 1.75;
+
+    &:hover,
+    &:focus {
+      text-decoration: underline;
+    }
+  }
+}

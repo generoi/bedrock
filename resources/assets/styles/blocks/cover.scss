@@ -1,0 +1,10 @@
+.wp-block-cover {
+  .wp-block-cover__inner-container {
+    // Override Gutenberg weirdness
+    color: inherit;
+  }
+
+  @media (min-width: #{$alignfull-max-width}) {
+    min-height: 600px !important;
+  }
+}

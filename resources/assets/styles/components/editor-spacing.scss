@@ -1,0 +1,85 @@
+
+.is-root-container,
+.entry-content {
+  padding-left: var(--gutter);
+  padding-right: var(--gutter);
+  overflow-x: hidden;
+  overflow-y: hidden;
+
+  > :first-child:not(.alignfull),
+  > .alignfull:first-child + :not(.alignfull) {
+    margin-top: var(--spacing-xxxl);
+  }
+
+  > :last-child:not(.alignfull) {
+    margin-bottom: var(--spacing-xxxl);
+  }
+}
+
+.wp-block-group__inner-container,
+.wp-block-cover__inner-container,
+.wp-block-media-text__content,
+.wp-block-column,
+.entry-content,
+.is-root-container {
+  --block-gutter: var(--gutter);
+  --block-gutter-lg: calc(var(--gutter) * 1.5);
+
+  @include mq($from: wide) {
+    --block-gutter: var(--spacing-l);
+  }
+
+  > * {
+    max-width: var(--content-width);
+    margin-left: auto;
+    margin-right: auto;
+
+    &.has-text-align-right {
+      margin-right: 0;
+    }
+
+    &.has-text-align-left {
+      margin-left: 0;
+    }
+  }
+
+  > [data-align="full"],
+  > .alignfull {
+    max-width: var(--alignfull-width);
+    margin-left: calc(var(--gutter) * -1);
+    margin-right: calc(var(--gutter) * -1);
+    width: auto;
+
+    @include mq($from: $alignfull-max-width) {
+      margin-left: auto;
+      margin-right: auto;
+    }
+  }
+
+  > :not(:first-child) {
+    margin-top: var(--block-gutter);
+  }
+
+  > :not(:last-child) {
+    margin-bottom: var(--block-gutter);
+  }
+}
+
+[data-align="wide"],
+.alignwide {
+  max-width: var(--alignwide-width);
+  margin-left: auto;
+  margin-right: auto;
+}
+
+[data-align="wide"],
+[data-align="full"],
+.alignwide,
+.alignfull {
+  --block-gutter: var(--block-gutter-lg);
+}
+
+[data-align="full"] + [data-align="full"],
+.alignfull + .alignfull {
+  margin-top: calc(var(--block-gutter-lg) * -1);
+}

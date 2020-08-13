@@ -1,0 +1,39 @@
+.gform_wrapper {
+  padding: var(--block-gutter-lg);
+  background: var(--color-light-blue);
+
+  .gfield_checkbox li label,
+  .gfield_radio li label {
+    font-size: 17px;
+  }
+
+  ul.gfield_radio li input[type="radio"]:checked + label,
+  ul.gfield_checkbox li input[type="checkbox"]:checked + label,
+  .gchoice_select_all {
+    font-weight: inherit;
+  }
+
+  legend.gfield_label,
+  label.gfield_label {
+    font-weight: inherit;
+    font-size: 17px;
+  }
+
+  .field_sublabel_above,
+  .field_sublabel_below {
+    .ginput_complex.ginput_container label,
+    div[class*="gfield_time_"].ginput_container label,
+    div[class*="gfield_date_"].ginput_container label {
+      letter-spacing: inherit;
+      font-size: var(--small-font-size);
+    }
+  }
+
+  .field_sublabel_below {
+    .ginput_complex.ginput_container label,
+    div[class*="gfield_time_"].ginput_container label,
+    div[class*="gfield_date_"].ginput_container label {
+      margin: var(--spacing-xxs) 0 var(--spacing-xs) 0;
+    }
+  }
+}

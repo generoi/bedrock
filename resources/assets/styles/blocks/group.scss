@@ -1,0 +1,13 @@
+.wp-block-group {
+  position: relative;
+}
+
+.wp-block-group.has-background {
+  padding: var(--block-gutter);
+}
+
+.wp-block-group.alignwide,
+.wp-block-group.alignfull {
+  padding-top: var(--block-gutter-lg);
+  padding-bottom: var(--block-gutter-lg);
+}

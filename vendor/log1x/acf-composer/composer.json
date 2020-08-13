@@ -1,0 +1,40 @@
+{
+  "name": "log1x/acf-composer",
+  "type": "package",
+  "description": "Create fields, blocks, option pages, and widgets using ACF Builder and Sage 10",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Brandon Nifong",
+      "email": "brandon@tendency.me"
+    }
+  ],
+  "autoload": {
+    "psr-4": {
+      "Log1x\\AcfComposer\\": "src/"
+    }
+  },
+  "require": {
+    "php": ">=7.2.5",
+    "stoutlogic/acf-builder": "^1.10"
+  },
+  "require-dev": {
+    "squizlabs/php_codesniffer": "^3.5"
+  },
+  "suggest": {
+    "log1x/sage-directives": "Provides Sage-specific Blade directives for use with WordPress and ACF within your views.",
+    "log1x/modern-acf-options": "Gives ACF option pages a much needed design overhaul."
+  },
+  "extra": {
+    "acorn": {
+      "providers": [
+        "Log1x\\AcfComposer\\Providers\\AcfComposerServiceProvider"
+      ]
+    }
+  },
+  "scripts": {
+    "lint": [
+      "phpcs --ignore=vendor,resources --extensions=php --standard=PSR12 ."
+    ]
+  }
+}

@@ -1,0 +1,59 @@
+@import '~sass-mq';
+
+$is-editor: true;
+
+@import 'config/variables';
+@import 'common/utils';
+@import 'common/typography';
+@import 'common/fonts';
+@import 'blocks/index';
+@import 'components/index';
+
+.is-root-container {
+  padding-left: var(--gutter);
+  padding-right: var(--gutter);
+
+  > [data-align="full"] {
+    max-width: var(--alignfull-width);
+    margin-left: calc(var(--gutter) * -1);
+    margin-right: calc(var(--gutter) * -1);
+    width: auto;
+  }
+}
+
+.wp-block {
+  max-width: var(--content-width);
+
+  &:first-child {
+    margin-top: 0;
+  }
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+
+  &[data-align="wide"] {
+    max-width: var(--alignwide-width);
+  }
+
+  &[data-align="full"] {
+    max-width: var(--alignfull-width);
+  }
+}
+
+[data-align="wide"],
+[data-align="full"],
+.alignwide,
+.alignfull {
+  --block-gutter: var(--block-gutter-lg);
+}
+
+.alignfull + .alignfull,
+[data-align="full"] + [data-align="full"] {
+  margin-top: calc(var(--block-gutter-lg) * -1);
+}
+
+// Disable links rendered in ACF blocks
+.acf-block-preview [href]:not([href^="#"]) {
+  pointer-events: none;
+}

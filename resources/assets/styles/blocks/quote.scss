@@ -1,0 +1,11 @@
+.wp-block-quote {
+  border-left: 0;
+  padding-left: 0;
+}
+
+.wp-block-quote cite {
+  line-height: var(--heading-line-height);
+  font-family: var(--heading-font-family);
+  color: var(--heading-color);
+  font-size: 20px;
+}

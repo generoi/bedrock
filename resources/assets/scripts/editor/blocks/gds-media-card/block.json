@@ -1,0 +1,40 @@
+{
+  "name": "gds/media-card",
+  "category": "layout",
+  "attributes": {
+    "mediaType": {
+      "type": "string"
+    },
+    "mediaId": {
+      "type": "number"
+    },
+    "mediaUrl": {
+      "type": "string"
+    },
+    "mediaAlt": {
+      "type": "string"
+    },
+    "mediaHeight": {
+      "type": "string"
+    },
+    "focalPoint": {
+      "type": "object"
+    },
+    "backgroundColor": {
+      "type": "string"
+    },
+    "textColor": {
+      "type": "string"
+    },
+    "customBackgroundColor": {
+      "type": "string"
+    },
+    "customTextColor": {
+      "type": "string"
+    }
+  },
+  "supports": {
+    "html": false,
+    "lightBlockWrapper": true
+  }
+}

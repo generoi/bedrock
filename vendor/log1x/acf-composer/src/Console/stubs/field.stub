@@ -1,0 +1,29 @@
+<?php
+
+namespace DummyNamespace;
+
+use Log1x\AcfComposer\Field;
+use StoutLogic\AcfBuilder\FieldsBuilder;
+
+class DummyClass extends Field
+{
+    /**
+     * The field group.
+     *
+     * @return array
+     */
+    public function fields()
+    {
+        $DummyCamel = new FieldsBuilder('DummySnake');
+
+        $DummyCamel
+            ->setLocation('post_type', '==', 'post');
+
+        $DummyCamel
+            ->addRepeater('items')
+                ->addText('item')
+            ->endRepeater();
+
+        return $DummyCamel->build();
+    }
+}

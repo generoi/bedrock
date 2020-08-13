@@ -1,0 +1,40 @@
+<?php
+
+namespace DummyNamespace;
+
+use Log1x\AcfComposer\Options as Field;
+use StoutLogic\AcfBuilder\FieldsBuilder;
+
+class DummyClass extends Field
+{
+    /**
+     * The option page menu name.
+     *
+     * @var string
+     */
+    public $name = 'DummyClass';
+
+    /**
+     * The option page document title.
+     *
+     * @var string
+     */
+    public $title = 'DummyClass | Options';
+
+    /**
+     * The option page field group.
+     *
+     * @return array
+     */
+    public function fields()
+    {
+        $DummyCamel = new FieldsBuilder('DummySnake');
+
+        $DummyCamel
+            ->addRepeater('items')
+                ->addText('item')
+            ->endRepeater();
+
+        return $DummyCamel->build();
+    }
+}
