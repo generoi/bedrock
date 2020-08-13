@@ -1,3 +1,10 @@
+# From sage
+/node_modules
+/vendor
+/dist
+npm-debug.log
+yarn-error.log
+
 # ignore everything in the root except the "wp-content" directory.
 !wp-content/
 
