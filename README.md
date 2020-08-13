@@ -70,7 +70,7 @@ Make sure all dependencies have been installed before moving on:
 * [PHP](https://secure.php.net/manual/en/install.php) >= 7.2.0 (with [`php-mbstring`](https://secure.php.net/manual/en/book.mbstring.php) enabled)
 * [Composer](https://getcomposer.org/download/)
 * [Node.js](http://nodejs.org/) >= 8.0.0
-* [Yarn](https://yarnpkg.com/en/docs/install)
+* NPM
 
 ## Theme installation
 
@@ -135,14 +135,14 @@ Edit `app/setup.php` to enable or disable theme features, setup navigation menus
 
 ## Theme development
 
-* Run `yarn` from the theme directory to install dependencies
+* Run `npm i` from the theme directory to install dependencies
 * Update `webpack.mix.js` with your local dev URL
 
 ### Build commands
 
-* `yarn start` — Compile assets when file changes are made, start Browsersync session
-* `yarn build` — Compile and optimize the files in your assets directory
-* `yarn build:production` — Compile assets for production
+* `npm run start` — Compile assets when file changes are made, start Browsersync session
+* `run run build` — Compile and optimize the files in your assets directory
+* `run run build:production` — Compile assets for production
 
 ## Documentation
 
