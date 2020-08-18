@@ -2,10 +2,15 @@
 
 namespace App\View\Composers;
 
+use App\View\Composers\Traits\HasPost;
 use Roots\Acorn\View\Composer;
+use stdClass;
+use WP_Query;
 
 class ContentSingle extends Composer
 {
+    use HasPost;
+
     /**
      * List of views served by this composer.
      *
@@ -20,23 +25,12 @@ class ContentSingle extends Composer
      */
     public function with()
     {
+        $post = get_post();
+
         return [
-            'label' => $this->label(),
-            'categories' => $this->categories(),
+            'label' => $this->label($post),
+            'categories' => $this->categories($post),
+
         ];
-    }
-
-    public function label(): string
-    {
-        return sprintf(
-            '%s, %s',
-            get_the_author_meta('display_name'),
-            get_the_date()
-        );
-    }
-
-    public function categories(): array
-    {
-        return get_the_category();
     }
 }
