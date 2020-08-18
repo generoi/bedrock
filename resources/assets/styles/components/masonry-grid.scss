@@ -10,7 +10,7 @@
 @each $name, $breakpoint in $mq-breakpoints {
   @for $i from 1 through 12 {
     @include mq($from: $name) {
-      .#{$name}\:#{$i} {
+      .masonry-grid.#{$name}\:#{$i} {
         column-count: $i;
         // Override regular grid width definition
         width: auto;
