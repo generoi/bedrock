@@ -21,7 +21,10 @@
 
     @php(the_content())
 
-    @include('partials.share')
-    @include('partials.related')
+    <x-related-content
+      :type="$related->type"
+      :label="$related->label"
+      :query="$related->query"
+    />
   </div>
 </article>
