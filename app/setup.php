@@ -110,14 +110,29 @@ add_action('after_setup_theme', function () {
  */
 add_action('widgets_init', function () {
     $config = [
-        'before_widget' => '<section class="cell medium:4 large:auto widget %1$s %2$s">',
+        'before_widget' => '<section class="widget %1$s %2$s">',
         'after_widget' => '</section>',
-        'before_title' => '<h3>',
-        'after_title' => '</h3>'
+        'before_title' => '<h5 class="widget__title">',
+        'after_title' => '</h5>'
     ];
 
     register_sidebar([
-        'name' => __('Footer', 'sage'),
-        'id' => 'sidebar-footer'
+        'name' => __('Footer: Contact', 'sage'),
+        'id' => 'footer-contact'
+    ] + $config);
+
+    register_sidebar([
+        'name' => __('Footer: Social', 'sage'),
+        'id' => 'footer-social'
+    ] + $config);
+
+    register_sidebar([
+        'name' => __('Footer: Menu', 'sage'),
+        'id' => 'footer-menu'
+    ] + $config);
+
+    register_sidebar([
+        'name' => __('Footer: Newsletter', 'sage'),
+        'id' => 'footer-newsletter'
     ] + $config);
 });
