@@ -129,7 +129,6 @@ return [
          * Application Service Providers
          */
         App\Providers\EditorServiceProvider::class,
-        App\Providers\ArchivePageServiceProvider::class,
     ],
 
     /*
