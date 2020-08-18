@@ -17,6 +17,7 @@ use function Roots\view;
 add_action('wp_enqueue_scripts', function () {
     wp_enqueue_script('sage/vendor.js', asset('scripts/vendor.js')->uri(), ['jquery'], null, true);
     wp_enqueue_script('sage/app.js', asset('scripts/app.js')->uri(), ['sage/vendor.js', 'jquery'], null, true);
+    wp_enqueue_script('sage/fontawesome.js', 'https://kit.fontawesome.com/033b65fee9.js', [], null, false);
 
     wp_add_inline_script('sage/vendor.js', asset('scripts/manifest.js')->contents(), 'before');
 
@@ -49,6 +50,7 @@ add_action('enqueue_block_editor_assets', function () {
 
         wp_add_inline_script('sage/vendor.js', asset('scripts/manifest.js')->contents(), 'before');
     }
+    wp_enqueue_script('sage/fontawesome.js', 'https://kit.fontawesome.com/033b65fee9.js', [], null, false);
     wp_enqueue_style('sage/editor-overrides.css', asset('styles/editor-overrides.css')->uri(), ['wp-edit-blocks', 'common'], null);
 }, 100);
 
