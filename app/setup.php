@@ -7,6 +7,7 @@
 namespace App;
 
 use function Roots\asset;
+use function Roots\view;
 
 /**
  * Register the theme assets.
@@ -26,6 +27,13 @@ add_action('wp_enqueue_scripts', function () {
     wp_enqueue_style('sage/gds.css', asset('styles/gds.css')->uri(), [], null);
     wp_enqueue_style('sage/app.css', asset('styles/app.css')->uri(), ['sage/gds.css'], null);
 }, 100);
+
+/**
+ * Include a partial in the header for scripts and such
+ */
+add_action('wp_head', function () {
+    echo view('partials.head');
+});
 
 /**
  * Register the theme assets with the block editor.

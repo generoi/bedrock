@@ -22,19 +22,18 @@ mix.sass('resources/assets/styles/app.scss', 'styles')
    .sass('resources/assets/styles/editor.scss', 'styles')
    .sass('resources/assets/styles/editor-overrides.scss', 'styles');
 
-mix.styles([
-  'node_modules/genero-design-system/src/styles/index.css'
-], 'dist/styles/gds.css')
-
 mix.js('resources/assets/scripts/app.js', 'scripts')
    .blocks('resources/assets/scripts/editor.js', 'scripts')
    .extract();
 
-// mix.copyWatched('resources/assets/images/**', 'dist/images')
-//    .copyWatched('resources/assets/fonts/**', 'dist/fonts');
 mix.copyWatched('resources/assets/images', 'dist/images', {base: 'resources/assets/images'})
   .copyWatched('resources/assets/fonts', 'dist/fonts', {base: 'resources/assets/fonts'});
 
+// GDS
+const gdsPath = 'node_modules/genero-design-system';
+mix.styles([`${gdsPath}/src/styles/index.css`], 'dist/styles/gds.css')
+  .scripts([`${gdsPath}/loader/index.mjs`], 'gds/loader/index.mjs')
+  .copyWatched(`${gdsPath}/dist`, 'dist/gds/dist', { base: `${gdsPath}/dist` });
 
 mix.autoload({
   jquery: ['$', 'window.jQuery'],
