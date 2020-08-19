@@ -29,11 +29,13 @@ add_action('wp_enqueue_scripts', function () {
 }, 100);
 
 /**
- * Include a partial in the header for scripts and such
+ * Include a GDS in the <head> of the page.
  */
-add_action('wp_head', function () {
-    echo view('partials.head');
-});
+foreach (['wp_head', 'admin_head'] as $action) {
+    add_action($action, function () {
+        echo view('partials.gds');
+    }, 0);
+}
 
 /**
  * Register the theme assets with the block editor.
