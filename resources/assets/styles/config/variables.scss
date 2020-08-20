@@ -30,7 +30,7 @@ $alignfull-max-width: 1600px;
   --content-width: 800px;
   --alignwide-width: 1200px;
   --alignfull-width: 1600px;
-  --gutter: var(--spacing-s);
+  --gutter: var(--spacing-m);
   --block-gutter: var(--spacing-m);
   --block-gutter-lg: calc(var(--gutter) * 1.5);
   --spacing-xxxl: 80px;
@@ -46,6 +46,17 @@ $alignfull-max-width: 1600px;
   /**
    * GDS variable overrides.
    */
+  // Sizes (columns plus in-between gutters)
+  --size-column: 78px;
+  --size-col-1: var(--size-column);
+  --size-col-2: calc(var(--size-column) * 2 + var(--gutter));
+  --size-col-3: calc(var(--size-column) * 3 + var(--gutter) * 2);
+  --size-col-4: calc(var(--size-column) * 4 + var(--gutter) * 3);
+  --size-col-5: calc(var(--size-column) * 5 + var(--gutter) * 4);
+  
+  // Card
   --card-width: 300px;
+  
+  // Media Card
   --media-card-media-height: 220px;
 }
