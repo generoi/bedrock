@@ -32,7 +32,7 @@ mix.copyWatched('resources/assets/images', 'dist/images', {base: 'resources/asse
 // GDS
 const gdsPath = 'node_modules/genero-design-system';
 mix.styles([`${gdsPath}/src/styles/index.css`], 'dist/styles/gds.css')
-  .scripts([`${gdsPath}/loader/index.mjs`], 'gds/loader/index.mjs')
+  .scripts([`${gdsPath}/loader/index.mjs`], 'dist/gds/loader/index.mjs')
   .copyWatched(`${gdsPath}/dist`, 'dist/gds/dist', { base: `${gdsPath}/dist` });
 
 mix.autoload({
