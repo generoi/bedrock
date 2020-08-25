@@ -35,6 +35,11 @@ domReady(() => {
     label: 'Floating',
   });
 
+  registerBlockStyle('core/social-links', {
+    name: 'monochrome',
+    label: 'Monochrome',
+  });
+
   addFilter(
     'editor.BlockListBlock',
     'sage/group-default-background',
