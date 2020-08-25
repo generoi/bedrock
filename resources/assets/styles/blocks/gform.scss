@@ -1,39 +1,23 @@
-.gform_wrapper {
-  padding: var(--block-gutter-lg);
-  background: var(--color-light-blue);
+.gform_footer {
+  margin-top: var(--spacing-m);
+}
 
-  .gfield_checkbox li label,
-  .gfield_radio li label {
-    font-size: 17px;
-  }
+.gform_fields {
+  display: grid;
+  grid-gap: var(--spacing-m);
 
-  ul.gfield_radio li input[type="radio"]:checked + label,
-  ul.gfield_checkbox li input[type="checkbox"]:checked + label,
-  .gchoice_select_all {
-    font-weight: inherit;
+  .medium {
+    max-width: var(--grid-column-5);
   }
+}
 
-  legend.gfield_label,
-  label.gfield_label {
-    font-weight: inherit;
-    font-size: 17px;
-  }
+.gfield_label {
+  margin-bottom: var(--spacing-xxs);
+  font-weight: 500;
+  display: block;
+}
 
-  .field_sublabel_above,
-  .field_sublabel_below {
-    .ginput_complex.ginput_container label,
-    div[class*="gfield_time_"].ginput_container label,
-    div[class*="gfield_date_"].ginput_container label {
-      letter-spacing: inherit;
-      font-size: var(--small-font-size);
-    }
-  }
-
-  .field_sublabel_below {
-    .ginput_complex.ginput_container label,
-    div[class*="gfield_time_"].ginput_container label,
-    div[class*="gfield_date_"].ginput_container label {
-      margin: var(--spacing-xxs) 0 var(--spacing-xs) 0;
-    }
-  }
+// Honeypot
+.gform_validation_container {
+  display: none;
 }

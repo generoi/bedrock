@@ -23,3 +23,10 @@ ol {
 ul {
   list-style-type: disc;
 }
+
+// Provide a default gutter on forms which in case used outside the block
+// editor, as if it was a basic element.
+.gform_wrapper {
+  margin-block-start: var(--spacing-m);
+  margin-block-end: var(--spacing-m);
+}

@@ -1,3 +1,5 @@
+@use '~genero-design-system/src/components/gds-button' as button;
+
 [type="text"],
 [type="password"],
 [type="date"],
@@ -16,14 +18,25 @@ textarea {
   appearance: none;
   box-sizing: border-box;
   background: var(--color-white);
-  border: solid 1px var(--color-light-gray);
-  padding: 7px;
+  border: 0;
+  border-radius: var(--button-border-radius);
+  font-size: 20px;
+  padding: 12px 11px 10px 11px;
   width: 100%;
 
   &:focus {
     border-color: var(--color-blue);
     outline: none;
   }
+}
+
+::placeholder {
+  color: var(--color-ui-01);
+}
+
+label {
+  margin-bottom: var(--spacing-xxs);
+  display: block;
 }
 
 select {
@@ -47,14 +60,8 @@ select {
 
 [type="submit"] {
   appearance: none;
-  font-weight: var(--button-font-weight);
-  letter-spacing: var(--button-letter-spacing);
-  font-size: var(--button-font-size);
-  line-height: var(--button-line-height);
-  text-transform: uppercase;
-  background-color: var(--button-background, var(--color-blue));
-  color: var(--button-color, var(--color-white));
-  padding: var(--button-padding);
-  border: 0;
   cursor: pointer;
+
+  @include button.base;
+  @include button.size-m;
 }
