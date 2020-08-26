@@ -5,7 +5,7 @@
 
       @include("blocks.$type-list", [
         'block' => (object) [
-          'classes' => "wp-block-$type-list alignwide",
+          'classes' => "wp-block-$type-list",
         ],
         'use_pagination' => false,
         'query' => $query,

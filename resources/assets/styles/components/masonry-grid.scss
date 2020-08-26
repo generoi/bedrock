@@ -1,6 +1,6 @@
 .masonry-grid {
-  --grid-gutter-x: var(--gutter);
-  --grid-gutter-y: var(--gutter);
+  --grid-gutter-x: var(--grid-gutter);
+  --grid-gutter-y: var(--grid-gutter);
 
   column-count: 2;
   column-gap: var(--grid-gutter-x);

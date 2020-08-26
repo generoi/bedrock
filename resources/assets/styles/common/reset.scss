@@ -44,11 +44,3 @@ h6[id]::before {
   margin-top: -100px;
   visibility: hidden;
 }
-
-:first-child {
-  margin-top: 0;
-}
-
-:last-child {
-  margin-bottom: 0;
-}

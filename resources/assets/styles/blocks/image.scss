@@ -1,3 +1,16 @@
 .wp-block-image {
-  --block-gutter: var(--spacing-l);
+  margin-top: var(--block-gutter-l);
+  margin-bottom: var(--block-gutter-l);
+}
+
+[data-align="left"] > .wp-block-image,
+.wp-block-image .alignleft {
+  margin-top: 0.35em;
+  margin-right: var(--grid-gutter);
+}
+
+[data-align="right"] > .wp-block-image,
+.wp-block-image .alignright {
+  margin-top: 0.35em;
+  margin-left: var(--grid-gutter);
 }

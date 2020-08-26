@@ -4,8 +4,8 @@
   padding: var(--spacing-xxl) var(--spacing-m);
 
   @include mq($from: large) {
-    padding-top: 185px;
-    padding-bottom: 185px;
+    padding-top: var(--footer-gutter);
+    padding-bottom: var(--footer-gutter);
     padding-left: 0;
     padding-right: 0;
   }
