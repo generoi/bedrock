@@ -75,8 +75,8 @@ $alignfull-max-width: 1600px;
   --size-col-5: calc(var(--size-column) * 5 + var(--gutter) * 4);
 
   // Card
-  --card-width: 300px;
+  --card-width: 100%;
 
   // Media Card
-  --media-card-media-height: 220px;
+  --media-card-media-height: calc(371 / 486 * 100%);
 }
