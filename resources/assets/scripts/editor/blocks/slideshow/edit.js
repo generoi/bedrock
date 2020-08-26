@@ -21,7 +21,7 @@ import {
 } from '@wordpress/components';
 
 import { createBlock } from '@wordpress/blocks';
-import { useRef, useState, useEffect, useLayoutEffect } from '@wordpress/element';
+import { useRef, useState, useEffect } from '@wordpress/element';
 import { useSelect, useDispatch } from '@wordpress/data';
 
 SwiperCore.use([Navigation, Pagination, A11y]);
@@ -82,7 +82,7 @@ function BlockEdit({
         _containerClasses(swiper, classes) {
           setContainerClasses(classes);
         },
-      }
+      },
     };
 
     return config;
@@ -290,8 +290,8 @@ function BlockEdit({
         ) }
         { hasNavigation && (
           <>
-            <div className="swiper-button-prev" ref={ prevElRef }><i class="fa fa-chevron-left fa-3x" aria-hidden></i></div>
-            <div className="swiper-button-next" ref={ nextElRef }><i class="fa fa-chevron-right fa-3x" aria-hidden></i></div>
+            <div className="swiper-button-prev" ref={ prevElRef }><i className="fa fa-chevron-left fa-3x" aria-hidden></i></div>
+            <div className="swiper-button-next" ref={ nextElRef }><i className="fa fa-chevron-right fa-3x" aria-hidden></i></div>
           </>
         ) }
       </Block.div>
