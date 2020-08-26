@@ -40,6 +40,11 @@ domReady(() => {
     label: 'Monochrome',
   });
 
+  registerBlockStyle('core/gallery', {
+    name: 'logo-grid',
+    label: 'Logo Grid',
+  });
+
   addFilter(
     'editor.BlockListBlock',
     'sage/group-default-background',
