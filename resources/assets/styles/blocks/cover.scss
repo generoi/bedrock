@@ -1,4 +1,6 @@
 .wp-block-cover {
+  color: var(--color-white);
+
   .wp-block-cover__inner-container {
     // Override Gutenberg weirdness
     color: inherit;
