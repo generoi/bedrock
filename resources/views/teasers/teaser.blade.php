@@ -12,19 +12,22 @@
       superimposed-left="{{$superimposed_offset->left}}"
     @endif
   >
-    <div slot="content">
-      <gds-heading size="s">
-        {!! esc_html($title) !!}
-      </gds-heading>
+    <gds-heading size="s" slot="headline">
+      {!! esc_html($title) !!}
+    </gds-heading>
 
-      <gds-paragraph size="l">
+    @if ($excerpt)
+      <gds-paragraph size="l" slot="description">
         {!! $excerpt !!}
       </gds-paragraph>
+    @endif
 
-      @foreach ($categories as $category)
-        <gds-tag href="{{ get_category_link($category) }}">{!! esc_html($category->name) !!}</gds-tag>
-      @endforeach
-
-    </div>
+    @if ($categories)
+      <gds-tag-group slot="tags">
+        @foreach ($categories as $category)
+          <gds-tag href="{{ get_category_link($category) }}">{!! esc_html($category->name) !!}</gds-tag>
+        @endforeach
+      </gds-tag-group>
+    @endif
   </gds-media-card>
 </div>

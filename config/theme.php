@@ -30,7 +30,7 @@ return [
         [
             'name'  => __('Black', 'gds'),
             'slug'  => 'black',
-            'color' => '#000000',
+            'color' => '#333031',
         ],
         [
             'name'  => __('Green', 'gds'),
@@ -75,24 +75,14 @@ return [
             'size' => 20,
         ],
         [
-            'name' => __('Light heading', 'gds'),
-            'slug' => 'light-heading',
-            'size' => 19,
-        ],
-        [
-            'name' => __('Heavy heading', 'gds'),
-            'slug' => 'heavy-heading',
-            'size' => 62,
-        ],
-        [
             'name' => __('S heading', 'gds'),
             'slug' => 's-heading',
-            'size' => 20,
+            'size' => 19,
         ],
         [
             'name' => __('M heading', 'gds'),
             'slug' => 'm-heading',
-            'size' => 28,
+            'size' => 20,
         ],
         [
             'name' => __('L heading', 'gds'),
@@ -107,7 +97,7 @@ return [
         [
             'name' => __('XXL heading', 'gds'),
             'slug' => 'xxl-heading',
-            'size' => 72,
+            'size' => 62,
         ],
     ],
 ];

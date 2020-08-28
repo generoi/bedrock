@@ -71,8 +71,7 @@
 
       > a {
         text-decoration: underline;
-        // @todo wrong mobile style
-        @include heading.size-s;
+        @include heading.size-xs;
       }
     }
 
