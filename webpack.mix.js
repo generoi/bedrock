@@ -1,6 +1,8 @@
 const mix = require('laravel-mix');
 require('@tinypixelco/laravel-mix-wp-blocks');
 require('laravel-mix-copy-watched');
+const fs = require('fs');
+const yaml = require('js-yaml');
 
 /*
  |--------------------------------------------------------------------------
@@ -13,8 +15,8 @@ require('laravel-mix-copy-watched');
  |
  */
 
-// TODO: Use js-yaml to read `machine_name` directly from project-root/robo.yml
-mix.setPublicPath('./dist').browserSync('generogrowth.test');
+const robo = yaml.safeLoad(fs.readFileSync('../../../../robo.yml', 'utf8'));
+mix.setPublicPath('./dist').browserSync(robo.env["@dev"].host);
 
 mix.sass('resources/assets/styles/app.scss', 'styles')
    .sass('resources/assets/styles/editor.scss', 'styles')
