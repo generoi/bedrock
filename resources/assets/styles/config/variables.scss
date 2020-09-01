@@ -11,6 +11,7 @@ $mq-breakpoints: (
   huge: $break-huge,
 );
 
+// These names need to match the 'editor-color-palette' slugs in app/Providers/EditorServiceProvider.php
 $color-names:
   'white',
   'ui-background-01',
