@@ -4,7 +4,7 @@
   --gutter-column-1: calc(var(--grid-column) + var(--grid-gutter));
 
   @include mq($until: large) {
-    --gutter-column-1: var(--grid-gutter);
+    --gutter-column-1: var(--block-gutter);
   }
 
   grid-gap: var(--grid-gutter);

@@ -11,7 +11,7 @@
 
   @include('blocks.article-list', [
     'block' => (object) [
-      'classes' => 'wp-block-article-list alignwide',
+      'classes' => 'wp-block-article-list',
     ],
     'use_pagination' => true,
     'query' => $GLOBALS['wp_query'],

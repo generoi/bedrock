@@ -35,7 +35,11 @@ $alignfull-max-width: 1600px;
   // Gutter between blocks
   --block-gutter-s: 24px;
   --block-gutter: 40px;
-  --block-gutter-l: 80px;
+  --block-gutter-l: 40px;
+
+  @include mq($from: medium) {
+    --block-gutter-l: 80px;
+  }
 
   // Custom gutter for the footer
   --footer-gutter: 185px;

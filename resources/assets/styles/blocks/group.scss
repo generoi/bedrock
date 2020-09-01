@@ -3,7 +3,11 @@
 }
 
 .wp-block-group.has-background {
-  padding: var(--block-gutter);
+  padding: var(--block-gutter) var(--grid-gutter);
+
+  @include mq($from: medium) {
+    padding: var(--block-gutter);
+  }
 
   // Override Gutenberg
   margin-top: var(--block-gutter);
