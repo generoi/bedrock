@@ -65,7 +65,7 @@ $alignfull-max-width: 1600px;
   --viewport-gutter: 15px;
   --content-width: var(--grid-column-8);
   --alignwide-width: var(--grid-column-12);
-  --alignfull-width: 1600px; // @note sass variable needs to be updated
+  --alignfull-width: unset; // @note sass variable needs to be updated
 
   /**
    * GDS variable overrides.
