@@ -53,6 +53,7 @@ $alignfull-max-width: 1600px;
     --grid-column-#{$i}: calc(var(--grid-column) * #{$i} + var(--grid-gutter) * (#{$i} - 1));
   }
 
+  // @todo we should use `size-column` below instead.
   @include mq($from: medium) {
     --grid-gutter: 24px;
     --grid-column: 78px;
