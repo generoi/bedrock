@@ -7,6 +7,7 @@
 namespace App;
 
 use function Roots\asset;
+use function Roots\view;
 
 /**
  * Register the theme assets.
@@ -26,6 +27,15 @@ add_action('wp_enqueue_scripts', function () {
     wp_enqueue_style('sage/gds.css', asset('styles/gds.css')->uri(), [], null);
     wp_enqueue_style('sage/app.css', asset('styles/app.css')->uri(), ['sage/gds.css'], null);
 }, 100);
+
+/**
+ * Include a GDS in the <head> of the page.
+ */
+foreach (['wp_head', 'admin_head'] as $action) {
+    add_action($action, function () {
+        echo view('partials.gds');
+    }, 0);
+}
 
 /**
  * Register the theme assets with the block editor.

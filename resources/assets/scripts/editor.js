@@ -6,15 +6,10 @@ import {
 } from '@wordpress/blocks';
 import { createHigherOrderComponent} from '@wordpress/compose';
 import { addFilter } from '@wordpress/hooks';
-import { applyPolyfills, defineCustomElements } from 'genero-design-system/loader'
 
 import './editor/blocks/gds-media-card/index';
 import './editor/blocks/slideshow-slide/index';
 import './editor/blocks/slideshow/index';
-
-applyPolyfills().then(() => {
-  defineCustomElements()
-});
 
 registerBlockCollection('gds', { title: 'Genero Design System' } );
 
