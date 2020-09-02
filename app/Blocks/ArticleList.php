@@ -17,6 +17,7 @@ class ArticleList extends Block
         'align' => ['full', 'wide'],
         'mode' => false,
     ];
+    public $postType = 'post';
 
     public function with()
     {
@@ -32,7 +33,7 @@ class ArticleList extends Block
             'posts_per_page' => (int) get_field('posts_per_page') ?: 3,
             'order_by' => get_field('order_by') ?: ['date'],
             'order' => get_field('order') ?: 'DESC',
-            'post_type' => 'post',
+            'post_type' => $this->postType,
             'use_pagination' => get_field('use_pagination') ?? false,
             'ignore_sticky_posts' => get_field('ignore_sticky_posts') ?? false,
             'post_status' => 'publish',
