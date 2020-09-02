@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "c6041673913379a59ebaa043af363739",
+    "content-hash": "3e36d852a12841d7adfd8e69d9142455",
     "packages": [
         {
             "name": "doctrine/inflector",
@@ -82,6 +82,124 @@
                 "words"
             ],
             "time": "2020-05-29T15:13:26+00:00"
+        },
+        {
+            "name": "generoi/sage-archive-pages",
+            "version": "v0.1.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/generoi/sage-archive-pages.git",
+                "reference": "97851a5dd2f961cdc620fceb057fc59a8d023832"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/generoi/sage-archive-pages/zipball/97851a5dd2f961cdc620fceb057fc59a8d023832",
+                "reference": "97851a5dd2f961cdc620fceb057fc59a8d023832",
+                "shasum": ""
+            },
+            "archive": {
+                "exclude": [
+                    ".gitignore"
+                ]
+            },
+            "require": {
+                "roots/acorn": "*"
+            },
+            "require-dev": {
+                "squizlabs/php_codesniffer": "~3.0"
+            },
+            "type": "library",
+            "extra": {
+                "acorn": {
+                    "providers": [
+                        "Genero\\Sage\\ArchivePages\\ArchivePageServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Genero\\Sage\\ArchivePages\\": "src/"
+                }
+            },
+            "scripts": {
+                "test": [
+                    "phpcs --ignore=vendor --extensions=php --standard=PSR2 ."
+                ]
+            },
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Oskar Schöldström",
+                    "email": "public@oxy.fi"
+                }
+            ],
+            "homepage": "https://github.com/generoi/sage-archive-pages",
+            "support": {
+                "source": "https://github.com/generoi/sage-archive-pages/tree/v0.1.1",
+                "issues": "https://github.com/generoi/sage-archive-pages/issues"
+            },
+            "time": "2020-09-01T17:18:28+00:00"
+        },
+        {
+            "name": "generoi/sage-demo-content",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/generoi/sage-demo-content.git",
+                "reference": "a2b8f10e6beb2fa5655b04c1445f23ef36635815"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/generoi/sage-demo-content/zipball/a2b8f10e6beb2fa5655b04c1445f23ef36635815",
+                "reference": "a2b8f10e6beb2fa5655b04c1445f23ef36635815",
+                "shasum": ""
+            },
+            "archive": {
+                "exclude": [
+                    ".gitignore"
+                ]
+            },
+            "require": {
+                "roots/acorn": "*"
+            },
+            "require-dev": {
+                "squizlabs/php_codesniffer": "~3.0"
+            },
+            "type": "library",
+            "extra": {
+                "acorn": {
+                    "providers": [
+                        "Genero\\Sage\\DemoContent\\DemoContentServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Genero\\Sage\\DemoContent\\": "src/"
+                }
+            },
+            "scripts": {
+                "test": [
+                    "phpcs --ignore=vendor --extensions=php --standard=PSR2 ."
+                ]
+            },
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Oskar Schöldström",
+                    "email": "public@oxy.fi"
+                }
+            ],
+            "homepage": "https://github.com/generoi/sage-demo-content",
+            "support": {
+                "source": "https://github.com/generoi/sage-demo-content/tree/master",
+                "issues": "https://github.com/generoi/sage-demo-content/issues"
+            },
+            "time": "2020-04-20T10:25:59+00:00"
         },
         {
             "name": "generoi/sage-nativeblock",
@@ -3079,6 +3197,7 @@
     "aliases": [],
     "minimum-stability": "dev",
     "stability-flags": {
+        "generoi/sage-demo-content": 20,
         "generoi/sage-nativeblock": 20
     },
     "prefer-stable": true,
@@ -3086,6 +3205,5 @@
     "platform": {
         "php": "^7.2.5"
     },
-    "platform-dev": [],
-    "plugin-api-version": "1.1.0"
+    "platform-dev": []
 }

@@ -2,12 +2,13 @@
 
 namespace App\View\Composers;
 
+use App\View\Composers\Traits\HasPost;
 use Roots\Acorn\View\Composer;
-
-use function Roots\asset;
 
 class Teaser extends Composer
 {
+    use HasPost;
+
     /**
      * List of views served by this composer.
      *
@@ -22,47 +23,15 @@ class Teaser extends Composer
      *
      * @return array
      */
-    public function with()
+    public function override()
     {
+        $post = get_post();
+
         return [
-            'image' => $this->image(),
-            'title' => $this->title(),
-            'excerpt' => $this->excerpt(),
-            'categories' => $this->categories(),
+            'image' => $this->image($post),
+            'title' => $this->title($post),
+            'excerpt' => $this->label($post),
+            'categories' => $this->categories($post),
         ];
-    }
-
-    public function image(): string
-    {
-        $url = asset('images/default-teaser.jpg');
-
-        if (has_post_thumbnail()) {
-            $image = wp_get_attachment_image_src(get_post_thumbnail_id(), 'large');
-
-            if ($image) {
-                $url = $image[0];
-            }
-        }
-
-        return $url;
-    }
-
-    public function title(): string
-    {
-        return get_the_title();
-    }
-
-    public function excerpt(): string
-    {
-        return sprintf(
-            '%s, %s',
-            get_the_author_meta('display_name'),
-            get_the_date()
-        );
-    }
-
-    public function categories(): array
-    {
-        return get_the_category();
     }
 }

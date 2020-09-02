@@ -1,6 +1,12 @@
 <gds-navigation>
   <a slot="logo" href="{{ home_url('/') }}">
-    <img src="{{ Roots\asset('images/logo.svg')->uri() }}" alt="{{ __('logo', 'gds') }}" title="{{ __('Go to frontpage', 'gds') }}" />
+    <img
+      src="{{ Roots\asset('images/logo.svg')->uri() }}"
+      alt="{{ __('logo', 'gds') }}"
+      title="{{ __('Go to frontpage', 'gds') }}"
+      width="159"
+      height="48"
+    />
   </a>
   <div slot="menu">
     @if ($primary_navigation)

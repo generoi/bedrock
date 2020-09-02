@@ -31,6 +31,10 @@ img {
   -ms-interpolation-mode: bicubic;
 }
 
+table {
+  border-collapse: collapse;
+}
+
 // Add whitespace above anchor points
 h1[id]::before,
 h2[id]::before,
@@ -43,12 +47,4 @@ h6[id]::before {
   height: 100px;
   margin-top: -100px;
   visibility: hidden;
-}
-
-:first-child {
-  margin-top: 0;
-}
-
-:last-child {
-  margin-bottom: 0;
 }

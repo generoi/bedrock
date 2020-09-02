@@ -3,8 +3,8 @@
 }
 
 .grid {
-  --grid-gutter-x: var(--gutter);
-  --grid-gutter-y: var(--gutter);
+  --grid-gutter-x: var(--grid-gutter);
+  --grid-gutter-y: var(--grid-gutter);
 
   display: flex;
   flex-wrap: wrap;

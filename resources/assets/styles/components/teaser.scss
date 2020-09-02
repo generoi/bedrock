@@ -1,10 +1,5 @@
 .teaser {
-  &--case,
   &--post {
-    --card-width: 100%;
-    // Desktop
-    @media (min-width: #{$break-medium}) {
-      --card-width: var(--size-col-4);
-    }
+    //
   }
 }

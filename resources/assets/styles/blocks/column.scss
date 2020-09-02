@@ -2,7 +2,7 @@
   --column-gutter: 0;
 
   @include mq($from: small) {
-    --column-gutter: var(--gutter);
+    --column-gutter: var(--grid-gutter);
   }
 }
 
@@ -25,7 +25,7 @@
   }
 
   .wp-block-column {
-    flex-basis: calc(50% - var(--gutter) / 2) !important;
+    flex-basis: calc(50% - var(--grid-gutter) / 2) !important;
   }
 }
 
@@ -38,6 +38,6 @@
 
 @include mq($until: medium) {
   .wp-block-column:not(:last-child) {
-    margin-bottom: var(--gutter);
+    margin-bottom: var(--grid-gutter);
   }
 }

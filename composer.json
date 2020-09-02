@@ -43,6 +43,8 @@
   ],
   "require": {
     "php": "^7.2.5",
+    "generoi/sage-archive-pages": "^0.1.0",
+    "generoi/sage-demo-content": "dev-master",
     "generoi/sage-nativeblock": "dev-master",
     "log1x/acf-composer": "^1.4",
     "log1x/navi": "^1.0",

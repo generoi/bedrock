@@ -38,5 +38,33 @@ return [
             'uri' => get_theme_file_uri('/dist'),
             'manifest' => get_theme_file_path('/dist/mix-manifest.json'),
         ]
-    ]
+    ],
+
+    'deferred_scripts' => [
+        'sage/vendor.js',
+        'sage/app.js',
+        'sage/editor.js',
+        'comment-reply',
+        'wp-embed',
+        'debug-bar-js',
+        'admin-bar',
+        'debug-bar',
+        'wp-genero-cookieconsent/js',
+    ],
+
+    'async_scripts' => [
+        'sage/fontawesome.js',
+    ],
+
+    'async_styles' => [
+        'dashicons',
+        'debug-bar',
+        'ptam-style-css',
+        'ptam-style-css-editor',
+        'shc-show-env',
+        'wp-block-library-theme',
+        'wp-smart-crop-renderer',
+        'wp-genero-cookieconsent/css/library',
+        'wp-genero-cookieconsent/css',
+    ],
 ];

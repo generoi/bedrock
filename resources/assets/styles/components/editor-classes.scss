@@ -36,30 +36,6 @@
 /**
  * Block editor font sizes.
  */
-
-.has-heavy-heading-font-size {
-  // @todo move to gds and figure out proper naming/state
-  @include heading.base;
-
-  font-size: 62px;
-  line-height: 67px;
-  font-weight: 800;
-  letter-spacing: 0;
-  text-transform: uppercase;
-}
-
-.has-light-heading-font-size {
-  // @todo move to gds and figure out proper naming/state
-  @include heading.base;
-
-  color: var(--color-ui-01);
-  font-size: 19px;
-  line-height: 23px;
-  font-weight: 500; // @todo XD looks lighter
-  letter-spacing: 3px;
-  text-transform: uppercase;
-}
-
 .has-xxl-heading-font-size {
   @include heading.size-xxl;
 }
@@ -78,6 +54,8 @@
 
 .has-s-heading-font-size {
   @include heading.size-s;
+
+  color: var(--color-ui-01);
 }
 
 .has-l-paragraph-font-size {

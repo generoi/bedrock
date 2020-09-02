@@ -1,25 +1,48 @@
 .masonry-grid {
-  --grid-gutter-x: var(--gutter);
-  --grid-gutter-y: var(--gutter);
+  --grid-gutter-x: var(--grid-gutter);
+  --grid-gutter-y: var(--grid-gutter);
 
-  column-count: 2;
   column-gap: var(--grid-gutter-x);
-  margin-bottom: calc(var(--grid-gutter-y) / 2 * -1);
+  margin-top: calc(var(--grid-gutter-y) / 2 * -1);
+  // Balance columns in firefox (floating does not work)
+  column-fill: balance;
+
+  &::after {
+    display: block;
+    content: '';
+    clear: both;
+  }
 }
 
 @each $name, $breakpoint in $mq-breakpoints {
-  @for $i from 1 through 12 {
+  @for $i from 2 through 12 {
     @include mq($from: $name) {
       .masonry-grid.#{$name}\:#{$i} {
         column-count: $i;
         // Override regular grid width definition
         width: auto;
+
+        &::after {
+          display: none;
+        }
       }
     }
   }
 }
 
 .column {
-  margin-bottom: var(--grid-gutter-y);
+  margin-top: var(--grid-gutter-y);
+  // @see https://stackoverflow.com/a/28618965
   transform: translateZ(0);
+  // @see https://github.com/necolas/normalize.css/issues/449#issuecomment-365559182
+  break-inside: avoid;
+  // Remove the whitespace at the top of the second column
+  float: left;
+  // Reset the default float overflow width
+  width: 100%;
+
+  // safari bug
+  > * {
+    transform: translateZ(0);
+  }
 }

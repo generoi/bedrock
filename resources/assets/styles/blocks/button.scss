@@ -2,6 +2,7 @@
  * GDS
  */
 @use '~genero-design-system/src/components/gds-button' as button;
+@use '~genero-design-system/src/components/gds-text-button' as text-button;
 
 /**
  * Button
@@ -13,7 +14,7 @@
 
   &.is-style-text {
     .wp-block-button__link {
-      @include button.text-button;
+      @include text-button.base;
 
       padding: 0;
       // This style doesn't really work with wrapping text
@@ -21,80 +22,3 @@
     }
   }
 }
-
-/**
- * Gutenberg?
- */
-// :root {
-//   --button-font-size: 16px;
-//   --button-line-height: 19px;
-//   --button-font-weight: 900;
-//   --button-letter-spacing: 1.28px;
-//   --button-padding: var(--spacing-s) var(--spacing-m);
-// }
-
-// .wp-block-button {
-//   font-weight: var(--button-font-weight);
-//   letter-spacing: var(--button-letter-spacing);
-//   font-size: var(--button-font-size);
-//   line-height: var(--button-line-height);
-//   text-transform: uppercase;
-
-//   &:only-child {
-//     margin-bottom: 0;
-//   }
-
-//   &.has-light-blue-background-color {
-//     --button-color: var(--color-blue);
-//   }
-// }
-
-// .wp-block-button__link {
-//   background-color: var(--button-background, var(--color-blue));
-//   color: var(--button-color, var(--color-white));
-//   border: solid 2px var(--button-border-color, var(--button-background));
-//   border-radius: 0;
-//   padding: var(--button-padding);
-
-//   // Override gutenberg
-//   &:hover,
-//   &:focus,
-//   &:visited {
-//     color: var(--button-color, var(--color-white));
-//   }
-
-//   &:hover,
-//   &:focus {
-//     // @todo
-//   }
-// }
-
-// .wp-block-button.is-style-outline {
-//   --button-background: inherit;
-//   --button-color: var(--color-blue);
-//   --button-border-color: currentColor;
-
-//   // Override gutenberg
-//   .wp-block-button__link {
-//     background-color: var(--button-background, inherit);
-//     color: var(--button-color, var(--color-blue));
-//     border: solid 2px var(--button-border-color, currentColor);
-//   }
-// }
-
-// .wp-block-button.is-style-link {
-//   text-decoration: underline;
-//   --button-background: transparent;
-//   --button-color: var(--color-blue);
-
-//   &:hover,
-//   &:focus {
-//     --button-color: var(--color-dark-blue);
-//   }
-// }
-
-// .wp-block-button.is-style-small {
-//   --button-padding: 8px 11px;
-//   --button-font-size: var(--small-font-size);
-//   --button-font-weight: 400;
-// }

@@ -1,3 +1,4 @@
+@import '~genero-design-system/src/styles';
 @import '~sass-mq';
 @import "~swiper/swiper";
 @import "~swiper/components/pagination/pagination";
@@ -11,18 +12,6 @@ $is-editor: true;
 @import 'common/fonts';
 @import 'blocks/index';
 @import 'components/index';
-
-.is-root-container {
-  padding-left: var(--gutter);
-  padding-right: var(--gutter);
-
-  > [data-align="full"] {
-    max-width: var(--alignfull-width);
-    margin-left: calc(var(--gutter) * -1);
-    margin-right: calc(var(--gutter) * -1);
-    width: auto;
-  }
-}
 
 .wp-block {
   max-width: var(--content-width);
@@ -42,18 +31,6 @@ $is-editor: true;
   &[data-align="full"] {
     max-width: var(--alignfull-width);
   }
-}
-
-[data-align="wide"],
-[data-align="full"],
-.alignwide,
-.alignfull {
-  --block-gutter: var(--block-gutter-lg);
-}
-
-.alignfull + .alignfull,
-[data-align="full"] + [data-align="full"] {
-  margin-top: calc(var(--block-gutter-lg) * -1);
 }
 
 // Disable links rendered in ACF blocks
