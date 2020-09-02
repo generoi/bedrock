@@ -36,6 +36,7 @@ class EditorServiceProvider extends ServiceProvider
 
         add_theme_support('editor-color-palette', config('theme.editor-color-palette'));
         add_theme_support('editor-font-sizes', config('theme.editor-font-sizes'));
+        add_theme_support('editor-gradient-presets', config('theme.editor-gradient-presets'));
     }
 
     public function removeDefaultEditorStyles(array $settings): array

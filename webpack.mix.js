@@ -16,7 +16,14 @@ const yaml = require('js-yaml');
  */
 
 const robo = yaml.safeLoad(fs.readFileSync('../../../../robo.yml', 'utf8'));
-mix.setPublicPath('./dist').browserSync(robo.env["@dev"].host);
+
+mix.setPublicPath('./dist')
+  .browserSync({
+    // You need to make sure the host is hardcoded in robo.yml
+    proxy: robo.env["@dev"].host,
+    // Set to true, if you want the browser to open when running the server.
+    open: false,
+  });
 
 mix.sass('resources/assets/styles/app.scss', 'styles')
    .sass('resources/assets/styles/editor.scss', 'styles')

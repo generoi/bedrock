@@ -11,7 +11,7 @@ $mq-breakpoints: (
   huge: $break-huge,
 );
 
-// These names need to match the 'editor-color-palette' slugs in app/Providers/EditorServiceProvider.php
+// These names need to match the 'editor-color-palette' slugs in config/theme.php
 $color-names:
   'white',
   'ui-background-01',
@@ -25,12 +25,29 @@ $color-names:
   'ui-06',
   'ui-07';
 
+// These names need to match the 'editor-gradient-presets' slugs in config/theme.php
+$gradient-names:
+  'block-01';
+
 $alignfull-max-width: 1600px;
 
 :root {
   @each $name in $color-names {
     --color-#{$name}: var(--wp--preset--color--#{$name});
   }
+
+  // Map gradients from WP
+  @each $name in $gradient-names {
+    --gradient-#{$name}: var(--wp--preset--gradient--#{$name});
+  }
+
+  // Present content widths
+  --content-width: 800px;
+  --alignwide-width: 1200px;
+  --alignfull-width: 2000px;
+
+  // Gutters
+  --gutter: var(--spacing-m);
 
   // Gutter between blocks
   --block-gutter-s: 24px;

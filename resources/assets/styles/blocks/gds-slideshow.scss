@@ -1,4 +1,4 @@
-.wp-block-gds-slideshow {
+.swiper-container {
   --swiper-pagination-color: var(--color-white);
   --swiper-theme-color: var(--color-white);
   --swiper-slide-width: 100%;
@@ -8,12 +8,8 @@
     --swiper-slide-width: var(--size-col-5);
   }
 
-  padding: var(--spacing-xl) 0;
-
   // Desktop
   @media (min-width: #{$break-medium}) {
-    padding: var(--spacing-xxxl) 0;
-
     .swiper-slide + .swiper-slide {
       margin-left: var(--spacing-m);
     }

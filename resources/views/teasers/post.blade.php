@@ -1,0 +1,1 @@
+@extends('teasers.teaser')

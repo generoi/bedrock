@@ -69,3 +69,12 @@
 .has-s-paragraph-font-size {
   @include paragraph.size-s;
 }
+
+/**
+ * Block editor gradients.
+ */
+@each $name in $gradient-names {
+  .has-#{$name}-gradient-background {
+    background: var(--gradient-block-01);
+  }
+}
