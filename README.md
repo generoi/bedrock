@@ -72,6 +72,10 @@ Make sure all dependencies have been installed before moving on:
 * [Node.js](http://nodejs.org/) >= 8.0.0
 * NPM
 
+### Plugin requirements
+
+* Gutenberg 8.2.0+
+
 ## Theme installation
 
 Install Sage using Composer from your WordPress themes directory (replace `your-theme-name` below with the name of your theme):
