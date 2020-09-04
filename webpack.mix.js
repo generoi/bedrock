@@ -49,8 +49,6 @@ mix.options({
   processCssUrls: false,
   postCss: [
     require('postcss-custom-properties')({preserve: true}),
-    // @see https://github.com/JeffreyWay/laravel-mix/issues/1606#issuecomment-551457071
-    require('autoprefixer')({grid: 'autoplace'}),
   ],
   // Causes the follow invalid optimization:
   //   calc(50% - (50vw - ((100vw - 42.125rem) / 2) * .2) + 10px)
