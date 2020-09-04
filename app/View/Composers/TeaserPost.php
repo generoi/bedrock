@@ -23,11 +23,13 @@ class TeaserPost extends Teaser
      */
     public function with()
     {
+        $post = get_post();
+
         return [
-            'image' => $this->image(),
-            'title' => $this->title(),
-            'excerpt' => $this->excerpt(),
-            'categories' => $this->categories(),
+            'image' => $this->image($post),
+            'title' => $this->title($post),
+            'excerpt' => $this->excerpt($post),
+            'categories' => $this->categories($post),
             'date' => get_the_date(),
         ];
     }
