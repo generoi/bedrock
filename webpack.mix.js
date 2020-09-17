@@ -38,9 +38,8 @@ mix.copyWatched('resources/assets/images', 'dist/images', {base: 'resources/asse
 
 // GDS
 const gdsPath = 'node_modules/genero-design-system';
-mix.styles([`${gdsPath}/src/styles/index.scss`], 'dist/styles/gds.css')
-  .scripts([`${gdsPath}/loader/index.mjs`], 'dist/gds/loader/index.mjs')
-  .copyWatched(`${gdsPath}/dist`, 'dist/gds/dist', { base: `${gdsPath}/dist` });
+mix.copyWatched(`${gdsPath}/dist`, 'dist/gds/dist', { base: `${gdsPath}/dist` })
+  .copyWatched(`${gdsPath}/loader`, 'dist/gds/loader', { base: `${gdsPath}/loader` });
 
 mix.autoload({
   jquery: ['$', 'window.jQuery'],

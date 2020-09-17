@@ -16,6 +16,17 @@ add_filter('excerpt_more', function () {
 });
 
 /**
+ * Load GDS as a module.
+ */
+add_filter('script_loader_tag', function (string $tag, string $handle) {
+    if ($handle === 'sage/gds.js') {
+        return str_replace(' src', ' type="module" src', $tag);
+    }
+    return $tag;
+}, 10, 2);
+
+
+/**
  * Strip archive title prefix
  */
 add_filter('get_the_archive_title', function ($title) {

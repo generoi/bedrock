@@ -54,6 +54,7 @@ return [
 
     'async_scripts' => [
         'sage/fontawesome.js',
+        'sage/gds.js',
     ],
 
     'async_styles' => [
