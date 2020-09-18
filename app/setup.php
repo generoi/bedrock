@@ -15,6 +15,7 @@ use function Roots\view;
  * @return void
  */
 add_action('wp_enqueue_scripts', function () {
+    wp_enqueue_script('sage/gds.js', asset('gds/dist/gds/gds.esm.js')->uri(), [], null, false);
     wp_enqueue_script('sage/vendor.js', asset('scripts/vendor.js')->uri(), ['jquery'], null, true);
     wp_enqueue_script('sage/app.js', asset('scripts/app.js')->uri(), ['sage/vendor.js', 'jquery'], null, true);
     wp_enqueue_script('sage/fontawesome.js', 'https://kit.fontawesome.com/033b65fee9.js', [], null, false);
@@ -25,18 +26,8 @@ add_action('wp_enqueue_scripts', function () {
         wp_enqueue_script('comment-reply');
     }
 
-    wp_enqueue_style('sage/gds.css', asset('styles/gds.css')->uri(), [], null);
-    wp_enqueue_style('sage/app.css', asset('styles/app.css')->uri(), ['sage/gds.css'], null);
+    wp_enqueue_style('sage/app.css', asset('styles/app.css')->uri(), [], null);
 }, 100);
-
-/**
- * Include a GDS in the <head> of the page.
- */
-foreach (['wp_head', 'admin_head'] as $action) {
-    add_action($action, function () {
-        echo view('partials.gds');
-    }, 0);
-}
 
 /**
  * Register the theme assets with the block editor.
@@ -45,6 +36,7 @@ foreach (['wp_head', 'admin_head'] as $action) {
  */
 add_action('enqueue_block_editor_assets', function () {
     if ($manifest = asset('scripts/manifest.asset.php')->get()) {
+        wp_enqueue_script('sage/gds.js', asset('gds/dist/gds/gds.esm.js')->uri(), [], null, false);
         wp_enqueue_script('sage/vendor.js', asset('scripts/vendor.js')->uri(), $manifest['dependencies'], null, true);
         wp_enqueue_script('sage/editor.js', asset('scripts/editor.js')->uri(), ['sage/vendor.js'], null, true);
 
