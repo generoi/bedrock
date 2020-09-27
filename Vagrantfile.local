@@ -16,3 +16,7 @@ if Vagrant::Util::Platform.wsl? || (Vagrant::Util::Platform.windows? && !Vagrant
     config.vm.synced_folders[path][:mount_options] = ['dmode=775','fmode=764']
   end
 end
+
+if vconfig['vagrant_box_version']
+  config.vm.box_version = vconfig['vagrant_box_version']
+end
