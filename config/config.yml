@@ -3,6 +3,9 @@
 # vagrant.config.yml. That way when Drupal VM updates are brought in, this file
 # can be overriden without manual inspection.
 
+vagrant_box: geerlingguy/drupal-vm
+vagrant_box_version: 2.0.9
+
 # Use DHCP assigned  IPs with vagrant-hostmanager
 # Note: requires vagrant-vbguest to be disabled in Vagrantfile.local
 vagrant_ip: dhcp
