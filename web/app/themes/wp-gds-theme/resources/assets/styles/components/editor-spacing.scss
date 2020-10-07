@@ -1,0 +1,138 @@
+// The root container only
+.is-root-container,
+.entry-content {
+  // Add a viewport gutter in the same manner as Gutenberg does
+  padding-left: var(--viewport-gutter);
+  padding-right: var(--viewport-gutter);
+  overflow-x: hidden;
+  overflow-y: hidden;
+
+  // First block has a top gutter unless it's full aligned in which case it's
+  // considered a banner
+  > :first-child:not(.alignfull),
+  > .alignfull:first-child + :not(.alignfull) {
+    margin-top: var(--block-gutter-l);
+  }
+
+  // Last block has a gutter before the footer
+  > :last-child:not(.alignfull) {
+    margin-bottom: var(--block-gutter-l);
+  }
+}
+
+// Any container that can contain blocks or inner blocks.
+.wp-block-group__inner-container,
+.wp-block-cover__inner-container,
+.wp-block-media-text__content,
+.wp-block-column,
+.entry-content,
+.is-root-container {
+  // Each blocks default styling
+  > * {
+    max-width: var(--content-width);
+    margin-left: auto;
+    margin-right: auto;
+    // Default vertical gutter
+    margin-top: var(--block-gutter);
+    margin-bottom: var(--block-gutter);
+
+    &.has-text-align-right {
+      margin-right: 0;
+    }
+
+    &.has-text-align-left {
+      margin-left: 0;
+    }
+  }
+
+  > gds-tag-group,
+  > .block,
+  > p,
+  > ul,
+  > ol {
+    margin-top: var(--block-gutter-s);
+    margin-bottom: var(--block-gutter-s);
+  }
+
+  > h1,
+  > h2,
+  > h3,
+  > h4,
+  > h5,
+  > h6 {
+    margin-bottom: var(--block-gutter-s);
+
+    & + h1,
+    & + h2,
+    & + h3,
+    & + h4,
+    & + h5,
+    & + h6 {
+      margin-top: calc(var(--block-gutter-s) * -1 + var(--spacing-xxs));
+    }
+  }
+
+  > gds-label {
+    & + h1,
+    & + h2,
+    & + h3,
+    & + h4,
+    & + h5,
+    & + h6 {
+      margin-top: var(--spacing-m);
+    }
+  }
+
+  // Alignfull stretches to the viewport width up to a point when it gets centered.
+  [data-align="full"],
+  .alignfull {
+    max-width: var(--alignfull-width);
+    // Negate the container padding so it stretches to viewport width.
+    margin-left: calc(var(--viewport-gutter) * -1);
+    margin-right: calc(var(--viewport-gutter) * -1);
+    width: unset; // Override Gutenberg
+
+    // Once alignfull limit has been reached, center the block
+    @include mq($from: $alignfull-max-width) {
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    // If it's the last child, remove the gutter with the footer
+    &.has-background:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  // Align has a 12 column width with a viewport gutter
+  [data-align="wide"],
+  .alignwide {
+    max-width: var(--alignwide-width);
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  > :first-child {
+    margin-top: 0;
+  }
+
+  > :last-child {
+    margin-bottom: 0;
+  }
+}
+
+// Use a larger gutter around full aligned blocks with a background. This is
+// overridden on a per block basis.
+[data-align="wide"],
+[data-align="full"],
+.alignwide,
+.alignfull {
+  margin-top: var(--block-gutter-l);
+  margin-bottom: var(--block-gutter-l);
+}
+
+// Adjacent full aligned blocks should not have a gutter.
+[data-align="full"] + [data-align="full"],
+.alignfull.has-background + .alignfull.has-background {
+  margin-top: calc(var(--block-gutter-l) * -1);
+}

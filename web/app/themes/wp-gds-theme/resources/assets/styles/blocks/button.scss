@@ -1,0 +1,24 @@
+/**
+ * GDS
+ */
+@use '~genero-design-system/src/components/gds-button' as button;
+@use '~genero-design-system/src/components/gds-text-button' as text-button;
+
+/**
+ * Button
+ */
+.wp-block-button {
+  &__link {
+    @include button.base;
+  }
+
+  &.is-style-text {
+    .wp-block-button__link {
+      @include text-button.base;
+
+      padding: 0;
+      // This style doesn't really work with wrapping text
+      white-space: nowrap;
+    }
+  }
+}

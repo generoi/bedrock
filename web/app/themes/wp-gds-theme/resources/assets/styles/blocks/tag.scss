@@ -1,0 +1,10 @@
+@use '~genero-design-system/src/components/gds-tag' as tag;
+@use '~genero-design-system/src/components/gds-label' as label;
+
+.wp-block-tag {
+  @include tag.base;
+
+  > * {
+    @include label.base;
+  }
+}

@@ -1,0 +1,43 @@
+:root {
+  --column-gutter: 0;
+
+  @include mq($from: small) {
+    --column-gutter: var(--grid-gutter);
+  }
+}
+
+.wp-block-column {
+  margin-left: var(--column-gutter);
+
+  &:first-child {
+    --column-gutter: 0;
+  }
+
+  > :only-child {
+    height: 100%;
+  }
+}
+
+// Override Gutenberg
+@include mq($from: small, $until: medium) {
+  .wp-block-column:nth-child(2n) {
+    margin-left: var(--column-gutter);
+  }
+
+  .wp-block-column {
+    flex-basis: calc(50% - var(--grid-gutter) / 2) !important;
+  }
+}
+
+// Override Gutenberg
+@include mq($from: medium) {
+  .wp-block-column:not(:first-child) {
+    margin-left: var(--column-gutter);
+  }
+}
+
+@include mq($until: medium) {
+  .wp-block-column:not(:last-child) {
+    margin-bottom: var(--grid-gutter);
+  }
+}

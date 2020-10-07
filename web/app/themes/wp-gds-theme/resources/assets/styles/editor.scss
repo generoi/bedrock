@@ -1,0 +1,39 @@
+@import '~genero-design-system/src/styles';
+@import '~sass-mq';
+@import "~swiper/swiper";
+@import "~swiper/components/pagination/pagination";
+@import "~swiper/components/navigation/navigation";
+
+$is-editor: true;
+
+@import 'config/variables';
+@import 'common/utils';
+@import 'common/typography';
+@import 'common/fonts';
+@import 'blocks/index';
+@import 'components/index';
+
+.wp-block {
+  max-width: var(--content-width);
+
+  &:first-child {
+    margin-top: 0;
+  }
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+
+  &[data-align="wide"] {
+    max-width: var(--alignwide-width);
+  }
+
+  &[data-align="full"] {
+    max-width: var(--alignfull-width);
+  }
+}
+
+// Disable links rendered in ACF blocks
+.acf-block-preview [href]:not([href^="#"]) {
+  pointer-events: none;
+}

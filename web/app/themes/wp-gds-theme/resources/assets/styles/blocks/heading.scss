@@ -1,0 +1,43 @@
+/**
+ * GDS
+ */
+@use '~genero-design-system/src/components/gds-heading' as *;
+
+h1,
+h2,
+h3,
+h4,
+h5 {
+  @include base;
+}
+
+h1 {
+  @include size-xl;
+}
+
+h2 {
+  @include size-l;
+}
+
+h3 {
+  @include size-m;
+}
+
+h4 {
+  @include size-s;
+}
+
+h5 {
+  @include size-s;
+}
+
+.is-style-floating {
+  margin-bottom: -0.5em !important;
+  z-index: 1;
+  line-height: 1;
+  position: relative;
+
+  & + * {
+    margin-top: 0 !important;
+  }
+}

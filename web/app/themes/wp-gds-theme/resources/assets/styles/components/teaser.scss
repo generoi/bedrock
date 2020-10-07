@@ -1,0 +1,22 @@
+.teaser {
+  &--post {
+    //
+  }
+}
+
+.swiper-container {
+  .teaser {
+    --card-width: 100%;
+    // Desktop
+    @media (min-width: #{$break-medium}) {
+      --card-width: var(--size-col-5);
+      // TODO: Use some kind of --size-row-3 variable for this. Or implement 3/2 aspect ratio.
+      --media-card-media-height: 324px;
+    }
+
+    .teaser-tags > * + * {
+      margin-left: var(--spacing-s);
+
+    }
+  }
+}

@@ -1,0 +1,57 @@
+{
+  "name": "gds/slideshow",
+  "category": "media",
+  "attributes": {
+    "align": {
+      "type": "string",
+      "default": "wide"
+    },
+    "slides": {
+      "type": "number",
+      "default": 1
+    },
+    "hasPagination": {
+      "type": "boolean",
+      "default": false
+    },
+    "hasNavigation": {
+      "type": "boolean",
+      "default": true
+    },
+    "hasArrowsOutside": {
+      "type": "boolean",
+      "default": false
+    },
+    "isLoop": {
+      "type": "boolean",
+      "default": false
+    },
+    "isAutoplay": {
+      "type": "boolean",
+      "default": false
+    },
+    "arrowColor": {
+      "type": "string"
+    },
+    "customArrowColor": {
+      "type": "string"
+    },
+    "backgroundColor": {
+      "type": "string"
+    },
+    "textColor": {
+      "type": "string"
+    },
+    "customBackgroundColor": {
+      "type": "string"
+    },
+    "customTextColor": {
+      "type": "string"
+    }
+  },
+  "supports": {
+    "html": false,
+    "align": ["wide", "full"],
+    "lightBlockWrapper": true
+  }
+}

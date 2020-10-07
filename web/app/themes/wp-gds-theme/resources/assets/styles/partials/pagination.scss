@@ -1,0 +1,19 @@
+ul.page-numbers {
+  display: flex;
+  list-style-type: none;
+  align-items: center;
+  justify-content: center;
+  margin-top: var(--spacing-m);
+}
+
+span.page-numbers,
+a.page-numbers {
+  padding: var(--spacing-xxs) var(--spacing-xs);
+  display: flex;
+  text-decoration: none;
+}
+
+.page-numbers.current {
+  background: var(--color-blue);
+  color: var(--color-white);
+}

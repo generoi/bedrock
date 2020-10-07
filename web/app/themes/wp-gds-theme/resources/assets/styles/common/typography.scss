@@ -1,0 +1,37 @@
+:root {
+  --heading-color: inherit;
+  --heading-line-height: 1;
+  --heading-font-family: gilroy, arial, helvetica, sans-serif;
+  --body-font-family: gilroy, arial, helvetica, sans-serif;
+  --body-font-size: 17px;
+  --body-line-height: 1.588235294;
+}
+
+body {
+  font-family: var(--body-font-family);
+  font-size: var(--body-font-size);
+  line-height: var(--body-line-height);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+ul,
+ol {
+  box-sizing: border-box;
+  padding-left: var(--grid-gutter);
+
+  &:first-child {
+    margin-block-start: 0;
+  }
+}
+
+ul {
+  list-style-type: disc;
+}
+
+// Provide a default gutter on forms which in case used outside the block
+// editor, as if it was a basic element.
+.gform_wrapper {
+  margin-block-start: var(--spacing-m);
+  margin-block-end: var(--spacing-m);
+}

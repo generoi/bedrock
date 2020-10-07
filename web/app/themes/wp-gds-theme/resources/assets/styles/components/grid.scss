@@ -1,0 +1,58 @@
+:root {
+  --grid-columns: 12;
+}
+
+.grid {
+  --grid-gutter-x: var(--grid-gutter);
+  --grid-gutter-y: var(--grid-gutter);
+
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+
+  @include mq($from: large) {
+    margin:
+      calc(var(--grid-gutter-y) / 2 * -1)
+      calc(var(--grid-gutter-x) / 2 * -1);
+  }
+}
+
+.cell {
+  flex: 0 0 auto;
+  min-height: 0;
+  min-width: 0;
+  width: 100%;
+  margin:
+    calc(var(--grid-gutter-y) / 2)
+    calc(var(--grid-gutter-x) / 2);
+  max-width: calc(100% - var(--grid-gutter-x));
+
+  > :only-child {
+    height: 100%;
+  }
+}
+
+@each $name, $breakpoint in $mq-breakpoints {
+  @for $i from 1 through 12 {
+    @include mq($from: $name) {
+      .#{$name}\:#{$i} {
+        width: calc(
+          (#{$i} / var(--grid-columns) * 100%) -
+          var(--grid-gutter-x)
+        );
+      }
+    }
+  }
+
+  @include mq($from: $name) {
+    .#{$name}\:auto {
+      width: auto;
+      flex: 1 1 0;
+    }
+
+    .#{$name}\:shrink {
+      width: auto;
+      flex: 0 0 auto;
+    }
+  }
+}
