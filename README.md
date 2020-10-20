@@ -308,7 +308,20 @@ Usage (eg how to import a db from local)
     ./vendor/bin/dep deploy production --quick
     ```
 
-## Deploying
+## Deploying (with GitHub actions)
+
+Requires that the project has GitHub Actions configured. To configure it you essentially have to setup `dep` to work with the remotes and then enable the workflow triggers in `.github/workflows/`
+
+```sh
+./vendor/bin/robo deploy:production
+./vendor/bin/robo deploy:staging --branch=patch-1
+./vendor/bin/robo deploy:staging --log_level='-vvv'
+
+# You can still use `dep` directly like described in the section below
+./vendor/bin/dep cache:clear production
+```
+
+## Deploying (from local computer)
 
 See [https://github.com/generoi/deployer-genero](https://github.com/generoi/deployer-genero).
 
