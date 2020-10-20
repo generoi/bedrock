@@ -1,6 +1,6 @@
 machine_name: sage
-theme_path: 'web/app/themes/wp-gds-theme'
 organization: generoi
+theme_path: 'web/app/themes/wp-gds-theme'
 placeholders:
   '%files': web/app/uploads/
 env:
@@ -25,6 +25,9 @@ env:
     user: deploy
     path: '/home/www/${machine_name}/deploy/current'
     url: 'https://${machine_name}.fi'
+    # Use a custom port:
+    #   port: 22
+    #   ssh: 'ssh -p 50860'
 command:
   build:
     production:
@@ -43,10 +46,10 @@ command:
       options:
         workflow: deploy_staging.yml
   setup:
-    theme:
-      options:
-        theme-repository: 'git@github.com:generoi/sage.git'
-        theme-branch: 'master'
+    options:
+      theme-repository: false
+      theme-branch: false
+      no-commit: false
   search:
     replace:
       options:
@@ -97,4 +100,4 @@ task:
   Wp:
     WpCliStack:
       settings:
-        executable: './vendor/bin/wp'
+        executable: ./vendor/bin/wp
