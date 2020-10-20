@@ -310,7 +310,7 @@ Usage (eg how to import a db from local)
 
 ## Deploying (with GitHub actions)
 
-Requires that the project has GitHub Actions configured. To configure it you essentially have to setup `dep` to work with the remotes and then enable the workflow triggers in `.github/workflows/`
+Requires that the project has GitHub Actions configured. To configure it you essentially have to setup `dep` to work with the remotes and then renaming the workflow files in `.github/workflows/`
 
 ```sh
 ./vendor/bin/robo deploy:production

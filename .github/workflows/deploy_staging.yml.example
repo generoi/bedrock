@@ -1,15 +1,15 @@
 name: Deploy to Staging
-on: []
-  # workflow_dispatch:
-  #   inputs:
-  #     log_level:
-  #       description: 'Log level (-v, -vv, -vvv)'
-  #       required: true
-  #       default: '-vv'
-  #     ref:
-  #       description: 'Optional tag to checkout'
-  #       required: false
-  #       default: ''
+on:
+  workflow_dispatch:
+    inputs:
+      log_level:
+        description: 'Log level (-v, -vv, -vvv)'
+        required: true
+        default: '-vv'
+      ref:
+        description: 'Optional tag to checkout'
+        required: false
+        default: ''
 
 env:
   NODE_VERSION: 12
