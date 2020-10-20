@@ -1,0 +1,84 @@
+name: Deploy to Staging
+on: []
+  # workflow_dispatch:
+  #   inputs:
+  #     log_level:
+  #       description: 'Log level (-v, -vv, -vvv)'
+  #       required: true
+  #       default: '-vv'
+  #     ref:
+  #       description: 'Optional tag to checkout'
+  #       required: false
+  #       default: ''
+
+env:
+  NODE_VERSION: 12
+  PHP_VERSION: 7.3
+  ENVIRONMENT: staging
+
+jobs:
+  build_deploy:
+    name: Build and deploy
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository (latest)
+        uses: actions/checkout@v2
+        if: github.event.inputs.ref == ''
+
+      - name: Checkout Repository (specific reference)
+        uses: actions/checkout@v2
+        if: github.event.inputs.ref != ''
+        with:
+          ref: ${{ github.event.inputs.ref }}
+
+      - name: Start SSH agent
+        uses: webfactory/ssh-agent@v0.4.0
+        with:
+          ssh-private-key: |
+            ${{ secrets.MINASITHIL_DEPLOY_PRIVATE_KEY }}
+
+      - name: Setup Node
+        uses: actions/setup-node@v2-beta
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: ${{ env.PHP_VERSION }}
+          tools: prestissimo
+        env:
+          COMPOSER_TOKEN: ${{ secrets.PACKAGIST_GITHUB_TOKEN }}
+
+      - name: Get Composer Cache Directory
+        id: composer-cache
+        run: |
+          echo "::set-output name=dir::$(composer config cache-files-dir)"
+
+      - name: Composer Cache
+        uses: actions/cache@v2
+        with:
+          path: ${{ steps.composer-cache.outputs.dir }}
+          key: ${{ runner.os }}-composer-${{ hashFiles('**/composer.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-composer-
+
+      - name: NPM Cache
+        uses: actions/cache@v2
+        with:
+          path: ~/.npm
+          key: ${{ runner.os }}-npm-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-npm-
+
+      - name: Install development packages to run tests
+        run: composer install:development
+
+      - name: Run tests
+        run: composer test --no-interaction
+
+      - name: Add remote public keys to known hosts
+        run: ssh-keyscan -p $(./vendor/bin/robo config env.@${{ env.ENVIRONMENT }}.port || echo 22) $(./vendor/bin/robo config env.@${{ env.ENVIRONMENT }}.host) >> ~/.ssh/known_hosts
+
+      - name: Deploy
+        run: ./vendor/bin/dep deploy ${{ env.ENVIRONMENT }} ${{ github.event.inputs.log_level }}

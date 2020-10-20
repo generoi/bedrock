@@ -33,6 +33,15 @@ command:
     development:
       options:
         npm-script: build
+  deploy:
+    options:
+      uri: ${organization}/${machine_name}
+    production:
+      options:
+        workflow: deploy_production.yml
+    staging:
+      options:
+        workflow: deploy_staging.yml
   setup:
     theme:
       options:
