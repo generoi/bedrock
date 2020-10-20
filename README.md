@@ -130,6 +130,39 @@ If you have trouble accessing symlinked files in Vagrant, such as
 
     vagrant plugin install vagrant-vbguest
 
+#### Working from guest machine
+
+    # Clone the project
+    git clone --recursive git@github.com:generoi/<example-project>.git <example-project>
+    cd <example-project>
+
+    # Install composer dependencies
+    composer install
+
+    # Make sure you have an ssh-agent running and that you have access to all remote environments
+    eval $(ssh-agent -s)
+    ssh-add
+
+    # Build the VM
+    vagrant up
+    vagrant ssh
+
+    # From now on run all commands from within the VM
+    cd /var/www/wordpress
+
+    # Install theme composer dependencies and development tools
+    composer install:development
+
+    # Fetch the remote database and uploads
+    ./vendor/bin/robo db:pull @production --target=self
+    ./vendor/bin/robo files:pull @production
+
+    # Watch/build theme assets
+    cd web/app/themes/<example-project>
+    npm run build
+    npm run build:production
+    npm run start
+
 ## Docker environment with ddev
 
     # Clone the repository and install the development dependencies as
