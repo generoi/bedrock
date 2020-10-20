@@ -1,4 +1,5 @@
 <?php
+
 /*
 Plugin Name:  Register Theme Directory
 Plugin URI:   https://roots.io/bedrock/

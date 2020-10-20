@@ -1,0 +1,15 @@
+.wp-block-buttons {
+  margin-bottom: calc(var(--spacing-s) * -1);
+}
+
+.wp-block-buttons .wp-block-button {
+  margin-bottom: var(--spacing-s);
+  margin-right: var(--spacing-s);
+}
+
+@if $is-editor {
+  // Some Gutenberg bug
+  .wp-block[data-align="center"] > .wp-block-buttons .block-editor-block-list__layout {
+    text-align: center;
+  }
+}

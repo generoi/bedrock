@@ -1,0 +1,127 @@
+// A gutter size equivalent to 1 column + it's gutter
+
+.wp-block-media-text {
+  --gutter-column-1: calc(var(--grid-column) + var(--grid-gutter));
+
+  @include mq($until: large) {
+    --gutter-column-1: var(--block-gutter);
+  }
+
+  grid-gap: var(--grid-gutter);
+
+  > .wp-block-media-text__content {
+    align-self: flex-start;
+    padding-right: 0;
+    // Blocks without wide/full alignment needs a small gutter
+    padding-left: 0;
+  }
+
+  // Wide aligned blocks use a 1 column sized gutter with no padding on the
+  // opposite site of the media
+  [data-align="wide"] > &,
+  &.alignwide {
+    grid-gap: var(--gutter-column-1);
+  }
+
+  // Wide aligned blocks use a 1 column sized gutter on both sides of the content
+  [data-align="full"] > & > .wp-block-media-text__content,
+  &.alignfull > .wp-block-media-text__content {
+    padding-left: var(--gutter-column-1);
+    padding-right: var(--gutter-column-1);
+  }
+
+  // Blocks with a background color have a 1 column sized gutter on all sides.
+  &.has-background .wp-block-media-text__content {
+    padding: var(--gutter-column-1);
+  }
+
+  // Blocks without a background should have smaller gutter before the previous
+  // element, eg heading.
+  [data-align="wide"] > &:not(.has-background),
+  [data-align="full"] > &:not(.has-background),
+  &:not(.has-background).alignwide,
+  &:not(.has-background).alignfull {
+    margin-top: var(--block-gutter);
+  }
+
+  // On alignwide/alignfull break the grid earlier than Gutenberg core
+  @include mq($until: large) {
+    grid-gap: 0;
+
+    &.is-stacked-on-mobile.alignwide,
+    &.is-stacked-on-mobile.alignfull {
+      grid-template-columns: 100% !important;
+
+      .wp-block-media-text__media {
+        grid-column: 1;
+        grid-row: 1;
+      }
+
+      .wp-block-media-text__content {
+        grid-column: 1;
+        grid-row: 2;
+      }
+    }
+  }
+}
+
+// Hero blocks have the background color span the entire viewport.
+.wp-block-media-text.is-style-hero {
+  max-width: var(--alignwide-width);
+  padding-left: var(--grid-gutter);
+  padding-right: var(--grid-gutter);
+  margin-left: auto;
+  margin-right: auto;
+  position: relative;
+
+  @include mq($from: large) {
+    grid-gap: var(--gutter-column-1);
+  }
+
+  .wp-block-media-text__content {
+    padding-right: 0;
+  }
+
+  &.has-media-on-the-right > .wp-block-media-text__content {
+    padding-left: 0;
+  }
+
+  &::before {
+    display: block;
+    content: '';
+    position: absolute;
+    background-color: inherit;
+    top: 0;
+    bottom: 0;
+    left: calc(-50vw + 50%);
+    width: 100vw;
+    z-index: -1;
+  }
+}
+
+// Utility style for breaking the block into 2/3 content.
+@include mq($from: large) {
+  .wp-block-media-text.is-style-two-thirds {
+    --media-text-two-thirds: calc(100% / 3 * 2);
+
+    grid-template-columns: 1fr var(--media-text-two-thirds) !important;
+
+    &.has-media-on-the-right {
+      grid-template-columns: var(--media-text-two-thirds) 1fr !important;
+    }
+  }
+}
+
+// GDS
+.wp-block-media-text.is-image-fill figure.wp-block-media-text__media > img {
+  position: relative;
+  margin: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.wp-block-media-text.has-background {
+  --tag-background-color: transparent;
+  --tag-border-color: white;
+}

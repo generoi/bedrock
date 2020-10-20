@@ -1,0 +1,16 @@
+@import '~genero-design-system/src/styles';
+@import '~normalize.css';
+@import '~sass-mq';
+@import "~swiper/swiper";
+@import "~swiper/components/pagination/pagination";
+@import "~swiper/components/navigation/navigation";
+
+@import 'config/variables';
+@import 'common/utils';
+@import 'common/reset';
+@import 'common/typography';
+@import 'common/fonts';
+@import 'components/index';
+@import 'blocks/index';
+
+@import 'partials/index';

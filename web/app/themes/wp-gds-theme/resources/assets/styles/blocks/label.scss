@@ -1,0 +1,5 @@
+@use '~genero-design-system/src/components/gds-label' as label;
+
+.wp-block-label {
+  @include label.base;
+}

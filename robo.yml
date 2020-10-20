@@ -1,5 +1,5 @@
 machine_name: sage
-theme_path: 'web/app/themes/${machine_name}'
+theme_path: 'web/app/themes/wp-gds-theme'
 organization: generoi
 placeholders:
   '%files': web/app/uploads/

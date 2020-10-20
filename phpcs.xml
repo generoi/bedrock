@@ -2,12 +2,13 @@
 <ruleset name="Roots">
   <description>Roots Coding Standards</description>
 
-  <!-- Scan only mu-plugins and files in config/ directory -->
+  <!-- Scan only mu-plugins, themes and files in config/ directory -->
   <!-- If a third party mu-plugin is required, exclude it with exclude-pattern below -->
   <file>RoboFile.php</file>
   <file>deploy.php</file>
   <file>config/</file>
   <file>web/app/mu-plugins/</file>
+  <file>web/app/themes/</file>
 
   <!-- Scan only PHP files -->
   <arg name="extensions" value="php"/>
@@ -17,6 +18,10 @@
   <exclude-pattern>vendor/</exclude-pattern>
   <exclude-pattern>web/app/mu-plugins/*/*</exclude-pattern>
 
+  <!-- Ignore theme build files -->
+  <exclude-pattern>web/app/themes/*/dist</exclude-pattern>
+  <exclude-pattern>web/app/themes/*/storage</exclude-pattern>
+
   <!-- Show colors in console -->
   <arg value="-colors"/>
 
@@ -24,9 +29,5 @@
   <arg value="ns"/>
 
   <!-- Use PSR-2 as a base -->
-  <rule ref="PSR2"/>
-
-  <rule ref="PSR1.Classes.ClassDeclaration.MissingNamespace">
-    <exclude-pattern>RoboFile.php</exclude-pattern>
-  </rule>
+  <rule ref="PSR12"/>
 </ruleset>

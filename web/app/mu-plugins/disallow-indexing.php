@@ -1,4 +1,5 @@
 <?php
+
 /*
 Plugin Name:  Disallow Indexing
 Plugin URI:   https://roots.io/bedrock/

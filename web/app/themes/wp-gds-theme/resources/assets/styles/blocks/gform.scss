@@ -1,0 +1,36 @@
+// @note requires Gravityforms 2.5+ with default styles not loaded.
+
+.gform_footer {
+  margin-top: var(--spacing-m);
+}
+
+.gform_fields {
+  display: grid;
+  grid-gap: var(--spacing-m);
+  width: 100%;
+  grid-template-columns: repeat(12, 1fr);
+  grid-template-rows: repeat(auto-fill, auto);
+
+  .medium {
+    max-width: var(--grid-column-5);
+  }
+}
+
+.gfield {
+  grid-column: 1 / -1;
+}
+
+.gform_confirmation_wrapper {
+  margin-top: var(--spacing-m);
+}
+
+.gfield_label {
+  margin-bottom: var(--spacing-xxs);
+  font-weight: 500;
+  display: block;
+}
+
+// Honeypot
+.gform_validation_container {
+  display: none;
+}

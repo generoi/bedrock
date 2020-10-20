@@ -1,4 +1,5 @@
 <?php
+
 /*
 Plugin Name:  Disable WP Version Output
 Plugin URI:   https://genero.fi

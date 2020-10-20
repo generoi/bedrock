@@ -1,0 +1,104 @@
+@import '~@wordpress/base-styles/breakpoints';
+
+$is-editor: false !default;
+$mq-breakpoints: (
+  mobile: 320px,
+  small: $break-small,
+  medium: $break-medium,
+  large: $break-large,
+  xlarge: $break-xlarge,
+  wide: $break-wide,
+  huge: $break-huge,
+);
+
+// These names need to match the 'editor-color-palette' slugs in config/theme.php
+$color-names:
+  'white',
+  'ui-background-01',
+  'ui-background-02',
+  'ui-01',
+  'ui-02',
+  'black',
+  'ui-03',
+  'ui-04',
+  'ui-05',
+  'ui-06',
+  'ui-07';
+
+// These names need to match the 'editor-gradient-presets' slugs in config/theme.php
+$gradient-names:
+  'block-01';
+
+$alignfull-max-width: 1600px;
+
+:root {
+  @each $name in $color-names {
+    --color-#{$name}: var(--wp--preset--color--#{$name});
+  }
+
+  // Map gradients from WP
+  @each $name in $gradient-names {
+    --gradient-#{$name}: var(--wp--preset--gradient--#{$name});
+  }
+
+  // Present content widths
+  --content-width: 800px;
+  --alignwide-width: 1200px;
+  --alignfull-width: 2000px;
+
+  // Gutters
+  --gutter: var(--spacing-m);
+
+  // Gutter between blocks
+  --block-gutter-s: 24px;
+  --block-gutter: 40px;
+  --block-gutter-l: 40px;
+
+  @include mq($from: medium) {
+    --block-gutter-l: 80px;
+  }
+
+  // Custom gutter for the footer
+  --footer-gutter: 185px;
+
+  // Grid gutters
+  --grid-gutter: 12px;
+  --grid-column: 78px;
+
+  // @todo mobile
+  @for $i from 1 through 12 {
+    --grid-column-#{$i}: calc(var(--grid-column) * #{$i} + var(--grid-gutter) * (#{$i} - 1));
+  }
+
+  // @todo we should use `size-column` below instead.
+  @include mq($from: medium) {
+    --grid-gutter: 24px;
+    --grid-column: 78px;
+
+    @for $i from 1 through 12 {
+      --grid-column-#{$i}: calc(var(--grid-column) * #{$i} + var(--grid-gutter) * (#{$i} - 1));
+    }
+  }
+
+  --viewport-gutter: 15px;
+  --content-width: var(--grid-column-8);
+  --alignwide-width: var(--grid-column-12);
+  --alignfull-width: unset; // @note sass variable needs to be updated
+
+  /**
+   * GDS variable overrides.
+   */
+  // Sizes (columns plus in-between gutters)
+  --size-column: 78px;
+  --size-col-1: var(--size-column);
+  --size-col-2: calc(var(--size-column) * 2 + var(--gutter));
+  --size-col-3: calc(var(--size-column) * 3 + var(--gutter) * 2);
+  --size-col-4: calc(var(--size-column) * 4 + var(--gutter) * 3);
+  --size-col-5: calc(var(--size-column) * 5 + var(--gutter) * 4);
+
+  // Card
+  --card-width: 100%;
+
+  // Media Card
+  --media-card-media-height: calc(371 / 486 * 100%);
+}

@@ -1,0 +1,13 @@
+.wp-block-cover {
+  box-sizing: border-box;
+  color: var(--color-white);
+
+  .wp-block-cover__inner-container {
+    // Override Gutenberg weirdness
+    color: inherit;
+  }
+
+  @media (min-width: #{$alignfull-max-width}) {
+    min-height: 600px !important;
+  }
+}

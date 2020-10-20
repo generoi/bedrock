@@ -4,8 +4,10 @@ if (file_exists($composer = __DIR__ . '/vendor/autoload.php')) {
     require_once $composer;
 }
 
+// phpcs:disable PSR1.Classes.ClassDeclaration.MissingNamespace
 class RoboFile extends \Robo\Tasks
 {
+    // phpcs:enable
     use \Generoi\Robo\Task\loadTasks;
     use \Generoi\Robo\Command\loadCommands;
 

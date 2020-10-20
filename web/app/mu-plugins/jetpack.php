@@ -1,4 +1,5 @@
 <?php
+
 /*
 Plugin Name:  Jetpack Configurations
 Plugin URI:   https://genero.fi

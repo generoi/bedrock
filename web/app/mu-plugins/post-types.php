@@ -1,4 +1,5 @@
 <?php
+
 /*
 Plugin Name:  Register Post Types
 Plugin URI:   https://genero.fi
