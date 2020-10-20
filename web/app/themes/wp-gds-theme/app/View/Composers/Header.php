@@ -39,7 +39,7 @@ class Header extends Composer
 
         return $this->languages = collect($languages)
             ->map(function ($language) {
-                $item = new stdClass;
+                $item = new stdClass();
                 $item->active = $language['active'];
                 $item->activeAncestor = null;
                 $item->title = $language['native_name'];

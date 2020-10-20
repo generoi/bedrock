@@ -1,4 +1,5 @@
 <?php
+
 /*
 Plugin Name:  Set ACF JSON path
 Plugin URI:   https://genero.fi

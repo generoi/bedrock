@@ -1,4 +1,5 @@
 <?php
+
 /*
 Plugin Name:  WP Defaults
 Plugin URI:   https://genero.fi
@@ -11,7 +12,7 @@ License:      MIT License
 
 namespace Genero\Site;
 
-use function \Sober\Intervention\intervention;
+use function Sober\Intervention\intervention;
 
 if (!is_blog_installed()) {
     return;

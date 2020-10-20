@@ -102,7 +102,7 @@ return [
     ],
     'editor-gradient-presets' => [
         [
-            'name'     => __( 'Green radial gradient', 'gds' ),
+            'name'     => __('Green radial gradient', 'gds'),
             'slug'     => 'block-01',
             'gradient' => 'radial-gradient(closest-side, #000000, #ffffff)',
         ],

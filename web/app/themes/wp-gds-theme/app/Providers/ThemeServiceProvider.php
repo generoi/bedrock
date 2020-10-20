@@ -24,10 +24,12 @@ class ThemeServiceProvider extends ServiceProvider
      */
     public function scriptLoaderTag(string $tag, string $handle): string
     {
-        foreach ([
-            'defer' => config('assets.deferred_scripts'),
-            'async' => config('assets.async_scripts'),
-        ] as $type => $scripts) {
+        foreach (
+            [
+                'defer' => config('assets.deferred_scripts'),
+                'async' => config('assets.async_scripts'),
+            ] as $type => $scripts
+        ) {
             if (in_array($handle, $scripts)) {
                 return str_replace(' src', " $type src", $tag);
             }
