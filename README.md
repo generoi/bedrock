@@ -29,19 +29,15 @@ Much of the philosophy behind Bedrock is inspired by the [Twelve-Factor App](htt
 
 ## Requirements
 
+_For windows but also new macs also see the [system requirements installation steps](#system-requirements-installation-for-windows)._
+
 * PHP >= 7.2
 * Composer - [Install](https://getcomposer.org/doc/00-intro.md#installation-linux-unix-osx)
 * Vagrant >= 1.8.7
+  * _In WSL, the version must match the version in Windows itself_
 * VirtualBox >= 6.0.14 (=6.0.14 for Windows development)
 * Ansible >= 2.5 (for faster provisioning but not required)
 * Node.js >= 12 (if running commands from the host machine)
-
-# Additional requirements (Windows)
-
-*  Windows Subsystem for Linux (WSL)
-    * https://docs.microsoft.com/en-us/windows/wsl/install-win10
-* Vagrant installed in the WSL
-    * The version *must match* the version in Windows itself
 
 ## Local project development (Vagrant)
 
@@ -55,6 +51,10 @@ Much of the philosophy behind Bedrock is inspired by the [Twelve-Factor App](htt
 
     # Build the VM
     vagrant up
+
+    # Make sure you have an ssh-agent running and that you have access to all remote environments
+    eval $(ssh-agent -s)
+    ssh-add
 
     # Fetch the remote database and uploads
     ./vendor/bin/robo db:pull @production
@@ -72,15 +72,13 @@ Much of the philosophy behind Bedrock is inspired by the [Twelve-Factor App](htt
 
 #### Working with WSL (Windows)
 
-Note: Below "WSL" refers to Windows Subsystem for Linux, and "Windows" refers to
-native, non-WSL Windows.
+_Note: Below "WSL" refers to Windows Subsystem for Linux, and "Windows" refers to native, non-WSL Windows._
 
 The basic setup for a Windows + WSL + Vagrant -based solution is as follows:
 
 - Edit your files, manage your repository and access the site in Windows.
 - Run WSL in Windows. WSL is used for installing dependencies and running
-  development commands. Use WSL for all `composer`, `robo` and `npm` commands,
-  in order to avoid vboxsf issues in Vagrant.
+  development commands. Use WSL for all `composer`, `robo` and `npm` commands in order to avoid vboxsf issues in Vagrant.
 - Run Vagrant in WSL.  Vagrant is used for hosting WordPress and running
   deployment commands. Use vagrant for the `dep` command, in order to avoid
   performance issues in WSL.
@@ -91,35 +89,24 @@ With WSL and Vagrant installed in Windows, follow these steps:
     git clone --recursive git@github.com:generoi/<example-project>.git <example-project>
 
     # Start and login to the WSL. The rest of the commands are run in WSL.
-
-    # Install dependencies
-    sudo apt-get install -y git php7.4 php7.4-curl php7.4-mbstring php7.4-xml php7.4-zip
-    # Also install composer
+    # Prepare the project (resides on windows drive)
+    cd /mnt/<drive>/<example-project>
 
     # TODO: Add records to the ssh config...
-    Here instructions what and from where to get them
-
-    # Set the required environment variables
-    export VAGRANT_WSL_ENABLE_WINDOWS_ACCESS="1"
-    export PATH="$PATH:/mnt/<windows-drive>/<path-to-the-virtualbox-directory-on-windows>"
-    export VAGRANT_WSL_WINDOWS_ACCESS_USER_HOME_PATH="<your-user-home-directory-on-wsl>"
+    # Here instructions what and from where to get them
 
     # Make sure you have ssh-agent running and that your new (or existing)
     # public key is installed where needed
     eval $(ssh-agent -s)
-    ssh-add <path-to-your-private-key>
+    ssh-add
 
-    # Prepare the project (resides on windows drive)
-    cd /mnt/<drive>/<example-project>
-
-    # Install composer dependencies
+    # Install composer dependencies and development tools
     composer install:development
 
     # Build the VM
     vagrant up
 
     # Fetch the remote database and uploads
-    cd web/app/themes/<example-project>
     ./vendor/bin/robo db:pull @production
     ./vendor/bin/robo files:pull @production
 
@@ -143,6 +130,39 @@ If you have trouble accessing symlinked files in Vagrant, such as
 
     vagrant plugin install vagrant-vbguest
 
+#### Working from guest machine
+
+    # Clone the project
+    git clone --recursive git@github.com:generoi/<example-project>.git <example-project>
+    cd <example-project>
+
+    # Install composer dependencies
+    composer install
+
+    # Make sure you have an ssh-agent running and that you have access to all remote environments
+    eval $(ssh-agent -s)
+    ssh-add
+
+    # Build the VM
+    vagrant up
+    vagrant ssh
+
+    # From now on run all commands from within the VM
+    cd /var/www/wordpress
+
+    # Install theme composer dependencies and development tools
+    composer install:development
+
+    # Fetch the remote database and uploads
+    ./vendor/bin/robo db:pull @production --target=self
+    ./vendor/bin/robo files:pull @production
+
+    # Watch/build theme assets
+    cd web/app/themes/<example-project>
+    npm run build
+    npm run build:production
+    npm run start
+
 ## Docker environment with ddev
 
     # Clone the repository and install the development dependencies as
@@ -164,6 +184,41 @@ Install WP-CLI
 Usage (eg how to import a db from local)
 
     wp @dev db cli < dump.sql
+
+## System requirements installation for Windows
+
+* Install [Windows Subsystem for Linux](https://docs.microsoft.com/en-us/windows/wsl/install-win10) (WSL)
+
+* Install PHP requirements within WSL
+
+      sudo apt-get update
+      sudo apt-get install -y git php7.4{,-curl,-mbstring,-xml,-yaml,-json,-zip}
+
+* [Install Composer](https://getcomposer.org/download/) within WSL
+
+      # …after installed, make composer available globally
+      mv composer.phar /usr/local/bin/composer
+
+* [Download](https://www.vagrantup.com/downloads.html) and [install](https://www.vagrantup.com/docs/other/wsl.html) Vagrant within WSL _(Note that when Vagrant is installed on the Windows system, the version installed within the Linux distribution must match)_
+
+      # Example for v2.2.8
+      wget https://releases.hashicorp.com/vagrant/2.2.8/vagrant_2.2.8_x86_64.deb
+      dpkg -i vagrant_2.2.8_x86_64.deb
+
+* Export the required environment variables in your ~/.bashrc
+
+      echo 'export VAGRANT_WSL_ENABLE_WINDOWS_ACCESS="1"' >> ~/.bashrc
+      echo 'export PATH="$PATH:/mnt/c/Program Files/Oracle/VirtualBox"' >> ~/.bashrc
+
+      # If you keep your projects outside your user's home directory:
+      # export VAGRANT_WSL_WINDOWS_ACCESS_USER_HOME_PATH="/mnt/<windows-drive>/<path>"
+
+      source ~/.bashrc
+
+* Go to the directory where you store your projects and continue with the [local project development steps](#working-with-wsl-windows) for working within WSL.
+
+      cd /mnt/<windows-drive>/<path>
+
 
 ## roots/bedrock's own setup instructions
 
@@ -253,7 +308,20 @@ Usage (eg how to import a db from local)
     ./vendor/bin/dep deploy production --quick
     ```
 
-## Deploying
+## Deploying (with GitHub actions)
+
+Requires that the project has GitHub Actions configured. To configure it you essentially have to setup `dep` to work with the remotes and then renaming the workflow files in `.github/workflows/`
+
+```sh
+./vendor/bin/robo deploy:production
+./vendor/bin/robo deploy:staging --branch=patch-1
+./vendor/bin/robo deploy:staging --log_level='-vvv'
+
+# You can still use `dep` directly like described in the section below
+./vendor/bin/dep cache:clear production
+```
+
+## Deploying (from local computer)
 
 See [https://github.com/generoi/deployer-genero](https://github.com/generoi/deployer-genero).
 

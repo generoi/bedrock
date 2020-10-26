@@ -2,14 +2,14 @@
 
 namespace Deployer;
 
-use Grasmash\YamlExpander\Expander;
+use Robo\Robo;
 
 require 'recipe/wordpress.php';
 require 'recipe/cachetool.php';
 require 'recipe/rsync.php';
 require 'recipe/deploy/rollback.php';
 
-$robo = Expander::parse(file_get_contents(__DIR__ . '/robo.yml'));
+$robo = Robo::createConfiguration(['robo.yml'])->export();
 
 set('scaffold_machine_name', $robo['machine_name']);
 set('scaffold_env_file', __DIR__ . '/.env.example');

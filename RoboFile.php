@@ -32,4 +32,13 @@ class RoboFile extends \Robo\Tasks
     {
         return $this->rsyncPush("{$destination}:%files", $options);
     }
+
+    // You can override common tasks by overloading their functions in this file. Eg.
+    //
+    //   public function buildDevelopment($options = ['npm-script' => 'build'])
+    //   public function buildProduction($options = ['npm-script' => 'build:production'])
+    //   public function installDevelopment()
+    //   public function installProduction()
+    //   public function deployProduction()
+    //   public function deployStaging()
 }
