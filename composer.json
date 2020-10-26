@@ -62,7 +62,6 @@
 
     "wpackagist-plugin/wp-super-cache": "~1.7.0",
     "wpackagist-plugin/jetpack": "^8.0",
-    "wpackagist-plugin/gutenberg": "^8.2",
     "wpackagist-plugin/post-type-archive-mapping": "^5.0",
 
     "wpackagist-plugin/show-environment-in-admin-bar": "^1.1",
