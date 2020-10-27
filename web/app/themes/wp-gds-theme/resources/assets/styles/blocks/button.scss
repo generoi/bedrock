@@ -10,6 +10,10 @@
 .wp-block-button {
   &__link {
     @include button.base;
+
+    &:visited {
+      color: var(--button-color, inherit);
+    }
   }
 
   &.is-style-text {
