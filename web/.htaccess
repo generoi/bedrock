@@ -234,7 +234,7 @@ FileETag None
 
 <IfDefine DEVELOPMENT>
   <IfModule mod_expires.c>
-    Header set Cache-Control "max-age=0, no-cache, no-store, must-revalidate"
+    Header set Cache-Control "max-age=0, no-cache, must-revalidate"
     Header set Pragma "no-cache"
     Header set Expires "Wed, 11 Jan 1984 05:00:00 GMT"
   </IfModule>
