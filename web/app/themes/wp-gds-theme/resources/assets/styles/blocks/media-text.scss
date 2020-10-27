@@ -112,8 +112,11 @@
   }
 }
 
-// GDS
-.wp-block-media-text.is-image-fill figure.wp-block-media-text__media > img {
+// In article templates we hardcode a Media & Text block with an <img> that
+// already has object-position values set by WP SmartCrop instead of using a
+// background-image. Ensure that in these cases the <img> is displayed even if
+// core would hide it.
+.wp-block-media-text.is-image-fill .wp-block-media-text__media:not([style*="background-image:"]) > img {
   position: relative;
   margin: 0;
   width: 100%;
