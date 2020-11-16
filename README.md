@@ -251,10 +251,10 @@ Usage (eg how to import a db from local)
 
     ```sh
     # Prompt, create and enter directory
-    echo 'Project directory:'; read project; composer create-project --keep-vcs --repository-url="https://packagist.minasithil.genero.fi" generoi/bedrock:dev-genero $project; cd $project;
+    echo 'Project directory:'; read project; composer create-project --keep-vcs --repository-url="https://packagist.minasithil.genero.fi" generoi/bedrock:dev-master $project; cd $project;
 
     # Just create
-    composer create-project --keep-vcs --repository-url="https://packagist.minasithil.genero.fi" generoi/bedrock:dev-genero <project-dir>
+    composer create-project --keep-vcs --repository-url="https://packagist.minasithil.genero.fi" generoi/bedrock:dev-master <project-dir>
 
     # If you cloned the repo rather than used `create-project` you'll need to
     # replace the placeholder names with a project machine name.
