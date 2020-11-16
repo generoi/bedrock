@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "3e36d852a12841d7adfd8e69d9142455",
+    "content-hash": "545e3394626426e6bd229591fe3be5b8",
     "packages": [
         {
             "name": "doctrine/inflector",
@@ -85,16 +85,16 @@
         },
         {
             "name": "generoi/sage-archive-pages",
-            "version": "v0.1.1",
+            "version": "dev-master",
             "source": {
                 "type": "git",
                 "url": "https://github.com/generoi/sage-archive-pages.git",
-                "reference": "97851a5dd2f961cdc620fceb057fc59a8d023832"
+                "reference": "c7d03829508d1871142690683213c62d9cdeb610"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/generoi/sage-archive-pages/zipball/97851a5dd2f961cdc620fceb057fc59a8d023832",
-                "reference": "97851a5dd2f961cdc620fceb057fc59a8d023832",
+                "url": "https://api.github.com/repos/generoi/sage-archive-pages/zipball/c7d03829508d1871142690683213c62d9cdeb610",
+                "reference": "c7d03829508d1871142690683213c62d9cdeb610",
                 "shasum": ""
             },
             "archive": {
@@ -112,7 +112,7 @@
             "extra": {
                 "acorn": {
                     "providers": [
-                        "Genero\\Sage\\ArchivePages\\ArchivePageServiceProvider"
+                        "Genero\\Sage\\ArchivePages\\ArchivePagesServiceProvider"
                     ]
                 }
             },
@@ -137,10 +137,10 @@
             ],
             "homepage": "https://github.com/generoi/sage-archive-pages",
             "support": {
-                "source": "https://github.com/generoi/sage-archive-pages/tree/v0.1.1",
+                "source": "https://github.com/generoi/sage-archive-pages/tree/master",
                 "issues": "https://github.com/generoi/sage-archive-pages/issues"
             },
-            "time": "2020-09-01T17:18:28+00:00"
+            "time": "2020-11-04T11:36:55+00:00"
         },
         {
             "name": "generoi/sage-demo-content",
@@ -991,6 +991,12 @@
                 }
             ],
             "description": "Create fields, blocks, option pages, and widgets using ACF Builder and Sage 10",
+            "funding": [
+                {
+                    "url": "https://github.com/Log1x",
+                    "type": "github"
+                }
+            ],
             "time": "2020-07-08T18:30:40+00:00"
         },
         {
@@ -3197,6 +3203,7 @@
     "aliases": [],
     "minimum-stability": "dev",
     "stability-flags": {
+        "generoi/sage-archive-pages": 20,
         "generoi/sage-demo-content": 20,
         "generoi/sage-nativeblock": 20
     },
@@ -3205,5 +3212,6 @@
     "platform": {
         "php": "^7.2.5"
     },
-    "platform-dev": []
+    "platform-dev": [],
+    "plugin-api-version": "1.1.0"
 }
