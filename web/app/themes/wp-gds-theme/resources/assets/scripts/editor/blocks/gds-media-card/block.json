@@ -1,4 +1,5 @@
 {
+  "apiVersion": 2,
   "name": "gds/media-card",
   "category": "layout",
   "attributes": {
@@ -34,7 +35,6 @@
     }
   },
   "supports": {
-    "html": false,
-    "lightBlockWrapper": true
+    "html": false
   }
 }

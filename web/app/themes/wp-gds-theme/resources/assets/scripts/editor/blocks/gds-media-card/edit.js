@@ -7,9 +7,9 @@ import {
   BlockControls,
   MediaPlaceholder,
   MediaReplaceFlow,
-  InnerBlocks,
   InspectorControls,
-  __experimentalBlock as Block,
+  useBlockProps,
+  __experimentalUseInnerBlocksProps as useInnerBlocksProps,
   __experimentalPanelColorGradientSettings as PanelColorGradientSettings,
 } from '@wordpress/block-editor'
 
@@ -150,17 +150,24 @@ function BlockEdit(props) {
     </>
   );
 
+  const containerBlockProps = useBlockProps({
+    className: classnames({
+      'has-background': backgroundColor.color,
+      [ backgroundColor.class ]: backgroundColor.class,
+      'has-text-color': textColor.color,
+      [ textColor.class ]: textColor.class,
+    }),
+  });
+
+  const innerBlockProps = useInnerBlocksProps(
+    { className: 'wp-block-gds-media-card__content is-block-container' },
+    { template: INNER_BLOCKS_TEMPLATE }
+  );
+
   return (
     <>
       { controls }
-      <Block.div
-        className={ classnames({
-          'has-background': backgroundColor.color,
-          [ backgroundColor.class ]: backgroundColor.class,
-          'has-text-color': textColor.color,
-          [ textColor.class ]: textColor.class,
-        }) }
-      >
+      <div { ...containerBlockProps }>
         <figure className="wp-block-gds-media-card__media">
           { hasMedia && (
             <MediaRenderer
@@ -176,16 +183,8 @@ function BlockEdit(props) {
             />
           ) }
         </figure>
-
-        <InnerBlocks
-          template={ INNER_BLOCKS_TEMPLATE }
-          __experimentalTagName="div"
-          __experimentalPassedProps={ {
-            className: 'wp-block-gds-media-card__content',
-          } }
-        />
-
-      </Block.div>
+        <div {...innerBlockProps} />
+      </div>
     </>
   )
 }
