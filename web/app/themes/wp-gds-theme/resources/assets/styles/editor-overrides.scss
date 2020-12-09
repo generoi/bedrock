@@ -17,3 +17,8 @@ p {
   font-size: inherit;
   line-height: inherit;
 }
+
+// @see https://github.com/WordPress/gutenberg/pull/26552#issuecomment-741913927
+.interface-interface-skeleton__editor {
+  max-width: 100%;
+}

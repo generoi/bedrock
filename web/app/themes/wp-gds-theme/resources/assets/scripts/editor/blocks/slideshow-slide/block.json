@@ -1,10 +1,10 @@
 {
+  "apiVersion": 2,
   "name": "gds/slideshow-slide",
   "category": "media",
   "supports": {
     "html": false,
     "inserter": false,
-    "reusable": false,
-    "lightBlockWrapper": true
+    "reusable": false
   }
 }
