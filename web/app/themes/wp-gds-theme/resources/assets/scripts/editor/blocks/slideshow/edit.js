@@ -7,9 +7,9 @@ import { __ } from '@wordpress/i18n';
 import {
   withColors,
   BlockControls,
-  InnerBlocks,
   InspectorControls,
-  __experimentalBlock as Block,
+  useBlockProps,
+  __experimentalUseInnerBlocksProps as useInnerBlocksProps,
   __experimentalPanelColorGradientSettings as PanelColorGradientSettings,
 } from '@wordpress/block-editor'
 
@@ -262,29 +262,34 @@ function BlockEdit({
   );
 
   console.log('rerender');
+
+  const containerBlockProps = useBlockProps({
+    ref: containerRef,
+    className: classnames(containerClasses, {
+      'has-arrows-outside': hasArrowsOutside,
+      'has-arrow-color': arrowColor.color,
+      [ arrowColor.class ]: arrowColor.class,
+      'has-background': backgroundColor.color,
+      [ backgroundColor.class ]: backgroundColor.class,
+      'has-text-color': textColor.color,
+      [ textColor.class ]: textColor.class,
+    }),
+  })
+
+  const innerBlockProps = useInnerBlocksProps(
+    { className: 'swiper-wrapper' },
+    {
+      template: getSlidesTemplate(slides),
+      allowedBlocks: ['gds/slideshow-slide'],
+    }
+  );
+
   return (
     <>
       { controls }
-      <Block.div
-        ref={ containerRef }
-        className={ classnames(containerClasses, {
-          'has-arrows-outside': hasArrowsOutside,
-          'has-arrow-color': arrowColor.color,
-          [ arrowColor.class ]: arrowColor.class,
-          'has-background': backgroundColor.color,
-          [ backgroundColor.class ]: backgroundColor.class,
-          'has-text-color': textColor.color,
-          [ textColor.class ]: textColor.class,
-        }) }
-      >
-        <InnerBlocks
-          template={ getSlidesTemplate(slides) }
-          allowedBlocks={ ['gds/slideshow-slide' ] }
-          __experimentalTagName={ Block.div }
-          __experimentalPassedProps={ {
-            className: "swiper-wrapper",
-          } }
-        />
+      <div { ...containerBlockProps }>
+        <div { ...innerBlockProps } />
+
         { hasPagination && (
           <div className="swiper-pagination" ref={ paginationRef }></div>
         ) }
@@ -294,7 +299,7 @@ function BlockEdit({
             <div className="swiper-button-next" ref={ nextElRef }><i className="fa fa-chevron-right fa-3x" aria-hidden></i></div>
           </>
         ) }
-      </Block.div>
+      </div>
     </>
   );
 }

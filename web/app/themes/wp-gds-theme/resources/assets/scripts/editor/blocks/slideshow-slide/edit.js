@@ -1,6 +1,7 @@
 import {
   InnerBlocks,
-  __experimentalBlock as Block,
+  useBlockProps,
+  __experimentalUseInnerBlocksProps as useInnerBlocksProps,
 } from '@wordpress/block-editor'
 import { useSelect } from '@wordpress/data';
 
@@ -10,18 +11,18 @@ function BlockEdit({ clientId }) {
     [clientId]
   );
 
+  const blockProps = useBlockProps({
+    className: 'swiper-slide',
+  });
+
+  const innerBlockProps = useInnerBlocksProps(blockProps, {
+    renderAppender: hasChildBlocks
+      ? undefined
+      : InnerBlocks.ButtonBlockAppender,
+  });
+
   return (
-    <InnerBlocks
-      renderAppender={ (
-        hasChildBlocks ?
-          undefined :
-          () => <InnerBlocks.ButtonBlockAppender />
-      ) }
-      __experimentalTagName={ Block.div }
-      __experimentalPassedProps={ {
-        className: "swiper-slide",
-      } }
-    />
+    <div { ...innerBlockProps } />
   );
 }
 
