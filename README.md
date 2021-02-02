@@ -255,9 +255,13 @@ Usage (eg how to import a db from local)
 
     # Just create
     composer create-project --keep-vcs --repository-url="https://packagist.minasithil.genero.fi" generoi/bedrock:dev-master <project-dir>
-
-    # If you cloned the repo rather than used `create-project` you'll need to
-    # replace the placeholder names with a project machine name.
+    
+    # If you cloned the repo rather than used `create-project` you'll need to:
+    
+    # 1. You need to first install robo.
+    composer install:development
+    
+    # 2. replace the placeholder names with a project machine name.
     ./vendor/bin/robo search:replace
     ```
 
