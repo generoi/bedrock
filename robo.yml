@@ -1,4 +1,4 @@
-machine_name: sage
+machine_name: <example-project>
 organization: generoi
 theme_path: 'web/app/themes/wp-gds-theme'
 placeholders:
