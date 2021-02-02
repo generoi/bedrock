@@ -69,6 +69,9 @@ _For windows but also new macs also see the [system requirements installation st
     npm run build
     npm run build:production
     npm run start
+    
+    # Remember to update GDS when starting a new project
+    npm i genero-design-system
 
 #### Working with WSL (Windows)
 
