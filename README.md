@@ -250,6 +250,8 @@ Usage (eg how to import a db from local)
 
 ## Create a new project and Git repository
 
+NOTE: If possible set the project name and repo name to use the domain name of the website. Example: `www.my-site.fi` => `my-site`. This will help with configuring all the different environments in the future.
+
 1. Create a new project in a new folder for your project
 
     ```sh
