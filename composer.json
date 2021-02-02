@@ -125,7 +125,9 @@
     "wordpress-install-dir": "web/wp",
     "patches": {
       "geerlingguy/drupal-vm": {
-        "Support vagrant DHCP IP assignment with `vagrant-hostmanager`": "https://github.com/oxyc/drupal-vm/commit/fb12cd2a5051e11de26dca4c32894198ce07aafe.patch"
+        "Support vagrant DHCP IP assignment with `vagrant-hostmanager`": "https://github.com/oxyc/drupal-vm/commit/fb12cd2a5051e11de26dca4c32894198ce07aafe.patch",
+        "Fix php 7.4 not purged on debian": "https://github.com/oxyc/drupal-vm/commit/cec3dd6487a7ab5f2b1d315044e512b3695070d1.patch",
+        "Add ansible install_mode pip3": "https://github.com/geerlingguy/drupal-vm/commit/0baa86a45f645e1870f006ab41e57697b25746c9.patch"
       }
     }
   },
