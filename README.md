@@ -146,6 +146,9 @@ If you have trouble accessing symlinked files in Vagrant, such as
     eval $(ssh-agent -s)
     ssh-add
 
+    # Make sure vagrant-hostsupdater is not installed (otherwise localhost:3000 won't load)
+    vagrant plugin uninstall vagrant-hostsupdater
+
     # Build the VM
     vagrant up
     vagrant ssh
@@ -273,6 +276,9 @@ NOTE: If possible set the project name and repo name to use the domain name of t
 2. Setup the VM
 
     ```sh
+    # Make sure vagrant-hostsupdater is not installed (otherwise localhost:3000 won't load)
+    vagrant plugin uninstall vagrant-hostsupdater
+    
     # Build the VM
     vagrant up
     ```
