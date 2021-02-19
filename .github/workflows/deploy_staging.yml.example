@@ -32,10 +32,10 @@ jobs:
           ref: ${{ github.event.inputs.ref }}
 
       - name: Start SSH agent
-        uses: webfactory/ssh-agent@v0.4.0
+        uses: webfactory/ssh-agent@v0.4.1
         with:
           ssh-private-key: |
-            ${{ secrets.MINASITHIL_DEPLOY_PRIVATE_KEY }}
+            ${{ secrets.KINSTA_DEPLOY_PRIVATE_KEY }}
 
       - name: Setup Node
         uses: actions/setup-node@v2-beta

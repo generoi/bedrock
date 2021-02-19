@@ -23,11 +23,11 @@ require:
   url: <example-project>.test
 
 '@staging':
-  ssh: deploy@minasithil.genero.fi/var/www/staging/<example-project>/current/web/wp
-  url: <example-project>.web.staging.minasithil.genero.fi
+  ssh: <example-project>@<staging-ip>:22/www/<example-project>_XYZ/public/current/web/wp
+  url: staging-<example-project>.kinsta.cloud
 
 '@production':
-  ssh: deploy@<example-project>.fi/home/www/<example-project>/deploy/current/web/wp
-  url: <example-project>.fi
+  ssh: <example-project>@<production-ip>:22/www/<example-project>_XYZ/public/current/web/wp
+  url: <example-project>.kinsta.cloud
   # bin_path: $HOME/.config/composer/vendor/bin
   # php_path: /usr/bin/php72

@@ -80,7 +80,8 @@
     "generoi/genero-conf": "~1.1",
     "generoi/genero-status": "*",
     "consolidation/robo": "^2.0",
-    "generoi/robo-genero": "dev-master"
+    "generoi/robo-genero": "dev-master",
+    "kinsta/kinsta-mu-plugins": "^2.3"
   },
   "require-dev": {
     "squizlabs/php_codesniffer": "^3.4.2",
