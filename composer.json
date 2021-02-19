@@ -95,7 +95,7 @@
     "optimize-autoloader": true,
     "preferred-install": "dist",
     "platform": {
-      "php": "7.2.18"
+      "php": "7.4.15"
     },
     "process-timeout": 0,
     "theme-dir": "web/app/themes/<example-project>"
