@@ -84,7 +84,7 @@
   },
   "require-dev": {
     "squizlabs/php_codesniffer": "^3.4.2",
-    "geerlingguy/drupal-vm": "~6.0.0",
+    "geerlingguy/drupal-vm": "~6.0.3",
     "roave/security-advisories": "dev-master",
     "brainmaestro/composer-git-hooks": "^2.2",
     "deployer/deployer": "^6.3",
@@ -125,8 +125,7 @@
     "wordpress-install-dir": "web/wp",
     "patches": {
       "geerlingguy/drupal-vm": {
-        "Support vagrant DHCP IP assignment with `vagrant-hostmanager`": "https://github.com/oxyc/drupal-vm/commit/fb12cd2a5051e11de26dca4c32894198ce07aafe.patch",
-        "Add ansible install_mode pip3": "https://github.com/geerlingguy/drupal-vm/commit/0baa86a45f645e1870f006ab41e57697b25746c9.patch"
+        "Support vagrant DHCP IP assignment with `vagrant-hostmanager`": "https://github.com/oxyc/drupal-vm/commit/fb12cd2a5051e11de26dca4c32894198ce07aafe.patch"
       }
     }
   },
