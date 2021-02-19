@@ -5,29 +5,29 @@ placeholders:
   '%files': web/app/uploads/
 env:
   '@docker':
-    host: '${machine_name}.ddev.local'
+    host: '<example-project>.ddev.local'
     wpcli: 'ddev exec wp-cli'
     path: /var/www/html
-    url: 'http://${machine_name}.ddev.local'
+    url: 'http://<example-project>.ddev.local'
   '@dev':
-    host: '${machine_name}.test'
+    host: '<example-project>.test'
     user: vagrant
     path: /var/www/wordpress
-    url: 'http://${machine_name}.test'
+    url: 'http://<example-project>.test'
   '@staging':
-    host: minasithil.genero.fi
-    user: deploy
-    path: '/var/www/staging/${machine_name}/current'
-    ssh: 'ssh -o ForwardAgent=yes'
-    url: 'http://${machine_name}.web.staging.minasithil.genero.fi'
+    host: <staging-ip>
+    user: <example-project>
+    port: 22
+    ssh: 'ssh -p 22'
+    path: '/www/<example-project>_XYZ/public/current'
+    url: 'https://staging-<example-project>.kinsta.cloud'
   '@production':
-    host: '${machine_name}.fi'
-    user: deploy
-    path: '/home/www/${machine_name}/deploy/current'
-    url: 'https://${machine_name}.fi'
-    # Use a custom port:
-    #   port: 22
-    #   ssh: 'ssh -p 50860'
+    host: <production-ip>
+    user: tehdas
+    port: 22
+    ssh: 'ssh -p 22'
+    path: '/www/<example-project>_XYZ/public/current'
+    url: 'https://<example-project>.kinsta.cloud'
 command:
   build:
     production:
