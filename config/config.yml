@@ -78,7 +78,7 @@ apache_mods_enabled:
   - proxy.load
   - proxy_fcgi.load
 
-php_version: "7.2"
+php_version: "7.4"
 nodejs_version: "12.x"
 
 installed_extras:
