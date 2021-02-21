@@ -31,6 +31,8 @@ Much of the philosophy behind Bedrock is inspired by the [Twelve-Factor App](htt
 
 _For windows but also new macs also see the [system requirements installation steps](#system-requirements-installation-for-windows)._
 
+_For Apple Silicon macs, skip to the Docker section._
+
 * PHP >= 7.2
 * Composer - [Install](https://getcomposer.org/doc/00-intro.md#installation-linux-unix-osx)
 * Vagrant >= 1.8.7
@@ -41,7 +43,7 @@ _For windows but also new macs also see the [system requirements installation st
 
 ## Local project development (Vagrant)
 
-#### Working from host machine (macOS)
+### Working from host machine (Intel Macs)
 
     git clone --recursive git@github.com:generoi/<example-project>.git <example-project>
     cd <example-project>
@@ -73,7 +75,7 @@ _For windows but also new macs also see the [system requirements installation st
     # Remember to update GDS when starting a new project
     npm i genero-design-system
 
-#### Working with WSL (Windows)
+### Working with WSL (Windows)
 
 _Note: Below "WSL" refers to Windows Subsystem for Linux, and "Windows" refers to native, non-WSL Windows._
 
@@ -133,7 +135,7 @@ If you have trouble accessing symlinked files in Vagrant, such as
 
     vagrant plugin install vagrant-vbguest
 
-#### Working from guest machine
+### Working from guest machine
 
     # Clone the project
     git clone --recursive git@github.com:generoi/<example-project>.git <example-project>
@@ -169,25 +171,71 @@ If you have trouble accessing symlinked files in Vagrant, such as
     npm run build:production
     npm run start
 
-## Docker environment with ddev
+## Local project development (Docker and ddev)
 
-    # Clone the repository and install the development dependencies as
-    # mentioned in the Vagrant setup instructions
+**Note: Use ddev when developing on Apple Silicon Mac.**
 
-    # Launch the docker container
+### Install dependencies
+
+    # Install PHP version 7.2 or greater. You OS probably has one out of the box?
+
+    # Install NodeJS via nvm.
+    # Apple Silicon: Node 15 supported, older versions work via Rosetta 2.
+
+    # Install Brew: https://brew.sh
+
+    # Install Composer
+    # Brew install: https://formulae.brew.sh/formula/composer
+
+    brew install composer
+
+    # Install Docker
+    # Apple Silicon Tech preview version also available: https://docs.docker.com/docker-for-mac/apple-m1/
+
+    # Install DDEV
+
+    brew tap drud/ddev && brew install ddev
+
+### Setup and run project
+
+    # Clone the repository and install the development dependencies.
+    git clone --recursive git@github.com:generoi/<example-project>.git <example-project>
+    cd <example-project>
+
+    # Install composer dependencies and development tools (vendor folder)
+    composer install:development
+
+    # Build and watch theme assets
+    cd web/app/themes/<example-project>
+    npm run build
+    npm run build:production
+    npm run start
+
+    # Start the docker WP container
+    # Start the Docker app, then run ddev in the project folder.
+
     ddev start
 
     # Fetch the remote database and uploads
+
     ./vendor/bin/robo db:pull @production --target=@docker
     ./vendor/bin/robo files:pull @production
 
-#### Using WP-CLI locally
+    # Importing database from sql dump
 
-Install WP-CLI
+    ddev import-db < dump.sql
+
+## Using WP-CLI locally
+
+Install WP-CLI (composer):
 
     composer global require wp-cli/wp-cli
 
-Usage (eg how to import a db from local)
+Install wp-cli (brew):
+
+    brew install wp-cli
+
+Importing db from from sql dump:
 
     wp @dev db cli < dump.sql
 
