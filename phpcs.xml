@@ -13,8 +13,9 @@
   <!-- Scan only PHP files -->
   <arg name="extensions" value="php"/>
 
-  <!-- Ignore WordPress and Composer dependencies -->
+  <!-- Ignore WordPress and dependencies -->
   <exclude-pattern>web/wp</exclude-pattern>
+  <exclude-pattern>node_modules/</exclude-pattern>
   <exclude-pattern>vendor/</exclude-pattern>
   <exclude-pattern>web/app/mu-plugins/*/*</exclude-pattern>
 
