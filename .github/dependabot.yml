@@ -18,8 +18,8 @@ updates:
       interval: "weekly"
 
 registries:
-  github:
-    type: git
-    url: https://github.com
-    username: x-access-token
-    password: ${{ secrets.PACKAGIST_GITHUB_TOKEN }}
+  composer:
+    type: composer-repository
+    url: https://satispress.generodigital.com/satispress/
+    username: ${{ secrets.SATISPRESS_API_KEY }}
+    password: ${{ secrets.SATISPRESS_PASSWORD }}

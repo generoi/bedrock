@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "c9de3c0dd8c09e698c4eae0d2bf7e47c",
+    "content-hash": "ce15e447bc663f8ed44739f0dca480ff",
     "packages": [
         {
             "name": "behat/behat",
@@ -1330,50 +1330,6 @@
             "time": "2020-11-10T18:47:58+00:00"
         },
         {
-            "name": "generoi/advanced-custom-fields-pro",
-            "version": "v5.9.5",
-            "source": {
-                "type": "git",
-                "url": "git@github.com:generoi/advanced-custom-fields-pro.git",
-                "reference": "2466dd0744b1dcda3f0ca7d1e795846aa41d6575"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/generoi/advanced-custom-fields-pro/zipball/2466dd0744b1dcda3f0ca7d1e795846aa41d6575",
-                "reference": "2466dd0744b1dcda3f0ca7d1e795846aa41d6575",
-                "shasum": ""
-            },
-            "archive": {
-                "exclude": [
-                    ".gitignore"
-                ]
-            },
-            "require": {
-                "composer/installers": "~1.0",
-                "php": ">=5.4.0"
-            },
-            "type": "wordpress-plugin",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Oskar Schöldström",
-                    "email": "public@oxy.fi"
-                }
-            ],
-            "description": "Advanced Custom Fields Pro",
-            "homepage": "https://www.advancedcustomfields.com/",
-            "keywords": [
-                "wordpress"
-            ],
-            "support": {
-                "issues": "https://github.com/generoi/advanced-custom-fields-pro/issues",
-                "source": "https://github.com/generoi/advanced-custom-fields-pro/tree/v5.9.5"
-            },
-            "time": "2021-02-25T09:40:23+00:00"
-        },
-        {
             "name": "generoi/genero-conf",
             "version": "v1.3.2",
             "source": {
@@ -1404,50 +1360,6 @@
                 "source": "https://github.com/generoi/genero-conf/tree/v1.3.2"
             },
             "time": "2020-08-13T11:28:06+00:00"
-        },
-        {
-            "name": "generoi/gravityforms",
-            "version": "v2.4.20",
-            "source": {
-                "type": "git",
-                "url": "git@github.com:generoi/gravityforms.git",
-                "reference": "3c5a57cc732f6295d071fc0d067ef5359a952af9"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/generoi/gravityforms/zipball/3c5a57cc732f6295d071fc0d067ef5359a952af9",
-                "reference": "3c5a57cc732f6295d071fc0d067ef5359a952af9",
-                "shasum": ""
-            },
-            "archive": {
-                "exclude": [
-                    ".gitignore"
-                ]
-            },
-            "require": {
-                "composer/installers": "~1.0",
-                "php": ">=5.6.0"
-            },
-            "type": "wordpress-plugin",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Oskar Schöldström",
-                    "email": "public@oxy.fi"
-                }
-            ],
-            "description": "Gravity Forms",
-            "homepage": "http://www.gravityhelp.com",
-            "keywords": [
-                "wordpress"
-            ],
-            "support": {
-                "issues": "https://github.com/generoi/gravityforms/issues",
-                "source": "https://github.com/generoi/gravityforms/tree/master"
-            },
-            "time": "2020-08-13T13:31:04+00:00"
         },
         {
             "name": "generoi/robo-genero",
@@ -4211,7 +4123,8 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/WordPress/WordPress/zipball/5.7"
+                "url": "https://api.github.com/repos/WordPress/WordPress/zipball/5.7",
+                "reference": "5.7"
             },
             "require": {
                 "php": ">=5.3.2",
@@ -4412,6 +4325,44 @@
                 "wordpress wp bcrypt password"
             ],
             "time": "2016-03-01T16:27:06+00:00"
+        },
+        {
+            "name": "satispress/advanced-custom-fields-pro",
+            "version": "5.9.5",
+            "dist": {
+                "type": "zip",
+                "url": "https://satispress.generodigital.com/satispress/advanced-custom-fields-pro/5.9.5",
+                "shasum": "85f36373f6d1599d5f1bf5a6b22e4c2a754a20ba"
+            },
+            "require": {
+                "composer/installers": "^1.0"
+            },
+            "type": "wordpress-plugin",
+            "authors": {
+                "name": "Elliot Condon",
+                "homepage": "https://www.advancedcustomfields.com"
+            },
+            "description": "Customize WordPress with powerful, professional and intuitive fields.",
+            "homepage": "https://www.advancedcustomfields.com"
+        },
+        {
+            "name": "satispress/gravityforms",
+            "version": "2.4.20",
+            "dist": {
+                "type": "zip",
+                "url": "https://satispress.generodigital.com/satispress/gravityforms/2.4.20",
+                "shasum": "48f6fd60919c0189ff43d1e12fb7cb7a66ca4cb9"
+            },
+            "require": {
+                "composer/installers": "^1.0"
+            },
+            "type": "wordpress-plugin",
+            "authors": {
+                "name": "Gravity Forms",
+                "homepage": "https://gravityforms.com"
+            },
+            "description": "Easily create web forms and manage form entries within the WordPress admin.",
+            "homepage": "https://gravityforms.com"
         },
         {
             "name": "sebastian/code-unit-reverse-lookup",
@@ -9507,6 +9458,11 @@
                 "shasum": ""
             },
             "type": "vm",
+            "extra": {
+                "patches_applied": {
+                    "Support vagrant DHCP IP assignment with `vagrant-hostmanager`": "https://github.com/oxyc/drupal-vm/commit/fb12cd2a5051e11de26dca4c32894198ce07aafe.patch"
+                }
+            },
             "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
@@ -9539,12 +9495,7 @@
                     "type": "patreon"
                 }
             ],
-            "time": "2021-02-14T03:17:36+00:00",
-            "extra": {
-                "patches_applied": {
-                    "Support vagrant DHCP IP assignment with `vagrant-hostmanager`": "https://github.com/oxyc/drupal-vm/commit/fb12cd2a5051e11de26dca4c32894198ce07aafe.patch"
-                }
-            }
+            "time": "2021-02-14T03:17:36+00:00"
         },
         {
             "name": "generoi/deployer-genero",
