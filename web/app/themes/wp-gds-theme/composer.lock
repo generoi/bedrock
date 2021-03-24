@@ -1019,16 +1019,16 @@
         },
         {
             "name": "log1x/acf-composer",
-            "version": "v1.4.6",
+            "version": "v1.5.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Log1x/acf-composer.git",
-                "reference": "706cdf12cf6070c840bfab45bdb38debd97388c8"
+                "reference": "a096aa3bbc86a817a6ebfa3c0848c25c7bbc633e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Log1x/acf-composer/zipball/706cdf12cf6070c840bfab45bdb38debd97388c8",
-                "reference": "706cdf12cf6070c840bfab45bdb38debd97388c8",
+                "url": "https://api.github.com/repos/Log1x/acf-composer/zipball/a096aa3bbc86a817a6ebfa3c0848c25c7bbc633e",
+                "reference": "a096aa3bbc86a817a6ebfa3c0848c25c7bbc633e",
                 "shasum": ""
             },
             "require": {
@@ -1072,7 +1072,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2020-07-08T18:30:40+00:00"
+            "time": "2020-10-30T09:02:03+00:00"
         },
         {
             "name": "log1x/navi",
@@ -1790,16 +1790,16 @@
         },
         {
             "name": "stoutlogic/acf-builder",
-            "version": "1.10.0",
+            "version": "1.11.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/StoutLogic/acf-builder.git",
-                "reference": "1fbdb58ad46ac77d6df2549aad130854f5e69cf2"
+                "reference": "06f5903fb5455bdae57246291bcd699ae29dc905"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/StoutLogic/acf-builder/zipball/1fbdb58ad46ac77d6df2549aad130854f5e69cf2",
-                "reference": "1fbdb58ad46ac77d6df2549aad130854f5e69cf2",
+                "url": "https://api.github.com/repos/StoutLogic/acf-builder/zipball/06f5903fb5455bdae57246291bcd699ae29dc905",
+                "reference": "06f5903fb5455bdae57246291bcd699ae29dc905",
                 "shasum": ""
             },
             "require": {
@@ -1828,7 +1828,7 @@
                 }
             ],
             "description": "An Advanced Custom Field Configuration Builder",
-            "time": "2020-07-02T01:15:41+00:00"
+            "time": "2021-02-11T17:16:16+00:00"
         },
         {
             "name": "symfony/console",
