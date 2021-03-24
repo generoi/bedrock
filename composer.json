@@ -130,6 +130,7 @@
     "post-create-project-cmd": "Generoi\\Robo\\Composer\\ComposerScript::postCreateProject",
     "post-update-cmd": "php -r \"if (is_executable('vendor/bin/cghooks')) exec('vendor/bin/cghooks update');\"",
     "test": "Generoi\\Robo\\Composer\\ComposerScript::test",
+    "build": "vendor/bin/robo build:production",
     "install:development": [
       "@composer install",
       "vendor/bin/robo install:development",

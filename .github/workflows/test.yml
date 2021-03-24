@@ -61,3 +61,6 @@ jobs:
 
       - name: Run tests
         run: composer test --no-interaction
+
+      - name: Build assets
+        run: composer build --no-interaction
