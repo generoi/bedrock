@@ -8,7 +8,7 @@ env:
 
 jobs:
   test:
-    if: ${{ github.actor != 'dependabot' }}
+    if: ${{ github.actor == 'dependabot[bot]' }}
     name: Run tests
     runs-on: ubuntu-latest
     steps:
