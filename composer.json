@@ -56,7 +56,7 @@
 
     "wpackagist-plugin/wordpress-seo": "~15.0",
     "wpackagist-plugin/google-tag-manager": "~1.0",
-    "wpackagist-plugin/redirection": "~4.0",
+    "wpackagist-plugin/redirection": "~5.0",
     "generoi/wp-genero-cookieconsent": "~1.0-alpha",
 
     "wpackagist-plugin/wp-super-cache": "~1.7.0",
