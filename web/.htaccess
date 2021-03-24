@@ -123,13 +123,11 @@ RewriteRule . /index.php [L]
 <IfModule mod_rewrite.c>
   # Allow whitelisted files.
   RewriteCond %{REQUEST_URI} !^/index\.php$
-  RewriteCond %{REQUEST_URI} !^/genero-status\.php$
   RewriteCond %{REQUEST_URI} !^/wp-clear-cache\.php$
   RewriteCond %{REQUEST_URI} !^/wp/wp-includes/ms-files.php$
   # Allow plugins.
   # RewriteCond %{REQUEST_URI} !^/app/plugins/[^/]/
   # Whitelist plugins.
-  RewriteCond %{REQUEST_URI} !^/app/cache/autoptimize/
   RewriteCond %{REQUEST_URI} !^/app/plugins/wp-xhprof/xhprof/xhprof_html/index.php$
   # Allow wp-admin/ except for wp-admin/includes
   RewriteCond %{REQUEST_URI} !^/wp/wp-admin/(?!includes/)

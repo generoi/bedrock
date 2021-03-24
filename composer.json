@@ -43,7 +43,6 @@
     "koodimonni-language/sv_se": "*",
 
     "generoi/advanced-custom-fields-pro": "^5.9",
-    "mcguffin/acf-quick-edit-fields": "^3.0",
 
     "wpackagist-plugin/safe-svg": "^1.9",
     "wpackagist-plugin/limit-login-attempts-reloaded": "^2.6.1",
@@ -61,7 +60,6 @@
     "generoi/wp-genero-cookieconsent": "~1.0-alpha",
 
     "wpackagist-plugin/wp-super-cache": "~1.7.0",
-    "wpackagist-plugin/jetpack": "^8.0",
     "wpackagist-plugin/post-type-archive-mapping": "^5.0",
 
     "wpackagist-plugin/show-environment-in-admin-bar": "^1.1",
@@ -70,7 +68,7 @@
     "wpackagist-plugin/regenerate-thumbnails": "~3.0",
     "wpackagist-plugin/debug-bar": "^1.0",
     "wpackagist-plugin/debug-bar-remote-requests": "^0.1.2",
-    "wpackagist-plugin/kint-debugger": "~1.0",
+    "jameelmoses/wordpress-kint-debugger": "^1.0",
     "wpackagist-plugin/query-monitor": "^3.3",
     "wpackagist-plugin/user-switching": "^1.5",
     "generoi/wp-xhprof": "^0.1",
@@ -78,7 +76,6 @@
     "wp-cli/wp-cli-bundle": "^2.2",
     "cweagans/composer-patches": "~1.0",
     "generoi/genero-conf": "~1.1",
-    "generoi/genero-status": "*",
     "consolidation/robo": "^2.0",
     "generoi/robo-genero": "dev-master",
     "kinsta/kinsta-mu-plugins": "^2.3"
@@ -108,7 +105,6 @@
       "web/app/languages/": ["vendor:koodimonni-language"],
       "web/app/languages/plugins/": ["vendor:koodimonni-plugin-language"],
       "web/app/languages/themes/": ["vendor:koodimonni-theme-language"],
-      "web/": ["package:generoi/genero-status:genero-status.php"],
       "web/app/": [
         "package:wpackagist-plugin/wp-super-cache:advanced-cache.php",
         "type:wordpress-dropin"

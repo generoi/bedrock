@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "079a5317a15ff7876e04f0b2cc67d1e1",
+    "content-hash": "8adebb377ec5fca8adb8594acc06b4b7",
     "packages": [
         {
             "name": "behat/behat",
@@ -1406,47 +1406,6 @@
             "time": "2020-08-13T11:28:06+00:00"
         },
         {
-            "name": "generoi/genero-status",
-            "version": "v0.0.8",
-            "source": {
-                "type": "git",
-                "url": "git@github.com:generoi/genero-status.git",
-                "reference": "a8f50985df11b6d352e38a1874211d4772586025"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/generoi/genero-status/zipball/a8f50985df11b6d352e38a1874211d4772586025",
-                "reference": "a8f50985df11b6d352e38a1874211d4772586025",
-                "shasum": ""
-            },
-            "archive": {
-                "exclude": [
-                    ".gitignore"
-                ]
-            },
-            "require": {
-                "composer/installers": "~1.0",
-                "php": ">=5.4.0"
-            },
-            "type": "php-script",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Oskar Schöldström",
-                    "email": "public@oxy.fi"
-                }
-            ],
-            "description": "Genero Status",
-            "homepage": "https://github.com/generoi/genero-status",
-            "support": {
-                "issues": "https://github.com/generoi/genero-status/issues",
-                "source": "https://github.com/generoi/genero-status/tree/master"
-            },
-            "time": "2017-05-23T13:32:16+00:00"
-        },
-        {
             "name": "generoi/gravityforms",
             "version": "v2.4.20",
             "source": {
@@ -1893,6 +1852,47 @@
             "time": "2017-12-21T22:14:55+00:00"
         },
         {
+            "name": "jameelmoses/wordpress-kint-debugger",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/generoi/wordpress-kint-debugger.git",
+                "reference": "3891d23891e5626fbbb0517901e8de20ff617685"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/generoi/wordpress-kint-debugger/zipball/3891d23891e5626fbbb0517901e8de20ff617685",
+                "reference": "3891d23891e5626fbbb0517901e8de20ff617685",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.6.0"
+            },
+            "type": "wordpress-plugin",
+            "license": [
+                "GPL-3.0+"
+            ],
+            "authors": [
+                {
+                    "name": "Jameel Moses",
+                    "email": "hello@jameelmoses.com",
+                    "homepage": "https://github.com/jameelmoses"
+                }
+            ],
+            "description": "WordPress Kint Debugger is a simple wrapper for Kint, a debugging tool to output information about variables and traces in a styled, collapsible format that makes understanding deep arrays and objects easier.",
+            "homepage": "https://github.com/jameelmoses/wordpress-kint-debugger",
+            "keywords": [
+                "Debug Bar",
+                "Debugger",
+                "Kint",
+                "WP"
+            ],
+            "support": {
+                "source": "https://github.com/generoi/wordpress-kint-debugger/tree/v1.0.0"
+            },
+            "time": "2020-12-08T22:04:59+00:00"
+        },
+        {
             "name": "jjgrainger/posttypes",
             "version": "2.1",
             "source": {
@@ -1999,6 +1999,27 @@
                 "schema"
             ],
             "time": "2020-05-27T16:41:55+00:00"
+        },
+        {
+            "name": "kinsta/kinsta-mu-plugins",
+            "version": "2.3.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/retlehs/kinsta-mu-plugins.git",
+                "reference": "b17d6ad3b4f62390a03395cc4786848eb566dc73"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/retlehs/kinsta-mu-plugins/zipball/b17d6ad3b4f62390a03395cc4786848eb566dc73",
+                "reference": "b17d6ad3b4f62390a03395cc4786848eb566dc73",
+                "shasum": ""
+            },
+            "type": "wordpress-muplugin",
+            "support": {
+                "source": "https://github.com/retlehs/kinsta-mu-plugins/tree/2.3.2",
+                "issues": "https://github.com/retlehs/kinsta-mu-plugins/issues"
+            },
+            "time": "2020-01-22T19:37:48+00:00"
         },
         {
             "name": "koodimonni-language/fi",
@@ -2636,44 +2657,6 @@
                 }
             ],
             "time": "2021-02-22T09:20:06+00:00"
-        },
-        {
-            "name": "mcguffin/acf-quick-edit-fields",
-            "version": "3.1.3",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/mcguffin/acf-quickedit-fields.git",
-                "reference": "a64c6a0b7e719baa8961fd742858f7e042454f60"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/mcguffin/acf-quickedit-fields/zipball/a64c6a0b7e719baa8961fd742858f7e042454f60",
-                "reference": "a64c6a0b7e719baa8961fd742858f7e042454f60",
-                "shasum": ""
-            },
-            "require": {
-                "composer/installers": "~1.2",
-                "php": ">=5.6.0"
-            },
-            "require-dev": {
-                "pheromone/phpcs-security-audit": "*",
-                "phpcompatibility/php-compatibility": "*",
-                "squizlabs/php_codesniffer": "*",
-                "wp-coding-standards/wpcs": "*"
-            },
-            "type": "wordpress-plugin",
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "GPL-3.0-or-later"
-            ],
-            "authors": [
-                {
-                    "name": "Jörn Lund",
-                    "homepage": "https://github.com/mcguffin"
-                }
-            ],
-            "description": "WordPress Plugin implementing Column Displaying, QuickEdit and BulkEdit for Advanced Custom Fields (ACF)",
-            "time": "2021-03-17T17:34:00+00:00"
         },
         {
             "name": "mck89/peast",
@@ -8834,42 +8817,6 @@
             "homepage": "https://wordpress.org/plugins/gravity-forms-google-analytics-event-tracking/"
         },
         {
-            "name": "wpackagist-plugin/jetpack",
-            "version": "8.9.1",
-            "source": {
-                "type": "svn",
-                "url": "https://plugins.svn.wordpress.org/jetpack/",
-                "reference": "tags/8.9.1"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://downloads.wordpress.org/plugin/jetpack.8.9.1.zip"
-            },
-            "require": {
-                "composer/installers": "~1.0"
-            },
-            "type": "wordpress-plugin",
-            "homepage": "https://wordpress.org/plugins/jetpack/"
-        },
-        {
-            "name": "wpackagist-plugin/kint-debugger",
-            "version": "1.2",
-            "source": {
-                "type": "svn",
-                "url": "https://plugins.svn.wordpress.org/kint-debugger/",
-                "reference": "tags/1.2"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://downloads.wordpress.org/plugin/kint-debugger.1.2.zip"
-            },
-            "require": {
-                "composer/installers": "~1.0"
-            },
-            "type": "wordpress-plugin",
-            "homepage": "https://wordpress.org/plugins/kint-debugger/"
-        },
-        {
             "name": "wpackagist-plugin/limit-login-attempts-reloaded",
             "version": "2.20.5",
             "source": {
@@ -9489,6 +9436,11 @@
                 "shasum": ""
             },
             "type": "vm",
+            "extra": {
+                "patches_applied": {
+                    "Support vagrant DHCP IP assignment with `vagrant-hostmanager`": "https://github.com/oxyc/drupal-vm/commit/fb12cd2a5051e11de26dca4c32894198ce07aafe.patch"
+                }
+            },
             "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
@@ -9965,7 +9917,7 @@
     },
     "platform-dev": [],
     "platform-overrides": {
-        "php": "7.2.18"
+        "php": "7.4.15"
     },
     "plugin-api-version": "1.1.0"
 }
