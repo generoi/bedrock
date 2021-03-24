@@ -54,7 +54,7 @@
     "generoi/gravityforms": "~2.1",
     "wpackagist-plugin/gravity-forms-google-analytics-event-tracking": "^2.3",
 
-    "wpackagist-plugin/wordpress-seo": "~15.0",
+    "wpackagist-plugin/wordpress-seo": "~16.0",
     "wpackagist-plugin/google-tag-manager": "~1.0",
     "wpackagist-plugin/redirection": "~5.0",
     "generoi/wp-genero-cookieconsent": "~1.0-alpha",
