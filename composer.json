@@ -32,7 +32,7 @@
     "php": ">=7.1",
     "koodimonni/composer-dropin-installer": "*",
     "composer/installers": "^1.7",
-    "vlucas/phpdotenv": "^3.6.0",
+    "vlucas/phpdotenv": "^5.3.0",
     "roots/wordpress": "^5.4",
     "oscarotero/env": "^2.1.0",
     "roots/wp-password-bcrypt": "1.0.0",
