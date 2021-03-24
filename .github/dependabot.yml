@@ -4,24 +4,16 @@ updates:
     directory: "/web/app/themes/wp-gds-theme/"
     schedule:
       interval: "weekly"
-    commit-message:
-      prefix: "npm"
 
   - package-ecosystem: "composer"
     directory: "/"
     schedule:
       interval: "daily"
-    commit-message:
-      prefix: "Composer"
-      include: "scope"
 
   - package-ecosystem: "composer"
     directory: "/web/app/themes/wp-gds-theme/"
     schedule:
       interval: "weekly"
-    commit-message:
-      prefix: "Theme Composer"
-      include: "scope"
 
 registries:
   github:
