@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "545e3394626426e6bd229591fe3be5b8",
+    "content-hash": "437e2b6512ccbc8f4f849b4f05bc697d",
     "packages": [
         {
             "name": "brick/math",
@@ -1076,20 +1076,20 @@
         },
         {
             "name": "log1x/navi",
-            "version": "v1.0.6",
+            "version": "v2.0.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Log1x/navi.git",
-                "reference": "746461176101a0ab0b9d1b074cf4d5be5d072280"
+                "reference": "db211fcd9f97c49399057d94a98bdc4602710b30"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Log1x/navi/zipball/746461176101a0ab0b9d1b074cf4d5be5d072280",
-                "reference": "746461176101a0ab0b9d1b074cf4d5be5d072280",
+                "url": "https://api.github.com/repos/Log1x/navi/zipball/db211fcd9f97c49399057d94a98bdc4602710b30",
+                "reference": "db211fcd9f97c49399057d94a98bdc4602710b30",
                 "shasum": ""
             },
             "require": {
-                "php": ">=7.1.3"
+                "php": "^7.0|^8.0"
             },
             "require-dev": {
                 "squizlabs/php_codesniffer": "^3.4"
@@ -1098,7 +1098,7 @@
             "extra": {
                 "acorn": {
                     "providers": [
-                        "Log1x\\Navi\\NaviServiceProvider"
+                        "Log1x\\Navi\\Providers\\NaviServiceProvider"
                     ],
                     "aliases": {
                         "Navi": "Log1x\\Navi\\Facades\\Navi"
@@ -1120,12 +1120,19 @@
                     "email": "brandon@tendency.me"
                 }
             ],
-            "description": "A simple alternative to WordPress' NavWalker",
+            "description": "A developer-friendly alternative to the WordPress NavWalker.",
             "keywords": [
                 "navwalker",
-                "wordpress"
+                "wordpress",
+                "wordpress-plugin"
             ],
-            "time": "2020-02-04T16:12:56+00:00"
+            "funding": [
+                {
+                    "url": "https://github.com/Log1x",
+                    "type": "github"
+                }
+            ],
+            "time": "2021-02-16T12:35:46+00:00"
         },
         {
             "name": "monolog/monolog",
