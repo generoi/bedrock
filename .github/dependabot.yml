@@ -4,6 +4,8 @@ updates:
     directory: "/web/app/themes/wp-gds-theme/"
     schedule:
       interval: "weekly"
+    allow:
+      - dependency-type: "production"
 
   - package-ecosystem: "composer"
     directory: "/"
