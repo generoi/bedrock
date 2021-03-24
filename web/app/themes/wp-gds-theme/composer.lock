@@ -273,12 +273,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/generoi/sage-nativeblock.git",
-                "reference": "963e80e1cfc2c6ae641d5f804220df6774d5d45f"
+                "reference": "8f4a8002a61ca9db02b3f3982baf6773c77c9659"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/generoi/sage-nativeblock/zipball/963e80e1cfc2c6ae641d5f804220df6774d5d45f",
-                "reference": "963e80e1cfc2c6ae641d5f804220df6774d5d45f",
+                "url": "https://api.github.com/repos/generoi/sage-nativeblock/zipball/8f4a8002a61ca9db02b3f3982baf6773c77c9659",
+                "reference": "8f4a8002a61ca9db02b3f3982baf6773c77c9659",
                 "shasum": ""
             },
             "archive": {
@@ -327,7 +327,7 @@
                 "source": "https://github.com/generoi/sage-nativeblock/tree/master",
                 "issues": "https://github.com/generoi/sage-nativeblock/issues"
             },
-            "time": "2020-08-05T11:30:56+00:00"
+            "time": "2021-03-11T14:47:50+00:00"
         },
         {
             "name": "illuminate/cache",
