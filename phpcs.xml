@@ -30,5 +30,7 @@
   <arg value="ns"/>
 
   <!-- Use PSR-2 as a base -->
-  <rule ref="PSR12"/>
+  <rule ref="PSR12">
+    <exclude name="Generic.Files.LineEndings.InvalidEOLChar" />
+  </rule>
 </ruleset>
