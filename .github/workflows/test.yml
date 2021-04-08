@@ -60,8 +60,8 @@ jobs:
       - name: Install development packages to run tests
         run: composer install:development
 
-      - name: Run tests
-        run: composer test --no-interaction
+      - name: Run CI tests
+        run: composer ci --no-interaction
 
       - name: Build assets
         run: composer build --no-interaction

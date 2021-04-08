@@ -86,7 +86,8 @@
     "brainmaestro/composer-git-hooks": "^2.2",
     "deployer/deployer": "^6.3",
     "deployer/recipes": "^6.1",
-    "generoi/deployer-genero": "^0.1-alpha"
+    "generoi/deployer-genero": "^0.1-alpha",
+    "staabm/annotate-pull-request-from-checkstyle": "^1.5"
   },
   "config": {
     "optimize-autoloader": true,
@@ -129,6 +130,12 @@
     "post-create-project-cmd": "Generoi\\Robo\\Composer\\ComposerScript::postCreateProject",
     "post-update-cmd": "php -r \"if (is_executable('vendor/bin/cghooks')) exec('vendor/bin/cghooks update');\"",
     "test": "Generoi\\Robo\\Composer\\ComposerScript::test",
+    "ci": [
+      "composer validate --no-check-all",
+      "vendor/bin/phpcs --report=checkstyle | vendor/bin/cs2pr",
+      "(cd web/app/themes/wp-gds-theme; npm run ci:scripts --silent) | vendor/bin/cs2pr",
+      "(cd web/app/themes/wp-gds-theme; npm run ci:styles --silent) | vendor/bin/cs2pr"
+    ],
     "build": "vendor/bin/robo build:production",
     "install:development": [
       "@composer install",
