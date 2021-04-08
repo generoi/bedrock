@@ -2,6 +2,12 @@
  * Styles in this file wont be prefixed with .editor-styles-wrapper unlike editor.scss
  */
 
+@import '~sass-mq';
+
+$is-editor: true;
+
+@import 'config/variables';
+
 .block-editor-block-list__block {
   margin-top: 0;
   margin-bottom: 0;
