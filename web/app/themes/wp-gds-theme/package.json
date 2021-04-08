@@ -19,6 +19,8 @@
     "lint:scripts": "eslint resources/assets/scripts",
     "lint:styles": "stylelint \"resources/assets/**/*.{vue,css,sass,scss,less}\"",
     "test": "run-s -c lint",
+    "ci:scripts": "eslint resources/assets/scripts --format checkstyle",
+    "ci:styles": "stylelint \"resources/assets/**/*.{vue,css,sass,scss,less}\" --custom-formatter=node_modules/stylelint-checkstyle-formatter",
     "translate": "run-s -c translate:*",
     "translate:pot": "wp i18n make-pot . ./resources/languages/sage.pot --ignore-domain --include=\"app,resources/assets,resources/views\"",
     "translate:js": "wp i18n make-json ./resources/languages --no-purge --pretty-print"
@@ -47,6 +49,7 @@
     "sass": "^1.26.3",
     "sass-loader": "^8.0.2",
     "stylelint": "^13.12.0",
+    "stylelint-checkstyle-formatter": "^0.1.2",
     "stylelint-config-standard": "^20.0.0",
     "vue-template-compiler": "^2.6.11"
   },
