@@ -32,14 +32,19 @@ $gradient-names:
 $alignfull-max-width: 1600px;
 
 :root {
-  @each $name in $color-names {
-    --color-#{$name}: var(--wp--preset--color--#{$name});
-  }
-
-  // Map gradients from WP
-  @each $name in $gradient-names {
-    --gradient-#{$name}: var(--wp--preset--gradient--#{$name});
-  }
+  // Colors
+  --color-white: #fff;
+  --color-black: #333031;
+  --color-ui-background-01: #eee;
+  --color-ui-background-02: rgb(238 238 238 / 50%);
+  --color-ui-01: #acacac;
+  --color-ui-02: #646464;
+  --color-ui-03: #00a06e;
+  --color-ui-04: #00a3b7;
+  --color-ui-05: #f1615e;
+  --color-ui-06: #ffdcdd;
+  --color-ui-07: #9185db;
+  --gradient-01: linear-gradient(var(--color-white), var(--color-black));
 
   // Present content widths
   --content-width: 800px;

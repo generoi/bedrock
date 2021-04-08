@@ -8,7 +8,7 @@
 @each $name in $color-names {
   .has-#{$name}-background-color {
     --block-color: var(--color-black);
-    --block-background: var(--wp--preset--color--#{$name});
+    --block-background: var(--color-#{$name});
 
     background-color: var(--block-background) !important;
     color: var(--block-color);
@@ -27,7 +27,7 @@
  */
 @each $name in $color-names {
   .has-#{$name}-color {
-    --block-color: var(--wp--preset--color--#{$name});
+    --block-color: var(--color-#{$name});
 
     color: var(--block-color) !important;
   }
