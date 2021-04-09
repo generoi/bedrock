@@ -41,6 +41,26 @@ _For Apple Silicon macs, skip to the Docker section._
 * Ansible >= 2.5 (for faster provisioning but not required)
 * Node.js >= 12 (if running commands from the host machine)
 
+## Authenticate with satispress
+
+You will need your API key from satispress.generodigital.com.
+
+    composer config --global http.basic.satispress.generodigital.com <API-KEY> satispress
+
+your global `auth.json` usually located at `~/.composer/auth.json` should end up looking like:
+
+```json
+{
+    ...
+    "http-basic": {
+        "satispress.generodigital.com": {
+            "username": "<API-KEY>",
+            "password": "satispress"
+        }
+    }
+}
+```
+
 ## Local project development (Vagrant)
 
 ### Working from host machine (Intel Macs)
