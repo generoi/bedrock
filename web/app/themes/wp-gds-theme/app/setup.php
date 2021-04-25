@@ -7,7 +7,6 @@
 namespace App;
 
 use function Roots\asset;
-use function Roots\view;
 
 /**
  * Register the theme assets.
