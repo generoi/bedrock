@@ -1,6 +1,6 @@
 .swiper-container {
-  --swiper-theme-color: var(--color-black);
-  --swiper-pagination-color: var(--color-black);
+  --swiper-theme-color: var(--gds-color-black);
+  --swiper-pagination-color: var(--gds-color-black);
   --swiper-inactive-opacity: 0.5;
   --swiper-pagination-size: 10px;
   --swiper-pagination-gutter: 20px;
@@ -23,8 +23,8 @@
   }
 
   .swiper-pagination {
-    margin-top: var(--spacing-s);
-    margin-bottom: var(--spacing-s);
+    margin-top: var(--gds-spacing-s);
+    margin-bottom: var(--gds-spacing-s);
     position: relative;
   }
 }
@@ -58,11 +58,11 @@
 }
 
 .swiper-button-prev {
-  left: var(--spacing-m);
+  left: var(--gds-spacing-m);
 }
 
 .swiper-button-next {
-  right: var(--spacing-m);
+  right: var(--gds-spacing-m);
 }
 
 .swiper-pagination-bullet {
@@ -77,7 +77,7 @@
 }
 
 .swiper-container-horizontal > .swiper-pagination-bullets {
-  bottom: var(--spacing-m);
+  bottom: var(--gds-spacing-m);
 
   .swiper-pagination-bullet {
     margin: 0 calc(var(--swiper-pagination-gutter) / 2);

@@ -12,7 +12,7 @@
   @include mq($from: medium) {
     @for $i from 1 through 8 {
       &.columns-#{$i} .blocks-gallery-grid {
-        --logo-grid-item-count: #{$i};
+        --gds-logo-grid-item-count: #{$i};
       }
     }
   }

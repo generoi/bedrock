@@ -33,18 +33,18 @@ $alignfull-max-width: 1600px;
 
 :root {
   // Colors
-  --color-white: #fff;
-  --color-black: #333031;
-  --color-ui-background-01: #eee;
-  --color-ui-background-02: rgb(238 238 238 / 50%);
-  --color-ui-01: #acacac;
-  --color-ui-02: #646464;
-  --color-ui-03: #00a06e;
-  --color-ui-04: #00a3b7;
-  --color-ui-05: #f1615e;
-  --color-ui-06: #ffdcdd;
-  --color-ui-07: #9185db;
-  --gradient-01: linear-gradient(var(--color-white), var(--color-black));
+  --gds-color-white: #fff;
+  --gds-color-black: #333031;
+  --gds-color-ui-background-01: #eee;
+  --gds-color-ui-background-02: rgb(238 238 238 / 50%);
+  --gds-color-ui-01: #acacac;
+  --gds-color-ui-02: #646464;
+  --gds-color-ui-03: #00a06e;
+  --gds-color-ui-04: #00a3b7;
+  --gds-color-ui-05: #f1615e;
+  --gds-color-ui-06: #ffdcdd;
+  --gds-color-ui-07: #9185db;
+  --gradient-01: linear-gradient(var(--gds-color-white), var(--gds-color-black));
 
   // Present content widths
   --content-width: 800px;
@@ -52,7 +52,7 @@ $alignfull-max-width: 1600px;
   --alignfull-width: 2000px;
 
   // Gutters
-  --gutter: var(--spacing-m);
+  --gutter: var(--gds-spacing-m);
 
   // Gutter between blocks
   --block-gutter-s: 24px;
@@ -102,16 +102,16 @@ $alignfull-max-width: 1600px;
   --size-col-5: calc(var(--size-column) * 5 + var(--gutter) * 4);
 
   // Card
-  --card-width: 100%;
+  --gds-card-width: 100%;
 
   // Media Card
-  --media-card-media-height: calc(371 / 486 * 100%);
+  --gds-media-card-media-height: calc(371 / 486 * 100%);
 
   // Typography
-  --heading-color: inherit;
-  --heading-line-height: 1;
-  --heading-font-family: gilroy, arial, helvetica, sans-serif;
-  --body-font-family: gilroy, arial, helvetica, sans-serif;
-  --body-font-size: 17px;
-  --body-line-height: 1.588235294;
+  --gds-heading-color: inherit;
+  --gds-heading-line-height: 1;
+  --gds-heading-font-family: gilroy, arial, helvetica, sans-serif;
+  --gds-body-font-family: gilroy, arial, helvetica, sans-serif;
+  --gds-body-font-size: 17px;
+  --gds-body-line-height: 1.588235294;
 }

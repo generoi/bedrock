@@ -1,10 +1,10 @@
 .wp-block-buttons {
-  margin-bottom: calc(var(--spacing-s) * -1);
+  margin-bottom: calc(var(--gds-spacing-s) * -1);
 }
 
 .wp-block-buttons .wp-block-button {
-  margin-bottom: var(--spacing-s);
-  margin-right: var(--spacing-s);
+  margin-bottom: var(--gds-spacing-s);
+  margin-right: var(--gds-spacing-s);
 }
 
 @if $is-editor {
