@@ -106,4 +106,12 @@ $alignfull-max-width: 1600px;
 
   // Media Card
   --media-card-media-height: calc(371 / 486 * 100%);
+
+  // Typography
+  --heading-color: inherit;
+  --heading-line-height: 1;
+  --heading-font-family: gilroy, arial, helvetica, sans-serif;
+  --body-font-family: gilroy, arial, helvetica, sans-serif;
+  --body-font-size: 17px;
+  --body-line-height: 1.588235294;
 }
