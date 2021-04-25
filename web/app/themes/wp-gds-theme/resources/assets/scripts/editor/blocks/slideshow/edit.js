@@ -66,7 +66,7 @@ function BlockEdit({
       autoplay: isAutoplay,
       loop: isLoop,
       autoHeight: true,
-      slidesPerView: 3,
+      slidesPerView: 1,
       simulateTouch: false,
       cssMode: true, // gutenberg resets transform on innerblock wrapper
       pagination: {
