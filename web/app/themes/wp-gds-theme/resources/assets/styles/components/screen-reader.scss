@@ -1,0 +1,9 @@
+@use '~genero-design-system/src/components/gds-visually-hidden' as sr;
+
+.sr-only {
+  @include sr.sr-only;
+}
+
+.sr-only-focusable:not(:focus) {
+  @include sr.sr-only;
+}
