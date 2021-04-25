@@ -12,7 +12,7 @@
     @include button.base;
 
     &:visited {
-      color: var(--button-color, inherit);
+      color: var(--gds-button-color, inherit);
     }
   }
 

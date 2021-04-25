@@ -17,33 +17,33 @@
 textarea {
   appearance: none;
   box-sizing: border-box;
-  background: var(--color-white);
+  background: var(--gds-color-white);
   border: 0;
-  border-radius: var(--button-border-radius);
+  border-radius: var(--gds-button-border-radius);
   font-size: 20px;
   padding: 12px 11px 10px 11px;
   width: 100%;
 
   &:focus {
-    border-color: var(--color-blue);
+    border-color: var(--gds-color-blue);
     outline: none;
   }
 }
 
 ::placeholder {
-  color: var(--color-ui-01);
+  color: var(--gds-color-ui-01);
 }
 
 label {
-  margin-bottom: var(--spacing-xxs);
+  margin-bottom: var(--gds-spacing-2xs);
   display: block;
 }
 
 select {
   appearance: none;
   box-sizing: border-box;
-  background: var(--color-white);
-  border: solid 1px var(--color-light-gray);
+  background: var(--gds-color-white);
+  border: solid 1px var(--gds-color-light-gray);
   padding: 11px 14px;
   width: 100%;
   min-width: 200px;
@@ -53,7 +53,7 @@ select {
   background-size: 1em;
 
   &:focus {
-    border-color: var(--color-blue);
+    border-color: var(--gds-color-blue);
     outline: none;
   }
 }

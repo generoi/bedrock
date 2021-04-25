@@ -7,8 +7,8 @@
 
 @each $name in $color-names {
   .has-#{$name}-background-color {
-    --block-color: var(--color-black);
-    --block-background: var(--color-#{$name});
+    --block-color: var(--gds-color-black);
+    --block-background: var(--gds-color-#{$name});
 
     background-color: var(--block-background) !important;
     color: var(--block-color);
@@ -19,7 +19,7 @@
 .has-ui-04-background-color,
 .has-ui-05-background-color,
 .has-ui-07-background-color {
-  --block-color: var(--color-white);
+  --block-color: var(--gds-color-white);
 }
 
 /**
@@ -27,7 +27,7 @@
  */
 @each $name in $color-names {
   .has-#{$name}-color {
-    --block-color: var(--color-#{$name});
+    --block-color: var(--gds-color-#{$name});
 
     color: var(--block-color) !important;
   }
@@ -55,7 +55,7 @@
 .has-s-heading-font-size {
   @include heading.size-s;
 
-  color: var(--color-ui-01);
+  color: var(--gds-color-ui-01);
 }
 
 .has-l-paragraph-font-size {

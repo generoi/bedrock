@@ -1,7 +1,7 @@
 @use '~genero-design-system/src/components/gds-heading' as heading;
 
 .content-info {
-  padding: var(--spacing-xxl) var(--spacing-m);
+  padding: var(--gds-spacing-2xl) var(--gds-spacing-m);
 
   @include mq($from: large) {
     padding-top: var(--footer-gutter);
@@ -12,7 +12,7 @@
 
   .widget {
     &:not(:last-child) {
-      margin-bottom: var(--spacing-m);
+      margin-bottom: var(--gds-spacing-m);
     }
 
     &__title {
@@ -41,7 +41,7 @@
 
     &__logo {
       grid-area: logo;
-      margin-bottom: var(--spacing-xl);
+      margin-bottom: var(--gds-spacing-xl);
     }
 
     &__menu {
@@ -50,7 +50,7 @@
 
     &__contact {
       grid-area: contact;
-      margin-bottom: var(--spacing-xl);
+      margin-bottom: var(--gds-spacing-xl);
     }
 
     &__social {
@@ -67,7 +67,7 @@
     list-style-type: none;
 
     > li {
-      margin-bottom: var(--spacing-m);
+      margin-bottom: var(--gds-spacing-m);
 
       > a {
         text-decoration: underline;
@@ -85,16 +85,16 @@
       > li {
         display: flex;
         flex-wrap: wrap;
-        margin-bottom: var(--spacing-xl);
+        margin-bottom: var(--gds-spacing-xl);
 
         &::before {
           content: '';
-          width: var(--spacing-l);
+          width: var(--gds-spacing-l);
           background-color: currentColor;
           height: 1px;
           display: block;
-          margin-top: calc(var(--heading-s-line-height) / 2 - 1px);
-          margin-right: var(--spacing-xs);
+          margin-top: calc(var(--gds-heading-s-line-height) / 2 - 1px);
+          margin-right: var(--gds-spacing-xs);
         }
 
         > a {
@@ -105,9 +105,9 @@
       .sub-menu {
         display: block;
         flex-basis: 100%;
-        margin-left: calc(var(--spacing-l) + var(--spacing-xs));
-        padding-left: var(--spacing-s);
-        line-height: var(--spacing-l);
+        margin-left: calc(var(--gds-spacing-l) + var(--gds-spacing-xs));
+        padding-left: var(--gds-spacing-s);
+        line-height: var(--gds-spacing-l);
         list-style-type: none;
       }
     }

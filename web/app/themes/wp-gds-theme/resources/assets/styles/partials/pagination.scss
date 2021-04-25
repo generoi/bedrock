@@ -3,17 +3,17 @@ ul.page-numbers {
   list-style-type: none;
   align-items: center;
   justify-content: center;
-  margin-top: var(--spacing-m);
+  margin-top: var(--gds-spacing-m);
 }
 
 span.page-numbers,
 a.page-numbers {
-  padding: var(--spacing-xxs) var(--spacing-xs);
+  padding: var(--gds-spacing-2xs) var(--gds-spacing-xs);
   display: flex;
   text-decoration: none;
 }
 
 .page-numbers.current {
-  background: var(--color-blue);
-  color: var(--color-white);
+  background: var(--gds-color-blue);
+  color: var(--gds-color-white);
 }

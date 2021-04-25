@@ -68,7 +68,7 @@
     & + h4,
     & + h5,
     & + h6 {
-      margin-top: calc(var(--block-gutter-s) * -1 + var(--spacing-xxs));
+      margin-top: calc(var(--block-gutter-s) * -1 + var(--gds-spacing-2xs));
     }
   }
 
@@ -79,7 +79,7 @@
     & + h4,
     & + h5,
     & + h6 {
-      margin-top: var(--spacing-m);
+      margin-top: var(--gds-spacing-m);
     }
   }
 
