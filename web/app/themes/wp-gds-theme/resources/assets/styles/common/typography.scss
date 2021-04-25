@@ -1,7 +1,7 @@
 body {
-  font-family: var(--body-font-family);
-  font-size: var(--body-font-size);
-  line-height: var(--body-line-height);
+  font-family: var(--gds-body-font-family);
+  font-size: var(--gds-body-font-size);
+  line-height: var(--gds-body-line-height);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -23,6 +23,6 @@ ul {
 // Provide a default gutter on forms which in case used outside the block
 // editor, as if it was a basic element.
 .gform_wrapper {
-  margin-block-start: var(--spacing-m);
-  margin-block-end: var(--spacing-m);
+  margin-block-start: var(--gds-spacing-m);
+  margin-block-end: var(--gds-spacing-m);
 }

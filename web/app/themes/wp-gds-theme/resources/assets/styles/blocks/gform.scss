@@ -1,12 +1,12 @@
 // @note requires Gravityforms 2.5+ with default styles not loaded.
 
 .gform_footer {
-  margin-top: var(--spacing-m);
+  margin-top: var(--gds-spacing-m);
 }
 
 .gform_fields {
   display: grid;
-  grid-gap: var(--spacing-m);
+  grid-gap: var(--gds-spacing-m);
   width: 100%;
   grid-template-columns: repeat(12, 1fr);
   grid-template-rows: repeat(auto-fill, auto);
@@ -21,11 +21,11 @@
 }
 
 .gform_confirmation_wrapper {
-  margin-top: var(--spacing-m);
+  margin-top: var(--gds-spacing-m);
 }
 
 .gfield_label {
-  margin-bottom: var(--spacing-xxs);
+  margin-bottom: var(--gds-spacing-2xs);
   font-weight: 500;
   display: block;
 }
