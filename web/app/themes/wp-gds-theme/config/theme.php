@@ -107,4 +107,12 @@ return [
             'gradient' => 'var(--gradient-01)',
         ],
     ],
+    // 'patterns' => [
+    //     [
+    //         'name' => 'cta-banner', // resources/patterns/cta-banner.html
+    //         'title' => __('Call to action banner', 'gds'),
+    //         'categories' => ['header'],
+    //         'description' => __('The colored block at the end of pages prompting the visitor to take action.', 'gds'),
+    //     ],
+    // ]
 ];
