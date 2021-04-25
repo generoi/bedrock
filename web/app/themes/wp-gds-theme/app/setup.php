@@ -16,11 +16,10 @@ use function Roots\view;
  */
 add_action('wp_enqueue_scripts', function () {
     wp_enqueue_script('sage/gds.js', asset('gds/dist/gds/gds.esm.js')->uri(), [], null, false);
-    wp_enqueue_script('sage/vendor.js', asset('scripts/vendor.js')->uri(), ['jquery'], null, true);
-    wp_enqueue_script('sage/app.js', asset('scripts/app.js')->uri(), ['sage/vendor.js', 'jquery'], null, true);
+    wp_enqueue_script('sage/app.js', asset('scripts/app.js')->uri(), [], null, true);
     wp_enqueue_script('sage/fontawesome.js', 'https://kit.fontawesome.com/033b65fee9.js', [], null, false);
 
-    wp_add_inline_script('sage/vendor.js', asset('scripts/manifest.js')->contents(), 'before');
+    wp_add_inline_script('sage/app.js', asset('scripts/manifest.js')->contents(), 'before');
 
     if (is_single() && comments_open() && get_option('thread_comments')) {
         wp_enqueue_script('comment-reply');
@@ -35,10 +34,9 @@ add_action('wp_enqueue_scripts', function () {
  * @return void
  */
 add_action('enqueue_block_editor_assets', function () {
-    if ($manifest = asset('scripts/manifest.asset.php')->get()) {
+    if ($manifest = asset('scripts/editor.asset.php')->get()) {
         wp_enqueue_script('sage/gds.js', asset('gds/dist/gds/gds.esm.js')->uri(), [], null, false);
-        wp_enqueue_script('sage/vendor.js', asset('scripts/vendor.js')->uri(), $manifest['dependencies'], null, true);
-        wp_enqueue_script('sage/editor.js', asset('scripts/editor.js')->uri(), ['sage/vendor.js'], null, true);
+        wp_enqueue_script('sage/editor.js', asset('scripts/editor.js')->uri(), $manifest['dependencies'], null, true);
 
         wp_add_inline_script('sage/vendor.js', asset('scripts/manifest.js')->contents(), 'before');
     }
