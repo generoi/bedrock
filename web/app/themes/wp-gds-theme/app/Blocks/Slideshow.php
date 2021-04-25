@@ -22,8 +22,7 @@ class Slideshow extends NativeBlock
             'loop' => $this->attributes->isLoop,
             'slidesPerView' => 1,
             'simulateTouch' => true,
-            'autoHeight' => false,
-            'centeredSlides' => true,
+            'autoHeight' => true,
             // 'cssMode' => true,
             'pagination' => [
                 'el' => '.swiper-pagination',
@@ -34,11 +33,6 @@ class Slideshow extends NativeBlock
                 'prevEl' => $this->attributes->hasNavigation ? '.swiper-button-prev' : null,
                 'nextEl' => $this->attributes->hasNavigation ? '.swiper-button-next' : null,
             ],
-            'breakpoints' => [
-                '782' => [
-                    'slidesPerView' => 'auto',
-                ]
-            ]
         ];
     }
 }

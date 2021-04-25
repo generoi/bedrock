@@ -1,121 +1,90 @@
 .swiper-container {
-  --swiper-pagination-color: var(--color-white);
-  --swiper-theme-color: var(--color-white);
-  --swiper-slide-width: 100%;
+  --swiper-theme-color: var(--color-black);
+  --swiper-pagination-color: var(--color-black);
+  --swiper-inactive-opacity: 0.5;
+  --swiper-pagination-size: 10px;
+  --swiper-pagination-gutter: 20px;
+  --swiper-button-size: 32px;
+}
 
-  // Desktop
-  @media (min-width: #{$break-medium}) {
-    --swiper-slide-width: var(--size-col-5);
-  }
+.wp-block.swiper-slide {
+  margin-left: 0;
+  margin-right: 0;
+  max-width: none;
+}
 
-  // Desktop
-  @media (min-width: #{$break-medium}) {
-    .swiper-slide + .swiper-slide {
-      margin-left: var(--spacing-m);
-    }
-  }
-
-  .swiper-slide {
-    margin-left: 0;
-    margin-right: 0;
-    max-width: none;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    width: var(--swiper-slide-width);
-
-    // Restrict image aspectratio to 3:2 using a padding css hack.
-    // Comment this out if you don't want to restrict image aspect ratio.
-    .wp-block-image {
-      padding-bottom: 67%;
-      height: 0;
-      width: 100%;
-      position: relative;
-
-      & > img {
-        object-fit: cover;
-        position: absolute;
-        top: 0;
-        left: 0;
-        bottom: 0;
-        right: 0;
-        height: 100%;
-        width: 100%;
-      }
-    }
-
-    .wp-block-image, p {
-      margin: 0 0 var(--spacing-m) 0;
-    }
-
-    h1, h2, h3, h4, h5 {
-      margin: 0 0 var(--spacing-s) 0;
-    }
-  }
-
-  .has-arrows-outside {
-    // Desktop
-    @media (min-width: #{$break-medium}) {
-      .swiper-slide {
-        padding-left: 5rem;
-        padding-right: 5rem;
-        box-sizing: border-box;
-      }
-    }
-
-    .swiper-pagination {
-      margin-top: var(--spacing-s);
-      margin-bottom: var(--spacing-s);
-      position: relative;
+.swiper-container.has-arrows-outside {
+  @include mq($from: large) {
+    .swiper-slide {
+      padding-left: 5rem;
+      padding-right: 5rem;
+      box-sizing: border-box;
     }
   }
 
   .swiper-pagination {
-    position: static;
-    padding-bottom: var(--spacing-l);
-
-    // Desktop
-    @media (min-width: #{$break-medium}) {
-      padding-bottom: var(--spacing-xxl);
-    }
-
-    .swiper-pagination-bullet {
-      width: 9px;
-      height: 9px;
-      background: transparent;
-      border: 1px solid var(--swiper-pagination-color);
-      opacity: 1;
-    }
-
-    .swiper-pagination-bullet-active {
-      background: var(--swiper-pagination-color);
-    }
+    margin-top: var(--spacing-s);
+    margin-bottom: var(--spacing-s);
+    position: relative;
   }
+}
 
-  .swiper-button-prev,
-  .swiper-button-next {
-    &::after {
-      display: none;
-    }
-
-    display: none;
-
-    // Desktop
-    @media (min-width: #{$break-medium}) {
-      display: block;
-    }
-  }
-
-  .swiper-button-prev {
-    left: 110px;
-  }
-
-  .swiper-button-next {
-    right: 110px;
-  }
-
-  .swiper-button-disabled {
+.swiper-pagination {
+  // By default show on mobile but not tablet
+  @include mq($from: large) {
     display: none;
   }
+
+  .has-pagination & {
+    display: block;
+  }
+}
+
+.swiper-button-prev,
+.swiper-button-next {
+  &::after {
+    display: none;
+  }
+
+  display: none;
+
+  @include mq($from: large) {
+    display: block;
+  }
+
+  .svg-inline--fa {
+    font-size: var(--swiper-button-size);
+  }
+}
+
+.swiper-button-prev {
+  left: var(--spacing-m);
+}
+
+.swiper-button-next {
+  right: var(--spacing-m);
+}
+
+.swiper-pagination-bullet {
+  width: var(--swiper-pagination-size);
+  height: var(--swiper-pagination-size);
+  opacity: var(--swiper-inactive-opacity);
+  background: var(--swiper-pagination-color);
+
+  &-active {
+    opacity: 1;
+  }
+}
+
+.swiper-container-horizontal > .swiper-pagination-bullets {
+  bottom: var(--spacing-m);
+
+  .swiper-pagination-bullet {
+    margin: 0 calc(var(--swiper-pagination-gutter) / 2);
+  }
+}
+
+.swiper-button-prev.swiper-button-disabled,
+.swiper-button-next.swiper-button-disabled {
+  opacity: var(--swiper-inactive-opacity);
 }
