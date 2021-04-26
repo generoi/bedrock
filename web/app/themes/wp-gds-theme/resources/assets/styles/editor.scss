@@ -1,17 +1,13 @@
-@import '~genero-design-system/src/styles';
-@import '~sass-mq';
-@import "~swiper/swiper";
-@import "~swiper/components/pagination/pagination";
-@import "~swiper/components/navigation/navigation";
+@use '~genero-design-system/src/styles';
+@use "~swiper/swiper";
+@use "~swiper/components/pagination/pagination";
+@use "~swiper/components/navigation/navigation";
 
-$is-editor: true;
-
-@import 'config/variables';
-@import 'common/utils';
-@import 'common/typography';
-@import 'common/fonts';
-@import 'blocks/index';
-@import 'components/index';
+@use 'config' with ($is-editor: true);
+@use 'common/typography';
+@use 'common/fonts';
+@use 'blocks';
+@use 'components';
 
 .wp-block {
   max-width: var(--content-width);
