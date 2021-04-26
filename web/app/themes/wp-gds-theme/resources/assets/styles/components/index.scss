@@ -2,10 +2,10 @@
  * Components
  */
 
-@import 'editor-classes';
-@import 'editor-spacing';
-@import 'form';
-@import 'grid';
-@import 'masonry-grid';
-@import 'teaser';
-@import 'screen-reader';
+@forward 'editor-classes';
+@forward 'editor-spacing';
+@forward 'form';
+@forward 'grid';
+@forward 'masonry-grid';
+@forward 'teaser';
+@forward 'screen-reader';

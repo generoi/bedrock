@@ -60,7 +60,7 @@
     "genero-design-system": "^4.0.0-beta.0",
     "jquery": "^3.6.0",
     "lodash-es": "^4.17.21",
-    "normalize.css": "^8.0.1",
+    "normalize-scss": "^7.0.1",
     "sass-mq": "^5.0.1",
     "swiper": "^6.5.8"
   }

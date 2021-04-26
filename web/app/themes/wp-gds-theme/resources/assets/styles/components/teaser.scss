@@ -1,3 +1,5 @@
+@use 'common/breakpoints' as *;
+
 .teaser {
   &--post {
     //
@@ -8,7 +10,8 @@
   .teaser {
     --gds-card-width: 100%;
     // Desktop
-    @media (min-width: #{$break-medium}) {
+
+    @include mq($from: medium) {
       --gds-card-width: var(--size-col-5);
       // TODO: Use some kind of --size-row-3 variable for this. Or implement 3/2 aspect ratio.
       --gds-media-card-media-height: 324px;

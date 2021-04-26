@@ -1,11 +1,12 @@
 @use '~genero-design-system/src/components/gds-heading' as heading;
 @use '~genero-design-system/src/components/gds-paragraph' as paragraph;
+@use 'config';
 
 /**
  * Block editor background colors.
  */
 
-@each $name in $color-names {
+@each $name in config.$color-names {
   .has-#{$name}-background-color {
     --block-color: var(--gds-color-black);
     --block-background: var(--gds-color-#{$name});
@@ -25,7 +26,7 @@
 /**
  * Block editor text colors.
  */
-@each $name in $color-names {
+@each $name in config.$color-names {
   .has-#{$name}-color {
     --block-color: var(--gds-color-#{$name});
 
@@ -73,7 +74,7 @@
 /**
  * Block editor gradients.
  */
-@each $name in $gradient-names {
+@each $name in config.$gradient-names {
   .has-#{$name}-gradient-background {
     background: var(--gradient-block-01);
   }

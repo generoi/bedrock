@@ -1,15 +1,6 @@
-@import '~@wordpress/base-styles/breakpoints';
+@use 'common/breakpoints' as *;
 
 $is-editor: false !default;
-$mq-breakpoints: (
-  mobile: 320px,
-  small: $break-small,
-  medium: $break-medium,
-  large: $break-large,
-  xlarge: $break-xlarge,
-  wide: $break-wide,
-  huge: $break-huge,
-);
 
 // These names need to match the 'editor-color-palette' slugs in config/theme.php
 $color-names:

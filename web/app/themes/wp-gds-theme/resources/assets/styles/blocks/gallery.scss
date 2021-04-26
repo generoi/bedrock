@@ -1,5 +1,6 @@
 @use '~genero-design-system/src/components/gds-logo-grid' as grid;
 @use '~genero-design-system/src/components/gds-logo-grid-item' as item;
+@use 'common/breakpoints' as *;
 
 .wp-block-gallery.is-style-logo-grid {
   .blocks-gallery-grid {

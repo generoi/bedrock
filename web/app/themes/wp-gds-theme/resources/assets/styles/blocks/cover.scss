@@ -1,3 +1,5 @@
+@use 'config';
+
 .wp-block-cover {
   box-sizing: border-box;
   color: var(--gds-color-white);
@@ -7,7 +9,7 @@
     color: inherit;
   }
 
-  @media (min-width: #{$alignfull-max-width}) {
+  @media (min-width: #{config.$alignfull-max-width}) {
     min-height: 600px !important;
   }
 }
