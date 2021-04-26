@@ -1,3 +1,5 @@
+@use 'common/breakpoints' as *;
+
 .masonry-grid {
   --grid-gutter-x: var(--grid-gutter);
   --grid-gutter-y: var(--grid-gutter);

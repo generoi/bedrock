@@ -1,13 +1,11 @@
-@import '~genero-design-system/src/styles';
-@import '~normalize.css';
-@import '~sass-mq';
+@use '~genero-design-system/src/styles';
+@use '~normalize-scss/sass/normalize';
 
-@import 'config/variables';
-@import 'common/utils';
-@import 'common/reset';
-@import 'common/typography';
-@import 'common/fonts';
-@import 'components/index';
-@import 'blocks/index';
+@use 'config' with ($is-editor: false);
+@use 'common/reset';
+@use 'common/typography';
+@use 'common/fonts';
+@use 'components';
+@use 'blocks';
 
-@import 'partials/index';
+@use 'partials';

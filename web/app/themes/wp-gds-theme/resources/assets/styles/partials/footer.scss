@@ -1,4 +1,5 @@
 @use '~genero-design-system/src/components/gds-heading' as heading;
+@use 'common/breakpoints' as *;
 
 .content-info {
   padding: var(--gds-spacing-2xl) var(--gds-spacing-m);

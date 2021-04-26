@@ -1,3 +1,5 @@
+@use 'common/breakpoints' as *;
+
 .swiper-container {
   --swiper-theme-color: var(--gds-color-black);
   --swiper-pagination-color: var(--gds-color-black);
