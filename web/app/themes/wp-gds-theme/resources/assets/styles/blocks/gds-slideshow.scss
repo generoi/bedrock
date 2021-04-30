@@ -1,4 +1,4 @@
-@use 'common/breakpoints' as *;
+@use '../common/breakpoints' as *;
 
 .swiper-container {
   --swiper-theme-color: var(--gds-color-black);

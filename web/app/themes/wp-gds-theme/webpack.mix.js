@@ -3,6 +3,7 @@ require('@tinypixelco/laravel-mix-wp-blocks');
 require('laravel-mix-copy-watched');
 const fs = require('fs');
 const yaml = require('js-yaml');
+const glob = require('glob');
 
 /*
  |--------------------------------------------------------------------------
@@ -41,6 +42,10 @@ mix.js('resources/assets/scripts/app.js', 'scripts')
 
 mix.copyWatched('resources/assets/images', 'dist/images', {base: 'resources/assets/images'})
   .copyWatched('resources/assets/fonts', 'dist/fonts', {base: 'resources/assets/fonts'});
+
+glob.sync('resources/assets/styles/blocks/*').forEach((file) => {
+  mix.sass(file, 'styles/blocks');
+});
 
 // GDS
 const gdsPath = 'node_modules/genero-design-system';

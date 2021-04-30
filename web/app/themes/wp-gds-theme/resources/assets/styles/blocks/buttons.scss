@@ -1,4 +1,4 @@
-@use 'config';
+@use '../config/variables' as config;
 
 .wp-block-buttons {
   margin-bottom: calc(var(--gds-spacing-s) * -1);

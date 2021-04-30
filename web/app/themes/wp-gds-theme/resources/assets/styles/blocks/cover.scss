@@ -1,4 +1,4 @@
-@use 'config';
+@use '../config/variables' as config;
 
 .wp-block-cover {
   box-sizing: border-box;
