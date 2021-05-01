@@ -4,17 +4,9 @@
 
 @use 'config' with ($is-editor: true);
 
-.block-editor-block-list__block {
-  margin-top: 0;
-  margin-bottom: 0;
-}
-
+// Reset admin styles
 p {
-  font-size: inherit;
-  line-height: inherit;
-}
-
-// @see https://github.com/WordPress/gutenberg/pull/26552#issuecomment-741913927
-.interface-interface-skeleton__editor {
-  max-width: 100%;
+  font-size: unset;
+  line-height: unset;
+  margin: unset;
 }

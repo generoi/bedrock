@@ -1,6 +1,3 @@
-@use '~genero-design-system/src/styles';
-@use '~normalize-scss/sass/normalize';
-
 @use 'config' with ($is-editor: false);
 @use 'common/reset';
 @use 'common/typography';
@@ -8,3 +5,8 @@
 @use 'components';
 
 @use 'partials';
+
+@critical {
+  @import '~genero-design-system/src/styles';
+  @import '~normalize-scss/sass/normalize';
+}
