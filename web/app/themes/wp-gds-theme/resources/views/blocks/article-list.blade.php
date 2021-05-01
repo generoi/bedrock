@@ -1,3 +1,5 @@
+@enqueue_block_style('acf/article-list')
+
 <div class="{{ esc_attr($block->classes) }}" @if (!empty($block->id) || $use_pagination) id="{{ $block->id ?? 'listing' }}" @endif>
   <div class="masonry-grid small:2">
     @while ($query->have_posts()) @php($query->the_post())
@@ -9,6 +11,7 @@
   </div>
 
   @if ($use_pagination)
+    @enqueue_block_style('core/buttons')
     <div class="wp-block-buttons aligncenter">
       @include('partials.pagination', ['query' => $query, 'fragment' => $block->id ?? 'listing'])
     </div>

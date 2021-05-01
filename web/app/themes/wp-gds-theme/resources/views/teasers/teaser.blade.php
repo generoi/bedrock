@@ -1,3 +1,5 @@
+@enqueue_block_style('gds/gds-media-card')
+
 <div class="teaser teaser--{{ get_post_type() }}">
   <gds-media-card
     href="{{ get_permalink() }}"

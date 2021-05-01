@@ -68,4 +68,8 @@ return [
         'wp-genero-cookieconsent/css/library',
         'wp-genero-cookieconsent/css',
     ],
+
+    'blocks' => [
+        'critical_count' => 10,
+    ],
 ];

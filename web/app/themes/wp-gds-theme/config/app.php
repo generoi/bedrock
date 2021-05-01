@@ -130,6 +130,7 @@ return [
          */
         App\Providers\ThemeServiceProvider::class,
         App\Providers\EditorServiceProvider::class,
+        App\Providers\BlockStylesServiceProvider::class,
     ],
 
     /*
