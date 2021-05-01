@@ -6,7 +6,10 @@
 
 namespace App;
 
+use Illuminate\Support\Str;
+
 use function Roots\asset;
+use function Roots\config;
 
 /**
  * Register the theme assets.
@@ -25,12 +28,36 @@ add_action('wp_enqueue_scripts', function () {
     }
 
     wp_enqueue_style('sage/app.css', asset('styles/app.css')->uri(), [], null);
+
+    remove_action('wp_head', 'print_emoji_detection_script', 7);
+    remove_action('wp_print_styles', 'print_emoji_styles');
+
+    if (!current_user_can('edit_pages')) {
+        wp_deregister_script('jquery');
+    }
 }, 100);
 
 /**
  * Insert critical above the fold styling.
  */
 add_action('wp_head', function () {
+    $manifest = config('assets.manifests.theme.manifest');
+    if ($manifest && file_exists($manifest)) {
+        $manifest = json_decode(file_get_contents($manifest));
+        echo collect($manifest)
+            ->keys()
+            ->filter(function ($asset) {
+                return Str::endsWith($asset, '.woff2');
+            })
+            ->map(function ($asset) {
+                return sprintf(
+                    '<link rel="preload" href="%s" as="font" crossorigin="anonymous">',
+                    Str::before(asset($asset)->uri(), '?')
+                );
+            })
+            ->join(PHP_EOL);
+    }
+
     if ($critical = asset('styles/critical.css')->contents()) {
         echo sprintf('<style>%s</style>', $critical);
     }
