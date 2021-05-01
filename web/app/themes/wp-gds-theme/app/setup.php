@@ -28,6 +28,15 @@ add_action('wp_enqueue_scripts', function () {
 }, 100);
 
 /**
+ * Insert critical above the fold styling.
+ */
+add_action('wp_head', function () {
+    if ($critical = asset('styles/critical.css')->contents()) {
+        echo sprintf('<style>%s</style>', $critical);
+    }
+});
+
+/**
  * Register the theme assets with the block editor.
  *
  * @return void

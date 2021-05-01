@@ -58,6 +58,7 @@ return [
     ],
 
     'async_styles' => [
+        'sage/app.css',
         'dashicons',
         'debug-bar',
         'ptam-style-css',

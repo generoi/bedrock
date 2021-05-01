@@ -46,6 +46,7 @@
     "laravel-mix-purgecss": "^5.0.0-rc.1",
     "npm-run-all": "^4.1",
     "postcss": "^8.2.12",
+    "postcss-critical-css": "^3.0.7",
     "postcss-custom-properties": "^9.2.0",
     "purgecss-with-wordpress": "^2.1.0",
     "rimraf": "^3.0.2",

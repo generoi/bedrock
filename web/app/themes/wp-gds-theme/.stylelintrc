@@ -11,6 +11,7 @@
       true,
       {
         "ignoreAtRules": [
+          "critical",
           "use",
           "forward",
           "extend",
