@@ -32,7 +32,6 @@ class EditorServiceProvider extends ServiceProvider
         add_theme_support('disable-custom-gradients');
         add_theme_support('disable-custom-line-height');
 
-        add_theme_support('editor-gradient-presets', []);
         add_theme_support('experimental-custom-spacing');
         add_theme_support('experimental-link-color');
         add_theme_support('custom-units');
