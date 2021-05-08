@@ -4,7 +4,7 @@
 # can be overriden without manual inspection.
 
 vagrant_box: geerlingguy/drupal-vm
-vagrant_box_version: 2.0.9
+vagrant_box_version: 2.0.11
 
 # Use DHCP assigned  IPs with vagrant-hostmanager
 # Note: requires vagrant-vbguest to be disabled in Vagrantfile.local
@@ -107,6 +107,8 @@ installed_extras:
 extra_packages:
   - vim
 
+composer_keep_updated: true # required for downgrading to v1
+composer_version_branch: '--1'
 composer_global_packages:
   - { name: hirak/prestissimo, release: '^0.3' }
   - { name: wp-cli/wp-cli-bundle, release: '^2.0.0' }
