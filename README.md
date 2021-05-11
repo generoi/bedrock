@@ -45,7 +45,7 @@ _For Apple Silicon macs, skip to the Docker section._
 
 You will need your API key from satispress.generodigital.com.
 
-    composer config --global http.basic.satispress.generodigital.com <API-KEY> satispress
+    composer config --global http-basic.satispress.generodigital.com <API-KEY> satispress
 
 your global `auth.json` usually located at `~/.composer/auth.json` should end up looking like:
 
