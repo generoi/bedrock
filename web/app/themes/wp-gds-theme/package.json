@@ -60,6 +60,6 @@
     "lodash-es": "^4.17.21",
     "normalize.css": "^8.0.1",
     "sass-mq": "^5.0.1",
-    "swiper": "^6.5.9"
+    "swiper": "^6.6.1"
   }
 }
