@@ -77,7 +77,8 @@
     "generoi/robo-genero": "dev-master",
     "kinsta/kinsta-mu-plugins": "^2.3",
     "satispress/advanced-custom-fields-pro": "^5.9",
-    "satispress/gravityforms": "^2.4"
+    "satispress/gravityforms": "^2.4",
+    "roots/bedrock-autoloader": "^1.0"
   },
   "require-dev": {
     "squizlabs/php_codesniffer": "^3.4.2",
