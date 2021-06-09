@@ -25,60 +25,27 @@ drupal_composer_dependencies: []
 drupal_install_site: false
 configure_drush_aliases: false
 
-apache_vhost_php_fpm_parameters: |
-    <FilesMatch \.php$>
-      SetHandler "proxy:fcgi://{{ php_fpm_listen }}"
-    </FilesMatch>
-    SetEnv DEVELOPMENT true
-
-ssl_certificate_file: "/etc/ssl/certs/ssl-cert-snakeoil.pem"
-ssl_certificate_key_file: "/etc/ssl/private/ssl-cert-snakeoil.key"
-
-apache_vhosts:
-  - servername: "{{ drupal_domain }}"
-    serveralias: "www.{{ drupal_domain }} static.{{ drupal_domain }}"
-    documentroot: "{{ drupal_core_path }}"
-    extra_parameters: "{{ apache_vhost_php_fpm_parameters }}"
-    certificate_file: "{{ ssl_certificate_file }}"
-    certificate_key_file: "{{ ssl_certificate_key_file }}"
-
-  - servername: "adminer.{{ vagrant_hostname }}"
-    documentroot: "{{ adminer_install_dir }}"
-    extra_parameters: "{{ apache_vhost_php_fpm_parameters }}"
-    certificate_file: "{{ ssl_certificate_file }}"
-    certificate_key_file: "{{ ssl_certificate_key_file }}"
-
-  - servername: "xhprof.{{ vagrant_hostname }}"
-    documentroot: "{{ php_xhprof_html_dir }}"
-    extra_parameters: "{{ apache_vhost_php_fpm_parameters }}"
-    certificate_file: "{{ ssl_certificate_file }}"
-    certificate_key_file: "{{ ssl_certificate_key_file }}"
-
-  - servername: "pimpmylog.{{ vagrant_hostname }}"
-    documentroot: "{{ pimpmylog_install_dir }}"
-    extra_parameters: "{{ apache_vhost_php_fpm_parameters }}"
-    certificate_file: "{{ ssl_certificate_file }}"
-    certificate_key_file: "{{ ssl_certificate_key_file }}"
-
-  - servername: "{{ vagrant_ip }}"
-    serveralias: "dashboard.{{ vagrant_hostname }}"
-    documentroot: "{{ dashboard_install_dir }}"
-    extra_parameters: "{{ apache_vhost_php_fpm_parameters }}"
-    certificate_file: "{{ ssl_certificate_file }}"
-    certificate_key_file: "{{ ssl_certificate_key_file }}"
-
-apache_vhosts_ssl: "{{ apache_vhosts }}"
-
-apache_mods_enabled:
-  - env.load
-  - expires.load
-  - headers.load
-  - ssl.load
-  - rewrite.load
-  - proxy.load
-  - proxy_fcgi.load
+drupalvm_webserver: nginx
+nginx_vhost_template: "{{ config_dir }}/provisioning/nginx-vhost.conf.j2"
 
 php_version: "8.0"
+php_packages:
+  - "php{{ php_version }}"
+  - "php{{ php_version }}-apcu"
+  - "php{{ php_version }}-cli"
+  - "php{{ php_version }}-common"
+  - "php{{ php_version }}-curl"
+  - "php{{ php_version }}-dev"
+  - "php{{ php_version }}-fpm"
+  - "php{{ php_version }}-gd"
+  - "php{{ php_version }}-imap"
+  # - "php{{ php_version }}-json"
+  - "php{{ php_version }}-mbstring"
+  - "php{{ php_version }}-opcache"
+  - "php{{ php_version }}-sqlite3"
+  - "php{{ php_version }}-xml"
+  - "php{{ php_version }}-yaml"
+php_xdebug_version: 3.0.4
 nodejs_version: "14.x"
 
 adminer_download_url: https://github.com/vrana/adminer/releases/download/v4.7.7/adminer-4.7.7-mysql-en.php
@@ -113,7 +80,6 @@ composer_global_packages:
   - { name: wp-cli/wp-cli-bundle, release: '^2.0.0' }
 
 post_provision_tasks_dir:
-  - "{{ config_dir }}/../vendor/generoi/genero-conf/post-provisioning/tasks/apache-env.yml"
   - "{{ config_dir }}/../vendor/generoi/genero-conf/post-provisioning/tasks/dotfiles.yml"
   - "{{ config_dir }}/../vendor/generoi/genero-conf/post-provisioning/tasks/wp-directories.yml"
   - "{{ config_dir }}/../vendor/generoi/genero-conf/post-provisioning/tasks/ssh-config.yml"
