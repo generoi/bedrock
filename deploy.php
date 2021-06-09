@@ -4,10 +4,10 @@ namespace Deployer;
 
 use Robo\Robo;
 
-require 'recipe/wordpress.php';
-require 'recipe/cachetool.php';
-require 'recipe/rsync.php';
-require 'recipe/deploy/rollback.php';
+require 'contrib/wordpress.php';
+require 'contrib/cachetool.php';
+require 'contrib/rsync.php';
+require 'contrib/deploy/rollback.php';
 
 $robo = Robo::createConfiguration(['robo.yml'])->export();
 
@@ -84,9 +84,9 @@ require 'vendor/generoi/deployer-genero/wordpress.php';
  */
 if (!empty($prod = $robo['env']['@production'])) {
     host('production')
-        ->hostname($prod['host'])
+        ->alias($prod['host'])
         ->port($prod['port'] ?? 22)
-        ->user($prod['user'])
+        ->remote_user($prod['user'])
         ->set('url', $prod['url'])
         ->set('deploy_path', dirname($prod['path']))
         ->set('bin/wp', '{{ release_path }}/vendor/bin/wp');
@@ -97,9 +97,9 @@ if (!empty($prod = $robo['env']['@production'])) {
 
 if (!empty($staging = $robo['env']['@staging'])) {
     host('staging')
-        ->hostname($staging['host'])
+        ->alias($staging['host'])
         ->port($staging['port'] ?? 22)
-        ->user($staging['user'])
+        ->remote_user($staging['user'])
         ->set('url', $staging['url'])
         ->set('deploy_path', dirname($staging['path']))
         ->set('bin/wp', '{{ release_path }}/vendor/bin/wp');
@@ -184,7 +184,7 @@ task('deploy', [
     'deploy:unlock',
     'cleanup:writable',
     'cleanup',
-    'success',
+    'deploy:success',
 ]);
 
 after('rollback', 'cache:clear');

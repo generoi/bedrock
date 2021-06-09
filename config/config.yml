@@ -78,8 +78,8 @@ apache_mods_enabled:
   - proxy.load
   - proxy_fcgi.load
 
-php_version: "7.4"
-nodejs_version: "12.x"
+php_version: "8.0"
+nodejs_version: "14.x"
 
 installed_extras:
   - adminer
@@ -107,10 +107,7 @@ installed_extras:
 extra_packages:
   - vim
 
-composer_keep_updated: true # required for downgrading to v1
-composer_version_branch: '--1'
 composer_global_packages:
-  - { name: hirak/prestissimo, release: '^0.3' }
   - { name: wp-cli/wp-cli-bundle, release: '^2.0.0' }
 
 post_provision_tasks_dir:

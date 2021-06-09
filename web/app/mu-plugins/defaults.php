@@ -28,7 +28,7 @@ if (defined('XMLRPC_REQUEST') && XMLRPC_REQUEST) {
  * Disable dashboard browse-happy requests / widget
  */
 if (is_blog_admin() && !empty($_SERVER['HTTP_USER_AGENT'])) {
-    add_filter('pre_site_transient_browser_' . md5($_SERVER['HTTP_USER_AGENT']), '__return_true');
+    add_filter('pre_site_transient_browser_' . md5($_SERVER['HTTP_USER_AGENT']), '__return_empty_array');
 }
 
 /**
