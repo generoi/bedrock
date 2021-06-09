@@ -1,0 +1,21 @@
+$is-editor: false !default;
+
+// These names need to match the 'editor-color-palette' slugs in config/theme.php
+$color-names:
+  'white',
+  'ui-background-01',
+  'ui-background-02',
+  'ui-01',
+  'ui-02',
+  'black',
+  'ui-03',
+  'ui-04',
+  'ui-05',
+  'ui-06',
+  'ui-07';
+
+// These names need to match the 'editor-gradient-presets' slugs in config/theme.php
+$gradient-names:
+  'block-01';
+
+$alignfull-max-width: 1600px;
