@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "9b027f0af80478af219d7be615ec7d8a",
+    "content-hash": "bf5f09d16c46acac0b86b1b2848db2cc",
     "packages": [
         {
             "name": "brick/math",
@@ -4146,13 +4146,12 @@
     "stability-flags": {
         "generoi/sage-archive-pages": 20,
         "generoi/sage-demo-content": 20,
-        "generoi/sage-nativeblock": 20,
-        "roots/acorn": 20
+        "generoi/sage-nativeblock": 20
     },
     "prefer-stable": true,
     "prefer-lowest": false,
     "platform": {
-        "php": ">=7.2.5"
+        "php": "^7.3|^8.0"
     },
     "platform-dev": [],
     "plugin-api-version": "2.1.0"

@@ -129,7 +129,7 @@ task('build:assets', function () {
     }
     run('cd {{release_path}}/{{theme_dir}} && {{bin/npm}} run lint');
     run('cd {{release_path}} && {{bin/robo}} build:production');
-    run('ls {{release_path}}/{{theme_dir}}/dist');
+    run('ls {{release_path}}/{{theme_dir}}/public');
 });
 
 // Make all files except the ones listed as writable, read-only.

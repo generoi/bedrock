@@ -42,16 +42,16 @@
     { "type": "composer", "url": "https://packagist.minasithil.genero.fi/" }
   ],
   "require": {
-    "php": ">=7.2.5",
+    "php": "^7.3|^8.0",
     "generoi/sage-archive-pages": "dev-master",
     "generoi/sage-demo-content": "dev-master",
     "generoi/sage-nativeblock": "dev-master",
     "log1x/acf-composer": "^1.4",
     "log1x/navi": "^2.0",
-    "roots/acorn": "dev-main"
+    "roots/acorn": "^2.0.0-alpha"
   },
   "require-dev": {
-    "filp/whoops": "^2.7",
+    "filp/whoops": "^2.9",
     "squizlabs/php_codesniffer": "^3.5"
   },
   "suggest": {
@@ -67,7 +67,7 @@
   "prefer-stable": true,
   "scripts": {
     "lint": [
-      "phpcs --ignore=index.php,vendor,resources,storage,dist --extensions=php --standard=PSR12 ."
+      "phpcs --extensions=php --standard=PSR12 app config"
     ],
     "post-autoload-dump": [
       "Roots\\Acorn\\ComposerScripts::postAutoloadDump"

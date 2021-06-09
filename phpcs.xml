@@ -20,8 +20,9 @@
   <exclude-pattern>web/app/mu-plugins/*/*</exclude-pattern>
 
   <!-- Ignore theme build files -->
-  <exclude-pattern>web/app/themes/*/dist</exclude-pattern>
+  <exclude-pattern>web/app/themes/*/public</exclude-pattern>
   <exclude-pattern>web/app/themes/*/storage</exclude-pattern>
+  <exclude-pattern>web/app/themes/*/bootstrap/cache</exclude-pattern>
 
   <!-- Show colors in console -->
   <arg value="-colors"/>

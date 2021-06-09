@@ -38,7 +38,7 @@ class Archive extends Composer
     public function page(): ?WP_Post
     {
         $post = get_post();
-        return $post->post_type === 'page' ? $post : null;
+        return $post && $post->post_type === 'page' ? $post : null;
     }
 
     public function hasArchiveBlock(): bool

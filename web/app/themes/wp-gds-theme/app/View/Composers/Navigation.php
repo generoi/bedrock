@@ -3,7 +3,7 @@
 namespace App\View\Composers;
 
 use Roots\Acorn\View\Composer;
-use Log1x\Navi\Facades\Navi;
+use Log1x\Navi\Navi;
 
 class Navigation extends Composer
 {
@@ -28,8 +28,18 @@ class Navigation extends Composer
         ];
     }
 
-    public function primaryNavigation()
+    public function primaryNavigation(): array
     {
-        return Navi::build('primary_navigation')->toArray();
+        if (!has_nav_menu('primary_navigation')) {
+            return [];
+        }
+
+        $navigation = (new Navi())->build('primary_navigation');
+
+        if ($navigation->isEmpty()) {
+            return [];
+        }
+
+        return $navigation->toArray();
     }
 }

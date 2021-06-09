@@ -59,7 +59,7 @@ command:
           - web/app/mu-plugins
         exclude:
           - robo.yml
-          - dist
+          - public
   db:
     options:
       exclude_tables:
