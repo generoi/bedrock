@@ -17,8 +17,8 @@ const yaml = require('js-yaml');
 
 const robo = yaml.safeLoad(fs.readFileSync('../../../../robo.yml', 'utf8'));
 
-mix.setPublicPath('./dist')
-  .setResourceRoot(`/app/themes/wp-gds-theme/dist/`)
+mix.setPublicPath('./public')
+  .setResourceRoot(`/app/themes/wp-gds-theme/public/`)
   .webpackConfig({
     output: {
       chunkFilename: '[name].[contenthash:8].js',
@@ -39,13 +39,13 @@ mix.sass('resources/assets/styles/app.scss', 'styles')
 mix.js('resources/assets/scripts/app.js', 'scripts')
    .blocks('resources/assets/scripts/editor.js', 'scripts', {disableRegenerator: true});
 
-mix.copyWatched('resources/assets/images', 'dist/images', {base: 'resources/assets/images'})
-  .copyWatched('resources/assets/fonts', 'dist/fonts', {base: 'resources/assets/fonts'});
+mix.copyWatched('resources/assets/images', 'public/images', {base: 'resources/assets/images'})
+  .copyWatched('resources/assets/fonts', 'public/fonts', {base: 'resources/assets/fonts'});
 
 // GDS
 const gdsPath = 'node_modules/genero-design-system';
-mix.copyWatched(`${gdsPath}/dist`, 'dist/gds/dist', { base: `${gdsPath}/dist` })
-  .copyWatched(`${gdsPath}/loader`, 'dist/gds/loader', { base: `${gdsPath}/loader` });
+mix.copyWatched(`${gdsPath}/dist`, 'public/gds/dist', { base: `${gdsPath}/dist` })
+  .copyWatched(`${gdsPath}/loader`, 'public/gds/loader', { base: `${gdsPath}/loader` });
 
 mix.autoload({
   jquery: ['$', 'window.jQuery'],

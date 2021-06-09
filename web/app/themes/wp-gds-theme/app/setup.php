@@ -33,7 +33,7 @@ add_action('wp_enqueue_scripts', function () {
  * @return void
  */
 add_action('enqueue_block_editor_assets', function () {
-    if ($manifest = asset('scripts/editor.asset.php')->get()) {
+    if ($manifest = asset('scripts/editor.asset.php')->load()) {
         wp_enqueue_script('sage/gds.js', asset('gds/dist/gds/gds.esm.js')->uri(), [], null, false);
         wp_enqueue_script('sage/editor.js', asset('scripts/editor.js')->uri(), $manifest['dependencies'], null, true);
 
@@ -90,8 +90,8 @@ add_action('after_setup_theme', function () {
     add_image_size('tiny', 50, 50, true);
 
     // Enqueue editor styles
-    add_editor_style('dist/styles/gds.css');
-    add_editor_style('dist/styles/editor.css');
+    add_editor_style('public/styles/gds.css');
+    add_editor_style('public/styles/editor.css');
 }, 20);
 
 /**
