@@ -38,7 +38,6 @@
     "laravel-mix": "^6.0.18",
     "laravel-mix-copy-watched": "^2.3.0",
     "postcss": "^8.2.12",
-    "postcss-custom-properties": "^9.2.0",
     "rimraf": "^3.0.2",
     "sass": "^1.32.11",
     "sass-loader": "^8.0.2",

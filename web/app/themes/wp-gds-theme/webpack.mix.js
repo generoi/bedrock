@@ -53,9 +53,7 @@ mix.autoload({
 
 mix.options({
   processCssUrls: false,
-  postCss: [
-    require('postcss-custom-properties')({preserve: true}),
-  ],
+  postCss: [],
   // Causes the follow invalid optimization:
   //   calc(50% - (50vw - ((100vw - 42.125rem) / 2) * .2) + 10px)
   //   calc(50% - 50vw - (100vw - 42.125rem) / 2 * 0.2 + 10px)

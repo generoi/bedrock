@@ -6,6 +6,7 @@ $fonts-dir: '../fonts/gilroy';
   font-family: Gilroy;
   font-style: normal;
   font-weight: 400;
+  font-display: swap;
   src: url('#{$fonts-dir}/33FDC1_1_0.eot');
   src:
     url('#{$fonts-dir}/33FDC1_2_0.eot?#iefix&v=1.0') format("embedded-opentype"),
@@ -18,6 +19,7 @@ $fonts-dir: '../fonts/gilroy';
   font-family: Gilroy;
   font-style: normal;
   font-weight: 500;
+  font-display: swap;
   src: url('#{$fonts-dir}/33FDC1_1_0.eot');
   src:
     url('#{$fonts-dir}/33FDC1_1_0.eot?#iefix&v=1.0') format("embedded-opentype"),
@@ -30,6 +32,7 @@ $fonts-dir: '../fonts/gilroy';
   font-family: Gilroy;
   font-style: normal;
   font-weight: 600;
+  font-display: swap;
   src: url('#{$fonts-dir}/33FDC1_9_0.eot');
   src:
     url('#{$fonts-dir}/33FDC1_9_0.eot?#iefix&v=1.0') format("embedded-opentype"),
@@ -42,6 +45,7 @@ $fonts-dir: '../fonts/gilroy';
   font-family: Gilroy;
   font-style: normal;
   font-weight: 800;
+  font-display: swap;
   src: url('#{$fonts-dir}/33FDC1_7_0.eot');
   src:
     url('#{$fonts-dir}/33FDC1_7_0.eot?#iefix&v=1.0') format("embedded-opentype"),
