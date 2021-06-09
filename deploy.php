@@ -24,6 +24,7 @@ set('shared_dirs', ['web/app/uploads']);
 set('writable_dirs', array_merge(get('shared_dirs'), ['{{theme_dir}}/storage', 'web/app/cache']));
 set('writable_mode', 'chmod');
 set('writable_use_sudo', false);
+set('writable_chmod_mode', 'ug+w');
 
 set('bin/robo', './vendor/bin/robo');
 set('bin/wp', './vendor/bin/wp');
@@ -45,7 +46,7 @@ set('rsync', [
     'filter-file'   => false,
     'filter-perdir' => false,
     'flags'         => 'rv',
-    'options'       => ['delete', 'links'],
+    'options'       => ['delete', 'links', 'chmod=u+w'],
     'timeout'       => 3600,
 ]);
 
@@ -131,6 +132,36 @@ task('build:assets', function () {
     run('ls {{release_path}}/{{theme_dir}}/dist');
 });
 
+// Make all files except the ones listed as writable, read-only.
+task('deploy:readonly', function () {
+    $dirs = join(' ', get('writable_dirs'));
+
+    cd('{{release_path}}');
+    run('chmod -R a-w .');
+    run("chmod -R {{writable_chmod_mode}} $dirs");
+});
+
+// Make to releases which are to be removed writable again. The next task that
+// runs, `cleanup`, will delete them.
+task('cleanup:writable', function () {
+    $releases = get('releases_list');
+    $keep = get('keep_releases');
+
+    if ($keep === -1) {
+        // Keep unlimited releases.
+        return;
+    }
+
+    while ($keep > 0) {
+        array_shift($releases);
+        --$keep;
+    }
+
+    foreach ($releases as $release) {
+        run("chmod -R ug+w {{deploy_path}}/releases/$release");
+    }
+});
+
 desc('Deploy release');
 task('deploy', [
     'deploy:info',
@@ -145,11 +176,13 @@ task('deploy', [
 
     'deploy:shared',
     'deploy:writable',
+    'deploy:readonly',
     'deploy:symlink',
 
     'cache:clear',
 
     'deploy:unlock',
+    'cleanup:writable',
     'cleanup',
     'success',
 ]);
