@@ -57,7 +57,7 @@
   },
   "dependencies": {
     "classnames": "^2.3.1",
-    "genero-design-system": "^4.0.0-beta.0",
+    "genero-design-system": "^4.0.0-beta.5",
     "jquery": "^3.6.0",
     "lodash-es": "^4.17.21",
     "normalize-scss": "^7.0.1",
