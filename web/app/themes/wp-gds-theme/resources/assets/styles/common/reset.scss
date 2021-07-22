@@ -48,16 +48,11 @@ table {
   border-collapse: collapse;
 }
 
-// Add whitespace above anchor points
-h1[id]::before,
-h2[id]::before,
-h3[id]::before,
-h4[id]::before,
-h5[id]::before,
-h6[id]::before {
-  content: '';
-  display: block;
-  height: 100px;
-  margin-top: -100px;
-  visibility: hidden;
+// Avoid FOUC
+.fa,
+.fal,
+.far {
+  display: inline-block;
+  width: 1em;
+  height: 1em;
 }
