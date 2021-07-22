@@ -30,14 +30,3 @@ h4 {
 h5 {
   @include size-s;
 }
-
-.is-style-floating {
-  margin-bottom: -0.5em !important;
-  z-index: 1;
-  line-height: 1;
-  position: relative;
-
-  & + * {
-    margin-top: 0 !important;
-  }
-}

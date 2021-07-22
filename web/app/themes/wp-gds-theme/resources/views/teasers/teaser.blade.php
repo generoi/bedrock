@@ -2,15 +2,6 @@
   <gds-media-card
     href="{{ get_permalink() }}"
     image-url="{{$image}}"
-    @if ($superimposed_image ?? false)
-      superimposed-url="{{$superimposed_image}}"
-    @endif
-    @if ($superimposed_offset ?? false)
-      superimposed-top="{{$superimposed_offset->top}}"
-      superimposed-right="{{$superimposed_offset->right}}"
-      superimposed-bottom="{{$superimposed_offset->bottom}}"
-      superimposed-left="{{$superimposed_offset->left}}"
-    @endif
   >
     <gds-heading size="s" slot="headline">
       {!! esc_html($title) !!}

@@ -30,7 +30,7 @@ class Teaser extends Composer
         return [
             'image' => $this->image($post),
             'title' => $this->title($post),
-            'excerpt' => $this->label($post),
+            'excerpt' => $this->excerpt($post),
             'categories' => $this->categories($post),
         ];
     }

@@ -3,7 +3,7 @@
 namespace App\View\Composers;
 
 use App\View\Composers\Teaser;
-use stdClass;
+use WP_Post;
 
 class TeaserPost extends Teaser
 {
@@ -28,14 +28,12 @@ class TeaserPost extends Teaser
         return [
             'image' => $this->image($post),
             'title' => $this->title($post),
-            'excerpt' => $this->excerpt($post),
             'categories' => $this->categories($post),
-            'date' => get_the_date(),
+            'date' => $this->publishedDate($post),
         ];
     }
 
-
-    public function excerpt(): string
+    public function excerpt(WP_Post $post): string
     {
         return get_the_excerpt();
     }
