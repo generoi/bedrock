@@ -3172,8 +3172,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/WordPress/WordPress/zipball/refs/tags/5.7.2",
-                "reference": "5.7.2"
+                "url": "https://api.github.com/repos/WordPress/WordPress/zipball/refs/tags/5.7.2"
             },
             "require": {
                 "php": ">=5.3.2",
@@ -7566,19 +7565,18 @@
         },
         {
             "name": "geerlingguy/drupal-vm",
-            "version": "dev-master",
+            "version": "6.0.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/geerlingguy/drupal-vm.git",
-                "reference": "fff10c006fbc3885410953ae5c8605ad9af51733"
+                "reference": "01545c37d96d4973b57ec6e842e54c40d0988207"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/geerlingguy/drupal-vm/zipball/fff10c006fbc3885410953ae5c8605ad9af51733",
-                "reference": "fff10c006fbc3885410953ae5c8605ad9af51733",
+                "url": "https://api.github.com/repos/geerlingguy/drupal-vm/zipball/01545c37d96d4973b57ec6e842e54c40d0988207",
+                "reference": "01545c37d96d4973b57ec6e842e54c40d0988207",
                 "shasum": ""
             },
-            "default-branch": true,
             "type": "vm",
             "notification-url": "https://packagist.org/downloads/",
             "license": [
@@ -7602,11 +7600,6 @@
                 "virtual machine",
                 "vm"
             ],
-            "support": {
-                "docs": "http://docs.drupalvm.com",
-                "issues": "https://github.com/geerlingguy/drupal-vm/issues",
-                "source": "https://github.com/geerlingguy/drupal-vm"
-            },
             "funding": [
                 {
                     "url": "https://github.com/geerlingguy",
@@ -7617,7 +7610,7 @@
                     "type": "patreon"
                 }
             ],
-            "time": "2021-06-08T14:37:59+00:00"
+            "time": "2021-05-28T20:26:07+00:00"
         },
         {
             "name": "generoi/deployer-genero",
