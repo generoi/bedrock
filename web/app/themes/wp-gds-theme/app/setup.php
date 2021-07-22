@@ -43,6 +43,11 @@ add_action('enqueue_block_editor_assets', function () {
     wp_enqueue_style('sage/editor-overrides.css', asset('styles/editor-overrides.css')->uri(), ['wp-edit-blocks', 'common'], null);
 }, 100);
 
+add_action('wp_print_styles', function () {
+    wp_dequeue_style('wp-smart-crop-renderer'); // wp-smartcrop
+    wp_dequeue_script('jquery.wp-smartcrop'); // wp-smartcrop
+}, 100);
+
 /**
  * Register the initial theme setup.
  *
