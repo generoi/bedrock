@@ -56,3 +56,18 @@ table {
   width: 1em;
   height: 1em;
 }
+
+html,
+body,
+#app {
+  height: 100%;
+}
+
+#app {
+  display: flex;
+  flex-direction: column;
+
+  > .container {
+    flex: 1 0 auto;
+  }
+}
