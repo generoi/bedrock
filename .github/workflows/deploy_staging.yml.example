@@ -46,7 +46,6 @@ jobs:
         uses: shivammathur/setup-php@v2
         with:
           php-version: ${{ env.PHP_VERSION }}
-          tools: composer:v1, prestissimo
 
       - name: Configure basic http authentication for Composer
         run: composer config --global http-basic.satispress.generodigital.com ${{ secrets.SATISPRESS_API_KEY }} ${{ secrets.SATISPRESS_PASSWORD }}
