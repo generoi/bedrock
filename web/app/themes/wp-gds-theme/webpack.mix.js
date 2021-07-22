@@ -53,7 +53,23 @@ mix.autoload({
 
 mix.options({
   processCssUrls: false,
-  postCss: [],
+  postCss: [
+    require('postcss-inline-svg')({
+      paths: ['resources/assets'],
+      encode(code) {
+        return code
+          .replace(/\(/g, '%28')
+          .replace(/\)/g, '%29')
+          .replace(/%/g, '%25')
+          .replace(/</g, '%3C')
+          .replace(/>/g, '%3E')
+          .replace(/&/g, '%26')
+          .replace(/#/g, "%23")
+          .replace(/{/g, "%7B")
+          .replace(/}/g, "%7D");
+      },
+    }),
+  ],
   // Causes the follow invalid optimization:
   //   calc(50% - (50vw - ((100vw - 42.125rem) / 2) * .2) + 10px)
   //   calc(50% - 50vw - (100vw - 42.125rem) / 2 * 0.2 + 10px)
