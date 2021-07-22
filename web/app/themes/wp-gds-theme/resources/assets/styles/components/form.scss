@@ -1,3 +1,4 @@
+@use '~genero-design-system/src/components/gds-input-wrapper' as input;
 @use '~genero-design-system/src/components/gds-button' as button;
 
 [type="text"],
@@ -15,47 +16,26 @@
 [type="url"],
 [type="color"],
 textarea {
-  appearance: none;
-  box-sizing: border-box;
-  background: var(--gds-color-white);
-  border: 0;
-  border-radius: var(--gds-button-border-radius);
-  font-size: 20px;
-  padding: 12px 11px 10px 11px;
-  width: 100%;
+  @include input.form-element-base;
 
   &:focus {
-    border-color: var(--gds-color-blue);
-    outline: none;
+    @include input.on-focus;
   }
 }
 
 ::placeholder {
-  color: var(--gds-color-ui-01);
+  @include input.placeholder;
 }
 
 label {
+  @include input.label;
+
   margin-bottom: var(--gds-spacing-2xs);
   display: block;
 }
 
 select {
-  appearance: none;
-  box-sizing: border-box;
-  background: var(--gds-color-white);
-  border: solid 1px var(--gds-color-light-gray);
-  padding: 11px 14px;
-  width: 100%;
-  min-width: 200px;
-  background-image: linear-gradient(rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.5)), url(../images/chevron-down-solid.svg);
-  background-repeat: no-repeat;
-  background-position: calc(100% - 14px) center;
-  background-size: 1em;
-
-  &:focus {
-    border-color: var(--gds-color-blue);
-    outline: none;
-  }
+  @include input.form-select;
 }
 
 [type="submit"] {
