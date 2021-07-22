@@ -16,8 +16,6 @@ class EditorServiceProvider extends ServiceProvider
     public function register()
     {
         add_action('after_setup_theme', [$this, 'themeSetup']);
-        add_filter('block_editor_settings', [$this, 'removeDefaultEditorStyles']);
-        add_filter('block_editor_settings', [$this, 'configureEditorSettings']);
     }
 
     public function themeSetup(): void
@@ -39,23 +37,5 @@ class EditorServiceProvider extends ServiceProvider
 
         // Remove core block patterns.
         // remove_theme_support('core-block-patterns');
-    }
-
-    public function removeDefaultEditorStyles(array $settings): array
-    {
-
-        // editor-styles.css
-        array_shift($settings['styles']);
-        // Nato Serif definition
-        array_shift($settings['styles']);
-        return $settings;
-    }
-
-    public function configureEditorSettings(array $settings): array
-    {
-        // Disable Drop Cap feature on paragraph blocks.
-        $settings['__experimentalDisableDropCap'] = true;
-
-        return $settings;
     }
 }
