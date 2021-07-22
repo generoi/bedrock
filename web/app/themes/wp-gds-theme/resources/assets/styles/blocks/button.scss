@@ -1,6 +1,7 @@
 /**
  * GDS
  */
+@use 'config';
 @use '~genero-design-system/src/components/gds-button' as button;
 @use '~genero-design-system/src/components/gds-text-button' as text-button;
 
@@ -24,5 +25,12 @@
       // This style doesn't really work with wrapping text
       white-space: nowrap;
     }
+  }
+}
+
+@if config.$is-editor {
+  // Gutenberg adds a top margin, we only add bottom.
+  .wp-block-buttons > .wp-block {
+    margin-top: 0;
   }
 }
