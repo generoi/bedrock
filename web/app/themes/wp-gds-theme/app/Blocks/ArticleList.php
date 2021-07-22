@@ -3,7 +3,6 @@
 namespace App\Blocks;
 
 use WP_Query;
-use Log1x\AcfComposer\Block;
 
 class ArticleList extends Block
 {
