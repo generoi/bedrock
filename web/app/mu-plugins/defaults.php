@@ -41,6 +41,11 @@ if (is_blog_admin()) {
 }
 
 /**
+ * Disable creation of default gravityform admin notification.
+ */
+add_action('gform_default_notification', '__return_false');
+
+/**
  * Prevent modification of .htaccess by WordPress.
  */
 add_filter('flush_rewrite_rules_hard', '__return_false', 99, 1);
