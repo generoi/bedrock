@@ -6,6 +6,8 @@
 
 namespace App;
 
+use WP_Post;
+
 /**
  * Remove Read more to the excerpt.
  *
@@ -43,3 +45,16 @@ add_filter('get_the_archive_title', function ($title) {
     }
     return $title;
 });
+
+/**
+ * Skip using WP Smartcrop JS feature and just set object-position directly.
+ */
+add_filter('wp_get_attachment_image_attributes', function (array $attr, WP_Post $attachment, $size) {
+    $focus = smartcrop_focus($attachment->ID);
+
+    if ($focus) {
+        $attr['style'] = sprintf('object-position: %s%% %s%%;', $focus[0] ?: 0, $focus[1] ?: 0);
+    }
+
+    return $attr;
+}, PHP_INT_MAX, 3);
