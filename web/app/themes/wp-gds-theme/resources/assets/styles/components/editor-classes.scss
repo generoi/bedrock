@@ -3,38 +3,6 @@
 @use 'config';
 
 /**
- * Block editor background colors.
- */
-
-@each $name in config.$color-names {
-  .has-#{$name}-background-color {
-    --block-color: var(--gds-color-black);
-    --block-background: var(--gds-color-#{$name});
-
-    background-color: var(--block-background) !important;
-    color: var(--block-color);
-  }
-}
-
-.has-ui-03-background-color,
-.has-ui-04-background-color,
-.has-ui-05-background-color,
-.has-ui-07-background-color {
-  --block-color: var(--gds-color-white);
-}
-
-/**
- * Block editor text colors.
- */
-@each $name in config.$color-names {
-  .has-#{$name}-color {
-    --block-color: var(--gds-color-#{$name});
-
-    color: var(--block-color) !important;
-  }
-}
-
-/**
  * Block editor font sizes.
  */
 .has-xxl-heading-font-size {
@@ -69,6 +37,37 @@
 
 .has-s-paragraph-font-size {
   @include paragraph.size-s;
+}
+
+/**
+ * Block editor background colors.
+ */
+@each $name in config.$color-names {
+  .has-#{$name}-background-color {
+    --block-color: var(--gds-color-black);
+    --block-background: var(--gds-color-#{$name});
+
+    background-color: var(--block-background) !important;
+    color: var(--block-color);
+  }
+}
+
+.has-ui-03-background-color,
+.has-ui-04-background-color,
+.has-ui-05-background-color,
+.has-ui-07-background-color {
+  --block-color: var(--gds-color-white);
+}
+
+/**
+ * Block editor text colors.
+ */
+@each $name in config.$color-names {
+  .has-#{$name}-color {
+    --block-color: var(--gds-color-#{$name});
+
+    color: var(--block-color) !important;
+  }
 }
 
 /**
