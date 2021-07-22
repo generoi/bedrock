@@ -12,6 +12,17 @@ License:      MIT License
 
 add_action('admin_enqueue_scripts', function ($hook) {
     if ('user-edit.php' == $hook or 'user-new.php' == $hook or 'profile.php' == $hook or 'wp-login?action=rp' == $hook) {
-            wp_enqueue_script('disable-weak-password', plugin_dir_url(__FILE__) . 'disable-weak-password.js');
+        echo '
+            <script>
+                window.addEventListener("load", function () {
+                  var newUser = document.getElementById("createuser");
+                  var editCurrentUser = document.getElementById("your-profile");
+
+                  if (newUser || editCurrentUser) {
+                    document.querySelector(".pw-weak").remove();
+                  }
+                });
+            </script>
+        ';
     }
 });
