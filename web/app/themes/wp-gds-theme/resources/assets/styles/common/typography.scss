@@ -1,6 +1,7 @@
 body {
   font-family: var(--gds-body-font-family);
   font-size: var(--gds-body-font-size);
+  font-weight: var(--gds-body-font-weight);
   line-height: var(--gds-body-line-height);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -18,6 +19,14 @@ ol {
 
 ul {
   list-style-type: disc;
+}
+
+:first-child {
+  margin-top: 0;
+}
+
+:last-child {
+  margin-bottom: 0;
 }
 
 // Provide a default gutter on forms which in case used outside the block
