@@ -12,8 +12,8 @@ on:
         default: ''
 
 env:
-  NODE_VERSION: 12
-  PHP_VERSION: 7.3
+  NODE_VERSION: 14
+  PHP_VERSION: 7.4
   ENVIRONMENT: staging
 
 jobs:

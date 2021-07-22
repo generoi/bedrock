@@ -28,7 +28,7 @@ configure_drush_aliases: false
 drupalvm_webserver: nginx
 nginx_vhost_template: "{{ config_dir }}/provisioning/nginx-vhost.conf.j2"
 
-php_version: "8.0"
+php_version: "7.4"
 php_packages:
   - "php{{ php_version }}"
   - "php{{ php_version }}-apcu"
@@ -39,7 +39,7 @@ php_packages:
   - "php{{ php_version }}-fpm"
   - "php{{ php_version }}-gd"
   - "php{{ php_version }}-imap"
-  # - "php{{ php_version }}-json"
+  - "php{{ php_version }}-json" # Disable for PHP 8.0
   - "php{{ php_version }}-mbstring"
   - "php{{ php_version }}-opcache"
   - "php{{ php_version }}-sqlite3"
