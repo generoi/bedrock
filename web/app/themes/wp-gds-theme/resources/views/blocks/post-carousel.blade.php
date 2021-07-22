@@ -1,1 +1,0 @@
-@extends('blocks.product-carousel')

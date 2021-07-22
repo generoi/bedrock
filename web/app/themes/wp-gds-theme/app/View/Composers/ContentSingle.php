@@ -28,10 +28,8 @@ class ContentSingle extends Composer
         $post = get_post();
 
         return [
-            'label' => $this->label($post),
             'categories' => $this->categories($post),
             'related' => $this->related(),
-
         ];
     }
 
