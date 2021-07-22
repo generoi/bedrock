@@ -1,5 +1,4 @@
 @use '~genero-design-system/src/styles';
-@use '~normalize-scss/sass/normalize';
 
 @use 'config' with ($is-editor: false);
 @use 'common/reset';

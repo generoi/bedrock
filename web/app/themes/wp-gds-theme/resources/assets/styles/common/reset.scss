@@ -1,8 +1,21 @@
-html {
-  scroll-behavior: smooth;
+@use '~normalize-scss/sass/normalize' as *;
 
-  @media (prefers-reduced-motion: reduce) {
-    scroll-behavior: auto;
+@include normalize($include: (
+  // document,
+  sections,
+  // grouping,
+  // links,
+  // text,
+  // embedded,
+  // forms,
+  // interactive,
+  // scripting,
+  // hidden
+));
+
+html {
+  @media (prefers-reduced-motion: no-preference) {
+    scroll-behavior: smooth;
   }
 }
 
