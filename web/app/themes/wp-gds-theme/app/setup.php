@@ -127,3 +127,11 @@ add_action('widgets_init', function () {
         'id' => 'footer-newsletter'
     ] + $config);
 });
+
+/**
+ * Disable broken error handler.
+ * @see https://github.com/roots/acorn/issues/87
+ */
+add_action('after_setup_theme', function () {
+    $previous_handler = set_error_handler(null);
+});
