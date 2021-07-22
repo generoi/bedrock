@@ -12,6 +12,7 @@ class ArticleList extends Block
     public $icon = 'format-aside';
     public $keywords = ['news', 'uutiset', 'artikkelit'];
     public $mode = 'preview';
+    public $align = 'wide';
     public $supports = [
         'align' => ['full', 'wide'],
         'mode' => false,
