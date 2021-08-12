@@ -209,8 +209,9 @@ If you have trouble accessing symlinked files in Vagrant, such as
 
     brew install composer
 
-    # Install Docker
+    # Install Docker 
     # Apple Silicon Tech preview version also available: https://docs.docker.com/docker-for-mac/apple-m1/
+    # Windows and Intel Macs: https://docs.docker.com/get-docker/
 
     # Install DDEV
 
