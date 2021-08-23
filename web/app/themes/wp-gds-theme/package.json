@@ -53,6 +53,6 @@
     "lodash-es": "^4.17.21",
     "normalize-scss": "^7.0.1",
     "sass-mq": "^5.0.1",
-    "swiper": "^6.8.2"
+    "swiper": "^6.8.4"
   }
 }
