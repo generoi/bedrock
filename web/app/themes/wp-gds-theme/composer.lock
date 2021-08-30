@@ -1422,16 +1422,16 @@
         },
         {
             "name": "log1x/acf-composer",
-            "version": "v2.0.2",
+            "version": "v2.0.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Log1x/acf-composer.git",
-                "reference": "1dd67e5b40dc1d7207755b8b4442eacda2655029"
+                "reference": "62e34723f8dbbbc3fbc1bcc41079e93b56e14741"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Log1x/acf-composer/zipball/1dd67e5b40dc1d7207755b8b4442eacda2655029",
-                "reference": "1dd67e5b40dc1d7207755b8b4442eacda2655029",
+                "url": "https://api.github.com/repos/Log1x/acf-composer/zipball/62e34723f8dbbbc3fbc1bcc41079e93b56e14741",
+                "reference": "62e34723f8dbbbc3fbc1bcc41079e93b56e14741",
                 "shasum": ""
             },
             "require": {
@@ -1470,7 +1470,7 @@
             "description": "Create fields, blocks, option pages, and widgets using ACF Builder and Sage 10",
             "support": {
                 "issues": "https://github.com/Log1x/acf-composer/issues",
-                "source": "https://github.com/Log1x/acf-composer/tree/v2.0.2"
+                "source": "https://github.com/Log1x/acf-composer/tree/v2.0.3"
             },
             "funding": [
                 {
@@ -1478,7 +1478,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2021-03-10T04:00:05+00:00"
+            "time": "2021-08-26T16:21:05+00:00"
         },
         {
             "name": "log1x/navi",
