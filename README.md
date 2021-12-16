@@ -102,6 +102,10 @@ your global `auth.json` usually located at `~/.composer/auth.json` should end up
     npm run build:production
     npm run start
 
+    # Note that if running the watch task within DDEV (and NFS) you'll need
+    # to use `start:poll` instead of `start`.
+    npm run start:poll
+
     # Start the docker WP container
     # Start the Docker app, then run ddev in the project folder.
 

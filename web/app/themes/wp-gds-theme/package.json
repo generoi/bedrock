@@ -7,6 +7,7 @@
     "build": "mix",
     "build:production": "mix --production",
     "start": "mix watch",
+    "start:poll": "mix watch -- --watch-options-poll=1000",
     "hot": "mix watch --hot",
     "clear": "wp acorn optimize:clear",
     "test": "npm run lint",
