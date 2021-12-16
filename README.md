@@ -239,7 +239,7 @@ If you have trouble accessing symlinked files in Vagrant, such as
 
     # Fetch the remote database and uploads
 
-    ./vendor/bin/robo db:pull @production --target=@docker
+    ./vendor/bin/robo db:pull @production --target=@ddev
     ./vendor/bin/robo files:pull @production
 
     # Importing database from sql dump

@@ -4,11 +4,11 @@ theme_path: 'web/app/themes/wp-gds-theme'
 placeholders:
   '%files': web/app/uploads/
 env:
-  '@docker':
-    host: '<example-project>.ddev.local'
+  '@ddev':
+    host: '<example-project>.ddev.site'
     wpcli: 'ddev exec wp-cli'
     path: /var/www/html
-    url: 'http://<example-project>.ddev.local'
+    url: 'http://<example-project>.ddev.site'
   '@dev':
     host: '<example-project>.test'
     user: vagrant
@@ -54,6 +54,7 @@ command:
     replace:
       options:
         dirs:
+          - .ddev
           - config
           - web/app/themes
           - web/app/mu-plugins
@@ -77,10 +78,10 @@ command:
         - wp_stream_meta
     pull:
       options:
-        target: '@dev'
+        target: '@ddev'
     push:
       options:
-        source: '@dev'
+        source: '@ddev'
   files:
     options:
       options:

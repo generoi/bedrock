@@ -2,8 +2,8 @@ APIVersion: v1.7.1
 name: <example-project>
 type: wordpress
 docroot: web
-php_version: "7.2"
-webserver_type: apache-fpm
+php_version: "7.4"
+webserver_type: nginx-fpm
 router_http_port: "80"
 router_https_port: "443"
 xdebug_enabled: true

@@ -14,9 +14,9 @@ require:
 #     Host <example-project>.fi
 #       ProxyCommand ssh deploy@minasithil.genero.fi -W %h:%p
 
-'@docker':
+'@ddev':
   path: /var/www/html/web/wp
-  url: <example-project>.ddev.local
+  url: <example-project>.ddev.site
 
 '@dev':
   ssh: vagrant@<example-project>.test/var/www/wordpress/web/wp
