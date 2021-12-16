@@ -96,7 +96,7 @@
       "php": "7.4"
     },
     "process-timeout": 0,
-    "theme-dir": "web/app/themes/<example-project>"
+    "theme-dir": "web/app/themes/wp-gds-theme"
   },
   "minimum-stability": "dev",
   "prefer-stable": true,

@@ -33,7 +33,7 @@ _For windows but also new macs also see the [system requirements installation st
 
 _For Apple Silicon macs, skip to the Docker section._
 
-* PHP >= 7.2
+* PHP >= 7.4
 * Composer - [Install](https://getcomposer.org/doc/00-intro.md#installation-linux-unix-osx)
 * Vagrant >= 1.8.7
   * _In WSL, the version must match the version in Windows itself_
@@ -227,7 +227,7 @@ If you have trouble accessing symlinked files in Vagrant, such as
     composer install:development
 
     # Build and watch theme assets
-    cd web/app/themes/<example-project>
+    cd web/app/themes/wp-gds-theme
     npm run build
     npm run build:production
     npm run start
