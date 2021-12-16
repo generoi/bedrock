@@ -27,7 +27,7 @@ mix.setPublicPath('./public')
   })
   .browserSync({
     // You need to make sure the host is hardcoded in robo.yml
-    proxy: robo.env["@dev"].host,
+    proxy: robo.env["@ddev"].host,
     // Set to true, if you want the browser to open when running the server.
     open: false,
   });

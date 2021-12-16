@@ -61,6 +61,62 @@ your global `auth.json` usually located at `~/.composer/auth.json` should end up
 }
 ```
 
+## Local project development (Docker and ddev)
+
+**Note: Use ddev when developing on Apple Silicon Mac.**
+
+### Install dependencies
+
+    # Install PHP version 7.4 or greater. You OS probably has one out of the box?
+
+    # Install NodeJS via nvm.
+    # Apple Silicon: Node 15 supported, older versions work via Rosetta 2.
+
+    # Install Brew: https://brew.sh
+
+    # Install Composer
+    # Brew install: https://formulae.brew.sh/formula/composer
+
+    brew install composer
+
+    # Install Docker
+    # Apple Silicon Tech preview version also available: https://docs.docker.com/docker-for-mac/apple-m1/
+    # Windows and Intel Macs: https://docs.docker.com/get-docker/
+
+    # Install DDEV
+
+    brew tap drud/ddev && brew install ddev
+
+### Setup and run project
+
+    # Clone the repository and install the development dependencies.
+    git clone --recursive git@github.com:generoi/<example-project>.git <example-project>
+    cd <example-project>
+
+    # Install composer dependencies and development tools (vendor folder)
+    composer install:development
+
+    # Build and watch theme assets
+    cd web/app/themes/wp-gds-theme
+    npm run build
+    npm run build:production
+    npm run start
+
+    # Start the docker WP container
+    # Start the Docker app, then run ddev in the project folder.
+
+    ddev start
+
+    # Fetch the remote database and uploads
+
+    ./vendor/bin/robo db:pull @production
+    ./vendor/bin/robo files:pull @production
+
+    # Importing database from sql dump
+
+    ddev import-db < dump.sql
+
+
 ## Local project development (Vagrant)
 
 ### Working from host machine (Intel Macs)
@@ -79,7 +135,7 @@ your global `auth.json` usually located at `~/.composer/auth.json` should end up
     ssh-add
 
     # Fetch the remote database and uploads
-    ./vendor/bin/robo db:pull @production
+    ./vendor/bin/robo db:pull @production --target=@vagrant
     ./vendor/bin/robo files:pull @production
 
     # When you run `composer install:development` a set of git hooks will be configured,
@@ -190,61 +246,6 @@ If you have trouble accessing symlinked files in Vagrant, such as
     npm run build
     npm run build:production
     npm run start
-
-## Local project development (Docker and ddev)
-
-**Note: Use ddev when developing on Apple Silicon Mac.**
-
-### Install dependencies
-
-    # Install PHP version 7.2 or greater. You OS probably has one out of the box?
-
-    # Install NodeJS via nvm.
-    # Apple Silicon: Node 15 supported, older versions work via Rosetta 2.
-
-    # Install Brew: https://brew.sh
-
-    # Install Composer
-    # Brew install: https://formulae.brew.sh/formula/composer
-
-    brew install composer
-
-    # Install Docker 
-    # Apple Silicon Tech preview version also available: https://docs.docker.com/docker-for-mac/apple-m1/
-    # Windows and Intel Macs: https://docs.docker.com/get-docker/
-
-    # Install DDEV
-
-    brew tap drud/ddev && brew install ddev
-
-### Setup and run project
-
-    # Clone the repository and install the development dependencies.
-    git clone --recursive git@github.com:generoi/<example-project>.git <example-project>
-    cd <example-project>
-
-    # Install composer dependencies and development tools (vendor folder)
-    composer install:development
-
-    # Build and watch theme assets
-    cd web/app/themes/wp-gds-theme
-    npm run build
-    npm run build:production
-    npm run start
-
-    # Start the docker WP container
-    # Start the Docker app, then run ddev in the project folder.
-
-    ddev start
-
-    # Fetch the remote database and uploads
-
-    ./vendor/bin/robo db:pull @production --target=@ddev
-    ./vendor/bin/robo files:pull @production
-
-    # Importing database from sql dump
-
-    ddev import-db < dump.sql
 
 ## Using WP-CLI locally
 

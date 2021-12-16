@@ -18,7 +18,7 @@ require:
   path: /var/www/html/web/wp
   url: <example-project>.ddev.site
 
-'@dev':
+'@varant':
   ssh: vagrant@<example-project>.test/var/www/wordpress/web/wp
   url: <example-project>.test
 

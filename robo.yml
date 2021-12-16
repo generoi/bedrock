@@ -9,7 +9,7 @@ env:
     wpcli: 'ddev exec wp-cli'
     path: /var/www/html
     url: 'http://<example-project>.ddev.site'
-  '@dev':
+  '@vagrant':
     host: '<example-project>.test'
     user: vagrant
     path: /var/www/wordpress
