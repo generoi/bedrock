@@ -35,6 +35,9 @@ set('bin/wp', './vendor/bin/wp');
 set('bin/npm', function () {
     return runLocally('which npm');
 });
+set('bin/composer', function () {
+    return runLocally('which composer');
+});
 set('bin/cachetool', function () {
     if (!test('[ -f {{deploy_path}}/cachetool.phar ]')) {
         run("cd {{deploy_path}} && curl -sLO https://github.com/gordalina/cachetool/releases/latest/download/cachetool.phar");
