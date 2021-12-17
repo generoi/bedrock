@@ -36,7 +36,7 @@
     "vlucas/phpdotenv": "^5.3.0",
     "roots/wordpress": "^5.4",
     "oscarotero/env": "^2.1.0",
-    "roots/wp-password-bcrypt": "1.0.0",
+    "roots/wp-password-bcrypt": "1.1.0",
     "roots/wp-config": "1.0.0",
     "jjgrainger/posttypes": "~2.0",
 
