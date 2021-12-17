@@ -11,14 +11,18 @@ updates:
     directory: "/"
     schedule:
       interval: "daily"
+    registries:
+      - satispress:
 
   - package-ecosystem: "composer"
     directory: "/web/app/themes/wp-gds-theme/"
     schedule:
       interval: "weekly"
+    registries:
+      - satispress:
 
 registries:
-  composer:
+  satispress:
     type: composer-repository
     url: https://satispress.generodigital.com/satispress/
     username: ${{ secrets.SATISPRESS_API_KEY }}
