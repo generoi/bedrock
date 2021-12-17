@@ -12,14 +12,14 @@ updates:
     schedule:
       interval: "daily"
     registries:
-      - satispress:
+      - satispress
 
   - package-ecosystem: "composer"
     directory: "/web/app/themes/wp-gds-theme/"
     schedule:
       interval: "weekly"
     registries:
-      - satispress:
+      - satispress
 
 registries:
   satispress:
