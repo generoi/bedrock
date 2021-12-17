@@ -3548,11 +3548,11 @@
         },
         {
             "name": "satispress/advanced-custom-fields-pro",
-            "version": "5.9.7",
+            "version": "5.11.4",
             "dist": {
                 "type": "zip",
-                "url": "https://satispress.generodigital.com/satispress/advanced-custom-fields-pro/5.9.7",
-                "shasum": "01390fcdb286c9db5b5d00b62d631a7bcb8a932c"
+                "url": "https://satispress.generodigital.com/satispress/advanced-custom-fields-pro/5.11.4",
+                "shasum": "05de7030fcfe43c01520dddca8fbc29aecaf3a3b"
             },
             "require": {
                 "composer/installers": "^1.0"
