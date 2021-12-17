@@ -1814,34 +1814,41 @@
         },
         {
             "name": "koodimonni-language/fi",
-            "version": "5.7.2",
+            "version": "5.8.2",
             "dist": {
                 "type": "zip",
-                "url": "https://downloads.wordpress.org/translation/core/5.7.2/fi.zip"
+                "url": "https://downloads.wordpress.org/translation/core/5.8.2/fi.zip"
             },
             "require": {
                 "koodimonni-plugin-language/akismet-fi": "*",
                 "koodimonni-plugin-language/bbpress-fi": "*",
                 "koodimonni-plugin-language/buddypress-fi": "*",
+                "koodimonni-plugin-language/livejournal-importer-fi": "*",
+                "koodimonni-plugin-language/movabletype-importer-fi": "*",
                 "koodimonni-plugin-language/woocommerce-fi": "*",
                 "koodimonni-plugin-language/wordpress-importer-fi": "*",
+                "koodimonni-plugin-language/wpcat2tag-importer-fi": "*",
                 "koodimonni-theme-language/twentyeleven-fi": "*",
                 "koodimonni-theme-language/twentyfifteen-fi": "*",
                 "koodimonni-theme-language/twentyfourteen-fi": "*",
+                "koodimonni-theme-language/twentynineteen-fi": "*",
+                "koodimonni-theme-language/twentyseventeen-fi": "*",
                 "koodimonni-theme-language/twentysixteen-fi": "*",
                 "koodimonni-theme-language/twentyten-fi": "*",
                 "koodimonni-theme-language/twentythirteen-fi": "*",
                 "koodimonni-theme-language/twentytwelve-fi": "*",
+                "koodimonni-theme-language/twentytwenty-fi": "*",
+                "koodimonni-theme-language/twentytwentyone-fi": "*",
                 "koodimonni/composer-dropin-installer": ">=0.2.3"
             },
             "type": "wordpress-language",
-            "description": "Full Wordpress translation (including themes and core plugins) for Finnish - fi",
+            "description": "Full WordPress translation (including themes and core plugins) for Finnish - fi",
             "keywords": [
+                "Finnish",
                 "Full-Package",
                 "Translation",
-                "Wordpress",
-                "fi",
-                "twentysixteen"
+                "WordPress",
+                "fi"
             ]
         },
         {
@@ -1878,19 +1885,19 @@
         },
         {
             "name": "koodimonni-plugin-language/akismet-fi",
-            "version": "4.1.9",
+            "version": "4.2.1",
             "dist": {
                 "type": "zip",
-                "url": "https://downloads.wordpress.org/translation/plugin/akismet/4.1.9/fi.zip"
+                "url": "https://downloads.wordpress.org/translation/plugin/akismet/4.2.1/fi.zip"
             },
             "require": {
                 "koodimonni/composer-dropin-installer": ">=0.2.3"
             },
             "type": "wordpress-language",
-            "description": "Wordpress akismet translation for Finnish - fi",
+            "description": "WordPress akismet translations for Finnish - fi",
             "keywords": [
                 "Translation",
-                "Wordpress",
+                "WordPress",
                 "akismet",
                 "fi"
             ]
@@ -1916,19 +1923,19 @@
         },
         {
             "name": "koodimonni-plugin-language/bbpress-fi",
-            "version": "2.6.6",
+            "version": "2.6.9",
             "dist": {
                 "type": "zip",
-                "url": "https://downloads.wordpress.org/translation/plugin/bbpress/2.6.6/fi.zip"
+                "url": "https://downloads.wordpress.org/translation/plugin/bbpress/2.6.9/fi.zip"
             },
             "require": {
                 "koodimonni/composer-dropin-installer": ">=0.2.3"
             },
             "type": "wordpress-language",
-            "description": "Wordpress bbpress translation for Finnish - fi",
+            "description": "WordPress bbpress translations for Finnish - fi",
             "keywords": [
                 "Translation",
-                "Wordpress",
+                "WordPress",
                 "bbpress",
                 "fi"
             ]
@@ -1954,19 +1961,19 @@
         },
         {
             "name": "koodimonni-plugin-language/buddypress-fi",
-            "version": "8.0.0",
+            "version": "9.1.1",
             "dist": {
                 "type": "zip",
-                "url": "https://downloads.wordpress.org/translation/plugin/buddypress/8.0.0/fi.zip"
+                "url": "https://downloads.wordpress.org/translation/plugin/buddypress/9.1.1/fi.zip"
             },
             "require": {
                 "koodimonni/composer-dropin-installer": ">=0.2.3"
             },
             "type": "wordpress-language",
-            "description": "Wordpress buddypress translation for Finnish - fi",
+            "description": "WordPress buddypress translations for Finnish - fi",
             "keywords": [
                 "Translation",
-                "Wordpress",
+                "WordPress",
                 "buddypress",
                 "fi"
             ]
@@ -1991,20 +1998,58 @@
             ]
         },
         {
-            "name": "koodimonni-plugin-language/woocommerce-fi",
-            "version": "5.4.1",
+            "name": "koodimonni-plugin-language/livejournal-importer-fi",
+            "version": "0.5",
             "dist": {
                 "type": "zip",
-                "url": "https://downloads.wordpress.org/translation/plugin/woocommerce/5.4.1/fi.zip"
+                "url": "https://downloads.wordpress.org/translation/plugin/livejournal-importer/0.5/fi.zip"
             },
             "require": {
                 "koodimonni/composer-dropin-installer": ">=0.2.3"
             },
             "type": "wordpress-language",
-            "description": "Wordpress woocommerce translation for Finnish - fi",
+            "description": "WordPress livejournal-importer translations for Finnish - fi",
             "keywords": [
                 "Translation",
-                "Wordpress",
+                "WordPress",
+                "fi",
+                "livejournal-importer"
+            ]
+        },
+        {
+            "name": "koodimonni-plugin-language/movabletype-importer-fi",
+            "version": "0.4",
+            "dist": {
+                "type": "zip",
+                "url": "https://downloads.wordpress.org/translation/plugin/movabletype-importer/0.4/fi.zip"
+            },
+            "require": {
+                "koodimonni/composer-dropin-installer": ">=0.2.3"
+            },
+            "type": "wordpress-language",
+            "description": "WordPress movabletype-importer translations for Finnish - fi",
+            "keywords": [
+                "Translation",
+                "WordPress",
+                "fi",
+                "movabletype-importer"
+            ]
+        },
+        {
+            "name": "koodimonni-plugin-language/woocommerce-fi",
+            "version": "5.9.0",
+            "dist": {
+                "type": "zip",
+                "url": "https://downloads.wordpress.org/translation/plugin/woocommerce/5.9.0/fi.zip"
+            },
+            "require": {
+                "koodimonni/composer-dropin-installer": ">=0.2.3"
+            },
+            "type": "wordpress-language",
+            "description": "WordPress woocommerce translations for Finnish - fi",
+            "keywords": [
+                "Translation",
+                "WordPress",
                 "fi",
                 "woocommerce"
             ]
@@ -2039,10 +2084,10 @@
                 "koodimonni/composer-dropin-installer": ">=0.2.3"
             },
             "type": "wordpress-language",
-            "description": "Wordpress wordpress-importer translation for Finnish - fi",
+            "description": "WordPress wordpress-importer translations for Finnish - fi",
             "keywords": [
                 "Translation",
-                "Wordpress",
+                "WordPress",
                 "fi",
                 "wordpress-importer"
             ]
@@ -2067,20 +2112,39 @@
             ]
         },
         {
-            "name": "koodimonni-theme-language/twentyeleven-fi",
-            "version": "3.7",
+            "name": "koodimonni-plugin-language/wpcat2tag-importer-fi",
+            "version": "0.5",
             "dist": {
                 "type": "zip",
-                "url": "https://downloads.wordpress.org/translation/theme/twentyeleven/3.7/fi.zip"
+                "url": "https://downloads.wordpress.org/translation/plugin/wpcat2tag-importer/0.5/fi.zip"
             },
             "require": {
                 "koodimonni/composer-dropin-installer": ">=0.2.3"
             },
             "type": "wordpress-language",
-            "description": "Wordpress twentyeleven translation for Finnish - fi",
+            "description": "WordPress wpcat2tag-importer translations for Finnish - fi",
             "keywords": [
                 "Translation",
-                "Wordpress",
+                "WordPress",
+                "fi",
+                "wpcat2tag-importer"
+            ]
+        },
+        {
+            "name": "koodimonni-theme-language/twentyeleven-fi",
+            "version": "3.9",
+            "dist": {
+                "type": "zip",
+                "url": "https://downloads.wordpress.org/translation/theme/twentyeleven/3.9/fi.zip"
+            },
+            "require": {
+                "koodimonni/composer-dropin-installer": ">=0.2.3"
+            },
+            "type": "wordpress-language",
+            "description": "WordPress twentyeleven translations for Finnish - fi",
+            "keywords": [
+                "Translation",
+                "WordPress",
                 "fi",
                 "twentyeleven"
             ]
@@ -2106,19 +2170,19 @@
         },
         {
             "name": "koodimonni-theme-language/twentyfifteen-fi",
-            "version": "2.9",
+            "version": "3.0",
             "dist": {
                 "type": "zip",
-                "url": "https://downloads.wordpress.org/translation/theme/twentyfifteen/2.9/fi.zip"
+                "url": "https://downloads.wordpress.org/translation/theme/twentyfifteen/3.0/fi.zip"
             },
             "require": {
                 "koodimonni/composer-dropin-installer": ">=0.2.3"
             },
             "type": "wordpress-language",
-            "description": "Wordpress twentyfifteen translation for Finnish - fi",
+            "description": "WordPress twentyfifteen translations for Finnish - fi",
             "keywords": [
                 "Translation",
-                "Wordpress",
+                "WordPress",
                 "fi",
                 "twentyfifteen"
             ]
@@ -2144,19 +2208,19 @@
         },
         {
             "name": "koodimonni-theme-language/twentyfourteen-fi",
-            "version": "3.1",
+            "version": "3.2",
             "dist": {
                 "type": "zip",
-                "url": "https://downloads.wordpress.org/translation/theme/twentyfourteen/3.1/fi.zip"
+                "url": "https://downloads.wordpress.org/translation/theme/twentyfourteen/3.2/fi.zip"
             },
             "require": {
                 "koodimonni/composer-dropin-installer": ">=0.2.3"
             },
             "type": "wordpress-language",
-            "description": "Wordpress twentyfourteen translation for Finnish - fi",
+            "description": "WordPress twentyfourteen translations for Finnish - fi",
             "keywords": [
                 "Translation",
-                "Wordpress",
+                "WordPress",
                 "fi",
                 "twentyfourteen"
             ]
@@ -2181,20 +2245,58 @@
             ]
         },
         {
-            "name": "koodimonni-theme-language/twentysixteen-fi",
-            "version": "2.4",
+            "name": "koodimonni-theme-language/twentynineteen-fi",
+            "version": "2.1",
             "dist": {
                 "type": "zip",
-                "url": "https://downloads.wordpress.org/translation/theme/twentysixteen/2.4/fi.zip"
+                "url": "https://downloads.wordpress.org/translation/theme/twentynineteen/2.1/fi.zip"
             },
             "require": {
                 "koodimonni/composer-dropin-installer": ">=0.2.3"
             },
             "type": "wordpress-language",
-            "description": "Wordpress twentysixteen translation for Finnish - fi",
+            "description": "WordPress twentynineteen translations for Finnish - fi",
             "keywords": [
                 "Translation",
-                "Wordpress",
+                "WordPress",
+                "fi",
+                "twentynineteen"
+            ]
+        },
+        {
+            "name": "koodimonni-theme-language/twentyseventeen-fi",
+            "version": "2.8",
+            "dist": {
+                "type": "zip",
+                "url": "https://downloads.wordpress.org/translation/theme/twentyseventeen/2.8/fi.zip"
+            },
+            "require": {
+                "koodimonni/composer-dropin-installer": ">=0.2.3"
+            },
+            "type": "wordpress-language",
+            "description": "WordPress twentyseventeen translations for Finnish - fi",
+            "keywords": [
+                "Translation",
+                "WordPress",
+                "fi",
+                "twentyseventeen"
+            ]
+        },
+        {
+            "name": "koodimonni-theme-language/twentysixteen-fi",
+            "version": "2.5",
+            "dist": {
+                "type": "zip",
+                "url": "https://downloads.wordpress.org/translation/theme/twentysixteen/2.5/fi.zip"
+            },
+            "require": {
+                "koodimonni/composer-dropin-installer": ">=0.2.3"
+            },
+            "type": "wordpress-language",
+            "description": "WordPress twentysixteen translations for Finnish - fi",
+            "keywords": [
+                "Translation",
+                "WordPress",
                 "fi",
                 "twentysixteen"
             ]
@@ -2220,19 +2322,19 @@
         },
         {
             "name": "koodimonni-theme-language/twentyten-fi",
-            "version": "3.3",
+            "version": "3.5",
             "dist": {
                 "type": "zip",
-                "url": "https://downloads.wordpress.org/translation/theme/twentyten/3.3/fi.zip"
+                "url": "https://downloads.wordpress.org/translation/theme/twentyten/3.5/fi.zip"
             },
             "require": {
                 "koodimonni/composer-dropin-installer": ">=0.2.3"
             },
             "type": "wordpress-language",
-            "description": "Wordpress twentyten translation for Finnish - fi",
+            "description": "WordPress twentyten translations for Finnish - fi",
             "keywords": [
                 "Translation",
-                "Wordpress",
+                "WordPress",
                 "fi",
                 "twentyten"
             ]
@@ -2258,19 +2360,19 @@
         },
         {
             "name": "koodimonni-theme-language/twentythirteen-fi",
-            "version": "3.3",
+            "version": "3.4",
             "dist": {
                 "type": "zip",
-                "url": "https://downloads.wordpress.org/translation/theme/twentythirteen/3.3/fi.zip"
+                "url": "https://downloads.wordpress.org/translation/theme/twentythirteen/3.4/fi.zip"
             },
             "require": {
                 "koodimonni/composer-dropin-installer": ">=0.2.3"
             },
             "type": "wordpress-language",
-            "description": "Wordpress twentythirteen translation for Finnish - fi",
+            "description": "WordPress twentythirteen translations for Finnish - fi",
             "keywords": [
                 "Translation",
-                "Wordpress",
+                "WordPress",
                 "fi",
                 "twentythirteen"
             ]
@@ -2296,19 +2398,19 @@
         },
         {
             "name": "koodimonni-theme-language/twentytwelve-fi",
-            "version": "3.3",
+            "version": "3.5",
             "dist": {
                 "type": "zip",
-                "url": "https://downloads.wordpress.org/translation/theme/twentytwelve/3.3/fi.zip"
+                "url": "https://downloads.wordpress.org/translation/theme/twentytwelve/3.5/fi.zip"
             },
             "require": {
                 "koodimonni/composer-dropin-installer": ">=0.2.3"
             },
             "type": "wordpress-language",
-            "description": "Wordpress twentytwelve translation for Finnish - fi",
+            "description": "WordPress twentytwelve translations for Finnish - fi",
             "keywords": [
                 "Translation",
-                "Wordpress",
+                "WordPress",
                 "fi",
                 "twentytwelve"
             ]
@@ -2330,6 +2432,44 @@
                 "Wordpress",
                 "sv_se",
                 "twentytwelve"
+            ]
+        },
+        {
+            "name": "koodimonni-theme-language/twentytwenty-fi",
+            "version": "1.8",
+            "dist": {
+                "type": "zip",
+                "url": "https://downloads.wordpress.org/translation/theme/twentytwenty/1.8/fi.zip"
+            },
+            "require": {
+                "koodimonni/composer-dropin-installer": ">=0.2.3"
+            },
+            "type": "wordpress-language",
+            "description": "WordPress twentytwenty translations for Finnish - fi",
+            "keywords": [
+                "Translation",
+                "WordPress",
+                "fi",
+                "twentytwenty"
+            ]
+        },
+        {
+            "name": "koodimonni-theme-language/twentytwentyone-fi",
+            "version": "1.0",
+            "dist": {
+                "type": "zip",
+                "url": "https://downloads.wordpress.org/translation/theme/twentytwentyone/1.0/fi.zip"
+            },
+            "require": {
+                "koodimonni/composer-dropin-installer": ">=0.2.3"
+            },
+            "type": "wordpress-language",
+            "description": "WordPress twentytwentyone translations for Finnish - fi",
+            "keywords": [
+                "Translation",
+                "WordPress",
+                "fi",
+                "twentytwentyone"
             ]
         },
         {
