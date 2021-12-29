@@ -85,7 +85,7 @@
     "geerlingguy/drupal-vm": "~6.0.3",
     "roave/security-advisories": "dev-master",
     "brainmaestro/composer-git-hooks": "^2.2",
-    "deployer/deployer": "^7.0-beta",
+    "deployer/deployer": "^7.0-rc",
     "generoi/deployer-genero": "^0.2",
     "staabm/annotate-pull-request-from-checkstyle": "^1.5"
   },

@@ -147,7 +147,7 @@ task('build', [
     'build:composer',
     'build:theme',
     'build:artifact',
-])->local();
+]);
 
 /**
  * Cache clearing
