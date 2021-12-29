@@ -3,8 +3,7 @@ on:
   pull_request:
 
 env:
-  NODE_VERSION: 14
-  PHP_VERSION: 7.4
+  PROJECT_NAME: bedrock
 
 jobs:
   test:
@@ -22,66 +21,26 @@ jobs:
         with:
           ref: ${{ github.event.inputs.ref }}
 
-      - name: Setup Node
-        uses: actions/setup-node@v2-beta
-        with:
-          node-version: ${{ env.NODE_VERSION }}
-
-      - name: Setup PHP
-        uses: shivammathur/setup-php@v2
-        with:
-          php-version: ${{ env.PHP_VERSION }}
-          extensions: bcmath, curl, imagick, intl, mbstring, mysql, xml, xmlrpc, zip
-
-      - name: Start MySQL service
+      - name: Setup DDEV
         run: |
-          sudo /etc/init.d/mysql start
-          mysql -e 'CREATE DATABASE wordpress;' -uroot -proot
-          mysql -e "CREATE USER 'wordpress'@'localhost' IDENTIFIED BY 'wordpress';" -uroot -proot
-          mysql -e "GRANT ALL PRIVILEGES ON wordpress.* TO 'wordpress'@'localhost' WITH GRANT OPTION;" -uroot -proot
+          sed -i 's/<example-project>/${{ env.PROJECT_NAME }}/g' .ddev/*
+
+      - uses: jonaseberle/github-action-setup-ddev@v1
 
       - name: Configure basic http authentication for Composer
-        run: composer config --global http-basic.satispress.generodigital.com ${{ secrets.SATISPRESS_API_KEY }} ${{ secrets.SATISPRESS_PASSWORD }}
-
-      - name: Get Composer Cache Directory
-        id: composer-cache
-        run: |
-          echo "::set-output name=dir::$(composer config cache-files-dir)"
-
-      - name: Composer Cache
-        uses: actions/cache@v2
-        with:
-          path: ${{ steps.composer-cache.outputs.dir }}
-          key: ${{ runner.os }}-composer-${{ hashFiles('**/composer.lock') }}
-          restore-keys: |
-            ${{ runner.os }}-composer-
-
-      - name: NPM Cache
-        uses: actions/cache@v2
-        with:
-          path: ~/.npm
-          key: ${{ runner.os }}-npm-${{ hashFiles('**/package-lock.json') }}
-          restore-keys: |
-            ${{ runner.os }}-npm-
+        run: ddev composer config --global http-basic.satispress.generodigital.com ${{ secrets.SATISPRESS_API_KEY }} ${{ secrets.SATISPRESS_PASSWORD }}
 
       - name: Install development packages to run tests
-        run: composer install:development
+        run: ddev composer install:development
 
       - name: Run CI tests
-        run: composer ci --no-interaction
+        run: ddev composer ci --no-interaction
 
       - name: Build assets
-        run: composer build --no-interaction
-
-      - name: Launch web server
-        run: ./vendor/bin/wp server &
-
-      - name: Setup .env
-        run: |
-          sed -i 's/WP_HOME=.*/WP_HOME=http:\/\/localhost:8080/g' .env
+        run: ddev composer build --no-interaction
 
       - name: Install WordPress
-        run: ./vendor/bin/wp core install --url=http://localhost:8080 --title="Bedrock" --admin_user="admin" --admin_password="admin" --admin_email="bedrock@example.test"
+        run: ddev wp core install --url="http://${{ env.PROJECT_NAME }}.ddev.site" --title="${{ env.PROJECT_NAME }}" --admin_user="admin" --admin_password="admin" --admin_email="admin@example.test"
 
       - name: Load home page # @todo
-        run: curl http://localhost:8080/
+        run: curl http://${{ env.PROJECT_NAME }}.ddev.site
