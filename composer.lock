@@ -9522,16 +9522,16 @@
         },
         {
             "name": "staabm/annotate-pull-request-from-checkstyle",
-            "version": "1.7.1",
+            "version": "1.8.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/staabm/annotate-pull-request-from-checkstyle.git",
-                "reference": "9d59556dae55562b811ad80fd7facc5854e1e557"
+                "reference": "0a4a54c13d3db7e389981e866d20c3db03776acb"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/staabm/annotate-pull-request-from-checkstyle/zipball/9d59556dae55562b811ad80fd7facc5854e1e557",
-                "reference": "9d59556dae55562b811ad80fd7facc5854e1e557",
+                "url": "https://api.github.com/repos/staabm/annotate-pull-request-from-checkstyle/zipball/0a4a54c13d3db7e389981e866d20c3db03776acb",
+                "reference": "0a4a54c13d3db7e389981e866d20c3db03776acb",
                 "shasum": ""
             },
             "require": {
@@ -9557,7 +9557,7 @@
             ],
             "support": {
                 "issues": "https://github.com/staabm/annotate-pull-request-from-checkstyle/issues",
-                "source": "https://github.com/staabm/annotate-pull-request-from-checkstyle/tree/1.7.1"
+                "source": "https://github.com/staabm/annotate-pull-request-from-checkstyle/tree/1.8.2"
             },
             "funding": [
                 {
@@ -9565,7 +9565,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2021-11-01T11:25:37+00:00"
+            "time": "2022-01-03T09:04:06+00:00"
         }
     ],
     "aliases": [],
