@@ -4041,11 +4041,11 @@
         },
         {
             "name": "satispress/gravityforms",
-            "version": "2.5.15",
+            "version": "2.5.16",
             "dist": {
                 "type": "zip",
-                "url": "https://satispress.generodigital.com/satispress/gravityforms/2.5.15",
-                "shasum": "00f783c08b967d77f2dd4c500313c51e478f7f0a"
+                "url": "https://satispress.generodigital.com/satispress/gravityforms/2.5.16",
+                "shasum": "88e3882a3c3e289657f1a88f2cbe5270fdce4446"
             },
             "require": {
                 "composer/installers": "^1.0"
