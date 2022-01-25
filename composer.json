@@ -51,7 +51,7 @@
     "wpackagist-plugin/wp-smartcrop": "~2.0",
     "wpackagist-plugin/gravity-forms-google-analytics-event-tracking": "^2.3",
 
-    "wpackagist-plugin/wordpress-seo": "~17.8",
+    "wpackagist-plugin/wordpress-seo": "~18.0",
     "wpackagist-plugin/google-tag-manager": "~1.0",
     "wpackagist-plugin/redirection": "~5.0",
     "generoi/wp-genero-cookieconsent": "~1.0-alpha",
