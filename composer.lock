@@ -7908,15 +7908,15 @@
         },
         {
             "name": "wpackagist-plugin/wordpress-seo",
-            "version": "18.0",
+            "version": "18.1",
             "source": {
                 "type": "svn",
                 "url": "https://plugins.svn.wordpress.org/wordpress-seo/",
-                "reference": "tags/18.0"
+                "reference": "tags/18.1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://downloads.wordpress.org/plugin/wordpress-seo.18.0.zip"
+                "url": "https://downloads.wordpress.org/plugin/wordpress-seo.18.1.zip"
             },
             "require": {
                 "composer/installers": "^1.0 || ^2.0"
