@@ -1869,23 +1869,23 @@
         },
         {
             "name": "kinsta/kinsta-mu-plugins",
-            "version": "v2.3.6",
+            "version": "v2.4.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/generoi/kinsta-mu-plugins.git",
-                "reference": "311ff4fbfb92011b5ff7d47327a70d16aad257aa"
+                "reference": "906f6ceb240c8f84ffb7882fa1046a17375e60e5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/generoi/kinsta-mu-plugins/zipball/311ff4fbfb92011b5ff7d47327a70d16aad257aa",
-                "reference": "311ff4fbfb92011b5ff7d47327a70d16aad257aa",
+                "url": "https://api.github.com/repos/generoi/kinsta-mu-plugins/zipball/906f6ceb240c8f84ffb7882fa1046a17375e60e5",
+                "reference": "906f6ceb240c8f84ffb7882fa1046a17375e60e5",
                 "shasum": ""
             },
             "type": "wordpress-muplugin",
             "support": {
-                "source": "https://github.com/generoi/kinsta-mu-plugins/tree/v2.3.6"
+                "source": "https://github.com/generoi/kinsta-mu-plugins/tree/v2.4.3"
             },
-            "time": "2021-06-09T13:37:43+00:00"
+            "time": "2022-02-16T15:13:33+00:00"
         },
         {
             "name": "koodimonni-language/fi",
