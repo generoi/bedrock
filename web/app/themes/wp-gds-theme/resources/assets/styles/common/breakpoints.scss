@@ -12,5 +12,5 @@ $mq-breakpoints: (
 );
 
 @forward '~sass-mq' with (
-  $mq-breakpoints: $mq-breakpoints
+  $breakpoints: $mq-breakpoints
 );
