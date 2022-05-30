@@ -78,7 +78,7 @@
     "satispress/gravityforms": "^2.4",
     "roots/bedrock-autoloader": "^1.0",
     "consolidation/robo": "^3.0",
-    "generoi/robo-genero": "^0.3"
+    "generoi/robo-genero": "^0.4"
   },
   "require-dev": {
     "squizlabs/php_codesniffer": "^3.4.2",
@@ -96,7 +96,13 @@
       "php": "7.4"
     },
     "process-timeout": 0,
-    "theme-dir": "web/app/themes/wp-gds-theme"
+    "theme-dir": "web/app/themes/wp-gds-theme",
+    "allow-plugins": {
+      "koodimonni/composer-dropin-installer": true,
+      "composer/installers": true,
+      "roots/wordpress-core-installer": true,
+      "cweagans/composer-patches": true
+    }
   },
   "minimum-stability": "dev",
   "prefer-stable": true,
