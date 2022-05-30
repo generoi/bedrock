@@ -3,5 +3,5 @@ services:
   web:
     environment:
       - DATABASE_URL=mysql://db:db@db/db
-      - WP_HOME=http://<example-project>.ddev.site
+      - WP_HOME=https://<example-project>.ddev.site
       # - DOMAIN_CURRENT_SITE=<example-project>.ddev.site
