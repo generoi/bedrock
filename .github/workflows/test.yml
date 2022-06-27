@@ -4,7 +4,7 @@ on:
 
 env:
   NODE_VERSION: 14
-  PHP_VERSION: 7.4
+  PHP_VERSION: 8.0
 
 jobs:
   test:
