@@ -14,15 +14,12 @@
   }
 
   // Larger gutters on wide/full
-  [data-align="wide"] > &,
-  [data-align="full"] > &,
   &.alignwide,
   &.alignfull {
     --media-text-gutter: var(--block-gutter-l);
   }
 
   // Alignfull needs a gutter at the viewport edge
-  [data-align="full"] > &,
   &.alignfull {
     &.has-media-on-the-right .wp-block-media-text__content {
       padding-left: var(--media-text-gutter);
@@ -44,8 +41,6 @@
 
   // Blocks without a background should have smaller gutter before the previous
   // element, eg heading.
-  [data-align="wide"] > &:not(.has-background),
-  [data-align="full"] > &:not(.has-background),
   &:not(.has-background).alignwide,
   &:not(.has-background).alignfull {
     margin-top: var(--block-gutter);

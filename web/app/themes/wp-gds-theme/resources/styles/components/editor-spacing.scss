@@ -4,11 +4,10 @@
 // The root container only
 .is-root-container,
 .entry-content {
-  // Add a viewport gutter in the same manner as Gutenberg does
+  // Add a viewport gutter
   padding-left: var(--viewport-gutter);
   padding-right: var(--viewport-gutter);
   overflow-x: hidden;
-  overflow-y: hidden;
 
   // First block has a top gutter unless it's full aligned in which case it's
   // considered a banner
@@ -24,7 +23,7 @@
 }
 
 // Any container that can contain blocks or inner blocks.
-.wp-block-group__inner-container,
+.wp-block-group,
 .wp-block-cover__inner-container,
 .wp-block-media-text__content,
 .wp-block-column,
@@ -75,25 +74,12 @@
     }
   }
 
-  > gds-label {
-    & + h1,
-    & + h2,
-    & + h3,
-    & + h4,
-    & + h5,
-    & + h6 {
-      margin-top: var(--gds-spacing-m);
-    }
-  }
-
   // Alignfull stretches to the viewport width up to a point when it gets centered.
-  [data-align="full"],
   .alignfull {
     max-width: var(--alignfull-width);
     // Negate the container padding so it stretches to viewport width.
-    margin-left: calc(var(--viewport-gutter) * -1);
-    margin-right: calc(var(--viewport-gutter) * -1);
-    width: unset; // Override Gutenberg
+    margin-left: calc(var(--viewport-gutter) * -1) !important;
+    margin-right: calc(var(--viewport-gutter) * -1) !important;
 
     // Once alignfull limit has been reached, center the block
     @include mq($from: config.$alignfull-max-width) {
@@ -108,7 +94,6 @@
   }
 
   // Align has a 12 column width with a viewport gutter
-  [data-align="wide"],
   .alignwide {
     max-width: var(--alignwide-width);
     margin-left: auto;
@@ -126,8 +111,6 @@
 
 // Use a larger gutter around full aligned blocks with a background. This is
 // overridden on a per block basis.
-[data-align="wide"],
-[data-align="full"],
 .alignwide,
 .alignfull {
   margin-top: var(--block-gutter-l);
@@ -135,7 +118,6 @@
 }
 
 // Adjacent full aligned blocks should not have a gutter.
-[data-align="full"] + [data-align="full"],
 .alignfull.has-background + .alignfull.has-background {
   margin-top: calc(var(--block-gutter-l) * -1);
 }
