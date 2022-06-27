@@ -5,20 +5,3 @@
     //
   }
 }
-
-.swiper-container {
-  .teaser {
-    --gds-card-width: 100%;
-    // Desktop
-
-    @include mq($from: medium) {
-      --gds-card-width: var(--size-col-5);
-      // TODO: Use some kind of --size-row-3 variable for this. Or implement 3/2 aspect ratio.
-      --gds-media-card-media-height: 324px;
-    }
-
-    .teaser-tags > * + * {
-      margin-left: var(--gds-spacing-s);
-    }
-  }
-}
