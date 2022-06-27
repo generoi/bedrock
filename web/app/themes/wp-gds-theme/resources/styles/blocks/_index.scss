@@ -1,17 +1,9 @@
-// GDS
+// Core
 @forward 'paragraph';
 @forward 'heading';
 @forward 'button';
-@forward 'label';
-@forward 'link';
 @forward 'media-text';
-@forward 'tag';
-@forward 'gds-media-card';
-@forward 'gds-slideshow';
 @forward 'gallery';
-
-// Others
-@forward 'article-list';
 @forward 'embed';
 @forward 'buttons';
 @forward 'code';
@@ -26,3 +18,7 @@
 @forward 'separator';
 @forward 'social-link';
 @forward 'social-links';
+// Custom
+@forward 'article-list';
+@forward 'gds-media-card';
+@forward 'gds-slideshow';

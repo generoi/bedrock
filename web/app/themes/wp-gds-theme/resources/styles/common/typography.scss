@@ -1,3 +1,5 @@
+@use '~genero-design-system/src/components/gds-link' as link;
+
 body {
   font-family: var(--gds-body-font-family);
   font-size: var(--gds-body-font-size);
@@ -19,6 +21,15 @@ ol {
 
 ul {
   list-style-type: disc;
+}
+
+a {
+  @include link.base;
+}
+
+p a,
+li > a {
+  text-decoration: underline;
 }
 
 :first-child {
