@@ -2,8 +2,7 @@
 
 namespace App\Providers;
 
-use Roots\Acorn\ServiceProvider;
-use Symfony\Component\Finder\Finder;
+use Illuminate\Support\ServiceProvider;
 
 class BlockPatternServiceProvider extends ServiceProvider
 {

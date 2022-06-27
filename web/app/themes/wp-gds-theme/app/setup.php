@@ -92,6 +92,12 @@ add_action('after_setup_theme', function () {
      */
     add_theme_support('customize-selective-refresh-widgets');
 
+    /**
+     * Enable editor styles in block editor
+     * @link https://developer.wordpress.org/block-editor/how-to-guides/themes/theme-support/#editor-styles
+     */
+    add_theme_support('editor-styles');
+
     add_image_size('tiny', 50, 50, true);
 
     // Enqueue editor styles
