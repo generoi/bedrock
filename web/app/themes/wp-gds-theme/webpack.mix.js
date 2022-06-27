@@ -32,15 +32,15 @@ mix.setPublicPath('./public')
     open: false,
   });
 
-mix.sass('resources/assets/styles/app.scss', 'styles')
-   .sass('resources/assets/styles/editor.scss', 'styles')
-   .sass('resources/assets/styles/editor-overrides.scss', 'styles');
+mix.sass('resources/styles/app.scss', 'styles')
+   .sass('resources/styles/editor.scss', 'styles')
+   .sass('resources/styles/editor-overrides.scss', 'styles');
 
-mix.js('resources/assets/scripts/app.js', 'scripts')
-   .blocks('resources/assets/scripts/editor.js', 'scripts', {disableRegenerator: true});
+mix.js('resources/scripts/app.js', 'scripts')
+   .blocks('resources/scripts/editor.js', 'scripts', {disableRegenerator: true});
 
-mix.copyWatched('resources/assets/images', 'public/images', {base: 'resources/assets/images'})
-  .copyWatched('resources/assets/fonts', 'public/fonts', {base: 'resources/assets/fonts'});
+mix.copyWatched('resources/images', 'public/images', {base: 'resources/images'})
+  .copyWatched('resources/fonts', 'public/fonts', {base: 'resources/fonts'});
 
 // GDS
 const gdsPath = 'node_modules/genero-design-system';
@@ -55,7 +55,7 @@ mix.options({
   processCssUrls: false,
   postCss: [
     require('postcss-inline-svg')({
-      paths: ['resources/assets'],
+      paths: ['resources'],
       encode(code) {
         return code
           .replace(/\(/g, '%28')

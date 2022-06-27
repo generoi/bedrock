@@ -12,10 +12,10 @@
     "clear": "wp acorn optimize:clear",
     "test": "npm run lint",
     "lint": "npm run lint:js && npm run lint:css",
-    "lint:js": "eslint resources/assets/scripts",
+    "lint:js": "eslint resources/scripts",
     "lint:css": "stylelint \"resources/**/*.{css,scss,vue}\"",
-    "ci:scripts": "eslint resources/assets/scripts --format checkstyle",
-    "ci:styles": "stylelint \"resources/assets/**/*.{vue,css,sass,scss,less}\" --custom-formatter=node_modules/stylelint-checkstyle-formatter",
+    "ci:scripts": "eslint resources/scripts --format checkstyle",
+    "ci:styles": "stylelint \"resources/**/*.{vue,css,sass,scss,less}\" --custom-formatter=node_modules/stylelint-checkstyle-formatter",
     "translate": "npm run translate:pot && npm run translate:js",
     "translate:pot": "wp i18n make-pot . ./resources/lang/sage.pot --ignore-domain --include=\"app,resources\"",
     "translate:js": "wp i18n make-json ./resources/lang --pretty-print"
