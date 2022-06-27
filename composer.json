@@ -78,7 +78,12 @@
     "satispress/gravityforms": "^2.4",
     "roots/bedrock-autoloader": "^1.0",
     "consolidation/robo": "^3.0",
-    "generoi/robo-genero": "^0.4"
+    "generoi/robo-genero": "^0.4",
+    "roots/acorn": "^2.0",
+    "log1x/navi": "^2.0",
+    "log1x/acf-composer": "^2.0",
+    "generoi/sage-nativeblock": "^0.2.0",
+    "generoi/sage-demo-content": "dev-master"
   },
   "require-dev": {
     "squizlabs/php_codesniffer": "^3.4.2",
@@ -92,7 +97,7 @@
     "optimize-autoloader": true,
     "preferred-install": "dist",
     "platform": {
-      "php": "7.4"
+      "php": "8.0"
     },
     "process-timeout": 0,
     "theme-dir": "web/app/themes/wp-gds-theme",
@@ -141,6 +146,9 @@
       "@composer install",
       "vendor/bin/robo install:development",
       "vendor/bin/cghooks update"
+    ],
+    "post-autoload-dump": [
+      "Roots\\Acorn\\ComposerScripts::postAutoloadDump"
     ]
   }
 }
