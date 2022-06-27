@@ -9,8 +9,6 @@ use WP_Query;
 
 class ContentSingle extends Composer
 {
-    use HasPost;
-
     /**
      * List of views served by this composer.
      *
@@ -28,7 +26,6 @@ class ContentSingle extends Composer
         $post = get_post();
 
         return [
-            'categories' => $this->categories($post),
             'related' => $this->related(),
         ];
     }

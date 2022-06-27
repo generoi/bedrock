@@ -9,8 +9,6 @@ use WP_Query;
 
 class Archive extends Composer
 {
-    use HasPost;
-
     /**
      * List of views served by this composer.
      *

@@ -7,8 +7,6 @@ use Roots\Acorn\View\Composer;
 
 class Teaser extends Composer
 {
-    use HasPost;
-
     /**
      * List of views served by this composer.
      *
@@ -25,13 +23,13 @@ class Teaser extends Composer
      */
     public function override()
     {
-        $post = get_post();
+        $post = $this->view->post ?? get_post();
 
         return [
-            'image' => $this->image($post),
-            'title' => $this->title($post),
-            'excerpt' => $this->excerpt($post),
-            'categories' => $this->categories($post),
+            'image' => get_post_thumbnail_id($post),
+            'title' => get_the_title($post),
+            'excerpt' => get_the_excerpt($post),
+            'categories' => get_the_category($post->ID),
         ];
     }
 }
