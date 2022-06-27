@@ -25,7 +25,7 @@ set('ssh_multiplexing', true);
 
 set('shared_files', ['.env']);
 set('shared_dirs', ['web/app/uploads']);
-set('writable_dirs', ['{{theme_dir}}/storage', '{{theme_dir}}/bootstrap/cache', 'web/app/cache', ...get('shared_dirs')]);
+set('writable_dirs', ['web/app/cache', ...get('shared_dirs')]);
 set('writable_mode', 'chmod');
 set('writable_use_sudo', false);
 set('writable_chmod_mode', 'ug+w');

@@ -2,9 +2,7 @@
 
 namespace App\Providers;
 
-use Roots\Acorn\ServiceProvider;
-
-use function Roots\config;
+use Illuminate\Support\ServiceProvider;
 
 class ThemeServiceProvider extends ServiceProvider
 {
