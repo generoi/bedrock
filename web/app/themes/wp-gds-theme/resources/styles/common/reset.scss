@@ -1,17 +1,4 @@
-@use '~normalize-scss/sass/normalize' as *;
-
-@include normalize($include: (
-  // document,
-  sections,
-  // grouping,
-  // links,
-  // text,
-  // embedded,
-  // forms,
-  // interactive,
-  // scripting,
-  // hidden
-));
+@import '~modern-normalize/modern-normalize.css';
 
 html {
   @media (prefers-reduced-motion: no-preference) {
