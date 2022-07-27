@@ -37,6 +37,7 @@ module.exports = {
     'react/prop-types': 0,
     'react/display-name': 0,
     'no-console': 0,
+    'eqeqeq': 1,
     'comma-dangle': [
       'error',
       {
