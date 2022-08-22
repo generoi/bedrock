@@ -64,34 +64,30 @@
         },
         {
             "name": "doctrine/inflector",
-            "version": "2.0.3",
+            "version": "2.0.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/doctrine/inflector.git",
-                "reference": "9cf661f4eb38f7c881cac67c75ea9b00bf97b210"
+                "reference": "8b7ff3e4b7de6b2c84da85637b59fd2880ecaa89"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/doctrine/inflector/zipball/9cf661f4eb38f7c881cac67c75ea9b00bf97b210",
-                "reference": "9cf661f4eb38f7c881cac67c75ea9b00bf97b210",
+                "url": "https://api.github.com/repos/doctrine/inflector/zipball/8b7ff3e4b7de6b2c84da85637b59fd2880ecaa89",
+                "reference": "8b7ff3e4b7de6b2c84da85637b59fd2880ecaa89",
                 "shasum": ""
             },
             "require": {
                 "php": "^7.2 || ^8.0"
             },
             "require-dev": {
-                "doctrine/coding-standard": "^7.0",
-                "phpstan/phpstan": "^0.11",
-                "phpstan/phpstan-phpunit": "^0.11",
-                "phpstan/phpstan-strict-rules": "^0.11",
-                "phpunit/phpunit": "^7.0 || ^8.0 || ^9.0"
+                "doctrine/coding-standard": "^8.2",
+                "phpstan/phpstan": "^0.12",
+                "phpstan/phpstan-phpunit": "^0.12",
+                "phpstan/phpstan-strict-rules": "^0.12",
+                "phpunit/phpunit": "^7.0 || ^8.0 || ^9.0",
+                "vimeo/psalm": "^4.10"
             },
             "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "2.0.x-dev"
-                }
-            },
             "autoload": {
                 "psr-4": {
                     "Doctrine\\Inflector\\": "lib/Doctrine/Inflector"
@@ -139,7 +135,7 @@
             ],
             "support": {
                 "issues": "https://github.com/doctrine/inflector/issues",
-                "source": "https://github.com/doctrine/inflector/tree/2.0.x"
+                "source": "https://github.com/doctrine/inflector/tree/2.0.4"
             },
             "funding": [
                 {
@@ -155,7 +151,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2020-05-29T15:13:26+00:00"
+            "time": "2021-10-22T20:16:43+00:00"
         },
         {
             "name": "generoi/sage-archive-pages",
@@ -1422,16 +1418,16 @@
         },
         {
             "name": "log1x/acf-composer",
-            "version": "v2.0.3",
+            "version": "v2.0.9",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Log1x/acf-composer.git",
-                "reference": "62e34723f8dbbbc3fbc1bcc41079e93b56e14741"
+                "reference": "b19eb3aefc36505ded477aff2539b8e74aee8880"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Log1x/acf-composer/zipball/62e34723f8dbbbc3fbc1bcc41079e93b56e14741",
-                "reference": "62e34723f8dbbbc3fbc1bcc41079e93b56e14741",
+                "url": "https://api.github.com/repos/Log1x/acf-composer/zipball/b19eb3aefc36505ded477aff2539b8e74aee8880",
+                "reference": "b19eb3aefc36505ded477aff2539b8e74aee8880",
                 "shasum": ""
             },
             "require": {
@@ -1470,7 +1466,7 @@
             "description": "Create fields, blocks, option pages, and widgets using ACF Builder and Sage 10",
             "support": {
                 "issues": "https://github.com/Log1x/acf-composer/issues",
-                "source": "https://github.com/Log1x/acf-composer/tree/v2.0.3"
+                "source": "https://github.com/Log1x/acf-composer/tree/v2.0.9"
             },
             "funding": [
                 {
@@ -1478,7 +1474,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2021-08-26T16:21:05+00:00"
+            "time": "2022-08-21T17:09:02+00:00"
         },
         {
             "name": "log1x/navi",
@@ -2315,16 +2311,16 @@
         },
         {
             "name": "stoutlogic/acf-builder",
-            "version": "1.11.1",
+            "version": "v1.12.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/StoutLogic/acf-builder.git",
-                "reference": "85f506fa469b473ae7807be517e559b901356c18"
+                "reference": "e63ab87233ea3675cd519f1dd6b6d4230b3cef97"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/StoutLogic/acf-builder/zipball/85f506fa469b473ae7807be517e559b901356c18",
-                "reference": "85f506fa469b473ae7807be517e559b901356c18",
+                "url": "https://api.github.com/repos/StoutLogic/acf-builder/zipball/e63ab87233ea3675cd519f1dd6b6d4230b3cef97",
+                "reference": "e63ab87233ea3675cd519f1dd6b6d4230b3cef97",
                 "shasum": ""
             },
             "require": {
@@ -2355,9 +2351,9 @@
             "description": "An Advanced Custom Field Configuration Builder",
             "support": {
                 "issues": "https://github.com/StoutLogic/acf-builder/issues",
-                "source": "https://github.com/StoutLogic/acf-builder/tree/1.11.1"
+                "source": "https://github.com/StoutLogic/acf-builder/tree/v1.12.0"
             },
-            "time": "2021-07-13T18:51:50+00:00"
+            "time": "2021-09-17T17:32:44+00:00"
         },
         {
             "name": "symfony/console",
@@ -4523,5 +4519,5 @@
         "php": "^7.3|^8.0"
     },
     "platform-dev": [],
-    "plugin-api-version": "2.1.0"
+    "plugin-api-version": "2.3.0"
 }
