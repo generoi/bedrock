@@ -82,3 +82,8 @@ jobs:
 
       - name: Deploy
         run: ./vendor/bin/dep deploy ${{ env.ENVIRONMENT }} ${{ github.event.inputs.log_level }}
+#  e2e:
+#    needs: deploy
+#    uses: ./.github/workflows/e2e.yml
+#    with:
+#      url: 'https://<example-project>.kinsta.cloud'
