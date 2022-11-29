@@ -1,0 +1,91 @@
+on:
+  workflow_call:
+    inputs:
+      log_level:
+        required: true
+        type: string
+      ref:
+        required: false
+        type: string
+      environment:
+        required:  true
+        type: string
+
+    secrets:
+      KINSTA_DEPLOY_PRIVATE_KEY:
+        required: true
+      PACKAGIST_GITHUB_TOKEN:
+        required: true
+      SATISPRESS_API_KEY:
+        required: true
+      SATISPRESS_PASSWORD:
+        required: true
+
+jobs:
+  build_deploy:
+    name: Build and deploy
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository (latest)
+        uses: actions/checkout@v3
+        if: ${{ inputs.ref == '' }}
+
+      - name: Checkout Repository (specific reference)
+        uses: actions/checkout@v3
+        if: ${{ inputs.ref != '' }}
+        with:
+          ref: ${{ inputs.ref }}
+
+      - name: Start SSH agent
+        uses: webfactory/ssh-agent@v0.4.1
+        with:
+          ssh-private-key: |
+            ${{ secrets.KINSTA_DEPLOY_PRIVATE_KEY }}
+
+      - name: Setup Node
+        uses: actions/setup-node@v3
+        with:
+          node-version-file: .nvmrc
+          cache: 'npm'
+          cache-dependency-path: '**/package-lock.json'
+
+      - name: Read composer.json to env
+        run: |
+          echo 'COMPOSER_JSON<<EOF' >> $GITHUB_ENV
+          cat ./composer.json >> $GITHUB_ENV
+          echo 'EOF' >> $GITHUB_ENV
+
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: ${{ fromJson(env.COMPOSER_JSON).config.platform.php }}
+        env:
+          COMPOSER_TOKEN: ${{ secrets.PACKAGIST_GITHUB_TOKEN }}
+
+      - name: Configure basic http authentication for Composer
+        run: composer config --global http-basic.satispress.generodigital.com ${{ secrets.SATISPRESS_API_KEY }} ${{ secrets.SATISPRESS_PASSWORD }}
+
+      - name: Get Composer Cache Directory
+        id: composer-cache
+        run: |
+          echo "dir=$(composer config cache-files-dir)" >> $GITHUB_OUTPUT
+
+      - name: Composer Cache
+        uses: actions/cache@v2
+        with:
+          path: ${{ steps.composer-cache.outputs.dir }}
+          key: ${{ runner.os }}-composer-${{ hashFiles('**/composer.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-composer-
+
+      - name: Install development packages to run tests
+        run: composer install:development
+
+      - name: Run tests
+        run: composer test --no-interaction
+
+      - name: Add remote public keys to known hosts
+        run: ssh-keyscan -p $(./vendor/bin/robo config env.@${{ inputs.environment }}.port || echo 22) $(./vendor/bin/robo config env.@${{ inputs.environment }}.host) >> ~/.ssh/known_hosts
+
+      - name: Deploy
+        run: ./vendor/bin/dep deploy ${{ inputs.environment }} ${{ inputs.log_level }}
