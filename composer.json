@@ -43,16 +43,11 @@
     "wpackagist-plugin/limit-login-attempts-reloaded": "^2.6.1",
     "wpackagist-plugin/wp-sanitize-file-name-plus": "~1.0",
     "wpackagist-plugin/stream": "~3.6",
-    "wpackagist-plugin/wp-mail-smtp": "~3.2",
-    "wpackagist-plugin/wp-smartcrop": "~2.0",
     "wpackagist-plugin/gravity-forms-google-analytics-event-tracking": "^2.3",
 
     "wpackagist-plugin/wordpress-seo": "~18.0",
     "wpackagist-plugin/google-tag-manager": "~1.0",
     "wpackagist-plugin/redirection": "~5.0",
-    "generoi/wp-genero-cookieconsent": "~1.0-alpha",
-
-    "wpackagist-plugin/wp-super-cache": "~1.7.0",
     "wpackagist-plugin/post-type-archive-mapping": "^5.0",
 
     "wpackagist-plugin/show-environment-in-admin-bar": "^1.1",
@@ -64,11 +59,8 @@
     "jameelmoses/wordpress-kint-debugger": "^1.0",
     "wpackagist-plugin/query-monitor": "^3.3",
     "wpackagist-plugin/user-switching": "^1.5",
-    "generoi/wp-xhprof": "^0.1",
 
     "wp-cli/wp-cli-bundle": "^2.2",
-    "cweagans/composer-patches": "~1.0",
-    "generoi/genero-conf": "~1.1",
     "kinsta/kinsta-mu-plugins": "^2.3",
     "satispress/advanced-custom-fields-pro": "^5.9",
     "satispress/gravityforms": "^2.4",
@@ -79,7 +71,6 @@
     "log1x/navi": "^2.0",
     "log1x/acf-composer": "^2.0",
     "generoi/sage-nativeblock": "^0.2.0",
-    "generoi/sage-demo-content": "dev-master",
     "inpsyde/wp-translation-downloader": "^2.3"
   },
   "require-dev": {
@@ -101,20 +92,12 @@
     "allow-plugins": {
       "composer/installers": true,
       "roots/wordpress-core-installer": true,
-      "cweagans/composer-patches": true,
-      "koodimonni/composer-dropin-installer": true,
       "inpsyde/wp-translation-downloader": true
     }
   },
   "minimum-stability": "dev",
   "prefer-stable": true,
   "extra": {
-    "dropin-paths": {
-      "web/app/": [
-        "package:wpackagist-plugin/wp-super-cache:advanced-cache.php",
-        "type:wordpress-dropin"
-      ]
-    },
     "hooks": {
       "pre-commit": "composer test",
       "post-merge": "composer install:development"
