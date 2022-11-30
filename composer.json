@@ -31,7 +31,6 @@
   ],
   "require": {
     "php": ">=7.2",
-    "koodimonni/composer-dropin-installer": "*",
     "composer/installers": "^1.7",
     "vlucas/phpdotenv": "^5.3.0",
     "roots/wordpress": "^6.0",
@@ -39,9 +38,6 @@
     "roots/wp-password-bcrypt": "1.1.0",
     "roots/wp-config": "1.0.0",
     "jjgrainger/posttypes": "~2.0",
-
-    "koodimonni-language/fi": "*",
-    "koodimonni-language/sv_se": "*",
 
     "wpackagist-plugin/safe-svg": "^1.9",
     "wpackagist-plugin/limit-login-attempts-reloaded": "^2.6.1",
@@ -83,7 +79,8 @@
     "log1x/navi": "^2.0",
     "log1x/acf-composer": "^2.0",
     "generoi/sage-nativeblock": "^0.2.0",
-    "generoi/sage-demo-content": "dev-master"
+    "generoi/sage-demo-content": "dev-master",
+    "inpsyde/wp-translation-downloader": "^2.3"
   },
   "require-dev": {
     "squizlabs/php_codesniffer": "^3.4.2",
@@ -102,19 +99,17 @@
     "process-timeout": 0,
     "theme-dir": "web/app/themes/wp-gds-theme",
     "allow-plugins": {
-      "koodimonni/composer-dropin-installer": true,
       "composer/installers": true,
       "roots/wordpress-core-installer": true,
-      "cweagans/composer-patches": true
+      "cweagans/composer-patches": true,
+      "koodimonni/composer-dropin-installer": true,
+      "inpsyde/wp-translation-downloader": true
     }
   },
   "minimum-stability": "dev",
   "prefer-stable": true,
   "extra": {
     "dropin-paths": {
-      "web/app/languages/": ["vendor:koodimonni-language"],
-      "web/app/languages/plugins/": ["vendor:koodimonni-plugin-language"],
-      "web/app/languages/themes/": ["vendor:koodimonni-theme-language"],
       "web/app/": [
         "package:wpackagist-plugin/wp-super-cache:advanced-cache.php",
         "type:wordpress-dropin"
@@ -129,7 +124,33 @@
       "web/app/plugins/{$name}/": ["type:wordpress-plugin"],
       "web/app/themes/{$name}/": ["type:wordpress-theme"]
     },
-    "wordpress-install-dir": "web/wp"
+    "wordpress-install-dir": "web/wp",
+    "wp-translation-downloader": {
+      "languages": [
+        "fi",
+        "sv_SE"
+      ],
+      "excludes": [
+        "generoi/*",
+        "satispress/*",
+        "jameelmoses/*",
+        "soberwp/*",
+        "wpackagist-plugin/safe-svg",
+        "wpackagist-plugin/limit-login-attempts-reloaded",
+        "wpackagist-plugin/wp-sanitize-file-name-plus",
+        "wpackagist-plugin/stream",
+        "wpackagist-plugin/gravity-forms-google-analytics-event-tracking",
+        "wpackagist-plugin/google-tag-manager",
+        "wpackagist-plugin/redirection",
+        "wpackagist-plugin/show-environment-in-admin-bar",
+        "wpackagist-plugin/regenerate-thumbnails",
+        "wpackagist-plugin/debug-bar",
+        "wpackagist-plugin/debug-bar-remote-requests",
+        "wpackagist-plugin/query-monitor",
+        "wpackagist-plugin/user-switching"
+      ],
+      "directory": "web/app/languages"
+    }
   },
   "scripts": {
     "post-create-project-cmd": "Generoi\\Robo\\Composer\\ComposerScript::postCreateProject",
