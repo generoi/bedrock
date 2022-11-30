@@ -34,8 +34,10 @@ if (file_exists($root_dir . '/.env')) {
  * Set up our global environment constant and load its config first
  * Default: production
  */
-$env = env('WP_ENV') ?: 'production';
-if (preg_match('/\bstaging\b/i', gethostname())) {
+$env = 'production';
+if (preg_match('/\bddev\b/i', $_SERVER['SERVER_NAME']) || preg_match('/\btest\b/i', $_SERVER['SERVER_NAME'])) { // check ddev or vagrant environment
+    $env = 'development';
+} elseif (preg_match('/\bstaging\b/i', gethostname())) {
     $env = 'staging';
 }
 define('WP_ENV', $env);

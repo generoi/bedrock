@@ -21,3 +21,5 @@ Config::define('ACF_LITE', false);
 Config::define('WP_ALLOW_REPAIR', true);
 
 ini_set('display_errors', '1');
+
+Config::define('WP_HOME', 'https://<example-project>.ddev.site');
