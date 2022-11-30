@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "a5c9be4a150f639e9db6279415de2fc0",
+    "content-hash": "1b99eea01ad433d058425e4b2bd2bc16",
     "packages": [
         {
             "name": "brick/math",
@@ -10424,16 +10424,16 @@
         },
         {
             "name": "generoi/deployer-genero",
-            "version": "v0.2.0",
+            "version": "dev-feature/set-wp-home",
             "source": {
                 "type": "git",
                 "url": "https://github.com/generoi/deployer-genero.git",
-                "reference": "2a0d67b72598b78db1f139566cd00b6893ca8f5c"
+                "reference": "2fbf75204b1de5f1e02d74d23c0a13c3a254d70b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/generoi/deployer-genero/zipball/2a0d67b72598b78db1f139566cd00b6893ca8f5c",
-                "reference": "2a0d67b72598b78db1f139566cd00b6893ca8f5c",
+                "url": "https://api.github.com/repos/generoi/deployer-genero/zipball/2fbf75204b1de5f1e02d74d23c0a13c3a254d70b",
+                "reference": "2fbf75204b1de5f1e02d74d23c0a13c3a254d70b",
                 "shasum": ""
             },
             "require": {
@@ -10466,9 +10466,9 @@
             ],
             "support": {
                 "issues": "https://github.com/generoi/deployer-genero/issues",
-                "source": "https://github.com/generoi/deployer-genero/tree/v0.2.0"
+                "source": "https://github.com/generoi/deployer-genero/tree/feature/set-wp-home"
             },
-            "time": "2021-06-09T21:30:37+00:00"
+            "time": "2022-11-30T11:14:38+00:00"
         },
         {
             "name": "squizlabs/php_codesniffer",
@@ -10576,7 +10576,9 @@
     ],
     "aliases": [],
     "minimum-stability": "dev",
-    "stability-flags": [],
+    "stability-flags": {
+        "generoi/deployer-genero": 20
+    },
     "prefer-stable": true,
     "prefer-lowest": false,
     "platform": {
