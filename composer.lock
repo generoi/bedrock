@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "4ca30f944803a8b442bccb26f6dcb807",
+    "content-hash": "9e1adf256e54162b40951e2dd956f0f2",
     "packages": [
         {
             "name": "brick/math",
@@ -1142,54 +1142,6 @@
             "time": "2022-02-09T22:44:24+00:00"
         },
         {
-            "name": "cweagans/composer-patches",
-            "version": "1.7.2",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/cweagans/composer-patches.git",
-                "reference": "e9969cfc0796e6dea9b4e52f77f18e1065212871"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/cweagans/composer-patches/zipball/e9969cfc0796e6dea9b4e52f77f18e1065212871",
-                "reference": "e9969cfc0796e6dea9b4e52f77f18e1065212871",
-                "shasum": ""
-            },
-            "require": {
-                "composer-plugin-api": "^1.0 || ^2.0",
-                "php": ">=5.3.0"
-            },
-            "require-dev": {
-                "composer/composer": "~1.0 || ~2.0",
-                "phpunit/phpunit": "~4.6"
-            },
-            "type": "composer-plugin",
-            "extra": {
-                "class": "cweagans\\Composer\\Patches"
-            },
-            "autoload": {
-                "psr-4": {
-                    "cweagans\\Composer\\": "src"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "BSD-3-Clause"
-            ],
-            "authors": [
-                {
-                    "name": "Cameron Eagans",
-                    "email": "me@cweagans.net"
-                }
-            ],
-            "description": "Provides a way to patch Composer packages.",
-            "support": {
-                "issues": "https://github.com/cweagans/composer-patches/issues",
-                "source": "https://github.com/cweagans/composer-patches/tree/1.7.2"
-            },
-            "time": "2022-01-25T19:21:20+00:00"
-        },
-        {
             "name": "dflydev/dot-access-data",
             "version": "v1.1.0",
             "source": {
@@ -1344,38 +1296,6 @@
             "time": "2021-10-22T20:16:43+00:00"
         },
         {
-            "name": "generoi/genero-conf",
-            "version": "v1.3.2",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/generoi/genero-conf.git",
-                "reference": "6248386d0d0a5681809b5a7ba87ce70f2a210aba"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/generoi/genero-conf/zipball/6248386d0d0a5681809b5a7ba87ce70f2a210aba",
-                "reference": "6248386d0d0a5681809b5a7ba87ce70f2a210aba",
-                "shasum": ""
-            },
-            "type": "library",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Oskar Schöldström",
-                    "email": "public@oxy.fi"
-                }
-            ],
-            "description": "Some shared configurations among sites",
-            "homepage": "https://github.com/generoi/genero-conf",
-            "support": {
-                "issues": "https://github.com/generoi/genero-conf/issues",
-                "source": "https://github.com/generoi/genero-conf/tree/v1.3.2"
-            },
-            "time": "2020-08-13T11:28:06+00:00"
-        },
-        {
             "name": "generoi/robo-genero",
             "version": "v0.4.1",
             "source": {
@@ -1431,65 +1351,6 @@
                 "source": "https://github.com/generoi/robo-genero/tree/v0.4.1"
             },
             "time": "2022-04-28T13:36:56+00:00"
-        },
-        {
-            "name": "generoi/sage-demo-content",
-            "version": "dev-master",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/generoi/sage-demo-content.git",
-                "reference": "a2b8f10e6beb2fa5655b04c1445f23ef36635815"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/generoi/sage-demo-content/zipball/a2b8f10e6beb2fa5655b04c1445f23ef36635815",
-                "reference": "a2b8f10e6beb2fa5655b04c1445f23ef36635815",
-                "shasum": ""
-            },
-            "require": {
-                "roots/acorn": "*"
-            },
-            "require-dev": {
-                "squizlabs/php_codesniffer": "~3.0"
-            },
-            "type": "library",
-            "extra": {
-                "acorn": {
-                    "providers": [
-                        "Genero\\Sage\\DemoContent\\DemoContentServiceProvider"
-                    ]
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Genero\\Sage\\DemoContent\\": "src/"
-                }
-            },
-            "archive": {
-                "exclude": [
-                    ".gitignore"
-                ]
-            },
-            "scripts": {
-                "test": [
-                    "phpcs --ignore=vendor --extensions=php --standard=PSR2 ."
-                ]
-            },
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Oskar Schöldström",
-                    "email": "public@oxy.fi"
-                }
-            ],
-            "homepage": "https://github.com/generoi/sage-demo-content",
-            "support": {
-                "source": "https://github.com/generoi/sage-demo-content/tree/master",
-                "issues": "https://github.com/generoi/sage-demo-content/issues"
-            },
-            "time": "2020-04-20T10:25:59+00:00"
         },
         {
             "name": "generoi/sage-nativeblock",
@@ -1549,167 +1410,6 @@
                 "issues": "https://github.com/generoi/sage-nativeblock/issues"
             },
             "time": "2022-02-18T20:04:08+00:00"
-        },
-        {
-            "name": "generoi/wp-genero-common",
-            "version": "v0.1.3",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/generoi/wp-genero-common.git",
-                "reference": "331459c78a81aff98e84f5cd3c25405e3aebca86"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/generoi/wp-genero-common/zipball/331459c78a81aff98e84f5cd3c25405e3aebca86",
-                "reference": "331459c78a81aff98e84f5cd3c25405e3aebca86",
-                "shasum": ""
-            },
-            "require": {
-                "composer/installers": "~1.0",
-                "php": ">=5.6.0"
-            },
-            "require-dev": {
-                "squizlabs/php_codesniffer": "^2.5.1"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "GeneroWP\\Common\\": "src/"
-                }
-            },
-            "archive": {
-                "exclude": [
-                    ".gitignore"
-                ]
-            },
-            "scripts": {
-                "test": [
-                    "vendor/bin/phpcs"
-                ]
-            },
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Oskar Schöldström",
-                    "email": "public@oxy.fi"
-                }
-            ],
-            "description": "Shared PHP logic for Genero WP plugins",
-            "homepage": "https://github.com/generoi/wp-genero-common",
-            "keywords": [
-                "gutenberg",
-                "wordpress"
-            ],
-            "support": {
-                "issues": "https://github.com/generoi/wp-genero-common/issues",
-                "source": "https://github.com/generoi/wp-genero-common/tree/v0.1.3"
-            },
-            "time": "2021-03-19T14:53:36+00:00"
-        },
-        {
-            "name": "generoi/wp-genero-cookieconsent",
-            "version": "v1.2.1",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/generoi/wp-genero-cookieconsent.git",
-                "reference": "911259283ddbcb04ba96f4dd8c1341aac88ab248"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/generoi/wp-genero-cookieconsent/zipball/911259283ddbcb04ba96f4dd8c1341aac88ab248",
-                "reference": "911259283ddbcb04ba96f4dd8c1341aac88ab248",
-                "shasum": ""
-            },
-            "require": {
-                "composer/installers": "~1.0",
-                "generoi/wp-genero-common": "~0.1",
-                "php": ">=5.6.0",
-                "yahnis-elsts/plugin-update-checker": "^4.4"
-            },
-            "require-dev": {
-                "squizlabs/php_codesniffer": "^2.5.1"
-            },
-            "type": "wordpress-plugin",
-            "autoload": {
-                "psr-4": {
-                    "GeneroWP\\CookieConsent\\": "src/"
-                }
-            },
-            "archive": {
-                "exclude": [
-                    ".gitignore"
-                ]
-            },
-            "scripts": {
-                "test": [
-                    "vendor/bin/phpcs"
-                ]
-            },
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Oskar Schöldström",
-                    "email": "public@oxy.fi"
-                }
-            ],
-            "description": "A wordpress plugin providing a cookie consent popup using Cookie Consent by Insites",
-            "homepage": "https://github.com/generoi/wp-genero-cookieconsent",
-            "keywords": [
-                "wordpress"
-            ],
-            "support": {
-                "issues": "https://github.com/generoi/wp-genero-cookieconsent/issues",
-                "source": "https://github.com/generoi/wp-genero-cookieconsent/tree/v1.2.1"
-            },
-            "time": "2020-10-21T13:45:25+00:00"
-        },
-        {
-            "name": "generoi/wp-xhprof",
-            "version": "v0.1.6",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/generoi/wp-xhprof.git",
-                "reference": "e271b22f800d9418306dab957725cee6e4ba964e"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/generoi/wp-xhprof/zipball/e271b22f800d9418306dab957725cee6e4ba964e",
-                "reference": "e271b22f800d9418306dab957725cee6e4ba964e",
-                "shasum": ""
-            },
-            "require": {
-                "composer/installers": "~1.0",
-                "php": ">=5.4.0",
-                "yahnis-elsts/plugin-update-checker": "^4.4"
-            },
-            "type": "wordpress-plugin",
-            "archive": {
-                "exclude": [
-                    ".gitignore"
-                ]
-            },
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Stefan Fisk"
-                }
-            ],
-            "description": "WP XHProf",
-            "homepage": "https://github.com/stefanfisk/wp-xhprof",
-            "keywords": [
-                "wordpress"
-            ],
-            "support": {
-                "issues": "https://github.com/generoi/wp-xhprof/issues",
-                "source": "https://github.com/generoi/wp-xhprof/tree/v0.1.6"
-            },
-            "time": "2019-12-16T11:51:53+00:00"
         },
         {
             "name": "gettext/gettext",
@@ -9878,24 +9578,6 @@
             "homepage": "https://wordpress.org/plugins/wordpress-seo/"
         },
         {
-            "name": "wpackagist-plugin/wp-mail-smtp",
-            "version": "3.2.1",
-            "source": {
-                "type": "svn",
-                "url": "https://plugins.svn.wordpress.org/wp-mail-smtp/",
-                "reference": "tags/3.2.1"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://downloads.wordpress.org/plugin/wp-mail-smtp.3.2.1.zip"
-            },
-            "require": {
-                "composer/installers": "^1.0 || ^2.0"
-            },
-            "type": "wordpress-plugin",
-            "homepage": "https://wordpress.org/plugins/wp-mail-smtp/"
-        },
-        {
             "name": "wpackagist-plugin/wp-sanitize-file-name-plus",
             "version": "1.0.3",
             "source": {
@@ -9912,92 +9594,6 @@
             },
             "type": "wordpress-plugin",
             "homepage": "https://wordpress.org/plugins/wp-sanitize-file-name-plus/"
-        },
-        {
-            "name": "wpackagist-plugin/wp-smartcrop",
-            "version": "2.0.5",
-            "source": {
-                "type": "svn",
-                "url": "https://plugins.svn.wordpress.org/wp-smartcrop/",
-                "reference": "tags/2.0.5"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://downloads.wordpress.org/plugin/wp-smartcrop.2.0.5.zip"
-            },
-            "require": {
-                "composer/installers": "~1.0"
-            },
-            "type": "wordpress-plugin",
-            "homepage": "https://wordpress.org/plugins/wp-smartcrop/"
-        },
-        {
-            "name": "wpackagist-plugin/wp-super-cache",
-            "version": "1.7.7",
-            "source": {
-                "type": "svn",
-                "url": "https://plugins.svn.wordpress.org/wp-super-cache/",
-                "reference": "tags/1.7.7"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://downloads.wordpress.org/plugin/wp-super-cache.1.7.7.zip"
-            },
-            "require": {
-                "composer/installers": "^1.0 || ^2.0"
-            },
-            "type": "wordpress-plugin",
-            "homepage": "https://wordpress.org/plugins/wp-super-cache/"
-        },
-        {
-            "name": "yahnis-elsts/plugin-update-checker",
-            "version": "v4.11",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/YahnisElsts/plugin-update-checker.git",
-                "reference": "3155f2d3f1ca5e7ed3f25b256f020e370515af43"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/YahnisElsts/plugin-update-checker/zipball/3155f2d3f1ca5e7ed3f25b256f020e370515af43",
-                "reference": "3155f2d3f1ca5e7ed3f25b256f020e370515af43",
-                "shasum": ""
-            },
-            "require": {
-                "ext-json": "*",
-                "php": ">=5.2.0"
-            },
-            "type": "library",
-            "autoload": {
-                "files": [
-                    "load-v4p11.php"
-                ]
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Yahnis Elsts",
-                    "email": "whiteshadow@w-shadow.com",
-                    "homepage": "http://w-shadow.com/",
-                    "role": "Developer"
-                }
-            ],
-            "description": "A custom update checker for WordPress plugins and themes. Useful if you can't host your plugin in the official WP repository but still want it to support automatic updates.",
-            "homepage": "https://github.com/YahnisElsts/plugin-update-checker/",
-            "keywords": [
-                "automatic updates",
-                "plugin updates",
-                "theme updates",
-                "wordpress"
-            ],
-            "support": {
-                "issues": "https://github.com/YahnisElsts/plugin-update-checker/issues",
-                "source": "https://github.com/YahnisElsts/plugin-update-checker/tree/v4.11"
-            },
-            "time": "2021-03-15T16:07:52+00:00"
         }
     ],
     "packages-dev": [
@@ -10649,7 +10245,6 @@
     "aliases": [],
     "minimum-stability": "dev",
     "stability-flags": {
-        "generoi/sage-demo-content": 20,
         "roave/security-advisories": 20
     },
     "prefer-stable": true,
