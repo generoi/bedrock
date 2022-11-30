@@ -1,0 +1,30 @@
+name: E2E tests
+on:
+  workflow_call:
+    inputs:
+      url:
+        required: true
+        type: string
+jobs:
+  e2e:
+    name: Run E2E tests
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v2
+
+      - name: Set URL as environmnet variable so playwright uses it
+        run: echo "URL=${{ inputs.url }}" >> $GITHUB_ENV
+
+      - name: Install dependencies
+        run: |
+          npm install @playwright/test
+          npx playwright install --with-deps
+
+      - name: Run E2E tests
+        run: npx playwright test --config=./test/e2e/playwright.config.js
+
+      - uses: actions/upload-artifact@v3
+        with:
+          name: Screenshot
+          path: screenshot.jpg

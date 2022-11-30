@@ -13,6 +13,7 @@ import('vendor/generoi/deployer-genero/setup.php');
 import('vendor/generoi/deployer-genero/wordpress.php');
 import('vendor/generoi/deployer-genero/readonly.php');
 
+require_once __DIR__ . '/vendor/autoload.php';
 $robo = Robo::createConfiguration(['robo.yml'])->export();
 
 set('scaffold_machine_name', $robo['machine_name']);
@@ -32,18 +33,8 @@ set('writable_chmod_mode', 'ug+w');
 
 set('bin/robo', './vendor/bin/robo');
 set('bin/wp', './vendor/bin/wp');
-set('bin/npm', function () {
-    return runLocally('which npm');
-});
-set('bin/composer', function () {
-    return runLocally('which composer');
-});
-set('bin/cachetool', function () {
-    if (!test('[ -f {{deploy_path}}/cachetool.phar ]')) {
-        run("cd {{deploy_path}} && curl -sLO https://github.com/gordalina/cachetool/releases/latest/download/cachetool.phar");
-    }
-    return '{{deploy_path}}/cachetool.phar';
-});
+set('bin/npm', fn() => runLocally('which npm'));
+set('bin/composer', fn () => runLocally('which composer'));
 
 /**
  * Deploy configuration
