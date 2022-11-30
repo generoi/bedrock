@@ -35,12 +35,15 @@ if (file_exists($root_dir . '/.env')) {
  * Set up our global environment constant and load its config first
  * Default: production
  */
-define('WP_ENV', env('WP_ENV') ?: 'production');
+$env = env('WP_ENV') ?: 'production';
+if (preg_match('/\bstaging\b/i', gethostname())) {
+    $env = 'staging';
+}
+define('WP_ENV', $env);
 
 /**
  * URLs
  */
-Config::define('WP_HOME', env('WP_HOME'));
 Config::define('WP_SITEURL', env('WP_SITEURL'));
 
 /**
