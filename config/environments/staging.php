@@ -16,3 +16,5 @@ use Roots\WPConfig\Config;
  */
 
 Config::define('SHC_SHOW_ENV_STAGING', 'staging');
+Config::define('WP_HOME', 'https://staging-gdsbedrock-staging.kinsta.cloud');
+Config::define('WP_SITEURL', Config::get('WP_HOME') . '/wp');
