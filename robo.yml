@@ -55,7 +55,9 @@ command:
       options:
         dirs:
           - .ddev
+          - .github
           - config
+          - test/
           - web/app/themes
           - web/app/mu-plugins
         exclude:
