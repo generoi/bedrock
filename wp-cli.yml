@@ -7,27 +7,27 @@ require:
 
 # Requires the following in your ~/.ssh/config
 #
-#     Host <example-project>.test
+#     Host gdsbedrock.test
 #       StrictHostKeyChecking no
 #       IdentityFile ~/.vagrant.d/insecure_private_key
 #
-#     Host <example-project>.fi
+#     Host gdsbedrock.fi
 #       ProxyCommand ssh deploy@minasithil.genero.fi -W %h:%p
 
 '@ddev':
   path: /var/www/html/web/wp
-  url: <example-project>.ddev.site
+  url: gdsbedrock.ddev.site
 
 '@varant':
-  ssh: vagrant@<example-project>.test/var/www/wordpress/web/wp
-  url: <example-project>.test
+  ssh: vagrant@gdsbedrock.test/var/www/wordpress/web/wp
+  url: gdsbedrock.test
 
 '@staging':
-  ssh: <example-project>@<staging-ip>:22/www/<example-project>_XYZ/public/current/web/wp
-  url: staging-<example-project>.kinsta.cloud
+  ssh: gdsbedrock@35.228.245.82:29066/www/gdsbedrock_154/public/current/web/wp
+  url: staging-gdsbedrock-staging.kinsta.cloud
 
 '@production':
-  ssh: <example-project>@<production-ip>:22/www/<example-project>_XYZ/public/current/web/wp
-  url: <example-project>.kinsta.cloud
+  ssh: gdsbedrock@35.228.245.82:32263/www/gdsbedrock_154/public/current/web/wp
+  url: gdsbedrock.kinsta.cloud
   # bin_path: $HOME/.config/composer/vendor/bin
   # php_path: /usr/bin/php72

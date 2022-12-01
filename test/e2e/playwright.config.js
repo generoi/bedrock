@@ -3,7 +3,7 @@ const config = {
     headless: true,
     viewport: { width: 1280, height: 720 },
     ignoreHTTPSErrors: true,
-    baseURL: process.env.URL || 'https://<example-project>.ddev.site',
+    baseURL: process.env.URL || 'https://gdsbedrock.ddev.site',
   },
 };
 
