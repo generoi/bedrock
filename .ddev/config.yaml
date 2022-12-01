@@ -1,4 +1,3 @@
-APIVersion: v1.7.1
 name: gdsbedrock
 type: wordpress
 docroot: web
@@ -6,14 +5,18 @@ php_version: "8.0"
 webserver_type: nginx-fpm
 router_http_port: "80"
 router_https_port: "443"
-xdebug_enabled: true
+xdebug_enabled: false
 additional_hostnames: []
 additional_fqdns: []
-mariadb_version: "10.2"
-webcache_enabled: false
+database:
+  type: mariadb
+  version: "10.4"
 nfs_mount_enabled: false
+mutagen_enabled: false
+composer_version: "2"
+use_dns_when_possible: true
+web_environment: []
+#  WP_HOME=/var/www
+nodejs_version: "16"
 provider: default
 upload_dir: web/app/uploads
-working_dir:
-  web: /var/www/html
-  db: /home
