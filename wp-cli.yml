@@ -3,7 +3,7 @@ server:
   docroot: web
 
 require:
-  - vendor/generoi/genero-conf/wp/wp-cli-pre-ssh.php
+  - config/wp-cli/pre-ssh.php
 
 # Requires the following in your ~/.ssh/config
 #
