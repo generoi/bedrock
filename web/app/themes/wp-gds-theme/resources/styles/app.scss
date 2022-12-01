@@ -3,7 +3,6 @@
 @use 'config' with ($is-editor: false);
 @use 'common/reset';
 @use 'common/typography';
-@use 'common/fonts';
 @use 'components';
 @use 'blocks';
 
