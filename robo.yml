@@ -1,33 +1,33 @@
-machine_name: <example-project>
+machine_name: gdsbedrock
 organization: generoi
 theme_path: 'web/app/themes/wp-gds-theme'
 placeholders:
   '%files': web/app/uploads/
 env:
   '@ddev':
-    host: '<example-project>.ddev.site'
+    host: 'gdsbedrock.ddev.site'
     wpcli: 'ddev exec wp-cli'
     path: /var/www/html
-    url: 'http://<example-project>.ddev.site'
+    url: 'http://gdsbedrock.ddev.site'
   '@vagrant':
-    host: '<example-project>.test'
+    host: 'gdsbedrock.test'
     user: vagrant
     path: /var/www/wordpress
-    url: 'http://<example-project>.test'
+    url: 'http://gdsbedrock.test'
   '@staging':
-    host: <staging-ip>
-    user: <example-project>
-    port: 22
-    ssh: 'ssh -p 22'
-    path: '/www/<example-project>_XYZ/public/current'
-    url: 'https://staging-<example-project>.kinsta.cloud'
+    host: 35.228.245.82
+    user: gdsbedrock
+    port: 29066
+    ssh: 'ssh -p 29066'
+    path: '/www/gdsbedrock_154/public/current'
+    url: 'https://staging-gdsbedrock-staging.kinsta.cloud'
   '@production':
-    host: <production-ip>
-    user: tehdas
-    port: 22
-    ssh: 'ssh -p 22'
-    path: '/www/<example-project>_XYZ/public/current'
-    url: 'https://<example-project>.kinsta.cloud'
+    host: 35.228.245.82
+    user: gdsbedrock
+    port: 32263
+    ssh: 'ssh -p 32263'
+    path: '/www/gdsbedrock_154/public/current'
+    url: 'https://gdsbedrock.kinsta.cloud'
 command:
   build:
     production:

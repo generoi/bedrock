@@ -23,4 +23,4 @@ jobs:
 #    needs: deploy
 #    uses: ./.github/workflows/e2e.yml
 #    with:
-#      url: 'https://<example-project>.kinsta.cloud'
+#      url: 'https://gdsbedrock.kinsta.cloud'
