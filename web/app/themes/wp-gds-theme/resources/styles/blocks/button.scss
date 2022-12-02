@@ -1,36 +1,39 @@
-/**
- * GDS
- */
 @use 'config';
-@use '~genero-design-system/src/components/gds-button' as button;
-@use '~genero-design-system/src/components/gds-text-button' as text-button;
+@use 'components/button' as *;
 
-/**
- * Button
- */
 .wp-block-button {
-  &__link {
-    @include button.base;
+  &__link,
+  &.is-style-outline &__link {
+    @include button;
 
-    &:visited {
-      color: var(--gds-button-color, inherit);
+    &.has-white-background-color {
+      color: var(--gds-color-black);
+
+      &:hover {
+        box-shadow: inset 0 0 0 2px rgba(0 0 0 / 1);
+      }
     }
   }
 
-  &.is-style-text {
-    .wp-block-button__link {
-      @include text-button.base;
+  &.is-style-outline &__link {
+    box-shadow: inset 0 0 0 1px currentColor;
+    background-color: transparent;
+    color: currentColor;
 
-      padding: 0;
-      // This style doesn't really work with wrapping text
-      white-space: nowrap;
+    &:hover {
+      box-shadow: inset 0 0 0 2px rgba(0 0 0 / 1);
     }
   }
 }
 
-@if config.$is-editor {
-  // Gutenberg adds a top margin, we only add bottom.
-  .wp-block-buttons > .wp-block {
-    margin-top: 0;
-  }
+.has-s-button-font-size {
+  font-size: var(--gds-button-s-font-size);
+}
+
+.has-m-button-font-size {
+  font-size: var(--gds-button-m-font-size);
+}
+
+.has-l-button-font-size {
+  font-size: var(--gds-button-l-font-size);
 }

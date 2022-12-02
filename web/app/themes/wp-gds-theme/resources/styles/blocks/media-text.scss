@@ -1,75 +1,31 @@
 @use 'common/breakpoints' as *;
 
-// A gutter size equivalent to 1 column + it's gutter
-
 .wp-block-media-text {
-  --media-text-gutter: var(--grid-gutter);
+  --media-text-gutter: var(--viewport-gutter);
 
-  grid-gap: var(--media-text-gutter);
-
-  > .wp-block-media-text__content {
-    // Remove core padding
-    padding-right: 0;
-    padding-left: 0;
+  @media (min-width: 600px) {
+    --media-text-gutter: var(--grid-column-1);
   }
 
-  // Larger gutters on wide/full
-  &.alignwide,
-  &.alignfull {
-    --media-text-gutter: var(--block-gutter-l);
+  & &__content {
+    padding: var(--media-text-gutter);
   }
 
-  // Alignfull needs a gutter at the viewport edge
-  &.alignfull {
+  // Remove the outer gutter since there's a viewport gutter
+  &:not(.alignfull):not(.has-background) {
+    @media (max-width: 600px) {
+      .wp-block-media-text__content {
+        padding-left: 0;
+        padding-right: 0;
+      }
+    }
+
     &.has-media-on-the-right .wp-block-media-text__content {
-      padding-left: var(--media-text-gutter);
+      padding-left: 0;
     }
 
     &:not(.has-media-on-the-right) .wp-block-media-text__content {
-      padding-right: var(--media-text-gutter);
+      padding-right: 0;
     }
   }
-
-  // When there's a background color, add a top/bottom gutter
-  &.has-background {
-    grid-gap: 0;
-
-    > .wp-block-media-text__content {
-      padding: var(--media-text-gutter);
-    }
-  }
-
-  // Blocks without a background should have smaller gutter before the previous
-  // element, eg heading.
-  &:not(.has-background).alignwide,
-  &:not(.has-background).alignfull {
-    margin-top: var(--block-gutter);
-  }
-
-  @include mq($until: large) {
-    grid-gap: 0;
-
-    &.has-background:not(.alignfull) {
-      margin-left: calc(-1 * var(--viewport-gutter));
-      margin-right: calc(-1 * var(--viewport-gutter));
-    }
-
-    // Add a larger gutter if it has a background color
-    &.is-stacked-on-mobile.has-background .wp-block-media-text__content {
-      padding-top: var(--gds-spacing-3xl);
-      padding-bottom: var(--gds-spacing-3xl);
-    }
-  }
-}
-
-// In article templates we hardcode a Media & Text block with an <img> that
-// already has object-position values set by WP SmartCrop instead of using a
-// background-image. Ensure that in these cases the <img> is displayed even if
-// core would hide it.
-.wp-block-media-text.is-image-fill .wp-block-media-text__media:not([style*="background-image:"]) > img {
-  position: relative;
-  margin: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
 }

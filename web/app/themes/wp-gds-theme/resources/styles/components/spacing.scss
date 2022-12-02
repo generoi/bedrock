@@ -1,5 +1,25 @@
 @use 'common/breakpoints' as *;
+@use 'common/functions' as *;
 @use 'config';
+
+:root {
+  // Block vertical gutters
+  --block-gutter: #{sloped-size(24px, 32px)};
+  --block-gutter-s: #{sloped-size(16px, 24px)};
+  --block-gutter-l: #{sloped-size(32px, 40px)};
+
+  // Layout
+  --viewport-gutter: 15px;
+  --content-width: var(--grid-column-8);
+  --alignwide-width: var(--grid-column-12);
+
+  @if (config.$alignfull-max-width) {
+    --alignfull-width: #{config.$alignfull-max-width};
+  }
+  @else {
+    --alignfull-width: unset;
+  }
+}
 
 // The root container only
 .is-root-container,
@@ -7,18 +27,17 @@
   // Add a viewport gutter
   padding-left: var(--viewport-gutter);
   padding-right: var(--viewport-gutter);
-  overflow-x: hidden;
 
   // First block has a top gutter unless it's full aligned in which case it's
   // considered a banner
   > :first-child:not(.alignfull),
   > .alignfull:first-child + :not(.alignfull) {
-    margin-top: var(--block-gutter-l);
+    margin-block-start: var(--block-gutter-l);
   }
 
   // Last block has a gutter before the footer
   > :last-child:not(.alignfull) {
-    margin-bottom: var(--block-gutter-l);
+    margin-block-start: var(--block-gutter-l);
   }
 }
 
@@ -35,8 +54,8 @@
     margin-left: auto;
     margin-right: auto;
     // Default vertical gutter
-    margin-top: var(--block-gutter);
-    margin-bottom: var(--block-gutter);
+    margin-block-start: var(--block-gutter-start, var(--block-gutter));
+    margin-block-end: var(--block-gutter-end, var(--block-gutter));
 
     &.has-text-align-right {
       margin-right: 0;
@@ -44,32 +63,6 @@
 
     &.has-text-align-left {
       margin-left: 0;
-    }
-  }
-
-  > .block,
-  > p,
-  > ul,
-  > ol {
-    margin-top: var(--block-gutter-s);
-    margin-bottom: var(--block-gutter-s);
-  }
-
-  > h1,
-  > h2,
-  > h3,
-  > h4,
-  > h5,
-  > h6 {
-    margin-bottom: var(--block-gutter-s);
-
-    & + h1,
-    & + h2,
-    & + h3,
-    & + h4,
-    & + h5,
-    & + h6 {
-      margin-top: calc(var(--block-gutter-s) * -1 + var(--gds-spacing-2xs));
     }
   }
 
@@ -81,9 +74,11 @@
     margin-right: calc(var(--viewport-gutter) * -1) !important;
 
     // Once alignfull limit has been reached, center the block
-    @include mq($from: config.$alignfull-max-width) {
-      margin-left: auto;
-      margin-right: auto;
+    @if (config.$alignfull-max-width) {
+      @include mq($from: config.$alignfull-max-width) {
+        margin-left: auto !important;
+        margin-right: auto !important;
+      }
     }
 
     // If it's the last child, remove the gutter with the footer

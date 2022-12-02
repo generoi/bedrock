@@ -1,8 +1,6 @@
-@use '~genero-design-system/src/styles';
-
 @use 'config' with ($is-editor: false);
 @use 'common/reset';
-@use 'common/typography';
+@use 'common/base';
 @use 'components';
 @use 'blocks';
 

@@ -3,13 +3,15 @@
 .wp-block-cover {
   box-sizing: border-box;
   color: var(--gds-color-white);
+  padding: var(--grid-gutter);
 
-  .wp-block-cover__inner-container {
-    // Override Gutenberg weirdness
-    color: inherit;
+  &.alignfull {
+    padding-left: var(--viewport-gutter);
+    padding-right: var(--viewport-gutter);
   }
 
-  @media (min-width: #{config.$alignfull-max-width}) {
-    min-height: 600px !important;
+  &__inner-container {
+    // Override Gutenberg weirdness
+    color: inherit !important;
   }
 }

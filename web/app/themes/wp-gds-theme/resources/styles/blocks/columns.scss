@@ -1,3 +1,5 @@
 .wp-block-columns {
-  //
+  &.is-layout-flex {
+    gap: var(--grid-gutter);
+  }
 }

@@ -1,9 +1,16 @@
-@use '~genero-design-system/src/components/gds-visually-hidden' as sr;
-
-.sr-only {
-  @include sr.sr-only;
+@mixin sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
 }
 
-.sr-only-focusable:not(:focus) {
-  @include sr.sr-only;
+.sr-only,
+.sr-only-focusable:not(:focus-within) {
+  @include sr-only;
 }

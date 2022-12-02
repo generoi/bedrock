@@ -42,11 +42,6 @@ mix.js('resources/scripts/app.js', 'scripts')
 mix.copyWatched('resources/images', 'public/images', {base: 'resources/images'})
   .copyWatched('resources/fonts', 'public/fonts', {base: 'resources/fonts'});
 
-// GDS
-const gdsPath = 'node_modules/genero-design-system';
-mix.copyWatched(`${gdsPath}/dist`, 'public/gds/dist', { base: `${gdsPath}/dist` })
-  .copyWatched(`${gdsPath}/loader`, 'public/gds/loader', { base: `${gdsPath}/loader` });
-
 mix.autoload({
   jquery: ['$', 'window.jQuery'],
 });

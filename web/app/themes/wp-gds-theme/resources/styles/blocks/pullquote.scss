@@ -1,48 +1,5 @@
 @use 'common/breakpoints' as *;
 
 .wp-block-pullquote {
-  border: 0;
-  text-align: left;
-  position: relative;
-  padding-left: var(--gutter);
-
-  blockquote {
-    margin-left: 0;
-
-    @include mq($from: large) {
-      margin-left: 75px;
-    }
-  }
-
-  &::before {
-    content: "“";
-    opacity: 0.5;
-    font-size: 80px;
-
-    @include mq($from: large) {
-      margin-left: 133px;
-    }
-
-    font-family: var(--gds-heading-font-family);
-    font-weight: var(--gds-heading-font-weight);
-    color: var(--gds-heading-color);
-    line-height: 1.1;
-    position: absolute;
-    top: 0;
-  }
-
-  p {
-    line-height: var(--gds-heading-line-height);
-    font-family: var(--gds-heading-font-family);
-    font-weight: var(--gds-heading-font-weight);
-    color: var(--gds-heading-color);
-  }
-
-  cite {
-    line-height: var(--gds-heading-line-height);
-    font-family: var(--gds-heading-font-family);
-    font-weight: 400;
-    text-transform: none;
-    font-size: inherit;
-  }
+  //
 }
