@@ -5,7 +5,7 @@ import {
   registerBlockCollection,
 } from '@wordpress/blocks';
 
-import './editor/blocks/gds-media-card/index';
+import './editor/blocks/media-card/index';
 import './editor/blocks/slideshow-slide/index';
 import './editor/blocks/slideshow/index';
 
