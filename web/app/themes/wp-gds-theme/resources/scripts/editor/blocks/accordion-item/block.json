@@ -1,0 +1,19 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 2,
+  "name": "gds/accordion-item",
+  "title": "Accordion Item",
+  "description": "Display an expandable item",
+  "icon": "excerpt-view",
+  "category": "layout",
+  "parent": ["gds/accordion"],
+  "attributes": {
+    "label": {
+      "type": "string"
+    }
+  },
+  "supports": {
+    "html": false,
+    "color": {}
+  }
+}

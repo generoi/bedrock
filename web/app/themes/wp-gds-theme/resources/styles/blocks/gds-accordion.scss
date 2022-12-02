@@ -1,0 +1,10 @@
+@use "config";
+
+.wp-block-gds-accordion {
+  @if config.$is-editor {
+    gds-accordion > .block-list-appender {
+      position: static;
+      width: 100%;
+    }
+  }
+}
