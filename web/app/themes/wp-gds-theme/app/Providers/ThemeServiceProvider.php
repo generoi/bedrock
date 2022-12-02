@@ -9,5 +9,6 @@ class ThemeServiceProvider extends AggregateServiceProvider
     protected $providers = [
         \App\Providers\BlockPatternServiceProvider::class,
         \App\Providers\SageServiceProvider::class,
+        \Genero\Sage\NativeBlock\NativeBlockServiceProvider::class,
     ];
 }
