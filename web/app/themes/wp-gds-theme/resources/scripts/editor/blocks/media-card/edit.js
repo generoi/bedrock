@@ -1,16 +1,12 @@
-import classnames from 'classnames';
-
 /** @wordpress */
 import { __ } from '@wordpress/i18n'
 import {
-  withColors,
   BlockControls,
   MediaPlaceholder,
   MediaReplaceFlow,
   InspectorControls,
   useBlockProps,
-  __experimentalUseInnerBlocksProps as useInnerBlocksProps,
-  __experimentalPanelColorGradientSettings as PanelColorGradientSettings,
+  useInnerBlocksProps,
 } from '@wordpress/block-editor'
 
 import {
@@ -20,21 +16,20 @@ import {
 
 import { attributesFromMedia } from '../../utils';
 
-const ALLOWED_MEDIA_TYPES = [ 'image', 'video' ];
+const ALLOWED_MEDIA_TYPES = ['image'];
 const INNER_BLOCKS_TEMPLATE = [
   [
     'core/heading', { placeholder: __('Write heading…'), level: 3 },
   ],
   [
-    'core/paragraph', { placeholder: __('Description…') },
+    'core/paragraph', { placeholder: __('Write content…') },
   ],
-  [
-    'core/buttons', {}, [
-      [
-        'core/button', { placeholder: __('Read more…')},
-      ],
-    ],
-  ],
+];
+const ALLOWED_BLOCKS = [
+  'core/heading',
+  'core/paragraph',
+  'core/buttons',
+  'core/button',
 ];
 
 function PlaceholderContainer( {
@@ -52,11 +47,11 @@ function PlaceholderContainer( {
     <MediaPlaceholder
       labels={ {
         title: __('Media'),
-        instructions: __('Upload an image or video file, or pick one from your media library.'),
+        instructions: __('Upload an image file, or pick one from your media library.'),
       } }
       className={ className }
       onSelect={ onSelectMedia }
-      accept="image/*,video/*"
+      accept="image/*"
       allowedTypes={ ALLOWED_MEDIA_TYPES }
       notices={ noticeUI }
       onError={ onUploadError }
@@ -78,7 +73,6 @@ function MediaRenderer({
 
   const mediaTypeRenderers = {
     image: () => <img src={ mediaUrl } alt={ mediaAlt } style={ style } />,
-    video: () => <video autoPlay muted loop src={ mediaUrl } style={ style } />,
   };
 
   return mediaTypeRenderers[mediaType]();
@@ -89,10 +83,6 @@ function BlockEdit(props) {
   const {
     attributes,
     setAttributes,
-    backgroundColor,
-    textColor,
-    setBackgroundColor,
-    setTextColor,
   } = props;
 
   const {
@@ -114,7 +104,7 @@ function BlockEdit(props) {
             mediaId={ mediaId }
             mediaURL={ mediaUrl }
             allowedTypes={ ALLOWED_MEDIA_TYPES }
-            accept="image/*,video/*"
+            accept="image/*"
             onSelect={ onSelectMedia }
           />
         ) }
@@ -122,52 +112,26 @@ function BlockEdit(props) {
       <InspectorControls>
         <PanelBody title={ __('Media settings') }>
           <FocalPointPicker
-              label={ __( 'Focal point picker' ) }
-              url={ mediaUrl }
-              value={ focalPoint }
-              onChange={ (value) =>
-                setAttributes({ focalPoint: value })
-              }
+            label={ __('Focal point picker') }
+            url={ mediaUrl }
+            value={ focalPoint }
+            onChange={ (focalPoint) => setAttributes({focalPoint})
+            }
           />
         </PanelBody>
-        <PanelColorGradientSettings
-          title={ __('Background & Text Color') }
-          settings={ [
-            {
-              colorValue: textColor.color,
-              onColorChange: setTextColor,
-              label: __('Text color'),
-            },
-            {
-              colorValue: backgroundColor.color,
-              onColorChange: setBackgroundColor,
-              label: __('Background'),
-            },
-          ] }
-        >
-        </PanelColorGradientSettings>
       </InspectorControls>
     </>
   );
 
-  const containerBlockProps = useBlockProps({
-    className: classnames({
-      'has-background': backgroundColor.color,
-      [ backgroundColor.class ]: backgroundColor.class,
-      'has-text-color': textColor.color,
-      [ textColor.class ]: textColor.class,
-    }),
-  });
-
   const innerBlockProps = useInnerBlocksProps(
-    { className: 'wp-block-gds-media-card__content is-block-container' },
-    { template: INNER_BLOCKS_TEMPLATE }
+    { className: 'wp-block-gds-media-card__content' },
+    { template: INNER_BLOCKS_TEMPLATE, allowedBlocks: ALLOWED_BLOCKS }
   );
 
   return (
     <>
       { controls }
-      <div { ...containerBlockProps }>
+      <div { ...useBlockProps({}) }>
         <figure className="wp-block-gds-media-card__media">
           { hasMedia && (
             <MediaRenderer
@@ -189,4 +153,4 @@ function BlockEdit(props) {
   )
 }
 
-export default withColors('backgroundColor', {textColor: 'color'})(BlockEdit);
+export default BlockEdit;

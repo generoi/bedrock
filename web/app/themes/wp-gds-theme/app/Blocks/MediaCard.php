@@ -4,7 +4,7 @@ namespace App\Blocks;
 
 use Genero\Sage\NativeBlock\NativeBlock;
 
-class GdsMediaCard extends NativeBlock
+class MediaCard extends NativeBlock
 {
     public $name = 'gds/media-card';
 

@@ -1,0 +1,43 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 2,
+  "name": "gds/media-card",
+  "title": "Media Card",
+  "description": "Display a card with media and text",
+  "category": "layout",
+  "attributes": {
+    "mediaType": {
+      "type": "string"
+    },
+    "mediaId": {
+      "type": "number"
+    },
+    "mediaUrl": {
+      "type": "string"
+    },
+    "mediaAlt": {
+      "type": "string"
+    },
+    "mediaHeight": {
+      "type": "string"
+    },
+    "focalPoint": {
+      "type": "object"
+    }
+  },
+  "supports": {
+    "html": false,
+    "color": {}
+  },
+  "example": {
+    "attributes": {
+      "mediaType": "image",
+      "mediaUrl": "https://cldup.com/Fz-ASbo2s3.jpg"
+    },
+    "innerBlocks": [
+      { "name": "core/heading" },
+      { "name": "core/paragraph" }
+    ],
+    "viewportWidth": 400
+  }
+}
