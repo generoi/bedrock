@@ -1,0 +1,68 @@
+@use "components/typography" as *;
+
+.wp-block-gds-accordion-item {
+  gds-accordion-item {
+    &::part(header) {
+      border-bottom: solid 1px currentColor;
+      padding: 16px;
+      z-index: 1;
+
+      &:focus-visible {
+        outline: solid 2px var(--gds-color-black);
+      }
+    }
+
+    [slot="label"] {
+      @include body-l;
+
+      margin-block-end: 0;
+    }
+
+    [slot="icon"] {
+      transition: transform 0.2s ease-out;
+    }
+
+    &:not([expanded])::part(content) {
+      display: none;
+    }
+
+    &[expanded] [slot="icon"] {
+      transform: rotate(180deg);
+    }
+
+    &::part(content) {
+      border-bottom-left-radius: 8px;
+      border-bottom-right-radius: 8px;
+      overflow: hidden;
+      padding: 16px;
+      margin-bottom: 16px;
+    }
+  }
+
+  &.has-background {
+    border-radius: 8px;
+
+    &:not(:first-child) {
+      margin-block-start: var(--block-gutter-s);
+    }
+
+    &:not(:last-child) {
+      margin-block-end: var(--block-gutter-s);
+    }
+  }
+
+  &:not(.has-background) gds-accordion-item {
+    &::part(header) {
+      border-bottom: solid 1px var(--gds-color-mid-gray);
+
+      &:hover {
+        color: var(--gds-color-primary);
+        border-color: currentColor;
+      }
+    }
+
+    &::part(content) {
+      background-color: var(--gds-color-lightest-gray);
+    }
+  }
+}

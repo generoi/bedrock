@@ -5,9 +5,13 @@ import {
   registerBlockCollection,
 } from '@wordpress/blocks';
 
+import './components/accordion';
+
 import './editor/blocks/media-card/index';
 import './editor/blocks/slideshow-slide/index';
 import './editor/blocks/slideshow/index';
+import './editor/blocks/accordion/index';
+import './editor/blocks/accordion-item/index';
 
 registerBlockCollection('gds', { title: 'Genero Design System' } );
 

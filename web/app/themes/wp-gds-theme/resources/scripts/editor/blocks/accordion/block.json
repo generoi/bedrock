@@ -1,0 +1,24 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 2,
+  "name": "gds/accordion",
+  "title": "Accordion",
+  "description": "Display an accordion with expandable items",
+  "category": "layout",
+  "icon": "excerpt-view",
+  "attributes": {
+    "allowMultiple": {
+      "type": "boolean"
+    }
+  },
+  "supports": {
+    "html": false,
+    "color": {}
+  },
+  "example": {
+    "innerBlocks": [
+      { "name": "gds/accordion-item" },
+      { "name": "gds/accordion-item" }
+    ]
+  }
+}
