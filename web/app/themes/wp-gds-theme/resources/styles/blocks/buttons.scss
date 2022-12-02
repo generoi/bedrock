@@ -1,17 +1,8 @@
 @use 'config';
 
 .wp-block-buttons {
-  margin-bottom: calc(var(--gds-spacing-s) * -1);
-}
+  // Set the block gap so button width settings work
+  --wp--style--block-gap: var(--grid-gutter);
 
-.wp-block-buttons .wp-block-button {
-  margin-bottom: var(--gds-spacing-s);
-  margin-right: var(--gds-spacing-s);
-}
-
-@if config.$is-editor {
-  // Some Gutenberg bug
-  .wp-block[data-align="center"] > .wp-block-buttons .block-editor-block-list__layout {
-    text-align: center;
-  }
+  gap: var(--wp--style--block-gap);
 }

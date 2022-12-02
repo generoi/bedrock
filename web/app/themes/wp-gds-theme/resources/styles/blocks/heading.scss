@@ -1,32 +1,28 @@
-/**
- * GDS
- */
-@use '~genero-design-system/src/components/gds-heading' as *;
+@use 'components/typography' as *;
 
 h1,
 h2,
 h3,
 h4,
-h5 {
-  @include base;
+h5,
+h6 {
+  @include heading;
+
+  --block-gutter-start: var(--gds-heading-margin-start);
+  --block-gutter-end: var(--gds-heading-margin-end);
 }
 
 h1 {
-  @include size-xl;
+  @include heading-l;
 }
 
 h2 {
-  @include size-l;
+  @include heading-m;
 }
 
-h3 {
-  @include size-m;
-}
-
-h4 {
-  @include size-s;
-}
-
-h5 {
-  @include size-s;
+h3,
+h4,
+h5,
+h6 {
+  @include heading-s;
 }

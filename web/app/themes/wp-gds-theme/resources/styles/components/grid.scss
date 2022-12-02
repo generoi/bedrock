@@ -2,6 +2,16 @@
 
 :root {
   --grid-columns: 12;
+  --grid-gutter: 12px;
+  --grid-column: 78px;
+
+  @include mq($from: medium) {
+    --grid-gutter: 24px;
+  }
+
+  @for $i from 1 through 12 {
+    --grid-column-#{$i}: calc(var(--grid-column) * #{$i} + var(--grid-gutter) * (#{$i} - 1));
+  }
 }
 
 .grid {

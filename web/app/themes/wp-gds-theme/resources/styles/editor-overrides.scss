@@ -3,6 +3,7 @@
  */
 
 @use 'config' with ($is-editor: true);
+@use 'components/colors';
 
 p {
   font-size: unset;

@@ -1,15 +1,1 @@
-@use 'common/breakpoints' as *;
-
-gds-navigation {
-  display: block;
-
-  --gds-navigation-height: 70px;
-
-  @include mq($from: desktopmenu) {
-    --gds-navigation-height: 100px;
-  }
-
-  &:not(.hydrated) {
-    height: var(--gds-navigation-height);
-  }
-}
+//

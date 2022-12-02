@@ -1,10 +1,9 @@
-@use '~genero-design-system/src/styles';
 @use "~swiper/swiper";
 @use "~swiper/components/pagination/pagination";
 @use "~swiper/components/navigation/navigation";
 
 @use 'config' with ($is-editor: true);
-@use 'common/typography';
+@use 'common/base';
 @use 'blocks';
 @use 'components';
 

@@ -1,0 +1,18 @@
+@use "sass:math";
+
+@function sloped-size($min-size, $max-size, $min-width: 375px, $max-width: 1400px) {
+  @return clamp(
+    #{$min-size},
+    (
+      #{$min-size} +
+      #{strip-unit($max-size - $min-size)} *
+      (100vw - #{$min-width}) /
+      #{strip-unit($max-width - $min-width)}
+    ),
+    #{$max-size}
+  );
+}
+
+@function strip-unit($value) {
+  @return math.div($value, ($value * 0 + 1));
+}

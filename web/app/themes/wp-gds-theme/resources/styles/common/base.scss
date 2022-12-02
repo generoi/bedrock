@@ -1,0 +1,63 @@
+@use "components/typography" as *;
+
+body {
+  @include body;
+
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+html,
+body,
+#app {
+  height: 100%;
+}
+
+#app {
+  display: flex;
+  flex-direction: column;
+
+  > .container {
+    flex: 1 0 auto;
+  }
+}
+
+// Avoid FOUC
+.fa,
+.fal,
+.far {
+  display: inline-block;
+  width: 1em;
+  height: 1em;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+
+  &:focus-visible {
+    outline: var(--gds-focus-outline);
+  }
+}
+
+p a,
+li > a {
+  text-decoration: underline;
+  font-weight: 700;
+
+  &:hover {
+    color: var(--gds-link-hover-color);
+
+    .has-background:not(.has-white-background-color) & {
+      color: var(--gds-color-mid-gray);
+    }
+  }
+}
+
+:first-child {
+  margin-top: 0;
+}
+
+:last-child {
+  margin-bottom: 0;
+}

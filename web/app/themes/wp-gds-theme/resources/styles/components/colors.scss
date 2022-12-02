@@ -1,0 +1,22 @@
+:root {
+  --gds-color-white: #fff;
+  --gds-color-black: #000;
+  --gds-color-primary: #1d7c88;
+  --gds-color-secondary: #8d6c93;
+  --gds-color-lightest-gray: #f8f8f8;
+  --gds-color-light-gray: #eee;
+  --gds-color-mid-gray: #acacac;
+  --gds-color-dark-gray: #646464;
+  --gds-color-success: #1fc900;
+  --gds-color-error: #df5c4e;
+}
+
+.has-primary-background-color,
+.has-secondary-background-color,
+.has-black-background-color {
+  color: var(--gds-color-white);
+}
+
+.has-white-background-color {
+  color: var(--gds-color-black);
+}

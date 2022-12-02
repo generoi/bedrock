@@ -1,16 +1,17 @@
+@use 'common/breakpoints' as *;
+
 .wp-block-image {
-  margin-top: var(--block-gutter-l);
-  margin-bottom: var(--block-gutter-l);
-}
+  @include mq($from: medium) {
+    &.alignleft {
+      float: left;
+      margin-block-start: 0.35em;
+      margin-right: var(--grid-gutter);
+    }
 
-[data-align="left"] > .wp-block-image,
-.wp-block-image .alignleft {
-  margin-top: 0.35em;
-  margin-right: var(--grid-gutter);
-}
-
-[data-align="right"] > .wp-block-image,
-.wp-block-image .alignright {
-  margin-top: 0.35em;
-  margin-left: var(--grid-gutter);
+    &.alignright {
+      float: right;
+      margin-block-start: 0.35em;
+      margin-left: var(--grid-gutter);
+    }
+  }
 }

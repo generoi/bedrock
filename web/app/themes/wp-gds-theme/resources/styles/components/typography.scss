@@ -1,0 +1,77 @@
+@use 'common/functions' as *;
+
+:root {
+  // Headings
+  --gds-heading-font-family: 'Open sans', sans-serif;
+  --gds-heading-xl-font-size: #{sloped-size(32px, 56px)};
+  --gds-heading-l-font-size: #{sloped-size(30px, 36px)};
+  --gds-heading-m-font-size: #{sloped-size(22px, 26px)};
+  --gds-heading-s-font-size: #{sloped-size(18px, 20px)};
+  --gds-heading-margin-start: var(--block-gutter);
+  --gds-heading-margin-end: var(--block-gutter-s);
+
+  // Body
+  --gds-body-font-family: 'Open sans', sans-serif;
+  --gds-body-l-font-size: 18px;
+  --gds-body-m-font-size: 16px;
+  --gds-body-s-font-size: 15px;
+
+  // Other
+  --gds-link-hover-color: var(--gds-color-primary);
+  --gds-focus-outline: solid 2px currentColor;
+}
+
+@mixin heading {
+  display: block;
+  font-family: var(--gds-heading-font-family);
+  font-weight: 600;
+  line-height: 1.22;
+  margin-block-start: var(--gds-heading-margin-start);
+  margin-block-end: var(--gds-heading-margin-end);
+
+  &:first-child {
+    margin-block-start: 0;
+  }
+
+  &:last-child {
+    margin-block-end: 0;
+  }
+}
+
+@mixin heading-xl {
+  font-size: var(--gds-heading-xl-font-size);
+  font-weight: 700;
+  line-height: 1.07;
+}
+
+@mixin heading-l {
+  font-size: var(--gds-heading-l-font-size);
+  font-weight: 700;
+}
+
+@mixin heading-m {
+  font-size: var(--gds-heading-m-font-size);
+}
+
+@mixin heading-s {
+  font-size: var(--gds-heading-s-font-size);
+}
+
+@mixin body {
+  font-family: var(--gds-body-font-family);
+  font-size: var(--gds-body-m-font-size);
+  font-weight: 400;
+  line-height: 1.333;
+}
+
+@mixin body-l {
+  font-size: var(--gds-body-l-font-size);
+}
+
+@mixin body-m {
+  font-size: var(--gds-body-m-font-size);
+}
+
+@mixin body-s {
+  font-size: var(--gds-body-s-font-size);
+}
