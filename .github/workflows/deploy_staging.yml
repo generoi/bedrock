@@ -19,8 +19,8 @@ jobs:
       environment: 'staging'
       ref: ${{ inputs.ref }}
       log_level: ${{ inputs.log_level }}
-#  e2e:
-#    needs: deploy
-#    uses: ./.github/workflows/e2e.yml
-#    with:
-#      url: 'https://staging-gdsbedrock.kinsta.cloud'
+  e2e:
+    needs: deploy
+    uses: ./.github/workflows/e2e.yml
+    with:
+      url: 'https://staging-gdsbedrock.kinsta.cloud'
