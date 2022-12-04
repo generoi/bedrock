@@ -6,7 +6,15 @@
 
 namespace App;
 
+use Roots\Acorn\Assets\Contracts\Asset;
+use WP_Theme_JSON_Data;
+
 use function Roots\asset;
+
+/**
+ * @see https://make.wordpress.org/core/2021/07/01/block-styles-loading-enhancements-in-wordpress-5-8/
+ */
+add_filter('should_load_separate_core_block_assets', '__return_true');
 
 /**
  * Register the theme assets.
@@ -47,6 +55,18 @@ add_action('wp_print_styles', function () {
     wp_dequeue_style('wp-smart-crop-renderer'); // wp-smartcrop
     wp_dequeue_script('jquery.wp-smartcrop'); // wp-smartcrop
 }, 100);
+
+/**
+ * Remove some default global-styles set by core.
+ */
+add_filter('wp_theme_json_data_default', function (\WP_Theme_JSON_Data $jsonData) {
+    $data = $jsonData->get_data();
+    unset($data['styles']['elements']['button']);
+    unset($data['styles']['elements']['link']);
+
+    $jsonData = new WP_Theme_JSON_Data($data);
+    return $jsonData;
+}, 1000);
 
 /**
  * Register the initial theme setup.
@@ -102,6 +122,22 @@ add_action('after_setup_theme', function () {
 
     // Enqueue editor styles
     add_editor_style('public/styles/editor.css');
+
+    // @see https://make.wordpress.org/core/2021/12/15/using-multiple-stylesheets-per-block/
+    $manifest = config('assets.manifests.theme.assets');
+    collect(json_decode(file_get_contents($manifest), true))
+        ->keys()
+        ->filter(fn ($file) => strpos($file, '/styles/blocks/') === 0)
+        ->map(fn ($file) => asset($file))
+        ->each(function (Asset $asset) {
+            $filename = pathinfo(basename($asset->path()), PATHINFO_FILENAME);
+            [$collection, $blockName] = explode('-', $filename, 2);
+            wp_enqueue_block_style("$collection/$blockName", [
+                'handle' => "sage/block/$filename",
+                'src' => $asset->uri(),
+                'path' => $asset->path(),
+            ]);
+        });
 }, 20);
 
 /**

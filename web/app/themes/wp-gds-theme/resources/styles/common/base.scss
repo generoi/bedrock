@@ -54,6 +54,20 @@ li > a {
   }
 }
 
+ul,
+ol {
+  box-sizing: border-box;
+  padding-left: 16px;
+
+  &:first-child {
+    margin-block-start: 0;
+  }
+}
+
+ul {
+  list-style-type: disc;
+}
+
 :first-child {
   margin-top: 0;
 }

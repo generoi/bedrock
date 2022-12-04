@@ -3,6 +3,8 @@ require('@tinypixelco/laravel-mix-wp-blocks');
 require('laravel-mix-copy-watched');
 const fs = require('fs');
 const yaml = require('js-yaml');
+const path = require('path');
+const glob = require('glob');
 
 /*
  |--------------------------------------------------------------------------
@@ -24,6 +26,11 @@ mix.setPublicPath('./public')
       chunkFilename: '[name].[contenthash:8].js',
       publicPath: global.Config.resourceRoot,
     },
+    resolve: {
+      alias: {
+        '@': path.resolve('resources/styles'),
+      },
+    },
   })
   .browserSync({
     // You need to make sure the host is hardcoded in robo.yml
@@ -38,6 +45,11 @@ mix.sass('resources/styles/app.scss', 'styles')
 
 mix.js('resources/scripts/app.js', 'scripts')
    .blocks('resources/scripts/editor.js', 'scripts', {disableRegenerator: true});
+
+glob.sync('resources/styles/blocks/*').forEach((file) => {
+  mix.sass(file, 'styles/blocks');
+});
+
 
 mix.copyWatched('resources/images', 'public/images', {base: 'resources/images'})
   .copyWatched('resources/fonts', 'public/fonts', {base: 'resources/fonts'});
