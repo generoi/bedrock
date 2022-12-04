@@ -1,5 +1,5 @@
-@use 'config';
-@use 'components/button' as *;
+@use '~@/config';
+@use '~@/components/button' as *;
 
 .wp-block-button {
   &__link,

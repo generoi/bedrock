@@ -1,4 +1,4 @@
-@use "config";
+@use '~@/config';
 
 .wp-block-gds-accordion {
   @if config.$is-editor {

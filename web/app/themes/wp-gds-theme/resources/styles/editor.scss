@@ -4,7 +4,6 @@
 
 @use 'config' with ($is-editor: true);
 @use 'common/base';
-@use 'blocks';
 @use 'components';
 
 .wp-block {

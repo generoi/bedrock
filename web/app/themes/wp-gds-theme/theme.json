@@ -34,9 +34,11 @@
       "gradients": [],
       "link": false,
       "custom": false,
+      "customDuotone": false,
       "customGradient": false,
       "defaultPalette": false,
-      "defaultGradients": false
+      "defaultGradients": false,
+      "defaultDuotone": false
     },
     "spacing": {
       "customSpacingSize": false,
