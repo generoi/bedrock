@@ -1,9 +1,9 @@
 <div {!! get_block_wrapper_attributes() !!}>
   <figure class="wp-block-gds-media-card__media">
-    @if ($mediaId ?? false)
-      {!! wp_get_attachment_image($mediaId, 'large') !!}
-    @else
-      <img src="{!! $mediaUrl !!}" />
+    @if ($attributes->mediaId ?? false)
+      {!! wp_get_attachment_image($attributes->mediaId, 'large') !!}
+    @elseif ($attributes->mediaUrl ?? false)
+      <img src="{!! $attributes->mediaUrl !!}" />
     @endif
   </figure>
   <div class="wp-block-gds-media-card__content">

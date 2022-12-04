@@ -14,7 +14,7 @@ import {
   FocalPointPicker,
 } from '@wordpress/components';
 
-import { attributesFromMedia } from '../../utils';
+import { attributesFromMedia } from '~/editor/utils.js';
 
 const ALLOWED_MEDIA_TYPES = ['image'];
 const INNER_BLOCKS_TEMPLATE = [

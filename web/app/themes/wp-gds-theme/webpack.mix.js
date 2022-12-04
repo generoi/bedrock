@@ -29,6 +29,7 @@ mix.setPublicPath('./public')
     resolve: {
       alias: {
         '@': path.resolve('resources/styles'),
+        '~': path.resolve('resources/scripts'),
       },
     },
   })
@@ -50,6 +51,20 @@ glob.sync('resources/styles/blocks/*').forEach((file) => {
   mix.sass(file, 'styles/blocks');
 });
 
+const buildPath = (file) => `blocks/${path.basename(path.dirname(file))}`
+
+glob.sync('resources/blocks/*/*').forEach((file) => {
+  if (/.scss$/.test(file)) {
+    mix.sass(file, buildPath(file))
+  } else if (/index.js$/.test(file)) {
+    mix.blocks(file, buildPath(file));
+  } else if (/.js$/.test(file)) {
+    mix.js(file, buildPath(file));
+  } else if (/.json$/.test(file)) {
+    const destination = `public/${buildPath(file)}/${path.basename(file)}`;
+    mix.copy(file, destination);
+  }
+})
 
 mix.copyWatched('resources/images', 'public/images', {base: 'resources/images'})
   .copyWatched('resources/fonts', 'public/fonts', {base: 'resources/fonts'});
