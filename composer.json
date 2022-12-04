@@ -92,7 +92,8 @@
       "composer/installers": true,
       "roots/wordpress-core-installer": true,
       "inpsyde/wp-translation-downloader": true
-    }
+    },
+    "prepend-autoloader": false
   },
   "minimum-stability": "dev",
   "prefer-stable": true,
