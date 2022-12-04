@@ -39,5 +39,7 @@
       { "name": "core/paragraph" }
     ],
     "viewportWidth": 400
-  }
+  },
+  "editorScript": "file:./index.js",
+  "style": "file:./style.css"
 }

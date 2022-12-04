@@ -20,5 +20,8 @@
       { "name": "gds/accordion-item" },
       { "name": "gds/accordion-item" }
     ]
-  }
+  },
+  "editorScript": "file:./index.js",
+  "editorStyle": "file:./editor.css",
+  "script": "file:/script.js"
 }

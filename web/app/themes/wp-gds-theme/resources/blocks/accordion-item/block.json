@@ -15,5 +15,8 @@
   "supports": {
     "html": false,
     "color": {}
-  }
+  },
+  "editorScript": "file:./index.js",
+  "style": "file:./style.css",
+  "script": "file:/script.js"
 }

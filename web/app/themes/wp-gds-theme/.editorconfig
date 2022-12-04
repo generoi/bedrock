@@ -22,3 +22,9 @@ indent_size = 2
 
 [index.php]
 indent_size = 2
+
+[resources/blocks/**.php]
+indent_size = 4
+
+[resources/blocks/**.blade.php]
+indent_size = 2
