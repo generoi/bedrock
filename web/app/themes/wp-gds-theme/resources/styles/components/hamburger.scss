@@ -1,0 +1,75 @@
+:root {
+  --gds-hamburger-width: 25px;
+  --gds-hamburger-color: currentColor;
+  --gds-hamburger-thickness: 3px;
+  --gds-hamburger-line-separation: 5px;
+}
+
+@mixin base {
+  position: relative;
+  margin-top: calc(var(--gds-hamburger-thickness) + var(--gds-hamburger-line-separation));
+  margin-bottom: calc(var(--gds-hamburger-thickness) + var(--gds-hamburger-line-separation));
+  user-select: none;
+
+  &,
+  &::before,
+  &::after {
+    display: block;
+    width: var(--gds-hamburger-width);
+    height: var(--gds-hamburger-thickness);
+    background-color: var(--gds-hamburger-color);
+    outline: 1px solid transparent; // 1
+
+    @media (prefers-reduced-motion: no-preference) {
+      transition-property: background-color, transform;
+      transition-duration: 0.2s;
+    }
+  }
+
+  &::before,
+  &::after {
+    position: absolute;
+    content: '';
+  }
+
+  &::before {
+    top: calc(
+      -1 * (var(--gds-hamburger-thickness) + var(--gds-hamburger-line-separation))
+    );
+  }
+
+  &::after {
+    top: calc(
+      var(--gds-hamburger-thickness) + var(--gds-hamburger-line-separation)
+    );
+  }
+}
+
+@mixin active {
+  background-color: transparent;
+
+  &::before,
+  &::after {
+    background-color: var(--gds-hamburger-color);
+  }
+
+  &::before {
+    transform:
+      translateY(
+        calc(
+          var(--gds-hamburger-line-separation) + var(--gds-hamburger-thickness)
+        )
+      )
+      rotate(45deg);
+  }
+
+  &::after {
+    transform:
+      translateY(
+        calc(
+          -1 * (var(--gds-hamburger-line-separation) + var(--gds-hamburger-thickness))
+        )
+      )
+      rotate(-45deg);
+  }
+}

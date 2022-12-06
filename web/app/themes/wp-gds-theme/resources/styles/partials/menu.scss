@@ -1,0 +1,127 @@
+@use '@/common/breakpoints' as *;
+
+@include mq($until: desktopmenu) {
+  .menu {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .menu-item {
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+
+    &__link {
+      display: block;
+      text-decoration: none;
+      padding: 16px 24px;
+      font-weight: 700;
+
+      &:only-child {
+        width: 100%;
+      }
+
+      &:hover {
+        color: var(--gds-color-primary);
+      }
+
+      &.is-active {
+        text-decoration: underline;
+      }
+
+      .menu-item__submenu & {
+        font-weight: 400;
+        padding-left: 40px;
+      }
+    }
+
+    &__toggle {
+      font-size: 12px;
+      flex: 1 0 auto;
+      padding-right: 24px;
+      justify-content: flex-end;
+
+      > * {
+        transition: all 0.1s ease-out;
+      }
+
+      &[aria-expanded="true"] > * {
+        transform: rotate(180deg);
+      }
+    }
+
+    &__submenu {
+      display: none;
+      flex-direction: column;
+      background-color: var(--gds-color-lightest-gray);
+      top: 100%;
+      width: 100%;
+
+      .menu-item__toggle[aria-expanded="true"] ~ & {
+        display: flex;
+      }
+    }
+  }
+}
+
+@include mq($from: desktopmenu) {
+  .menu {
+    display: flex;
+    flex-wrap: wrap;
+    column-gap: 24px;
+  }
+
+  .menu-item {
+    position: relative;
+    display: flex;
+
+    &__link {
+      display: block;
+      text-decoration: none;
+      padding: 8px;
+
+      &:hover {
+        color: var(--gds-color-primary);
+        font-weight: 700;
+      }
+
+      &.is-active {
+        font-weight: 700;
+        text-decoration: underline;
+      }
+    }
+
+    &__toggle {
+      transition: all 0.1s ease-out;
+      margin-left: -8px;
+      font-size: 12px;
+      padding: 4px;
+
+      .menu-item:hover > &,
+      &[aria-expanded="true"] {
+        transform: rotate(180deg);
+      }
+    }
+
+    &__submenu {
+      display: none;
+      flex-direction: column;
+      position: absolute;
+      background-color: var(--gds-color-white);
+      z-index: 10;
+      top: 100%;
+      box-shadow: 1px 1px 4px #00000019;
+      min-width: 150px;
+      margin-left: -8px;
+
+      .menu-item:hover > &,
+      .menu-item__toggle[aria-expanded="true"] ~ & {
+        display: flex;
+      }
+
+      .menu-item__link {
+        padding: 8px 16px;
+      }
+    }
+  }
+}

@@ -39,6 +39,11 @@
   > :last-child:not(.alignfull) {
     margin-block-start: var(--block-gutter-l);
   }
+
+  // First block followd by main content marker should not have a gutter
+  > #main-content:first-child + .alignfull {
+    margin-top: 0;
+  }
 }
 
 // Any container that can contain blocks or inner blocks.
