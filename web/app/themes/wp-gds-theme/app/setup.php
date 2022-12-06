@@ -36,6 +36,16 @@ add_action('wp_enqueue_scripts', function () {
 }, 100);
 
 /**
+ * Replace core jQuery with theme's jQuery.
+ */
+add_action('wp_enqueue_scripts', function () {
+    wp_deregister_script('jquery');
+    wp_deregister_script('jquery-core');
+    wp_deregister_script('jquery-migrate');
+    wp_register_script('jquery', asset('scripts/jquery.js')->uri(), false, null, true);
+});
+
+/**
  * Register the theme assets with the block editor.
  *
  * @return void
