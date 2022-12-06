@@ -19,7 +19,7 @@ class BlockPatternServiceProvider extends ServiceProvider
     protected function registerBlockPatterns()
     {
         $appName = $this->app['config']->get('app.name');
-        $patterns = $this->app['config']->get('theme.patterns');
+        $patterns = $this->app['config']->get('theme.patterns') ?: [];
         $patternDir = $this->app->resourcePath('patterns');
 
         foreach ($patterns as $pattern) {
