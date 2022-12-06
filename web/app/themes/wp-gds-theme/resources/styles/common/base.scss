@@ -1,4 +1,6 @@
 @use "components/typography" as *;
+@use "components/button" as button;
+@use "components/form" as form;
 
 body {
   @include body;
@@ -91,4 +93,61 @@ ul {
 
 :last-child {
   margin-bottom: 0;
+}
+
+[type="text"],
+[type="password"],
+[type="date"],
+[type="datetime"],
+[type="datetime-local"],
+[type="month"],
+[type="week"],
+[type="email"],
+[type="number"],
+[type="search"],
+[type="tel"],
+[type="time"],
+[type="url"],
+[type="color"],
+select,
+textarea {
+  @include form.base;
+}
+
+textarea {
+  resize: vertical;
+  word-wrap: break-word;
+}
+
+::placeholder {
+  color: var(--gds-color-mid-gray);
+}
+
+label {
+  @include form.label;
+}
+
+fieldset {
+  border: 0;
+  margin: 0;
+  padding: 0;
+}
+
+select:not([multiple]) {
+  @include form.select;
+}
+
+[type="file"]::-webkit-file-upload-button {
+  @include button.button;
+  @include button.outline;
+  @include button.size-s;
+
+  margin-right: 8px;
+}
+
+[type="submit"] {
+  appearance: none;
+  cursor: pointer;
+
+  @include button.button;
 }

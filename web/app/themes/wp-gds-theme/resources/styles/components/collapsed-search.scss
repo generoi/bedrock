@@ -37,10 +37,6 @@
     padding-left: 16px;
     padding-right: 24px; // make room for the "x" to remove search
 
-    &::placeholder {
-      color: var(--gds-color-mid-gray);
-    }
-
     &::-webkit-search-cancel-button {
       appearance: none;
       mask-image: svg-load("../node_modules/@fortawesome/fontawesome-free/svgs/solid/xmark.svg");
