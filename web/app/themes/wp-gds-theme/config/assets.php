@@ -51,6 +51,8 @@ return [
         'admin-bar',
         'debug-bar',
         'wp-genero-cookieconsent/js',
+        'moxiejs', // gravityforms
+        'plupload', // gravityforms
     ],
 
     'async_scripts' => [
@@ -59,6 +61,7 @@ return [
     ],
 
     'async_styles' => [
+        // 'sage/fonts.css',
         'dashicons',
         'debug-bar',
         'ptam-style-css',

@@ -80,3 +80,25 @@ add_filter('embed_oembed_html', function ($cache, $url, $attr, $post_id) {
         'youtube_id' => $youtubeId,
     ]);
 }, 10, 4);
+
+/**
+ * Add "lazy" loading attribute to all images.
+ */
+add_filter('wp_get_attachment_image_attributes', function ($attr) {
+    if (is_admin()) {
+        return $attr;
+    }
+    $attr['loading'] = 'lazy';
+    return $attr;
+}, PHP_INT_MAX);
+
+/**
+ * Add "lazy" loading attribute to all images in content.
+ */
+add_filter('wp_content_img_tag', function ($filteredImage, $context, $attachmentId) {
+    if (!str_contains($filteredImage, 'loading="')) {
+        $filteredImage = str_replace('<img ', '<img loading="lazy" ', $filteredImage);
+    }
+
+    return $filteredImage;
+}, 10, 3);
