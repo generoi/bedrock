@@ -1,33 +1,33 @@
-machine_name: <example-project>
+machine_name: bedrock-playground
 organization: generoi
 theme_path: 'web/app/themes/wp-gds-theme'
 placeholders:
   '%files': web/app/uploads/
 env:
   '@ddev':
-    host: '<example-project>.ddev.site'
+    host: 'bedrock-playground.ddev.site'
     wpcli: 'ddev exec wp-cli'
     path: /var/www/html
-    url: 'http://<example-project>.ddev.site'
+    url: 'http://bedrock-playground.ddev.site'
   '@vagrant':
-    host: '<example-project>.test'
+    host: 'bedrock-playground.test'
     user: vagrant
     path: /var/www/wordpress
-    url: 'http://<example-project>.test'
+    url: 'http://bedrock-playground.test'
   '@staging':
     host: <staging-ip>
-    user: <example-project>
+    user: bedrock-playground
     port: 22
     ssh: 'ssh -p 22'
-    path: '/www/<example-project>_XYZ/public/current'
-    url: 'https://staging-<example-project>.kinsta.cloud'
+    path: '/www/bedrock-playground_XYZ/public/current'
+    url: 'https://staging-bedrock-playground.kinsta.cloud'
   '@production':
     host: <production-ip>
     user: tehdas
     port: 22
     ssh: 'ssh -p 22'
-    path: '/www/<example-project>_XYZ/public/current'
-    url: 'https://<example-project>.kinsta.cloud'
+    path: '/www/bedrock-playground_XYZ/public/current'
+    url: 'https://bedrock-playground.kinsta.cloud'
 command:
   build:
     production:

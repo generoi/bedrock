@@ -1,4 +1,4 @@
-# <example-project>
+# bedrock-playground
 
 > **Note, here's a [diff](https://github.com/generoi/bedrock/compare/genero...roots:master) of upstream commits missing from our bedrock fork**
 
@@ -89,8 +89,8 @@ your global `auth.json` usually located at `~/.composer/auth.json` should end up
 ### Setup and run project
 
     # Clone the repository and install the development dependencies.
-    git clone --recursive git@github.com:generoi/<example-project>.git <example-project>
-    cd <example-project>
+    git clone --recursive git@github.com:generoi/bedrock-playground.git bedrock-playground
+    cd bedrock-playground
 
     # Install composer dependencies and development tools (vendor folder)
     composer install:development
