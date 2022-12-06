@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "db25355b2cbcb4b767cbcf08cba9bf83",
+    "content-hash": "1c2452ddecfd046aa74b51d4d058f956",
     "packages": [
         {
             "name": "brick/math",
@@ -9533,6 +9533,24 @@
             },
             "type": "wordpress-plugin",
             "homepage": "https://wordpress.org/plugins/safe-svg/"
+        },
+        {
+            "name": "wpackagist-plugin/shortpixel-adaptive-images",
+            "version": "3.5.5",
+            "source": {
+                "type": "svn",
+                "url": "https://plugins.svn.wordpress.org/shortpixel-adaptive-images/",
+                "reference": "tags/3.5.5"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://downloads.wordpress.org/plugin/shortpixel-adaptive-images.3.5.5.zip"
+            },
+            "require": {
+                "composer/installers": "^1.0 || ^2.0"
+            },
+            "type": "wordpress-plugin",
+            "homepage": "https://wordpress.org/plugins/shortpixel-adaptive-images/"
         },
         {
             "name": "wpackagist-plugin/show-environment-in-admin-bar",
