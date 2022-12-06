@@ -1,0 +1,90 @@
+@use "@/components/typography";
+
+.wp-block-gds-share {
+  position: relative;
+
+  &__button {
+    font-weight: 700;
+    text-transform: uppercase;
+    font-size: 12px;
+    padding: 4px;
+
+    &:hover &-label {
+      color: var(--gds-color-primary);
+      text-decoration: underline;
+    }
+
+    &:focus-visible {
+      outline: var(--gds-focus-outline);
+    }
+
+    > svg:last-child,
+    > i:last-child {
+      margin-left: 0.5ch;
+      font-size: 18px;
+    }
+  }
+
+  &__list {
+    display: none;
+    list-style-type: none;
+    padding: 12px;
+    position: absolute;
+    left: 0;
+    top: 20px;
+    min-width: 136px;
+    background-color: var(--gds-color-white);
+    flex-direction: column;
+    gap: 8px;
+    box-shadow: 6px 8px 18px #00000014;
+    border: 2px solid #eee;
+    border-radius: 0 10px 10px;
+    z-index: 5;
+
+    @include typography.body-s;
+
+    a,
+    button,
+    clipboard-copy {
+      padding: 0;
+      text-decoration: none;
+      font-weight: inherit;
+
+      > svg:first-child,
+      > i:first-child {
+        margin-right: 4px;
+        color: var(--gds-color-dark-gray);
+        width: 10px;
+      }
+
+      &:hover > span {
+        color: var(--gds-color-primary);
+      }
+    }
+  }
+
+  &__button[aria-expanded="true"] ~ &__list {
+    display: inline-flex;
+  }
+
+  clipboard-copy {
+    [data-success-icon],
+    [data-failed-icon] {
+      display: none;
+    }
+
+    &[status="success"] [data-success-icon] {
+      display: inline-block;
+      color: var(--gds-color-success);
+    }
+
+    &[status="failed"] [data-failed-icon] {
+      display: inline-block;
+      color: var(--gds-color-error);
+    }
+
+    &::part(button):focus {
+      outline: var(--gds-focus-outline);
+    }
+  }
+}
