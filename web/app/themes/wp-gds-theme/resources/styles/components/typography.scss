@@ -1,8 +1,8 @@
-@use '~@/common/functions' as *;
+@use "~@/common/functions" as *;
 
 :root {
   // Headings
-  --gds-heading-font-family: 'Open sans', sans-serif;
+  --gds-heading-font-family: "Open sans", sans-serif;
   --gds-heading-xl-font-size: #{sloped-size(32px, 56px)};
   --gds-heading-l-font-size: #{sloped-size(30px, 36px)};
   --gds-heading-m-font-size: #{sloped-size(22px, 26px)};
@@ -11,7 +11,7 @@
   --gds-heading-margin-end: var(--block-gutter-s);
 
   // Body
-  --gds-body-font-family: 'Open sans', sans-serif;
+  --gds-body-font-family: "Open sans", sans-serif;
   --gds-body-l-font-size: 18px;
   --gds-body-m-font-size: 16px;
   --gds-body-s-font-size: 15px;

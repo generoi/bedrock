@@ -1,6 +1,7 @@
 @use "sass:math";
 
 @function sloped-size($min-size, $max-size, $min-width: 375px, $max-width: 1400px) {
+  /* stylelint-disable scss/operator-no-newline-after */
   @return clamp(
     #{$min-size},
     (
@@ -11,6 +12,7 @@
     ),
     #{$max-size}
   );
+  /* stylelint-enable scss/operator-no-newline-after */
 }
 
 @function strip-unit($value) {

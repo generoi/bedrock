@@ -1,4 +1,5 @@
 // @note requires Gravityforms 2.5+ with default styles not loaded.
+/* stylelint-disable selector-class-pattern */
 
 .gform_footer {
   margin-top: var(--gds-spacing-m);
@@ -34,3 +35,5 @@
 .gform_validation_container {
   display: none;
 }
+
+/* stylelint-enable selector-class-pattern */

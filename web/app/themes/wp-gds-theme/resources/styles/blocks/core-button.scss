@@ -1,5 +1,5 @@
-@use '~@/config';
-@use '~@/components/button' as *;
+@use "~@/config";
+@use "~@/components/button" as *;
 
 .wp-block-button {
   &__link,
@@ -10,7 +10,7 @@
       color: var(--gds-color-black);
 
       &:hover {
-        box-shadow: inset 0 0 0 2px rgba(0 0 0 / 1);
+        box-shadow: inset 0 0 0 2px rgba(0 0 0 / 100%);
       }
     }
   }
@@ -21,7 +21,7 @@
     color: currentColor;
 
     &:hover {
-      box-shadow: inset 0 0 0 2px rgba(0 0 0 / 1);
+      box-shadow: inset 0 0 0 2px rgba(0 0 0 / 100%);
     }
   }
 }

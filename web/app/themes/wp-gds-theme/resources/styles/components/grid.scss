@@ -1,4 +1,4 @@
-@use 'common/breakpoints' as *;
+@use "common/breakpoints" as *;
 
 :root {
   --grid-columns: 12;
@@ -49,8 +49,7 @@
     @include mq($from: $name) {
       .#{$name}\:#{$i} {
         width: calc(
-          (#{$i} / var(--grid-columns) * 100%) -
-          var(--grid-gutter-x)
+          (#{$i} / var(--grid-columns) * 100%) - var(--grid-gutter-x)
         );
       }
     }
