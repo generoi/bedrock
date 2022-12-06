@@ -72,3 +72,26 @@
     color: var(--gds-color-mid-gray);
   }
 }
+
+@mixin size-s {
+  font-size: var(--gds-button-s-font-size);
+  padding: 0.9em 2.5em;
+}
+
+@mixin size-m {
+  font-size: var(--gds-button-m-font-size);
+}
+
+@mixin size-l {
+  font-size: var(--gds-button-l-font-size);
+}
+
+@mixin outline {
+  box-shadow: inset 0 0 0 1px currentColor;
+  background-color: transparent;
+  color: currentColor;
+
+  &:hover {
+    box-shadow: inset 0 0 0 2px rgba(0 0 0 / 100%);
+  }
+}
