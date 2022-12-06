@@ -39,6 +39,7 @@ body,
 }
 
 // Avoid FOUC
+[class^="fa-"],
 .fa,
 .fal,
 .far {
