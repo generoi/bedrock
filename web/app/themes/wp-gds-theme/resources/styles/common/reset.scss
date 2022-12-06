@@ -1,4 +1,4 @@
-@import '~modern-normalize/modern-normalize.css';
+@import "~modern-normalize/modern-normalize.css";
 
 html {
   @media (prefers-reduced-motion: no-preference) {
@@ -9,6 +9,7 @@ html {
 body {
   // Hide overflowing margins.
   overflow-x: hidden;
+
   // Improve render performance by disabling some gestures.
   touch-action: manipulation;
 }
@@ -28,7 +29,6 @@ img {
   // Grid defaults to get images and embeds to work properly
   max-width: 100%;
   height: auto;
-  -ms-interpolation-mode: bicubic;
 }
 
 table {

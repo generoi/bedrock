@@ -1,4 +1,4 @@
-@use '~@/common/breakpoints' as *;
+@use "~@/common/breakpoints" as *;
 
 .wp-block-media-text {
   --media-text-gutter: var(--viewport-gutter);
@@ -12,7 +12,7 @@
   }
 
   // Remove the outer gutter since there's a viewport gutter
-  &:not(.alignfull):not(.has-background) {
+  &:not(.alignfull, .has-background) {
     @media (max-width: 600px) {
       .wp-block-media-text__content {
         padding-left: 0;

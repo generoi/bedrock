@@ -1,4 +1,4 @@
-@use '@/common/breakpoints' as *;
+@use "@/common/breakpoints" as *;
 
 @mixin styles {
   position: relative;
@@ -43,7 +43,7 @@
 
     &::-webkit-search-cancel-button {
       appearance: none;
-      mask-image: svg-load('../node_modules/@fortawesome/fontawesome-free/svgs/solid/xmark.svg');
+      mask-image: svg-load("../node_modules/@fortawesome/fontawesome-free/svgs/solid/xmark.svg");
       mask-size: contain;
       mask-repeat: no-repeat;
       background-color: currentColor;
@@ -58,6 +58,7 @@
     // Position below input
     [type="submit"] {
       z-index: 0;
+
       // Add a delay on transitioning away from focus-within to z-index: 0 so that
       // safari has time to register the click on the button.
       transition-property: z-index;

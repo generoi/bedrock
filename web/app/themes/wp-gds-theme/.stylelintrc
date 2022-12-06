@@ -1,5 +1,5 @@
 {
-  "extends": "stylelint-config-standard",
+  "extends": "stylelint-config-standard-scss",
   "rules": {
     "declaration-colon-newline-after": null,
     "value-list-comma-newline-after": null,
@@ -7,6 +7,16 @@
     "no-descending-specificity": null,
     "at-rule-empty-line-before": null,
     "selector-list-comma-newline-after": null,
+    "scss/comment-no-empty": null,
+    "declaration-block-no-redundant-longhand-properties": null,
+    "selector-class-pattern": "^(?:(?:o|c|u|t|s|is|has|_|js|qa)-)?[a-zA-Z0-9]+(?:-[a-zA-Z0-9]+)*(?:__[a-zA-Z0-9]+(?:-[a-zA-Z0-9]+)*)?(?:--[a-zA-Z0-9]+(?:-[a-zA-Z0-9]+)*)?(?:\\[.+\\])?$",
+    "custom-property-pattern": "^([a-z][a-z0-9]*)(--?[a-z0-9]+)*$",
+    "value-keyword-case": [
+      "lower",
+      {
+        "camelCaseSvgKeywords": true
+      }
+    ],
     "at-rule-no-unknown": [
       true,
       {
@@ -39,7 +49,7 @@
     "selector-type-no-unknown": [
       true,
       {
-        ignore: ["custom-elements", "default-namespace"]
+        "ignore": ["custom-elements", "default-namespace"]
       }
     ]
   }

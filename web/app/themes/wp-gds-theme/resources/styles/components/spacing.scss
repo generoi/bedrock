@@ -1,6 +1,6 @@
-@use 'common/breakpoints' as *;
-@use 'common/functions' as *;
-@use 'config';
+@use "common/breakpoints" as *;
+@use "common/functions" as *;
+@use "config";
 
 :root {
   // Block vertical gutters
@@ -13,10 +13,9 @@
   --content-width: var(--grid-column-8);
   --alignwide-width: var(--grid-column-12);
 
-  @if (config.$alignfull-max-width) {
+  @if config.$alignfull-max-width {
     --alignfull-width: #{config.$alignfull-max-width};
-  }
-  @else {
+  } @else {
     --alignfull-width: unset;
   }
 }
@@ -58,6 +57,7 @@
     max-width: var(--content-width);
     margin-left: auto;
     margin-right: auto;
+
     // Default vertical gutter
     margin-block-start: var(--block-gutter-start, var(--block-gutter));
     margin-block-end: var(--block-gutter-end, var(--block-gutter));
@@ -74,12 +74,13 @@
   // Alignfull stretches to the viewport width up to a point when it gets centered.
   .alignfull {
     max-width: var(--alignfull-width);
+
     // Negate the container padding so it stretches to viewport width.
     margin-left: calc(var(--viewport-gutter) * -1) !important;
     margin-right: calc(var(--viewport-gutter) * -1) !important;
 
     // Once alignfull limit has been reached, center the block
-    @if (config.$alignfull-max-width) {
+    @if config.$alignfull-max-width {
       @include mq($from: config.$alignfull-max-width) {
         margin-left: auto !important;
         margin-right: auto !important;
