@@ -58,3 +58,25 @@ add_filter('wp_get_attachment_image_attributes', function (array $attr, WP_Post 
 
     return $attr;
 }, PHP_INT_MAX, 3);
+
+/**
+ * Rewrite youtube embeds so that their iframes are lazy loaded.
+ */
+add_filter('embed_oembed_html', function ($cache, $url, $attr, $post_id) {
+    preg_match('/src="([^"]*)"/i', $cache, $match);
+    $src = $match[1] ?? null;
+    if (!$src) {
+        return $cache;
+    }
+
+    // @see https://gist.github.com/ghalusa/6c7f3a00fd2383e5ef33
+    preg_match('%(?:youtube(?:-nocookie)?\.com/(?:[^/]+/.+/|(?:v|e(?:mbed)?)/|.*[?&]v=)|youtu\.be/)([^"&?/ ]{11})%i', $src, $match);
+    $youtubeId = $match[1] ?? null;
+    if (!$youtubeId) {
+        return $cache;
+    }
+
+    return view('partials.embed-youtube', [
+        'youtube_id' => $youtubeId,
+    ]);
+}, 10, 4);
