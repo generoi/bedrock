@@ -5,6 +5,22 @@ body {
 
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+
+  &.admin-bar {
+    --admin-bar-height: 32px;
+
+    @media screen and (max-width: 782px) {
+      --admin-bar-height: 46px;
+    }
+  }
+
+  @supports not (height: 100dvh) {
+    --app-height: calc(100vh - var(--admin-bar-height, 0px));
+  }
+
+  @supports (height: 100dvh) {
+    --app-height: calc(100dvh - var(--admin-bar-height, 0px));
+  }
 }
 
 html,

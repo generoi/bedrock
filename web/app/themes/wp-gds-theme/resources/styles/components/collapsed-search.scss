@@ -1,0 +1,106 @@
+@use '@/common/breakpoints' as *;
+
+@mixin styles {
+  position: relative;
+  font-size: var(--gds-body-s-font-size);
+
+  // Position the submit button on top of the search input
+  [type="submit"] {
+    all: unset;
+    position: absolute;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    cursor: pointer;
+    color: currentColor;
+    padding: 8px;
+
+    // Center content
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    svg {
+      fill: currentColor;
+      width: 1em;
+      height: 1em;
+      display: block;
+    }
+  }
+
+  [type="search"] {
+    box-shadow: 3px 3px 8px #00000029;
+    border: 1px solid #eee;
+    border-radius: 10px;
+    padding-top: 8px;
+    padding-bottom: 8px;
+    padding-left: 16px;
+    padding-right: 24px; // make room for the "x" to remove search
+
+    &::placeholder {
+      color: var(--gds-color-mid-gray);
+    }
+
+    &::-webkit-search-cancel-button {
+      appearance: none;
+      mask-image: svg-load('../node_modules/@fortawesome/fontawesome-free/svgs/solid/xmark.svg');
+      mask-size: contain;
+      mask-repeat: no-repeat;
+      background-color: currentColor;
+      width: 1em;
+      height: 1em;
+    }
+  }
+
+  @include mq($from: desktopmenu) {
+    justify-content: flex-end;
+
+    // Position below input
+    [type="submit"] {
+      z-index: 0;
+      // Add a delay on transitioning away from focus-within to z-index: 0 so that
+      // safari has time to register the click on the button.
+      transition-property: z-index;
+      transition-delay: 0.1s;
+
+      &:focus {
+        z-index: 1;
+      }
+    }
+
+    // Hide the search input visually so that it remains clickable/focusable but
+    // the submit button is shown.
+    [type="search"] {
+      opacity: 0;
+      z-index: 1;
+      max-width: calc(1em + 8px * 2);
+      cursor: pointer;
+
+      @media (prefers-reduced-motion: no-preference) {
+        transition: all 0.2s ease-out;
+      }
+    }
+
+    // When input is focused or has content, expand and make it visually shown
+    [type="search"]:not(:placeholder-shown),
+    &:focus-within [type="search"] {
+      opacity: 1;
+      min-width: 150px;
+      right: 0;
+      cursor: initial;
+      position: relative;
+      box-shadow: 3px 3px 8px #00000029;
+      border: 1px solid #eee;
+      border-radius: 10px;
+      padding-top: 8px;
+      padding-bottom: 8px;
+      padding-left: 16px;
+      padding-right: 24px; // make room for the "x" to remove search
+
+      // Once focused, move submit button above input
+      & ~ [type="submit"] {
+        z-index: 2;
+      }
+    }
+  }
+}

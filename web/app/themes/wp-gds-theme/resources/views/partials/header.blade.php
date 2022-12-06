@@ -1,8 +1,10 @@
-<gds-navigation
-  accessible-navigation-label="{{ __('Primary menu', 'gds-a11y') }}"
-  accessible-hamburger-label="{{ __('Menu', 'gds-a11y') }}"
->
-  <a slot="logo" href="{{ home_url('/') }}" rel="home" aria-label="{{ sprintf(__('%s frontpage', 'gds-a11y'), $siteName) }}">
+<header class="header" id="header">
+  <a
+    class="header__logo"
+    href="{{ home_url('/') }}"
+    rel="home"
+    aria-label="{{ sprintf(__('%s frontpage', 'gds-a11y'), $siteName) }}"
+  >
     <img
       src="{{ Roots\asset('images/logo.svg')->uri() }}"
       alt=""
@@ -13,44 +15,76 @@
       aria-hidden="true"
     />
   </a>
-  <div slot="menu">
+
+  <toggle-button
+    class="header__menu-toggler"
+    aria-controls="header"
+  >
+    <span
+      class="header__menu-toggler-icon"
+      aria-hidden="true"
+    ></span>
+    <span class="sr-only">{{ __('Menu', 'gds-a11y') }}</span>
+  </toggle-button>
+
+  <nav
+    aria-label="{{ __('Primary menu', 'gds-a11y') }}"
+    class="header__navigation"
+  >
     @if ($primary_navigation)
-      <gds-menu>
+      <div class="menu">
         @foreach ($primary_navigation as $item)
           @include('partials.menu-item', ['item' => $item])
         @endforeach
-      </gds-menu>
+      </div>
     @endif
+  </nav>
+
+  <div
+    aria-label="{{ __('Language', 'gds-a11y') }}"
+    class="header__languages language-menu"
+  >
+    <toggle-button
+      class="language-menu__toggle"
+      aria-controls="language-menu"
+    >
+      <span aria-hidden="true">
+        {!! strtoupper(esc_html($current_language->slug)) !!}
+      </span>
+      <span class="sr-only">{{__('Languages')}} </span>
+      <span class="language-menu__toggle__icon">
+        <i class="fa fa-solid fa-chevron-down"></i>
+      </span>
+    </toggle-button>
+
+    <div
+      class="language-menu__menu"
+      id="language-menu"
+    >
+      @foreach ($languages as $item)
+        <a
+          class="language-menu__link {{ ($item->current_lang ) ? 'is-active': '' }}"
+          href="{{ $item->url }}"
+        >
+          {!! esc_html($item->name) !!}
+        </a>
+      @endforeach
+    </div>
   </div>
-  <div slot="search">
-    <gds-search-form
-      action="{{ home_url('/') }}" query="s"
-      accessible-input-label="{{ __('Search this site', 'gds-a11y') }}"
-      accessible-submit-label="{{ __('Search', 'gds-a11y') }}"
-      placeholder="{{ __('Search', 'gds-a11y') }}"
-      collapse-on="(max-width: 600px)"
-    ></gds-search-form>
-  </div>
-  <div slot="desktop-extensions">
-    <nav aria-label="{{ __('Language menu', 'gds-a11y') }}">
-      <gds-menu>
-        @foreach ($languages as $language)
-          <a slot="item" href="{{ $language->url }}" title="{{ $language->title }}" aria-label="{{ $language->title }}">
-            <gds-menu-item {{ $language->active ? 'active' : '' }}>{{ $language->label }}</gds-menu-item>
-          </a>
-        @endforeach
-      </gds-menu>
-    </nav>
-  </div>
-  <div slot="mobile-extensions">
-    <nav aria-label="{{ __('Language menu', 'gds-a11y') }}">
-      <gds-menu>
-        @foreach ($languages as $language)
-          <a slot="item" href="{{ $language->url }}" title="{{ $language->title }}" aria-label="{{ $language->title }}">
-            <gds-menu-item {{ $language->active ? 'active' : '' }}>{{ $language->label }}</gds-menu-item>
-          </a>
-        @endforeach
-      </gds-menu>
-    </nav>
-  </div>
-</gds-navigation>
+
+  <form
+    action="{{ home_url('/') }}"
+    method="get"
+    role="search"
+    class="header__search"
+  >
+    <label for="s" class="sr-only">
+      {{ __('Search this site', 'gds-a11y') }}
+    </label>
+    <input slot="input" type="search" name="s" placeholder="{{ __('Search', 'gds-a11y') }}" autocomplete="off" />
+
+    <button type="submit" aria-label="{{ __('Search', 'gds-a11y') }}">
+      <i class="fa fa-solid fa-magnifying-glass"></i>
+    </button>
+  </form>
+</header>

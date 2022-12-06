@@ -3,6 +3,7 @@
 namespace App\View\Composers;
 
 use Roots\Acorn\View\Composer;
+use Log1x\Navi\Navi;
 use stdClass;
 
 class Header extends Composer
@@ -24,41 +25,40 @@ class Header extends Composer
     public function with()
     {
         return [
-            'site_name' => $this->siteName(),
+            'current_language' => $this->currentLanguage(),
             'languages' => $this->languages(),
+            'primary_navigation' => $this->primaryNavigation(),
         ];
     }
 
-    public function languages()
+    public function currentLanguage(): ?stdClass
     {
-        $languages = apply_filters('wpml_active_languages', null, [
-            'skip_missing' => 0,
-            'orderby' => 'code',
-            'order' => 'desc',
-        ]);
-
-        return $this->languages = collect($languages)
-            ->map(function ($language) {
-                $item = new stdClass();
-                $item->active = $language['active'];
-                $item->activeAncestor = null;
-                $item->title = $language['native_name'];
-                $item->url = $language['url'];
-                $item->label = $language['language_code'];
-                $item->disabled = $language['missing'];
-                $item->children = false;
-                return $item;
-            })
-            ->toArray();
+        return collect($this->languages())
+            ->first(fn ($language) => $language->current_lang);
     }
 
-    /**
-     * Returns the site name.
-     *
-     * @return string
-     */
-    public function siteName()
+    public function languages(): array
     {
-        return get_bloginfo('name', 'display');
+        if (!function_exists('pll_the_languages')) {
+            return [];
+        }
+        return collect(pll_the_languages(['raw' => true]))
+            ->map(fn ($language) => (object) $language)
+            ->all();
+    }
+
+    public function primaryNavigation(): array
+    {
+        if (!has_nav_menu('primary_navigation')) {
+            return [];
+        }
+
+        $navigation = (new Navi())->build('primary_navigation');
+
+        if ($navigation->isEmpty()) {
+            return [];
+        }
+
+        return $navigation->toArray();
     }
 }

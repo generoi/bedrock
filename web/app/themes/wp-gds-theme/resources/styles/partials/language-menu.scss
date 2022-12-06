@@ -1,0 +1,84 @@
+@use '@/common/breakpoints' as *;
+
+@include mq($until: desktopmenu) {
+  .language-menu {
+    &__toggle {
+      display: none;
+    }
+
+    &__menu {
+      display: flex;
+      justify-content: space-between;
+    }
+
+    &__link {
+      text-decoration: none;
+
+      &:hover {
+        color: var(--gds-color-primary);
+      }
+
+      &.is-active {
+        text-decoration: underline;
+      }
+    }
+  }
+}
+
+@include mq($from: desktopmenu) {
+  .language-menu {
+    position: relative;
+
+    &__toggle {
+      padding: 8px;
+      display: flex;
+      align-items: center;
+
+      &__icon {
+        font-size: 12px;
+        padding: 4px;
+
+        .language-menu:hover &,
+        [aria-expanded="true"] > & {
+          transform: rotate(180deg);
+        }
+      }
+    }
+
+    &__link {
+      text-decoration: none;
+      padding: 16px 24px;
+
+      &:hover {
+        color: var(--gds-color-primary);
+        font-weight: 700;
+      }
+
+      &.is-active {
+        font-weight: 700;
+        text-decoration: underline;
+      }
+    }
+
+    &__menu {
+      display: none;
+      flex-direction: column;
+      position: absolute;
+      background-color: var(--gds-color-white);
+      z-index: 10;
+      top: 100%;
+      box-shadow: 1px 1px 4px #00000019;
+      min-width: 100px;
+      margin-left: -8px;
+
+      .language-menu:hover > &,
+      .language-menu__toggle[aria-expanded="true"] ~ & {
+        display: flex;
+      }
+
+      .language-menu__link {
+        padding: 8px 16px;
+      }
+    }
+  }
+}

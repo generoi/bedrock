@@ -1,1 +1,138 @@
-//
+@use '@/components/hamburger';
+@use '@/components/collapsed-search';
+@use '@/common/breakpoints' as *;
+
+.header {
+  display: grid;
+  width: 100%;
+  max-width: var(--alignwide-width);
+  padding-left: var(--viewport-gutter);
+  padding-right: var(--viewport-gutter);
+  margin-left: auto;
+  margin-right: auto;
+
+  &__logo {
+    grid-area: logo;
+  }
+
+  &__navigation {
+    grid-area: navigation;
+  }
+
+  &__languages {
+    grid-area: languages;
+  }
+
+  &__search {
+    grid-area: search;
+
+    @include collapsed-search.styles;
+  }
+
+  &__menu-toggler {
+    grid-area: toggler;
+    justify-self: flex-end;
+  }
+}
+
+@include mq($until: desktopmenu) {
+  body.is-menu-open {
+    overflow: hidden;
+  }
+
+  .header {
+    background-color: var(--gds-color-white);
+    grid-template:
+      "logo       toggler"
+      "navigation navigation"
+      "languages  languages"
+      "search     search";
+    grid-template-columns: auto auto;
+    grid-template-rows: auto 1fr auto auto;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: 8px;
+    padding-bottom: 8px;
+    transition: all 0.1s ease-out;
+
+    &__menu-toggler-icon {
+      @include hamburger.base;
+
+      [aria-expanded="true"] > & {
+        @include hamburger.active;
+      }
+    }
+
+    &__languages {
+      margin-left: calc(-1 * var(--viewport-gutter));
+      margin-right: calc(-1 * var(--viewport-gutter));
+      padding-left: 24px;
+      padding-right: 24px;
+    }
+
+    &__search,
+    &__languages,
+    &__navigation {
+      display: none;
+    }
+
+    &.is-active {
+      row-gap: 24px;
+      height: 100vh;
+      height: 100dvh;
+      position: fixed;
+      top: 0;
+      z-index: 100000; // higher than the admin menu
+      background-color: var(--gds-color-white);
+
+      .header__search,
+      .header__navigation,
+      .header__languages {
+        display: block;
+      }
+
+      .header__search {
+        display: flex;
+        opacity: 1;
+        margin-bottom: 24px;
+      }
+
+      .header__navigation {
+        height: 100%;
+        margin-left: calc(-1 * var(--viewport-gutter));
+        margin-right: calc(-1 * var(--viewport-gutter));
+        overflow-y: auto;
+        border-bottom: solid 1px var(--gds-color-light-gray);
+      }
+    }
+  }
+}
+
+@include mq($from: desktopmenu) {
+  .header {
+    display: grid;
+    grid-template: "logo navigation languages search";
+    grid-template-columns: auto auto 1fr min-content;
+    gap: 24px;
+    align-items: center;
+    padding-top: 24px;
+    padding-bottom: 24px;
+
+    &__navigation {
+      display: block;
+    }
+
+    &__search {
+      display: inline-flex;
+    }
+
+    &__menu-toggler {
+      display: none;
+    }
+
+    &__languages {
+      display: flex;
+      justify-content: flex-end;
+    }
+  }
+}
