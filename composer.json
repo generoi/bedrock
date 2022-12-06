@@ -71,7 +71,8 @@
     "log1x/navi": "^2.0",
     "log1x/acf-composer": "^2.0",
     "generoi/sage-nativeblock": "^0.3",
-    "inpsyde/wp-translation-downloader": "^2.3"
+    "inpsyde/wp-translation-downloader": "^2.3",
+    "satispress/polylang-pro": "^3.3"
   },
   "require-dev": {
     "squizlabs/php_codesniffer": "^3.4.2",

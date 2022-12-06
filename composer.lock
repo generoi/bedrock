@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "f63a635ffc1082bfc427014c9c6a25d8",
+    "content-hash": "db25355b2cbcb4b767cbcf08cba9bf83",
     "packages": [
         {
             "name": "brick/math",
@@ -4761,11 +4761,11 @@
         },
         {
             "name": "satispress/gravityforms",
-            "version": "2.5.16",
+            "version": "2.6.8",
             "dist": {
                 "type": "zip",
-                "url": "https://satispress.generodigital.com/satispress/gravityforms/2.5.16",
-                "shasum": "88e3882a3c3e289657f1a88f2cbe5270fdce4446"
+                "url": "https://satispress.generodigital.com/satispress/gravityforms/2.6.8",
+                "shasum": "825f53606392a62bf21d8550b710c782d90dbe00"
             },
             "require": {
                 "composer/installers": "^1.0"
@@ -4777,6 +4777,25 @@
             },
             "description": "Easily create web forms and manage form entries within the WordPress admin.",
             "homepage": "https://gravityforms.com"
+        },
+        {
+            "name": "satispress/polylang-pro",
+            "version": "3.3",
+            "dist": {
+                "type": "zip",
+                "url": "https://satispress.generodigital.com/satispress/polylang-pro/3.3",
+                "shasum": "fd30edc7f9dca08ffd1bfcebcafa8be64b4349a7"
+            },
+            "require": {
+                "composer/installers": "^1.0"
+            },
+            "type": "wordpress-plugin",
+            "authors": {
+                "name": "WP SYNTEX",
+                "homepage": "https://polylang.pro"
+            },
+            "description": "Adds multilingual capability to WordPress",
+            "homepage": "https://polylang.pro"
         },
         {
             "name": "seld/jsonlint",
