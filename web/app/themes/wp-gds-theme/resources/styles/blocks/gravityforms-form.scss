@@ -1,39 +1,429 @@
+@use "@/components/typography";
+@use "@/components/button";
+
 // @note requires Gravityforms 2.5+ with default styles not loaded.
 /* stylelint-disable selector-class-pattern */
 
-.gform_footer {
-  margin-top: var(--gds-spacing-m);
-}
+.gform {
+  &_heading > :not(:empty) {
+    margin-block-end: var(--block-gutter-s);
+  }
 
-.gform_fields {
-  display: grid;
-  grid-gap: var(--gds-spacing-m);
-  width: 100%;
-  grid-template-columns: repeat(12, 1fr);
-  grid-template-rows: repeat(auto-fill, auto);
+  &_description {
+    display: block;
+  }
 
-  .medium {
-    max-width: var(--grid-column-5);
+  &_required_legend {
+    font-style: italic;
+
+    @include typography.body-s;
+  }
+
+  &_footer {
+    margin-top: var(--grid-gutter);
+  }
+
+  &_fields {
+    display: grid;
+    grid-gap: var(--grid-gutter);
+    width: 100%;
+    grid-template-columns: repeat(12, 1fr);
+    grid-template-rows: repeat(auto-fill, auto);
+
+    .medium {
+      max-width: var(--grid-column-5);
+    }
+  }
+
+  &_hidden {
+    display: none;
+  }
+
+  // Honeypot
+  &_validation_container {
+    display: none;
+  }
+
+  &_confirmation_wrapper {
+    // margin-top: var(--gds-spacing-m);
+  }
+
+  &_confirmation_wrapper,
+  &_validation_errors {
+    // padding: var(--gds-spacing-s);
+    // background-color: var(--gds-color-white);
+    // margin-bottom: var(--gds-spacing-s);
+  }
+
+  &_submission_error {
+    // font-size: var(--gds-paragraph-m-font-size);
+    // letter-spacing: 0.02em;
+    // @include typography.body-s;
+  }
+
+  &_fileupload_rules {
+    @include typography.body-s;
+
+    display: block;
+    margin-block-start: 4px;
+  }
+
+  &_fileupload_multifile {
+    background-color: var(--gds-color-lightest-gray);
+    padding: var(--grid-gutter);
+    border-radius: 10px;
+    border: dashed 2px var(--gds-color-light-gray);
+    min-height: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    .gform_button_select_files {
+      @include button.button;
+      @include button.outline;
+      @include button.size-s;
+
+      margin-left: 8px;
+    }
   }
 }
 
 .gfield {
   grid-column: 1 / -1;
+  min-width: 0;
+
+  &--width-full {
+    grid-column: span 12;
+  }
+
+  &--width-eleven-twelfths {
+    grid-column: span 11;
+  }
+
+  &--width-five-sixths {
+    grid-column: span 10;
+  }
+
+  &--width-three-quarter {
+    grid-column: span 9;
+  }
+
+  &--width-two-thirds {
+    grid-column: span 8;
+  }
+
+  &--width-seven-twelfths {
+    grid-column: span 7;
+  }
+
+  &--width-half {
+    grid-column: span 6;
+  }
+
+  &--width-five-twelfths {
+    grid-column: span 5;
+  }
+
+  &--width-third {
+    grid-column: span 4;
+  }
+
+  &--width-quarter {
+    grid-column: span 3;
+  }
+
+  &--width-one-sixth {
+    grid-column: span 2;
+  }
+
+  &--width-one-twelfth {
+    grid-column: span 1;
+  }
+
+  &_description {
+    @include typography.body-s;
+
+    margin-block-start: 4px;
+  }
+
+  &_label {
+    margin-block-end: 4px;
+    display: block;
+
+    .hidden_label & {
+      display: none;
+    }
+
+    > .gfield_required {
+      margin-left: 0.5ch;
+    }
+  }
+
+  // Align radio lists other alternative
+  &_checkbox,
+  &_radio {
+    margin-top: 2px;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+
+    > .gchoice {
+      display: flex;
+      align-items: flex-start;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    label {
+      margin-bottom: 0;
+      flex: 1 0 0;
+    }
+
+    input[type="checkbox"],
+    input[type="radio"] {
+      flex: 0 0 auto;
+      margin-top: 0.27em; // just an approximation
+    }
+  }
 }
 
-.gform_confirmation_wrapper {
-  margin-top: var(--gds-spacing-m);
+.gform_validation_error {
+  .gfield_error {
+    [type="text"],
+    [type="password"],
+    [type="date"],
+    [type="datetime"],
+    [type="datetime-local"],
+    [type="month"],
+    [type="week"],
+    [type="email"],
+    [type="number"],
+    [type="search"],
+    [type="tel"],
+    [type="time"],
+    [type="url"],
+    [type="color"],
+    select,
+    textarea {
+      background-image: svg-load(
+        "../node_modules/@fortawesome/fontawesome-free/svgs/solid/circle-xmark.svg",
+        fill="#df5c4e"
+      );
+      background-repeat: no-repeat;
+      background-position: calc(100% - 16px) center;
+      background-size: 20px;
+    }
+  }
+
+  .gfield_validation_message {
+    color: var(--gds-color-error);
+    font-weight: 600;
+  }
+
+  .gform_submission_error {
+    @include typography.body-m;
+
+    color: var(--gds-color-error);
+    margin-block-end: var(--block-gutter-s);
+    font-weight: 600;
+  }
 }
 
-.gfield_label {
-  margin-bottom: var(--gds-spacing-2xs);
-  font-weight: 500;
-  display: block;
+// Eg. time, name
+.ginput_complex {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  flex-wrap: wrap;
+
+  > * {
+    flex: 1 0 auto;
+  }
+
+  > .gfield_time_hour,
+  > .gfield_time_minute,
+  > .hour_minute_colon {
+    flex-grow: 0;
+  }
+
+  input + label,
+  select + label {
+    @include typography.body-s;
+
+    margin-top: 2px;
+  }
 }
 
-// Honeypot
-.gform_validation_container {
-  display: none;
+.ginput_list {
+  .add_list_item {
+    @include button.button;
+    @include button.outline;
+    @include button.size-s;
+  }
+
+  .delete_list_item {
+    font-size: var(--gds-button-s-font-size);
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+
+  .gfield_list_groups {
+    display: flex;
+    gap: 12px;
+    flex-direction: column;
+  }
+
+  .gfield_list_icons,
+  .gfield_list_group {
+    display: flex;
+    gap: var(--grid-gutter);
+    flex-wrap: wrap;
+  }
+
+  .gfield_list_icons {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    column-gap: 12px;
+    row-gap: 0;
+    justify-content: center;
+  }
+
+  .gfield_list_group_item {
+    flex: 1 0 auto;
+  }
+}
+
+.ginput_container_consent {
+  display: flex;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  gap: 8px;
+
+  input[type="checkbox"] {
+    flex: 0 0 auto;
+    margin-top: 0.27em; // just an approximation
+  }
+}
+
+.ginput_container_name {
+  grid-gap: var(--grid-gutter);
+}
+
+.ginput_container_date {
+  position: relative;
+  flex: 0 0 auto;
+
+  input:not(.datepicker) {
+    width: auto;
+  }
+
+  > .ui-datepicker-trigger {
+    position: absolute;
+    right: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+  }
+}
+
+.ginput_container_address {
+  display: grid;
+  grid-gap: var(--grid-gutter);
+  width: 100%;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(auto-fill, auto);
+
+  > * {
+    grid-column: 1 / -1;
+    min-width: 0;
+  }
+
+  > .ginput_full {
+    grid-column: span 2;
+  }
+
+  > .ginput_left {
+    grid-column: span 1;
+  }
+
+  > .ginput_right {
+    grid-column: span 1;
+  }
+
+  > .gf_clear_complex {
+    display: none;
+  }
+}
+
+img.gform_ajax_spinner {
+  width: auto;
+  margin-left: 1rem;
+}
+
+.ui-datepicker {
+  --ui-gutter: 8px;
+
+  &:empty {
+    display: none;
+  }
+
+  background-color: var(--gds-color-white);
+  box-shadow: 1px 1px 4px #00000019;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: var(--ui-gutter);
+  border-radius: 10px;
+
+  &-header {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: var(--ui-gutter);
+  }
+
+  a {
+    text-decoration: none;
+    cursor: pointer;
+
+    &:hover {
+      color: var(--gds-color-primary);
+    }
+  }
+
+  &-title {
+    display: flex;
+    gap: var(--ui-gutter);
+    width: 100%;
+  }
+
+  &-month,
+  &-year {
+    all: revert;
+    width: 100%;
+  }
+
+  &-calendar {
+    width: 100%;
+    text-align: center;
+
+    a {
+      display: block;
+      padding: 4px;
+    }
+  }
+
+  .ui-state-disabled {
+    color: var(--gds-color-mid-gray);
+  }
+
+  .ui-state-active {
+    font-weight: 700;
+    text-decoration: underline;
+  }
 }
 
 /* stylelint-enable selector-class-pattern */
