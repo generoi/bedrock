@@ -114,6 +114,8 @@ Config::define('WP_DEFAULT_THEME', 'wp-gds-theme');
 Config::define('DISALLOW_FILE_EDIT', true);
 // Disable plugin and theme updates and installation from the admin
 Config::define('DISALLOW_FILE_MODS', true);
+// Avoid using event attempting FTP updates
+Config::define('FS_METHOD', 'direct');
 // Plugin settings
 Config::define('WP_CACHE', true);
 Config::define('WPCACHEHOME', Config::get('WP_CONTENT_DIR') . '/plugins/wp-super-cache/');
