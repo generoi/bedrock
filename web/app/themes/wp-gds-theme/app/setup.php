@@ -53,6 +53,20 @@ add_action('wp_enqueue_scripts', function () {
 });
 
 /**
+ * Always enqueue stylesheets for the following blocks in the <head>
+ */
+add_action('wp_enqueue_scripts', function () {
+    render_block(['blockName' => 'core/heading']);
+    render_block(['blockName' => 'core/paragraph']);
+
+    // Enqeueue stylesheets of the firt block.
+    if (is_singular() && $post = get_post()) {
+        $blocks = parse_blocks($post->post_content);
+        render_block($blocks[0]);
+    }
+}, 9);
+
+/**
  * Dequeue stylesheets.
  */
 add_action('wp_print_styles', function () {
