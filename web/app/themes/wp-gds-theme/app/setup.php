@@ -33,6 +33,13 @@ add_action('wp_enqueue_scripts', function () {
 
     wp_enqueue_style('sage/fonts.css', 'https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,600;0,700;1,400&display=swap', [], null);
     wp_enqueue_style('sage/app.css', asset('styles/app.css')->uri(), [], null);
+
+    // Only load jQuery if gravityforms needs it
+    $hasGform = wp_script_is('gform_gravityforms', 'enqueued');
+    $isAdmin = is_admin() || current_user_can('edit_posts');
+    if (!$isAdmin && !$hasGform) {
+        wp_deregister_script('jquery');
+    }
 }, 100);
 
 /**
