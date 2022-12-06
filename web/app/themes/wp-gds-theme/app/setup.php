@@ -46,6 +46,15 @@ add_action('wp_enqueue_scripts', function () {
 });
 
 /**
+ * Dequeue stylesheets.
+ */
+add_action('wp_print_styles', function () {
+    if (!is_admin_bar_showing()) {
+        wp_deregister_style('dashicons'); // wp core
+    }
+}, 100);
+
+/**
  * Register the theme assets with the block editor.
  *
  * @return void
@@ -59,11 +68,6 @@ add_action('enqueue_block_editor_assets', function () {
     wp_enqueue_script('sage/fontawesome.js', 'https://kit.fontawesome.com/033b65fee9.js', [], null, false);
     wp_enqueue_style('sage/fonts.css', 'https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,600;0,700;1,400&display=swap', [], null);
     wp_enqueue_style('sage/editor-overrides.css', asset('styles/editor-overrides.css')->uri(), ['wp-edit-blocks', 'common'], null);
-}, 100);
-
-add_action('wp_print_styles', function () {
-    wp_dequeue_style('wp-smart-crop-renderer'); // wp-smartcrop
-    wp_dequeue_script('jquery.wp-smartcrop'); // wp-smartcrop
 }, 100);
 
 /**
