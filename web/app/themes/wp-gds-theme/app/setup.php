@@ -33,6 +33,8 @@ add_action('wp_enqueue_scripts', function () {
 
     wp_enqueue_style('sage/fonts.css', 'https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,600;0,700;1,400&display=swap', [], null);
     wp_enqueue_style('sage/app.css', asset('styles/app.css')->uri(), [], null);
+    // Print out global stylesheet in the <head>
+    wp_add_inline_style('sage/app.css', wp_get_global_stylesheet());
 
     // Only load jQuery if gravityforms needs it
     $hasGform = wp_script_is('gform_gravityforms', 'enqueued');
