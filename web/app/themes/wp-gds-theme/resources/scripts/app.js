@@ -1,6 +1,7 @@
 import swiper from './components/swiper'
 import {onIdle} from './utils'
 import './components/toggle-button';
+import { lazyLoad } from './components/lazy-load';
 
 if (document.querySelector('youtube-embed')) {
   onIdle(() => import('./components/youtube-embed'));
@@ -9,4 +10,9 @@ if (document.querySelector('youtube-embed')) {
 // app.js is loaded at the end of body, so don't wait for document ready.
 for (const container of document.body.querySelectorAll('.swiper-container')) {
   swiper(container);
+}
+
+// app.js is loaded at the end of body, so don't wait for document ready.
+for (const el of document.querySelectorAll('video[data-src], iframe[data-src]')) {
+  lazyLoad(el);
 }
