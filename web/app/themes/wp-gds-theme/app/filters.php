@@ -102,3 +102,11 @@ add_filter('wp_content_img_tag', function ($filteredImage, $context, $attachment
 
     return $filteredImage;
 }, 10, 3);
+
+/**
+ * Lazy load all iframes and videos
+ */
+add_filter('the_content', function ($content) {
+    $content = preg_replace('/(<iframe|<video)(.*?)src=\"(.*?)\"(.*?)>/i', '$1$2data-src="$3"$4>', $content);
+    return $content;
+});
