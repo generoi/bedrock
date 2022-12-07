@@ -12,11 +12,6 @@ use WP_Theme_JSON_Data;
 use function Roots\asset;
 
 /**
- * @see https://make.wordpress.org/core/2021/07/01/block-styles-loading-enhancements-in-wordpress-5-8/
- */
-add_filter('should_load_separate_core_block_assets', '__return_true');
-
-/**
  * Register the theme assets.
  *
  * @return void
@@ -35,24 +30,7 @@ add_action('wp_enqueue_scripts', function () {
     wp_enqueue_style('sage/app.css', asset('styles/app.css')->uri(), [], null);
     // Print out global stylesheet in the <head>
     wp_add_inline_style('sage/app.css', wp_get_global_stylesheet());
-
-    // Only load jQuery if gravityforms needs it
-    $hasGform = wp_script_is('gform_gravityforms', 'enqueued');
-    $isAdmin = is_admin() || current_user_can('edit_posts');
-    if (!$isAdmin && !$hasGform) {
-        wp_deregister_script('jquery');
-    }
 }, 100);
-
-/**
- * Replace core jQuery with theme's jQuery.
- */
-add_action('wp_enqueue_scripts', function () {
-    wp_deregister_script('jquery');
-    wp_deregister_script('jquery-core');
-    wp_deregister_script('jquery-migrate');
-    wp_register_script('jquery', asset('scripts/jquery.js')->uri(), false, null, true);
-});
 
 /**
  * Always enqueue stylesheets for the following blocks in the <head>
@@ -67,15 +45,6 @@ add_action('wp_enqueue_scripts', function () {
         render_block($blocks[0]);
     }
 }, 9);
-
-/**
- * Dequeue stylesheets.
- */
-add_action('wp_print_styles', function () {
-    if (!is_admin_bar_showing()) {
-        wp_deregister_style('dashicons'); // wp core
-    }
-}, 100);
 
 /**
  * Register the theme assets with the block editor.
