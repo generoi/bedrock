@@ -31,9 +31,16 @@ class SageServiceProvider extends BaseSageServiceProvider
             ] as $type => $scripts
         ) {
             if (in_array($handle, $scripts)) {
-                return str_replace(' src', " $type src", $tag);
+                $tag = str_replace(' src', " $type src", $tag);
             }
         }
+
+        switch ($tag) {
+            case 'sage/fontawesome.js':
+                $tag = str_replace(' src', ' crossorigin="anonymous" src', $tag);
+                break;
+        }
+
         return $tag;
     }
 
