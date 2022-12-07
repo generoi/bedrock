@@ -1,0 +1,33 @@
+name: Lighthouse report
+on:
+  workflow_call:
+    inputs:
+      urls:
+        type: string
+        default: |
+          https://gdsbedrock.kinsta.cloud/
+  workflow_dispatch:
+    inputs:
+      urls:
+        description: 'URL'
+        default: |
+          https://gdsbedrock.kinsta.cloud/
+jobs:
+  lighthouse:
+    name: Run E2E tests
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v3
+
+      - name: Warm up the caches
+        run: curl -I ${{ input.urls }}
+
+      - name: Audit URLs using Lighthouse
+        uses: treosh/lighthouse-ci-action@v9
+        with:
+          urls: |
+            ${{ inputs.urls }}
+          uploadArtifacts: true
+          temporaryPublicStorage: true
+
