@@ -24,3 +24,6 @@ jobs:
     uses: ./.github/workflows/e2e.yml
     with:
       url: 'https://gdsbedrock.kinsta.cloud'
+  lighthouse:
+    needs: deploy
+    uses: ./.github/workflows/lighthouse.yml
