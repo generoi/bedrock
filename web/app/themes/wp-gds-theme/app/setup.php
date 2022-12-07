@@ -23,7 +23,7 @@ add_filter('should_load_separate_core_block_assets', '__return_true');
  */
 add_action('wp_enqueue_scripts', function () {
     wp_enqueue_script('sage/app.js', asset('scripts/app.js')->uri(), [], null, true);
-    wp_enqueue_script('sage/fontawesome.js', 'https://kit.fontawesome.com/ca129ff52d.js', [], null, false);
+    wp_enqueue_script('sage/fontawesome.js', 'https://kit.fontawesome.com/d0d4c17dbd.js', [], null, false);
 
     wp_add_inline_script('sage/app.js', asset('scripts/manifest.js')->contents(), 'before');
 
