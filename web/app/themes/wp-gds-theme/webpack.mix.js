@@ -33,6 +33,8 @@ mix.setPublicPath('./public')
       },
     },
   })
+  // For some reason this is required
+  .babelConfig(JSON.parse(fs.readFileSync('.babelrc')))
   .browserSync({
     // You need to make sure the host is hardcoded in robo.yml
     proxy: robo.env["@ddev"].host,
@@ -44,7 +46,8 @@ mix.sass('resources/styles/app.scss', 'styles')
    .sass('resources/styles/editor.scss', 'styles')
    .sass('resources/styles/editor-overrides.scss', 'styles');
 
-mix.js('resources/scripts/app.js', 'scripts')
+mix.js('resources/scripts/empty.js', 'scripts')
+   .js('resources/scripts/app.js', 'scripts')
    .blocks('resources/scripts/editor.js', 'scripts', {disableRegenerator: true});
 
 glob.sync('resources/styles/blocks/*').forEach((file) => {
