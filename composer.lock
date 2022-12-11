@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "77b3d67b57b4f738d196dc98571724ac",
+    "content-hash": "e9175fa9c4255152c469434af7442088",
     "packages": [
         {
             "name": "brick/math",
@@ -4732,11 +4732,11 @@
         },
         {
             "name": "satispress/advanced-custom-fields-pro",
-            "version": "5.11.4",
+            "version": "6.0.5",
             "dist": {
                 "type": "zip",
-                "url": "https://satispress.generodigital.com/satispress/advanced-custom-fields-pro/5.11.4",
-                "shasum": "05de7030fcfe43c01520dddca8fbc29aecaf3a3b"
+                "url": "https://satispress.generodigital.com/satispress/advanced-custom-fields-pro/6.0.5",
+                "shasum": "6f032c149ac06d8f0fe8711bd28c5bc923877254"
             },
             "require": {
                 "composer/installers": "^1.0"

@@ -62,7 +62,7 @@
 
     "wp-cli/wp-cli-bundle": "^2.2",
     "kinsta/kinsta-mu-plugins": "^2.3",
-    "satispress/advanced-custom-fields-pro": "^5.9",
+    "satispress/advanced-custom-fields-pro": "^6.0",
     "satispress/gravityforms": "^2.4",
     "roots/bedrock-autoloader": "^1.0",
     "consolidation/robo": "^3.0",
