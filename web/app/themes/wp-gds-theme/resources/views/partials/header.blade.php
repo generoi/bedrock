@@ -40,6 +40,7 @@
     @endif
   </nav>
 
+  @if ($current_language)
   <div
     aria-label="{{ __('Language', 'gds-a11y') }}"
     class="header__languages language-menu"
@@ -71,6 +72,7 @@
       @endforeach
     </div>
   </div>
+  @endif
 
   <form
     action="{{ home_url('/') }}"
