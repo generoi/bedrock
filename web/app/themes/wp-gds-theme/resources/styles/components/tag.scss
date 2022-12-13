@@ -1,0 +1,26 @@
+@mixin base {
+  display: inline-block;
+  background-color: var(--gds-color-primary);
+  color: var(--gds-color-white);
+  line-height: 1em;
+  padding: 6px 8px;
+  border-radius: 8px;
+  font-size: 11px;
+  text-transform: uppercase;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  transition: opacity 0.2s ease-out;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  max-width: 200px;
+
+  &:hover {
+    opacity: 0.8;
+  }
+
+  &:focus-visible {
+    outline: solid 2px var(--gds-color-black);
+    outline-offset: 0;
+  }
+}
