@@ -4,6 +4,7 @@
 
 @use "config" with ($is-editor: true);
 @use "components/colors";
+@use "~@fortawesome/fontawesome-pro/css/all";
 
 p {
   font-size: unset;

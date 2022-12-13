@@ -19,8 +19,6 @@ use function Roots\asset;
  */
 add_action('wp_enqueue_scripts', function () {
     wp_enqueue_script('sage/app.js', asset('scripts/app.js')->uri(), [], null, true);
-    wp_enqueue_script('sage/fontawesome.js', 'https://kit.fontawesome.com/d0d4c17dbd.js', [], null, false);
-
     wp_add_inline_script('sage/app.js', asset('scripts/manifest.js')->contents(), 'before');
 
     if (is_single() && comments_open() && get_option('thread_comments')) {
@@ -61,7 +59,6 @@ add_action('enqueue_block_editor_assets', function () {
 
         wp_add_inline_script('sage/vendor.js', asset('scripts/manifest.js')->contents(), 'before');
     }
-    wp_enqueue_script('sage/fontawesome.js', 'https://kit.fontawesome.com/033b65fee9.js', [], null, false);
     wp_enqueue_style('sage/editor-overrides.css', asset('styles/editor-overrides.css')->uri(), ['wp-edit-blocks', 'common'], null);
 
     echo app(GoogleFonts::class)->load()->toHtml();
