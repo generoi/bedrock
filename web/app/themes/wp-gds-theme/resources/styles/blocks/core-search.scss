@@ -1,0 +1,69 @@
+@use "@components/form";
+@use "@components/typography" as *;
+
+.wp-block-search {
+  position: relative;
+
+  &__input {
+    @include form.base;
+  }
+
+  &__label {
+    @include heading;
+    @include heading-m;
+
+    margin-block-end: 12px;
+  }
+
+  &__button-outside {
+    .wp-block-search__input {
+      border-top-right-radius: 0;
+      border-bottom-right-radius: 0;
+    }
+
+    .wp-block-search__button {
+      border-top-left-radius: 0;
+      border-bottom-left-radius: 0;
+    }
+  }
+
+  &__button-inside {
+    .wp-block-search__button {
+      all: unset;
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      cursor: pointer;
+      box-sizing: border-box;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 1em;
+
+      &:active::before {
+        display: none;
+      }
+    }
+
+    .wp-block-search__input {
+      &::-webkit-search-cancel-button {
+        display: none;
+      }
+    }
+  }
+
+  &__inside-wrapper {
+    border: 0;
+    padding: 0;
+  }
+
+  &__button {
+    border-radius: 10px;
+    margin-left: 0;
+
+    .wp-block-search__icon-button & {
+      padding: 1em;
+    }
+  }
+}
