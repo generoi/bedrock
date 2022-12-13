@@ -22,7 +22,7 @@
           announce-success="{{ __('Copied!', 'gds') }}"
           announce-failed="{{ __('Failed to copy!', 'gds') }}"
         >
-          <i class="far fa-link fa-xs"></i>
+          <i class="fa-regular fa-link fa-xs"></i>
           <span>{{ __('Copy link', 'gds') }}</span>
 
           <i data-success-icon class="fa-solid fa-check"></i>
@@ -31,7 +31,7 @@
       </li>
       <li>
         <a href="mailto:?subject={{ urlencode($title) }}&body={{urlencode($url) }}" rel="nofollow" target="_blank">
-          <i class="far fa-envelope fa-xs"></i>
+          <i class="fa-regular fa-envelope fa-xs"></i>
           <span>{{ __('Send email', 'gds') }}</span>
         </a>
       </li>
@@ -43,7 +43,7 @@
       </li>
       <li>
         <a href="https://twitter.com/intent/tweet?text={{ urlencode(sprintf('%s %s', $title, $url))}}" rel="nofollow" target="_blank">
-          <i class="fab fa-twitter fa-xs"></i>
+          <i class="fa-brands fa-twitter fa-xs"></i>
           <span>{{ __('Share on Twitter') }}</span>
         </a>
       </li>
