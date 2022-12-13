@@ -1,0 +1,22 @@
+ul.page-numbers {
+  display: flex;
+  list-style-type: none;
+  align-items: center;
+  padding-left: 0;
+
+  .page-numbers {
+    padding: 8px 12px;
+    display: flex;
+    text-decoration: none;
+
+    &.current {
+      font-weight: bold;
+      color: var(--gds-color-primary);
+      text-decoration: underline;
+    }
+
+    a#{&}:hover {
+      color: var(--gds-color-primary);
+    }
+  }
+}
