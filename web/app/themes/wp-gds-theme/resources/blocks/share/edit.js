@@ -8,8 +8,10 @@ function BlockEdit(props) {
   return (
     <>
       <div { ...useBlockProps({}) }>
-        <toggle-button>
-          {__('Share', 'gds')}
+        <toggle-button class="wp-block-gds-share__button">
+          <span className="wp-block-gds-share__button-label">
+            {__('Share', 'gds')}
+          </span>
           <i className="far fa-share-alt fa-sm"></i>
         </toggle-button>
       </div>
