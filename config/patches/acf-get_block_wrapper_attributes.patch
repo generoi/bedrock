@@ -1,0 +1,19 @@
+diff --git a/pro/blocks.php b/pro/blocks.php
+index 8f02e8d..4ac127b 100755
+--- a/pro/blocks.php
++++ b/pro/blocks.php
+@@ -910,8 +910,14 @@ function acf_ajax_fetch_block() {
+ 		$content    = '';
+ 		$is_preview = true;
+ 
++		$parent = WP_Block_Supports::$block_to_render;
++		$block['blockName'] = $block['name'];
++		WP_Block_Supports::$block_to_render = $block;
++
+ 		// Render and store HTML.
+ 		$response['preview'] = acf_rendered_block( $block, $content, $is_preview, $post_id, null, $context );
++
++		WP_Block_Supports::$block_to_render = $parent;
+ 	}
+ 
+ 	// Send response.

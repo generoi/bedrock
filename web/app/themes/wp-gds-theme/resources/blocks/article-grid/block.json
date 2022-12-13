@@ -1,0 +1,33 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 2,
+  "name": "gds/article-grid",
+  "title": "Article Grid",
+  "description": "Show a grid of articles...",
+  "category": "layout",
+  "icon": "grid-view",
+  "style": "file:./style.css",
+  "attributes": {
+    "align": {
+      "type": "string",
+      "default": "wide"
+    }
+  },
+  "supports": {
+    "align": ["wide"],
+    "__experimentalLayout": {
+      "allowSwitching": false,
+      "allowInheriting": false,
+      "allowVerticalAlignment": false,
+      "allowOrientation": false,
+      "default": {
+        "type": "flex",
+        "justifyContent": "center"
+      }
+    }
+  },
+  "acf": {
+    "postTypes": ["page"],
+    "mode": "auto"
+  }
+}

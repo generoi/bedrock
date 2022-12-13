@@ -11,6 +11,5 @@ class ThemeServiceProvider extends AggregateServiceProvider
         \App\Providers\BlockServiceProvider::class,
         \App\Providers\SageServiceProvider::class,
         \App\Providers\PerformanceServiceProvider::class,
-        \Genero\Sage\NativeBlock\NativeBlockServiceProvider::class,
     ];
 }
