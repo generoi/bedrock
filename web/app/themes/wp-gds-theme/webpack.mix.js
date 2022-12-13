@@ -5,6 +5,7 @@ const fs = require('fs');
 const yaml = require('js-yaml');
 const path = require('path');
 const glob = require('glob');
+const partytown = require('@builder.io/partytown/utils');
 
 /*
  |--------------------------------------------------------------------------
@@ -75,7 +76,9 @@ mix.copyWatched('resources/images', 'public/images', {base: 'resources/images'})
   .copyWatched('resources/fonts', 'public/fonts', {base: 'resources/fonts'});
 
 mix.copyWatched('node_modules/@fortawesome/fontawesome-pro/webfonts', 'public/webfonts')
+  .copy(partytown.libDirPath(), 'public/~partytown')
   .copy('node_modules/jquery/dist/jquery.min.js', 'public/scripts/jquery.js');
+
 
 mix.autoload({
   jquery: ['$', 'window.jQuery'],
