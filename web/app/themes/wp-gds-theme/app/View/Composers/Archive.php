@@ -28,20 +28,17 @@ class Archive extends Composer
     {
         return [
             'query' => $this->query(),
-            'page' => $this->page(),
-            'has_archive_block' => $this->hasArchiveBlock(),
+            'content' => $this->content(),
         ];
     }
 
-    public function page(): ?WP_Post
+    public function content(): string
     {
-        $post = get_post();
-        return $post && $post->post_type === 'page' ? $post : null;
-    }
+        if (is_tax() || is_category() || is_tag()) {
+            return apply_filters('the_content', term_description());
+        }
 
-    public function hasArchiveBlock(): bool
-    {
-        return $this->page() && strpos($this->page()->post_content, 'acf/article-list') !== false;
+        return '';
     }
 
     public function query(): WP_Query

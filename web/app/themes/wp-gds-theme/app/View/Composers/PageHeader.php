@@ -4,7 +4,7 @@ namespace App\View\Composers;
 
 use Roots\Acorn\View\Composer;
 
-class Post extends Composer
+class PageHeader extends Composer
 {
     /**
      * List of views served by this composer.
@@ -12,13 +12,7 @@ class Post extends Composer
      * @var array
      */
     protected static $views = [
-        'index',
-        'category',
-        'archive',
-        'taxonomy',
         'partials.page-header',
-        'partials.content',
-        'partials.content-*',
     ];
 
     /**
@@ -29,7 +23,7 @@ class Post extends Composer
     public function override()
     {
         return [
-            'title' => $this->title(),
+            'page_title' => $this->title(),
         ];
     }
 
@@ -40,10 +34,6 @@ class Post extends Composer
      */
     public function title()
     {
-        if ($this->view->name() !== 'partials.page-header') {
-            return get_the_title();
-        }
-
         if (is_home()) {
             if ($home = get_option('page_for_posts', true)) {
                 return get_the_title($home);

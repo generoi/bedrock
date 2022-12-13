@@ -2,6 +2,6 @@
 
 @section('content')
   @while(have_posts()) @php(the_post())
-    @includeFirst(['partials.content-page', 'partials.content'])
+    @includeFirst(['content.' . get_post_type(), 'content.single'])
   @endwhile
 @endsection

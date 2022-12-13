@@ -10,8 +10,11 @@
 
   // Layout
   --viewport-gutter: 15px;
-  --content-width: var(--grid-column-8);
   --alignwide-width: var(--grid-column-12);
+
+  @include mq($from: medium) {
+    --content-width: var(--grid-column-8);
+  }
 
   @if config.$alignfull-max-width {
     --alignfull-width: #{config.$alignfull-max-width};
@@ -21,21 +24,18 @@
 }
 
 // The root container only
-.is-root-container,
-.entry-content {
+.is-root-container {
   // Add a viewport gutter
   padding-left: var(--viewport-gutter);
   padding-right: var(--viewport-gutter);
+}
 
+.is-root-container,
+.entry-content {
   // First block has a top gutter unless it's full aligned in which case it's
   // considered a banner
   > :first-child:not(.alignfull),
   > .alignfull:first-child + :not(.alignfull) {
-    margin-block-start: var(--block-gutter-l);
-  }
-
-  // Last block has a gutter before the footer
-  > :last-child:not(.alignfull) {
     margin-block-start: var(--block-gutter-l);
   }
 

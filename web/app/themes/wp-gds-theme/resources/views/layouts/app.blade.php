@@ -7,8 +7,6 @@
 
 <div class="container">
   <main class="is-root-container">
-    <a id="main-content" tabindex="-1"></a>
-
     @yield('content')
   </main>
 

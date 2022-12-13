@@ -15,7 +15,7 @@ class ContentSingle extends Composer
      * @var array
      */
     protected static $views = [
-        'partials.content-single',
+        'content.single',
     ];
 
     /**
@@ -30,19 +30,15 @@ class ContentSingle extends Composer
         ];
     }
 
-    public function related(): ?stdClass
+    public function related(): ?WP_Query
     {
-        return (object) [
-            'label' => __('Read More', 'gds'),
-            'type' => 'article',
-            'query' => new WP_Query([
-                'category__in' => wp_list_pluck(get_the_category(), 'term_id'),
-                'post__not_in' => [get_the_ID()],
-                'post_type' => 'post',
-                'posts_per_page' => 2,
-                'post_status' => 'publish',
-                'ignore_sticky_posts' => true,
-            ]),
-        ];
+        return new WP_Query([
+            'category__in' => wp_list_pluck(get_the_category(), 'term_id'),
+            'post__not_in' => [get_the_ID()],
+            'post_type' => 'post',
+            'posts_per_page' => 2,
+            'post_status' => 'publish',
+            'ignore_sticky_posts' => true,
+        ]);
     }
 }
