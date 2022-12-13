@@ -1,0 +1,24 @@
+@use "@/components/screen-reader" as *;
+
+.wp-block-gds-breadcrumb {
+  font-size: 11px;
+  text-transform: uppercase;
+  color: var(--gds-color-dark-gray);
+  letter-spacing: 0.05em;
+  font-weight: 700;
+  margin-block-start: var(--block-gutter-s);
+  margin-block-end: var(--block-gutter-s);
+
+  a {
+    text-decoration: none;
+    font-weight: inherit;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+
+  .last {
+    @include sr-only;
+  }
+}
