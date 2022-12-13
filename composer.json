@@ -62,18 +62,19 @@
 
     "wp-cli/wp-cli-bundle": "^2.2",
     "kinsta/kinsta-mu-plugins": "^2.3",
-    "satispress/advanced-custom-fields-pro": "^5.9",
+    "satispress/advanced-custom-fields-pro": "^6.0",
     "satispress/gravityforms": "^2.4",
     "roots/bedrock-autoloader": "^1.0",
     "consolidation/robo": "^3.0",
     "generoi/robo-genero": "^0.4",
     "roots/acorn": "^2.0",
     "log1x/navi": "^2.0",
-    "log1x/acf-composer": "^2.0",
     "generoi/sage-nativeblock": "^0.3",
     "inpsyde/wp-translation-downloader": "^2.3",
     "satispress/polylang-pro": "^3.3",
-    "wpackagist-plugin/shortpixel-adaptive-images": "^3.5"
+    "wpackagist-plugin/shortpixel-adaptive-images": "^3.5",
+    "stoutlogic/acf-builder": "^1.12",
+    "cweagans/composer-patches": "^1.7"
   },
   "require-dev": {
     "squizlabs/php_codesniffer": "^3.4.2",
@@ -93,7 +94,8 @@
     "allow-plugins": {
       "composer/installers": true,
       "roots/wordpress-core-installer": true,
-      "inpsyde/wp-translation-downloader": true
+      "inpsyde/wp-translation-downloader": true,
+      "cweagans/composer-patches": true
     },
     "prepend-autoloader": false
   },
@@ -135,6 +137,11 @@
         "wpackagist-plugin/user-switching"
       ],
       "directory": "web/app/languages"
+    },
+    "patches": {
+      "satispress/advanced-custom-fields-pro": {
+        "Fix get_block_wrapper_attributes not working with ACF preview": "./config/patches/acf-get_block_wrapper_attributes.patch"
+      }
     }
   },
   "scripts": {
