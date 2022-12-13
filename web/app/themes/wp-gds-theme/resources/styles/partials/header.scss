@@ -3,13 +3,16 @@
 @use "@/common/breakpoints" as *;
 
 .header {
-  display: grid;
-  width: 100%;
-  max-width: var(--alignwide-width);
   padding-left: var(--viewport-gutter);
   padding-right: var(--viewport-gutter);
-  margin-left: auto;
-  margin-right: auto;
+
+  &__inner-container {
+    display: grid;
+    width: 100%;
+    max-width: var(--alignwide-width);
+    margin-left: auto;
+    margin-right: auto;
+  }
 
   &__logo {
     grid-area: logo;
@@ -42,18 +45,21 @@
 
   .header {
     background-color: var(--gds-color-white);
-    grid-template:
-      "logo       toggler"
-      "navigation navigation"
-      "languages  languages"
-      "search     search";
-    grid-template-columns: auto auto;
-    grid-template-rows: auto 1fr auto auto;
-    align-items: center;
-    justify-content: space-between;
-    padding-top: 8px;
-    padding-bottom: 8px;
     transition: all 0.1s ease-out;
+
+    &__inner-container {
+      grid-template:
+        "logo       toggler"
+        "navigation navigation"
+        "languages  languages"
+        "search     search";
+      grid-template-columns: auto auto;
+      grid-template-rows: auto 1fr auto auto;
+      align-items: center;
+      justify-content: space-between;
+      padding-top: 8px;
+      padding-bottom: 8px;
+    }
 
     &__menu-toggler-icon {
       @include hamburger.base;
@@ -110,13 +116,15 @@
 
 @include mq($from: desktopmenu) {
   .header {
-    display: grid;
-    grid-template: "logo navigation languages search";
-    grid-template-columns: auto auto 1fr min-content;
-    gap: 24px;
-    align-items: center;
-    padding-top: 24px;
-    padding-bottom: 24px;
+    &__inner-container {
+      display: grid;
+      grid-template: "logo navigation languages search";
+      grid-template-columns: auto auto 1fr min-content;
+      gap: 24px;
+      align-items: center;
+      padding-top: 24px;
+      padding-bottom: 24px;
+    }
 
     &__navigation {
       display: block;
