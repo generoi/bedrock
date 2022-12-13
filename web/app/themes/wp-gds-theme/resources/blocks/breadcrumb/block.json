@@ -1,0 +1,26 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 2,
+  "name": "gds/breadcrumb",
+  "title": "Breadcrumb",
+  "description": "Show the breadcrumb...",
+  "category": "layout",
+  "icon": "admin-multisite",
+  "style": "file:./style.css",
+  "attributes": {
+    "align": {
+      "type": "string",
+      "default": "wide"
+    }
+  },
+  "supports": {
+    "align": ["wide"],
+    "color": {
+      "text": true,
+      "background": false
+    }
+  },
+  "acf": {
+    "mode": "preview"
+  }
+}
