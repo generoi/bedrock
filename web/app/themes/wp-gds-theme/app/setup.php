@@ -124,6 +124,8 @@ add_action('after_setup_theme', function () {
      */
     add_theme_support('editor-styles');
 
+    remove_theme_support('core-block-patterns');
+
     add_image_size('tiny', 50, 50, true);
 
     // Enqueue editor styles
