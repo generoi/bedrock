@@ -7,7 +7,9 @@
   height: 100%;
   width: 100%;
   padding-top: 0;
+}
 
+.wp-block-embed youtube-embed {
   [slot="button"] {
     position: absolute;
     inset: 0;
