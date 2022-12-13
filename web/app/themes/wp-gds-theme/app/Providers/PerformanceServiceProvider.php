@@ -153,7 +153,7 @@ class PerformanceServiceProvider extends ServiceProvider
             }
         }
 
-        switch ($tag) {
+        switch ($handle) {
             case 'sage/fontawesome.js':
                 $tag = str_replace(' src', ' crossorigin="anonymous" src', $tag);
                 break;
