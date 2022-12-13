@@ -21,11 +21,11 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
+  column-gap: var(--grid-gutter-x);
+  row-gap: var(--grid-gutter-y);
 
-  @include mq($from: large) {
-    margin:
-      calc(var(--grid-gutter-y) / 2 * -1)
-      calc(var(--grid-gutter-x) / 2 * -1);
+  > :not(.cell) {
+    flex-basis: 100%;
   }
 }
 
@@ -34,10 +34,6 @@
   min-height: 0;
   min-width: 0;
   width: 100%;
-  margin:
-    calc(var(--grid-gutter-y) / 2)
-    calc(var(--grid-gutter-x) / 2);
-  max-width: calc(100% - var(--grid-gutter-x));
 
   > :only-child {
     height: 100%;
@@ -49,7 +45,9 @@
     @include mq($from: $name) {
       .#{$name}\:#{$i} {
         width: calc(
-          (#{$i} / var(--grid-columns) * 100%) - var(--grid-gutter-x)
+          (#{$i} / var(--grid-columns) * 100%) - (
+            var(--grid-gutter-x) - (#{$i} / var(--grid-columns) * var(--grid-gutter-x))
+          )
         );
       }
     }
