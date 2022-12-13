@@ -21,7 +21,7 @@ class Teaser extends Composer
      *
      * @return array
      */
-    public function override()
+    public function with()
     {
         $post = $this->view->post ?? get_post();
 
