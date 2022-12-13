@@ -1,24 +1,40 @@
-<div class="teaser teaser--{{ get_post_type() }}">
-  <gds-media-card
-    href="{{ get_permalink() }}"
-    image-url="{{$image}}"
-  >
-    <gds-heading size="s" slot="headline">
-      {!! esc_html($title) !!}
-    </gds-heading>
+<div class="teaser teaser--{{ get_post_type() }} {{ $className ?? '' }}">
+  <figure class="teaser__media">
+    @if (has_post_thumbnail())
+      {!! get_the_post_thumbnail(null, 'medium') !!}
+    @else
+      <img src="{{ Roots\asset('images/default-teaser.jpg') }}" alt="" />
+    @endif
+  </figure>
+  <div class="teaser__content">
+    <h3 class="teaser__title">
+      {!! esc_html(get_the_title()) !!}
+    </h3>
 
-    @if ($excerpt)
-      <gds-paragraph size="l" slot="description">
-        {!! $excerpt !!}
-      </gds-paragraph>
+    @block('core/post-date', [
+      'format' => 'd.m.Y',
+      'className' => 'teaser__date'
+    ])
+
+    @if ($excerpt = get_the_excerpt())
+      <p class="teaser__description">{!! $excerpt !!}</p>
     @endif
 
-    @if ($categories)
-      <gds-tag-group slot="tags">
-        @foreach ($categories as $category)
-          <gds-tag href="{{ get_category_link($category) }}">{!! esc_html($category->name) !!}</gds-tag>
+    @if ($categories = get_the_terms(get_post(), 'category'))
+      <div class="teaser__tags">
+        @foreach ($categories as $term)
+          <a class="teaser__tag" href="{{ get_term_link($term) }}">
+            {!! esc_html($term->name) !!}
+          </a>
         @endforeach
-      </gds-tag-group>
+      </div>
     @endif
-  </gds-media-card>
+
+    <p>
+      <a class="teaser__readmore teaser__link" href="{{ get_permalink() }}">
+        <span>{{ __('Read article', 'gds') }}</span>
+        <i class="fa-solid fa-chevrons-right fa-2xs"></i>
+      </a>
+    </p>
+  </div>
 </div>

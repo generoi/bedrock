@@ -1,0 +1,30 @@
+@mixin card {
+  border-radius: 8px;
+  box-shadow: 1px 1px 4px #00000019;
+  background-color: var(--gds-color-white);
+  transition: box-shadow 0.2s ease-out;
+}
+
+@mixin media {
+  overflow: hidden;
+  border-top-left-radius: inherit;
+  border-top-right-radius: inherit;
+  margin-bottom: 0;
+
+  img {
+    width: 100%;
+    height: auto;
+  }
+}
+
+@mixin content {
+  padding: 24px;
+}
+
+@mixin on-hover {
+  box-shadow: 3px 3px 8px #00000029;
+}
+
+@mixin on-focus {
+  outline: solid 2px var(--gds-color-black);
+}

@@ -1,22 +1,14 @@
+@use "mixins";
+
 .wp-block-gds-media-card {
-  border-radius: 8px;
-  box-shadow: 1px 1px 4px #00000019;
-  background-color: var(--gds-color-white);
+  @include mixins.card;
 
   &__media {
-    overflow: hidden;
-    border-top-left-radius: inherit;
-    border-top-right-radius: inherit;
-    margin-bottom: 0;
-
-    img {
-      width: 100%;
-      height: auto;
-    }
+    @include mixins.media;
   }
 
   &__content {
-    padding: 24px;
+    @include mixins.content;
 
     --block-gutter: 12px;
     --gds-heading-margin-end: var(--block-gutter);
