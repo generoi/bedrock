@@ -2,6 +2,9 @@ import swiper from './components/swiper'
 import {onIdle} from './utils'
 import './components/toggle-button';
 import { lazyLoad } from './components/lazy-load';
+import fontawesome from './components/fontawesome';
+
+fontawesome();
 
 if (document.querySelector('youtube-embed')) {
   onIdle(() => import('./components/youtube-embed'));

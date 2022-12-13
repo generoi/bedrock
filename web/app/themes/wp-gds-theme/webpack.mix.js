@@ -74,7 +74,8 @@ glob.sync('resources/blocks/*/*').forEach((file) => {
 mix.copyWatched('resources/images', 'public/images', {base: 'resources/images'})
   .copyWatched('resources/fonts', 'public/fonts', {base: 'resources/fonts'});
 
-mix.copy('node_modules/jquery/dist/jquery.min.js', 'public/scripts/jquery.js');
+mix.copyWatched('node_modules/@fortawesome/fontawesome-pro/webfonts', 'public/webfonts')
+  .copy('node_modules/jquery/dist/jquery.min.js', 'public/scripts/jquery.js');
 
 mix.autoload({
   jquery: ['$', 'window.jQuery'],
