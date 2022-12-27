@@ -27,7 +27,6 @@ class PerformanceServiceProvider extends ServiceProvider
         add_filter('wp_content_img_tag', [$this, 'addContentImageLoadingAttribute']);
         add_filter('wp_get_attachment_image_attributes', [$this, 'addLoadingAttribute'], PHP_INT_MAX);
         add_filter('the_content', [$this, 'lazyLoadIframesVideos']);
-        add_filter('embed_oembed_html', [$this, 'customYoutubeEmbed']);
     }
 
     /**
@@ -108,29 +107,6 @@ class PerformanceServiceProvider extends ServiceProvider
             $content
         );
         return $content;
-    }
-
-    /**
-     * Rewrite youtube embeds so that their iframes are lazy loaded.
-     */
-    public function customYoutubeEmbed(string $cache): string
-    {
-        preg_match('/src="([^"]*)"/i', $cache, $match);
-        $src = $match[1] ?? null;
-        if (!$src) {
-            return $cache;
-        }
-
-        // @see https://gist.github.com/ghalusa/6c7f3a00fd2383e5ef33
-        preg_match('%(?:youtube(?:-nocookie)?\.com/(?:[^/]+/.+/|(?:v|e(?:mbed)?)/|.*[?&]v=)|youtu\.be/)([^"&?/ ]{11})%i', $src, $match);
-        $youtubeId = $match[1] ?? null;
-        if (!$youtubeId) {
-            return $cache;
-        }
-
-        return view('partials.embed-youtube', [
-            'youtube_id' => $youtubeId,
-        ]);
     }
 
     /**
