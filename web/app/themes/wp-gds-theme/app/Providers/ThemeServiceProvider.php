@@ -9,6 +9,7 @@ class ThemeServiceProvider extends AggregateServiceProvider
     protected $providers = [
         \App\Providers\BlockPatternServiceProvider::class,
         \App\Providers\BlockServiceProvider::class,
+        \App\Providers\ComponentServiceProvider::class,
         \App\Providers\SageServiceProvider::class,
         \App\Providers\PerformanceServiceProvider::class,
         \App\Providers\PartytownServiceProvider::class,
