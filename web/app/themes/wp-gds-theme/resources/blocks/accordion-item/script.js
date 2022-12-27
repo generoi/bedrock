@@ -99,6 +99,10 @@ export class GdsAccordionItem extends HTMLElement {
           grid-template-columns: 1fr auto;
           grid-gap: 4px;
         }
+
+        :host(:not([expanded])) .item__content {
+          display: none;
+        }
       </style>
       <div class="item">
         <button
