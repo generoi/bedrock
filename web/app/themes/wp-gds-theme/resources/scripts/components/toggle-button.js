@@ -22,15 +22,18 @@ export class ToggleButton extends HTMLElement {
     this.addEventListener(EVENT_CLOSE, this.close.bind(this));
     this.addEventListener('keydown', this.handleKeyDown.bind(this));
     this.addEventListener('click', this.toggle.bind(this));
-    this.controls.forEach((target) => {
-      target.addEventListener('focusout', this.handleTargetContainerBlur.bind(this, target));
-      target.addEventListener('keydown', this.handleTargetContainerKeyDown.bind(this));
-    });
+
+    if (!this.persistent) {
+      this.controls.forEach((target) => {
+        target.addEventListener('focusout', this.handleTargetContainerBlur.bind(this, target));
+        target.addEventListener('keydown', this.handleTargetContainerKeyDown.bind(this));
+      });
+    }
     this.render();
   }
 
   static get observedAttributes() {
-    return ['aria-expanded', 'aria-controls'];
+    return ['aria-expanded', 'aria-controls', 'persistent'];
   }
 
   get controls() {
@@ -40,6 +43,10 @@ export class ToggleButton extends HTMLElement {
     }
     controls = controls.split(' ').map((target) => document.getElementById(target));
     return controls;
+  }
+
+  get persistent() {
+    return this.hasAttribute('persistent');
   }
 
   get expanded() {
