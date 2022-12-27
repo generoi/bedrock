@@ -40,7 +40,7 @@ class ComponentServiceProvider extends ServiceProvider
     {
         $this->app->make('view')->addNamespace(
             'components',
-            $this->app->resourcePath('blocks')
+            $this->app->resourcePath('components')
         );
     }
 }
