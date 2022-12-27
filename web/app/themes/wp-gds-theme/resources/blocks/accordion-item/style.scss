@@ -22,10 +22,6 @@
       transition: transform 0.2s ease-out;
     }
 
-    &:not([expanded])::part(content) {
-      display: none;
-    }
-
     &[expanded] [slot="icon"] {
       transform: rotate(180deg);
     }
