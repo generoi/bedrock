@@ -2,11 +2,11 @@
 
 return [
     'config' => [
-        'forward' => ['dataLayer.push', 'fbq'],
-        'logScriptExecution' => WP_DEBUG,
-        'logCalls' => WP_DEBUG,
-        'logGetters' => WP_DEBUG,
-        'logSetters' => WP_DEBUG,
+        'forward' => ['dataLayer.push', 'fbq', 'gtag'],
+        'logScriptExecution' => false,
+        'logCalls' => false,
+        'logGetters' => false,
+        'logSetters' => false,
         'debug' => WP_DEBUG,
         'lib' => parse_url(dirname(asset('~partytown/partytown.js')->uri()), PHP_URL_PATH) . '/',
     ],
