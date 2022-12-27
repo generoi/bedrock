@@ -49,28 +49,35 @@ mix.sass('resources/styles/app.scss', 'styles')
    .sass('resources/styles/editor.scss', 'styles')
    .sass('resources/styles/editor-overrides.scss', 'styles');
 
-mix.js('resources/scripts/empty.js', 'scripts')
-   .js('resources/scripts/app.js', 'scripts')
+mix.js('resources/scripts/app.js', 'scripts')
    .blocks('resources/scripts/editor.js', 'scripts', {disableRegenerator: true});
 
 glob.sync('resources/styles/blocks/*').forEach((file) => {
   mix.sass(file, 'styles/blocks');
 });
 
-const buildPath = (file) => `blocks/${path.basename(path.dirname(file))}`
-
-glob.sync('resources/blocks/*/*').forEach((file) => {
-  if (/.scss$/.test(file)) {
-    mix.sass(file, buildPath(file))
-  } else if (/index.js$/.test(file)) {
-    mix.blocks(file, buildPath(file));
-  } else if (/.js$/.test(file)) {
-    mix.js(file, buildPath(file));
-  } else if (/.json$/.test(file)) {
-    const destination = `public/${buildPath(file)}/${path.basename(file)}`;
-    mix.copy(file, destination);
+const assetCompiler = (buildPath) => {
+  return (file) => {
+    if (/.scss$/.test(file)) {
+      mix.sass(file, buildPath(file))
+    } else if (/index.js$/.test(file)) {
+      mix.blocks(file, buildPath(file));
+    } else if (/.js$/.test(file)) {
+      mix.js(file, buildPath(file));
+    } else if (/.json$/.test(file)) {
+      const destination = `public/${buildPath(file)}/${path.basename(file)}`;
+      mix.copy(file, destination);
+    }
   }
-})
+}
+
+glob.sync('resources/blocks/*/*').forEach(assetCompiler(
+  (file) => `blocks/${path.basename(path.dirname(file))}`
+));
+
+glob.sync('resources/components/*/*').forEach(assetCompiler(
+  (file) => `components/${path.basename(path.dirname(file))}`
+));
 
 mix.copyWatched('resources/images', 'public/images', {base: 'resources/images'})
   .copyWatched('resources/fonts', 'public/fonts', {base: 'resources/fonts'});
