@@ -11,6 +11,7 @@ class ThemeServiceProvider extends AggregateServiceProvider
         \App\Providers\BlockServiceProvider::class,
         \App\Providers\SageServiceProvider::class,
         \App\Providers\PerformanceServiceProvider::class,
+        \App\Providers\PartytownServiceProvider::class,
         \Spatie\GoogleFonts\GoogleFontsServiceProvider::class,
     ];
 }
