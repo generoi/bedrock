@@ -1,0 +1,37 @@
+@use "@/common/functions" as *;
+
+modal-dialog {
+  &::part(dialog) {
+    box-sizing: border-box;
+    max-width: 680px;
+    padding:
+      #{sloped-size(24px, 60px)}
+      #{sloped-size(12px, 60px)};
+    border-radius: 10px;
+    box-shadow: 1px 1px 4px #0000001a;
+    max-height: 90vh;
+    max-height: 90dvh;
+    overflow: auto;
+  }
+
+  &::part(overlay) {
+    animation: fade-in 0.2s both;
+    background: rgba(0 0 0 / 10%);
+    backdrop-filter: blur(2px);
+  }
+
+  &[aria-hidden] {
+    display: none;
+  }
+
+  > * {
+    margin-block-start: var(--block-gutter-start, var(--block-gutter));
+    margin-block-end: var(--block-gutter-end, var(--block-gutter));
+  }
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+}
