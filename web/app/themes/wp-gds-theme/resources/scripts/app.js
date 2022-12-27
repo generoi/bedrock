@@ -7,7 +7,7 @@ import fontawesome from './components/fontawesome';
 fontawesome();
 
 if (document.querySelector('youtube-embed')) {
-  onIdle(() => import('./components/youtube-embed'));
+  onIdle(() => import('@components/youtube-embed'));
 }
 
 // app.js is loaded at the end of body, so don't wait for document ready.

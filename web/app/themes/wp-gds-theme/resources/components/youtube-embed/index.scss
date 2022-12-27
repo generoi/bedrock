@@ -1,0 +1,14 @@
+youtube-embed {
+  [slot="button"] {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .fa-youtube {
+    color: #f00;
+    font-size: 3em;
+  }
+}

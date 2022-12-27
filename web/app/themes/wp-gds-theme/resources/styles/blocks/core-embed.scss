@@ -1,3 +1,5 @@
+@use "@components/youtube-embed";
+
 .wp-embed-responsive .wp-has-aspect-ratio youtube-embed {
   position: absolute;
   top: 0;
@@ -7,19 +9,4 @@
   height: 100%;
   width: 100%;
   padding-top: 0;
-}
-
-.wp-block-embed youtube-embed {
-  [slot="button"] {
-    position: absolute;
-    inset: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-
-  .fa-youtube {
-    color: #f00;
-    font-size: 3em;
-  }
 }
