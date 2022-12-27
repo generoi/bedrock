@@ -28,7 +28,6 @@ class PerformanceServiceProvider extends ServiceProvider
         add_filter('wp_get_attachment_image_attributes', [$this, 'addLoadingAttribute'], PHP_INT_MAX);
         add_filter('the_content', [$this, 'lazyLoadIframesVideos']);
         add_filter('embed_oembed_html', [$this, 'customYoutubeEmbed']);
-        add_action('wp_head', [$this, 'addPartytown'], 0);
     }
 
     /**
@@ -183,24 +182,5 @@ class PerformanceServiceProvider extends ServiceProvider
         $html = $dom->saveHTML($tag);
 
         return $html;
-    }
-
-    public function addPartytown(): void
-    {
-        $config = config('partytown.config');
-        $loader = asset('~partytown/' . (WP_DEBUG ? 'debug/' : '' ) . 'partytown.js')->contents();
-        ?>
-        <script>
-        window.partytown = <?php echo json_encode($config); ?>;
-        window.partytown.resolveUrl = function(url) {
-          var proxyMap = {
-            'connect.facebook.net': 'facebook.generodigital.com',
-          }
-          url.hostname = proxyMap[url.hostname] || url.hostname;
-          return url;
-        }
-        </script>
-        <script><?php echo $loader; ?></script>
-        <?php
     }
 }
