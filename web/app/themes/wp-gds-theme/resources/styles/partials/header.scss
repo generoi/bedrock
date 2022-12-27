@@ -46,6 +46,7 @@
   .header {
     background-color: var(--gds-color-white);
     transition: all 0.1s ease-out;
+    display: flex;
 
     &__inner-container {
       grid-template:
@@ -59,6 +60,10 @@
       justify-content: space-between;
       padding-top: 8px;
       padding-bottom: 8px;
+
+      .header.is-active & {
+        row-gap: 24px;
+      }
     }
 
     &__menu-toggler-icon {
@@ -83,9 +88,9 @@
     }
 
     &.is-active {
-      row-gap: 24px;
       height: 100vh;
       height: 100dvh;
+      width: 100%;
       position: fixed;
       top: 0;
       z-index: 100000; /* higher than the admin menu */
