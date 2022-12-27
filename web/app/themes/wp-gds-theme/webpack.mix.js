@@ -32,7 +32,7 @@ mix.setPublicPath('./public')
         '@': path.resolve('resources/styles'),
         '~': path.resolve('resources/scripts'),
         '@blocks': path.resolve('resources/blocks'),
-        '@components': path.resolve('resources/styles/components'),
+        '@components': path.resolve('resources/components'),
       },
     },
   })
