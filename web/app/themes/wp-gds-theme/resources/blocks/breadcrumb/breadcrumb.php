@@ -5,7 +5,7 @@ namespace blocks\breadcrumb;
 use WP_Block;
 
 register_block_type(asset('blocks/breadcrumb/block.json')->path(), [
-    'render_callback' => function (array $attributes, string $content = '', bool $isPreview = false, int $postId = 0, ?WP_Block $block = null, array|bool $context = false) {
+    'render_callback' => function (array $attributes, string $content = '', $isPreview = false, int $postId = 0, ?WP_Block $block = null, array|bool $context = false) {
         $attributes = (object) $attributes;
 
         $crumbs = '';
@@ -17,7 +17,7 @@ register_block_type(asset('blocks/breadcrumb/block.json')->path(), [
 
         echo view('blocks::breadcrumb.breadcrumb', [
             'content' => $crumbs,
-            'is_preview' => $isPreview,
+            'is_preview' => is_bool($isPreview) ? $isPreview : false,
         ]);
     }
 ]);
