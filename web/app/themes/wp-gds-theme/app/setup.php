@@ -60,8 +60,7 @@ add_action('enqueue_block_editor_assets', function () {
         wp_add_inline_script('sage/vendor.js', asset('scripts/manifest.js')->contents(), 'before');
     }
     wp_enqueue_style('sage/editor-overrides.css', asset('styles/editor-overrides.css')->uri(), ['wp-edit-blocks', 'common'], null);
-
-    echo app(GoogleFonts::class)->load()->toHtml();
+    wp_enqueue_style('sage/googlefonts.css', app(GoogleFonts::class)->load()->url(), [], null);
 }, 100);
 
 /**
