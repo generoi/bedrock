@@ -7,7 +7,7 @@ use WP_Block;
 use WP_Query;
 
 register_block_type(asset('blocks/article-grid/block.json')->path(), [
-    'render_callback' => function (array $attributes, string $content = '', bool $isPreview = false, int $postId = 0, ?WP_Block $block = null, array|bool $context = false) {
+    'render_callback' => function (array $attributes, string $content = '', $isPreview = false, int $postId = 0, ?WP_Block $block = null, array|bool $context = false) {
         $attributes = (object) $attributes;
 
         $query = [
