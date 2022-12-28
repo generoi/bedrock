@@ -56,8 +56,6 @@ add_action('wp_enqueue_scripts', function () {
 add_action('enqueue_block_editor_assets', function () {
     if ($manifest = asset('scripts/editor.asset.php')->load()) {
         wp_enqueue_script('sage/editor.js', asset('scripts/editor.js')->uri(), $manifest['dependencies'], null, true);
-
-        wp_add_inline_script('sage/vendor.js', asset('scripts/manifest.js')->contents(), 'before');
     }
     wp_enqueue_style('sage/editor-overrides.css', asset('styles/editor-overrides.css')->uri(), ['wp-edit-blocks', 'common'], null);
     wp_enqueue_style('sage/googlefonts.css', app(GoogleFonts::class)->load()->url(), [], null);
