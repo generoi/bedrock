@@ -1,6 +1,8 @@
 @use "@/common/functions" as *;
 
 modal-dialog {
+  display: flex;
+
   &::part(dialog) {
     box-sizing: border-box;
     max-width: 680px;
