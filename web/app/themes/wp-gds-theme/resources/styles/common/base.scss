@@ -151,3 +151,7 @@ select:not([multiple]) {
 
   @include button.button;
 }
+
+modal-dialog {
+  display: none;
+}
