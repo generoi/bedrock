@@ -81,7 +81,7 @@
     "squizlabs/php_codesniffer": "^3.4.2",
     "brainmaestro/composer-git-hooks": "^2.2",
     "deployer/deployer": "^7.0",
-    "generoi/deployer-genero": "dev-feature/set-wp-home",
+    "generoi/deployer-genero": "^0.2",
     "staabm/annotate-pull-request-from-checkstyle": "^1.5"
   },
   "config": {

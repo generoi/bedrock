@@ -25,6 +25,7 @@ $webroot_dir = $root_dir . '/web';
 $dotenv = Dotenv\Dotenv::createUnsafeImmutable($root_dir);
 if (file_exists($root_dir . '/.env')) {
     $dotenv->load();
+    $dotenv->required(['WP_HOME', 'WP_SITEURL']);
     if (!env('DATABASE_URL')) {
         $dotenv->required(['DB_NAME', 'DB_USER', 'DB_PASSWORD']);
     }
@@ -34,27 +35,13 @@ if (file_exists($root_dir . '/.env')) {
  * Set up our global environment constant and load its config first
  * Default: production
  */
-$env = 'production';
-if (preg_match('/\bddev\b/i', $_SERVER['SERVER_NAME']) || preg_match('/\btest\b/i', $_SERVER['SERVER_NAME'])) { // check ddev or vagrant environment
-    $env = 'development';
-} elseif (preg_match('/\bstaging\b/i', gethostname())) {
-    $env = 'staging';
-}
-define('WP_ENV', $env);
-
-/**
- * Set up our global environment constant and load its config first
- */
-$env_config = __DIR__ . '/environments/' . WP_ENV . '.php';
-
-if (file_exists($env_config)) {
-    require_once $env_config;
-}
+define('WP_ENV', env('WP_ENV') ?: 'production');
 
 /**
  * URLs
  */
-Config::define('WP_SITEURL', Config::get('WP_HOME') . '/wp');
+Config::define('WP_HOME', env('WP_HOME'));
+Config::define('WP_SITEURL', env('WP_SITEURL'));
 
 /**
  * Custom Content Directory
@@ -161,6 +148,12 @@ ini_set('display_errors', '0');
  */
 if (isset($_SERVER['HTTP_X_FORWARDED_PROTO']) && $_SERVER['HTTP_X_FORWARDED_PROTO'] === 'https') {
     $_SERVER['HTTPS'] = 'on';
+}
+
+$env_config = __DIR__ . '/environments/' . WP_ENV . '.php';
+
+if (file_exists($env_config)) {
+    require_once $env_config;
 }
 
 Config::apply();
