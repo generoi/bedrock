@@ -33,8 +33,6 @@ set('writable_chmod_mode', 'ug+w');
 
 set('bin/robo', './vendor/bin/robo');
 set('bin/wp', './vendor/bin/wp');
-set('bin/npm', fn() => runLocally('which npm'));
-set('bin/composer', fn () => runLocally('which composer'));
 
 /**
  * Deploy configuration
@@ -109,17 +107,17 @@ if (!empty($staging = $robo['env']['@staging'])) {
 task('build:setup', function () {
     runLocally('rm -rf {{build_path}}');
     runLocally('mkdir -p {{build_path}}');
-    runLocally('{{bin/git}} clone {{build_repository}} {{build_path}}');
+    runLocally('git clone {{build_repository}} {{build_path}}');
 });
 
 task('build:composer', function () {
-    runLocally('cd {{build_path}} && {{bin/composer}} {{composer_action}} {{composer_options}}');
+    runLocally('cd {{build_path}} && composer {{composer_action}} {{composer_options}}');
 });
 
 task('build:theme', function () {
-    runLocally('cd {{build_path}}/{{theme_dir}} && {{bin/composer}} {{composer_action}} {{composer_options}}');
-    runLocally('cd {{build_path}}/{{theme_dir}} && {{bin/npm}} install --no-audit', ['timeout' => 1000]);
-    runLocally('cd {{build_path}}/{{theme_dir}} && {{bin/npm}} run lint');
+    runLocally('cd {{build_path}}/{{theme_dir}} && composer {{composer_action}} {{composer_options}}');
+    runLocally('cd {{build_path}}/{{theme_dir}} && npm install --no-audit', ['timeout' => 1000]);
+    runLocally('cd {{build_path}}/{{theme_dir}} && npm run lint');
     runLocally('cd {{build_path}} && {{bin/robo}} build:production');
     runLocally('ls {{build_path}}/{{theme_dir}}/public');
 });
