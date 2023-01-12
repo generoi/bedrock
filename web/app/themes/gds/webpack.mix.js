@@ -21,7 +21,7 @@ const partytown = require('@builder.io/partytown/utils');
 const robo = yaml.safeLoad(fs.readFileSync('../../../../robo.yml', 'utf8'));
 
 mix.setPublicPath('./public')
-  .setResourceRoot(`/app/themes/wp-gds-theme/public/`)
+  .setResourceRoot('/app/themes/gds/public/')
   .webpackConfig({
     output: {
       chunkFilename: '[name].[contenthash:8].js',

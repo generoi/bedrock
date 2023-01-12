@@ -1,6 +1,6 @@
 
 <a class="sr-only-focusable" href="#main-content">
-  {{ __('Skip to content', 'gds-a11y') }}
+  {{ __('Skip to content', 'gds') }}
 </a>
 
 @include('partials.header')

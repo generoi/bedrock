@@ -1,7 +1,7 @@
 version: 2
 updates:
   - package-ecosystem: "npm"
-    directory: "/web/app/themes/wp-gds-theme/"
+    directory: "/web/app/themes/gds/"
     schedule:
       interval: "weekly"
     allow:
@@ -15,7 +15,7 @@ updates:
       - satispress
 
   - package-ecosystem: "composer"
-    directory: "/web/app/themes/wp-gds-theme/"
+    directory: "/web/app/themes/gds/"
     schedule:
       interval: "weekly"
     registries:
