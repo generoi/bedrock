@@ -10198,15 +10198,15 @@
         },
         {
             "name": "wpackagist-plugin/shortpixel-adaptive-images",
-            "version": "3.5.5",
+            "version": "3.6.1",
             "source": {
                 "type": "svn",
                 "url": "https://plugins.svn.wordpress.org/shortpixel-adaptive-images/",
-                "reference": "tags/3.5.5"
+                "reference": "tags/3.6.1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://downloads.wordpress.org/plugin/shortpixel-adaptive-images.3.5.5.zip"
+                "url": "https://downloads.wordpress.org/plugin/shortpixel-adaptive-images.3.6.1.zip"
             },
             "require": {
                 "composer/installers": "^1.0 || ^2.0"
