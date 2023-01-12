@@ -11,7 +11,6 @@ import('recipe/deploy/rollback.php');
 import('vendor/generoi/deployer-genero/common.php');
 import('vendor/generoi/deployer-genero/setup.php');
 import('vendor/generoi/deployer-genero/wordpress.php');
-import('vendor/generoi/deployer-genero/readonly.php');
 
 require_once __DIR__ . '/vendor/autoload.php';
 $robo = Robo::createConfiguration(['robo.yml'])->export();
@@ -168,8 +167,3 @@ after('deploy:failed', 'deploy:unlock');
 // Clear the cache @todo setup
 after('deploy:symlink', 'cache:clear');
 after('rollback', 'cache:clear');
-// Before making the release public, make the filesystem read-only
-before('deploy:symlink', 'readonly');
-// Before erasing old releases, make them writable
-before('deploy:cleanup', 'readonly:cleanup:writable');
-before('deploy:release', 'readonly:release:writable');
