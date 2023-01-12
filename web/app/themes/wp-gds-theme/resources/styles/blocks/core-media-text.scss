@@ -11,6 +11,13 @@
     padding: var(--media-text-gutter);
   }
 
+  // When aligning to top/bottom, it's expected that content is aligned with media
+  &.is-vertically-aligned-top:not(.has-background) &__content,
+  &.is-vertically-aligned-bottom:not(.has-background) &__content {
+    padding-top: 0;
+    padding-bottom: 0;
+  }
+
   // Remove the outer gutter since there's a viewport gutter
   &:not(.alignfull, .has-background) {
     @media (max-width: 600px) {

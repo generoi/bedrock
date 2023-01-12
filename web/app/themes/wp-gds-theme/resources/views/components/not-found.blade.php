@@ -1,8 +1,8 @@
 @php(render_block(['blockName' => 'core/media-text']))
 
-<div class="wp-block-media-text alignwide is-stacked-on-mobile has-media-on-the-right" style="grid-template-columns: 60% 1fr;">
+<div class="wp-block-media-text alignwide is-stacked-on-mobile has-media-on-the-right is-vertically-aligned-top" style="grid-template-columns: 68% 1fr;">
   <figure class="wp-block-media-text__media">
-    <img decoding="async" src="https://cldup.com/Fz-ASbo2s3.jpg" alt="">
+    <img decoding="async" src="{{ asset('images/404.webp')->uri() }}" alt="">
   </figure>
   <div class="wp-block-media-text__content">
     @if (!empty(trim($header)))
