@@ -39,7 +39,7 @@ class PageHeader extends Composer
                 return get_the_title($home);
             }
 
-            return __('Latest Posts', 'sage');
+            return __('Latest Posts', 'gds');
         }
 
         if (is_archive()) {
@@ -49,13 +49,13 @@ class PageHeader extends Composer
         if (is_search()) {
             /* translators: %s is replaced with the search query */
             return sprintf(
-                __('Search Results for <span class="has-black-color">%s</span>', 'sage'),
+                __('Search Results for <span class="has-black-color">%s</span>', 'gds'),
                 get_search_query()
             );
         }
 
         if (is_404()) {
-            return __('Not Found', 'sage');
+            return __('Not Found', 'gds');
         }
 
         return get_the_title();

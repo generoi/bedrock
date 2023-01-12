@@ -4,12 +4,12 @@
       class="header__logo"
       href="{{ home_url('/') }}"
       rel="home"
-      aria-label="{{ sprintf(__('%s frontpage', 'gds-a11y'), $siteName) }}"
+      aria-label="{{ sprintf(__('%s frontpage', 'gds'), $siteName) }}"
     >
       <img
         src="{{ Roots\asset('images/logo.svg')->uri() }}"
         alt=""
-        title="{{ __('Go to frontpage', 'gds-a11y') }}"
+        title="{{ __('Go to frontpage', 'gds') }}"
         width="159"
         height="48"
         loading="eager"
@@ -25,11 +25,11 @@
         class="header__menu-toggler-icon"
         aria-hidden="true"
       ></span>
-      <span class="sr-only">{{ __('Menu', 'gds-a11y') }}</span>
+      <span class="sr-only">{{ __('Menu', 'gds') }}</span>
     </toggle-button>
 
     <nav
-      aria-label="{{ __('Primary menu', 'gds-a11y') }}"
+      aria-label="{{ __('Primary menu', 'gds') }}"
       class="header__navigation"
     >
       @if ($primary_navigation)
@@ -43,7 +43,7 @@
 
     @if ($current_language)
     <div
-      aria-label="{{ __('Language', 'gds-a11y') }}"
+      aria-label="{{ __('Language', 'gds') }}"
       class="header__languages language-menu"
     >
       <toggle-button
@@ -82,11 +82,11 @@
       class="header__search"
     >
       <label for="s" class="sr-only">
-        {{ __('Search this site', 'gds-a11y') }}
+        {{ __('Search this site', 'gds') }}
       </label>
-      <input slot="input" type="search" name="s" placeholder="{{ __('Search', 'gds-a11y') }}" autocomplete="off" />
+      <input slot="input" type="search" name="s" placeholder="{{ __('Search', 'gds') }}" autocomplete="off" />
 
-      <button type="submit" aria-label="{{ __('Search', 'gds-a11y') }}">
+      <button type="submit" aria-label="{{ __('Search', 'gds') }}">
         <i class="fa fa-solid fa-magnifying-glass"></i>
       </button>
     </form>
