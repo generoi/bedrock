@@ -110,7 +110,7 @@
       background-color: var(--gds-color-white);
       z-index: 10;
       top: 100%;
-      box-shadow: 1px 1px 4px #00000019;
+      box-shadow: var(--gds-box-shadow);
       min-width: 150px;
       margin-left: -8px;
 

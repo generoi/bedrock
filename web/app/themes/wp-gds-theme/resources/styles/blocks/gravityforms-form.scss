@@ -71,7 +71,7 @@
   &_fileupload_multifile {
     background-color: var(--gds-color-lightest-gray);
     padding: var(--grid-gutter);
-    border-radius: 10px;
+    border-radius: var(--gds-border-radius);
     border: dashed 2px var(--gds-color-light-gray);
     min-height: 200px;
     display: flex;
@@ -371,12 +371,12 @@ img.gform_ajax_spinner {
   }
 
   background-color: var(--gds-color-white);
-  box-shadow: 1px 1px 4px #00000019;
+  box-shadow: var(--gds-box-shadow);
   padding: 16px;
   display: flex;
   flex-direction: column;
   gap: var(--ui-gutter);
-  border-radius: 10px;
+  border-radius: var(--gds-border-radius);
 
   &-header {
     display: flex;

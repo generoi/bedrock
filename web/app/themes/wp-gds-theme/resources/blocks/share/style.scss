@@ -14,10 +14,6 @@
       text-decoration: underline;
     }
 
-    &:focus-visible {
-      outline: var(--gds-focus-outline);
-    }
-
     > svg:last-child,
     > i:last-child {
       margin-left: 0.5ch;
@@ -36,9 +32,9 @@
     background-color: var(--gds-color-white);
     flex-direction: column;
     gap: 8px;
-    box-shadow: 6px 8px 18px #00000014;
+    box-shadow: var(--gds-box-shadow);
     border: 2px solid #eee;
-    border-radius: 0 10px 10px;
+    border-radius: 0 var(--gds-border-radius) var(--gds-border-radius);
     z-index: 5;
 
     @include typography.body-s;
@@ -85,10 +81,6 @@
     &[status="failed"] [data-failed-icon] {
       display: inline-block;
       color: var(--gds-color-error);
-    }
-
-    &::part(button):focus {
-      outline: var(--gds-focus-outline);
     }
   }
 }

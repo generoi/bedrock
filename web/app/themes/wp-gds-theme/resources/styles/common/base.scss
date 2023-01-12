@@ -53,10 +53,10 @@ body,
 a {
   text-decoration: none;
   color: inherit;
+}
 
-  &:focus-visible {
-    outline: var(--gds-focus-outline);
-  }
+:focus-visible {
+  outline: var(--gds-outline--focus);
 }
 
 p a,

@@ -41,6 +41,10 @@
       justify-content: center;
       padding: 1em;
 
+      &:focus-visible {
+        outline: var(--gds-outline--focus);
+      }
+
       &:active::before {
         display: none;
       }
@@ -59,7 +63,7 @@
   }
 
   &__button {
-    border-radius: 10px;
+    border-radius: var(--gds-border-radius);
     margin-left: 0;
 
     .wp-block-search__icon-button & {

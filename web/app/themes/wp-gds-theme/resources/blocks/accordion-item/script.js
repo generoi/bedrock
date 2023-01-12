@@ -100,6 +100,10 @@ export class GdsAccordionItem extends HTMLElement {
           grid-gap: 4px;
         }
 
+        .item__header:focus-visible {
+          outline: var(--gds-outline--focus);
+        }
+
         :host(:not([expanded])) .item__content {
           display: none;
         }

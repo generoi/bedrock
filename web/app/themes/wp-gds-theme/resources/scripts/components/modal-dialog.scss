@@ -9,8 +9,8 @@ modal-dialog {
     padding:
       #{sloped-size(24px, 60px)}
       #{sloped-size(12px, 60px)};
-    border-radius: 10px;
-    box-shadow: 1px 1px 4px #0000001a;
+    border-radius: var(--gds-border-radius);
+    box-shadow: var(--gds-box-shadow);
     max-height: 90vh;
     max-height: 90dvh;
     overflow: auto;

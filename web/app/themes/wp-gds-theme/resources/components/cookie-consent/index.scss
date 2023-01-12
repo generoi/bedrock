@@ -29,10 +29,6 @@
       margin-bottom: 0;
     }
 
-    &::part(header):focus-visible {
-      outline: solid 2px var(--gds-color-black);
-    }
-
     [slot="icon"] {
       transition: transform 0.2s ease-out;
     }
