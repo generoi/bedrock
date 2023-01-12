@@ -1,5 +1,6 @@
 import domReady from '@wordpress/dom-ready';
 import {
+  registerBlockStyle,
   unregisterBlockStyle,
   registerBlockCollection,
 } from '@wordpress/blocks';
@@ -7,6 +8,11 @@ import {
 registerBlockCollection('gds', { title: 'Genero Design System' } );
 
 domReady(() => {
+  registerBlockStyle('core/list', {
+    name: 'spacious',
+    label: 'Spacious',
+  });
+
 });
 
 // @see https://github.com/WordPress/gutenberg/issues/25330
