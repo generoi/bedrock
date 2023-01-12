@@ -1,6 +1,6 @@
 machine_name: gdsbedrock
 organization: generoi
-theme_path: 'web/app/themes/wp-gds-theme'
+theme_path: 'web/app/themes/gds'
 placeholders:
   '%files': web/app/uploads/
 env:

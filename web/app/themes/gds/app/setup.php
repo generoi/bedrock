@@ -90,7 +90,7 @@ add_action('after_setup_theme', function () {
      * @link https://developer.wordpress.org/reference/functions/register_nav_menus/
      */
     register_nav_menus([
-        'primary_navigation' => __('Primary Navigation', 'sage')
+        'primary_navigation' => __('Primary Navigation', 'gds')
     ]);
 
     /**
@@ -161,22 +161,22 @@ add_action('widgets_init', function () {
     ];
 
     register_sidebar([
-        'name' => __('Footer: Contact', 'sage'),
+        'name' => __('Footer: Contact', 'gds'),
         'id' => 'footer-contact'
     ] + $config);
 
     register_sidebar([
-        'name' => __('Footer: Social', 'sage'),
+        'name' => __('Footer: Social', 'gds'),
         'id' => 'footer-social'
     ] + $config);
 
     register_sidebar([
-        'name' => __('Footer: Menu', 'sage'),
+        'name' => __('Footer: Menu', 'gds'),
         'id' => 'footer-menu'
     ] + $config);
 
     register_sidebar([
-        'name' => __('Footer: Newsletter', 'sage'),
+        'name' => __('Footer: Newsletter', 'gds'),
         'id' => 'footer-newsletter'
     ] + $config);
 });
