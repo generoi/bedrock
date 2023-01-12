@@ -1,3 +1,4 @@
+@use "@/common/breakpoints" as *;
 @use "@/components/typography";
 @use "@/components/button";
 
@@ -377,6 +378,18 @@ img.gform_ajax_spinner {
   flex-direction: column;
   gap: var(--ui-gutter);
   border-radius: var(--gds-border-radius);
+  font-size: var(--gds-body-s-font-size);
+
+  // On mobile, fix it to the bottom of the viewport
+  @include mq($until: medium) {
+    position: fixed !important;
+    top: auto !important;
+    bottom: 0 !important;
+    width: 100% !important;
+    left: 0 !important;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+  }
 
   &-header {
     display: flex;
@@ -394,35 +407,95 @@ img.gform_ajax_spinner {
     }
   }
 
+  &-prev,
+  &-next {
+    &:hover {
+      color: var(--gds-color-primary);
+    }
+  }
+
+  .ui-icon-circle-triangle-w,
+  .ui-icon-circle-triangle-e {
+    mask-image: svg-load("../node_modules/@fortawesome/fontawesome-free/svgs/solid/chevron-left.svg");
+    mask-repeat: no-repeat;
+    background-color: currentColor;
+    display: inline-block;
+    width: 1em;
+    height: 1em;
+    text-indent: -200vw;
+    overflow: hidden;
+  }
+
+  .ui-icon-circle-triangle-e {
+    mask-image: svg-load("../node_modules/@fortawesome/fontawesome-free/svgs/solid/chevron-right.svg");
+  }
+
   &-title {
     display: flex;
     gap: var(--ui-gutter);
     width: 100%;
   }
 
-  &-month,
-  &-year {
+  select.ui-datepicker-month,
+  select.ui-datepicker-year {
     all: revert;
     width: 100%;
+    padding: 4px 16px 4px 4px;
+    outline: none;
+
+    &:hover {
+      box-shadow: none;
+    }
+
+    &:focus-visible {
+      outline: var(--gds-outline--focus);
+    }
   }
 
   &-calendar {
     width: 100%;
     text-align: center;
 
-    a {
-      display: block;
-      padding: 4px;
+    thead th {
+      font-weight: inherit;
+      color: var(--gds-color-dark-gray);
     }
-  }
 
-  .ui-state-disabled {
-    color: var(--gds-color-mid-gray);
-  }
+    td,
+    th {
+      width: 2.5em;
+      height: 2.25em;
 
-  .ui-state-active {
-    font-weight: 700;
-    text-decoration: underline;
+      > * {
+        height: 100%;
+      }
+    }
+
+    .ui-state-default {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .ui-state-disabled {
+      color: var(--gds-color-mid-gray);
+      background-color: var(--gds-color-lightest-gray);
+      font-style: italic;
+    }
+
+    .ui-state-active {
+      background-color: var(--gds-color-primary);
+
+      &,
+      &:hover {
+        color: var(--gds-color-white);
+      }
+    }
+
+    .ui-state-hover {
+      border: solid 1px var(--gds-color-primary);
+      color: var(--gds-color-primary);
+    }
   }
 }
 
