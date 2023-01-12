@@ -3,6 +3,10 @@
 @use "@/components/button" as button;
 
 .cookie-consent {
+  align-items: flex-end;
+  justify-content: flex-start;
+  padding: 24px;
+
   &__cookies {
     display: none;
 
@@ -45,6 +49,13 @@
   }
 
   @include mq($until: medium) {
+    padding: 0;
+
+    &::part(dialog) {
+      border-bottom-left-radius: 0;
+      border-bottom-right-radius: 0;
+    }
+
     & &__buttons {
       .wp-block-button__link.wp-block-button__link {
         @include button.size-s;
