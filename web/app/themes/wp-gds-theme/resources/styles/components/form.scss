@@ -10,14 +10,18 @@
   font-size: 18px;
   background: var(--gds-color-white);
   color: var(--gds-color-black);
-  box-shadow: 1px 1px 4px rgba(0 0 0 / 10%);
+  box-shadow: var(--gds-box-shadow);
   border: 1px solid #eee;
-  border-radius: 10px;
+  border-radius: var(--gds-border-radius);
   transition: box-shadow 0.1s ease-out;
 
-  &:hover,
+  &:hover {
+    box-shadow: var(--gds-box-shadow--hover);
+  }
+
   &:focus {
-    box-shadow: 3px 3px 8px rgba(0 0 0 / 16%);
+    box-shadow: var(--gds-box-shadow--active);
+    outline: none;
   }
 }
 

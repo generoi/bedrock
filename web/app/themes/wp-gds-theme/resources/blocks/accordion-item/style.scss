@@ -6,10 +6,6 @@
       border-bottom: solid 1px currentColor;
       padding: 16px;
       z-index: 1;
-
-      &:focus-visible {
-        outline: solid 2px var(--gds-color-black);
-      }
     }
 
     [slot="label"] {
@@ -27,8 +23,8 @@
     }
 
     &::part(content) {
-      border-bottom-left-radius: 8px;
-      border-bottom-right-radius: 8px;
+      border-bottom-left-radius: var(--gds-border-radius);
+      border-bottom-right-radius: var(--gds-border-radius);
       overflow: hidden;
       padding: 16px;
       margin-bottom: 16px;
@@ -36,7 +32,7 @@
   }
 
   &.has-background {
-    border-radius: 8px;
+    border-radius: var(--gds-border-radius);
 
     &:not(:first-child) {
       margin-block-start: var(--block-gutter-s);

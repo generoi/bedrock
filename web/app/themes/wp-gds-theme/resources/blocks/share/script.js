@@ -150,6 +150,10 @@ export class ClipboardCopy extends HTMLElement {
           cursor: pointer;
         }
 
+        .button:focus-visible {
+          outline: var(--gds-outline--focus);
+        }
+
         .sr-only {
           position: absolute;
           width: 1px;

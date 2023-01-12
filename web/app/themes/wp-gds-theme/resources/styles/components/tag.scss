@@ -14,13 +14,9 @@
   white-space: nowrap;
   text-overflow: ellipsis;
   max-width: 200px;
+  outline-offset: 0;
 
   &:hover {
     opacity: 0.8;
-  }
-
-  &:focus-visible {
-    outline: solid 2px var(--gds-color-black);
-    outline-offset: 0;
   }
 }
