@@ -1,4 +1,25 @@
+@use "@/common/breakpoints" as *;
+
 ul,
 ol {
   --block-gutter: var(--block-gutter-s);
+}
+
+.is-style-spacious {
+  @include mq($from: medium) {
+    padding-left: 40px;
+
+    > li {
+      padding-left: 8px;
+    }
+  }
+
+  > li:not(:first-child) {
+    margin-block-start: 16px;
+  }
+
+  > li > ul,
+  > li > ol {
+    margin-block-start: 16px;
+  }
 }
