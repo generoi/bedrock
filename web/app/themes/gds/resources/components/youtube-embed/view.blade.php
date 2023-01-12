@@ -5,6 +5,9 @@
     <img
       src="https://img.youtube.com/vi/{{ $youtube_id }}/maxresdefault.jpg"
       loading="lazy"
+      alt=""
+      width="3200"
+      height="1800"
       srcset="
         https://img.youtube.com/vi/{{ $youtube_id }}/default.jpg 120w,
         https://img.youtube.com/vi/{{ $youtube_id }}/mqdefault.jpg 320w,

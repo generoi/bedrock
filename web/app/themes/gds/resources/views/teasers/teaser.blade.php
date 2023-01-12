@@ -3,7 +3,7 @@
     @if (has_post_thumbnail())
       {!! get_the_post_thumbnail(null, 'medium') !!}
     @else
-      <img src="{{ Roots\asset('images/default-teaser.jpg') }}" alt="" />
+      <img src="{{ Roots\asset('images/default-teaser.webp') }}" alt="" />
     @endif
   </figure>
   <div class="teaser__content">
