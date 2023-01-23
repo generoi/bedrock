@@ -6,7 +6,7 @@
   max-width: 100%;
   margin: 0;
   outline: none;
-  padding: 12px 16px;
+  padding: 9px 16px;
   font-size: 18px;
   background: var(--gds-color-white);
   color: var(--gds-color-black);
@@ -21,6 +21,7 @@
 
   &:focus {
     box-shadow: var(--gds-box-shadow--active);
+    border-color: var(--gds-color-black);
     outline: none;
   }
 }
