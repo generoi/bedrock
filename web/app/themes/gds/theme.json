@@ -90,6 +90,11 @@
         "typography": {
           "fontSizes": [
             {
+              "name": "XS Heading",
+              "size": "var(--gds-heading-xs-font-size)",
+              "slug": "xs-heading"
+            },
+            {
               "name": "S Heading",
               "size": "var(--gds-heading-s-font-size)",
               "slug": "s-heading"
