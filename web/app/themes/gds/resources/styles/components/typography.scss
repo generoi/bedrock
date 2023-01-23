@@ -3,15 +3,18 @@
 :root {
   // Headings
   --gds-heading-font-family: "Open sans", sans-serif;
-  --gds-heading-xl-font-size: #{sloped-size(32px, 56px)};
+  --gds-heading-xl-font-size: #{sloped-size(30px, 56px)};
   --gds-heading-l-font-size: #{sloped-size(30px, 36px)};
-  --gds-heading-m-font-size: #{sloped-size(22px, 26px)};
-  --gds-heading-s-font-size: #{sloped-size(18px, 20px)};
+  --gds-heading-m-font-size: #{sloped-size(22px, 30px)};
+  --gds-heading-s-font-size: #{sloped-size(18px, 22px)};
+  --gds-heading-xs-font-size: 18px;
   --gds-heading-margin-start: var(--block-gutter);
   --gds-heading-margin-end: var(--block-gutter-s);
+  --gds-heading-line-height: 1.4;
 
   // Body
   --gds-body-font-family: "Open sans", sans-serif;
+  --gds-body-line-height: 1.7;
   --gds-body-l-font-size: 18px;
   --gds-body-m-font-size: 16px;
   --gds-body-s-font-size: 15px;
@@ -29,7 +32,7 @@
   display: block;
   font-family: var(--gds-heading-font-family);
   font-weight: 600;
-  line-height: 1.22;
+  line-height: var(--gds-heading-line-height);
   margin-block-start: var(--gds-heading-margin-start);
   margin-block-end: var(--gds-heading-margin-end);
 
@@ -45,7 +48,6 @@
 @mixin heading-xl {
   font-size: var(--gds-heading-xl-font-size);
   font-weight: 700;
-  line-height: 1.07;
 }
 
 @mixin heading-l {
@@ -61,11 +63,15 @@
   font-size: var(--gds-heading-s-font-size);
 }
 
+@mixin heading-xs {
+  font-size: var(--gds-heading-xs-font-size);
+}
+
 @mixin body {
   font-family: var(--gds-body-font-family);
   font-size: var(--gds-body-m-font-size);
   font-weight: 400;
-  line-height: 1.333;
+  line-height: var(--gds-body-line-height);
 }
 
 @mixin body-l {

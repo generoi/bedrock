@@ -20,9 +20,12 @@ h2 {
   @include heading-m;
 }
 
-h3,
+h3 {
+  @include heading-s;
+}
+
 h4,
 h5,
 h6 {
-  @include heading-s;
+  @include heading-xs;
 }
