@@ -1,5 +1,6 @@
 <div
   class="menu-item {{ $item->children ? 'has-child' : '' }}"
+  id="menu-item-{{ $item->id }}"
 >
   <a
     class="menu-item__link {{ ($item->active || $item->activeAncestor) ? 'is-active': '' }}"
@@ -15,7 +16,7 @@
     <toggle-button
       class="menu-item__toggle"
       aria-haspopup="true"
-      aria-controls="submenu-{{ $item->id }}"
+      aria-controls="submenu-{{ $item->id }} menu-item-{{ $item->id }}"
       aria-label="{{ $item->label }}"
     >
       <i class="fa fa-solid fa-chevron-down"></i>

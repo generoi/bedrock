@@ -13,7 +13,7 @@
     bottom: 0;
     cursor: pointer;
     color: currentColor;
-    padding: 8px;
+    padding: 8px 16px;
 
     // Center content
     display: flex;
@@ -36,10 +36,11 @@
     box-shadow: var(--gds-box-shadow--active);
     border: 1px solid #eee;
     border-radius: var(--gds-border-radius);
-    padding-top: 8px;
-    padding-bottom: 8px;
+    padding-top: 10px;
+    padding-bottom: 10px;
     padding-left: 16px;
-    padding-right: 24px; // make room for the "x" to remove search
+    padding-right: 32px; // make room for the "x" to remove search
+    font-size: var(--gds-body-s-font-size);
 
     &::-webkit-search-cancel-button {
       appearance: none;
