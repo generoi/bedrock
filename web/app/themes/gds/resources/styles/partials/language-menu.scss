@@ -8,18 +8,17 @@
 
     &__menu {
       display: flex;
-      justify-content: space-between;
+      gap: 24px;
     }
 
     &__link {
       text-decoration: none;
-
-      &:hover {
-        color: var(--gds-color-primary);
-      }
+      color: var(--gds-color-dark-gray);
 
       &.is-active {
         text-decoration: underline;
+        text-underline-offset: 6px;
+        text-decoration-thickness: 2px;
       }
     }
   }
@@ -51,12 +50,12 @@
 
       &:hover {
         color: var(--gds-color-primary);
-        font-weight: 700;
       }
 
       &.is-active {
-        font-weight: 700;
         text-decoration: underline;
+        text-underline-offset: 6px;
+        text-decoration-thickness: 2px;
       }
     }
 
@@ -68,6 +67,7 @@
       z-index: 10;
       top: 100%;
       box-shadow: var(--gds-box-shadow);
+      border-radius: var(--gds-border-radius);
       min-width: 100px;
       margin-left: -8px;
 

@@ -38,7 +38,12 @@
   }
 }
 
+// Mobile
 @include mq($until: desktopmenu) {
+  :root {
+    --header-section-gutter: 24px;
+  }
+
   body.is-menu-open {
     overflow: hidden;
   }
@@ -47,6 +52,11 @@
     background-color: var(--gds-color-white);
     transition: all 0.1s ease-out;
     display: flex;
+
+    &__logo {
+      padding-top: 16px;
+      padding-bottom: 16px;
+    }
 
     &__inner-container {
       grid-template:
@@ -58,12 +68,6 @@
       grid-template-rows: auto 1fr auto auto;
       align-items: center;
       justify-content: space-between;
-      padding-top: 8px;
-      padding-bottom: 8px;
-
-      .header.is-active & {
-        row-gap: 24px;
-      }
     }
 
     &__menu-toggler-icon {
@@ -74,11 +78,16 @@
       }
     }
 
+    &__logo img {
+      height: 28px;
+      width: auto;
+    }
+
     &__languages {
       margin-left: calc(-1 * var(--viewport-gutter));
       margin-right: calc(-1 * var(--viewport-gutter));
-      padding-left: 24px;
-      padding-right: 24px;
+      padding-left: var(--viewport-gutter);
+      padding-right: var(--viewport-gutter);
     }
 
     &__search,
@@ -105,7 +114,8 @@
       .header__search {
         display: flex;
         opacity: 1;
-        margin-bottom: 24px;
+        margin-top: var(--header-section-gutter);
+        margin-bottom: var(--header-section-gutter);
       }
 
       .header__navigation {
@@ -113,12 +123,20 @@
         margin-left: calc(-1 * var(--viewport-gutter));
         margin-right: calc(-1 * var(--viewport-gutter));
         overflow-y: auto;
-        border-bottom: solid 1px var(--gds-color-light-gray);
+        border-bottom: solid 2px var(--gds-color-light-gray);
+        border-top: solid 2px var(--gds-color-light-gray);
+      }
+
+      .header__languages {
+        border-bottom: solid 2px var(--gds-color-light-gray);
+        padding-top: var(--header-section-gutter);
+        padding-bottom: var(--header-section-gutter);
       }
     }
   }
 }
 
+// Desktop
 @include mq($from: desktopmenu) {
   .header {
     &__inner-container {

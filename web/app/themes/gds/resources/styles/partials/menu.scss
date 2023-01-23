@@ -1,5 +1,6 @@
 @use "@/common/breakpoints" as *;
 
+// Mobile menu
 @include mq($until: desktopmenu) {
   .menu {
     display: flex;
@@ -14,8 +15,12 @@
     &__link {
       display: block;
       text-decoration: none;
-      padding: 16px 24px;
-      font-weight: 700;
+      padding: 16px var(--viewport-gutter);
+
+      // When the submenu is open
+      .is-active > & {
+        font-weight: 700;
+      }
 
       &:only-child {
         width: 100%;
@@ -27,11 +32,12 @@
 
       &.is-active {
         text-decoration: underline;
+        text-underline-offset: 6px;
+        text-decoration-thickness: 2px;
       }
 
       .menu-item__submenu & {
-        font-weight: 400;
-        padding-left: 40px;
+        padding-left: 32px;
       }
     }
 
@@ -40,6 +46,8 @@
       flex: 1 0 auto;
       padding-right: 24px;
       justify-content: flex-end;
+      user-select: none;
+      -webkit-tap-highlight-color: transparent;
 
       > * {
         transition: all 0.1s ease-out;
@@ -64,6 +72,7 @@
   }
 }
 
+// Desktop menu
 @include mq($from: desktopmenu) {
   .menu {
     display: flex;
@@ -81,13 +90,13 @@
       padding: 8px;
 
       &:hover {
-        color: var(--gds-color-primary);
-        font-weight: 700;
+        color: var(--gds-color-mid-gray);
       }
 
       &.is-active {
-        font-weight: 700;
         text-decoration: underline;
+        text-underline-offset: 6px;
+        text-decoration-thickness: 2px;
       }
     }
 
@@ -113,6 +122,7 @@
       box-shadow: var(--gds-box-shadow);
       min-width: 150px;
       margin-left: -8px;
+      border-radius: var(--gds-border-radius);
 
       .menu-item:hover > &,
       .menu-item__toggle[aria-expanded="true"] ~ & {
@@ -120,7 +130,7 @@
       }
 
       .menu-item__link {
-        padding: 8px 16px;
+        padding: 8px var(--viewport-gutter);
       }
     }
   }
