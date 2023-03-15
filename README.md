@@ -89,7 +89,7 @@ your global `auth.json` usually located at `~/.composer/auth.json` should end up
 ### Setup and run project
 
     # Clone the repository and install the development dependencies.
-    git clone --recursive git@github.com:generoi/gdsbedrock.git gdsbedrock
+    git clone --recursive git@github.com:generoi/bedrock.git gdsbedrock
     cd gdsbedrock
 
     # Install composer dependencies and development tools (vendor folder)
