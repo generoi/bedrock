@@ -5265,19 +5265,19 @@
         },
         {
             "name": "satispress/advanced-custom-fields-pro",
-            "version": "6.0.5",
+            "version": "6.1.3",
             "dist": {
                 "type": "zip",
-                "url": "https://satispress.generodigital.com/satispress/advanced-custom-fields-pro/6.0.5",
-                "shasum": "6f032c149ac06d8f0fe8711bd28c5bc923877254"
+                "url": "https://satispress.generodigital.com/satispress/advanced-custom-fields-pro/6.1.3",
+                "shasum": "c94105394a8d0611bbc5cfdec8aaf7c879e9f9b6"
             },
             "require": {
-                "composer/installers": "^1.0"
+                "composer/installers": "^1.0 || ^2.0"
             },
             "type": "wordpress-plugin",
             "authors": {
                 "name": "WP Engine",
-                "homepage": "https://www.advancedcustomfields.com"
+                "homepage": "https://wpengine.com/?utm_source=wordpress.org&#038;utm_medium=referral&#038;utm_campaign=plugin_directory&#038;utm_content=advanced_custom_fields"
             },
             "description": "Customize WordPress with powerful, professional and intuitive fields.",
             "homepage": "https://www.advancedcustomfields.com"
