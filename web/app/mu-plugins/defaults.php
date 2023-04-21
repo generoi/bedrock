@@ -12,8 +12,6 @@ License:      MIT License
 
 namespace Genero\Site;
 
-use function Sober\Intervention\intervention;
-
 if (!is_blog_installed()) {
     return;
 }
@@ -222,45 +220,3 @@ function shc_styling()
     ";
     wp_add_inline_style('shc-show-env', $styles);
 }
-
-/*
- * @see https://github.com/soberwp/intervention/
- */
-add_action('plugins_loaded', function () {
-    if (!function_exists('\Sober\Intervention\intervention')) {
-        return;
-    }
-
-    // @see https://github.com/soberwp/intervention/blob/master/.github/remove-help-tabs.md
-    intervention('remove-help-tabs');
-
-    // @see https://github.com/soberwp/intervention/blob/master/.github/remove-update-notices.md
-    intervention('remove-update-notices', 'all-not-admin');
-
-    // @see https://github.com/soberwp/intervention/blob/master/.github/remove-howdy.md
-    intervention('remove-howdy');
-
-    // @see https://github.com/soberwp/intervention/blob/master/.github/remove-emoji.md
-    intervention('remove-emoji');
-
-    // @see https://github.com/soberwp/intervention/blob/master/.github/remove-dashboard-items.md
-    intervention('remove-dashboard-items', [
-        'welcome',
-        'notices',
-        'recent-comments',
-        'incoming-links',
-        'plugins',
-        'quick-draft',
-        'drafts',
-        'news',
-    ], 'all');
-
-    // @see https://github.com/soberwp/intervention/blob/master/.github/add-svg-support.md
-    intervention('add-svg-support');
-
-    // @see https://github.com/soberwp/intervention/blob/master/.github/update-pagination.md
-    intervention('update-pagination', 50);
-
-    // @see https://github.com/soberwp/intervention/blob/master/.github/update-label-footer.md
-    intervention('update-label-footer', 'Created by Genero');
-}, 99);
