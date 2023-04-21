@@ -39,7 +39,7 @@
     "roots/wp-config": "1.0.0",
     "jjgrainger/posttypes": "~2.0",
 
-    "wpackagist-plugin/safe-svg": "^1.9",
+    "wpackagist-plugin/safe-svg": "^2.1",
     "wpackagist-plugin/limit-login-attempts-reloaded": "^2.6.1",
     "wpackagist-plugin/wp-sanitize-file-name-plus": "~1.0",
     "wpackagist-plugin/stream": "~3.6",
