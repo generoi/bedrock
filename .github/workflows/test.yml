@@ -17,12 +17,6 @@ jobs:
         with:
           ref: ${{ inputs.ref }}
 
-      - name: Start SSH agent
-        uses: webfactory/ssh-agent@v0.4.1
-        with:
-          ssh-private-key: |
-            ${{ secrets.KINSTA_DEPLOY_PRIVATE_KEY }}
-
       - name: Setup Node
         uses: actions/setup-node@v3
         with:
