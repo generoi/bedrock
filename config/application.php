@@ -125,6 +125,8 @@ Config::define('EWWW_IMAGE_OPTIMIZER_SKIP_BUNDLE', true);
 Config::define('ACF_LITE', true);
 // Do not connect Jetpack to a WP account.
 Config::define('JETPACK_DEV_DEBUG', true);
+// Fix Kinsta MU Plugins URL path with Bedrock
+Config::define('KINSTAMU_CUSTOM_MUPLUGIN_URL', Config::get('WP_CONTENT_URL') . '/mu-plugins/kinsta-mu-plugins');
 
 /** WP Mail SMTP hardcoded configuration */
 Config::define('WPMS_ON', true);
