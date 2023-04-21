@@ -13,6 +13,7 @@ web/app/uploads/*
 !web/app/uploads/.gitkeep
 web/app/advanced-cache.php
 web/genero-status.php
+wp-translation-downloader.lock
 
 # WordPress
 web/wp
