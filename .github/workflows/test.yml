@@ -32,7 +32,6 @@ jobs:
 
       - name: Authenticate with Fontawesome NPM reposity
         run: |
-          npm config set "@fortawesome:registry" https://npm.fontawesome.com/
           npm config set "//npm.fontawesome.com/:_authToken" ${{ secrets.NPM_FONTAWESOME_AUTH_TOKEN }}
 
       - name: Read composer.json to env

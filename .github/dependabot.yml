@@ -6,6 +6,8 @@ updates:
       interval: "weekly"
     allow:
       - dependency-type: "production"
+    registries:
+      - fortawesome
 
   - package-ecosystem: "composer"
     directory: "/"
@@ -27,3 +29,7 @@ registries:
     url: https://satispress.generodigital.com/satispress/
     username: ${{ secrets.SATISPRESS_API_KEY }}
     password: ${{ secrets.SATISPRESS_PASSWORD }}
+  fortawesome:
+    type: npm-registry
+    url: //npm.fontawesome.com/
+    token: ${{ secrets.NPM_FONTAWESOME_AUTH_TOKEN  }}
