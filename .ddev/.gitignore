@@ -23,10 +23,14 @@
 /db_snapshots
 /import-db
 /import.yaml
-/mutagen
+/mutagen/mutagen.yml
+/mutagen/.start-synced
 /nginx_full/nginx-site.conf
 /postgres/postgresql.conf
 /providers/platform.yaml
 /sequelpro.spf
-/xhprof
+/traefik/config/gdsbedrock.yaml
+/traefik/certs/gdsbedrock.crt
+/traefik/certs/gdsbedrock.key
+/xhprof/xhprof_prepend.php
 /**/README.*
