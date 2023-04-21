@@ -2,41 +2,51 @@ name: Test
 on:
   pull_request:
 
-env:
-  NODE_VERSION: 14
-  PHP_VERSION: 8.0
-
 jobs:
   test:
-    if: ${{ github.actor != 'dependabot[bot]' }}
     name: Run tests
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Repository (latest)
-        uses: actions/checkout@v2
-        if: github.event.inputs.ref == ''
+        uses: actions/checkout@v3
+        if: ${{ inputs.ref == '' }}
 
       - name: Checkout Repository (specific reference)
-        uses: actions/checkout@v2
-        if: github.event.inputs.ref != ''
+        uses: actions/checkout@v3
+        if: ${{ inputs.ref != '' }}
         with:
-          ref: ${{ github.event.inputs.ref }}
+          ref: ${{ inputs.ref }}
+
+      - name: Start SSH agent
+        uses: webfactory/ssh-agent@v0.4.1
+        with:
+          ssh-private-key: |
+            ${{ secrets.KINSTA_DEPLOY_PRIVATE_KEY }}
 
       - name: Setup Node
-        uses: actions/setup-node@v2-beta
+        uses: actions/setup-node@v3
         with:
-          node-version: ${{ env.NODE_VERSION }}
+          node-version-file: .nvmrc
+          cache: 'npm'
+          cache-dependency-path: '**/package-lock.json'
 
       - name: Authenticate with Fontawesome NPM reposity
         run: |
           npm config set "@fortawesome:registry" https://npm.fontawesome.com/
           npm config set "//npm.fontawesome.com/:_authToken" ${{ secrets.NPM_FONTAWESOME_AUTH_TOKEN }}
 
+      - name: Read composer.json to env
+        run: |
+          echo 'COMPOSER_JSON<<EOF' >> $GITHUB_ENV
+          cat ./composer.json >> $GITHUB_ENV
+          echo 'EOF' >> $GITHUB_ENV
+
       - name: Setup PHP
         uses: shivammathur/setup-php@v2
         with:
-          php-version: ${{ env.PHP_VERSION }}
-          extensions: bcmath, curl, imagick, intl, mbstring, mysql, xml, xmlrpc, zip
+          php-version: ${{ fromJson(env.COMPOSER_JSON).config.platform.php }}
+        env:
+          COMPOSER_TOKEN: ${{ secrets.PACKAGIST_GITHUB_TOKEN }}
 
       - name: Start MySQL service
         run: |
@@ -51,7 +61,7 @@ jobs:
       - name: Get Composer Cache Directory
         id: composer-cache
         run: |
-          echo "::set-output name=dir::$(composer config cache-files-dir)"
+          echo "dir=$(composer config cache-files-dir)" >> $GITHUB_OUTPUT
 
       - name: Composer Cache
         uses: actions/cache@v2
@@ -60,14 +70,6 @@ jobs:
           key: ${{ runner.os }}-composer-${{ hashFiles('**/composer.lock') }}
           restore-keys: |
             ${{ runner.os }}-composer-
-
-      - name: NPM Cache
-        uses: actions/cache@v2
-        with:
-          path: ~/.npm
-          key: ${{ runner.os }}-npm-${{ hashFiles('**/package-lock.json') }}
-          restore-keys: |
-            ${{ runner.os }}-npm-
 
       - name: Install development packages to run tests
         run: composer install:development
