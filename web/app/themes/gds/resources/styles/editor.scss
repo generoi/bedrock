@@ -1,6 +1,6 @@
-@use "~swiper/swiper";
-@use "~swiper/components/pagination/pagination";
-@use "~swiper/components/navigation/navigation";
+@use "~swiper/scss";
+@use "~swiper/scss/pagination";
+@use "~swiper/scss/navigation";
 
 @use "config" with ($is-editor: true);
 @use "common/base";
