@@ -59,7 +59,7 @@
     "satispress/advanced-custom-fields-pro": "^6.0",
     "satispress/gravityforms": "^2.4",
     "roots/bedrock-autoloader": "^1.0",
-    "consolidation/robo": "^3.0",
+    "consolidation/robo": "^4.0",
     "generoi/robo-genero": "^0.4",
     "roots/acorn": "^2.0",
     "log1x/navi": "^2.0",
