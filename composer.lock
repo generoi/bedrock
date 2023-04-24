@@ -1411,16 +1411,16 @@
         },
         {
             "name": "generoi/robo-genero",
-            "version": "v0.4.4",
+            "version": "v0.4.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/generoi/robo-genero.git",
-                "reference": "e3deb1201b7646ef0337c4e3d1573cac37b7b4be"
+                "reference": "c33873a5503edde1efad52bb0f2b64ca991c5abc"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/generoi/robo-genero/zipball/e3deb1201b7646ef0337c4e3d1573cac37b7b4be",
-                "reference": "e3deb1201b7646ef0337c4e3d1573cac37b7b4be",
+                "url": "https://api.github.com/repos/generoi/robo-genero/zipball/c33873a5503edde1efad52bb0f2b64ca991c5abc",
+                "reference": "c33873a5503edde1efad52bb0f2b64ca991c5abc",
                 "shasum": ""
             },
             "require": {
@@ -1462,9 +1462,9 @@
             ],
             "support": {
                 "issues": "https://github.com/generoi/robo-genero/issues",
-                "source": "https://github.com/generoi/robo-genero/tree/v0.4.4"
+                "source": "https://github.com/generoi/robo-genero/tree/v0.4.5"
             },
-            "time": "2023-04-21T18:56:29+00:00"
+            "time": "2023-04-21T19:19:33+00:00"
         },
         {
             "name": "generoi/sage-nativeblock",
