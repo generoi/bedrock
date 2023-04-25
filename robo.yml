@@ -90,10 +90,6 @@ command:
         chmod: 'Dug=rwx,Do=rx,Fug=rw,Fo=r'
       exclude:
         - gravity_forms/
-        - '*.webp'
-        - '*-c-*.jpg'
-        - '*-c-*.jpeg'
-        - '*-c-*.png'
 task:
   Remote:
     RsyncAlias:
