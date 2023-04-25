@@ -70,7 +70,6 @@ set('build_artifact_exclude', [
     '/*.php',
     '/*.xml',
     '/*.yml',
-    '/Vagrantfile*',
 ]);
 
 /**
