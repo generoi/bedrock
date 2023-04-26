@@ -84,5 +84,8 @@ jobs:
       - name: Install WordPress
         run: ./vendor/bin/wp core install --url=http://localhost:8080 --title="Bedrock" --admin_user="admin" --admin_password="admin" --admin_email="bedrock@example.test"
 
+      - name: Optimize acorn
+        run: ./vendor/bin/wp acorn optimize
+
       - name: Load home page # @todo
         run: curl http://localhost:8080/
