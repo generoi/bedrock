@@ -1,7 +1,7 @@
 <?php
 
 return [
-    'disabled' => false,
+    'disabled' => true,
     'config' => [
         'forward' => ['dataLayer.push', 'fbq', 'gtag'],
         'logScriptExecution' => false,

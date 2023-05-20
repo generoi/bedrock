@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "eb038a11d0342ac9442b51eb62be82be",
+    "content-hash": "f09fe7a2cb99b020f626a6cd7d3aa164",
     "packages": [
         {
             "name": "brick/math",
@@ -1408,6 +1408,64 @@
                 "source": "https://github.com/EFTEC/BladeOne/tree/3.52"
             },
             "time": "2021-04-17T13:49:01+00:00"
+        },
+        {
+            "name": "generoi/genero-cmp",
+            "version": "1.1.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/generoi/genero-cmp.git",
+                "reference": "48c783c77c077e345f94e6978cc469c55e5cda79"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/generoi/genero-cmp/zipball/48c783c77c077e345f94e6978cc469c55e5cda79",
+                "reference": "48c783c77c077e345f94e6978cc469c55e5cda79",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.0.0"
+            },
+            "require-dev": {
+                "consolidation/robo": "^3.0",
+                "generoi/robo-genero": "dev-master",
+                "squizlabs/php_codesniffer": "^3.7"
+            },
+            "type": "wordpress-plugin",
+            "autoload": {
+                "psr-4": {
+                    "GeneroWP\\GeneroCmp\\": "src/"
+                }
+            },
+            "archive": {
+                "exclude": [
+                    ".gitignore"
+                ]
+            },
+            "scripts": {
+                "test": [
+                    "vendor/bin/phpcs"
+                ]
+            },
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Oskar Schöldström",
+                    "email": "public@oxy.fi"
+                }
+            ],
+            "description": "CMP Plugin",
+            "homepage": "https://github.com/generoi/genero-cmp",
+            "keywords": [
+                "wordpress"
+            ],
+            "support": {
+                "issues": "https://github.com/generoi/genero-cmp/issues",
+                "source": "https://github.com/generoi/genero-cmp/tree/1.1.2"
+            },
+            "time": "2023-05-10T12:57:04+00:00"
         },
         {
             "name": "generoi/robo-genero",
