@@ -54,6 +54,10 @@ add_action('wp_enqueue_scripts', function () {
  * @return void
  */
 add_action('enqueue_block_editor_assets', function () {
+    // Remove the editors reset stylesheet since it overrides h1, h2 etc selectors
+    wp_deregister_style('wp-reset-editor-styles');
+    wp_register_style('wp-reset-editor-styles', false);
+
     if ($manifest = asset('scripts/editor.asset.php')->load()) {
         wp_enqueue_script('sage/editor.js', asset('scripts/editor.js')->uri(), $manifest['dependencies'], null, true);
     }

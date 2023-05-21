@@ -1,6 +1,7 @@
 @use "components/typography" as *;
 @use "components/button" as button;
 @use "components/form" as form;
+@use "~@/config";
 
 body {
   @include body;
@@ -55,8 +56,10 @@ a {
   color: inherit;
 }
 
-:focus-visible {
-  outline: var(--gds-outline--focus);
+@if not config.$is-editor {
+  :focus-visible {
+    outline: var(--gds-outline--focus);
+  }
 }
 
 p a,

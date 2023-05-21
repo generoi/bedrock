@@ -6,14 +6,28 @@
 @use "components/colors";
 @use "~@fortawesome/fontawesome-pro/css/all";
 
-p {
-  font-size: unset;
-  line-height: unset;
-  margin: unset;
+// undo wp-admin/css/common.css
+:where(.editor-styles-wrapper) {
+  p {
+    font-size: unset;
+    line-height: unset;
+    margin: unset;
+  }
+
+  h1,
+  h2,
+  h3 {
+    color: unset;
+  }
 }
 
-h1,
-h2,
-h3 {
-  color: unset;
+// Undo the styles leaked from our theme styles into the editor sidebar
+.edit-post-sidebar {
+  h1, h2, h3, h4, h5, h6 {
+    font-family: revert;
+    line-height: revert;
+    font-weight: revert;
+    margin-block-start: revert;
+    margin-block-end: revert;
+  }
 }
