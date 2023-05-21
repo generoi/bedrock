@@ -31,7 +31,11 @@ add_action('wp_enqueue_scripts', function () {
 }, 100);
 
 add_action('wp_head', function () {
-    echo app(GoogleFonts::class)->load()->toHtml();
+    echo app(GoogleFonts::class)->load()->toHtml() . PHP_EOL;
+    echo sprintf(
+        '<link rel="preload" as="image" href="%s" type="image/svg+xml">',
+        asset('images/logo.svg')->uri(),
+    ) . PHP_EOL;
 }, 7);
 
 /**
