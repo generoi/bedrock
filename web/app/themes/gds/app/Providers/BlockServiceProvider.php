@@ -9,6 +9,8 @@ use WP_Block_Type;
 
 class BlockServiceProvider extends ServiceProvider
 {
+    protected bool $isRunning = false;
+
     /**
      * Register any application services.
      *
