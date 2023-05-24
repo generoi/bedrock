@@ -10,8 +10,6 @@ Author URI:   https://genero.fi/
 License:      MIT License
 */
 
-namespace Genero\Site;
-
 if (!is_blog_installed()) {
     return;
 }
