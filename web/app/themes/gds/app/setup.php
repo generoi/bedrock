@@ -48,6 +48,11 @@ add_action('wp_enqueue_scripts', function () {
 }, 100);
 
 add_action('wp_head', function () {
+    echo sprintf(
+        '<link rel="preload" as="image" href="%s" type="image/svg+xml">',
+        asset('images/logo.svg')->uri(),
+    );
+
     echo app(GoogleFonts::class)->load()->toHtml();
 }, 7);
 
