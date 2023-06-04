@@ -3,6 +3,7 @@ import {onIdle} from './utils'
 import './components/toggle-button';
 import './components/toast-notice';
 import './components/carousel';
+import './components/sub-form';
 import { lazyLoad } from './components/lazy-load';
 import fontawesome from './components/fontawesome';
 
