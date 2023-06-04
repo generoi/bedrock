@@ -1,0 +1,31 @@
+:root {
+  --toast-notice-background: var(--gds-color-lightest-gray);
+}
+
+toast-notice {
+  background: var(--toast-notice-background);
+  padding: 1rem 2rem 1rem 1rem;
+  border-radius: var(--gds-border-radius);
+  box-shadow: var(--gds-box-shadow);
+  display: block;
+  position: fixed;
+  top: calc(var(--viewport-gutter) + var(--admin-bar-height, 0px));
+  right: var(--viewport-gutter);
+  z-index: 10;
+  min-width: 300px;
+  max-width: 400px;
+  transform: translateX(calc(100% + var(--viewport-gutter)));
+  transition: transform 0.2s ease;
+
+  &[data-is-initialized] {
+    transform: translateX(0);
+  }
+
+  &:not([data-is-initialized]) [slot="close-icon"] {
+    display: none;
+  }
+
+  > [slot]:first-child + * {
+    margin-top: 0;
+  }
+}
