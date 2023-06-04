@@ -22,6 +22,10 @@ modal-dialog {
     backdrop-filter: blur(2px);
   }
 
+  &::part(close-button) {
+    padding: 1rem;
+  }
+
   &[aria-hidden] {
     display: none;
   }

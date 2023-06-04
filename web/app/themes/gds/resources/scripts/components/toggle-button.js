@@ -1,5 +1,5 @@
-const EVENT_OPEN = 'open';
-const EVENT_CLOSE = 'close';
+export const EVENT_OPEN = 'toggle.open';
+export const EVENT_CLOSE = 'toggle.close';
 
 /**
  * @example
@@ -68,12 +68,26 @@ export class ToggleButton extends HTMLElement {
 
   open() {
     this.setAttribute('aria-expanded', true);
-    this.controls.forEach((target) => target.classList.add('is-active'))
+    this.controls.forEach(this.#openTarget);
   }
 
   close() {
     this.setAttribute('aria-expanded', false);
-    this.controls.forEach((target) => target.classList.remove('is-active'))
+    this.controls.forEach(this.#closeTarget);
+  }
+
+  #openTarget(target) {
+    target.classList.add('is-active');
+    target.dispatchEvent(
+      new CustomEvent(EVENT_OPEN, {bubbles: false})
+    );
+  }
+
+  #closeTarget(target) {
+    target.classList.remove('is-active');
+    target.dispatchEvent(
+      new CustomEvent(EVENT_CLOSE, {bubbles: false})
+    );
   }
 
   handleKeyDown(event) {

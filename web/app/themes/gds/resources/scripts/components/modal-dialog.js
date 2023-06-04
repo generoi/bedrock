@@ -1,7 +1,11 @@
 import './modal-dialog.scss'
+import {
+  EVENT_CLOSE as EVENT_TOGGLE_BUTTON_CLOSE,
+  EVENT_OPEN as EVENT_TOGGLE_BUTTON_OPEN,
+} from './toggle-button';
 
-const EVENT_SHOW = 'show';
-const EVENT_HIDE = 'hide';
+const EVENT_SHOW = 'modal.show';
+const EVENT_HIDE = 'modal.hide';
 
 // @see https://github.com/KittyGiraudel/focusable-selectors/blob/main/index.js
 const FOCUSABLE_SELECTORS = [
@@ -23,7 +27,9 @@ const FOCUSABLE_SELECTORS = [
  * @see https://www.w3.org/WAI/ARIA/apg/patterns/dialogmodal/
  */
 export class ModelDialog extends HTMLElement {
-  overlayEl;
+  static #idCounter = 0;
+
+  #overlayEl;
 
   constructor() {
     super();
@@ -32,8 +38,18 @@ export class ModelDialog extends HTMLElement {
   }
 
   connectedCallback() {
+    ++this.constructor.#idCounter;
+
+    if (!this.id) {
+      this.id = `modal-dialog-${this.constructor.#idCounter}`
+    }
+
     this.addEventListener(EVENT_SHOW, this.show.bind(this));
     this.addEventListener(EVENT_HIDE, this.hide.bind(this));
+
+    // Integrate with toggle-button
+    this.addEventListener(EVENT_TOGGLE_BUTTON_OPEN, () => this.visible = true);
+    this.addEventListener(EVENT_TOGGLE_BUTTON_CLOSE, () => this.visible = false);
 
     this.render();
 
@@ -41,7 +57,7 @@ export class ModelDialog extends HTMLElement {
 
     if (!this.persistent) {
       this.addEventListener('keydown', this.closeOnEsc.bind(this));
-      this.overlayEl.addEventListener('click', this.closeWhenClickOutside.bind(this));
+      this.#overlayEl.addEventListener('click', this.closeWhenClickOutside.bind(this));
     }
   }
 
@@ -124,6 +140,10 @@ export class ModelDialog extends HTMLElement {
     this.focus();
 
     document.body.addEventListener('focus', this.maintainDialogFocus.bind(this), true);
+    // Mark any element controlling this dialog as expanded
+    for (const el of document.querySelectorAll(`[aria-controls="${this.id}"][aria-expanded]`)) {
+      el.setAttribute('aria-expanded', 'true');
+    }
   }
 
   hide() {
@@ -134,6 +154,10 @@ export class ModelDialog extends HTMLElement {
     }
 
     document.body.removeEventListener('focus', this.maintainDialogFocus.bind(this), true);
+    // Mark any element controlling this dialog as closed
+    for (const el of document.querySelectorAll(`[aria-controls="${this.id}"][aria-expanded]`)) {
+      el.setAttribute('aria-expanded', 'false');
+    }
   }
 
   maintainDialogFocus(event) {
@@ -163,10 +187,21 @@ export class ModelDialog extends HTMLElement {
           inset: 0;
         }
 
+        .close-button {
+          all: unset;
+          cursor: pointer;
+          position: absolute;
+          top: 0;
+          right: 0;
+          line-height: 1;
+          padding: 0.5rem;
+        }
+
         [role="document"] {
           background-color: white;
           padding: 1em;
           z-index: 2;
+          position: relative;
         }
       </style>
       <div class="overlay" part="overlay"></div>
@@ -174,11 +209,24 @@ export class ModelDialog extends HTMLElement {
         role="document"
         part="dialog"
       >
+        ${this.querySelector('[slot="close-icon"]') && (
+          `<button
+            class="close-button"
+            aria-controls="${this.id}"
+            part="close-button"
+          >
+            <slot name="close-icon"></slot>
+          </button>`
+        ) || ''}
+
         <slot></slot>
       </div>
     `;
 
-    this.overlayEl = this.shadowRoot.querySelector('.overlay');
+    this.#overlayEl = this.shadowRoot.querySelector('.overlay');
+
+    this.shadowRoot.querySelector('.close-button')
+      .addEventListener?.('click', () => this.visible = false);
 
     if (!this.hasAttribute('role')) {
       this.setAttribute('role', 'dialog');
