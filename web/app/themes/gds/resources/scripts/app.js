@@ -1,11 +1,14 @@
 import swiper from './components/swiper'
 import {onIdle} from './utils'
 import './components/toggle-button';
-import './components/modal-dialog';
 import { lazyLoad } from './components/lazy-load';
 import fontawesome from './components/fontawesome';
 
 fontawesome();
+
+if (document.querySelector('modal-dialog')) {
+  import('./components/modal-dialog');
+}
 
 if (document.querySelector('youtube-embed')) {
   onIdle(() => import('@components/youtube-embed'));
