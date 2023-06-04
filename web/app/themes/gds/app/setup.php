@@ -58,10 +58,11 @@ add_action('wp_enqueue_scripts', function () {
     render_block(['blockName' => 'core/heading']);
     render_block(['blockName' => 'core/paragraph']);
 
-    // Enqeueue stylesheets of the firt block.
+    // Enqeueue stylesheets of the first block.
     if (is_singular() && $post = get_post()) {
-        $blocks = parse_blocks($post->post_content);
-        render_block($blocks[0]);
+        if ($blocks = parse_blocks($post->post_content)) {
+            render_block($blocks[0]);
+        }
     }
 }, 9);
 
