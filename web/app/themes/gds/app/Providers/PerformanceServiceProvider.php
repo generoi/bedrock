@@ -22,8 +22,6 @@ class PerformanceServiceProvider extends ServiceProvider
         add_action('wp_enqueue_scripts', [$this, 'replaceWithModernJquery']);
         add_action('wp_enqueue_scripts', [$this, 'maybeRemoveJquery'], 100);
         add_action('wp_print_styles', [$this, 'dequeueAssets'], 100);
-        add_filter('wp_content_img_tag', [$this, 'addContentImageLoadingAttribute']);
-        add_filter('wp_get_attachment_image_attributes', [$this, 'addLoadingAttribute'], PHP_INT_MAX);
         add_filter('the_content', [$this, 'lazyLoadIframesVideos']);
     }
 
@@ -69,29 +67,6 @@ class PerformanceServiceProvider extends ServiceProvider
         if (!is_admin_bar_showing()) {
             wp_deregister_style('dashicons'); // wp core
         }
-    }
-
-    /**
-     * Add "lazy" loading attribute to all images.
-     */
-    public function addLoadingAttribute(array $attr): array
-    {
-        if (is_admin()) {
-            return $attr;
-        }
-        $attr['loading'] = 'lazy';
-        return $attr;
-    }
-
-    /**
-     * Add "lazy" loading attribute to all images in content.
-     */
-    public function addContentImageLoadingAttribute(string $imageTag): string
-    {
-        if (!str_contains($imageTag, 'loading="')) {
-            $imageTag = str_replace('<img ', '<img loading="lazy" ', $imageTag);
-        }
-        return $imageTag;
     }
 
     /**
