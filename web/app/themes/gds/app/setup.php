@@ -20,14 +20,31 @@ use function Roots\asset;
 add_action('wp_enqueue_scripts', function () {
     wp_enqueue_script('sage/app.js', asset('scripts/app.js')->uri(), [], null, true);
     wp_add_inline_script('sage/app.js', asset('scripts/manifest.js')->contents(), 'before');
-
-    if (is_single() && comments_open() && get_option('thread_comments')) {
-        wp_enqueue_script('comment-reply');
-    }
+    wp_script_add_data('sage/app.js', 'defer', true);
 
     wp_enqueue_style('sage/app.css', asset('styles/app.css')->uri(), [], null);
     // Print out global stylesheet in the <head>
     wp_add_inline_style('sage/app.css', wp_get_global_stylesheet());
+
+    collect([
+        'dashicons',
+        'debug-bar',
+        'shc-show-env',
+        'wp-block-library-theme',
+        'wp-smart-crop-renderer',
+    ])->each(fn (string $handle) => wp_style_add_data($handle, 'async', true));
+
+    collect([
+        'sage/app.js',
+        'sage/editor.js',
+        'comment-reply',
+        'wp-embed',
+        'debug-bar-js',
+        'admin-bar',
+        'debug-bar',
+        'moxiejs', // gravityforms
+        'plupload', // gravityforms
+    ])->each(fn (string $handle) => wp_script_add_data($handle, 'defer', true));
 }, 100);
 
 add_action('wp_head', function () {

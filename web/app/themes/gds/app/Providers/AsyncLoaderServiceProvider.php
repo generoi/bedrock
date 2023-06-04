@@ -30,21 +30,10 @@ class AsyncLoaderServiceProvider extends ServiceProvider
             $tag = str_replace(' src', sprintf(' crossorigin="%s" src', $crossorigin), $tag);
         }
 
-        if (wp_styles()->get_data($handle, 'async')) {
+        if (wp_scripts()->get_data($handle, 'async')) {
             $tag = str_replace(' src', " async src", $tag);
-        } elseif (wp_styles()->get_data($handle, 'defer')) {
+        } elseif (wp_scripts()->get_data($handle, 'defer')) {
             $tag = str_replace(' src', " defer src", $tag);
-        } else {
-            foreach (
-                [
-                    'defer' => config('assets.deferred_scripts'),
-                    'async' => config('assets.async_scripts'),
-                ] as $type => $scripts
-            ) {
-                if (in_array($handle, $scripts)) {
-                    $tag = str_replace(' src', " $type src", $tag);
-                }
-            }
         }
 
         return $tag;
@@ -59,8 +48,7 @@ class AsyncLoaderServiceProvider extends ServiceProvider
             return $html;
         }
 
-        $isAsync = wp_styles()->get_data($handle, 'async');
-        if (!$isAsync && !in_array($handle, config('assets.async_styles'))) {
+        if (! wp_styles()->get_data($handle, 'async')) {
             return $html;
         }
 
