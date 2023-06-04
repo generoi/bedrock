@@ -1,0 +1,41 @@
+gds-carousel:not([data-is-initialized]) {
+  display: flex;
+  gap: var(--carousel-gutter, 0);
+  overflow: hidden;
+
+  > [slot^="icon-"] {
+    display: none;
+  }
+
+  > *:not([slot]) {
+    width: 100%;
+    flex-shrink: 0;
+    flex-basis: calc(
+      100% / var(--carousel-columns, 1) -
+      (var(--carousel-gutter, 0) - (1/var(--carousel-columns, 1) * var(--carousel-gutter, 0)))
+    );
+  }
+}
+
+gds-carousel {
+  // safari bug
+  svg[slot="icon-prev"],
+  svg[slot="icon-next"] {
+    width: auto;
+  }
+
+  &::part(button) {
+    padding: 0.5rem;
+    background-color: var(--gds-color-white);
+  }
+
+  &::part(button--prev) {
+    border-top-right-radius: var(--gds-border-radius);
+    border-bottom-right-radius: var(--gds-border-radius);
+  }
+
+  &::part(button--next) {
+    border-top-left-radius: var(--gds-border-radius);
+    border-bottom-left-radius: var(--gds-border-radius);
+  }
+}

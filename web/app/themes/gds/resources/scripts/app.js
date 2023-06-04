@@ -2,6 +2,7 @@ import swiper from './components/swiper'
 import {onIdle} from './utils'
 import './components/toggle-button';
 import './components/toast-notice';
+import './components/carousel';
 import { lazyLoad } from './components/lazy-load';
 import fontawesome from './components/fontawesome';
 
