@@ -4,6 +4,10 @@ namespace blocks\accordion;
 
 use WP_Block;
 
+add_action('wp_enqueue_scripts', function () {
+    wp_script_add_data('gds-accordion-script', 'async', true);
+});
+
 register_block_type(asset('blocks/accordion/block.json')->path(), [
     'render_callback' => function (array $attributes, string $content, WP_Block $block) {
         return view('blocks::accordion.accordion', [
