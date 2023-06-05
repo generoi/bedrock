@@ -5330,11 +5330,11 @@
         },
         {
             "name": "satispress/gravityforms",
-            "version": "2.7.4",
+            "version": "2.7.7",
             "dist": {
                 "type": "zip",
-                "url": "https://satispress.generodigital.com/satispress/gravityforms/2.7.4",
-                "shasum": "d4ead9a9a2cb42f04defd8a9736962754f901dcd"
+                "url": "https://satispress.generodigital.com/satispress/gravityforms/2.7.7",
+                "shasum": "4f78c0c3e44278d4b11148e2c271d3b86d0f970c"
             },
             "require": {
                 "composer/installers": "^1.0 || ^2.0"
