@@ -9,6 +9,9 @@ class SageSvg extends BaseSageSvg
 {
     /**
      * {@inheritDoc}
+     * @param string|string[] $class
+     * @param array<string,string> $attrs
+     * @param array<string,mixed> $options
      */
     public function render(string $image, string|array $class = '', array $attrs = [], array $options = []): HtmlString
     {

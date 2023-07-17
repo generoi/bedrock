@@ -70,6 +70,9 @@ class WooCommerceServiceProvider extends ServiceProvider
 
     /**
      * Remove description tab since we print it above the tabs
+     *
+     * @param array<string,array{title:string,callback:callable}> $tabs
+     * @return array<string,array{title:string,callback:callable}>
      */
     public function filterProductTabs(array $tabs): array
     {
@@ -79,6 +82,9 @@ class WooCommerceServiceProvider extends ServiceProvider
 
     /**
      * Add a magic class which disables all WooCommerce default button styles.
+     *
+     * @param string[] $classes
+     * @return string[]
      */
     public function addBodyClasses(array $classes): array
     {

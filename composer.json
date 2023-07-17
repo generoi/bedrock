@@ -25,6 +25,7 @@
     "forum": "https://discourse.roots.io/category/bedrock"
   },
   "repositories": [
+    { "type": "git", "url": "https://github.com/generoi/wp-password-bcrypt.git" },
     { "type": "composer", "url": "https://wpackagist.org" },
     { "type": "composer", "url": "https://packagist.minasithil.genero.fi/" },
     { "type": "composer", "url": "https://satispress.generodigital.com/satispress/" }
@@ -35,7 +36,7 @@
     "vlucas/phpdotenv": "^5.3.0",
     "roots/wordpress": "^6.0",
     "oscarotero/env": "^2.1.0",
-    "roots/wp-password-bcrypt": "^1.0",
+    "roots/wp-password-bcrypt": "dev-master",
     "roots/wp-config": "^1.0",
     "jjgrainger/posttypes": "~2.0",
 
@@ -82,7 +83,12 @@
     "brainmaestro/composer-git-hooks": "^3.0.0",
     "deployer/deployer": "^7.0",
     "generoi/deployer-genero": "^0.3",
-    "staabm/annotate-pull-request-from-checkstyle": "^1.5"
+    "staabm/annotate-pull-request-from-checkstyle": "^1.5",
+    "phpstan/phpstan": "^1.10",
+    "szepeviktor/phpstan-wordpress": "^1.3",
+    "wpsyntex/polylang-stubs": "^3.4",
+    "php-stubs/acf-pro-stubs": "^6.0",
+    "php-stubs/woocommerce-stubs": "^7.8"
   },
   "config": {
     "optimize-autoloader": true,
@@ -139,16 +145,23 @@
     "patches": {
       "satispress/advanced-custom-fields-pro": {
         "Fix get_block_wrapper_attributes not working with ACF preview": "./config/patches/acf-get_block_wrapper_attributes.patch"
+      },
+      "jjgrainger/posttypes": {
+        "fix docblock definition": "https://github.com/jjgrainger/PostTypes/pull/88/commits/70afd71587b9d1321ee25903c903ddadefa7d079.patch"
       }
     }
   },
   "scripts": {
     "post-create-project-cmd": "Generoi\\Robo\\Composer\\ComposerScript::postCreateProject",
     "post-update-cmd": "php -r \"if (is_executable('vendor/bin/cghooks')) exec('vendor/bin/cghooks update');\"",
-    "test": "Generoi\\Robo\\Composer\\ComposerScript::test",
+    "test": [
+      "Generoi\\Robo\\Composer\\ComposerScript::test",
+      "@php -d memory_limit=-1 vendor/bin/phpstan"
+    ],
     "ci": [
       "composer validate --no-check-all",
       "vendor/bin/phpcs --report=checkstyle | vendor/bin/cs2pr",
+      "@php -d memory_limit=-1 vendor/bin/phpstan --error-format=checkstyle | vendor/bin/cs2pr",
       "(cd web/app/themes/gds; npm run ci:scripts --silent) | vendor/bin/cs2pr",
       "(cd web/app/themes/gds; npm run ci:styles --silent 2>&1) | vendor/bin/cs2pr"
     ],

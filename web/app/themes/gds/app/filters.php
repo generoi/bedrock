@@ -64,7 +64,7 @@ add_filter('wp_kses_allowed_html', function (array $tags) {
         'fill' => [],
     ];
     return $tags;
-}, 10, 2);
+});
 
 
 /**
@@ -87,7 +87,7 @@ add_filter('render_block', function (string $content, array $block) {
 
     if ($attachmentId) {
         $posterImage = get_the_post_thumbnail_url($attachmentId, 'large');
-        if ($posterImage ?? null) {
+        if ($posterImage) {
             $processor = new WP_HTML_Tag_Processor($content);
             while ($processor->next_tag()) {
                 if ($processor->get_attribute('poster')) {
@@ -111,7 +111,7 @@ add_filter('render_block_core/group', function (string $content, array $block) {
     $columnCount = $block['attrs']['layout']['columnCount'] ?? null;
     if ($layoutType === 'grid' && $columnCount) {
         $processor = new WP_HTML_Tag_Processor($content);
-        $processor->next_tag('div');
+        $processor->next_tag(['div']);
         $processor->set_attribute('style', sprintf('--grid-columns: %d', $columnCount));
         $content = $processor->get_updated_html();
     }

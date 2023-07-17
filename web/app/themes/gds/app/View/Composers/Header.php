@@ -8,19 +8,13 @@ use stdClass;
 
 class Header extends Composer
 {
-    /**
-     * List of views served by this composer.
-     *
-     * @var array
-     */
+    /** {@inheritdoc} */
     protected static $views = [
         'partials.header',
     ];
 
     /**
-     * Data to be passed to view before rendering.
-     *
-     * @return array
+     * @return array<string,mixed>
      */
     public function with()
     {
@@ -38,6 +32,9 @@ class Header extends Composer
             ->first(fn ($language) => $language->current_lang);
     }
 
+    /**
+     * @return \stdClass[]
+     */
     public function languages(): array
     {
         if (!function_exists('pll_the_languages')) {
@@ -48,6 +45,9 @@ class Header extends Composer
             ->all();
     }
 
+    /**
+     * @return array<string,\stdClass>
+     */
     public function primaryNavigation(): array
     {
         if (!has_nav_menu('primary_navigation')) {

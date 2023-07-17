@@ -25,7 +25,7 @@ class BlockServiceProvider extends ServiceProvider
         $this->addViewNamespace();
     }
 
-    public function registerBlocks()
+    public function registerBlocks(): void
     {
         $blocksDir = $this->app->resourcePath('blocks');
 
@@ -44,7 +44,7 @@ class BlockServiceProvider extends ServiceProvider
         }
     }
 
-    public function addViewNamespace()
+    public function addViewNamespace(): void
     {
         $this->app->make('view')->addNamespace('blocks', $this->app->resourcePath('blocks'));
     }
@@ -57,7 +57,7 @@ class BlockServiceProvider extends ServiceProvider
      *   'align' => 'wide',
      * ])
      */
-    public function attachBladeDirective()
+    public function attachBladeDirective(): void
     {
         $blade = $this->app->make('view')->getEngineResolver()->resolve('blade')->getCompiler();
         $blade->directive('blocks', fn () => '<?php ob_start(); ?>');
@@ -104,6 +104,8 @@ class BlockServiceProvider extends ServiceProvider
      *
      * @see https://github.com/WordPress/gutenberg/issues/7342
      * @see https://github.com/WordPress/gutenberg/issues/38830
+     *
+     * @return array<string,string>
      */
     public function applyDefaultAttributesToWrapperOutput(WP_Block_Type $blockType): array
     {
@@ -130,7 +132,7 @@ class BlockServiceProvider extends ServiceProvider
         // the ones declared as default when register the block so that we can
         // render the classes.
         WP_Block_Supports::$block_to_render['attrs'] = $defaultAttributes;
-        $output = WP_Block_Supports::get_instance()->apply_block_supports($blockType->blockName);
+        $output = WP_Block_Supports::get_instance()->apply_block_supports();
         WP_Block_Supports::$block_to_render['attrs'] = $originalAttributes;
 
         $this->isRunning = false;
