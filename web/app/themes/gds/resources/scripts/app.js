@@ -1,5 +1,5 @@
 import swiper from './components/swiper'
-import {onIdle} from './utils'
+import {onIdle, ready} from './utils'
 import './components/toggle-button';
 import './components/toast-notice';
 import './components/carousel';

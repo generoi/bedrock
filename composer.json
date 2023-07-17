@@ -70,7 +70,12 @@
     "stoutlogic/acf-builder": "^1.12",
     "cweagans/composer-patches": "^1.7",
     "spatie/laravel-google-fonts": "^1.2",
-    "generoi/genero-cmp": "^1.1"
+    "generoi/genero-cmp": "^1.1",
+    "wpackagist-plugin/woocommerce": "^7.7",
+    "generoi/sage-woocommerce": "^1.0",
+    "generoi/wp-image-resizer": "dev-master",
+    "wpackagist-plugin/klarna-payments-for-woocommerce": "^3.0",
+    "wpackagist-plugin/klarna-checkout-for-woocommerce": "2.10.1"
   },
   "require-dev": {
     "squizlabs/php_codesniffer": "^3.4.2",
@@ -134,6 +139,9 @@
     "patches": {
       "satispress/advanced-custom-fields-pro": {
         "Fix get_block_wrapper_attributes not working with ACF preview": "./config/patches/acf-get_block_wrapper_attributes.patch"
+      },
+      "wpackagist-plugin/klarna-payments-for-woocommerce": {
+        "Use woocommerce own $.scroll_to_notices() to allow custom overrides": "https://github.com/krokedil/klarna-payments-for-woocommerce/commit/c8554e5280f5002e811d2059e6e6ae6e730bdbe8.patch"
       }
     }
   },

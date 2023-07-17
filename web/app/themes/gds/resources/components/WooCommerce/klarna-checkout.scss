@@ -1,0 +1,16 @@
+#kco-iframe {
+  float: none;
+  width: auto;
+  padding-left: 0;
+  // Offset the inner padding of the iframe
+  margin: -15px;
+}
+
+#kco-order-review {
+  float: none;
+  width: auto;
+  padding-right: 0;
+  font-size: inherit;
+  margin-bottom: 0;
+}
+

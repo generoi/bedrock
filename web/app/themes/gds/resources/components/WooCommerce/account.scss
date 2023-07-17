@@ -1,0 +1,72 @@
+@use "@/common/breakpoints" as *;
+@use "@/components/button";
+@use "@/components/link";
+@use "@/components/table";
+
+// Page layout
+.account-page {
+  display: grid;
+  grid-template-areas:
+    "sidebar"
+    "title"
+    "content";
+  grid-template-columns: 100%;
+  gap: var(--block-gutter);
+
+  @include mq($until: large) {
+    --content-width: var(--alignwide-width);
+  }
+
+  @include mq($from: large) {
+    grid-template-areas:
+      "sidebar title"
+      "sidebar content";
+    grid-template-columns: var(--grid-column-3) 1fr;
+    grid-template-rows: auto 1fr;
+    gap: var(--grid-gutter);
+  }
+
+  @include mq($from: wide) {
+    column-gap: calc(var(--grid-column-1) + var(--grid-gutter) * 2);
+  }
+
+  &__title {
+    grid-area: title;
+  }
+
+  &__content {
+    grid-area: content;
+  }
+
+  &__sidebar {
+    grid-area: sidebar;
+
+    &-container {
+      background-color: var(--gds-color-light-gray);
+      padding: 24px;
+      border-radius: var(--gds-border-radius);
+      position: sticky;
+      top: calc(var(--viewport-gutter) + var(--admin-bar-height, 0px));
+    }
+  }
+}
+
+.woocommerce-MyAccount-navigation {
+  ul {
+    list-style: none;
+    padding-left: 0;
+  }
+}
+
+// Order list
+.woocommerce-orders-table {
+  @include table.base;
+  @include table.striped;
+  @include table.fixed;
+
+  width: 100%;
+
+  .button {
+    @include link.link;
+  }
+}

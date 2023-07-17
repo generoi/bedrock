@@ -27,20 +27,33 @@ class BlockServiceProvider extends ServiceProvider
 
     public function registerBlocks()
     {
-        $blocksDir = $this->app->resourcePath('blocks');
+        $dir = $this->app->resourcePath('blocks');
+        $namespace = $this->app->getNamespace() . 'blocks\\';
 
-        foreach ((new Finder())->in($blocksDir)->name('*.php') as $block) {
+        foreach ((new Finder())->in($dir)->name('*.php') as $file) {
             $blockDefinitions = [
                 'index.php',
                 // block-name.php
-                basename($block->getPath()) . '.php',
+                basename($file->getPath()) . '.php',
             ];
 
-            if (!in_array($block->getFilename(), $blockDefinitions)) {
+            if (!in_array($file->getFilename(), $blockDefinitions)) {
                 continue;
             }
 
-            include_once $block->getRealPath();
+            $relativePath = str_replace($dir . DIRECTORY_SEPARATOR, '', $file->getPathname());
+            $composer = $namespace . str_replace(
+                ['/', '.php'],
+                ['\\', ''],
+                $relativePath
+            );
+
+            d($composer);
+            if (class_exists($composer)) {
+                new $composer;
+            } else {
+                include_once $file->getRealPath();
+            }
         }
     }
 

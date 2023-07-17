@@ -1,0 +1,30 @@
+@use "@/common/breakpoints" as *;
+
+.woocommerce-Addresses,
+.woocommerce-customer-details .woocommerce-columns {
+  display: flex;
+  flex-direction: column;
+  gap: var(--block-gutter);
+
+  @include mq($from: medium) {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--grid-gutter);
+  }
+
+  .title {
+    display: flex;
+    justify-content: space-between;
+
+    .edit {
+      text-decoration: underline;
+      font-size: var(--gds-body-s-font-size);
+    }
+  }
+
+  // Phone, email are paragraphs on thank you page
+  p {
+    margin-top: 0;
+    margin-bottom: 0;
+  }
+}

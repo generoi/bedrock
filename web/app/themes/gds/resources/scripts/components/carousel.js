@@ -22,6 +22,7 @@ export class Carousel extends HTMLElement {
     this.carouselId = `carousel-${this.constructor.#idCounter}`
 
     this.resizeObserver = this.createResizeObserver();
+    this.intersectionObserver = this.createIntersectionObserver();
     this.render();
   }
 
@@ -29,6 +30,16 @@ export class Carousel extends HTMLElement {
     return new ResizeObserver(
       throttle(this.onResize.bind(this), 500)
     );
+  }
+
+  createIntersectionObserver() {
+    return new new IntersectionObserver((entries) => {
+      for (const {isIntersecting, target} of entries) {
+        if (isIntersecting) {
+          console.log(target);
+        }
+      }
+    });
   }
 
   onResize() {
@@ -213,6 +224,7 @@ export class Carousel extends HTMLElement {
         slide.setAttribute('role', 'group');
         slide.setAttribute('aria-roledescription', 'slide');
       }
+      this.intersectionObserver.observe(slide);
     }
 
     this.#buttonNextEl = this.shadowRoot.querySelector('.button-next');

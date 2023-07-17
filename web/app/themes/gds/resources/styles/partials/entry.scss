@@ -1,6 +1,6 @@
 @use "@/common/breakpoints" as *;
 
-.entry {
+.entry.type-post {
   display: grid;
   grid-template-areas:
     "header"
@@ -22,24 +22,24 @@
     column-gap: calc(var(--grid-column-1) + var(--grid-gutter) * 2);
   }
 
-  &__header {
+  .entry__header {
     grid-area: header;
     display: flex;
     justify-content: space-between;
     align-items: center;
   }
 
-  &__sidebar {
+  .entry__sidebar {
     grid-area: sidebar;
   }
 
-  &__related {
+  .entry__related {
     display: flex;
     flex-direction: column;
     gap: 24px;
   }
 
-  &__content {
+  .entry__content {
     grid-area: content;
   }
 }

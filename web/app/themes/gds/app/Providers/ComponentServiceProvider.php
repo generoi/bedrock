@@ -21,18 +21,24 @@ class ComponentServiceProvider extends ServiceProvider
     public function loadComponents()
     {
         $dir = $this->app->resourcePath('components');
+        $namespace = $this->app->getNamespace() . 'components\\';
 
         foreach ((new Finder())->in($dir)->name('*.php') as $file) {
-            $blockDefinitions = [
-                'index.php',
-                basename($file->getPath()) . '.php',
-            ];
-
-            if (!in_array($file->getFilename(), $blockDefinitions)) {
+            if ($file->getFilename() === 'index.php') {
+                include_once $file->getRealPath();
                 continue;
             }
 
-            include_once $file->getRealPath();
+            $relativePath = str_replace($dir . DIRECTORY_SEPARATOR, '', $file->getPathname());
+            $composer = $namespace . str_replace(
+                ['/', '.php'],
+                ['\\', ''],
+                $relativePath
+            );
+
+            if (class_exists($composer)) {
+                new $composer;
+            }
         }
     }
 

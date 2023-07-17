@@ -42,37 +42,47 @@
     </nav>
 
     @if ($current_language)
-    <div
-      aria-label="{{ __('Language', 'gds') }}"
-      class="header__languages language-menu"
-    >
-      <toggle-button
-        class="language-menu__toggle"
-        aria-controls="language-menu"
-      >
-        <span aria-hidden="true">
-          {!! strtoupper(esc_html($current_language->slug)) !!}
-        </span>
-        <span class="sr-only">{{__('Languages')}} </span>
-        <span class="language-menu__toggle__icon">
-          <i class="fa fa-solid fa-chevron-down"></i>
-        </span>
-      </toggle-button>
-
       <div
-        class="language-menu__menu"
-        id="language-menu"
+        aria-label="{{ __('Language', 'gds') }}"
+        class="header__languages language-menu"
       >
-        @foreach ($languages as $item)
-          <a
-            class="language-menu__link {{ ($item->current_lang ) ? 'is-active': '' }}"
-            href="{{ $item->url }}"
-          >
-            {!! esc_html($item->name) !!}
-          </a>
-        @endforeach
+        <toggle-button
+          class="language-menu__toggle"
+          aria-controls="language-menu"
+        >
+          <span aria-hidden="true">
+            {!! strtoupper(esc_html($current_language->slug)) !!}
+          </span>
+          <span class="sr-only">{{__('Languages')}} </span>
+          <span class="language-menu__toggle__icon">
+            <i class="fa fa-solid fa-chevron-down"></i>
+          </span>
+        </toggle-button>
+
+        <div
+          class="language-menu__menu"
+          id="language-menu"
+        >
+          @foreach ($languages as $item)
+            <a
+              class="language-menu__link {{ ($item->current_lang ) ? 'is-active': '' }}"
+              href="{{ $item->url }}"
+            >
+              {!! esc_html($item->name) !!}
+            </a>
+          @endforeach
+        </div>
       </div>
-    </div>
+    @endif
+
+    @if ($cart_url)
+      <div class="header__actions">
+        <a class="header__action-item" href="{{ $cart_url }}">
+          <cart-icon>
+            <i slot="cart-icon" class="fa-regular fa-cart-shopping"></i>
+          </cart-icon>
+        </a>
+      </div>
     @endif
 
     <form

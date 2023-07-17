@@ -1,0 +1,101 @@
+@use "@/components/button";
+
+// The sidebar container showing the collateral/review table
+.woocommerce-checkout-review-order,
+.woocommerce-order-details,
+.cart-collaterals {
+  table,
+  tbody,
+  thead,
+  tfoot {
+    display: block;
+  }
+
+  tr {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  th {
+    text-align: left;
+  }
+
+  td:last-child {
+    text-align: right
+  }
+
+  // Only shown on checkout
+  thead {
+    display: none;
+  }
+
+  // Only shown on checkout
+  tfoot > :not(:first-child) {
+    border-top: solid 1px currentColor;
+    padding-top: 16px;
+    margin-top: 16px;
+  }
+
+  table {
+    .includes_tax {
+      display: block;
+    }
+
+    .order-total {
+      border-top: solid 1px currentColor;
+      margin-top: 12px;
+      padding-top: 12px;
+    }
+  }
+
+  .button:not(#klarna-checkout-select-other) {
+    @include button.button;
+
+    margin-top: 24px;
+    display: block;
+    width: 100%;
+
+    // Cart page
+    &[data-cart-update-button] {
+      background-color: var(--gds-color-secondary);
+    }
+  }
+}
+
+// Cart page
+.cart-collaterals {
+  // Hide
+  .woocommerce-shipping-calculator {
+    display: none;
+  }
+}
+
+// Thank you page and account page
+.woocommerce-order-details {
+  tfoot > :not(:last-child) {
+    border-top: 0;
+    padding-top: 0;
+    margin-top: 0;
+  }
+
+  // Only on thankyou
+  .wc-item-meta {
+    font-size: var(--gds-body-s-font-size);
+    list-style: none;
+    margin-top: 0;
+    padding-left: 0;
+    margin-bottom: 0.5em;
+    color: var(--gds-color-dark-gray);
+
+    > li {
+      strong {
+        font-weight: normal;
+      }
+
+      p {
+        margin-top: 0;
+        display: inline;
+      }
+    }
+  }
+}

@@ -1,0 +1,29 @@
+@use "@/common/breakpoints" as *;
+
+.wp-block-gds-product-carousel {
+  --carousel-gutter: var(--grid-gutter);
+
+  @include mq($from: medium) {
+    --carousel-columns: 2;
+  }
+
+  @include mq($from: large) {
+    --carousel-columns: 3;
+  }
+
+  // Make space for box-shadow
+  gds-carousel::part(carousel) {
+    margin: -8px;
+    padding: 8px;
+  }
+
+  gds-carousel::part(button--prev) {
+    margin-left: -8px;
+    padding-left: calc(0.5rem + 8px);
+  }
+
+  gds-carousel::part(button--next) {
+    margin-right: -8px;
+    padding-right: calc(0.5rem + 8px);
+  }
+}

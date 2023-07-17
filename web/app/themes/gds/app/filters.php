@@ -32,3 +32,11 @@ add_filter('get_the_archive_title', function ($title) {
     }
     return $title;
 });
+
+add_filter('wp-image-resizer/image/url', function (string $url) {
+    if (getenv('IS_DDEV_PROJECT')) {
+        $url = str_replace('gdsbedrock.ddev.site', 'gdsbedrock.kinsta.cloud', $url);
+        $url = str_replace('http:', 'https:', $url);
+    }
+    return $url;
+});

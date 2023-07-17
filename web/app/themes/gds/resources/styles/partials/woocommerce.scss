@@ -1,0 +1,467 @@
+@use "@/common/functions" as *;
+@use "@/components/typography" as *;
+@use "@/common/breakpoints" as *;
+@use "@/components/button";
+@use "@/components/form";
+
+.woocommerce-notices-wrapper {
+  max-width: var(--alignwide-width);
+
+  .button {
+    display: block;
+  }
+
+  ul {
+    padding-left: 0;
+    list-style: none;
+  }
+}
+
+.woocommerce-error {
+  --toast-notice-background: #ffccc7;
+}
+
+.woocommerce-page .is-root-container > h1 {
+  max-width: var(--alignwide-width);
+}
+
+.coupon {
+  display: flex;
+
+  [type="text"] {
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+  }
+
+  [type="submit"] {
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+    padding: 0 1.5rem; // reduce padding and match vertical padding to input instead
+    white-space: nowrap;
+  }
+}
+
+.checkout-page {
+  display: grid;
+  grid-template-areas:
+    "progress"
+    "title"
+    "content"
+    "sidebar"
+    "footer";
+  grid-template-columns: 100%;
+  gap: var(--grid-gutter);
+
+  @include mq($from: large) {
+    grid-template-areas:
+      "progress none"
+      "title    sidebar"
+      "content  sidebar"
+      "footer   footer";
+    grid-template-columns: 1fr var(--grid-column-5);
+    grid-template-rows: auto auto 1fr auto;
+  }
+
+  @include mq($from: xlarge) {
+    column-gap: calc(var(--grid-column-1) + var(--grid-gutter) * 2);
+  }
+
+  &__title {
+    grid-area: title;
+  }
+
+  &__progress-bar {
+    grid-area: progress;
+  }
+
+  &__content {
+    grid-area: content;
+  }
+
+  &__sidebar {
+    grid-area: sidebar;
+
+    &-container {
+      background-color: var(--gds-color-light-gray);
+      padding: 24px;
+      border-radius: var(--gds-border-radius);
+      position: sticky;
+      top: calc(var(--viewport-gutter) + var(--admin-bar-height, 0px));
+    }
+
+    h2 {
+      @include heading-s;
+    }
+  }
+
+  &__footer {
+    grid-area: footer;
+    display: flex;
+    flex-direction: column;
+    gap: var(--block-gutter);
+
+    &:not(:empty) {
+      margin-top: var(--block-gutter-l);
+    }
+  }
+}
+
+.cart-item {
+  display: grid;
+  grid-template-areas:
+    "thumbnail name price"
+    "thumbnail quantity quantity";
+
+  grid-template-columns: 100px 1fr auto;
+  gap: var(--grid-gutter);
+
+  &__thumbnail {
+    grid-area: thumbnail;
+  }
+
+  &__name {
+    grid-area: name;
+
+    a:hover {
+      text-decoration: underline;
+    }
+  }
+
+  &__price {
+    grid-area: price;
+  }
+
+  &__quantity {
+    grid-area: quantity;
+    display: flex;
+    gap: var(--grid-gutter);
+
+    input[type="number"] {
+      // Set the quantity input field to fit up to 3 digits
+      width: calc(
+        16px * 2 /* input padding */
+        + 17px /* up/down UA button */
+        + 3ch /* fit 3 digits */
+      );
+    }
+
+    .remove {
+      display: flex;
+      align-items: center;
+    }
+  }
+}
+
+.checkout-cart {
+  display: flex;
+  flex-direction: column;
+  gap: var(--grid-gutter);
+
+  &__table {
+    grid-area: table;
+    display: flex;
+    flex-direction: column;
+    gap: var(--grid-gutter);
+  }
+
+  &__coupon {
+    grid-area: coupon;
+  }
+
+  &__actions {
+    grid-area: actions;
+
+    // Submit button is hidden when JS is enabled
+    html.js & [type="submit"] {
+      display: none;
+    }
+  }
+}
+
+.cart-collaterals {
+  table,
+  tbody {
+    display: block;
+  }
+
+  tr {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  th {
+    text-align: left;
+  }
+
+  td {
+    text-align: right
+  }
+
+
+  table {
+    margin-bottom: 24px;
+
+    .includes_tax {
+      display: block;
+    }
+
+    .order-total {
+      border-top: solid 1px currentColor;
+      margin-top: 12px;
+      padding-top: 12px;
+    }
+  }
+
+  .button {
+    @include button.button;
+
+    display: block;
+    width: 100%;
+
+    &[data-cart-update-button] {
+      background-color: var(--gds-color-secondary);
+    }
+  }
+
+  // Hide
+  .woocommerce-shipping-calculator {
+    display: none;
+  }
+}
+
+.progress-bar {
+  --bar-thickness: 10px;
+
+  font-size: #{sloped-size(12px, 16px, 360px, 600px)};
+
+  &__list {
+    display: flex;
+    justify-content: space-between;
+    list-style-position: inside;
+    padding-left: 0;
+    position: relative;
+
+    &::before {
+      display: block;
+      content: '';
+      border-radius: var(--gds-border-radius);
+      left: 0;
+      width: 1rem;
+      height: var(--bar-thickness);
+      position: absolute;
+      background: var(--gds-color-light-gray);
+      width: calc(100% * var(--progress));
+      bottom: 0;
+    }
+  }
+
+  @include mq($from: medium) {
+    font-size: inherit;
+
+    &__list {
+      gap: 100px;
+    }
+  }
+
+  &__step {
+    text-align: center;
+
+    a {
+      font-weight: inherit;
+      text-decoration: none;
+    }
+
+    &.is-active {
+      position: relative;
+      padding-bottom: calc(0.2em + var(--bar-thickness));
+
+      &::after {
+        display: block;
+        content: '';
+        position: absolute;
+        height: var(--bar-thickness);
+        border-radius: var(--gds-border-radius);
+        background-color: var(--gds-color-light-gray);
+        left: -24px;
+        right: -24px;
+        background-color: var(--gds-color-primary);
+        bottom: 0;
+      }
+
+      &:first-child::after {
+        left: 0;
+        right: -48px;
+      }
+    }
+  }
+}
+
+.woocommerce-checkout-review-order-table {
+  width: 100%;
+
+  thead {
+    display: none;
+  }
+
+  td:last-child {
+    text-align: right;
+  }
+
+  th {
+    text-align: left;
+  }
+
+  tr {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  tfoot > :not(:first-child) {
+    border-top: solid 1px currentColor;
+    padding-top: 16px;
+    margin-top: 16px;
+  }
+
+}
+
+// Seen on both cart and checkout
+.woocommerce-shipping-totals {
+  flex-direction: column;
+
+  td:last-child {
+    text-align: left;
+  }
+
+  .woocommerce-shipping-methods {
+    list-style: none;
+    padding-left: 0;
+
+    > li {
+      display: flex;
+      gap: 4px;
+    }
+  }
+}
+
+.woocommerce-checkout-payment {
+  border-top: solid 1px currentColor;
+  padding-top: 16px;
+  margin-top: 16px;
+
+  .methods {
+    list-style: none;
+    padding-left: 0;
+  }
+
+  .methods > li {
+    display: grid;
+    grid-template-areas:
+      "input label"
+      "none box";
+    grid-template-columns: auto 1fr;
+    grid-template-rows: auto;
+    align-items: center;
+    gap: 4px;
+
+    > input {
+      grid-area: input;
+    }
+
+    > label {
+      grid-area: label;
+      margin-bottom: 0;
+
+      img {
+        margin-left: 1ch;
+        max-height: 1.5em;
+      }
+    }
+
+    > .payment_box {
+      grid-area: box;
+      font-size: var(--gds-body-s-font-size);
+      margin-bottom: 1rem;
+
+      > :not(p):first-child {
+        margin-top: 1rem;
+      }
+    }
+  }
+
+  .woocommerce-terms-and-conditions-wrapper {
+    font-size: var(--gds-body-s-font-size);
+  }
+
+  [type="submit"] {
+    margin-top: 2rem;
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+.checkout-details {
+  .woocommerce-shipping-fields__field-wrapper,
+  .woocommerce-billing-fields__field-wrapper {
+    display: grid;
+    grid-gap: var(--grid-gutter);
+    width: 100%;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(auto-fill, auto);
+
+    > * {
+      grid-column: 1 / -1;
+      min-width: 0;
+      grid-column: span 1;
+      margin-top: 0;
+      margin-bottom: 0;
+    }
+
+    > .form-row-wide {
+      grid-column: span 2;
+    }
+  }
+}
+
+#kco-iframe {
+  float: none;
+  width: auto;
+  padding-left: 0;
+  margin: -15px;
+}
+
+#kco-order-review {
+  float: none;
+  width: auto;
+  padding-right: 0;
+  font-size: inherit;
+  margin-bottom: 0;
+}
+
+.woocommerce-shipping-destination {
+  font-size: var(--gds-body-s-font-size);
+}
+
+.woocommerce-invalid-required-field {
+  [type="text"],
+  [type="password"],
+  [type="date"],
+  [type="datetime"],
+  [type="datetime-local"],
+  [type="month"],
+  [type="week"],
+  [type="email"],
+  [type="number"],
+  [type="search"],
+  [type="tel"],
+  [type="time"],
+  [type="url"],
+  [type="color"],
+  select,
+  textarea {
+    @include form.input-error;
+  }
+
+  label {
+    @include form.label-error;
+  }
+}

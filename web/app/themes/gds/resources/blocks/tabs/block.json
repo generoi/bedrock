@@ -1,0 +1,27 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 2,
+  "name": "gds/tabs",
+  "title": "Tabs",
+  "description": "Display tabbed content",
+  "category": "layout",
+  "icon": "welcome-widgets-menus",
+  "attributes": {
+    "tabs": {
+      "type": "array"
+    }
+  },
+  "supports": {
+    "html": false,
+    "color": {}
+  },
+  "example": {
+    "innerBlocks": [
+      { "name": "gds/tabs-item" },
+      { "name": "gds/tabs-item" }
+    ]
+  },
+  "editorScript": "file:./index.js",
+  "editorStyle": "file:./editor.css",
+  "script": "file:/script.js"
+}

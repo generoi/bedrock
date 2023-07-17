@@ -1,0 +1,16 @@
+// Coupon component
+.coupon {
+  display: flex;
+
+  [type="text"] {
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+  }
+
+  [type="submit"] {
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+    padding: 0 1.5rem; // reduce padding and match vertical padding to input instead
+    white-space: nowrap;
+  }
+}

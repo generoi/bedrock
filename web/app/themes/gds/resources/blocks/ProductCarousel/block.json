@@ -1,0 +1,22 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 2,
+  "name": "gds/product-carousel",
+  "title": "Product Carousel",
+  "description": "Show a carouse of products in a list...",
+  "category": "layout",
+  "icon": "grid-view",
+  "style": "file:./style.css",
+  "attributes": {
+    "align": {
+      "type": "string",
+      "default": "wide"
+    }
+  },
+  "supports": {
+    "align": ["wide"]
+  },
+  "acf": {
+    "mode": "auto"
+  }
+}

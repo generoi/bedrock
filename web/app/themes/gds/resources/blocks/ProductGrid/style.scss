@@ -1,0 +1,11 @@
+.wp-block-gds-product-grid {
+  &.is-layout-flex {
+    align-items: stretch;
+  }
+
+  > .pagination {
+    // inherit the justification that the parent has
+    justify-content: inherit;
+    display: flex;
+  }
+}

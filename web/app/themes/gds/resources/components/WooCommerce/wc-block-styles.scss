@@ -1,0 +1,39 @@
+.wc-block-grid {
+  --grid-gutter-x: var(--grid-gutter);
+  --grid-gutter-y: var(--grid-gutter);
+
+  &__products {
+    list-style: none;
+    padding-left: 0;
+
+    // Grid
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    column-gap: var(--grid-gutter-x);
+    row-gap: var(--grid-gutter-y);
+  }
+
+  &__product {
+    flex: 0 0 auto;
+    min-height: 0;
+    min-width: 0;
+    width: 100%;
+
+    > :only-child {
+      height: 100%;
+    }
+  }
+
+  @for $i from 1 through 6 {
+    $columns: (12 / $i);
+
+    &.has-#{$i}-columns &__product {
+      width: calc(
+        (#{$columns} / var(--grid-columns) * 100%) - (
+          var(--grid-gutter-x) - (#{$columns} / var(--grid-columns) * var(--grid-gutter-x))
+        )
+      );
+    }
+  }
+}

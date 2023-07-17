@@ -1,0 +1,41 @@
+
+.product-page .cart.variations_form {
+  --input-height: calc(18px * 1.5 + 9px * 2);
+
+  table {
+    // Vertically center the label with the select while allowing the "reset
+    // variation" link statically positioned in the last row.
+    .label {
+      padding-right: 1rem;
+      height: var(--input-height);
+      display: flex;
+      align-items: center;
+    }
+
+    // Add gutter between rows
+    tr:not(:last-child) .value {
+      padding-bottom: 1rem;
+    }
+  }
+
+  // Gutter above the add-to-cart button
+  .single_variation_wrap {
+    margin-top: 1rem;
+
+    .single_variation:not(:empty) {
+      margin-bottom: 1rem;
+    }
+  }
+}
+
+.product-page .reset_variations {
+  font-size: 12px;
+
+  &:hover {
+    text-decoration: underline;
+  }
+
+  &:not(.is-visible) {
+    display: none;
+  }
+}

@@ -26,6 +26,10 @@
     grid-area: languages;
   }
 
+  &__actions {
+    grid-area: actions;
+  }
+
   &__search {
     grid-area: search;
 
@@ -60,12 +64,13 @@
 
     &__inner-container {
       grid-template:
-        "logo       toggler"
-        "navigation navigation"
-        "languages  languages"
-        "search     search";
-      grid-template-columns: auto auto;
+        "logo       actions    toggler"
+        "navigation navigation navigation"
+        "languages  languages  languages"
+        "search     search     search";
+      grid-template-columns: 1fr auto auto;
       grid-template-rows: auto 1fr auto auto;
+      column-gap: 24px;
       align-items: center;
       justify-content: space-between;
     }
@@ -141,9 +146,9 @@
   .header {
     &__inner-container {
       display: grid;
-      grid-template: "logo navigation languages search";
-      grid-template-columns: auto auto 1fr min-content;
-      gap: 24px;
+      grid-template: "logo navigation languages actions search";
+      grid-template-columns: auto auto 1fr min-content min-content;
+      gap: 12px;
       align-items: center;
       padding-top: 24px;
       padding-bottom: 24px;
@@ -155,6 +160,10 @@
 
     &__search {
       display: inline-flex;
+    }
+
+    &__actions {
+      display: flex;
     }
 
     &__menu-toggler {

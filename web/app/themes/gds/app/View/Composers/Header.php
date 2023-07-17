@@ -28,7 +28,16 @@ class Header extends Composer
             'current_language' => $this->currentLanguage(),
             'languages' => $this->languages(),
             'primary_navigation' => $this->primaryNavigation(),
+            'cart_url' => $this->cartUrl(),
         ];
+    }
+
+    public function cartUrl(): string
+    {
+        if (function_exists('wc_get_cart_url')) {
+            return wc_get_cart_url();
+        }
+        return '';
     }
 
     public function currentLanguage(): ?stdClass

@@ -1,0 +1,108 @@
+@use "@blocks/media-card/_mixins" as card;
+@use "~@/components/button" as button;
+
+.wp-block-query {
+
+}
+
+.wp-block-post-template.is-flex-container {
+  --grid-gutter-x: var(--grid-gutter);
+  --grid-gutter-y: var(--grid-gutter);
+
+  column-gap: var(--grid-gutter-x);
+  row-gap: var(--grid-gutter-y);
+
+  @media (min-width: 600px) {
+    @for $i from 1 through 6 {
+      $columns: (12 / $i);
+
+      // Be specific to override core
+      &.is-flex-container.columns-#{$i} > li {
+        width: calc(
+          (#{$columns} / var(--grid-columns) * 100%) - (
+            var(--grid-gutter-x) - (#{$columns} / var(--grid-columns) * var(--grid-gutter-x))
+          )
+        );
+      }
+    }
+  }
+}
+
+.wp-block-post.type-product {
+  @include card.card;
+
+  //&.has-post-thumbnail {}
+
+  &:hover {
+    @include card.on-hover;
+  }
+
+  .wc-block-components-product-image {
+    @include card.media;
+
+    overflow: visible;
+
+    img {
+      border-top-left-radius: var(--gds-border-radius);
+      border-top-right-radius: var(--gds-border-radius);
+    }
+  }
+
+  .wp-block-post-title {
+    font-size: 26px;
+  }
+
+  > :not(.wc-block-components-product-image) {
+    padding-left: 24px;
+    padding-right: 24px;
+  }
+
+  > :first-child:not(.wc-block-components-product-image),
+  > .wc-block-components-product-image:first-child + * {
+    padding-top: 24px;
+  }
+
+  > :last-child:not(.wc-block-components-product-image) {
+    margin-bottom: 24px;
+  }
+}
+
+.wc-block-components-product-image {
+  a {
+    display: block;
+  }
+}
+
+.wp-block-post-title {
+}
+
+.wc-block-components-product-price {
+}
+
+.wc-block-components-product-button {
+  &__button {
+    @include button.size-s;
+  }
+}
+
+.wc-block-components-product-sale-badge {
+  z-index: 10;
+  border-radius: 100%;
+  position: absolute;
+  top: -0.5rem;
+  left: -0.5rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  font-size: 12px;
+  width: 4em;
+  height: 4em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--gds-color-primary);
+  color: var(--gds-color-white);
+
+  @at-root .wc-block-components-product-image {
+    position: relative;
+  }
+}

@@ -1,0 +1,12 @@
+@mixin link {
+  text-decoration: underline;
+  font-weight: 700;
+
+  &:hover {
+    color: var(--gds-link-hover-color);
+
+    .has-background:not(.has-white-background-color) & {
+      color: var(--gds-color-mid-gray);
+    }
+  }
+}

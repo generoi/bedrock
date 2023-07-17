@@ -1,0 +1,78 @@
+// The form "grid" on the cart page
+.woocommerce-cart-form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--grid-gutter);
+
+  &__table {
+    grid-area: table;
+    display: flex;
+    flex-direction: column;
+    gap: var(--grid-gutter);
+  }
+
+  &__coupon {
+    grid-area: coupon;
+  }
+
+  &__actions {
+    grid-area: actions;
+
+    // Submit button is hidden when JS is enabled
+    html.js & [type="submit"] {
+      display: none;
+    }
+  }
+}
+
+// The product items in the cart
+.cart-item {
+  display: grid;
+  grid-template-areas:
+    "thumbnail name price"
+    "thumbnail quantity quantity";
+
+  grid-template-columns: 100px 1fr auto;
+  gap: var(--grid-gutter);
+
+  &__thumbnail {
+    grid-area: thumbnail;
+  }
+
+  &__name {
+    grid-area: name;
+
+    a:hover {
+      text-decoration: underline;
+    }
+  }
+
+  &__price {
+    grid-area: price;
+  }
+
+  &__quantity {
+    grid-area: quantity;
+    display: flex;
+    gap: var(--grid-gutter);
+
+    input[type="number"] {
+      // Set the quantity input field to fit up to 3 digits
+      width: calc(
+        16px * 2 /* input padding */
+        + 17px /* up/down UA button */
+        + 3ch /* fit 3 digits */
+      );
+    }
+
+    .remove {
+      display: flex;
+      align-items: center;
+    }
+  }
+}
+
+// Paragraph showing the shipping destination when estimating costs
+.woocommerce-shipping-destination {
+  font-size: var(--gds-body-s-font-size);
+}

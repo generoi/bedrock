@@ -1,0 +1,56 @@
+@use "@/components/form";
+
+// The billing/shipping/address fields on checkout and account pages.
+.woocommerce-EditAccountForm,
+.woocommerce-address-fields__field-wrapper,
+.woocommerce-shipping-fields__field-wrapper,
+.woocommerce-billing-fields__field-wrapper {
+  display: grid;
+  grid-gap: var(--grid-gutter);
+  width: 100%;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(auto-fill, auto);
+
+  > * {
+    grid-column: 1 / -1;
+    min-width: 0;
+    grid-column: span 1;
+    margin-top: 0;
+    margin-bottom: 0;
+  }
+
+  > :empty {
+    display: none;
+  }
+
+  > :not(.form-row),
+  > .form-row-wide {
+    grid-column: span 2;
+  }
+}
+
+// Form validation styling
+.woocommerce-invalid-required-field {
+  [type="text"],
+  [type="password"],
+  [type="date"],
+  [type="datetime"],
+  [type="datetime-local"],
+  [type="month"],
+  [type="week"],
+  [type="email"],
+  [type="number"],
+  [type="search"],
+  [type="tel"],
+  [type="time"],
+  [type="url"],
+  [type="color"],
+  select,
+  textarea {
+    @include form.input-error;
+  }
+
+  label {
+    @include form.label-error;
+  }
+}

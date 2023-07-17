@@ -1,0 +1,101 @@
+@use "@/common/functions" as *;
+@use "@/common/breakpoints" as *;
+@use "@/components/typography";
+
+// Page layout
+.cart-checkout-page {
+  display: grid;
+  grid-template-areas:
+    "progress"
+    "title"
+    "content"
+    "sidebar"
+    "footer";
+  grid-template-columns: 100%;
+  gap: var(--block-gutter);
+
+  @include mq($until: large) {
+    --content-width: var(--alignwide-width);
+  }
+
+  @include mq($from: large) {
+    grid-template-areas:
+      "progress progress"
+      "title    sidebar"
+      "content  sidebar"
+      "footer   footer";
+    grid-template-columns: 1fr var(--grid-column-5);
+    grid-template-rows: auto auto 1fr auto;
+    gap: var(--grid-gutter);
+  }
+
+  @include mq($from: wide) {
+    grid-template-areas:
+      "progress none"
+      "title    sidebar"
+      "content  sidebar"
+      "footer   footer";
+  }
+
+  @include mq($from: wide) {
+    column-gap: calc(var(--grid-column-1) + var(--grid-gutter) * 2);
+  }
+
+  &__title {
+    grid-area: title;
+  }
+
+  &__progress-bar {
+    grid-area: progress;
+  }
+
+  &__content {
+    grid-area: content;
+  }
+
+  &__sidebar {
+    grid-area: sidebar;
+
+    &-container {
+      background-color: var(--gds-color-light-gray);
+      padding: 24px;
+      border-radius: var(--gds-border-radius);
+      position: sticky;
+      top: calc(var(--viewport-gutter) + var(--admin-bar-height, 0px));
+    }
+
+    h2 {
+      @include typography.heading-s;
+    }
+  }
+
+  &__footer {
+    grid-area: footer;
+    display: flex;
+    flex-direction: column;
+    gap: var(--block-gutter);
+
+    &:not(:empty) {
+      margin-top: var(--block-gutter-l);
+    }
+  }
+}
+
+// The shipping options and costs
+.woocommerce-shipping-totals {
+  flex-direction: column;
+
+  td:last-child {
+    text-align: left;
+  }
+
+  .woocommerce-shipping-methods {
+    list-style: none;
+    padding-left: 0;
+
+    > li {
+      display: flex;
+      gap: 4px;
+    }
+  }
+}

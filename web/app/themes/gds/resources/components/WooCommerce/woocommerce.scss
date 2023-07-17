@@ -1,0 +1,29 @@
+@use "@/components/form";
+@use "@/components/button";
+
+// Notice area
+.woocommerce-notices-wrapper {
+  max-width: var(--alignwide-width);
+
+  .link,
+  .button {
+    display: block;
+  }
+
+  ul {
+    padding-left: 0;
+    list-style: none;
+  }
+
+  &:empty {
+    display: none;
+  }
+
+  .is-container > &:first-child + * {
+    margin-top: 0;
+  }
+}
+
+.woocommerce-error {
+  --toast-notice-background: #ffccc7;
+}

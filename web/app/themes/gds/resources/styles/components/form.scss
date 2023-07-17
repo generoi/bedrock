@@ -8,6 +8,7 @@
   outline: none;
   padding: 9px 16px;
   font-size: 18px;
+  line-height: 1.5;
   background: var(--gds-color-white);
   color: var(--gds-color-black);
   box-shadow: var(--gds-box-shadow);
@@ -15,7 +16,11 @@
   border-radius: var(--gds-border-radius);
   transition: box-shadow 0.1s ease-out;
 
-  &:hover {
+  &[disabled] {
+    color: var(--gds-color-mid-gray);
+  }
+
+  &:not([disabled]):hover {
     box-shadow: var(--gds-box-shadow--hover);
   }
 
@@ -39,4 +44,12 @@
   background-position: calc(100% - 16px) center;
   background-size: 14px;
   padding-right: calc(16px + 14px + 4px);
+}
+
+@mixin input-error {
+  border-color: var(--gds-color-error);
+}
+
+@mixin label-error {
+  color: var(--gds-color-error);
 }

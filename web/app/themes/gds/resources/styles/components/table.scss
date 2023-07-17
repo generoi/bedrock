@@ -1,0 +1,55 @@
+@mixin base {
+  thead,
+  tfoot {
+    th {
+      font-size: var(--gds-body-l-font-size);
+    }
+  }
+
+  th {
+    font-weight: inherit;
+
+    &:not([class*="has-text-align"]) {
+      text-align: left;
+    }
+  }
+
+  td,
+  th {
+    padding: 12px;
+  }
+
+  tbody th {
+    font-weight: 600;
+  }
+}
+
+@mixin striped {
+  thead,
+  tfoot {
+    th {
+      background-color: var(--gds-color-dark-gray);
+      color: var(--gds-color-white);
+      border: 0;
+
+      &:not(:last-child) {
+        border-right: solid 1px rgba(255 255 255 / 20%);
+      }
+    }
+  }
+
+  tbody tr:nth-child(odd) {
+    background-color: transparent;
+  }
+
+  tbody tr:nth-child(even) {
+    background-color: var(--gds-color-lightest-gray);
+  }
+}
+
+@mixin fixed {
+  display: block;
+  margin: 0 auto;
+  overflow-x: auto;
+  white-space: nowrap;
+}

@@ -1,0 +1,66 @@
+// The billing/shipping fields
+.checkout-details {
+  display: flex;
+  flex-direction: column;
+  gap: var(--grid-gutter);
+
+  // NOTE: fields are styled in the woocommerce.scss since they also exist on
+  // account pages
+}
+
+// The payment options
+.woocommerce-checkout-payment {
+  border-top: solid 1px currentColor;
+  padding-top: 16px;
+  margin-top: 16px;
+
+  .methods {
+    list-style: none;
+    padding-left: 0;
+  }
+
+  .methods > li {
+    display: grid;
+    grid-template-areas:
+      "input label"
+      "none box";
+    grid-template-columns: auto 1fr;
+    grid-template-rows: auto;
+    align-items: center;
+    gap: 4px;
+
+    > input {
+      grid-area: input;
+    }
+
+    > label {
+      grid-area: label;
+      margin-bottom: 0;
+
+      img {
+        margin-left: 1ch;
+        max-height: 1.5em;
+      }
+    }
+
+    > .payment_box {
+      grid-area: box;
+      font-size: var(--gds-body-s-font-size);
+      margin-bottom: 1rem;
+
+      > :not(p):first-child {
+        margin-top: 1rem;
+      }
+    }
+  }
+
+  .woocommerce-terms-and-conditions-wrapper {
+    font-size: var(--gds-body-s-font-size);
+  }
+
+  [type="submit"] {
+    margin-top: 2rem;
+    width: 100%;
+    justify-content: center;
+  }
+}

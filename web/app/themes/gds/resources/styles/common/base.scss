@@ -1,5 +1,6 @@
 @use "components/typography" as *;
 @use "components/button" as button;
+@use "components/link" as link;
 @use "components/form" as form;
 @use "~@/config";
 
@@ -63,18 +64,10 @@ a {
   }
 }
 
+.link,
 p a,
 li > a {
-  text-decoration: underline;
-  font-weight: 700;
-
-  &:hover {
-    color: var(--gds-link-hover-color);
-
-    .has-background:not(.has-white-background-color) & {
-      color: var(--gds-color-mid-gray);
-    }
-  }
+  @include link.link;
 }
 
 ul,
@@ -93,6 +86,10 @@ ul {
 
 :first-child {
   margin-top: 0;
+
+  @at-root [id="main-content"]:first-child + * {
+    margin-top: 0;
+  }
 }
 
 :last-child {
@@ -137,6 +134,13 @@ fieldset {
   padding: 0;
 }
 
+legend {
+  @include heading;
+  @include heading-s;
+
+  margin-bottom: 0;
+}
+
 select:not([multiple]) {
   @include form.select;
 }
@@ -158,4 +162,10 @@ select:not([multiple]) {
 
 modal-dialog {
   display: none;
+}
+
+
+
+.is-hidden {
+  display: none !important;
 }

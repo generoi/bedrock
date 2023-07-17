@@ -35,7 +35,9 @@
   },
   "autoload": {
     "psr-4": {
-      "App\\": "app/"
+      "App\\": "app/",
+      "App\\components\\": "resources/components/",
+      "App\\blocks\\": "resources/blocks/"
     }
   },
   "repositories": [
@@ -60,7 +62,7 @@
   "prefer-stable": true,
   "scripts": {
     "lint": [
-      "phpcs --extensions=php --standard=PSR12 app config"
+      "phpcs --extensions=php --standard=PSR12 app config resources/blocks"
     ]
   },
   "extra": {

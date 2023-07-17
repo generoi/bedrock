@@ -1,6 +1,7 @@
 @use "@/common/breakpoints" as *;
 @use "@/components/typography";
 @use "@/components/button";
+@use "@/components/form";
 
 // @note requires Gravityforms 2.5+ with default styles not loaded.
 /* stylelint-disable selector-class-pattern */
@@ -206,7 +207,7 @@
     [type="color"],
     select,
     textarea {
-      border-color: var(--gds-color-error);
+      @include form.input-error;
     }
   }
 

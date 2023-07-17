@@ -1,0 +1,10 @@
+.archive-product__filters {
+  display: flex;
+  justify-content: space-between;
+  flex: var(--grid-gutter);
+  align-items: center;
+
+  p {
+    margin-bottom: 0;
+  }
+}

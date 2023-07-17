@@ -1,0 +1,76 @@
+@use "@/common/functions" as *;
+@use "@/common/breakpoints" as *;
+
+// Progress bar
+.progress-bar {
+  --bar-thickness: 10px;
+
+  font-size: #{sloped-size(12px, 16px, 360px, 600px)};
+
+  &__list {
+    display: flex;
+    justify-content: space-between;
+    list-style-position: inside;
+    padding-left: 0;
+    position: relative;
+
+    &::before {
+      display: block;
+      content: '';
+      border-radius: var(--gds-border-radius);
+      left: 0;
+      width: 1rem;
+      height: var(--bar-thickness);
+      position: absolute;
+      background: var(--gds-color-light-gray);
+      width: calc(100% * var(--progress));
+      bottom: 0;
+    }
+  }
+
+  @include mq($from: medium) {
+    font-size: inherit;
+
+    &__list {
+      gap: 100px;
+    }
+  }
+
+  &__step {
+    text-align: center;
+
+    a {
+      font-weight: inherit;
+      text-decoration: none;
+    }
+
+    &.is-active {
+      position: relative;
+      padding-bottom: calc(0.2em + var(--bar-thickness));
+
+      &::after {
+        display: block;
+        content: '';
+        position: absolute;
+        height: var(--bar-thickness);
+        border-radius: var(--gds-border-radius);
+        background-color: var(--gds-color-light-gray);
+        left: -24px;
+        right: -24px;
+        background-color: var(--gds-color-primary);
+        bottom: 0;
+      }
+
+      &:first-child::after {
+        left: 0;
+        right: -48px;
+      }
+
+      &:last-child::after {
+        right: 0;
+        left: -48px;
+      }
+    }
+  }
+}
+

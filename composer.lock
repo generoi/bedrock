@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "f09fe7a2cb99b020f626a6cd7d3aa164",
+    "content-hash": "310593dfbce64b3186b6d5badb69db97",
     "packages": [
         {
             "name": "brick/math",
@@ -1582,6 +1582,128 @@
                 "issues": "https://github.com/generoi/sage-nativeblock/issues"
             },
             "time": "2022-07-05T11:57:39+00:00"
+        },
+        {
+            "name": "generoi/sage-woocommerce",
+            "version": "v1.0.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/generoi/sage-woocommerce.git",
+                "reference": "27bdcfd3eae5560ba3c7e91a501c010ebff39887"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/generoi/sage-woocommerce/zipball/27bdcfd3eae5560ba3c7e91a501c010ebff39887",
+                "reference": "27bdcfd3eae5560ba3c7e91a501c010ebff39887",
+                "shasum": ""
+            },
+            "require": {
+                "roots/acorn": "*"
+            },
+            "require-dev": {
+                "squizlabs/php_codesniffer": "~3.0"
+            },
+            "type": "library",
+            "extra": {
+                "acorn": {
+                    "providers": [
+                        "Genero\\Sage\\WooCommerce\\WooCommerceServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Genero\\Sage\\WooCommerce\\": "src/"
+                }
+            },
+            "archive": {
+                "exclude": [
+                    ".gitignore"
+                ]
+            },
+            "scripts": {
+                "test": [
+                    "phpcs --ignore=vendor --extensions=php --standard=PSR2 ."
+                ]
+            },
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Oskar Schöldström",
+                    "email": "public@oxy.fi"
+                }
+            ],
+            "homepage": "https://github.com/generoi/sage-woocommerce",
+            "support": {
+                "source": "https://github.com/generoi/sage-woocommerce/tree/v1.0.1",
+                "issues": "https://github.com/generoi/sage-woocommerce/issues"
+            },
+            "time": "2021-10-27T16:20:20+00:00"
+        },
+        {
+            "name": "generoi/wp-image-resizer",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/generoi/wp-image-resizer.git",
+                "reference": "5a8e8ee0109110f6bc0d5817dc48d1503abd5c7a"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/generoi/wp-image-resizer/zipball/5a8e8ee0109110f6bc0d5817dc48d1503abd5c7a",
+                "reference": "5a8e8ee0109110f6bc0d5817dc48d1503abd5c7a",
+                "shasum": ""
+            },
+            "require": {
+                "oscarotero/env": "^2.1",
+                "php": ">=7.0.0"
+            },
+            "require-dev": {
+                "consolidation/robo": "^3.0",
+                "generoi/robo-genero": "dev-master",
+                "phpstan/phpstan": "^1.10",
+                "squizlabs/php_codesniffer": "^3.7",
+                "szepeviktor/phpstan-wordpress": "^1.1"
+            },
+            "default-branch": true,
+            "type": "wordpress-plugin",
+            "autoload": {
+                "psr-4": {
+                    "GeneroWP\\ImageResizer\\": "src/"
+                }
+            },
+            "archive": {
+                "exclude": [
+                    ".gitignore"
+                ]
+            },
+            "scripts": {
+                "test": [
+                    "phpcs",
+                    "phpstan"
+                ]
+            },
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Oskar Schöldström",
+                    "email": "public@oxy.fi"
+                }
+            ],
+            "description": "A plugin which provides dynamic image sizes through a CDN",
+            "homepage": "https://github.com/generoi/wp-image-resizer",
+            "keywords": [
+                "wordpress"
+            ],
+            "support": {
+                "issues": "https://github.com/generoi/wp-image-resizer/issues",
+                "source": "https://github.com/generoi/wp-image-resizer/tree/master"
+            },
+            "time": "2023-03-24T13:25:39+00:00"
         },
         {
             "name": "gettext/gettext",
@@ -10091,6 +10213,42 @@
             "homepage": "https://wordpress.org/plugins/google-tag-manager/"
         },
         {
+            "name": "wpackagist-plugin/klarna-checkout-for-woocommerce",
+            "version": "2.10.1",
+            "source": {
+                "type": "svn",
+                "url": "https://plugins.svn.wordpress.org/klarna-checkout-for-woocommerce/",
+                "reference": "tags/2.10.1"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://downloads.wordpress.org/plugin/klarna-checkout-for-woocommerce.2.10.1.zip"
+            },
+            "require": {
+                "composer/installers": "^1.0 || ^2.0"
+            },
+            "type": "wordpress-plugin",
+            "homepage": "https://wordpress.org/plugins/klarna-checkout-for-woocommerce/"
+        },
+        {
+            "name": "wpackagist-plugin/klarna-payments-for-woocommerce",
+            "version": "3.0.7",
+            "source": {
+                "type": "svn",
+                "url": "https://plugins.svn.wordpress.org/klarna-payments-for-woocommerce/",
+                "reference": "tags/3.0.7"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://downloads.wordpress.org/plugin/klarna-payments-for-woocommerce.3.0.7.zip"
+            },
+            "require": {
+                "composer/installers": "^1.0 || ^2.0"
+            },
+            "type": "wordpress-plugin",
+            "homepage": "https://wordpress.org/plugins/klarna-payments-for-woocommerce/"
+        },
+        {
             "name": "wpackagist-plugin/limit-login-attempts-reloaded",
             "version": "2.25.15",
             "source": {
@@ -10233,6 +10391,24 @@
             },
             "type": "wordpress-plugin",
             "homepage": "https://wordpress.org/plugins/user-switching/"
+        },
+        {
+            "name": "wpackagist-plugin/woocommerce",
+            "version": "7.7.0",
+            "source": {
+                "type": "svn",
+                "url": "https://plugins.svn.wordpress.org/woocommerce/",
+                "reference": "tags/7.7.0"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://downloads.wordpress.org/plugin/woocommerce.7.7.0.zip"
+            },
+            "require": {
+                "composer/installers": "^1.0 || ^2.0"
+            },
+            "type": "wordpress-plugin",
+            "homepage": "https://wordpress.org/plugins/woocommerce/"
         },
         {
             "name": "wpackagist-plugin/wordpress-seo",
@@ -10548,7 +10724,9 @@
     ],
     "aliases": [],
     "minimum-stability": "dev",
-    "stability-flags": [],
+    "stability-flags": {
+        "generoi/wp-image-resizer": 20
+    },
     "prefer-stable": true,
     "prefer-lowest": false,
     "platform": {

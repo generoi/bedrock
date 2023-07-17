@@ -75,8 +75,8 @@ glob.sync('resources/blocks/*/*').forEach(assetCompiler(
   (file) => `blocks/${path.basename(path.dirname(file))}`
 ));
 
-glob.sync('resources/components/*/*').forEach(assetCompiler(
-  (file) => `components/${path.basename(path.dirname(file))}`
+glob.sync('resources/components/*/*.{scss,js,json}').forEach(assetCompiler(
+  (file) => path.relative('resources/', path.dirname(file))
 ));
 
 mix.copyWatched('resources/images', 'public/images', {base: 'resources/images'})

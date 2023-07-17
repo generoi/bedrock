@@ -1,0 +1,29 @@
+cart-icon {
+  position: relative;
+
+  &::part(counter) {
+    align-items: center;
+    background-color: var(--gds-color-primary);
+    border-radius: 16px;
+    color: var(--gds-color-white);
+    display: inline-flex;
+    font-size: 10px;
+    font-weight: 600;
+    justify-content: center;
+    line-height: 1;
+    margin-left: 2px;
+    overflow: hidden;
+    position: absolute;
+    transform: translateY(-1px);
+    height: 16px;
+    width: 16px;
+    left: calc(1rem - 4px);
+    bottom: 1rem;
+  }
+
+  &::part(counter empty) {
+    width: 8px;
+    height: 8px;
+  }
+}
+
