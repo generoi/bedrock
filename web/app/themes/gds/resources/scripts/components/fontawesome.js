@@ -1,4 +1,9 @@
-import { library, dom, config } from '@fortawesome/fontawesome-svg-core'
+import {
+  register,
+  InjectCSS,
+  ReplaceElements,
+} from '@fortawesome/fontawesome-svg-core/plugins'
+
 import {
   faFacebook,
   faTwitter,
@@ -21,7 +26,9 @@ import {
   faLink,
 } from '@fortawesome/pro-regular-svg-icons'
 
-library.add(
+const api = register([InjectCSS, ReplaceElements]);
+
+api.library.add(
   // Regular
   faEnvelope,
   faShareNodes,
@@ -40,8 +47,8 @@ library.add(
   faYoutube,
 );
 
-config.showMissingIcons = false;
+api.config.showMissingIcons = false;
 
 export default function () {
-  dom.watch();
+  api.dom.watch();
 }
