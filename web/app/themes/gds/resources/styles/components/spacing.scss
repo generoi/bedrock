@@ -1,6 +1,6 @@
-@use "common/breakpoints" as *;
-@use "common/functions" as *;
-@use "config";
+@use "@/common/breakpoints" as *;
+@use "@/common/functions" as *;
+@use "@/config";
 
 :root {
   // Block vertical gutters

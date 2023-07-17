@@ -16,15 +16,20 @@ export default async function init(container, settings = null) {
     return container.swiper;
   }
 
-  const { default: Swiper, Navigation, A11y, Pagination } = await import(
+  const { default: Swiper } = await import(
     /* webpackChunkName: "components/swiper" */
-    /* webpackExports: ["default", "Navigation", "A11y", "Pagination"] */
     'swiper'
   );
 
-  import(/* webpackChunkName: "components/swiper-styles" */ 'swiper/scss');
-  import(/* webpackChunkName: "components/swiper-styles" */ 'swiper/scss/navigation');
-  import(/* webpackChunkName: "components/swiper-styles" */ 'swiper/scss/pagination');
+  const { Navigation, A11y, Pagination } = await import(
+    /* webpackChunkName: "components/swiper" */
+    /* webpackExports: ["Navigation", "A11y", "Pagination"] */
+    'swiper/modules'
+  );
+
+  import(/* webpackChunkName: "components/swiper" */ 'swiper/scss');
+  import(/* webpackChunkName: "components/swiper" */ 'swiper/scss/navigation');
+  import(/* webpackChunkName: "components/swiper" */ 'swiper/scss/pagination');
 
   return new Swiper(container, {
     modules: [Navigation, A11y, Pagination],

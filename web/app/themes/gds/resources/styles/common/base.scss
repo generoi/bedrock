@@ -1,7 +1,7 @@
-@use "components/typography" as *;
-@use "components/button" as button;
-@use "components/form" as form;
-@use "~@/config";
+@use "@/components/typography" as *;
+@use "@/components/button" as button;
+@use "@/components/form" as form;
+@use "@/config";
 
 body {
   @include body;
@@ -12,7 +12,7 @@ body {
   &.admin-bar {
     --admin-bar-height: 32px;
 
-    @media screen and (max-width: 782px) {
+    @media screen and (width <= 782px) {
       --admin-bar-height: 46px;
     }
   }
