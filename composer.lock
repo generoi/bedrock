@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "f50a974d7c3c5329a5d56a9f20e48bde",
+    "content-hash": "35e9198673d7ac14444df87b48cf06b6",
     "packages": [
         {
             "name": "brick/math",
@@ -1701,6 +1701,69 @@
                 "issues": "https://github.com/generoi/sage-nativeblock/issues"
             },
             "time": "2023-06-24T16:43:59+00:00"
+        },
+        {
+            "name": "generoi/wp-image-resizer",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/generoi/wp-image-resizer.git",
+                "reference": "64a908b165b6d82a435a7b93f8d403fcb671390f"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/generoi/wp-image-resizer/zipball/64a908b165b6d82a435a7b93f8d403fcb671390f",
+                "reference": "64a908b165b6d82a435a7b93f8d403fcb671390f",
+                "shasum": ""
+            },
+            "require": {
+                "oscarotero/env": "^2.1",
+                "php": ">=7.0.0"
+            },
+            "require-dev": {
+                "consolidation/robo": "^3.0",
+                "generoi/robo-genero": "dev-master",
+                "phpstan/phpstan": "^1.10",
+                "squizlabs/php_codesniffer": "^3.7",
+                "szepeviktor/phpstan-wordpress": "^1.1"
+            },
+            "default-branch": true,
+            "type": "wordpress-plugin",
+            "autoload": {
+                "psr-4": {
+                    "GeneroWP\\ImageResizer\\": "src/"
+                }
+            },
+            "archive": {
+                "exclude": [
+                    ".gitignore"
+                ]
+            },
+            "scripts": {
+                "test": [
+                    "phpcs",
+                    "phpstan"
+                ]
+            },
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Oskar Schöldström",
+                    "email": "public@oxy.fi"
+                }
+            ],
+            "description": "A plugin which provides dynamic image sizes through a CDN",
+            "homepage": "https://github.com/generoi/wp-image-resizer",
+            "keywords": [
+                "wordpress"
+            ],
+            "support": {
+                "issues": "https://github.com/generoi/wp-image-resizer/issues",
+                "source": "https://github.com/generoi/wp-image-resizer/tree/master"
+            },
+            "time": "2023-06-28T13:16:11+00:00"
         },
         {
             "name": "gettext/gettext",
@@ -11401,7 +11464,8 @@
     "aliases": [],
     "minimum-stability": "dev",
     "stability-flags": {
-        "wp-cli/wp-cli-bundle": 20
+        "wp-cli/wp-cli-bundle": 20,
+        "generoi/wp-image-resizer": 20
     },
     "prefer-stable": true,
     "prefer-lowest": false,

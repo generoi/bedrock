@@ -1,7 +1,7 @@
 <div class="teaser teaser--{{ get_post_type() }} {{ $className ?? '' }}">
   <figure class="teaser__media">
     @if (has_post_thumbnail())
-      {!! get_the_post_thumbnail(null, 'medium') !!}
+      {!! wp_get_attachment_image(get_post_thumbnail_id(), 'medium', false, []) !!}
     @else
       <img src="{{ Roots\asset('images/default-teaser.webp') }}" alt="" />
     @endif

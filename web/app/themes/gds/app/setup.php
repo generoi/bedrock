@@ -6,6 +6,8 @@
 
 namespace App;
 
+use GeneroWP\ImageResizer\Rewriters\InlineStyles;
+use GeneroWP\ImageResizer\Rewriters\Urls;
 use Roots\Acorn\Assets\Contracts\Asset;
 use Spatie\GoogleFonts\GoogleFonts;
 use WP_Theme_JSON_Data;
@@ -183,4 +185,15 @@ add_action('widgets_init', function () {
         'name' => __('Footer: Newsletter', 'gds'),
         'id' => 'footer-newsletter'
     ] + $config);
+});
+
+
+/**
+ * Disable Image URL rewriters but keep other optimizations.
+ */
+add_filter('wp-image-resizer/rewriters', function (array $rewriters) {
+    return array_diff($rewriters, [
+        InlineStyles::class,
+        Urls::class,
+    ]);
 });
