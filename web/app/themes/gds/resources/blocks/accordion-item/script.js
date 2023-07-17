@@ -56,6 +56,7 @@ export class GdsAccordionItem extends HTMLElement {
     this.addEventListener(EVENT_OPEN, this.open.bind(this));
     this.addEventListener(EVENT_CLOSE, this.close.bind(this));
     this.render();
+    this.dataset.isInitialized = '';
   }
 
   disconnectedCallback() {

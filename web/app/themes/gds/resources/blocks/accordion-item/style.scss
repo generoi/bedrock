@@ -1,7 +1,18 @@
 @use "~@/components/typography" as *;
 
+gds-accordion-item:not([data-is-initialized]) {
+  > :not([slot="label"]) {
+    display: none;
+  }
+
+  [slot="label"] {
+    display: block;
+  }
+}
+
 .wp-block-gds-accordion-item {
   gds-accordion-item {
+    @at-root gds-accordion-item:not([data-is-initialized]) [slot="label"],
     &::part(header) {
       border-bottom: solid 1px currentcolor;
       padding: 16px;

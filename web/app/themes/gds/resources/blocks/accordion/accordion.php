@@ -13,3 +13,7 @@ register_block_type(asset('blocks/accordion/block.json')->path(), [
         ]);
     }
 ]);
+
+add_action('wp_enqueue_scripts', function () {
+    wp_script_add_data('gds-accordion-item-script', 'strategy', 'async');
+});
