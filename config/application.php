@@ -21,9 +21,14 @@ $webroot_dir = $root_dir . '/web';
 
 /**
  * Use Dotenv to set required environment variables and load .env file in root
+ * .env.local will override .env if it exists
  */
-$dotenv = Dotenv\Dotenv::createUnsafeImmutable($root_dir);
 if (file_exists($root_dir . '/.env')) {
+    $env_files = file_exists($root_dir . '/.env.local')
+        ? ['.env', '.env.local']
+        : ['.env'];
+
+    $dotenv = Dotenv\Dotenv::createUnsafeImmutable($root_dir, $env_files, false);
     $dotenv->load();
     if (!env('DATABASE_URL')) {
         $dotenv->required(['DB_NAME', 'DB_USER', 'DB_PASSWORD']);
@@ -53,6 +58,9 @@ Config::define('WP_CONTENT_URL', Config::get('WP_HOME') . Config::get('CONTENT_D
 /**
  * DB settings
  */
+if (env('DB_SSL')) {
+    Config::define('MYSQL_CLIENT_FLAGS', MYSQLI_CLIENT_SSL);
+}
 Config::define('DB_NAME', env('DB_NAME'));
 Config::define('DB_USER', env('DB_USER'));
 Config::define('DB_PASSWORD', env('DB_PASSWORD'));
@@ -116,11 +124,6 @@ Config::define('DISALLOW_FILE_EDIT', true);
 Config::define('DISALLOW_FILE_MODS', true);
 // Avoid using event attempting FTP updates
 Config::define('FS_METHOD', 'direct');
-// Plugin settings
-Config::define('WP_CACHE', true);
-Config::define('WPCACHEHOME', Config::get('WP_CONTENT_DIR') . '/plugins/wp-super-cache/');
-Config::define('WP_HIDE_DONATION_BUTTONS', true);
-Config::define('EWWW_IMAGE_OPTIMIZER_SKIP_BUNDLE', true);
 // Disable ACF Admin UI when in production
 Config::define('ACF_LITE', true);
 // Do not connect Jetpack to a WP account.
@@ -128,19 +131,11 @@ Config::define('JETPACK_DEV_DEBUG', true);
 // Fix Kinsta MU Plugins URL path with Bedrock
 Config::define('KINSTAMU_CUSTOM_MUPLUGIN_URL', Config::get('WP_CONTENT_URL') . '/mu-plugins/kinsta-mu-plugins');
 
-/** WP Mail SMTP hardcoded configuration */
-Config::define('WPMS_ON', true);
-Config::define('WPMS_MAILER', env('WPMS_MAILER') ?: 'mail');
-// Defaults only usen in case WPMS_MAILER is set to `smtp`
-Config::define('WPMS_SMTP_HOST', env('WPMS_SMTP_HOST') ?: 'smtp.multi.fi');
-Config::define('WPMS_SMTP_PORT', env('WPMS_SMTP_PORT') ?: 465);
-Config::define('WPMS_SSL', env('WPMS_SSL') ?: 'ssl');
-Config::define('WPMS_SMTP_AUTH', env('WPMS_SMTP_AUTH') ?: false);
-
 /**
  * Debugging Settings
  */
 Config::define('WP_DEBUG_DISPLAY', false);
+Config::define('WP_DEBUG_LOG', false);
 Config::define('SCRIPT_DEBUG', false);
 ini_set('display_errors', '0');
 
