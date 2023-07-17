@@ -37,15 +37,17 @@ if (file_exists($root_dir . '/.env')) {
 
 /**
  * Set up our global environment constant and load its config first
- * Default: production
- * Default: production unless "staging" is part of the hostname in which case that's used
  */
-define('WP_ENV', env('WP_ENV') ?: (preg_match('/\bstaging\b/', gethostname()) ? 'staging' : 'production'));
+define('WP_ENVIRONMENT_TYPE', env('WP_ENVIRONMENT_TYPE') ?: match (true) {
+    env('IS_DDEV_PROJECT') => 'development',
+    preg_match('/\bstaging\b/', gethostname()) => 'staging',
+    default => 'production',
+});
 
 /**
  * URLs
  */
-Config::define('WP_HOME', env('WP_HOME') ?: 'https://gdsbedrock.kinsta.cloud');
+Config::define('WP_HOME', env('WP_HOME') ?: env('DDEV_PRIMARY_URL') ?: 'https://gdsbedrock.kinsta.cloud');
 Config::define('WP_SITEURL', env('WP_SITEURL') ?: Config::get('WP_HOME') . '/wp');
 
 /**
@@ -147,7 +149,7 @@ if (isset($_SERVER['HTTP_X_FORWARDED_PROTO']) && $_SERVER['HTTP_X_FORWARDED_PROT
     $_SERVER['HTTPS'] = 'on';
 }
 
-$env_config = __DIR__ . '/environments/' . WP_ENV . '.php';
+$env_config = __DIR__ . '/environments/' . WP_ENVIRONMENT_TYPE . '.php';
 
 if (file_exists($env_config)) {
     require_once $env_config;
