@@ -36,8 +36,6 @@ You will need an authentication token, we have a shared one added to LastPass/1P
 
 _If you are on Windows you should read the latest DDEV documentation and recommendations for getting things running. You'll need to run all composer, npm, robo and dep commands from within the DDEV container. Remember to send your SSH keys to container using `ddev auth ssh`_
 
-### Setup and run project
-
     # Clone the repository and install the development dependencies.
     git clone --recursive git@github.com:generoi/bedrock.git gdsbedrock
     cd gdsbedrock
@@ -81,6 +79,29 @@ Additional useful tasks
     ./vendor/bin/robo
     ./vendor/bin/dep
     ./vendor/bin/wp
+
+## Remote project development with GitHub codespaces
+
+    # Create a codespace and install development tools when the setup tasks are done
+    composer install:development
+    cd web/app/themes/gds && npm run build
+
+    # Option 1: Retrieve database by SSH into codespace with your keys
+    # ----------------------------------------------------------------
+    gh codespace ssh -- -o ForwardAgent=yes
+
+    # Option 2: Retrieve database through a personal codespace secret
+    # ---------------------------------------------------------------
+    echo -e "$PERSONAL_KINSTA_DEPLOY_KEY" >| ~/.ssh/private-key
+    chmod 600 ~/.ssh/private-key
+    eval `ssh-agent`
+    ssh-add
+
+    # Pull the database
+    ./vendor/bin/robo db:pull @production
+    ./vendor/bin/robo db:search-replace @ddev 'gdsbedrock.ddev.site' "$CODESPACE_NAME-8080.$GITHUB_CODESPACES_PORT_FORWARDING_DOMAIN"
+
+## Deploy
 
 ### Deploying with GitHub actions
 

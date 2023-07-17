@@ -1,0 +1,32 @@
+{
+  "image": "mcr.microsoft.com/devcontainers/universal:2",
+  "features": {
+    "ghcr.io/devcontainers/features/docker-in-docker:1": {},
+    "ghcr.io/ddev/ddev/install-ddev:latest": {}
+  },
+  "portsAttributes": {
+    "3306": {
+      "label": "database"
+    },
+    "8027": {
+      "label": "mailhog"
+    },
+    "8036": {
+      "label": "phpmyadmin"
+    },
+    "8080": {
+      "label": "web http"
+    },
+    "8443": {
+      "label": "web https"
+    }
+  },
+  "extensions": [
+    "EditorConfig.EditorConfig",
+    "xdebug.php-debug",
+    "bmewburn.vscode-intelephense-client",
+    "cjhowe7.laravel-blade",
+    "github.vscode-github-actions"
+  ],
+  "postCreateCommand": "bash .devcontainer/setup_project.sh"
+}
