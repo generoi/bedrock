@@ -47,14 +47,11 @@ add_filter('the_generator', function () {
  * wp-emoji.js?ver=4.3.1
  *
  * Hide WP version strings from scripts and styles
- * @return {string} $src
- * @filter script_loader_src
- * @filter style_loader_src
  */
-function genero_remove_wp_version_strings($src)
+function genero_remove_wp_version_strings(string $src): string
 {
     global $wp_version;
-    parse_str(parse_url($src, PHP_URL_QUERY), $query);
+    parse_str(parse_url($src, PHP_URL_QUERY) ?: '', $query);
     if (!empty($query['ver']) && $query['ver'] === $wp_version) {
         $src = remove_query_arg('ver', $src);
         $src = add_query_arg('xyz', crypt($wp_version, 'somesalt'), $src);

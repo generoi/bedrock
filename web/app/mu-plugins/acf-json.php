@@ -17,10 +17,12 @@ if (!is_blog_installed()) {
 }
 
 add_filter('acf/settings/save_json', function ($path) {
-    return WP_CONTENT_DIR . '/acf-json';
+    return defined('WP_CONTENT_DIR') ? WP_CONTENT_DIR . '/acf-json' : $path;
 });
 
 add_filter('acf/settings/load_json', function ($paths) {
-    $paths[] = WP_CONTENT_DIR . '/acf-json';
+    if (defined('WP_CONTENT_DIR')) {
+        $paths[] = WP_CONTENT_DIR . '/acf-json';
+    }
     return $paths;
 });

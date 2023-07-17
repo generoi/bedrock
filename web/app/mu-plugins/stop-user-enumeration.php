@@ -65,4 +65,4 @@ add_action('lost_password', function (WP_Error $errors) {
         $redirect_to = !empty($_REQUEST['redirect_to']) ? $_REQUEST['redirect_to'] : 'wp-login.php?checkemail=confirm';
         wp_safe_redirect($redirect_to);
     }
-}, 10, 2);
+});
