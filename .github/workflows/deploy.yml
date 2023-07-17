@@ -53,16 +53,14 @@ jobs:
         run: |
           npm config set "//npm.fontawesome.com/:_authToken" ${{ secrets.NPM_FONTAWESOME_AUTH_TOKEN }}
 
-      - name: Read composer.json to env
+      - name: Read PHP version from composer.json to env
         run: |
-          echo 'COMPOSER_JSON<<EOF' >> $GITHUB_ENV
-          cat ./composer.json >> $GITHUB_ENV
-          echo 'EOF' >> $GITHUB_ENV
+          echo "PHP_VERSION=$(cat ./composer.json | jq -r '.config.platform.php')" >> "$GITHUB_ENV"
 
       - name: Setup PHP
         uses: shivammathur/setup-php@v2
         with:
-          php-version: ${{ fromJson(env.COMPOSER_JSON).config.platform.php }}
+          php-version: ${{ env.PHP_VERSION }}
         env:
           COMPOSER_TOKEN: ${{ secrets.PACKAGIST_GITHUB_TOKEN }}
 
