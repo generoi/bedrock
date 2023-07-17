@@ -18,9 +18,7 @@ class NotFound extends Component
     ) {
     }
 
-    /**
-     * Get the view / contents that represent the component.
-     */
+    /** {@inheritdoc} */
     public function render()
     {
         return $this->view('components.not-found');

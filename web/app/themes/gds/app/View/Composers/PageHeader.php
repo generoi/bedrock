@@ -6,19 +6,13 @@ use Roots\Acorn\View\Composer;
 
 class PageHeader extends Composer
 {
-    /**
-     * List of views served by this composer.
-     *
-     * @var array
-     */
+    /** {@inheritdoc} */
     protected static $views = [
         'partials.page-header',
     ];
 
     /**
-     * Data to be passed to view before rendering, but after merging.
-     *
-     * @return array
+     * @return array<string,mixed>
      */
     public function override()
     {
@@ -27,12 +21,7 @@ class PageHeader extends Composer
         ];
     }
 
-    /**
-     * Returns the post title.
-     *
-     * @return string
-     */
-    public function title()
+    public function title(): string
     {
         if (is_home()) {
             if ($home = get_option('page_for_posts', true)) {

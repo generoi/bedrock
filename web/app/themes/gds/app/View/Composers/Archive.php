@@ -9,20 +9,14 @@ use WP_Query;
 
 class Archive extends Composer
 {
-    /**
-     * List of views served by this composer.
-     *
-     * @var array
-     */
+    /** {@inheritdoc} */
     protected static $views = [
         'archive',
         'home',
     ];
 
     /**
-     * Data to be passed to view before rendering, but after merging.
-     *
-     * @return array
+     * @return array<string,mixed>
      */
     public function with()
     {

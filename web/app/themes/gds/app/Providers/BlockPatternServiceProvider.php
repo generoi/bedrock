@@ -16,7 +16,7 @@ class BlockPatternServiceProvider extends ServiceProvider
         $this->registerBlockPatterns();
     }
 
-    protected function registerBlockPatterns()
+    protected function registerBlockPatterns(): void
     {
         $appName = $this->app['config']->get('app.name');
         $patterns = $this->app['config']->get('theme.patterns') ?: [];
