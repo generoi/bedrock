@@ -41,7 +41,7 @@ if (is_blog_admin()) {
 /**
  * Disable creation of default gravityform admin notification.
  */
-add_action('gform_default_notification', '__return_false');
+add_filter('gform_default_notification', '__return_false');
 
 /**
  * Prevent modification of .htaccess by WordPress.
@@ -92,7 +92,7 @@ add_action('init', function () {
  * @see https://github.com/Automattic/wp-super-cache/issues/397
  */
 add_action('plugins_loaded', function () {
-    remove_action('gc_cache', 'wpsc_timestamp_cache_update', 10, 2);
+    remove_action('gc_cache', 'wpsc_timestamp_cache_update');
 });
 
 /**
@@ -111,7 +111,7 @@ add_filter('default_hidden_columns', function () {
     $hidden[] = 'wpseo-score';
     $hidden[] = 'wpseo-score-readability';
     return $hidden;
-}, 10, 2);
+});
 
 /**
  * Remove yoast from Admin bar.
@@ -179,7 +179,7 @@ add_action('admin_enqueue_scripts', function () {
     }
     foreach ($wp_filter["{$taxonomy}_edit_form"]->callbacks['10'] as $callback) {
         if (!empty($callback['function'][0]) && $callback['function'][0] instanceof \acf_form_taxonomy) {
-            remove_action("{$taxonomy}_edit_form", $callback['function'], 10, 2);
+            remove_action("{$taxonomy}_edit_form", $callback['function']);
             add_action("{$taxonomy}_edit_form", $callback['function'], 9, 2);
             break;
         }

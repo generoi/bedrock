@@ -32,6 +32,6 @@ function sendNewUserNotifications($userId, $notify = 'both')
 }
 
 remove_action('register_new_user', 'wp_send_new_user_notifications');
-remove_action('edit_user_created_user', 'wp_send_new_user_notifications', 10, 2);
+remove_action('edit_user_created_user', 'wp_send_new_user_notifications');
 add_action('register_new_user', __NAMESPACE__ . '\\sendNewUserNotifications');
 add_action('edit_user_created_user', __NAMESPACE__ . '\\sendNewUserNotifications', 10, 2);
