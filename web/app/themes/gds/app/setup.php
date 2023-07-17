@@ -58,7 +58,7 @@ add_action('enqueue_block_editor_assets', function () {
     wp_deregister_style('wp-reset-editor-styles');
     wp_register_style('wp-reset-editor-styles', false);
 
-    if ($manifest = asset('scripts/editor.asset.php')->load()) {
+    if ($manifest = asset('scripts/editor.asset.php')->include()) {
         wp_enqueue_script('sage/editor.js', asset('scripts/editor.js')->uri(), $manifest['dependencies'], null, true);
     }
     wp_enqueue_style('sage/editor-overrides.css', asset('styles/editor-overrides.css')->uri(), ['wp-edit-blocks', 'common'], null);
