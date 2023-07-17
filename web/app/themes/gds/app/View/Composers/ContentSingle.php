@@ -8,17 +8,13 @@ use WP_Query;
 
 class ContentSingle extends Composer
 {
-    /**
-     * List of views served by this composer.
-     *
-     * @var array
-     */
+    /** {@inheritdoc} */
     protected static $views = [
         'content.single',
     ];
 
     /**
-     * @return array
+     * @return array<string,mixed>
      */
     public function with()
     {
@@ -29,7 +25,7 @@ class ContentSingle extends Composer
         ];
     }
 
-    public function related(WP_Post $post): ?WP_Query
+    public function related(WP_Post $post): WP_Query
     {
         return new WP_Query([
             'category__in' => wp_list_pluck(get_the_category($post->ID), 'term_id'),

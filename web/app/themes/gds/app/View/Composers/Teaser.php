@@ -7,19 +7,13 @@ use Roots\Acorn\View\Composer;
 
 class Teaser extends Composer
 {
-    /**
-     * List of views served by this composer.
-     *
-     * @var array
-     */
+    /** {@inheritdoc} */
     protected static $views = [
         'teasers.teaser',
     ];
 
     /**
-     * Data to be passed to view before rendering, but after merging.
-     *
-     * @return array
+     * @return array<string,mixed>
      */
     public function with()
     {

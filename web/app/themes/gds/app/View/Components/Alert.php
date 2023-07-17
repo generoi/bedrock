@@ -33,11 +33,7 @@ class Alert extends Component
         $this->message = $message;
     }
 
-    /**
-     * Get the view / contents that represent the component.
-     *
-     * @return \Illuminate\View\View|string
-     */
+    /** {@inheritdoc} */
     public function render()
     {
         return $this->view('components.alert');

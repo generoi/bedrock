@@ -6,6 +6,7 @@ use Illuminate\Support\AggregateServiceProvider;
 
 class ThemeServiceProvider extends AggregateServiceProvider
 {
+    /** @var string[] */
     protected $providers = [
         \App\Providers\BlockPatternServiceProvider::class,
         \App\Providers\BlockServiceProvider::class,

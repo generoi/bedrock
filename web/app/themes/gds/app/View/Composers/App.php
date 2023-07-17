@@ -6,19 +6,13 @@ use Roots\Acorn\View\Composer;
 
 class App extends Composer
 {
-    /**
-     * List of views served by this composer.
-     *
-     * @var array
-     */
+    /** {@inheritdoc} */
     protected static $views = [
         '*',
     ];
 
     /**
-     * Data to be passed to view before rendering.
-     *
-     * @return array
+     * @return array<string,mixed>
      */
     public function with()
     {
@@ -27,12 +21,7 @@ class App extends Composer
         ];
     }
 
-    /**
-     * Returns the site name.
-     *
-     * @return string
-     */
-    public function siteName()
+    public function siteName(): string
     {
         return get_bloginfo('name', 'display');
     }

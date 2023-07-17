@@ -18,7 +18,7 @@ class ComponentServiceProvider extends ServiceProvider
         $this->addViewNamespace();
     }
 
-    public function loadComponents()
+    public function loadComponents(): void
     {
         $dir = $this->app->resourcePath('components');
 
@@ -36,7 +36,7 @@ class ComponentServiceProvider extends ServiceProvider
         }
     }
 
-    public function addViewNamespace()
+    public function addViewNamespace(): void
     {
         $this->app->make('view')->addNamespace(
             'components',

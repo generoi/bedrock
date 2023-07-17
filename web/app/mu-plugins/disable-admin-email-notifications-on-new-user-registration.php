@@ -18,7 +18,7 @@ if (!is_blog_installed()) {
     return;
 }
 
-function sendNewUserNotifications($userId, $notify = 'both')
+function sendNewUserNotifications(int $userId, string $notify = 'both'): void
 {
     if (empty($notify) || $notify === 'admin') {
         return;

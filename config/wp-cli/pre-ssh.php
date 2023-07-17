@@ -17,23 +17,26 @@
  *   php_path: /usr/bin/php72
  */
 
+use Symfony\Component\Yaml\Yaml;
+
 WP_CLI::add_hook('before_ssh', function () {
+    $paths = [];
     $runner = WP_CLI::get_runner();
     $runner->init_config();
     $project_config = $runner->get_project_config_path();
-    if ($runner->alias && $project_config) {
-        $config = Spyc::YAMLLoad($project_config)[$runner->alias] ?? [];
+    if (class_exists(Yaml::class) && $runner->alias && $project_config) {
+        $config = Yaml::parseFile($project_config)[$runner->alias] ?? [];
+        // Eg. /var/www/wordpress/web/wp
+        $wp_path = WP_CLI\Utils\parse_ssh_url($config['ssh'], PHP_URL_PATH);
+        // Eg. /var/www/wordpress
+        $project_root = dirname(dirname($wp_path));
+        // Eg. /var/www/wordpress/vendor/bin
+        if (!empty($config['bin_path'])) {
+            $paths[] = $config['bin_path'];
+        }
+        $paths[] = "$project_root/vendor/bin";
     }
 
-    // Eg. /var/www/wordpress/web/wp
-    $wp_path = WP_CLI\Utils\parse_ssh_url($config['ssh'], PHP_URL_PATH);
-    // Eg. /var/www/wordpress
-    $project_root = dirname(dirname($wp_path));
-    // Eg. /var/www/wordpress/vendor/bin
-    if (!empty($config['bin_path'])) {
-        $paths[] = $config['bin_path'];
-    }
-    $paths[] = "$project_root/vendor/bin";
     // Additionally add the users globally installed composer binaries.
     $paths[] = '$HOME/composer/vendor/bin';
     $paths[] = '$HOME/.config/composer/vendor/bin';
