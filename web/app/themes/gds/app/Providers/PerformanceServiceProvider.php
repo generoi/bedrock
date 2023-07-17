@@ -43,10 +43,16 @@ class PerformanceServiceProvider extends ServiceProvider
 
     public function maybeRemoveJquery(): void
     {
-        // Only load jQuery if gravityforms needs it
-        $hasGform = wp_script_is('gform_gravityforms', 'enqueued');
-        $isAdmin = is_admin() || current_user_can('edit_posts');
-        if (!$isAdmin && !$hasGform) {
+        $doRemovejQuery = collect([
+            // Has gravityform
+            wp_script_is('gform_gravityforms', 'enqueued'),
+            // Sees administration bar
+            is_admin() || current_user_can('edit_posts'),
+            // WooCommerce cart or checkout
+            function_exists('is_checkout') && (is_checkout() || is_cart()),
+        ])->filter()->isEmpty();
+
+        if ($doRemovejQuery) {
             wp_deregister_script('jquery');
         }
     }
@@ -64,7 +70,7 @@ class PerformanceServiceProvider extends ServiceProvider
 
     public function dequeueAssets(): void
     {
-        if (!is_admin_bar_showing()) {
+        if (! is_admin_bar_showing()) {
             wp_deregister_style('dashicons'); // wp core
         }
     }
