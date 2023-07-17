@@ -24,6 +24,7 @@
     "forum": "https://discourse.roots.io/category/bedrock"
   },
   "repositories": [
+    { "type": "git", "url": "https://github.com/generoi/wp-cli-bundle.git" },
     { "type": "composer", "url": "https://wpackagist.org" },
     { "type": "composer", "url": "https://packagist.minasithil.genero.fi/" },
     { "type": "composer", "url": "https://satispress.generodigital.com/satispress/" }
@@ -54,14 +55,14 @@
     "wpackagist-plugin/query-monitor": "^3.3",
     "wpackagist-plugin/user-switching": "^1.5",
 
-    "wp-cli/wp-cli-bundle": "^2.2",
+    "wp-cli/wp-cli-bundle": "dev-feature/composer-version-range",
     "kinsta/kinsta-mu-plugins": "^3.0",
     "satispress/advanced-custom-fields-pro": "^6.0",
     "satispress/gravityforms": "^2.4",
     "roots/bedrock-autoloader": "^1.0",
     "consolidation/robo": "^4.0",
     "generoi/robo-genero": "^0.4",
-    "roots/acorn": "^2.0",
+    "roots/acorn": "^3.0",
     "log1x/navi": "^2.0",
     "generoi/sage-nativeblock": "^0.3",
     "inpsyde/wp-translation-downloader": "^2.3",
@@ -74,7 +75,7 @@
   },
   "require-dev": {
     "squizlabs/php_codesniffer": "^3.4.2",
-    "brainmaestro/composer-git-hooks": "^2.2",
+    "brainmaestro/composer-git-hooks": "^3.0.0-alpha",
     "deployer/deployer": "^7.0",
     "generoi/deployer-genero": "^0.3",
     "staabm/annotate-pull-request-from-checkstyle": "^1.5"
@@ -83,7 +84,7 @@
     "optimize-autoloader": true,
     "preferred-install": "dist",
     "platform": {
-      "php": "8.0"
+      "php": "8.2.3"
     },
     "process-timeout": 0,
     "theme-dir": "web/app/themes/gds",
