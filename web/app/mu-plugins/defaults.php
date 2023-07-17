@@ -220,3 +220,12 @@ function shc_styling()
     ";
     wp_add_inline_style('shc-show-env', $styles);
 }
+
+add_action('shc_show_env_id_env', function () {
+    return match (wp_get_environment_type()) {
+        'local' => ['Local', 'dev'],
+        'development' => ['Dev', 'dev'],
+        'production' => ['Prod', 'prod'],
+        'staging' => ['Staging', 'staging'],
+    };
+});

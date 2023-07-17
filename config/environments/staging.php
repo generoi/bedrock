@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Configuration overrides for WP_ENV === 'staging'
+ * Configuration overrides for WP_ENVIRONMENT_TYPE === 'staging'
  */
 
 use Roots\WPConfig\Config;
@@ -15,7 +15,6 @@ use Roots\WPConfig\Config;
  * Example: `Config::define('DISALLOW_FILE_MODS', false);`
  */
 
-Config::define('SHC_SHOW_ENV_STAGING', 'staging');
 Config::define('WP_HOME', 'https://staging-gdsbedrock-staging.kinsta.cloud');
 Config::define('WP_SITEURL', Config::get('WP_HOME') . '/wp');
 Config::define('DISALLOW_FILE_EDIT', false);
