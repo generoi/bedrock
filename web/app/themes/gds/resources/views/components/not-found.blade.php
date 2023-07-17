@@ -8,7 +8,6 @@
     @if (!empty(trim($header)))
       {!! $header !!}
     @else
-      <a id="main-content" tabindex="-1"></a>
       <h1 class="has-xl-heading-font-size">{!! $title ?? __('Sorry...', 'gds') !!}</h1>
     @endif
 
