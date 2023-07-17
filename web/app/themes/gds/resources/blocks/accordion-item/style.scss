@@ -3,7 +3,7 @@
 .wp-block-gds-accordion-item {
   gds-accordion-item {
     &::part(header) {
-      border-bottom: solid 1px currentColor;
+      border-bottom: solid 1px currentcolor;
       padding: 16px;
       z-index: 1;
     }
@@ -49,7 +49,7 @@
 
       &:hover {
         color: var(--gds-color-primary);
-        border-color: currentColor;
+        border-color: currentcolor;
       }
     }
 

@@ -1,8 +1,6 @@
 const mix = require('laravel-mix');
 require('@tinypixelco/laravel-mix-wp-blocks');
 require('laravel-mix-copy-watched');
-const fs = require('fs');
-const yaml = require('js-yaml');
 const path = require('path');
 const glob = require('glob');
 
@@ -16,8 +14,6 @@ const glob = require('glob');
  | for your application, as well as bundling up your JS files.
  |
  */
-
-const robo = yaml.safeLoad(fs.readFileSync('../../../../robo.yml', 'utf8'));
 
 mix.setPublicPath('./public')
   .setResourceRoot('/app/themes/gds/public/')
@@ -36,10 +32,10 @@ mix.setPublicPath('./public')
     },
   })
   // For some reason this is required
-  .babelConfig(JSON.parse(fs.readFileSync('.babelrc')))
+  //.babelConfig(JSON.parse(fs.readFileSync('.babelrc')))
   .browserSync({
     // You need to make sure the host is hardcoded in robo.yml
-    proxy: robo.env["@ddev"].host,
+    proxy: 'https://gdsbedrock.ddev.site',
     // Set to true, if you want the browser to open when running the server.
     open: false,
   });
@@ -92,6 +88,7 @@ mix.autoload({
 mix.options({
   processCssUrls: false,
   postCss: [
+    require('postcss-preset-env'),
     require('postcss-inline-svg')({
       paths: ['resources'],
       encode(code) {

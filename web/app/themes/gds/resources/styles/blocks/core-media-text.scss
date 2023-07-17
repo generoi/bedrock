@@ -1,9 +1,9 @@
-@use "~@/common/breakpoints" as *;
+@use "@/common/breakpoints" as *;
 
 .wp-block-media-text {
   --media-text-gutter: var(--viewport-gutter);
 
-  @media (min-width: 600px) {
+  @media (width >= 600px) {
     --media-text-gutter: var(--grid-column-1);
   }
 
@@ -20,7 +20,7 @@
 
   // Remove the outer gutter since there's a viewport gutter
   &:not(.alignfull, .has-background) {
-    @media (max-width: 600px) {
+    @media (width <= 600px) {
       .wp-block-media-text__content {
         padding-left: 0;
         padding-right: 0;
