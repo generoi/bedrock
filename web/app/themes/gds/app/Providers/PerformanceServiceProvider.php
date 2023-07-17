@@ -22,7 +22,6 @@ class PerformanceServiceProvider extends ServiceProvider
         add_action('wp_enqueue_scripts', [$this, 'replaceWithModernJquery']);
         add_action('wp_enqueue_scripts', [$this, 'maybeRemoveJquery'], 100);
         add_action('wp_print_styles', [$this, 'dequeueAssets'], 100);
-        add_filter('the_content', [$this, 'lazyLoadIframesVideos']);
     }
 
     /**
@@ -73,18 +72,5 @@ class PerformanceServiceProvider extends ServiceProvider
         if (! is_admin_bar_showing()) {
             wp_deregister_style('dashicons'); // wp core
         }
-    }
-
-    /**
-     * Lazy load all iframes and videos
-     */
-    public function lazyLoadIframesVideos(string $content): string
-    {
-        $content = preg_replace(
-            '/(<iframe|<video)(.*?)src=\"(.*?)\"(.*?)>/i',
-            '$1$2data-src="$3"$4>',
-            $content
-        );
-        return $content;
     }
 }
