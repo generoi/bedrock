@@ -94,7 +94,7 @@ if (env('DATABASE_URL')) {
 /** Step 5: Uncomment the multisite lines in web/.htaccess */
 // Config::define('ADMIN_COOKIE_PATH', '/');
 // Config::define('COOKIE_DOMAIN', '');
-// Config::define('COOKIEPATH', '');
+// Config::define('COOKIEPATH', '/');
 // // Used by LOGGED_IN_COOKIE and needs to be available for front-end
 // // otherwise Customizer fails.
 // Config::define('SITECOOKIEPATH', '/');
