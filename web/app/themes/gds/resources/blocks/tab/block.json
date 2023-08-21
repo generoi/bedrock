@@ -1,0 +1,25 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 2,
+  "name": "gds/tab",
+  "title": "Tab",
+  "description": "",
+  "icon": "plus-alt2",
+  "category": "layout",
+  "parent": ["gds/tabs"],
+  "attributes": {
+    "label": {
+      "type": "string"
+    },
+    "index": {
+      "type": "number"
+    }
+  },
+  "supports": {
+    "html": false,
+    "color": {}
+  },
+  "editorScript": "file:./index.js",
+  "editorStyle": "file:./editor.css",
+  "style": "file:./style.css"
+}

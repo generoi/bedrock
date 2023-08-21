@@ -1,0 +1,11 @@
+.wp-block-gds-tab {
+  display: block;
+
+  &__content {
+    display: none;
+
+    &.active {
+      display: block;
+    }
+  }
+}
