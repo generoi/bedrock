@@ -1,7 +1,7 @@
 import {ready} from '~/utils';
 
 const init = (block) => {
-  const tabs = block.querySelectorAll('[role="tab"] button');
+  const tabs = block.querySelectorAll('button[role="tab"]');
   const panels = block.querySelectorAll('.wp-block-gds-tab');
 
   if (!tabs) {
@@ -13,18 +13,14 @@ const init = (block) => {
       e.preventDefault();
 
       tabs.forEach((tab) => {
-        tab.classList.remove('active');
-        tab.setAttribute('aria-selected', false);
-        tab.setAttribute('tabindex', '-1');
+        tab.setAttribute('aria-selected', 'false');
       });
 
       panels.forEach((panel) => {
         panel.classList.remove('active');
       });
 
-      e.currentTarget.classList.add('active');
-      e.currentTarget.setAttribute('aria-selected', true);
-      e.currentTarget.setAttribute('tabindex', '0');
+      e.currentTarget.setAttribute('aria-selected', 'true');
 
       const activePanelId = e.currentTarget.getAttribute('aria-controls');
       const activePanel = block.querySelector(`#${activePanelId}.wp-block-gds-tab`);
@@ -38,4 +34,3 @@ ready(()=> {
     init(block);
   }
 });
-

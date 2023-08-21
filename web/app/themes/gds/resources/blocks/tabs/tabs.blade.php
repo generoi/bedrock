@@ -1,24 +1,28 @@
-@if( $innerBlocks ?? false )
+@if( $block->inner_blocks ?? false )
   <div {!! get_block_wrapper_attributes() !!}>
     <div class="wp-block-buttons" role="tablist">
-      @foreach( $innerBlocks as $key => $tab )
-        <div class="wp-block-button" role="tab">
-          <button class="wp-block-button__link {{ $key === 0 ? 'active' : '' }}"
-                  type="button"
-                  role="presentation"
-                  id="tab-{{ sanitize_title( $tab['attrs']['label'] ) }}"
-                  aria-controls="tabpanel-{{ sanitize_title( $tab['attrs']['label']) }}"
-                  aria-selected="{{ $key === 0 ? 'true' : 'false' }}"
-                  tabindex="{{ $key === 0 ? '0' : '-1' }}"
-          >
-            {!! $tab['attrs']['label'] !!}
-          </button>
-        </div>
+      @foreach( $block->inner_blocks as $index => $inner_block )
+        <button class="wp-block-button__link"
+                type="button"
+                role="tab"
+                id="tab-{{ $uid }}-{{ $index }}"
+                aria-controls="tabpanel-{{ $uid }}-{{ $index }}"
+                aria-selected="{{ $index === 0 ? 'true' : 'false' }}"
+        >
+          {!! $inner_block->parsed_block['attrs']['label'] !!}
+        </button>
       @endforeach
     </div>
 
     <div class="wp-block-gds-tabs__panels">
-      {!! $content !!}
+      @foreach( $block->inner_blocks as $index => $inner_block )
+        @php
+          $inner_block->attributes['index'] = $index;
+          $inner_block->attributes['uid'] = $uid;
+        @endphp
+
+        {!! $inner_block->render() !!}
+      @endforeach
     </div>
   </div>
 @endif

@@ -10,9 +10,6 @@
   "attributes": {
     "label": {
       "type": "string"
-    },
-    "index": {
-      "type": "number"
     }
   },
   "supports": {

@@ -10,7 +10,7 @@ register_block_type(asset('blocks/tabs/block.json')->path(), [
             'attributes' => (object) $attributes,
             'content' => $content,
             'block' => $block,
-            'innerBlocks' => $block->parsed_block['innerBlocks'],
+            'uid' => wp_unique_id(),
         ]);
     }
 ]);

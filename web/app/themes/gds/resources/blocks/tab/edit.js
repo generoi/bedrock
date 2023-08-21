@@ -6,10 +6,9 @@ import {
   useInnerBlocksProps,
 } from '@wordpress/block-editor';
 import {useSelect} from '@wordpress/data';
-import {useEffect} from '@wordpress/element';
 
 const Edit = (props) => {
-  const {setAttributes, clientId} = props;
+  const {clientId} = props;
 
   const hasInnerBlocks = useSelect(select => {
     const {getBlock} = select('core/block-editor');
@@ -17,15 +16,6 @@ const Edit = (props) => {
 
     return !!(block && block.innerBlocks.length);
   }, [clientId]);
-
-  const index = useSelect(select => {
-    const {getBlockIndex} = select('core/block-editor');
-    return getBlockIndex(clientId);
-  });
-
-  useEffect(() => {
-    setAttributes({index})
-  }, [index]);
 
   const blockProps = useBlockProps({
     className: '',
