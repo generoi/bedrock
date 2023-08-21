@@ -31,6 +31,8 @@ class PerformanceServiceProvider extends ServiceProvider
     {
         render_block(['blockName' => 'core/heading']);
         render_block(['blockName' => 'core/paragraph']);
+        render_block(['blockName' => 'core/buttons']);
+        render_block(['blockName' => 'core/button']);
 
         // Enqeueue stylesheets of the firt block.
         if (is_singular() && $post = get_post()) {
