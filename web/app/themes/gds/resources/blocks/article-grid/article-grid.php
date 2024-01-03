@@ -20,6 +20,13 @@ register_block_type(asset('blocks/article-grid/block.json')->path(), [
             'paged' => get_field('use_pagination') ? (get_query_var('paged') ?: 1) : null,
         ];
 
+        if ($postIn = get_field('post__in')) {
+            $query['post__in'] = $postIn;
+            $query['orderby'] = 'post__in';
+            $query['order'] = 'ASC';
+            $query['posts_per_page'] = -1;
+        }
+
         if ($categories = get_field('category')) {
             $query['tax_query'][] = [
                 'taxonomy' => 'category',
