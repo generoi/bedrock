@@ -24,7 +24,13 @@ class App extends Composer
     {
         return [
             'siteName' => $this->siteName(),
+            'home_url' => $this->homeUrl(),
         ];
+    }
+
+    public function homeUrl(): string
+    {
+        return function_exists('pll_home_url') ? pll_home_url() : home_url('/');
     }
 
     /**

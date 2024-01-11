@@ -1,7 +1,7 @@
 <footer class="content-info has-ui-03-background-color has-background">
   <div class="footer">
     <div class="footer__logo">
-      <a href="{{ home_url('/') }}" rel="home" aria-label="{{ sprintf(__('%s frontpage', 'gds'), $siteName) }}">
+      <a href="{{ $home_url }}" rel="home" aria-label="{{ sprintf(__('%s frontpage', 'gds'), $siteName) }}">
         <img
           src="{{ Roots\asset('images/logo-white.svg')->uri() }}"
           alt=""

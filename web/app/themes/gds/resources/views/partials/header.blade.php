@@ -2,7 +2,7 @@
   <div class="header__inner-container">
     <a
       class="header__logo"
-      href="{{ home_url('/') }}"
+      href="{{ $home_url }}"
       rel="home"
       aria-label="{{ sprintf(__('%s frontpage', 'gds'), $siteName) }}"
     >
@@ -76,7 +76,7 @@
     @endif
 
     <form
-      action="{{ home_url('/') }}"
+      action="{{ $home_url }}"
       method="get"
       role="search"
       class="header__search"
