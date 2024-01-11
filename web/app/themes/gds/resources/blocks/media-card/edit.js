@@ -1,6 +1,9 @@
+import classnames from 'classnames';
+
 /** @wordpress */
 import { __ } from '@wordpress/i18n'
 import {
+  AlignmentControl,
   BlockControls,
   MediaPlaceholder,
   MediaReplaceFlow,
@@ -91,6 +94,7 @@ function BlockEdit(props) {
     mediaType,
     mediaUrl,
     mediaAlt,
+    textAlign,
   } = attributes;
 
   const onSelectMedia = attributesFromMedia(setAttributes);
@@ -108,6 +112,10 @@ function BlockEdit(props) {
             onSelect={ onSelectMedia }
           />
         ) }
+        <AlignmentControl
+          value={ textAlign }
+          onChange={ (textAlign) => setAttributes({textAlign}) }
+        />
       </BlockControls>
       <InspectorControls>
         <PanelBody title={ __('Media settings') }>
@@ -123,6 +131,11 @@ function BlockEdit(props) {
     </>
   );
 
+  const blockProps = useBlockProps({
+    className: classnames({
+      [`has-text-align-${textAlign}`]: textAlign,
+    })
+  });
   const innerBlockProps = useInnerBlocksProps(
     { className: 'wp-block-gds-media-card__content' },
     { template: INNER_BLOCKS_TEMPLATE, allowedBlocks: ALLOWED_BLOCKS }
@@ -131,7 +144,7 @@ function BlockEdit(props) {
   return (
     <>
       { controls }
-      <div { ...useBlockProps({}) }>
+      <div { ...blockProps }>
         <figure className="wp-block-gds-media-card__media">
           { hasMedia && (
             <MediaRenderer

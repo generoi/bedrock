@@ -1,4 +1,6 @@
-<div {!! get_block_wrapper_attributes() !!}>
+<div {!! get_block_wrapper_attributes([
+  'class' => ! empty($attributes->textAlign) ? sprintf('has-text-align-%s', $attributes->textAlign) : ''
+]) !!}>
   <figure class="wp-block-gds-media-card__media">
     @if ($attributes->mediaId ?? false)
       {!! wp_get_attachment_image($attributes->mediaId, 'large') !!}
