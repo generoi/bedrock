@@ -14,16 +14,20 @@ add_action('wp_enqueue_scripts', function () {
  * Rewrite youtube embeds so that their iframes are lazy loaded.
  */
 add_filter('embed_oembed_html', function (string $cache) {
+    // Not working in block editor
+    if (defined('REST_REQUEST') && REST_REQUEST) {
+        return $cache;
+    }
     preg_match('/src="([^"]*)"/i', $cache, $match);
     $src = $match[1] ?? null;
-    if (!$src) {
+    if (! $src) {
         return $cache;
     }
 
     // @see https://gist.github.com/ghalusa/6c7f3a00fd2383e5ef33
     preg_match('%(?:youtube(?:-nocookie)?\.com/(?:[^/]+/.+/|(?:v|e(?:mbed)?)/|.*[?&]v=)|youtu\.be/)([^"&?/ ]{11})%i', $src, $match);
     $youtubeId = $match[1] ?? null;
-    if (!$youtubeId) {
+    if (! $youtubeId) {
         return $cache;
     }
 
