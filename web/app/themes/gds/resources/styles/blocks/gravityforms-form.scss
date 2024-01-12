@@ -46,20 +46,15 @@
   }
 
   &_confirmation_wrapper {
-    // margin-top: var(--gds-spacing-m);
-  }
-
-  &_confirmation_wrapper,
-  &_validation_errors {
-    // padding: var(--gds-spacing-s);
-    // background-color: var(--gds-color-white);
-    // margin-bottom: var(--gds-spacing-s);
+    background-color: var(--gds-color-light-gray);
+    padding: var(--grid-gutter);
   }
 
   &_submission_error {
-    // font-size: var(--gds-paragraph-m-font-size);
-    // letter-spacing: 0.02em;
-    // @include typography.body-s;
+    @include typography.body-s;
+
+    font-family: var(--gds-body-font-family);
+    font-size: var(--gds-paragraph-m-font-size);
   }
 
   &_fileupload_rules {
