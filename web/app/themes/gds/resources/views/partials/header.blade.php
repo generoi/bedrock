@@ -84,7 +84,7 @@
       <label for="s" class="sr-only">
         {{ __('Search this site', 'gds') }}
       </label>
-      <input slot="input" type="search" name="s" placeholder="{{ __('Search', 'gds') }}" autocomplete="off" />
+      <input slot="input" type="search" name="s" id="s" placeholder="{{ __('Search', 'gds') }}" autocomplete="off" />
 
       <button type="submit" aria-label="{{ __('Search', 'gds') }}">
         <i class="fa fa-solid fa-magnifying-glass"></i>
