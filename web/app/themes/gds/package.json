@@ -25,14 +25,13 @@
   },
   "devDependencies": {
     "@babel/eslint-parser": "^7.22.9",
-    "@babel/plugin-syntax-dynamic-import": "^7.8.3",
     "@babel/preset-react": "^7.22.5",
     "@tinypixelco/laravel-mix-wp-blocks": "^1.0.0",
     "@wordpress/babel-preset-default": "^7.2",
     "@wordpress/base-styles": "^4.28",
     "@wordpress/browserslist-config": "^5.20",
-    "@wordpress/dependency-extraction-webpack-plugin": "^4.20",
-    "browser-sync": "^2.26.14",
+    "@wordpress/dependency-extraction-webpack-plugin": "^5.0",
+    "browser-sync": "^3.0",
     "browser-sync-webpack-plugin": "^2.3.0",
     "cross-env": "^7.0.3",
     "eslint": "^8.45",
@@ -44,10 +43,10 @@
     "postcss-inline-svg": "^6.0.0",
     "postcss-preset-env": "^9.0.0",
     "sass": "^1.32.11",
-    "sass-loader": "^13.0",
-    "stylelint": "^15.0",
+    "sass-loader": "^14.0",
+    "stylelint": "^16.0",
     "stylelint-checkstyle-formatter": "^0.1.2",
-    "stylelint-config-standard-scss": "^10.0",
+    "stylelint-config-standard-scss": "^13.0",
     "vue-template-compiler": "^2.6.12"
   },
   "dependencies": {
@@ -66,6 +65,6 @@
     "lodash-es": "^4.17.21",
     "modern-normalize": "^2.0.0",
     "sass-mq": "^6.0",
-    "swiper": "^10.0"
+    "swiper": "^11.0"
   }
 }

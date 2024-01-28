@@ -1,6 +1,6 @@
 {
   "$schema": "https://json.schemastore.org/babelrc.json",
-  "plugins": ["@babel/plugin-syntax-dynamic-import"],
+  "plugins": [],
   "presets": [
     "@babel/preset-react"
   ]
