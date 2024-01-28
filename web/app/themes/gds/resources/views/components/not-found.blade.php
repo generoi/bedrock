@@ -1,3 +1,11 @@
+@props([
+  'header' => null,
+  'search' => null,
+  'title' => null,
+  'searchLabel' => null,
+  'description' => null,
+])
+
 @php(render_block(['blockName' => 'core/media-text']))
 
 <div class="wp-block-media-text alignwide is-stacked-on-mobile has-media-on-the-right is-vertically-aligned-top" style="grid-template-columns: 68% 1fr;">
