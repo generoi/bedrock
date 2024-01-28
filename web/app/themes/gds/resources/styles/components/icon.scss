@@ -1,0 +1,47 @@
+.icon {
+  display: inline-block;
+  width: 1em;
+  height: 1em;
+
+  &.is-2xs {
+    font-size: 0.625em;
+    line-height: 0.1em;
+    vertical-align: 0.225em;
+  }
+
+  &.is-xs {
+    font-size: 0.75em;
+    line-height: 0.0833;
+    vertical-align: 0.125em;
+  }
+
+  &.is-sm {
+    font-size: 0.875em;
+    line-height: 0.0714em;
+    vertical-align: 0.0535em;
+  }
+
+  &.is-lg {
+    font-size: 1.25em;
+    line-height: 0.05em;
+    vertical-align: -0.075em;
+  }
+
+  &.is-xl {
+    font-size: 1.5em;
+    line-height: 0.0416em;
+    vertical-align: -0.125em;
+  }
+
+  &.is-2xl {
+    font-size: 2em;
+    line-height: 0.0312em;
+    vertical-align: -0.1875em;
+  }
+
+  @for $i from 1 through 10 {
+    &.is-#{$i}x {
+      font-size: #{$i}em;
+    }
+  }
+}

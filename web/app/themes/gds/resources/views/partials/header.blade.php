@@ -55,7 +55,7 @@
         </span>
         <span class="sr-only">{{__('Languages')}} </span>
         <span class="language-menu__toggle__icon">
-          <i class="fa fa-solid fa-chevron-down"></i>
+          @svg('icons.solid.chevron-down')
         </span>
       </toggle-button>
 
@@ -87,7 +87,7 @@
       <input slot="input" type="search" name="s" id="s" placeholder="{{ __('Search', 'gds') }}" autocomplete="off" />
 
       <button type="submit" aria-label="{{ __('Search', 'gds') }}">
-        <i class="fa fa-solid fa-magnifying-glass"></i>
+        @svg('icons.solid.magnifying-glass')
       </button>
     </form>
   </div>

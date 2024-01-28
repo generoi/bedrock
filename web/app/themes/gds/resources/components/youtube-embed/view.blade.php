@@ -20,6 +20,6 @@
 
   <a slot="button" href="https://www.youtube.com/watch?v={{ $youtube_id }}" target="_blank">
     <span class="sr-only">{{ __('Play', 'gds') }}</span>
-    <i class="fa-brands fa-youtube"></i>
+    @svg('icons.brands.youtube')
   </a>
 </youtube-embed>

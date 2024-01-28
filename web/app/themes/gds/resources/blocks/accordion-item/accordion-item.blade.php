@@ -1,7 +1,7 @@
 <div {!! get_block_wrapper_attributes() !!}>
   <gds-accordion-item>
     <span slot="label">{!! $attributes->label ?? '' !!}</span>
-    <i slot="icon" class="fa fa-solid fa-chevron-down"></i>
+    @svg('icons.solid.chevron-down', '', ['slot' => 'icon'])
     <div>
       {!! $content ?? '' !!}
     </div>

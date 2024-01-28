@@ -33,7 +33,7 @@
     <p>
       <a class="teaser__readmore teaser__link" href="{{ get_permalink() }}">
         <span>{{ __('Read article', 'gds') }}</span>
-        <i class="fa-solid fa-chevrons-right fa-2xs"></i>
+        @svg('icons.solid.chevron-right', '2xs')
       </a>
     </p>
   </div>
