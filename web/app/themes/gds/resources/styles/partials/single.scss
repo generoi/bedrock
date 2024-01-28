@@ -1,0 +1,10 @@
+@use "@/common/breakpoints" as *;
+
+.hentry {
+  &__header {
+    grid-area: header;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+}

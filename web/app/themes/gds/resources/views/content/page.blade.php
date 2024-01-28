@@ -1,4 +1,4 @@
-@if (!str_contains(get_the_content(), '</h1>'))
+@if (! $has_page_title)
   @include('partials.page-header')
 @endif
 

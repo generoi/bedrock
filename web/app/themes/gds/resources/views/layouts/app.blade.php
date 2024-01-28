@@ -6,7 +6,7 @@
 @include('partials.header')
 
 <div class="container">
-  <main class="is-root-container" id="main-content" tabindex="-1">
+  <main @php(post_class('is-root-container')) id="main-content" tabindex="-1">
     @yield('content')
   </main>
 
