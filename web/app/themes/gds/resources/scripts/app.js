@@ -1,9 +1,6 @@
 import swiper from './components/swiper'
 import {onIdle, ready} from './utils'
 import './components/toggle-button';
-import fontawesome from './components/fontawesome';
-
-fontawesome();
 
 ready(() => {
   if (document.querySelector('modal-dialog')) {

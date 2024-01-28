@@ -9,7 +9,7 @@
       <span class="wp-block-gds-share__button-label">
         {{__('Share', 'gds')}}
       </span>
-      <i class="fa-regular fa-share-nodes fa-lg"></i>
+      @svg('icons.regular.share-nodes', 'is-lg')
     </toggle-button>
 
     <ul
@@ -22,28 +22,28 @@
           announce-success="{{ __('Copied!', 'gds') }}"
           announce-failed="{{ __('Failed to copy!', 'gds') }}"
         >
-          <i class="fa-regular fa-link fa-xs"></i>
+          @svg('icons.regular.link', 'is-xs')
           <span>{{ __('Copy link', 'gds') }}</span>
 
-          <i data-success-icon class="fa-solid fa-check"></i>
-          <i data-failed-icon class="fa-solid fa-xmark"></i>
+          @svg('icons.solid.check', '', ['data-success-icon'])
+          @svg('icons.solid.xmark', '', ['data-failed-icon'])
         </clipboard-copy>
       </li>
       <li>
         <a href="mailto:?subject={{ urlencode($title) }}&body={{urlencode($url) }}" rel="nofollow" target="_blank">
-          <i class="fa-regular fa-envelope fa-xs"></i>
+          @svg('icons.regular.envelope', 'is-xs')
           <span>{{ __('Send email', 'gds') }}</span>
         </a>
       </li>
       <li>
         <a href="https://www.facebook.com/sharer/sharer.php?u={{ urlencode($url) }}" rel="nofollow" target="_blank">
-          <i class="fab fa-facebook fa-xs"></i>
+          @svg('icons.brands.facebook', 'is-xs')
           <span>{{ __('Share on Facebook', 'gds') }}</span>
         </a>
       </li>
       <li>
         <a href="https://twitter.com/intent/tweet?text={{ urlencode(sprintf('%s %s', $title, $url))}}" rel="nofollow" target="_blank">
-          <i class="fa-brands fa-twitter fa-xs"></i>
+          @svg('icons.brands.twitter', 'is-xs')
           <span>{{ __('Share on Twitter') }}</span>
         </a>
       </li>

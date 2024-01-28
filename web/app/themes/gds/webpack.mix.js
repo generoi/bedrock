@@ -3,6 +3,7 @@ require('@tinypixelco/laravel-mix-wp-blocks');
 require('laravel-mix-copy-watched');
 const path = require('path');
 const glob = require('glob');
+const fs = require('fs');
 
 /*
  |--------------------------------------------------------------------------
@@ -79,6 +80,11 @@ mix.copyWatched('resources/images', 'public/images', {base: 'resources/images'})
 
 mix.copyWatched('node_modules/@fortawesome/fontawesome-pro/webfonts', 'public/webfonts')
   .copy('node_modules/jquery/dist/jquery.min.js', 'public/scripts/jquery.js');
+
+mix.extend('copyDirectoryDirectly', function (webpackConfig, from, to) {
+  fs.cpSync(from, to, {recursive: true});
+});
+mix.copyDirectoryDirectly('node_modules/@fortawesome/fontawesome-pro/svgs', 'public/icons');
 
 
 mix.autoload({

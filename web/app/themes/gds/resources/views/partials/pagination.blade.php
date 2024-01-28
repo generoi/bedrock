@@ -7,8 +7,8 @@
       'total' => $query->max_num_pages,
       'type' => 'list',
       'before_page_number' => sprintf('<span class="sr-only">%s</span>', __('Page', 'gds')),
-      'prev_text' => sprintf('<i class="fas fa-chevron-left fa-xs"></i><span class="sr-only">%s</span>', __('Previous page', 'gds')),
-      'next_text' => sprintf('<i class="fas fa-chevron-right fa-xs"></i><span class="sr-only">%s</span>', __('Next page', 'gds')),
+      'prev_text' => get_svg('icons.solid.chevron-left', 'is-xs', ['title' => __('Previous page', 'gds')]),
+      'next_text' => get_svg('icons.solid.chevron-right', 'is-xs', ['title' => __('Next page', 'gds')]),
       'add_fragment' => !empty($fragment) ? "#$fragment" : null,
     ]) !!}
   </nav>

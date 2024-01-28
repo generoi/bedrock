@@ -14,5 +14,6 @@ class ThemeServiceProvider extends AggregateServiceProvider
         \App\Providers\PerformanceServiceProvider::class,
         \App\Providers\AsyncLoaderServiceProvider::class,
         \Spatie\GoogleFonts\GoogleFontsServiceProvider::class,
+        \Log1x\SageSvg\SageSvgServiceProvider::class,
     ];
 }
