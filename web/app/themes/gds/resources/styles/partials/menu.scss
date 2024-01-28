@@ -50,7 +50,7 @@
       -webkit-tap-highlight-color: transparent;
 
       > * {
-        transition: all 0.1s ease-out;
+        transition: transform 0.1s ease-out;
       }
 
       &[aria-expanded="true"] > * {
@@ -101,7 +101,7 @@
     }
 
     &__toggle {
-      transition: all 0.1s ease-out;
+      transition: transform 0.1s ease-out;
       margin-left: -8px;
       font-size: 12px;
       padding: 4px;

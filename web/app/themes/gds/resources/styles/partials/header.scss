@@ -50,7 +50,7 @@
 
   .header {
     background-color: var(--gds-color-white);
-    transition: all 0.1s ease-out;
+    transition: height 0.1s ease-out;
     display: flex;
 
     &__logo {
