@@ -6,7 +6,7 @@
 
     @block('gds/article-grid', [
       'use_pagination' => true,
-      'query' => $GLOBALS['wp_query'],
+      'wp_query' => $GLOBALS['wp_query'],
       'align' => '',
       'layout' => [
         'type' => 'flex',

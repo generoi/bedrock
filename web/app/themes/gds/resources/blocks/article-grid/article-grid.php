@@ -35,7 +35,7 @@ register_block_type(asset('blocks/article-grid/block.json')->path(), [
         }
         echo view('blocks::article-grid.article-grid', [
             'align' => $attributes->align ?? '',
-            'query' => $attributes->query ?? new WP_Query($query),
+            'wp_query' => $attributes->wp_query ?? new WP_Query($query),
             'use_pagination' => $attributes->use_pagination ?? get_field('use_pagination'),
         ]);
     }
