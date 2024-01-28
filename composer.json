@@ -25,7 +25,6 @@
     "forum": "https://discourse.roots.io/category/bedrock"
   },
   "repositories": [
-    { "type": "git", "url": "https://github.com/generoi/wp-cli-bundle.git" },
     { "type": "composer", "url": "https://wpackagist.org" },
     { "type": "composer", "url": "https://packagist.minasithil.genero.fi/" },
     { "type": "composer", "url": "https://satispress.generodigital.com/satispress/" }
@@ -44,7 +43,7 @@
     "wpackagist-plugin/limit-login-attempts-reloaded": "^2.6.1",
     "wpackagist-plugin/wp-sanitize-file-name-plus": "~1.0",
 
-    "wpackagist-plugin/wordpress-seo": "~20.0",
+    "wpackagist-plugin/wordpress-seo": "^21.0",
     "wpackagist-plugin/google-tag-manager": "~1.0",
     "wpackagist-plugin/redirection": "~5.0",
 
@@ -56,7 +55,7 @@
     "wpackagist-plugin/query-monitor": "^3.3",
     "wpackagist-plugin/user-switching": "^1.5",
 
-    "wp-cli/wp-cli-bundle": "dev-feature/composer-version-range",
+    "wp-cli/wp-cli-bundle": "^2.9",
     "kinsta/kinsta-mu-plugins": "^3.0",
     "satispress/advanced-custom-fields-pro": "^6.0",
     "satispress/gravityforms": "^2.4",
