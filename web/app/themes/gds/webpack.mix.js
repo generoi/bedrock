@@ -56,7 +56,7 @@ const assetCompiler = (buildPath) => {
     if (/.scss$/.test(file)) {
       mix.sass(file, buildPath(file))
     } else if (/index.js$/.test(file)) {
-      mix.blocks(file, buildPath(file));
+      mix.blocks(file, buildPath(file), {disableRegenerator: true});
     } else if (/.js$/.test(file)) {
       mix.js(file, buildPath(file));
     } else if (/.json$/.test(file)) {
