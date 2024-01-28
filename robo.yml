@@ -6,21 +6,16 @@ placeholders:
 env:
   '@ddev':
     host: 'gdsbedrock.ddev.site'
-    wpcli: 'ddev exec wp-cli'
+    wpcli: 'ddev wp'
     path: /var/www/html
-    url: 'http://gdsbedrock.ddev.site'
-  '@vagrant':
-    host: 'gdsbedrock.test'
-    user: vagrant
-    path: /var/www/wordpress
-    url: 'http://gdsbedrock.test'
+    url: 'https://gdsbedrock.ddev.site'
   '@staging':
     host: 35.228.245.82
     user: gdsbedrock
     port: 29066
     ssh: 'ssh -p 29066'
     path: '/www/gdsbedrock_154/public/current'
-    url: 'https://staging-gdsbedrock-staging.kinsta.cloud'
+    url: 'https://stg-gdsbedrock-staging.kinsta.cloud'
   '@production':
     host: 35.228.245.82
     user: gdsbedrock

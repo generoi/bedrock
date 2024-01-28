@@ -5,26 +5,13 @@ server:
 require:
   - config/wp-cli/pre-ssh.php
 
-# Requires the following in your ~/.ssh/config
-#
-#     Host gdsbedrock.test
-#       StrictHostKeyChecking no
-#       IdentityFile ~/.vagrant.d/insecure_private_key
-#
-#     Host gdsbedrock.fi
-#       ProxyCommand ssh deploy@minasithil.genero.fi -W %h:%p
-
 '@ddev':
   path: /var/www/html/web/wp
   url: gdsbedrock.ddev.site
 
-'@varant':
-  ssh: vagrant@gdsbedrock.test/var/www/wordpress/web/wp
-  url: gdsbedrock.test
-
 '@staging':
   ssh: gdsbedrock@35.228.245.82:29066/www/gdsbedrock_154/public/current/web/wp
-  url: staging-gdsbedrock-staging.kinsta.cloud
+  url: stg-gdsbedrock-staging.kinsta.cloud
 
 '@production':
   ssh: gdsbedrock@35.228.245.82:32263/www/gdsbedrock_154/public/current/web/wp
