@@ -21,7 +21,7 @@
     "lint:fix:js": "npm run lint:js -- --fix",
     "lint:fix:css": "npm run lint:css -- --fix",
     "ci:scripts": "eslint resources/scripts --format checkstyle",
-    "ci:styles": "stylelint \"resources/**/*.{vue,css,sass,scss,less}\" --custom-formatter=node_modules/stylelint-checkstyle-formatter",
+    "ci:styles": "stylelint \"resources/**/*.{vue,css,sass,scss,less}\" --custom-formatter=node_modules/stylelint-checkstyle-reporter/dist/stylelint-checkstyle-reporter.mjs",
     "translate": "npm run translate:pot && npm run translate:js",
     "translate:pot": "wp i18n make-pot . ./resources/lang/sage.pot --ignore-domain --include=\"app,resources\"",
     "translate:js": "wp i18n make-json ./resources/lang --pretty-print"
@@ -48,7 +48,7 @@
     "sass": "^1.32.11",
     "sass-loader": "^14.0",
     "stylelint": "^16.0",
-    "stylelint-checkstyle-formatter": "^0.1.2",
+    "stylelint-checkstyle-reporter": "^1.0.0",
     "stylelint-config-standard-scss": "^13.0",
     "vue-template-compiler": "^2.6.12"
   },
