@@ -32,7 +32,7 @@
     "@wordpress/browserslist-config": "^5.20",
     "@wordpress/dependency-extraction-webpack-plugin": "^5.0",
     "browser-sync": "^3.0",
-    "browser-sync-webpack-plugin": "^2.3.0",
+    "browser-sync-webpack-plugin": "github:generoi/browser-sync-webpack-plugin#d48f48f",
     "cross-env": "^7.0.3",
     "eslint": "^8.45",
     "eslint-plugin-import": "^2.22.1",
