@@ -3,9 +3,6 @@
   "browserslist": [
     "extends @wordpress/browserslist-config"
   ],
-  "engines": {
-    "npm": ">=8.3.0"
-  },
   "scripts": {
     "build": "mix",
     "build:production": "mix --production",
@@ -69,10 +66,5 @@
     "modern-normalize": "^2.0.0",
     "sass-mq": "^6.0",
     "swiper": "^11.0"
-  },
-  "overrides": {
-    "browser-sync-webpack-plugin": {
-      "browser-sync": "^3.0"
-    }
   }
 }
