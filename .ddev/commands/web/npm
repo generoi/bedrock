@@ -1,0 +1,8 @@
+#!/bin/bash
+
+## Description: Run NPM CLI inside the theme folder
+## Usage: npm [flags] [args]
+## Example: "ddev npm run start" or "ddev npm run build:production"
+## ProjectTypes: wordpress
+
+cd web/app/themes/gds; npm "$@"
