@@ -62,7 +62,7 @@
     "roots/bedrock-autoloader": "^1.0",
     "consolidation/robo": "^4.0",
     "generoi/robo-genero": "^0.4",
-    "roots/acorn": "^3.0",
+    "roots/acorn": "^4.0",
     "log1x/navi": "^2.0",
     "generoi/sage-nativeblock": "^0.3",
     "inpsyde/wp-translation-downloader": "^2.3",
