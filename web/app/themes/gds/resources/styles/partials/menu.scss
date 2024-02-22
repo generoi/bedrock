@@ -105,6 +105,8 @@
       margin-left: -8px;
       font-size: 12px;
       padding: 4px;
+      display: inline-flex;
+      align-items: center;
 
       .menu-item:hover > &,
       &[aria-expanded="true"] {
