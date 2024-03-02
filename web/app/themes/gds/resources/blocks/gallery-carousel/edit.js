@@ -2,6 +2,7 @@ import '~/components/carousel';
 
 /** @wordpress */
 import { __ } from '@wordpress/i18n'
+import { useRef, useEffect } from '@wordpress/element';
 import {
   BlockControls,
   MediaPlaceholder,
@@ -9,7 +10,9 @@ import {
   useBlockProps,
 } from '@wordpress/block-editor'
 
-const ALLOWED_MEDIA_TYPES = ['image', 'video'];
+const ALLOWED_MEDIA_TYPES = ['image'];
+// @todo doesnt support rearranging
+// const ALLOWED_MEDIA_TYPES = ['image', 'video'];
 
 function PlaceholderContainer( {
   className,
@@ -74,6 +77,11 @@ function BlockEdit(props) {
   } = attributes;
 
   const hasMedia = media.length > 0;
+  const ref = useRef();
+
+  useEffect(() => {
+    ref.current.reflow();
+  }, [media])
 
   function onSelectMedia(selected) {
     const selectedMedia = selected
@@ -104,8 +112,10 @@ function BlockEdit(props) {
           allowedTypes={ ALLOWED_MEDIA_TYPES }
           multiple={ true }
           accept="image/*,video/*"
+          name={ __('Add') }
           onSelect={ onSelectMedia }
           mediaIds={ media.filter((m) => m.id).map((m) => m.id)}
+          handleUpload={ false }
           addToGallery={ hasMedia }
         />
       </BlockControls>
@@ -119,7 +129,7 @@ function BlockEdit(props) {
     <>
       { controls }
       <div { ...blockProps }>
-        <gds-carousel className="wp-block-gds-gallery-carousel__slideshow" column-count="1">
+        <gds-carousel className="wp-block-gds-gallery-carousel__slideshow" column-count="1" ref={ ref }>
           { hasMedia && media.map((media, idx) => {
             return (
               <div

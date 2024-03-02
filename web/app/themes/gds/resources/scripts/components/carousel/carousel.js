@@ -7,7 +7,6 @@ export class Carousel extends HTMLElement {
   static #idCounter = 0;
 
   #carousel;
-  #slides;
   #buttonNextEl;
   #buttonPrevEl;
   #slideToTarget;
@@ -26,7 +25,13 @@ export class Carousel extends HTMLElement {
     this.resizeObserver = this.createResizeObserver();
     this.render();
     document.addEventListener(EVENT_SLIDE, this.onSlide.bind(this));
+  }
 
+  reflow(slide) {
+    if (! slide) {
+      slide = this.slide();
+    }
+    this.style.height = `${slide.clientHeight}px`;
   }
 
   createResizeObserver() {
@@ -37,7 +42,7 @@ export class Carousel extends HTMLElement {
 
   onResize() {
     this.toggleNavigation();
-    this.style.height = `${this.slide().clientHeight}px`;
+    this.reflow()
   }
 
   toggleNavigation() {
@@ -68,11 +73,15 @@ export class Carousel extends HTMLElement {
     return Math.round(position * this.columnCount());
   }
 
+  slides() {
+    return this.#carousel.querySelector('slot').assignedElements();
+  }
+
   slide(idx = null) {
     if (idx === null) {
       idx = this.currentSlideIdx();
     }
-    return this.#slides.at(idx);
+    return this.slides().at(idx);
   }
 
   slideTo(slide) {
@@ -86,9 +95,9 @@ export class Carousel extends HTMLElement {
   }
 
   slideToNext() {
-    let next = this.slide(this.currentSlideIdx() + 1) || this.#slides.at(0);
+    let next = this.slide(this.currentSlideIdx() + 1) || this.slide(0);
     if (this.isAtEnd()) {
-      next = this.#slides.at(0);
+      next = this.slide(0);
     }
     this.slideTo(next);
   }
@@ -116,7 +125,7 @@ export class Carousel extends HTMLElement {
     const { slide } = e.detail;
     // Dynamically resize height
     // @todo hack depends on flex
-    this.style.height = `${slide.children[0].clientHeight}px`;
+    this.reflow(slide);
 
     // Pause other videos
     for (const player of this.querySelectorAll('iframe')) {
@@ -154,6 +163,7 @@ export class Carousel extends HTMLElement {
         }
 
         .carousel {
+          width: 100%;
           position: relative;
           display: flex;
           flex-wrap: nowrap;
@@ -236,16 +246,16 @@ export class Carousel extends HTMLElement {
     this.dataset.isInitialized = '';
     this.#carousel = this.shadowRoot.querySelector('.carousel');
     this.#carousel.addEventListener('scroll', throttle(this.onScroll.bind(this), 100))
-    this.#slides = this.#carousel.querySelector('slot').assignedElements();
 
     if (!this.getAttribute('role')) {
       this.setAttribute('role', 'region');
       this.setAttribute('aria-roledescription', 'carousel');
     }
 
-    for (const [idx, slide] of this.#slides.entries()) {
+    const slides = this.slides();
+    for (const [idx, slide] of slides.entries()) {
       if (!slide.getAttribute('aria-label')) {
-        slide.setAttribute('aria-label', `${idx + 1} of ${this.#slides.length}`)
+        slide.setAttribute('aria-label', `${idx + 1} of ${slides.length}`)
       }
       if (!slide.getAttribute('role')) {
         slide.setAttribute('role', 'group');
@@ -267,12 +277,12 @@ export class Carousel extends HTMLElement {
     this.#buttonPrevEl = this.shadowRoot.querySelector('.button-prev');
     this.toggleNavigation();
 
-    if (this.#slides.length > 1) {
+    if (slides.length > 1) {
       this.resizeObserver.observe(this.#carousel);
       this.#buttonNextEl?.addEventListener('click', this.slideToNext.bind(this));
       this.#buttonPrevEl?.addEventListener('click', this.slideToPrev.bind(this));
 
-      this.style.height = `${this.#slides[0].clientHeight}px`;
+      this.style.height = `${slides[0].clientHeight}px`;
     }
   }
 }

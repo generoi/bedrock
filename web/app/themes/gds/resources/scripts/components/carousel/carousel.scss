@@ -36,7 +36,6 @@ gds-carousel {
 gds-carousel,
 gds-carousel-pager {
   display: flex;
-  overflow: hidden;
   align-items: flex-start;
   gap: var(--carousel-gutter, 0);
 
@@ -77,6 +76,10 @@ gds-carousel-pager {
   button {
     all: unset;
     cursor: pointer;
+
+    &:focus-visible {
+      outline: var(--gds-outline--focus);
+    }
   }
 
   // If column-count isnt specified, let the items be fixed width
