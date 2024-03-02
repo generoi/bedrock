@@ -1,0 +1,99 @@
+gds-carousel {
+  // safari bug
+  svg[slot="icon-prev"],
+  svg[slot="icon-next"] {
+    width: auto;
+  }
+
+  &::part(button) {
+    background-color: var(--gds-color-light-gray);
+    color: inherit;
+    font-size: 18px;
+    padding: 14px;
+    line-height: 1;
+    width: 0.6em;
+    height: 1em;
+    contain: content;
+  }
+
+  &:not([data-is-initialized]) {
+    // Hide icons so they do not occupy flex space
+    > [slot^="icon-"] {
+      display: none;
+    }
+
+    // Hide items not shown in the first view so that height is correct
+    @for $i from 1 through 4 {
+      &[column-count="#{$i}"] {
+        > *:not([slot]):nth-child(n + #{$i + 1}) {
+          display: none;
+        }
+      }
+    }
+  }
+}
+
+gds-carousel,
+gds-carousel-pager {
+  display: flex;
+  overflow: hidden;
+  align-items: flex-start;
+  gap: var(--carousel-gutter, 0);
+
+  img,
+  video {
+    display: block;
+    width: 100%;
+    max-width: none;
+    height: auto;
+
+    // Video has incorrect aspect ratio before src has loaded so support aspect-ratio box
+    &[style*="--aspect-ratio"] {
+      aspect-ratio: var(--aspect-ratio);
+    }
+  }
+
+  // Utility for getting prevent CLS but the variable can be overridden with CSS
+  // too.
+  @for $i from 1 through 4 {
+    &[column-count="#{$i}"] {
+      --carousel-columns: #{$i};
+    }
+  }
+
+  // Set the width of the slides
+  > *:not([slot]) {
+    width: calc(100% / var(--carousel-columns, 1));
+    flex-shrink: 0;
+    flex-basis: calc(
+      100% / var(--carousel-columns, 1) - (var(--carousel-gutter, 0) - (1 / var(--carousel-columns, 1) * var(--carousel-gutter, 0)))
+    );
+  }
+}
+
+gds-carousel-pager {
+  flex-wrap: wrap;
+
+  button {
+    all: unset;
+    cursor: pointer;
+  }
+
+  // If column-count isnt specified, let the items be fixed width
+  &:not([column-count]) {
+    > *:not([slot]) {
+      width: 100px;
+    }
+  }
+
+  > *:not([slot]) {
+    aspect-ratio: var(--aspect-ratio, 1 / 1);
+
+    img,
+    video {
+      aspect-ratio: var(--aspect-ratio, 1 / 1);
+      object-fit: cover;
+      width: 100%;
+    }
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 2,
+  "name": "gds/gallery-carousel",
+  "title": "Gallery Carousel",
+  "description": "Display a gallery with a carousel",
+  "category": "layout",
+  "icon": "slides",
+  "attributes": {
+    "media": {
+      "type": "array",
+      "default": []
+    }
+  },
+  "supports": {
+    "align": ["full", "wide"],
+    "customClassName": true,
+    "html": false,
+    "color": {}
+  },
+  "editorScript": "file:./index.js",
+  "style": "file:/style.css"
+}
