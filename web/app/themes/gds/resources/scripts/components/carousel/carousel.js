@@ -9,6 +9,7 @@ export class Carousel extends HTMLElement {
   #carousel;
   #buttonNextEl;
   #buttonPrevEl;
+  #liveRegion;
   #slideToTarget;
 
   constructor() {
@@ -100,11 +101,18 @@ export class Carousel extends HTMLElement {
       next = this.slide(0);
     }
     this.slideTo(next);
+    this.updateLiveRegion(next);
   }
 
   slideToPrev() {
     const prev = this.slide(this.currentSlideIdx() - 1);
     this.slideTo(prev);
+    this.updateLiveRegion(prev);
+  }
+
+  updateLiveRegion(slide) {
+    const nextIdx = Array.from(this.slides()).indexOf(slide);
+    this.#liveRegion.textContent = `Item ${nextIdx + 1} of ${this.slides().length}`;
   }
 
   onScroll() {
@@ -126,6 +134,22 @@ export class Carousel extends HTMLElement {
     // Dynamically resize height
     // @todo hack depends on flex
     this.reflow(slide);
+
+    slide.setAttribute('aria-hidden', 'false');
+    for (const el of slide.querySelectorAll('video')) {
+      el.removeAttribute('tabindex');
+    }
+
+    for (const el of this.slides()) {
+      if (el === slide) {
+        continue;
+      }
+
+      el.setAttribute('aria-hidden', 'true');
+      for (const el of slide.querySelectorAll('video')) {
+        el.removeAttribute('tabindex');
+      }
+    }
 
     // Pause other videos
     for (const player of this.querySelectorAll('iframe')) {
@@ -214,7 +238,27 @@ export class Carousel extends HTMLElement {
           left: auto;
           right: 0;
         }
+
+        .sr-only {
+          position: absolute;
+          width: 1px;
+          height: 1px;
+          padding: 0;
+          margin: -1px;
+          overflow: hidden;
+          clip: rect(0, 0, 0, 0);
+          white-space: nowrap;
+          border: 0;
+        }
       </style>
+      <div
+        class="carousel"
+        id="${this.carouselId}"
+        part="carousel"
+      >
+        <slot></slot>
+      </div>
+
       <button
         class="button-prev"
         aria-controls="${this.carouselId}"
@@ -233,14 +277,7 @@ export class Carousel extends HTMLElement {
         <slot name="icon-next"></slot>
       </button>
 
-      <div
-        class="carousel"
-        id="${this.carouselId}"
-        aria-live="polite"
-        part="carousel"
-      >
-        <slot></slot>
-      </div>
+      <div class="sr-only" aria-live="polite" aria-atomic="true"></div>
     `;
 
     this.dataset.isInitialized = '';
@@ -262,6 +299,14 @@ export class Carousel extends HTMLElement {
         slide.setAttribute('aria-roledescription', 'slide');
       }
 
+      if (!slide.getAttribute('aria-hidden')) {
+        slide.setAttribute('aria-hidden', 'true')
+
+        for (const el of slide.querySelectorAll('video')) {
+          el.setAttribute('tabindex', '-1');
+        }
+      }
+
       // CSS snap doesnt like it when DOM changes while scrolling
       // @see https://stackoverflow.com/q/74211636
       if (window.wpImageResizer) {
@@ -275,6 +320,7 @@ export class Carousel extends HTMLElement {
 
     this.#buttonNextEl = this.shadowRoot.querySelector('.button-next');
     this.#buttonPrevEl = this.shadowRoot.querySelector('.button-prev');
+    this.#liveRegion = this.shadowRoot.querySelector('[aria-live="polite"]');
     this.toggleNavigation();
 
     if (slides.length > 1) {
