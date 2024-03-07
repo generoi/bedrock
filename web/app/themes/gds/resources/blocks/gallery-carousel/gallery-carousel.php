@@ -10,14 +10,12 @@ register_block_type(asset('blocks/gallery-carousel/block.json')->path(), [
         $media = collect($attributes->media ?? [])
             ->filter()
             ->values()
-            ->map(function (array $data) {
-                return (object) $data;
-            })
+            ->map(fn (array $data) => (object) $data)
             ->all();
-
 
         return view('blocks::gallery-carousel.gallery-carousel', [
             'align' => $attributes->align ?? '',
+            'ariaLabel' => $attributes->ariaLabel ?? '',
             'media' => $media,
             'gallery_id' => wp_unique_id('carousel-slide-'),
         ]);

@@ -5,10 +5,16 @@ import { __ } from '@wordpress/i18n'
 import { useRef, useEffect } from '@wordpress/element';
 import {
   BlockControls,
+  InspectorControls,
   MediaPlaceholder,
   MediaReplaceFlow,
   useBlockProps,
 } from '@wordpress/block-editor'
+
+import {
+  PanelBody,
+  TextControl,
+} from '@wordpress/components';
 
 const ALLOWED_MEDIA_TYPES = ['image'];
 // @todo doesnt support rearranging
@@ -74,6 +80,7 @@ function BlockEdit(props) {
 
   const {
     media,
+    ariaLabel,
   } = attributes;
 
   const hasMedia = media.length > 0;
@@ -119,6 +126,19 @@ function BlockEdit(props) {
           addToGallery={ hasMedia }
         />
       </BlockControls>
+      <InspectorControls>
+        <PanelBody
+          initialOpen={false}
+          title={ __('Accessibility') }
+        >
+          <TextControl
+            label={ __('Label') }
+            value={ ariaLabel }
+            onChange={ (ariaLabel) => setAttributes({ariaLabel})
+            }
+          />
+        </PanelBody>
+      </InspectorControls>
     </>
   );
 

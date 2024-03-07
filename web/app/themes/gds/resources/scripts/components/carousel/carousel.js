@@ -93,6 +93,8 @@ export class Carousel extends HTMLElement {
     });
 
     setTimeout(() => this.#slideToTarget = null, 500);
+
+    this.updateLiveRegion(slide);
   }
 
   slideToNext() {
@@ -101,13 +103,11 @@ export class Carousel extends HTMLElement {
       next = this.slide(0);
     }
     this.slideTo(next);
-    this.updateLiveRegion(next);
   }
 
   slideToPrev() {
     const prev = this.slide(this.currentSlideIdx() - 1);
     this.slideTo(prev);
-    this.updateLiveRegion(prev);
   }
 
   updateLiveRegion(slide) {
@@ -262,7 +262,6 @@ export class Carousel extends HTMLElement {
       <button
         class="button-prev"
         aria-controls="${this.carouselId}"
-        aria-label="Previous slide"
         part="button button--prev"
       >
         <slot name="icon-prev"></slot>
@@ -271,7 +270,6 @@ export class Carousel extends HTMLElement {
       <button
         class="button-next"
         aria-controls="${this.carouselId}"
-        aria-label="Next slide"
         part="button button--next"
       >
         <slot name="icon-next"></slot>
@@ -287,20 +285,29 @@ export class Carousel extends HTMLElement {
     if (!this.getAttribute('role')) {
       this.setAttribute('role', 'region');
       this.setAttribute('aria-roledescription', 'carousel');
+
+      if (!this.getAttribute('aria-label')) {
+        this.setAttribute('aria-label', 'Carousel');
+      }
     }
 
     const slides = this.slides();
     for (const [idx, slide] of slides.entries()) {
-      if (!slide.getAttribute('aria-label')) {
-        slide.setAttribute('aria-label', `${idx + 1} of ${slides.length}`)
-      }
       if (!slide.getAttribute('role')) {
         slide.setAttribute('role', 'group');
         slide.setAttribute('aria-roledescription', 'slide');
+
+        if (!slide.getAttribute('aria-label')) {
+          slide.setAttribute('aria-label', `${idx + 1} of ${slides.length}`)
+        }
       }
 
       if (!slide.getAttribute('aria-hidden')) {
-        slide.setAttribute('aria-hidden', 'true')
+        if (idx < this.columnCount()) {
+          slide.setAttribute('aria-hidden', 'false');
+        } else {
+          slide.setAttribute('aria-hidden', 'true');
+        }
 
         for (const el of slide.querySelectorAll('video')) {
           el.setAttribute('tabindex', '-1');
