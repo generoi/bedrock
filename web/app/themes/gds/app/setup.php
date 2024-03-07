@@ -136,22 +136,6 @@ add_action('after_setup_theme', function () {
 
     // Enqueue editor styles
     add_editor_style('public/styles/editor.css');
-
-    // @see https://make.wordpress.org/core/2021/12/15/using-multiple-stylesheets-per-block/
-    $manifest = config('assets.manifests.theme.assets');
-    collect(json_decode(file_get_contents($manifest), true))
-        ->keys()
-        ->filter(fn ($file) => strpos($file, '/styles/blocks/') === 0)
-        ->map(fn ($file) => asset($file))
-        ->each(function (Asset $asset) {
-            $filename = pathinfo(basename($asset->path()), PATHINFO_FILENAME);
-            [$collection, $blockName] = explode('-', $filename, 2);
-            wp_enqueue_block_style("$collection/$blockName", [
-                'handle' => "sage/block/$filename",
-                'src' => $asset->uri(),
-                'path' => $asset->path(),
-            ]);
-        });
 }, 20);
 
 /**

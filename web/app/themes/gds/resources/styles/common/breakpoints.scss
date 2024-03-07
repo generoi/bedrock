@@ -1,4 +1,4 @@
-@use "~@wordpress/base-styles/breakpoints" as wp;
+@use "@wordpress/base-styles/breakpoints" as wp;
 
 $mq-breakpoints: (
   mobile: 320px,
@@ -11,7 +11,7 @@ $mq-breakpoints: (
   huge: 1410px,
 );
 
-@forward "~sass-mq" with (
+@forward "sass-mq" with (
   $breakpoints: $mq-breakpoints
 );
 

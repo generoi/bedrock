@@ -7,7 +7,8 @@
 namespace components\youtube_embed;
 
 add_action('wp_enqueue_scripts', function () {
-    wp_register_style('sage/youtube-embed.css', asset('components/youtube-embed/index.css')->uri(), [], null);
+    // @todo
+    //wp_register_style('sage/youtube-embed.css', asset('components/youtube-embed/index.css')->uri(), [], null);
 });
 
 /**
@@ -31,7 +32,7 @@ add_filter('embed_oembed_html', function (string $cache) {
         return $cache;
     }
 
-    wp_enqueue_style('sage/youtube-embed.css');
+    // wp_enqueue_style('sage/youtube-embed.css');
 
     return view('components::youtube-embed.view', [
         'youtube_id' => $youtubeId,
