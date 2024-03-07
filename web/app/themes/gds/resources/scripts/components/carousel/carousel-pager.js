@@ -29,13 +29,12 @@ export class CarouselPager extends HTMLElement {
   }
 
   onPagerClick(e) {
-    const tab = e.target.closest('[role="tab"]');
+    const tab = e.target.closest('button');
     const slide = document.getElementById(
       tab.getAttribute('aria-controls')
     );
     const carousel = slide.closest('gds-carousel');
     carousel.slideTo(slide);
-    slide.setAttribute('tabindex', '-1');
     slide.focus();
   }
 
@@ -50,24 +49,15 @@ export class CarouselPager extends HTMLElement {
       <slot></slot>
     `;
 
-    if (!this.getAttribute('role')) {
-      this.setAttribute('role', 'tablist')
-    }
-
     this.dataset.isInitialized = '';
     this.#buttons = this.shadowRoot.querySelector('slot').assignedElements();
 
     for (const [idx, button] of this.#buttons.entries()) {
-      if (!button.getAttribute('role')) {
-        button.setAttribute('type', 'button');
-        button.setAttribute('role', 'tab');
-      }
-
       if (!button.getAttribute('aria-label')) {
-        button.setAttribute('aria-label', `Slide ${idx}`)
+        button.setAttribute('aria-label', `Go to slide ${idx}`)
       }
-      if (!button.getAttribute('aria-selected')) {
-        button.setAttribute('aria-selected', idx === 0 ? 'true' : 'false');
+      if (!button.getAttribute('aria-current')) {
+        button.setAttribute('aria-current', idx === 0 ? 'true' : 'false');
       }
 
       button.addEventListener('click', this.onPagerClick.bind(this));

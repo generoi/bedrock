@@ -10,6 +10,9 @@
     "media": {
       "type": "array",
       "default": []
+    },
+    "ariaLabel": {
+      "type": "string"
     }
   },
   "supports": {

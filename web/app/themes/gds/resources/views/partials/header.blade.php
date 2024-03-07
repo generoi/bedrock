@@ -86,8 +86,8 @@
       </label>
       <input slot="input" type="search" name="s" id="s" placeholder="{{ __('Search', 'gds') }}" autocomplete="off" />
 
-      <button type="submit" aria-label="{{ __('Search', 'gds') }}">
-        @svg('icons.solid.magnifying-glass')
+      <button type="submit">
+        @svg('icons.solid.magnifying-glass', '', ['title' => __('Search', 'gds')])
       </button>
     </form>
   </div>

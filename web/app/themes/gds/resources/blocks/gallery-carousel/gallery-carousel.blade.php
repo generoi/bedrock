@@ -1,7 +1,15 @@
 <div {!! get_block_wrapper_attributes() !!}>
-  <gds-carousel class="wp-block-gds-gallery-carousel__slideshow" column-count="1">
+  <gds-carousel
+    class="wp-block-gds-gallery-carousel__slideshow"
+    column-count="1"
+    aria-label="{{ $ariaLabel ?? __('Gallery', 'gds') }}"
+  >
     @foreach ($media as $idx => $item)
-      <div class="wp-block-gds-gallery-carousel__slide" id="{{ $gallery_id }}-{{ $idx }}">
+      <div
+        class="wp-block-gds-gallery-carousel__slide"
+        id="{{ $gallery_id }}-{{ $idx }}"
+        aria-label="{{ sprintf(__('%d of %d', 'gds'), $loop->iteration, $loop->count) }}"
+      >
         @if ($item->id ?? null)
           @if (wp_attachment_is('video', $item->id))
             @php $meta = wp_get_attachment_metadata($item->id) @endphp
@@ -32,8 +40,14 @@
     </div>
     @endforeach
 
-    @svg('icons.solid.chevron-left', '', ['slot' => 'icon-prev', 'aria-hidden' => 'true'])
-    @svg('icons.solid.chevron-right', '', ['slot' => 'icon-next', 'aria-hidden' => 'true'])
+    <span slot="icon-prev">
+      @svg('icons.solid.chevron-left')
+      <span class="sr-only">{{ __('Previous slide', 'gds') }}</span>
+    </span>
+    <span slot="icon-next">
+      @svg('icons.solid.chevron-right')
+      <span class="sr-only">{{ __('Next slide', 'gds') }}</span>
+    </span>
   </gds-carousel>
 
   @if (count($media) > 1)
@@ -42,8 +56,8 @@
     >
       @foreach ($media as $idx => $item)
         <button
-          aria-label="{{ sprintf(__('Slide %s', 'gds'), $idx + 1) }}"
-          aria-selected="{{ $loop->first ? 'true' : 'false' }}"
+          aria-label="{{ sprintf(__('Go to slide %s', 'gds'), $idx + 1) }}"
+          aria-current="{{ $loop->first ? 'true' : 'false' }}"
           aria-controls="{{ $gallery_id }}-{{ $idx }}"
         >
           @if (! empty($item->id))
