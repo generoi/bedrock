@@ -1,4 +1,4 @@
-@use "~@/components/typography" as *;
+@use "@styles/components/typography" as *;
 
 gds-accordion-item:not([data-is-initialized]) {
   > :not([slot="label"]) {

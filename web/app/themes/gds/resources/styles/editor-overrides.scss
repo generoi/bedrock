@@ -4,7 +4,7 @@
 
 @use "config" with ($is-editor: true);
 @use "components/colors";
-@use "~@fortawesome/fontawesome-pro/css/all";
+@use "@fortawesome/fontawesome-pro/css/all";
 
 // undo wp-admin/css/common.css
 :where(.editor-styles-wrapper) {

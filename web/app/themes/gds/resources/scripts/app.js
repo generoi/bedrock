@@ -7,9 +7,10 @@ ready(() => {
     import('./components/modal-dialog');
   }
 
-  if (document.querySelector('youtube-embed')) {
-    onIdle(() => import('@components/youtube-embed'));
-  }
+  // @todo
+  // if (document.querySelector('youtube-embed')) {
+  //   onIdle(() => import('@components/youtube-embed'));
+  // }
 
   for (const container of document.body.querySelectorAll('.swiper-container')) {
     swiper(container);
