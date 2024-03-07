@@ -35,6 +35,8 @@ export class CarouselPager extends HTMLElement {
     );
     const carousel = slide.closest('gds-carousel');
     carousel.slideTo(slide);
+    slide.setAttribute('tabindex', '-1');
+    slide.focus();
   }
 
   render() {

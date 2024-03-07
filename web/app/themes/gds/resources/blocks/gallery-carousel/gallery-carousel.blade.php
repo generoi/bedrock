@@ -32,8 +32,8 @@
     </div>
     @endforeach
 
-    @svg('icons.solid.chevron-left', '', ['slot' => 'icon-prev'])
-    @svg('icons.solid.chevron-right', '', ['slot' => 'icon-next'])
+    @svg('icons.solid.chevron-left', '', ['slot' => 'icon-prev', 'aria-hidden' => 'true'])
+    @svg('icons.solid.chevron-right', '', ['slot' => 'icon-next', 'aria-hidden' => 'true'])
   </gds-carousel>
 
   @if (count($media) > 1)
