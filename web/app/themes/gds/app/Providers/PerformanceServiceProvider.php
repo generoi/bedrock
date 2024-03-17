@@ -21,6 +21,7 @@ class PerformanceServiceProvider extends ServiceProvider
 
         add_action('wp_enqueue_scripts', [$this, 'replaceWithModernJquery']);
         add_action('wp_enqueue_scripts', [$this, 'maybeRemoveJquery'], 100);
+        add_action('wp_enqueue_scripts', [$this, 'asyncLoadScripts'], 100);
         add_action('wp_print_styles', [$this, 'dequeueAssets'], 100);
     }
 
@@ -54,6 +55,32 @@ class PerformanceServiceProvider extends ServiceProvider
         if ($doRemovejQuery) {
             wp_deregister_script('jquery');
         }
+    }
+
+    public function asyncLoadScripts(): void
+    {
+        // Async styles
+        collect([
+            'dashicons',
+            'debug-bar',
+            'shc-show-env',
+            'wp-block-library-theme',
+            'wp-smart-crop-renderer',
+        ])->each(fn (string $handle) => wp_style_add_data($handle, 'strategy', 'async'));
+
+        // Async scripts
+        collect([
+            'genero-cmp/js',
+        ])->each(fn (string $handle) => wp_script_add_data($handle, 'strategy', 'async'));
+
+        // Deferred scripts
+        collect([
+            'admin-bar',
+            'debug-bar-js',
+            'moxiejs', // gravityforms
+            'plupload', // gravityforms
+            'gform_gravityforms_utils', // gravityforms
+        ])->each(fn (string $handle) => wp_script_add_data($handle, 'strategy', 'defer'));
     }
 
     /**
