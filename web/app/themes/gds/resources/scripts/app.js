@@ -15,3 +15,9 @@ ready(() => {
     swiper(container);
   }
 })
+
+ready(() => {
+  if (document.querySelector('gds-carousel, gds-carousel-pager')) {
+    import('./components/carousel');
+  }
+})
