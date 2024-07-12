@@ -41,7 +41,7 @@
       @endif
     </nav>
 
-    @if ($current_language)
+    @if (count($languages) > 1)
       <nav
         aria-label="{{ __('Language', 'gds') }}"
         class="header__languages language-menu"
