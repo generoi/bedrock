@@ -1,0 +1,39 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 2,
+  "name": "gds/grid",
+  "title": "Grid",
+  "description": "Display a grid of content",
+  "category": "layout",
+  "attributes": {
+    "columns": {
+      "type": "integer",
+      "default": 3
+    },
+    "textAlign": {
+      "type": "string"
+    }
+  },
+  "supports": {
+    "html": false,
+    "align": ["wide", "full"],
+    "__experimentalExposeControlsToChildren": true,
+    "layout": {
+      "allowSwitching": false,
+      "allowInheriting": false,
+      "default": {
+        "type": "flex"
+      }
+    }
+  },
+
+  "example": {
+    "innerBlocks": [
+      { "name": "gds/media-card" },
+      { "name": "gds/media-card" }
+    ],
+    "viewportWidth": 400
+  },
+  "editorScript": "file:./index.js",
+  "style": "file:./style.css"
+}
