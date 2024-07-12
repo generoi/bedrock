@@ -340,4 +340,6 @@ export class Carousel extends HTMLElement {
   }
 }
 
-customElements.define('gds-carousel', Carousel);
+if (!customElements.get('gds-carousel')) {
+  customElements.define('gds-carousel', Carousel);
+}

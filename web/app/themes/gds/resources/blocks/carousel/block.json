@@ -1,0 +1,28 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 2,
+  "name": "gds/carousel",
+  "title": "Carousel",
+  "description": "Display a carousel",
+  "category": "layout",
+  "icon": "slides",
+  "attributes": {
+    "columnCount": {
+      "type": "integer",
+      "default": 1
+    },
+    "ariaLabel": {
+      "type": "string"
+    }
+  },
+  "supports": {
+    "align": ["full", "wide"],
+    "customClassName": true,
+    "html": false,
+    "color": {},
+    "__experimentalExposeControlsToChildren": true,
+    "__experimentalCaptureToolbars": true
+  },
+  "editorScript": "file:./index.js",
+  "style": "file:/style.css"
+}

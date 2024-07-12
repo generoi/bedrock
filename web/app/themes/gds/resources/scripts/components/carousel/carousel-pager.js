@@ -65,4 +65,6 @@ export class CarouselPager extends HTMLElement {
   }
 }
 
-customElements.define('gds-carousel-pager', CarouselPager);
+if (!customElements.get('gds-carousel-pager')) {
+  customElements.define('gds-carousel-pager', CarouselPager);
+}
