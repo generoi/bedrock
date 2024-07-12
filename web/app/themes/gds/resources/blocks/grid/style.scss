@@ -1,0 +1,42 @@
+@use "@/common/breakpoints" as *;
+
+.wp-block-gds-grid {
+  --card-grid-gap: 24px;
+
+  display: flex;
+  flex-wrap: wrap;
+
+  // Gutenberg editor override weirdness
+  &,
+  &.is-layout-flex {
+    gap: var(--card-grid-gap);
+  }
+
+  > * {
+    width: 100%;
+  }
+
+  @for $i from 1 through 4 {
+    @include mq($from: large) {
+      &.has-#{$i}-columns > * {
+        width: calc(
+          (100% / #{$i}) - (
+            var(--card-grid-gap) - ((1 / #{$i}) * var(--card-grid-gap))
+          )
+        );
+      }
+    }
+  }
+
+  @include mq($from: medium, $until: large) {
+    &.has-2-columns > *,
+    &.has-3-columns > *,
+    &.has-4-columns > * {
+      width: calc(
+        (100% / 2) - (
+          var(--card-grid-gap) - ((1 / 2) * var(--card-grid-gap))
+        )
+      );
+    }
+  }
+}
