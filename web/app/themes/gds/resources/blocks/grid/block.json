@@ -22,6 +22,7 @@
     "layout": {
       "allowSwitching": false,
       "allowInheriting": false,
+      "allowOrientation": false,
       "default": {
         "type": "flex"
       }

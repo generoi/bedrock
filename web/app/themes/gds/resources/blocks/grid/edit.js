@@ -7,12 +7,15 @@ import {
 } from '@wordpress/block-editor'
 
 import {
+  Icon,
+  Button,
   PanelBody,
   RangeControl,
 } from '@wordpress/components';
 
 import {
   createBlocksFromInnerBlocksTemplate,
+  __experimentalCloneSanitizedBlock as cloneSanitizedBlock,
   store as blocksStore,
 } from '@wordpress/blocks';
 
@@ -33,18 +36,57 @@ const ALLOWED_BLOCKS = [
 function BlockEditContainer({
   attributes,
   setAttributes,
+  isSelected,
+  clientId,
 }) {
   const {
     columns,
     allowedBlocks,
   } = attributes;
 
+  const { getBlocks } = useSelect(blockEditorStore);
+  const { insertBlock } = useDispatch( blockEditorStore );
+
+  function cloneLastBlock() {
+    const innerBlocks = getBlocks(clientId);
+    const lastBlock = innerBlocks.at(-1);
+    const lastBlockInnerBlock = cloneSanitizedBlock(lastBlock.innerBlocks[0]);
+    lastBlockInnerBlock.innerBlocks = [];
+
+    return cloneSanitizedBlock(lastBlock, {}, [
+      lastBlockInnerBlock,
+    ]);
+  }
+
   const blockProps = useBlockProps({
     className: `has-${columns}-columns`,
   });
+
   const innerBlockProps = useInnerBlocksProps(blockProps, {
+    orientation: 'horizontal',
     template: TEMPLATE,
     allowedBlocks,
+    renderAppender: () => {
+      const isParentOfSelectedBlock = useSelect(
+        (select) => select('core/block-editor').hasSelectedInnerBlock(clientId, true)
+      );
+
+      return (
+        <>
+          {(isSelected || isParentOfSelectedBlock) && (
+            <Button
+              className="block-editor-button-block-appender"
+              onClick={ () => {
+                const innerBlocks = getBlocks(clientId);
+                insertBlock(cloneLastBlock(), innerBlocks.length || 0, clientId, false);
+              } }
+            >
+              <Icon icon="plus-alt2"/>
+            </Button>
+          )}
+        </>
+      );
+    },
   });
 
   const controls = (

@@ -11,7 +11,8 @@
   },
   "supports": {
     "html": false,
-    "color": {}
+    "color": {},
+    "__experimentalExposeControlsToChildren": true
   },
   "editorScript": "file:./index.js"
 }

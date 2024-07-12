@@ -12,6 +12,8 @@ import {
 } from '@wordpress/block-editor'
 
 import {
+  Icon,
+  Button,
   PanelBody,
   TextControl,
   RangeControl,
@@ -36,6 +38,7 @@ function BlockEditContainer({
   attributes,
   setAttributes,
   clientId,
+  isSelected,
 }) {
   const {
     ariaLabel,
@@ -81,7 +84,7 @@ function BlockEditContainer({
       <BlockControls>
         <ToolbarGroup>
           <ToolbarButton
-            label={__('Add')}
+            label={__('Add slide')}
             icon="plus"
             onClick={ () => {
               const innerBlocks = getBlocks(clientId);
@@ -121,7 +124,27 @@ function BlockEditContainer({
     orientation: 'horizontal',
     template: TEMPLATE,
     allowedBlocks: ALLOWED_BLOCKS,
-    renderAppender: false,
+    renderAppender: () => {
+      const isParentOfSelectedBlock = useSelect(
+        (select) => select('core/block-editor').hasSelectedInnerBlock(clientId, true)
+      );
+
+      return (
+        <>
+          {(isSelected || isParentOfSelectedBlock) && (
+            <Button
+              className="block-editor-button-block-appender"
+              onClick={ () => {
+                const innerBlocks = getBlocks(clientId);
+                insertBlock(cloneLastBlock(), innerBlocks.length || 0, clientId, false);
+              } }
+            >
+              <Icon icon="plus-alt2"/>
+            </Button>
+          )}
+        </>
+      );
+    },
   });
 
   return (
@@ -129,7 +152,7 @@ function BlockEditContainer({
       { controls }
       <div { ...blockProps }>
         <gds-carousel
-          className="wp-block-gds-carousel__carousel"
+          class="wp-block-gds-carousel__carousel"
           column-count={ columnCount }
           ref={ ref }
         >
