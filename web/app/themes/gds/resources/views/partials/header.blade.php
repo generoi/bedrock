@@ -42,37 +42,40 @@
     </nav>
 
     @if ($current_language)
-    <div
-      aria-label="{{ __('Language', 'gds') }}"
-      class="header__languages language-menu"
-    >
-      <toggle-button
-        class="language-menu__toggle"
-        aria-controls="language-menu"
+      <nav
+        aria-label="{{ __('Language', 'gds') }}"
+        class="header__languages language-menu"
       >
-        <span aria-hidden="true">
-          {!! strtoupper(esc_html($current_language->slug)) !!}
-        </span>
-        <span class="sr-only">{{__('Languages')}} </span>
-        <span class="language-menu__toggle__icon">
-          @svg('icons.solid.chevron-down')
-        </span>
-      </toggle-button>
+        <toggle-button
+          class="language-menu__toggle"
+          aria-controls="language-menu"
+        >
+          <span aria-hidden="true">
+            {!! strtoupper(esc_html($current_language->slug)) !!}
+          </span>
+          <span class="sr-only">{{__('Languages')}} </span>
+          <span class="language-menu__toggle__icon">
+            @svg('icons.solid.chevron-down')
+          </span>
+        </toggle-button>
 
-      <div
-        class="language-menu__menu"
-        id="language-menu"
-      >
-        @foreach ($languages as $item)
-          <a
-            class="language-menu__link {{ ($item->current_lang ) ? 'is-active': '' }}"
-            href="{{ $item->url }}"
-          >
-            {!! esc_html($item->name) !!}
-          </a>
-        @endforeach
-      </div>
-    </div>
+        <div
+          class="language-menu__menu"
+          id="language-menu"
+        >
+          @foreach ($languages as $item)
+            <a
+              class="language-menu__link {{ ($item->current_lang ) ? 'is-active': '' }}"
+              @if ($item->current_lang)
+                aria-current="page"
+              @endif
+              href="{{ $item->url }}"
+            >
+              {!! esc_html($item->name) !!}
+            </a>
+          @endforeach
+        </div>
+      </nav>
     @endif
 
     <form
