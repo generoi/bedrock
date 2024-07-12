@@ -87,7 +87,7 @@ function BlockEdit(props) {
   const ref = useRef();
 
   useEffect(() => {
-    ref.current.reflow();
+    ref.current.render();
   }, [media])
 
   function onSelectMedia(selected) {
