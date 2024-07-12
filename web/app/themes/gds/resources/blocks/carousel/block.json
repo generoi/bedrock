@@ -5,7 +5,7 @@
   "title": "Carousel",
   "description": "Display a carousel",
   "category": "layout",
-  "icon": "slides",
+  "icon": "format-gallery",
   "attributes": {
     "columnCount": {
       "type": "integer",

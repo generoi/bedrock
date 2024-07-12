@@ -5,6 +5,7 @@
   "title": "Media Card",
   "description": "Display a card with media and text",
   "category": "layout",
+  "icon": "id-alt",
   "attributes": {
     "mediaType": {
       "type": "string"

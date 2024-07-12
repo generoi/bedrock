@@ -5,7 +5,7 @@
   "title": "Gallery Carousel",
   "description": "Display a gallery with a carousel",
   "category": "layout",
-  "icon": "slides",
+  "icon": "images-alt",
   "attributes": {
     "media": {
       "type": "array",
