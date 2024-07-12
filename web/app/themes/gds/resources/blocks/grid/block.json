@@ -26,13 +26,21 @@
       }
     }
   },
-
   "example": {
     "innerBlocks": [
-      { "name": "gds/media-card" },
-      { "name": "gds/media-card" }
+      {
+        "name": "gds/media-card",
+        "attributes": { "mediaType": "image", "mediaUrl": "https://cldup.com/Fz-ASbo2s3.jpg" }
+      },
+      {
+        "name": "gds/media-card",
+        "attributes": { "mediaType": "image", "mediaUrl": "https://cldup.com/Fz-ASbo2s3.jpg" }
+      }
     ],
-    "viewportWidth": 400
+    "attributes": {
+      "columns": 2
+    },
+    "viewportWidth": 800
   },
   "editorScript": "file:./index.js",
   "style": "file:./style.css"

@@ -23,6 +23,32 @@
     "__experimentalExposeControlsToChildren": true,
     "__experimentalCaptureToolbars": true
   },
+  "example": {
+    "innerBlocks": [
+      {
+        "name": "gds/carousel-item",
+        "innerBlocks": [
+          { "name": "core/image", "attributes": { "url": "https://cldup.com/Fz-ASbo2s3.jpg" } }
+        ]
+      },
+      {
+        "name": "gds/carousel-item",
+        "innerBlocks": [
+          { "name": "core/image", "attributes": { "url": "https://cldup.com/Fz-ASbo2s3.jpg" } }
+        ]
+      },
+      {
+        "name": "gds/carousel-item",
+        "innerBlocks": [
+          { "name": "core/image", "attributes": { "url": "https://cldup.com/Fz-ASbo2s3.jpg" } }
+        ]
+      }
+    ],
+    "attributes": {
+      "columnCount": 2
+    },
+    "viewportWidth": 800
+  },
   "editorScript": "file:./index.js",
   "style": "file:/style.css"
 }
