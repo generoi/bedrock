@@ -5,6 +5,7 @@
   "title": "Grid",
   "description": "Display a grid of content",
   "category": "layout",
+  "icon": "grid-view",
   "attributes": {
     "columns": {
       "type": "integer",
