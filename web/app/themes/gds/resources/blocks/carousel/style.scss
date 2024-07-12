@@ -2,4 +2,8 @@
 
 .wp-block-gds-carousel {
   --carousel-gutter: 10px;
+
+  &__carousel > .block-list-appender {
+    position: static;
+  }
 }
