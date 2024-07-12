@@ -131,6 +131,9 @@ export class Carousel extends HTMLElement {
 
   onSlide(e) {
     const { slide } = e.detail;
+    if (!this.contains(slide)) {
+      return;
+    }
     // Dynamically resize height
     // @todo hack depends on flex
     this.reflow(slide);

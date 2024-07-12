@@ -16,6 +16,9 @@ export class CarouselPager extends HTMLElement {
 
   onSlide(e) {
     const { slide } = e.detail;
+    if (!this.contains(slide)) {
+      return;
+    }
     const activeTab  = this.#buttons.find((button) => {
       return button.getAttribute('aria-controls') === slide.id;
     });
