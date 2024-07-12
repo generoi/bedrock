@@ -15,7 +15,7 @@ nfs_mount_enabled: false
 mutagen_enabled: false
 composer_version: "2"
 use_dns_when_possible: true
-performance_mode: nfs
+performance_mode: none
 web_environment: []
 #  WP_HOME=/var/www
 nodejs_version: "18"
