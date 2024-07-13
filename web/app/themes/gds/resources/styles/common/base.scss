@@ -6,6 +6,7 @@
 body {
   @include body;
 
+  background-color: var(--gds-color-white);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 
