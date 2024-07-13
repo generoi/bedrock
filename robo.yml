@@ -85,6 +85,7 @@ command:
         chmod: 'Dug=rwx,Do=rx,Fug=rw,Fo=r'
       exclude:
         - gravity_forms/
+        - fonts/
 task:
   Remote:
     RsyncAlias:
