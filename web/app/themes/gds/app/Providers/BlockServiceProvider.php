@@ -60,6 +60,9 @@ class BlockServiceProvider extends ServiceProvider
     public function attachBladeDirective()
     {
         $blade = $this->app->make('view')->getEngineResolver()->resolve('blade')->getCompiler();
+        $blade->directive('blocks', fn () => '<?php ob_start(); ?>');
+        $blade->directive('endblocks', fn () => '<?php echo do_blocks(ob_get_clean()); ?>');
+
         $blade->directive('block', function ($expression) {
             $expression = collect(explode(',', $expression, 2))
                 ->map(function ($argument) {
