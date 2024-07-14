@@ -4,7 +4,7 @@
   "name": "gds/breadcrumb",
   "title": "Breadcrumb",
   "description": "Show the breadcrumb...",
-  "category": "layout",
+  "category": "widgets",
   "icon": "admin-multisite",
   "style": "file:./style.css",
   "attributes": {

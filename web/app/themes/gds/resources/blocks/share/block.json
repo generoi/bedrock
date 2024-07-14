@@ -4,7 +4,7 @@
   "name": "gds/share",
   "title": "Share Button",
   "description": "Display a share button",
-  "category": "layout",
+  "category": "widgets",
   "attributes": {},
   "icon": "share",
   "supports": {

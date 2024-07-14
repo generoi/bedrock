@@ -4,7 +4,7 @@
   "name": "gds/media-card",
   "title": "Media Card",
   "description": "Display a card with media and text",
-  "category": "layout",
+  "category": "media",
   "icon": "id-alt",
   "attributes": {
     "mediaType": {
