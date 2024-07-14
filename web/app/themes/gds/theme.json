@@ -42,6 +42,7 @@
     },
     "spacing": {
       "customSpacingSize": false,
+      "defaultSpacingSizes": false,
       "padding": false,
       "margin": false,
       "blockGap": null,
@@ -63,6 +64,7 @@
       "fontStyle": false,
       "fluid": false,
       "dropCap": false,
+      "defaultFontSizes": false,
       "fontSizes": [
         {
           "name": "S Body",
