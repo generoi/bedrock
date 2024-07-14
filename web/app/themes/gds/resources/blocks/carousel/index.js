@@ -18,13 +18,12 @@ registerBlockType(meta.name, {
     from: [
       {
         type: 'block',
-        blocks: ['gds/grid'],
+        blocks: ['core/group'],
+        priority: 20,
         transform: (attributes, innerBlocks) => {
-          if (attributes.columns) {
-            attributes.columnCount = attributes.columns;
-            delete attributes.columns;
+          if (attributes.layout.columnCount) {
+            attributes.columnCount = attributes.layout.columnCount;
           }
-
           return createBlock(
             meta.name,
             attributes,
@@ -53,14 +52,16 @@ registerBlockType(meta.name, {
     to: [
       {
         type: 'block',
-        blocks: ['gds/grid'],
+        blocks: ['core/group'],
+        priority: 20,
         transform: (attributes, innerBlocks) => {
-          if (attributes.columnCount) {
-            attributes.columns = attributes.columnCount;
-            delete attributes.columnCount;
+          attributes.layout = {
+            type: 'grid',
+            minimumColumnWidth: null,
+            columnCount: attributes.columnCount,
           }
           return createBlock(
-            'gds/grid',
+            'core/group',
             attributes,
             innerBlocks.map((innerBlock) => {
               return innerBlock.innerBlocks[0];
