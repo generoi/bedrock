@@ -3,9 +3,12 @@
   "version": 2,
   "settings": {
     "appearanceTools": false,
+    "useRootPaddingAwareAlignments": false,
     "layout": {
       "contentSize": "var(--content-width)",
-      "wideSize": "var(--alignwide-width)"
+      "wideSize": "var(--alignwide-width)",
+      "allowCustomContentAndWideSize": true,
+      "allowEditing": true
     },
     "color": {
       "palette": [
@@ -38,14 +41,42 @@
       "customGradient": false,
       "defaultPalette": false,
       "defaultGradients": false,
-      "defaultDuotone": false
+      "defaultDuotone": false,
+      "background": true,
+      "button": true,
+      "caption": true,
+      "heading": true,
+      "text": true
     },
     "spacing": {
+      "spacingScale": {},
       "customSpacingSize": false,
       "defaultSpacingSizes": false,
-      "padding": false,
-      "margin": false,
+      "padding": true,
+      "margin": true,
       "blockGap": null,
+      "spacingSizes": [
+        {
+          "name": "XS",
+          "slug": "block-gutter-xs",
+          "size": "var(--block-gutter-xs)"
+        },
+        {
+          "name": "S",
+          "slug": "block-gutter-s",
+          "size": "var(--block-gutter-s)"
+        },
+        {
+          "name": "M",
+          "slug": "block-gutter-m",
+          "size": "var(--block-gutter-m)"
+        },
+        {
+          "name": "L",
+          "slug": "block-gutter-l",
+          "size": "var(--block-gutter-l)"
+        }
+      ],
       "units": ["px", "%", "em", "rem", "vw", "vh"]
     },
     "border": {
@@ -65,6 +96,9 @@
       "fluid": false,
       "dropCap": false,
       "defaultFontSizes": false,
+      "textAlign": true,
+      "textColumns": false,
+      "writingMode": false,
       "fontSizes": [
         {
           "name": "S Body",
@@ -82,6 +116,27 @@
           "slug": "l-body"
         }
       ]
+    },
+    "background": {
+      "backgroundImage": false,
+      "backgroundSize": false
+    },
+    "custom": {},
+    "dimensions": {
+      "aspectRatio": true,
+      "defaultAspectRatios": true,
+      "minHeight": true
+    },
+    "lightbox": {
+      "allowEditing": true,
+      "enabled": true
+    },
+    "position": {
+      "sticky": true
+    },
+    "shadow": {
+      "defaultPresets": false,
+      "presets": []
     },
     "blocks": {
       "core/heading": {
