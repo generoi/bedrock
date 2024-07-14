@@ -4,7 +4,7 @@
   "name": "gds/carousel",
   "title": "Carousel",
   "description": "Display a carousel",
-  "category": "layout",
+  "category": "media",
   "icon": "format-gallery",
   "attributes": {
     "columnCount": {

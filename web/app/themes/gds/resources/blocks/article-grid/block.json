@@ -4,7 +4,7 @@
   "name": "gds/article-grid",
   "title": "Article Grid",
   "description": "Show a grid of articles...",
-  "category": "layout",
+  "category": "widgets",
   "icon": "grid-view",
   "style": "file:./style.css",
   "attributes": {

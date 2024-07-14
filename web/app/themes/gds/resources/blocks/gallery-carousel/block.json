@@ -4,7 +4,7 @@
   "name": "gds/gallery-carousel",
   "title": "Gallery Carousel",
   "description": "Display a gallery with a carousel",
-  "category": "layout",
+  "category": "media",
   "icon": "images-alt",
   "attributes": {
     "media": {
@@ -29,7 +29,7 @@
         {"url": "https://cldup.com/Fz-ASbo2s3.jpg", "type": "image"}
       ]
     },
-    "viewportWidth": 800
+    "viewportWidth": 400
   },
   "editorScript": "file:./index.js",
   "style": "file:/style.css"
