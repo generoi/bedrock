@@ -1,4 +1,4 @@
-<div {!! get_block_wrapper_attributes() !!}>
+<figure {!! get_block_wrapper_attributes() !!}>
   <gds-carousel
     class="wp-block-gds-gallery-carousel__slideshow"
     column-count="1"
@@ -79,4 +79,4 @@
       @endforeach
     </gds-carousel-pager>
   @endif
-</div>
+</figure>
