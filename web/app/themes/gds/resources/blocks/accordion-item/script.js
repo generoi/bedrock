@@ -55,8 +55,14 @@ export class GdsAccordionItem extends HTMLElement {
     this.addEventListener('keydown', this.handleKeyDown.bind(this));
     this.addEventListener(EVENT_OPEN, this.open.bind(this));
     this.addEventListener(EVENT_CLOSE, this.close.bind(this));
+    document.addEventListener('click', this.handleAnchorLinks.bind(this));
+
     this.render();
     this.dataset.isInitialized = '';
+
+    if (location.hash) {
+      this.handleLocationHash(location.hash);
+    }
   }
 
   disconnectedCallback() {
@@ -78,6 +84,22 @@ export class GdsAccordionItem extends HTMLElement {
   close() {
     this.removeAttribute('expanded');
     this.#headerEl.setAttribute('aria-expanded', 'false');
+  }
+
+  handleAnchorLinks({target}) {
+    if (this.expanded || !target.hash) {
+      return;
+    }
+
+    return this.handleLocationHash(target.hash);
+  }
+
+  handleLocationHash(hash) {
+    const anchor = this.querySelector(hash);
+    if (anchor) {
+      this.open();
+      anchor.scrollIntoView();
+    }
   }
 
   render() {
