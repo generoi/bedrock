@@ -1,0 +1,9 @@
+.wp-block-query {
+  &:not(.is-layout-constrained) > .wp-block {
+    max-width: none;
+  }
+
+  .wp-block-post {
+    container-type: inline-size;
+  }
+}

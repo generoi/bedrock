@@ -29,3 +29,15 @@ export function attributesFromMedia(setAttributes) {
     } );
   };
 }
+
+export function uniqBy(array, iteratee) {
+  const seen = new Map();
+  return array.filter((item) => {
+    const key = iteratee(item);
+    if (!seen.has(key)) {
+      seen.set(key, item);
+      return true;
+    }
+    return false;
+  });
+}

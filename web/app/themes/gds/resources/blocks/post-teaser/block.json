@@ -1,0 +1,35 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "name": "gds/post-teaser",
+  "title": "Post teaser",
+  "description": "Display a teaser/preview of a post",
+  "keywords": ["preview"],
+  "category": "media",
+  "icon": "id-alt",
+  "usesContext": [
+    "postId",
+    "postType",
+    "queryId"
+	],
+  "attributes": {
+    "postId": {
+      "type": "number"
+    },
+    "postType": {
+      "type": "string"
+    },
+    "textAlign": {
+      "type": "string"
+    }
+  },
+  "supports": {
+    "html": false,
+    "color": {}
+  },
+  "example": {
+  },
+  "editorScript": "file:./index.js",
+  "editorStyle": "file:./editor.css",
+  "style": "file:./style.css"
+}

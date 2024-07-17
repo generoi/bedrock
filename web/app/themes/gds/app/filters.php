@@ -6,6 +6,8 @@
 
 namespace App;
 
+use WP_Block;
+
 /**
  * Remove Read more to the excerpt.
  *
@@ -32,3 +34,33 @@ add_filter('get_the_archive_title', function ($title) {
     }
     return $title;
 });
+
+/**
+ * Support `include` in query loop block (used by handpicked-posts filter).
+ */
+add_filter('query_loop_block_query_vars', function (array $query, WP_Block $block) {
+    if (! empty($block->context['query']['include'])) {
+        $query['post__in'] = $block->context['query']['include'];
+    }
+    return $query;
+}, 10, 2);
+
+/**
+ * Support inline SVG in HTML.
+ */
+add_filter('wp_kses_allowed_html', function (array $tags) {
+    $tags['svg'] = [
+        'xmlns' => [],
+        'fill' => [],
+        'viewbox' => [],
+        'role' => [],
+        'aria-hidden' => [],
+        'focusable' => [],
+        'class' => []
+    ];
+    $tags['path'] = [
+        'd' => [],
+        'fill' => [],
+    ];
+    return $tags;
+}, 10, 2);
