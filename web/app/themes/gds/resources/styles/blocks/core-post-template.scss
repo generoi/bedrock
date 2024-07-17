@@ -1,0 +1,7 @@
+.wp-block-post-template {
+  &.is-layout-flow {
+    display: flex;
+    flex-direction: column;
+    gap: var(--grid-gutter);
+  }
+}
