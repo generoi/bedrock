@@ -7,9 +7,4 @@
     padding-left: var(--viewport-gutter);
     padding-right: var(--viewport-gutter);
   }
-
-  &__inner-container {
-    // Override Gutenberg weirdness
-    color: inherit !important;
-  }
 }
