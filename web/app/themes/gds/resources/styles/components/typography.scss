@@ -3,10 +3,10 @@
 :root {
   // Headings
   --gds-heading-font-family: "Open sans", sans-serif;
-  --gds-heading-xl-font-size: #{sloped-size(30px, 56px)};
-  --gds-heading-l-font-size: #{sloped-size(30px, 36px)};
-  --gds-heading-m-font-size: #{sloped-size(22px, 30px)};
-  --gds-heading-s-font-size: #{sloped-size(18px, 22px)};
+  --gds-heading-xl-font-size: #{sloped-size(em(30px), em(56px))};
+  --gds-heading-l-font-size: #{sloped-size(em(30px), em(36px))};
+  --gds-heading-m-font-size: #{sloped-size(em(22px), em(30px))};
+  --gds-heading-s-font-size: #{sloped-size(em(18px), em(22px))};
   --gds-heading-xs-font-size: 18px;
   --gds-heading-margin-start: var(--block-gutter);
   --gds-heading-margin-end: var(--block-gutter-s);
