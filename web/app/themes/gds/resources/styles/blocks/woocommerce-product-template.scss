@@ -1,7 +1,19 @@
 .wp-block-woocommerce-product-template {
+  gap: var(--grid-gutter);
+
   &:not([class*="columns-"]) {
     display: flex;
     flex-direction: column;
-    gap: var(--grid-gutter);
+  }
+
+  @for $i from 2 through 6 {
+    &.columns-#{$i} {
+      $gap-count: calc(#{$i} - 1);
+      $total-gap-width: calc(#{$gap-count} * var(--grid-gutter));
+      $min-product-width: 200px;
+      $max-product-width: calc((100% - #{$total-gap-width}) / #{$i});
+
+      grid-template-columns: repeat(auto-fill, minmax(max(#{$min-product-width}, #{$max-product-width}), 1fr));
+    }
   }
 }
