@@ -16,6 +16,8 @@ import {
   PanelBody,
   FocalPointPicker,
 } from '@wordpress/components';
+import { useEntityProp, store as coreStore } from '@wordpress/core-data';
+import { useSelect } from '@wordpress/data';
 
 import { attributesFromMedia } from '~/editor/utils.js';
 
@@ -86,6 +88,7 @@ function BlockEdit(props) {
   const {
     attributes,
     setAttributes,
+    context,
   } = props;
 
   const {
@@ -95,8 +98,20 @@ function BlockEdit(props) {
     mediaUrl,
     mediaAlt,
     textAlign,
+    useFeaturedImage,
   } = attributes;
 
+  const {
+    postId,
+    postType
+  } = context;
+
+  const [featuredImage] = useEntityProp('postType', postType, 'featured_media', postId);
+  const featuredImageMedia = useSelect((select) => {
+      return featuredImage && select(coreStore).getMedia(featuredImage, {context: 'view'})
+  }, [featuredImage]);
+
+  const featuredImageUrl = featuredImageMedia?.source_url;
   const onSelectMedia = attributesFromMedia(setAttributes);
   const hasMedia = mediaType && mediaUrl;
 
@@ -146,14 +161,19 @@ function BlockEdit(props) {
       { controls }
       <div { ...blockProps }>
         <figure className="wp-block-gds-media-card__media">
-          { hasMedia && (
+          { useFeaturedImage ? (
             <MediaRenderer
-              mediaType={ mediaType }
+              mediaType={ 'image' }
+              mediaUrl={ featuredImageUrl }
+            />
+          ) : hasMedia ? (
+            <MediaRenderer
+              mediaType={ mediaType || 'image' }
               mediaUrl={ mediaUrl }
               mediaAlt={ mediaAlt }
               focalPoint={ focalPoint }
             />
-          ) || (
+          ) : (
             <PlaceholderContainer
               onSelectMedia={ onSelectMedia }
               {...props}

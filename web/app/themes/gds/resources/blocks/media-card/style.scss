@@ -1,16 +1,54 @@
-@use "mixins";
-
 .wp-block-gds-media-card {
-  @include mixins.card;
+  display: grid;
+  grid-template-rows: auto 1fr;
+  border-radius: var(--gds-border-radius);
+  box-shadow: var(--gds-box-shadow);
+  background-color: var(--gds-color-white);
+  transition: box-shadow 0.2s ease-out;
+
+  &:has(.wp-block-read-more):hover {
+    box-shadow: var(--gds-box-shadow--hover);
+  }
 
   &__media {
-    @include mixins.media;
+    overflow: hidden;
+    border-top-left-radius: inherit;
+    border-top-right-radius: inherit;
+    margin-bottom: 0;
+
+    img {
+      width: 100%;
+      height: auto;
+      aspect-ratio: 384 / 257;
+      object-fit: cover;
+    }
   }
 
   &__content {
-    @include mixins.content;
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
 
-    --block-gutter: 12px;
-    --gds-heading-margin-end: var(--block-gutter);
+    > * {
+      margin-block-start: 0;
+    }
+
+    > :not(:last-child) {
+      margin-block-end: var(--block-gutter-xs);
+    }
+  }
+
+  @container (min-width: 500px) {
+    grid-template-columns: minmax(100px, 1fr) 2fr;
+
+    &__media {
+      border-bottom-left-radius: inherit;
+      border-top-right-radius: 0;
+
+      img {
+        aspect-ratio: unset;
+        height: 100%;
+      }
+    }
   }
 }

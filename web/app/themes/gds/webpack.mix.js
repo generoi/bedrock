@@ -96,7 +96,10 @@ mix.options({
   postCss: [
     require('postcss-preset-env'),
     require('postcss-inline-svg')({
-      paths: ['resources'],
+      paths: [
+        'resources',
+        'public/icons',
+      ],
       encode(code) {
         return code
           .replace(/\(/g, '%28')

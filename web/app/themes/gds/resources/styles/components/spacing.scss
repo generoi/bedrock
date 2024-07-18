@@ -4,8 +4,10 @@
 
 :root {
   // Block vertical gutters
-  --block-gutter: #{sloped-size(24px, 32px)};
+  --block-gutter: var(--block-gutter-m);
+  --block-gutter-xs: 10px;
   --block-gutter-s: #{sloped-size(16px, 24px)};
+  --block-gutter-m: #{sloped-size(24px, 32px)};
   --block-gutter-l: #{sloped-size(32px, 40px)};
 
   // Layout

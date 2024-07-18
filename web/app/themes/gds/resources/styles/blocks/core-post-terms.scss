@@ -1,0 +1,15 @@
+@use "@/components/tag";
+
+.wp-block-post-terms {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+
+  &.wp-block-post-terms > a {
+    @include tag.base;
+  }
+
+  .wp-block-post-terms__separator {
+    display: none;
+  }
+}

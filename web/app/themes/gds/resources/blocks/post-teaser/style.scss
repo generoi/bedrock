@@ -1,115 +1,29 @@
-@use "@/common/breakpoints" as *;
-@use "@/components/tag";
-@use "@blocks/media-card/_mixins" as card;
-
 .wp-block-gds-post-teaser {
+  // Contain read-more absolute positioned pseudo element
   position: relative;
 
+  // Expand and push the last element (readmore usually) to the end of the
+  // block.
+  .wp-block-product > &,
   .wp-block-post > & {
     height: 100%;
-  }
 
-  @include card.card;
+    .wp-block-gds-media-card {
+      height: 100%;
 
-  &:hover {
-    @include card.on-hover;
-  }
-
-  &__title {
-    font-size: 26px;
-  }
-
-  &__media {
-    @include card.media;
-
-    img {
-      aspect-ratio: 384 / 257;
-      object-fit: cover;
-    }
-  }
-
-  &__content {
-    @include card.content;
-
-    > :not(:first-child) {
-      margin-block-start: 12px;
-    }
-
-    > :not(:last-child) {
-      margin-block-end: 12px;
-    }
-  }
-
-  &__date {
-    .wp-block-gds-post-teaser:not(.has-background) & {
-      --icon-color: var(--gds-color-primary);
-    }
-  }
-
-  &__description {
-    display: -webkit-box;
-    -webkit-box-orient: vertical;
-    -webkit-line-clamp: 6;
-    text-overflow: ellipsis;
-    overflow: hidden;
-  }
-
-  &__readmore {
-    text-decoration: none;
-
-    .wp-block-gds-post-teaser:not(.has-background) & {
-      color: var(--gds-color-primary);
-    }
-
-    > span {
-      text-decoration: underline;
-    }
-  }
-
-  &__tags {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 8px;
-  }
-
-  & &__tag {
-    @include tag.base;
-  }
-
-  // Make the whole block clickable
-  &__link::before {
-    content: "";
-    display: block;
-    position: absolute;
-    inset: 0;
-    z-index: 1;
-
-    // Make other links clickable
-    @at-root {
-      .wp-block-gds-post-teaser a:not(.teaser__link),
-      .wp-block-gds-post-teaser button {
-        position: relative;
-        z-index: 2;
+      &__content > :last-child:not(:only-child) {
+        margin-top: auto;
       }
     }
   }
-}
 
-.wp-block-post-template-is-layout-flow,
-.wp-block-woocommerce-product-template:not([class*="columns-"]),
-.wp-block-post-template-is-layout-grid.columns-1 {
-  .wp-block-gds-post-teaser {
-    display: grid;
-    grid-template-columns: minmax(100px, 1fr) 2fr;
+  &.has-background {
+    // Prevent oveflow
+    border-radius: var(--gds-border-radius);
 
-    &__media {
-      border-bottom-left-radius: inherit;
-      border-top-right-radius: 0;
-    }
-
-    &__media img {
-      aspect-ratio: unset;
-      height: 100%;
+    > .wp-block-gds-media-card {
+      background-color: inherit;
+      color: inherit;
     }
   }
 }
