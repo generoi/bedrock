@@ -2,4 +2,34 @@
   &.is-layout-flex {
     gap: var(--grid-gutter);
   }
+
+  &.is-style-media-text {
+    gap: 0;
+
+    > .wp-block-column:last-child {
+      padding: var(--media-text-gutter);
+    }
+
+    &.are-vertically-aligned-top:not(.has-background) > .wp-block-column:last-child,
+    &.are-vertically-aligned-bottom:not(.has-background) > .wp-block-column:last-child {
+      padding-top: 0;
+      padding-bottom: 0;
+    }
+
+    // Remove the outer gutter since there's a viewport gutter
+    &:not(.alignfull, .has-background) {
+      gap: var(--media-text-gutter);
+
+      @media (width <= 600px) {
+        > .wp-block-column:last-child {
+          padding-left: 0;
+          padding-right: 0;
+        }
+      }
+
+      > .wp-block-column:last-child {
+        padding-right: 0;
+      }
+    }
+  }
 }
