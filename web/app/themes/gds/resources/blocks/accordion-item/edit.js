@@ -18,6 +18,7 @@ const ALLOWED_BLOCKS = [
   'core/image',
   'core/video',
   'core/list',
+  'core/table',
 ];
 
 function Edit({attributes, setAttributes}) {
