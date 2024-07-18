@@ -1,0 +1,8 @@
+.wp-block-gds-page-title {
+  // If there's only one alignwide block on the page, make the heading alignwide too
+  .is-root-container > &:has(+ .alignwide:last-child) {
+    max-width: var(--alignwide-width);
+    margin-left: auto;
+    margin-right: auto;
+  }
+}

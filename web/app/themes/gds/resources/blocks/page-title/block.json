@@ -1,0 +1,22 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "name": "gds/page-title",
+  "title": "Page Title",
+  "description": "Show the title of the current page",
+  "category": "theme",
+  "icon": "admin-multisite",
+  "style": "file:./style.css",
+  "attributes": {},
+  "supports": {
+    "align": ["wide"],
+    "color": {
+      "text": true,
+      "background": false
+    }
+  },
+  "example": {},
+  "acf": {
+    "mode": "preview"
+  }
+}
