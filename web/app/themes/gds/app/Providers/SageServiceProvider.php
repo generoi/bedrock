@@ -23,7 +23,7 @@ class SageServiceProvider extends BaseSageServiceProvider
         parent::boot();
 
         $this->app->extend(BaseSageSvg::class, function () {
-            return new SageSvg($this->app->config->get('svg', []));
+            return new SageSvg($this->app->make('files'));
         });
     }
 }

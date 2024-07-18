@@ -1,7 +1,7 @@
 name: gdsbedrock
 type: wordpress
 docroot: web
-php_version: "8.2"
+php_version: "8.3"
 webserver_type: nginx-fpm
 router_http_port: "80"
 router_https_port: "443"
@@ -18,6 +18,6 @@ use_dns_when_possible: true
 performance_mode: none
 web_environment: []
 #  WP_HOME=/var/www
-nodejs_version: "18"
+nodejs_version: "20"
 provider: default
 upload_dir: web/app/uploads
