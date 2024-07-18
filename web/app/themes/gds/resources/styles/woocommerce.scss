@@ -1,0 +1,124 @@
+@use "@/components/typography";
+
+// Legacy shortcode pages (account, thankyou)
+.is-root-container > .woocommerce {
+  max-width: var(--alignwide-width);
+  margin-left: auto;
+  margin-right: auto;
+}
+
+// Make the page-title alignwide as well
+.is-root-container > .wp-block-gds-page-title:has(+ .woocommerce:last-child) {
+  max-width: var(--alignwide-width);
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/**
+ * Archive
+ */
+.woocommerce .woocommerce-result-count {
+  float: none;
+  margin: 0;
+}
+
+.woocommerce .woocommerce-ordering {
+  float: none;
+  margin: 0;
+}
+
+/**
+ * My account page
+ */
+body.my-account .woocommerce {
+  display: grid;
+  gap: var(--grid-gutter);
+  grid-template-columns: var(--grid-column-3) 1fr;
+
+  > * {
+    float: none;
+    width: auto;
+  }
+
+  &::before,
+  &::after {
+    display: none;
+  }
+}
+
+.woocommerce-MyAccount {
+  &-navigation > ul {
+    list-style-type: none;
+    padding-left: 0;
+
+    a {
+      text-decoration: none;
+      font-weight: inherit;
+      padding: var(--gds-container-padding);
+      display: block;
+      border-bottom: solid 1px var(--gds-color-mid-gray);
+
+      &:hover {
+        background-color: var(--gds-color-lightest-gray);
+      }
+    }
+
+    .is-active > a {
+      background-color: var(--gds-color-lightest-gray);
+      font-weight: 700;
+    }
+  }
+
+  &-content {
+    fieldset {
+      margin-block-start: var(--block-gutter);
+    }
+
+    legend {
+      @include typography.heading;
+      @include typography.heading-xs;
+
+      margin-bottom: 0;
+    }
+
+    .form-row.form-row {
+      padding: 0;
+
+      label {
+        line-height: inherit;
+      }
+
+      input + span {
+        @include typography.body-s;
+
+        display: block;
+        margin-block-start: 4px;
+      }
+
+      margin-bottom: var(--grid-gutter);
+    }
+
+    // Orders
+    .woocommerce-orders-table {
+      .button {
+        text-decoration: underline;
+      }
+    }
+
+    // Downloads
+    .woocommerce-info .button {
+      text-decoration: underline;
+    }
+
+    // Addresses
+    .addresses {
+     .title h3 {
+        margin-bottom: 4px;
+      }
+
+      .title .edit {
+        text-decoration: underline;
+      }
+    }
+  }
+}

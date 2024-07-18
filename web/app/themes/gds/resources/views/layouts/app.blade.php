@@ -6,15 +6,11 @@
 @include('partials.header')
 
 <div class="container">
-  <main @php(post_class('is-root-container')) id="main-content" tabindex="-1">
-    @yield('content')
-  </main>
-
-  @hasSection('sidebar')
-    <aside class="sidebar">
-      @yield('sidebar')
-    </aside>
-  @endif
+  @section('root_container')
+    <main @php(post_class('is-root-container')) id="main-content" tabindex="-1">
+      @yield('content')
+    </main>
+  @show
 </div>
 
 @include('partials.footer')

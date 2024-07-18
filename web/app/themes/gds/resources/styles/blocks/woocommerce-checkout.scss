@@ -1,0 +1,15 @@
+@use "@/components/button" as button;
+
+.wp-block-woocommerce-checkout {
+  padding-top: 0;
+}
+
+.wp-block-woocommerce-checkout-actions-block {
+  .wc-block-components-checkout-return-to-cart-button {
+    text-decoration: underline
+  }
+
+  .wc-block-components-checkout-place-order-button {
+    @include button.button;
+  }
+}

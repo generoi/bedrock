@@ -1,0 +1,75 @@
+/* stylelint-disable selector-class-pattern */
+
+@use "@/components/screen-reader" as *;
+@use "@/components/button";
+@use "@/components/typography";
+
+.wp-block-gds-woo-product-tabs {
+  h2 {
+    @include sr-only;
+
+    + * {
+      margin-top: 0;
+    }
+  }
+}
+
+/**
+ * Additional information
+ */
+.wp-block-gds-woo-product-tabs table.shop_attributes {
+  border: 0;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+
+  td,
+  th {
+    padding-left: var(--gds-container-padding);
+    padding-right: var(--gds-container-padding);
+    text-align: left;
+    border: 0;
+  }
+}
+
+/**
+ * Reviews
+ */
+.wp-block-gds-woo-product-tabs #reviews {
+  .woocommerce-noreviews {
+    font-style: italic;
+    margin-bottom: 1rem;
+  }
+
+  .comment-reply-title {
+    @include typography.heading;
+    @include typography.heading-xs;
+
+    margin-bottom: 0;
+  }
+
+  .commentlist {
+    padding-left: 0;
+  }
+
+  .comment-text {
+    margin-left: 0 !important;
+    border: 0 !important;
+    background-color: var(--gds-color-light-gray);
+  }
+
+  // Comment reply
+  #comments .comment.depth-1 {
+    margin-left: var(--grid-gutter);
+
+    .comment-text {
+      background-color: var(--gds-color-white);
+    }
+  }
+
+  [type="submit"] {
+    @include button.size-s;
+  }
+}
+

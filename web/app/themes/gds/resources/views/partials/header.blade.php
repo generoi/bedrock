@@ -78,6 +78,13 @@
       </nav>
     @endif
 
+    @if ($is_webshop)
+      <div class="header__actions">
+        @block('woocommerce/mini-cart')
+        @block('woocommerce/customer-account', ['displayStyle' => 'icon_only'])
+      </div>
+    @endif
+
     <form
       action="{{ $home_url }}"
       method="get"

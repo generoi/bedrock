@@ -13,7 +13,7 @@
     bottom: 0;
     cursor: pointer;
     color: currentcolor;
-    padding: 8px 16px;
+    padding: 8px calc(var(--action-gutter) / 2 + 2px);
 
     // Center content
     display: flex;
@@ -38,8 +38,8 @@
     border-radius: var(--gds-border-radius);
     padding-top: 10px;
     padding-bottom: 10px;
-    padding-left: 16px;
-    padding-right: 32px; // make room for the "x" to remove search
+    padding-left: calc(var(--action-gutter, 1em) / 2);
+    padding-right: calc(var(--action-gutter, 1em) / 2 + 1em);
     font-size: var(--gds-body-s-font-size);
 
     &::-webkit-search-cancel-button {
@@ -58,6 +58,8 @@
 
     // Position below input
     [type="submit"] {
+      height: var(--gds-input-height);
+      box-sizing: border-box;
       z-index: 0;
 
       // Add a delay on transitioning away from focus-within to z-index: 0 so that
@@ -87,21 +89,23 @@
     [type="search"]:not(:placeholder-shown),
     &:focus-within [type="search"] {
       opacity: 1;
-      min-width: 150px;
+      min-width: 200px;
       right: 0;
       cursor: initial;
-      position: relative;
       box-shadow: var(--gds-box-shadow--active);
       border: 1px solid #eee;
       border-radius: var(--gds-border-radius);
-      padding-top: 8px;
-      padding-bottom: 8px;
-      padding-left: 16px;
-      padding-right: 24px; // make room for the "x" to remove search
+      padding-top: var(--gds-input-padding-y);
+      padding-bottom: var(--gds-input-padding-y);
+      padding-left: var(--gds-input-padding-x);
+      padding-right: calc(var(--gds-input-padding-x) + 10px); // make room for the "x" to remove search
+      position: absolute;
+      margin-right: -4px;
 
       // Once focused, move submit button above input
       & ~ [type="submit"] {
         z-index: 2;
+        position: relative;
       }
     }
   }
