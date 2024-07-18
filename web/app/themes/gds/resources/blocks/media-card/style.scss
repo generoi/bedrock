@@ -1,6 +1,7 @@
 .wp-block-gds-media-card {
   display: grid;
   grid-template-rows: auto 1fr;
+  grid-template-columns: 1fr;
   border-radius: var(--gds-border-radius);
   box-shadow: var(--gds-box-shadow);
   background-color: var(--gds-color-white);
@@ -28,6 +29,7 @@
     padding: var(--gds-media-card-padding);
     display: flex;
     flex-direction: column;
+    overflow: hidden;
 
     > * {
       margin-block-start: 0;
