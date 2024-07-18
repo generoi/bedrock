@@ -2,8 +2,36 @@
 
 .wp-block-gds-carousel {
   --carousel-gutter: 10px;
+  --shadow-offset: 8px;
 
   &__carousel > .block-list-appender {
     position: static;
+  }
+
+  .wp-block-gds-carousel-item {
+    container-type: inline-size;
+  }
+
+  &:has(.wp-block-gds-post-teaser) &__carousel {
+    margin: calc(-1 * var(--shadow-offset));
+
+    &::part(button--prev) {
+      left: var(--shadow-offset);
+    }
+
+    &::part(button--next) {
+      right: var(--shadow-offset);
+    }
+
+    &::part(carousel) {
+      scroll-padding: var(--shadow-offset);
+      padding-left: var(--shadow-offset);
+      padding-right: var(--shadow-offset);
+    }
+
+    .wp-block-gds-carousel-item {
+      padding-bottom: var(--shadow-offset);
+      padding-top: var(--shadow-offset);
+    }
   }
 }
