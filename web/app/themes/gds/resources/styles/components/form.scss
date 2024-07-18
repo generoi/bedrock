@@ -1,3 +1,13 @@
+:root {
+  --input-padding-y: 9px;
+  --input-padding-x: 16px;
+  --input-font-size: 18px;
+  --input-line-height: 1.7;
+  --input-height: calc(
+    var(--input-padding-y) * 2 + var(--input-font-size) * var(--input-line-height)
+  );
+}
+
 @mixin base {
   all: unset;
   box-sizing: border-box;
@@ -6,8 +16,8 @@
   max-width: 100%;
   margin: 0;
   outline: none;
-  padding: 9px 16px;
-  font-size: 18px;
+  font-size: var(--input-font-size);
+  padding: var(--input-padding-y) var(--input-padding-x);
   background: var(--gds-color-white);
   color: var(--gds-color-black);
   box-shadow: var(--gds-box-shadow);
