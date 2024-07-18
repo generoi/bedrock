@@ -1,0 +1,117 @@
+@use "@/common/breakpoints" as *;
+@use "@/common/functions" as *;
+@use "@/config";
+
+:root {
+  // Colors
+  --gds-color-white: #fff;
+  --gds-color-black: #000;
+  --gds-color-primary: #1d7c88;
+  --gds-color-secondary: #8d6c93;
+  --gds-color-lightest-gray: #f8f8f8;
+  --gds-color-light-gray: #eee;
+  --gds-color-mid-gray: #acacac;
+  --gds-color-dark-gray: #646464;
+  --gds-color-success: #1fc900;
+  --gds-color-error: #df5c4e;
+
+  // Headings
+  --gds-heading-font-family: "Open sans", sans-serif;
+  --gds-heading-xl-font-size: #{sloped-size(em(30px), em(56px))};
+  --gds-heading-l-font-size: #{sloped-size(em(30px), em(36px))};
+  --gds-heading-m-font-size: #{sloped-size(em(22px), em(30px))};
+  --gds-heading-s-font-size: #{sloped-size(em(18px), em(22px))};
+  --gds-heading-xs-font-size: 18px;
+  --gds-heading-margin-start: var(--block-gutter);
+  --gds-heading-margin-end: var(--block-gutter-s);
+  --gds-heading-line-height: 1.4;
+
+  // Body
+  --gds-body-font-family: "Open sans", sans-serif;
+  --gds-body-line-height: 1.7;
+  --gds-body-l-font-size: 18px;
+  --gds-body-m-font-size: 16px;
+  --gds-body-s-font-size: 15px;
+
+  // Other typography
+  --gds-link-color: inherit;
+  --gds-link-hover-color: var(--gds-color-primary);
+  --gds-border-radius: 10px;
+  --gds-box-shadow: 1px 1px 4px rgba(0 0 0 / 10%);
+  --gds-box-shadow--hover: 3px 3px 8px rgba(0 0 0 / 16%);
+  --gds-box-shadow--active: 3px 3px 8px rgba(0 0 0 / 16%);
+  --gds-outline--focus: solid 2px var(--gds-color-black);
+
+  // Block vertical gutters
+  --block-gutter: var(--block-gutter-m);
+  --block-gutter-xs: 10px;
+  --block-gutter-s: #{sloped-size(16px, 24px)};
+  --block-gutter-m: #{sloped-size(24px, 32px)};
+  --block-gutter-l: #{sloped-size(32px, 40px)};
+
+  // Layout
+  --viewport-gutter: 15px;
+  --alignwide-width: var(--grid-column-12);
+
+  @include mq($from: medium) {
+    --content-width: var(--grid-column-8);
+  }
+
+  @if config.$alignfull-max-width {
+    --alignfull-width: #{config.$alignfull-max-width};
+  } @else {
+    --alignfull-width: unset;
+  }
+
+  // Grid
+  --grid-columns: 12;
+  --grid-gutter: 12px;
+  --grid-column: 78px;
+  --grid-gutter-x: var(--grid-gutter);
+  --grid-gutter-y: var(--grid-gutter);
+
+  @include mq($from: medium) {
+    --grid-gutter: 24px;
+  }
+
+  @for $i from 1 through 12 {
+    --grid-column-#{$i}: calc(var(--grid-column) * #{$i} + var(--grid-gutter) * (#{$i} - 1));
+  }
+
+  // Container
+  --gds-container-padding: 16px;
+  --gds-media-card-padding: 24px; // @note container query reduces this
+
+  // Media Text
+  --media-text-gutter: var(--viewport-gutter);
+
+  @media (width >= 600px) {
+    --media-text-gutter: var(--grid-column-1);
+  }
+
+  // Forms
+  --gds-input-padding-y: 9px;
+  --gds-input-padding-x: 16px;
+  --gds-input-font-size: 18px;
+  --gds-input-line-height: 1.7;
+  --gds-input-height: calc(
+    var(--gds-input-padding-y) * 2 + var(--gds-input-font-size) * var(--gds-input-line-height)
+  );
+
+  // Buttons
+  --gds-button-color: var(--gds-color-white);
+  --gds-button-background-color: var(--gds-color-primary);
+  --gds-button-s-font-size: 14px;
+  --gds-button-m-font-size: 16px;
+  --gds-button-l-font-size: 18px;
+
+  // Caption
+  --gds-caption-gutter: 12px;
+  --gds-caption-color: var(--gds-color-dark-gray);
+
+  // Hamburger
+  --gds-hamburger-width: 18px;
+  --gds-hamburger-color: currentcolor;
+  --gds-hamburger-thickness: 2px;
+  --gds-hamburger-line-separation: 4px;
+}
