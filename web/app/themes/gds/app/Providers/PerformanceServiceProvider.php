@@ -47,8 +47,8 @@ class PerformanceServiceProvider extends ServiceProvider
             wp_script_is('gform_gravityforms', 'enqueued'),
             // Sees administration bar
             is_admin() || current_user_can('edit_posts'),
-            // WooCommerce cart or checkout
-            function_exists('is_checkout') && (is_checkout() || is_cart()),
+            // WooCommerce pages
+            function_exists('is_woocommerce') && (is_woocommerce() || is_checkout() || is_cart()),
         ])->filter()->isEmpty();
 
         if ($doRemovejQuery) {

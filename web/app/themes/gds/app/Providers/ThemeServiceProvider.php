@@ -15,5 +15,7 @@ class ThemeServiceProvider extends AggregateServiceProvider
         \App\Providers\AsyncLoaderServiceProvider::class,
         \Spatie\GoogleFonts\GoogleFontsServiceProvider::class,
         \Log1x\SageSvg\SageSvgServiceProvider::class,
+        \App\Providers\WooCommerceServiceProvider::class,
+        \Genero\Sage\WooCommerce\WooCommerceServiceProvider::class,
     ];
 }

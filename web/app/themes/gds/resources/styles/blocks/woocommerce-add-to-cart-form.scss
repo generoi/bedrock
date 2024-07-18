@@ -1,0 +1,54 @@
+/* stylelint-disable selector-class-pattern */
+
+.wp-block-add-to-cart-form {
+  .input-text {
+    font-size: var(--gds-input-font-size);
+    padding: var(--gds-input-padding-y) var(--gds-input-padding-x);
+  }
+
+  .variations.variations.variations.variations {
+    margin-bottom: 0;
+    width: 100%;
+
+    th {
+      vertical-align: top;
+
+      label {
+        margin-right: 10px;
+      }
+    }
+
+    td label,
+    th label {
+      margin-top: var(--gds-input-padding-y);
+    }
+
+    tr:not(:last-child) td,
+    tr:not(:last-child) th {
+      padding-bottom: 10px;
+    }
+
+    // .label tbody > tr:not(:last-child) {
+    //   margin-bottom: 10px;
+    // }
+
+    & + .single_variation_wrap > .single_variation {
+      margin-bottom: var(--block-gutter-xs);
+    }
+  }
+
+  [type="submit"] {
+    height: var(--gds-input-height);
+  }
+
+  // Reset woocommerce default styling
+  .woocommerce div.product & form.cart,
+  .woocommerce div.product & form.cart .quantity,
+  .woocommerce div.product & form.cart button.single_add_to_cart_button {
+    margin-bottom: 0;
+  }
+
+  .woocommerce &.product {
+    margin-bottom: var(--block-gutter-end, var(--block-gutter));
+  }
+}

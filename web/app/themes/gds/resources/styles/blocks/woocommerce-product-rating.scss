@@ -1,0 +1,15 @@
+.wc-block-components-product-rating {
+  --block-gutter: var(--block-gutter-xs);
+
+  &__reviews_count {
+    font-size: 0.8em;
+
+    a:hover {
+      text-decoration: underline;
+    }
+  }
+
+  .wp-block-post-title + & {
+    margin-top: calc(-1 * var(--block-gutter-m) + var(--block-gutter-xs));
+  }
+}

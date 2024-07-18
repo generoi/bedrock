@@ -1,0 +1,34 @@
+@use "@/components/button";
+
+.wc-block-mini-cart {
+  position: relative;
+
+  &__button {
+    padding: .75em calc(var(--action-gutter, 1em) / 2);
+  }
+
+  &__icon {
+    width: 1.5em;
+    height: 1.5em;
+    margin-top: -0.25em;
+  }
+
+  &__badge {
+    background-color: var(--gds-color-primary);
+    color: var(--gds-color-white);
+    font-size: 10px;
+  }
+
+  &__drawer {
+    .wp-block-woocommerce-mini-cart-cart-button-block.wp-block-woocommerce-mini-cart-cart-button-block {
+      @include button.button;
+
+      flex-grow: 0;
+    }
+
+    .wp-block-woocommerce-mini-cart-checkout-button-block {
+      text-decoration: underline;
+      justify-content: flex-start;
+    }
+  }
+}

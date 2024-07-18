@@ -3,6 +3,8 @@
 @use "@/common/breakpoints" as *;
 
 .header {
+  --action-gutter: 16px;
+
   padding-left: var(--viewport-gutter);
   padding-right: var(--viewport-gutter);
 
@@ -26,6 +28,11 @@
     grid-area: languages;
   }
 
+  &__actions {
+    grid-area: actions;
+    display: flex;
+  }
+
   &__search {
     grid-area: search;
 
@@ -35,6 +42,7 @@
   &__menu-toggler {
     grid-area: toggler;
     justify-self: flex-end;
+    padding: 16px 0 16px calc(var(--action-gutter) / 2);
   }
 }
 
@@ -60,11 +68,11 @@
 
     &__inner-container {
       grid-template:
-        "logo       toggler"
-        "navigation navigation"
-        "languages  languages"
-        "search     search";
-      grid-template-columns: auto auto;
+        "logo       actions    toggler"
+        "navigation navigation navigation"
+        "languages  languages  languages"
+        "search     search     search";
+      grid-template-columns: 1fr auto auto;
       grid-template-rows: auto 1fr auto auto;
       align-items: center;
       justify-content: space-between;
@@ -141,8 +149,8 @@
   .header {
     &__inner-container {
       display: grid;
-      grid-template: "logo navigation languages search";
-      grid-template-columns: auto auto 1fr min-content;
+      grid-template: "logo navigation languages actions search";
+      grid-template-columns: auto auto 1fr min-content min-content;
       gap: 24px;
       align-items: center;
       padding-top: 24px;
@@ -155,10 +163,15 @@
 
     &__search {
       display: inline-flex;
+      margin-right: calc(var(--action-gutter) * -1 / 2);
     }
 
     &__menu-toggler {
       display: none;
+    }
+
+    &__actions {
+      margin-right: -24px;
     }
 
     &__languages {

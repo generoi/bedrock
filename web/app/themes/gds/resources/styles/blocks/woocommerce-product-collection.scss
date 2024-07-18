@@ -1,0 +1,15 @@
+.wp-block-woocommerce-product-collection {
+  &:not(.is-layout-constrained) .wp-block {
+    max-width: none;
+  }
+
+  .wc-block-product {
+    container-type: inline-size;
+  }
+
+  // Remove woocommerce styling
+  .woocommerce .products & ul::before,
+  .woocommerce .products & ul::after {
+    display: none;
+  }
+}

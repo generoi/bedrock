@@ -1,0 +1,7 @@
+.wp-block-woocommerce-product-template {
+  &:not([class*="columns-"]) {
+    display: flex;
+    flex-direction: column;
+    gap: var(--grid-gutter);
+  }
+}

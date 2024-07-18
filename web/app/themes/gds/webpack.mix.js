@@ -43,6 +43,7 @@ mix.setPublicPath('./public')
 
 mix.sass('resources/styles/app.scss', 'styles')
    .sass('resources/styles/editor.scss', 'styles')
+   .sass('resources/styles/woocommerce.scss', 'styles')
    .sass('resources/styles/editor-overrides.scss', 'styles');
 
 mix.js('resources/scripts/app.js', 'scripts')

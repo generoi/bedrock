@@ -28,6 +28,7 @@ class Header extends Composer
             'current_language' => $this->currentLanguage(),
             'languages' => $this->languages(),
             'primary_navigation' => $this->primaryNavigation(),
+            'is_webshop' => $this->isWebshop(),
         ];
     }
 
@@ -60,5 +61,19 @@ class Header extends Composer
         }
 
         return $navigation->toArray();
+    }
+
+    /**
+     * Show webshop menu actions if cart and checkout pages are published.
+     */
+    public function isWebshop(): bool
+    {
+        if (! function_exists('wc_get_page_id')) {
+            return false;
+        }
+
+        return collect([wc_get_page_id('cart'), wc_get_page_id('checkout')])
+            ->map(fn (int $pageId) => $pageId && get_post_status($pageId) === 'publish')
+            ->every(fn (bool $isPublished) => $isPublished);
     }
 }
