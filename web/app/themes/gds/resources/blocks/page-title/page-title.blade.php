@@ -9,7 +9,7 @@
     {!! esc_html(get_the_archive_title()) !!}
   @elseif(is_search())
     {!! sprintf(
-      __('Search Results for <span class="has-black-color">%s</span>', 'gds'),
+      __('Search Results for <span class="has-primary-color">%s</span>', 'gds'),
       get_search_query()
     ) !!}
   @elseif (is_404())
