@@ -72,7 +72,7 @@
     "spatie/laravel-google-fonts": "^1.2",
     "generoi/genero-cmp": "^1.1",
     "generoi/wp-image-resizer": "dev-master",
-    "log1x/sage-svg": "^1.1"
+    "log1x/sage-svg": "^2"
   },
   "require-dev": {
     "squizlabs/php_codesniffer": "^3.4.2",
@@ -85,7 +85,7 @@
     "optimize-autoloader": true,
     "preferred-install": "dist",
     "platform": {
-      "php": "8.2.3"
+      "php": "8.3.9"
     },
     "process-timeout": 0,
     "theme-dir": "web/app/themes/gds",
