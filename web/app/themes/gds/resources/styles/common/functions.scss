@@ -1,6 +1,14 @@
 @use "sass:math";
 
 @function sloped-size($min-size, $max-size, $min-width: 375px, $max-width: 1400px) {
+  @if math.unit($min-size) == 'rem' {
+    $min-width: rem($min-width);
+    $max-width: rem($max-width);
+  } @else if math.unit($min-size) == 'em' {
+    $min-width: em($min-width);
+    $max-width: em($max-width);
+  }
+
   /* stylelint-disable scss/operator-no-newline-after */
   @return clamp(
     #{$min-size},
@@ -17,4 +25,12 @@
 
 @function strip-unit($value) {
   @return math.div($value, ($value * 0 + 1));
+}
+
+@function rem($value, $base: 16) {
+  @return (strip-unit($value) / $base) * 1rem;
+}
+
+@function em($value, $base: 16) {
+  @return (strip-unit($value) / $base) * 1em;
 }
