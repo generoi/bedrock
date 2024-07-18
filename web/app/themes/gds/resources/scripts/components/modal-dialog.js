@@ -26,7 +26,7 @@ const FOCUSABLE_SELECTORS = [
 /**
  * @see https://www.w3.org/WAI/ARIA/apg/patterns/dialogmodal/
  */
-export class ModelDialog extends HTMLElement {
+export class ModalDialog extends HTMLElement {
   static #idCounter = 0;
 
   #overlayEl;
@@ -245,4 +245,4 @@ export class ModelDialog extends HTMLElement {
   }
 }
 
-customElements.define('modal-dialog', ModelDialog);
+customElements.define('modal-dialog', ModalDialog);
