@@ -17,7 +17,10 @@ domReady(() => {
     name: 'spacious',
     label: 'Spacious',
   });
-
+  registerBlockStyle('core/columns', {
+    name: 'media-text',
+    label: 'Media & Text',
+  });
 });
 
 // @see https://github.com/WordPress/gutenberg/issues/25330
