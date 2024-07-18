@@ -1,12 +1,6 @@
 @use "@/common/breakpoints" as *;
 
 .wp-block-media-text {
-  --media-text-gutter: var(--viewport-gutter);
-
-  @media (width >= 600px) {
-    --media-text-gutter: var(--grid-column-1);
-  }
-
   & &__content {
     padding: var(--media-text-gutter);
   }

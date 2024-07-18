@@ -362,7 +362,7 @@ img.gform_ajax_spinner {
 
   background-color: var(--gds-color-white);
   box-shadow: var(--gds-box-shadow);
-  padding: 16px;
+  padding: var(--gds-container-padding);
   display: flex;
   flex-direction: column;
   gap: var(--ui-gutter);

@@ -15,7 +15,7 @@ gds-accordion-item:not([data-is-initialized]) {
     @at-root gds-accordion-item:not([data-is-initialized]) [slot="label"],
     &::part(header) {
       border-bottom: solid 1px currentcolor;
-      padding: 16px;
+      padding: var(--gds-container-padding);
       z-index: 1;
     }
 
@@ -37,8 +37,8 @@ gds-accordion-item:not([data-is-initialized]) {
       border-bottom-left-radius: var(--gds-border-radius);
       border-bottom-right-radius: var(--gds-border-radius);
       overflow: hidden;
-      padding: 16px;
-      margin-bottom: 16px;
+      padding: var(--gds-container-padding);
+      margin-bottom: var(--gds-container-padding);
     }
   }
 

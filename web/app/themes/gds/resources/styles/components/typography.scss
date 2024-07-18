@@ -1,34 +1,5 @@
 @use "@/common/functions" as *;
 
-:root {
-  // Headings
-  --gds-heading-font-family: "Open sans", sans-serif;
-  --gds-heading-xl-font-size: #{sloped-size(em(30px), em(56px))};
-  --gds-heading-l-font-size: #{sloped-size(em(30px), em(36px))};
-  --gds-heading-m-font-size: #{sloped-size(em(22px), em(30px))};
-  --gds-heading-s-font-size: #{sloped-size(em(18px), em(22px))};
-  --gds-heading-xs-font-size: 18px;
-  --gds-heading-margin-start: var(--block-gutter);
-  --gds-heading-margin-end: var(--block-gutter-s);
-  --gds-heading-line-height: 1.4;
-
-  // Body
-  --gds-body-font-family: "Open sans", sans-serif;
-  --gds-body-line-height: 1.7;
-  --gds-body-l-font-size: 18px;
-  --gds-body-m-font-size: 16px;
-  --gds-body-s-font-size: 15px;
-
-  // Other
-  --gds-link-color: inherit;
-  --gds-link-hover-color: var(--gds-color-primary);
-  --gds-border-radius: 10px;
-  --gds-box-shadow: 1px 1px 4px rgba(0 0 0 / 10%);
-  --gds-box-shadow--hover: 3px 3px 8px rgba(0 0 0 / 16%);
-  --gds-box-shadow--active: 3px 3px 8px rgba(0 0 0 / 16%);
-  --gds-outline--focus: solid 2px var(--gds-color-black);
-}
-
 @mixin heading {
   display: block;
   font-family: var(--gds-heading-font-family);

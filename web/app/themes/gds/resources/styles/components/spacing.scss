@@ -1,29 +1,5 @@
 @use "@/common/breakpoints" as *;
-@use "@/common/functions" as *;
 @use "@/config";
-
-:root {
-  // Block vertical gutters
-  --block-gutter: var(--block-gutter-m);
-  --block-gutter-xs: 10px;
-  --block-gutter-s: #{sloped-size(16px, 24px)};
-  --block-gutter-m: #{sloped-size(24px, 32px)};
-  --block-gutter-l: #{sloped-size(32px, 40px)};
-
-  // Layout
-  --viewport-gutter: 15px;
-  --alignwide-width: var(--grid-column-12);
-
-  @include mq($from: medium) {
-    --content-width: var(--grid-column-8);
-  }
-
-  @if config.$alignfull-max-width {
-    --alignfull-width: #{config.$alignfull-max-width};
-  } @else {
-    --alignfull-width: unset;
-  }
-}
 
 // The root container only
 .is-root-container {
