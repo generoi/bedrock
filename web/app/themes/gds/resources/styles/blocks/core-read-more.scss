@@ -1,0 +1,46 @@
+@use "@/components/typography";
+
+.wp-block-read-more.wp-block-read-more {
+  display: flex;
+  align-items: center;
+
+  @include typography.link;
+
+  --gds-link-color: var(--gds-color-primary);
+
+  .has-background & {
+    --gds-link-color: currentcolor;
+    --gds-link-hover-color: currentcolor;
+  }
+
+  &::after {
+    content: '';
+    width: 1em;
+    height: 1em;
+    display: block;
+    mask-image: svg-load("solid/chevron-right.svg");
+    mask-position: center;
+    mask-size: contain;
+    mask-repeat: no-repeat;
+    background-color: currentcolor;
+    margin-left: 0.5ch;
+  }
+
+  // Make the whole block clickable
+  .wp-block-gds-post-teaser &::before {
+    content: "";
+    display: block;
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+
+    // Make other links clickable
+    @at-root {
+      .wp-block-gds-post-teaser a:not(.wp-block-read-more),
+      .wp-block-gds-post-teaser button {
+        position: relative;
+        z-index: 2;
+      }
+    }
+  }
+}

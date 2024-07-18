@@ -1,3 +1,9 @@
 .wp-block-post-excerpt {
   --block-gutter: var(--block-gutter-xs);
+
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 6;
+  text-overflow: ellipsis;
+  overflow: hidden;
 }

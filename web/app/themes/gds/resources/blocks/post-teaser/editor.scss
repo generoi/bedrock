@@ -1,3 +1,7 @@
 .wp-block-gds-post-teaser.has-placeholder {
   display: block;
 }
+
+.wp-block-gds-post-teaser a {
+  pointer-events: none;
+}

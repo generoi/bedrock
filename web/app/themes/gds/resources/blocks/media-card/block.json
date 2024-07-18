@@ -27,6 +27,10 @@
     },
     "textAlign": {
       "type": "string"
+    },
+    "useFeaturedImage": {
+      "type": "boolean",
+      "default": false
     }
   },
   "supports": {

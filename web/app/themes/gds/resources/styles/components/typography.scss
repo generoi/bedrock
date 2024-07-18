@@ -20,6 +20,7 @@
   --gds-body-s-font-size: 15px;
 
   // Other
+  --gds-link-color: inherit;
   --gds-link-hover-color: var(--gds-color-primary);
   --gds-border-radius: 10px;
   --gds-box-shadow: 1px 1px 4px rgba(0 0 0 / 10%);
@@ -84,4 +85,18 @@
 
 @mixin body-s {
   font-size: var(--gds-body-s-font-size);
+}
+
+@mixin link {
+  text-decoration: underline;
+  font-weight: 700;
+  color: var(--gds-link-color);
+
+  &:hover {
+    color: var(--gds-link-hover-color);
+  }
+
+  > .icon {
+    margin-left: 0.5ch;
+  }
 }

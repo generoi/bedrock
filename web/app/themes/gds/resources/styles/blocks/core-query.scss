@@ -1,5 +1,5 @@
 .wp-block-query {
-  &:not(.is-layout-constrained) > .wp-block {
+  &:not(.is-layout-constrained) .wp-block {
     max-width: none;
   }
 
