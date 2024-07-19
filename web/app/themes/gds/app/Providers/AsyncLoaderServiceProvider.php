@@ -71,7 +71,6 @@ class AsyncLoaderServiceProvider extends ServiceProvider
         $tag->setAttribute('media', 'print');
         $tag->setAttribute('onload', "this.media='all'");
         $tag->removeAttribute('type');
-        $tag->removeAttribute('id');
         $html = $dom->saveHTML($tag);
 
         return $html;
