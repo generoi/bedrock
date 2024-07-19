@@ -72,9 +72,9 @@ export default function usePosts(
 
   useEffect(() => {
     const query = {
-      selected,
+      selected: selected || [],
       search,
-      postType,
+      postType: postType || 'post',
     };
 
     getPosts(query).then((results) => {

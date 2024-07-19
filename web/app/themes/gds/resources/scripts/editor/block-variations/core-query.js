@@ -42,6 +42,7 @@ window._wpLoadBlockEditor.then(() => {
       align: 'wide',
       query: {
         itemsPerPage: 9,
+        postType: 'post',
       },
     },
     innerBlocks: [

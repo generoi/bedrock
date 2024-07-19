@@ -21,7 +21,7 @@ function HandPickedPostsControl({
   attributes,
 }) {
   const query = attributes.query;
-  const selectedPostIds = query?.include || [];
+  const selectedPostIds = query?.include;
   const postType = query?.postType;
 
   const formatPostName = postType && postType !== 'any'
