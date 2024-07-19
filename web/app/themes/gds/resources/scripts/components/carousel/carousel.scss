@@ -55,7 +55,7 @@ gds-carousel-pager {
   // Utility for getting prevent CLS but the variable can be overridden with CSS
   // too.
   @for $i from 1 through 4 {
-    @media (min-width >= 600px) {
+    @media (width >= 600px) {
       &[column-count="#{$i}"] {
         --carousel-columns: #{$i};
       }
