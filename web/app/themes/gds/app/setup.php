@@ -134,6 +134,16 @@ add_action('after_setup_theme', function () {
 
     add_image_size('tiny', 50, 50, true);
 
+    $breakpoints = [
+        50,
+        ...range(100, 1000, 100),
+        ...range(1000, 2000, 200),
+    ];
+
+    foreach ($breakpoints as $breakpoint) {
+        add_image_size(sprintf('%dpx', $breakpoint), $breakpoint);
+    }
+
     // Enqueue editor styles
     add_editor_style('public/styles/editor.css');
 
