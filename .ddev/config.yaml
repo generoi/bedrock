@@ -21,3 +21,6 @@ web_environment: []
 nodejs_version: "20"
 provider: default
 upload_dir: web/app/uploads
+hooks:
+  post-start:
+    - exec: "perl -pi -e 's/pm.max_requests = 200/pm.max_requests = 2000/' /etc/php/*/fpm/pool.d/www.conf && killall -1 php-fpm"
