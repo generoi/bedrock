@@ -91,6 +91,9 @@
 }
 
 // Adjacent full aligned blocks should not have a gutter.
+.wp-block-cover.alignfull + .alignfull.has-background,
+.wp-block-cover.alignfull + .wp-block-cover.alignfull,
+.alignfull.has-background + .wp-block-cover.alignfull,
 .alignfull.has-background + .alignfull.has-background {
   margin-top: calc(var(--block-gutter-l) * -1);
 }
