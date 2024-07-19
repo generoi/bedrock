@@ -7,6 +7,7 @@
 namespace App;
 
 use WP_Block;
+use WP_HTML_Tag_Processor;
 
 /**
  * Remove Read more to the excerpt.
@@ -63,4 +64,40 @@ add_filter('wp_kses_allowed_html', function (array $tags) {
         'fill' => [],
     ];
     return $tags;
+}, 10, 2);
+
+
+/**
+ * Use video featured images as poster images.
+ */
+add_filter('render_block', function (string $content, array $block) {
+    $attachmentId = null;
+
+    switch ($block['blockName']) {
+        case 'core/cover':
+            $backgroundType = $block['attrs']['backgroundType'] ?? null;
+            if ($backgroundType === 'video') {
+                $attachmentId = $block['attrs']['id'] ?? null;
+            }
+            break;
+        case 'core/video':
+            $attachmentId = $block['attrs']['id'] ?? null;
+            break;
+    }
+
+    if ($attachmentId) {
+        $posterImage = get_the_post_thumbnail_url($attachmentId, 'large');
+        if ($posterImage ?? null) {
+            $processor = new WP_HTML_Tag_Processor($content);
+            while ($processor->next_tag()) {
+                if ($processor->get_attribute('poster')) {
+                    continue;
+                }
+                $processor->set_attribute('poster', $posterImage);
+            }
+            $content = $processor->get_updated_html();
+        }
+    }
+
+    return $content;
 }, 10, 2);
