@@ -1,4 +1,5 @@
 @use "@/components/form";
+@use "@/components/button" as button;
 @use "@/components/typography" as *;
 
 .wp-block-search {
@@ -15,7 +16,18 @@
     margin-block-end: 12px;
   }
 
-  &__button-outside {
+  & &__button {
+    @include button.button;
+
+    border-radius: var(--gds-border-radius);
+    margin-left: 0;
+
+    .wp-block-search__icon-button & {
+      padding: 1em;
+    }
+  }
+
+  &__button-outside &__inside-wrapper {
     .wp-block-search__input {
       border-top-right-radius: 0;
       border-bottom-right-radius: 0;
@@ -27,7 +39,7 @@
     }
   }
 
-  &__button-inside {
+  &__button-inside &__inside-wrapper {
     .wp-block-search__button {
       all: unset;
       position: absolute;
@@ -60,14 +72,5 @@
   &__inside-wrapper {
     border: 0;
     padding: 0;
-  }
-
-  &__button {
-    border-radius: var(--gds-border-radius);
-    margin-left: 0;
-
-    .wp-block-search__icon-button & {
-      padding: 1em;
-    }
   }
 }
