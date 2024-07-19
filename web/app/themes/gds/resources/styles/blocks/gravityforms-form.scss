@@ -180,6 +180,10 @@
       flex: 0 0 auto;
       margin-top: 0.27em; // just an approximation
     }
+
+    .gfield-choice-input:not(:checked) ~ .gchoice_other_control {
+      display: none;
+    }
   }
 }
 
@@ -321,7 +325,8 @@
 
 .ginput_container_address {
   display: grid;
-  grid-gap: var(--grid-gutter);
+  column-gap: var(--grid-gutter);
+  row-gap: 8px;
   width: 100%;
   grid-template-columns: repeat(2, 1fr);
   grid-template-rows: repeat(auto-fill, auto);
