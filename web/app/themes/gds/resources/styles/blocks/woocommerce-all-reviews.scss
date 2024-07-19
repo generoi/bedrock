@@ -1,0 +1,20 @@
+.wc-block-review-sort-select {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  text-align: left;
+}
+
+.wc-block-review-list {
+  & &-item__item {
+    background-color: var(--gds-color-light-gray);
+    border-radius: var(--gds-border-radius);
+    padding: var(--gds-container-padding);
+    margin-bottom: var(--gds-container-padding);
+  }
+
+  &-item__info {
+    font-size: var(--gds-body-s-font-size);
+    margin-bottom: var(--block-gutter-xs);
+  }
+}
