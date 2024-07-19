@@ -5,10 +5,26 @@ youtube-embed {
     display: flex;
     align-items: center;
     justify-content: center;
+
+    &::after {
+      background-color: #fff;
+      display: block;
+      content: '';
+      position: absolute;
+      width: 2em;
+      height: 2em;
+    }
   }
 
   .icon {
     color: #f00;
-    font-size: 3em;
+    font-size: 4em;
+    fill: currentcolor;
+    position: relative;
+    z-index: 1;
+  }
+
+  &[playing] [slot="button"] {
+    display: none;
   }
 }
