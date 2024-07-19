@@ -1,3 +1,7 @@
 .wp-block-column > :only-child {
   height: 100%;
 }
+
+.wp-block-column.has-background {
+  padding: var(--grid-gutter);
+}
