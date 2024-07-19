@@ -88,8 +88,6 @@ class WooCommerceServiceProvider extends ServiceProvider
 
     public function enqueueAssets(): void
     {
-        // Avoid FOUC
-        wp_enqueue_style('wc-blocks-style-mini-cart');
         wp_enqueue_style('sage/woocommerce.css', asset('styles/woocommerce.css')->uri(), ['woocommerce-general'], null);
 
         // Do not use select2 on edit address page

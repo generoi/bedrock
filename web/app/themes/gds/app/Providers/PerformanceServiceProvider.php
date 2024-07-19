@@ -32,6 +32,16 @@ class PerformanceServiceProvider extends ServiceProvider
         render_block(['blockName' => 'core/heading']);
         render_block(['blockName' => 'core/paragraph']);
 
+        if (function_exists('is_woocommerce')) {
+            render_block(['blockName' => 'woocommerce/mini-cart', 'attrs' => []]);
+            render_block(['blockName' => 'woocommerce/customer-account', 'attrs' => []]);
+
+            if (is_shop() || is_product_taxonomy()) {
+                render_block(['blockName' => 'woocommerce/product-collection', 'attrs' => []]);
+                render_block(['blockName' => 'woocommerce/product-template', 'attrs' => []]);
+            }
+        }
+
         // Enqeueue stylesheets of the firt block.
         if (is_singular() && $post = get_post()) {
             if ($blocks = parse_blocks($post->post_content)) {
