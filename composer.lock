@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "46e3c7a28e4dcf51f280a400028f0f42",
+    "content-hash": "557dfeccc1a83381404ce3b212c395e5",
     "packages": [
         {
             "name": "brick/math",
@@ -1807,6 +1807,58 @@
                 "source": "https://github.com/generoi/robo-genero/tree/v0.4.7"
             },
             "time": "2024-05-24T13:40:47+00:00"
+        },
+        {
+            "name": "generoi/sage-cachetags",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/generoi/sage-cachetags.git",
+                "reference": "076027388c14b4c93b4414d8154af3eb88bcfad8"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/generoi/sage-cachetags/zipball/076027388c14b4c93b4414d8154af3eb88bcfad8",
+                "reference": "076027388c14b4c93b4414d8154af3eb88bcfad8",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.4",
+                "roots/acorn": "*"
+            },
+            "require-dev": {
+                "squizlabs/php_codesniffer": "~3.0"
+            },
+            "default-branch": true,
+            "type": "library",
+            "extra": {
+                "acorn": {
+                    "providers": [
+                        "Genero\\Sage\\CacheTags\\CacheTagsServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Genero\\Sage\\CacheTags\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Oskar Schöldström",
+                    "email": "public@oxy.fi"
+                }
+            ],
+            "homepage": "https://github.com/generoi/sage-cachetags",
+            "support": {
+                "issues": "https://github.com/generoi/sage-cachetags/issues",
+                "source": "https://github.com/generoi/sage-cachetags/tree/master"
+            },
+            "time": "2024-07-19T14:21:57+00:00"
         },
         {
             "name": "generoi/sage-nativeblock",
@@ -12239,7 +12291,8 @@
     "aliases": [],
     "minimum-stability": "dev",
     "stability-flags": {
-        "generoi/wp-image-resizer": 20
+        "generoi/wp-image-resizer": 20,
+        "generoi/sage-cachetags": 20
     },
     "prefer-stable": true,
     "prefer-lowest": false,
