@@ -101,6 +101,7 @@ export class YoutubeEmbed extends HTMLElement {
           align-items: center;
           justify-content: center;
           overflow: hidden;
+          position: relative;
         }
         .iframe-container iframe {
           position: absolute;
