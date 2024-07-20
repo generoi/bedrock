@@ -1,0 +1,21 @@
+@use "@/components/button" as button;
+@use "@/components/typography" as typography;
+
+.wp-block-file {
+  a:not(.wp-block-file__button) {
+    @include typography.link;
+
+    text-decoration: none;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+
+  &__button {
+    @include button.button;
+    @include button.size-s;
+
+    margin-left: var(--grid-gutter);
+  }
+}

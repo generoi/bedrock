@@ -1,3 +1,10 @@
-.wp-block-group.has-background {
-  padding: var(--grid-gutter);
+.wp-block-group {
+  &.has-background {
+    padding: var(--grid-gutter);
+  }
+
+  &.is-layout-grid,
+  &.is-layout-flex {
+    gap: var(--grid-gutter);
+  }
 }

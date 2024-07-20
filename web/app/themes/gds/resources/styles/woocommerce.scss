@@ -83,6 +83,7 @@ body.my-account .woocommerce {
 
     .form-row.form-row {
       padding: 0;
+      margin-bottom: var(--grid-gutter);
 
       label {
         line-height: inherit;
@@ -94,8 +95,6 @@ body.my-account .woocommerce {
         display: block;
         margin-block-start: 4px;
       }
-
-      margin-bottom: var(--grid-gutter);
     }
 
     // Orders
