@@ -101,3 +101,17 @@ add_filter('render_block', function (string $content, array $block) {
 
     return $content;
 }, 10, 2);
+
+/**
+ * Set default attributes for gravityforms block.
+ */
+add_filter('gform_form_block_attributes', function (array $attributes) {
+    $attributes['formPreview']['default'] = true;
+    $attributes['ajax']['default'] = true;
+    return $attributes;
+});
+
+/**
+ * Disable gravityforms styling.
+ */
+add_filter('gform_disable_css', '__return_true');
