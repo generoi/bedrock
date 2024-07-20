@@ -7,4 +7,13 @@
   &.is-layout-flex {
     gap: var(--grid-gutter);
   }
+
+  &.is-layout-grid {
+    $gap-count: calc(var(--grid-columns) - 1);
+    $total-gap-width: calc(#{$gap-count} * var(--grid-gutter));
+    $min-width: 200px;
+    $max-width: calc((100% - #{$total-gap-width}) / var(--grid-columns));
+
+    grid-template-columns: repeat(auto-fill, minmax(max(#{$min-width}, #{$max-width}), 1fr));
+  }
 }

@@ -103,6 +103,22 @@ add_filter('render_block', function (string $content, array $block) {
 }, 10, 2);
 
 /**
+ * Add a variable exposing the column count so that we can use it in css for
+ * responsive wrapping.
+ */
+add_filter('render_block_core/group', function (string $content, array $block) {
+    $layoutType = $block['attrs']['layout']['type'] ?? null;
+    $columnCount = $block['attrs']['layout']['columnCount'] ?? null;
+    if ($layoutType === 'grid' && $columnCount) {
+        $processor = new WP_HTML_Tag_Processor($content);
+        $processor->next_tag('div');
+        $processor->set_attribute('style', sprintf('--grid-columns: %d', $columnCount));
+        $content = $processor->get_updated_html();
+    }
+    return $content;
+}, 10, 2);
+
+/**
  * Set default attributes for gravityforms block.
  */
 add_filter('gform_form_block_attributes', function (array $attributes) {
