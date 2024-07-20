@@ -1,8 +1,16 @@
 @use "@/common/breakpoints" as *;
 
-ul,
-ol {
+.wp-block-list {
   --block-gutter: var(--block-gutter-s);
+
+  > li {
+    margin-bottom: 0;
+  }
+
+  ol,
+  ul {
+    margin-left: 0;
+  }
 }
 
 .is-style-spacious {
@@ -18,8 +26,7 @@ ol {
     margin-block-start: 16px;
   }
 
-  > li > ul,
-  > li > ol {
+  > li > .wp-block-list {
     margin-block-start: 16px;
   }
 }

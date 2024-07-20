@@ -1,4 +1,5 @@
 .wp-block-post-date {
+  &.has-text-color,
   .has-background & {
     --icon-color: currentcolor;
   }

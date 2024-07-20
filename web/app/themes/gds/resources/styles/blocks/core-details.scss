@@ -1,0 +1,20 @@
+.wp-block-details {
+  summary {
+    margin-left: 1rem;
+    list-style-position: outside;
+    padding-left: 0.5ch;
+  }
+
+  summary + * {
+    margin-top: 4px;
+  }
+
+  &.has-background {
+    padding: var(--gds-container-padding);
+    border-radius: var(--gds-border-radius);
+  }
+
+  & + .wp-block-details {
+    margin-top: calc(-1 * var(--block-gutter) + var(--block-gutter-xs));
+  }
+}

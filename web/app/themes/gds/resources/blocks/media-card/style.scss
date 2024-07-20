@@ -11,6 +11,10 @@
     box-shadow: var(--gds-box-shadow--hover);
   }
 
+  &.has-text-align-center .is-layout-flex {
+    justify-content: center;
+  }
+
   &__media {
     overflow: hidden;
     border-top-left-radius: inherit;

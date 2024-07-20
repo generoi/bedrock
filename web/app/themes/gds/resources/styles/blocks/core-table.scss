@@ -49,5 +49,13 @@
     tbody tr:nth-child(even) {
       background-color: var(--gds-color-lightest-gray);
     }
+
+    .has-background {
+      thead th,
+      tfoot th,
+      tbody tr:nth-child(even) {
+        background-color: rgba(255 255 255 / 20%);
+      }
+    }
   }
 }
