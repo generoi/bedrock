@@ -30,7 +30,29 @@
 /**
  * My account page
  */
-body.my-account .woocommerce {
+.woocommerce form.login,
+.woocommerce form.register {
+  border-radius: var(--gds-border-radius);
+  padding: var(--gds-container-padding);
+  background-color: var(--gds-color-lightest-gray);
+  border-color: transparent;
+
+  // Actions row
+  .form-row:not(.woocommerce-form-row),
+  .form-row:last-child {
+    display: flex;
+    align-items: center;
+    margin-top: var(--grid-gutter);
+    flex-wrap: wrap;
+
+    .woocommerce-form-login__rememberme {
+      order: 1;
+      margin-left: 0.5ch;
+    }
+  }
+}
+
+body.my-account.logged-in .woocommerce {
   display: grid;
   gap: var(--grid-gutter);
   grid-template-columns: var(--grid-column-3) 1fr;

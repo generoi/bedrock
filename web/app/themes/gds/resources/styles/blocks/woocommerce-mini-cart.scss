@@ -24,11 +24,15 @@
       @include button.button;
 
       flex-grow: 0;
+      justify-content: center; // mobile
     }
 
     .wp-block-woocommerce-mini-cart-checkout-button-block {
       text-decoration: underline;
-      justify-content: flex-start;
+
+      @media (width > 480px) {
+        justify-content: flex-start;
+      }
     }
   }
 }
