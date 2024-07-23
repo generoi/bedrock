@@ -11,6 +11,9 @@ class Content extends Composer
         'content.*',
     ];
 
+    /**
+     * @return array<string,mixed>
+     */
     public function with()
     {
         $post = get_post();

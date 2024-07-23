@@ -8,6 +8,7 @@ namespace App;
 
 use GeneroWP\ImageResizer\Rewriters\InlineStyles;
 use GeneroWP\ImageResizer\Rewriters\Urls;
+use Roots\Acorn\Assets\Asset\PhpAsset;
 use Roots\Acorn\Assets\Contracts\Asset;
 use Spatie\GoogleFonts\GoogleFonts;
 use WP_Theme_JSON_Data;
@@ -61,7 +62,9 @@ add_action('enqueue_block_editor_assets', function () {
     wp_deregister_style('wp-reset-editor-styles');
     wp_register_style('wp-reset-editor-styles', false);
 
-    if ($manifest = asset('scripts/editor.asset.php')->include()) {
+    $manifestAsset = asset('scripts/manifest.asset.php');
+    if ($manifestAsset instanceof PhpAsset) {
+        $manifest = $manifestAsset->include();
         wp_enqueue_script('sage/editor.js', asset('scripts/editor.js')->uri(), $manifest['dependencies'], null, true);
     }
     wp_enqueue_style('sage/editor-overrides.css', asset('styles/editor-overrides.css')->uri(), ['wp-edit-blocks', 'common'], null);
@@ -148,8 +151,13 @@ add_action('after_setup_theme', function () {
     add_editor_style('public/styles/editor.css');
 
     // @see https://make.wordpress.org/core/2021/12/15/using-multiple-stylesheets-per-block/
-    $manifest = config('assets.manifests.theme.assets');
-    collect(json_decode(file_get_contents($manifest), true))
+    /** @var array<string,string> $manifest */
+    $manifest = json_decode(
+        file_get_contents(config('assets.manifests.theme.assets')),
+        true
+    );
+
+    collect($manifest)
         ->keys()
         ->filter(fn ($file) => strpos($file, '/styles/blocks/') === 0)
         ->map(fn ($file) => asset($file))

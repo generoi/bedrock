@@ -74,7 +74,7 @@ class PerformanceServiceProvider extends ServiceProvider
         wp_deregister_script('jquery');
         wp_deregister_script('jquery-core');
         wp_deregister_script('jquery-migrate');
-        wp_register_script('jquery', asset('scripts/jquery.js')->uri(), false, null, true);
+        wp_register_script('jquery', asset('scripts/jquery.js')->uri(), [], null, true);
     }
 
     public function dequeueAssets(): void

@@ -1,0 +1,21 @@
+includes:
+  - vendor/szepeviktor/phpstan-wordpress/extension.neon
+
+parameters:
+  level: 5
+  paths:
+    - config/
+    - web/app/mu-plugins/
+    - web/app/themes/gds/app/
+
+  excludePaths:
+    - web/app/mu-plugins/*/*
+
+  bootstrapFiles:
+    - vendor/roots/acorn/src/Illuminate/Foundation/helpers.php
+    - vendor/roots/acorn/src/Roots/helpers.php
+    - vendor/php-stubs/wordpress-stubs/wordpress-stubs.php
+    - vendor/wp-cli/wp-cli/php/utils.php
+    - vendor/php-stubs/woocommerce-stubs/woocommerce-stubs.php
+    - vendor/php-stubs/acf-pro-stubs/acf-pro-stubs.php
+    - vendor/wpsyntex/polylang-stubs/polylang-stubs.php

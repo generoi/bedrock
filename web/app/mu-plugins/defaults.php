@@ -206,7 +206,7 @@ add_action('admin_bar_menu', function () {
 add_action('wp_enqueue_scripts', __NAMESPACE__ . '\\shc_styling', 11);
 add_action('admin_enqueue_scripts', __NAMESPACE__ . '\\shc_styling', 11);
 
-function shc_styling()
+function shc_styling(): void
 {
     $styles = "
         #wpadminbar .ab-top-menu .shc-show-env.prod .ab-item,
@@ -221,11 +221,12 @@ function shc_styling()
     wp_add_inline_style('shc-show-env', $styles);
 }
 
-add_action('shc_show_env_id_env', function () {
+add_filter('shc_show_env_id_env', function () {
     return match (wp_get_environment_type()) {
         'local' => ['Local', 'dev'],
         'development' => ['Dev', 'dev'],
         'production' => ['Prod', 'prod'],
         'staging' => ['Staging', 'staging'],
+        default => ['Unknown', 'dev'],
     };
 });

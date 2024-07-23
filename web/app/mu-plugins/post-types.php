@@ -27,12 +27,9 @@ if (!is_blog_installed()) {
  */
 class PostTypes
 {
-    private static $instance = null;
+    private static ?PostTypes $instance = null;
 
-    /** @var array */
-    public $postTypes = [];
-
-    public static function getInstance()
+    public static function getInstance(): PostTypes
     {
         if (null === self::$instance) {
             self::$instance = new self();
@@ -50,15 +47,15 @@ class PostTypes
      * Register all post types and their taxonomies.
      * @note needs to run during `init`.
      */
-    public function register()
+    public function register(): void
     {
-        $this->postTypes[] = $this->registerPost();
-        $this->postTypes[] = $this->registerPage();
-        // $this->postTypes[] = $this->registerProduct();
-        // $this->postTypes[] = $this->registerPerson();
+        $this->registerPost();
+        $this->registerPage();
+        // $this->registerProduct();
+        // $this->registerPerson();
     }
 
-    public function registerPost()
+    public function registerPost(): void
     {
         $post = new PostType('post');
         $post->register();
@@ -73,11 +70,9 @@ class PostTypes
             }
             return $args;
         }, 10, 2);
-
-        return $post;
     }
 
-    public function registerPage()
+    public function registerPage(): void
     {
         $page = new PostType('page');
         $page->register();
@@ -85,19 +80,15 @@ class PostTypes
         add_action('init', function () {
             add_post_type_support('page', 'excerpt');
         });
-
-        return $page;
     }
 
-    public function registerProduct()
+    public function registerProduct(): void
     {
         $product = new PostType('product');
         $product->register();
-
-        return $product;
     }
 
-    public function registerPerson()
+    public function registerPerson(): void
     {
         $person = new PostType('person', [
             'has_archive' => false,
@@ -116,11 +107,9 @@ class PostTypes
 
         $department = new Taxonomy('department');
         $department->register();
-
-        return $person;
     }
 
-    public function adminHead()
+    public function adminHead(): void
     {
         echo '<style>
             .wp-list-table th.column-thumbnail { width: 28px; }
