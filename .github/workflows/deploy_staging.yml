@@ -6,10 +6,6 @@ on:
         description: 'Log level (-v, -vv, -vvv)'
         required: true
         default: '-vv'
-      ref:
-        description: 'Optional tag to checkout'
-        required: false
-        default: ''
 
 jobs:
   deploy:
@@ -17,7 +13,6 @@ jobs:
     secrets: inherit
     with:
       environment: 'staging'
-      ref: ${{ inputs.ref }}
       log_level: ${{ inputs.log_level }}
   e2e:
     needs: deploy

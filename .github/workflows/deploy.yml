@@ -1,11 +1,9 @@
+name: '__deploy'
 on:
   workflow_call:
     inputs:
       log_level:
         required: true
-        type: string
-      ref:
-        required: false
         type: string
       environment:
         required:  true
@@ -26,24 +24,17 @@ jobs:
     name: Build and deploy
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout Repository (latest)
-        uses: actions/checkout@v3
-        if: ${{ inputs.ref == '' }}
-
-      - name: Checkout Repository (specific reference)
-        uses: actions/checkout@v3
-        if: ${{ inputs.ref != '' }}
-        with:
-          ref: ${{ inputs.ref }}
+      - name: Checkout Repository
+        uses: actions/checkout@v4
 
       - name: Start SSH agent
-        uses: webfactory/ssh-agent@v0.4.1
+        uses: webfactory/ssh-agent@v0.9.0
         with:
           ssh-private-key: |
             ${{ secrets.KINSTA_DEPLOY_PRIVATE_KEY }}
 
       - name: Setup Node
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v4
         with:
           node-version-file: .nvmrc
           cache: 'npm'
@@ -73,7 +64,7 @@ jobs:
           echo "dir=$(composer config cache-files-dir)" >> $GITHUB_OUTPUT
 
       - name: Composer Cache
-        uses: actions/cache@v2
+        uses: actions/cache@v4
         with:
           path: ${{ steps.composer-cache.outputs.dir }}
           key: ${{ runner.os }}-composer-${{ hashFiles('**/composer.lock') }}

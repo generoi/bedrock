@@ -23,6 +23,11 @@ updates:
     registries:
       - satispress
 
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+
 registries:
   satispress:
     type: composer-repository
