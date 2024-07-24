@@ -1,4 +1,6 @@
 youtube-embed {
+  position: relative;
+
   [slot="button"] {
     position: absolute;
     inset: 0;
