@@ -73,7 +73,8 @@
     "wpackagist-plugin/redirection": "^5.0",
     "wpackagist-plugin/woocommerce": "^9.1",
     "generoi/genero-cmp": "^2.0",
-    "generoi/wp-image-resizer": "^1.0"
+    "generoi/wp-image-resizer": "^1.0",
+    "spatie/laravel-csp": "^2.10"
   },
   "require-dev": {
     "squizlabs/php_codesniffer": "^3.4.2",

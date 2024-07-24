@@ -80,7 +80,7 @@ export class YoutubeEmbed extends HTMLElement {
     const iframe = document.createElement('iframe');
     iframe.setAttribute('frameborder', '0');
     iframe.setAttribute('allowfullscreen', '');
-    iframe.setAttribute('allow', 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture');
+    iframe.setAttribute('allow', 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; fullscreen;');
     // Important: add the autoplay GET parameter, otherwise the user would need to click over the YouTube video again to play it
     iframe.setAttribute('src', `https://www.youtube.com/embed/${this.youtubeId}?rel=0&showinfo=0&autoplay=1`);
 
