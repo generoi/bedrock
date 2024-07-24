@@ -75,7 +75,9 @@
     "log1x/sage-svg": "^2",
     "wpackagist-plugin/woocommerce": "^9.1",
     "generoi/sage-woocommerce": "^1.1",
-    "generoi/sage-cachetags": "dev-master"
+    "generoi/sage-cachetags": "dev-master",
+    "koodimonni/composer-dropin-installer": "^1.4",
+    "aaemnnosttv/wp-cli-login-command": "^1.5"
   },
   "require-dev": {
     "squizlabs/php_codesniffer": "^3.4.2",
@@ -87,6 +89,7 @@
   "config": {
     "optimize-autoloader": true,
     "preferred-install": "dist",
+    "dropin-installer": "copy",
     "platform": {
       "php": "8.3.9"
     },
@@ -96,19 +99,27 @@
       "composer/installers": true,
       "roots/wordpress-core-installer": true,
       "inpsyde/wp-translation-downloader": true,
-      "cweagans/composer-patches": true
+      "cweagans/composer-patches": true,
+      "koodimonni/composer-dropin-installer": true
     },
     "prepend-autoloader": false
   },
   "minimum-stability": "dev",
   "prefer-stable": true,
   "extra": {
+    "dropin-paths": {
+      "web/app/mu-plugins": ["package:aaemnnosttv/wp-cli-login-command:plugin/wp-cli-login-server.php"],
+      "web/": ["package:generoi/genero-status:genero-status.php"]
+    },
     "hooks": {
       "pre-commit": "composer test",
       "post-merge": "composer install:development"
     },
     "installer-paths": {
-      "web/app/mu-plugins/{$name}/": ["type:wordpress-muplugin", "wpackagist-plugin/show-environment-in-admin-bar"],
+      "web/app/mu-plugins/{$name}/": [
+        "type:wordpress-muplugin",
+        "wpackagist-plugin/show-environment-in-admin-bar"
+      ],
       "web/app/plugins/{$name}/": ["type:wordpress-plugin"],
       "web/app/themes/{$name}/": ["type:wordpress-theme"]
     },

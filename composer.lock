@@ -4,8 +4,61 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "557dfeccc1a83381404ce3b212c395e5",
+    "content-hash": "7b1c0fff9684427dcb9ffa4c741ab442",
     "packages": [
+        {
+            "name": "aaemnnosttv/wp-cli-login-command",
+            "version": "v1.5.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/aaemnnosttv/wp-cli-login-command.git",
+                "reference": "ab20aee280de98974ac5b22b635c533d41faf296"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/aaemnnosttv/wp-cli-login-command/zipball/ab20aee280de98974ac5b22b635c533d41faf296",
+                "reference": "ab20aee280de98974ac5b22b635c533d41faf296",
+                "shasum": ""
+            },
+            "require": {
+                "composer/semver": "^1 || ^2 || ^3",
+                "php": "^5.6 || ^7.0 || ^8.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^5 || ^6 || ^7 || ^8 || ^9",
+                "wp-cli/entity-command": "^2",
+                "wp-cli/extension-command": "^2",
+                "wp-cli/server-command": "^2",
+                "wp-cli/wp-cli-tests": "^3.0"
+            },
+            "type": "library",
+            "autoload": {
+                "files": [
+                    "command.php"
+                ],
+                "psr-4": {
+                    "WP_CLI_Login\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Evan Mattson",
+                    "email": "me@aaemnnost.tv",
+                    "homepage": "https://aaemnnost.tv"
+                }
+            ],
+            "description": "Log in to WordPress with secure passwordless magic links.",
+            "homepage": "https://github.com/aaemnnosttv/wp-cli-login-command",
+            "support": {
+                "issues": "https://github.com/aaemnnosttv/wp-cli-login-command/issues",
+                "source": "https://github.com/aaemnnosttv/wp-cli-login-command/tree/v1.5.0"
+            },
+            "time": "2023-06-25T00:57:07+00:00"
+        },
         {
             "name": "brick/math",
             "version": "0.12.1",
@@ -4319,6 +4372,54 @@
                 "source": "https://github.com/kint-php/kint/tree/5.1.1"
             },
             "time": "2024-04-26T14:20:09+00:00"
+        },
+        {
+            "name": "koodimonni/composer-dropin-installer",
+            "version": "1.4",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Koodimonni/Composer-Dropin-Installer.git",
+                "reference": "9596ef8f50cbba2cdc707ca3b1f5e4a0e9fa7e7e"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Koodimonni/Composer-Dropin-Installer/zipball/9596ef8f50cbba2cdc707ca3b1f5e4a0e9fa7e7e",
+                "reference": "9596ef8f50cbba2cdc707ca3b1f5e4a0e9fa7e7e",
+                "shasum": ""
+            },
+            "require": {
+                "composer-plugin-api": "^1.0 | ^2.0",
+                "php": ">=5.3.2"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^5.7"
+            },
+            "type": "composer-plugin",
+            "extra": {
+                "class": "Koodimonni\\Composer\\Dropin"
+            },
+            "autoload": {
+                "psr-4": {
+                    "Koodimonni\\Composer\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "WTFPL"
+            ],
+            "authors": [
+                {
+                    "name": "Onni Hakala",
+                    "email": "onni@keksi.io",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Install packages or a few files from packages into custom paths without overwriting existing stuff.",
+            "support": {
+                "issues": "https://github.com/Koodimonni/Composer-Dropin-Installer/issues",
+                "source": "https://github.com/Koodimonni/Composer-Dropin-Installer/tree/1.4"
+            },
+            "time": "2022-02-02T11:42:57+00:00"
         },
         {
             "name": "laravel/prompts",
