@@ -10,6 +10,7 @@ web/app/mu-plugins/*/
 web/app/languages/*
 web/app/upgrade
 web/app/uploads/*
+web/app/cache/*
 !web/app/uploads/.gitkeep
 web/app/advanced-cache.php
 web/genero-status.php
