@@ -37,9 +37,20 @@ class CacheControlServiceProvider extends ServiceProvider
         }
 
         if (is_admin_bar_showing() || is_admin()) {
-            header('Cache-Control: private, no-cache');
+            nocache_headers();
             return;
         }
+
+        if ($_REQUEST['add-to-cart'] ?? null) {
+            nocache_headers();
+            return;
+        }
+
+        if ($_REQUEST['show-reset-form'] ?? null) {
+            nocache_headers();
+            return;
+        }
+
 
         // Cache 404s for 1h
         if (is_404()) {
