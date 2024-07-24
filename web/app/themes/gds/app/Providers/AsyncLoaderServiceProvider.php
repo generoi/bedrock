@@ -15,6 +15,18 @@ class AsyncLoaderServiceProvider extends ServiceProvider
     {
         add_filter('script_loader_tag', [$this, 'scriptLoaderTag'], 10, 2);
         add_filter('style_loader_tag', [$this, 'styleLoaderTag'], 999, 2);
+        add_action('wp_head', [$this, 'printScript'], PHP_INT_MAX);
+    }
+
+    public function printScript(): void
+    {
+        echo wp_get_inline_script_tag("
+            Array.prototype.slice.call(document.querySelectorAll('[data-async-styles]')).forEach(function (e) {
+                e.addEventListener('load', function() {
+                    this.media = 'all'
+                });
+            });
+        ");
     }
 
     /**
@@ -59,7 +71,7 @@ class AsyncLoaderServiceProvider extends ServiceProvider
             return $html;
         }
 
-        $isAsync = wp_styles()->get_data($handle, 'async');
+        $isAsync = wp_styles()->get_data($handle, 'async') && doing_action('wp_head');
         if (!$isAsync && !in_array($handle, config('assets.async_styles'))) {
             return $html;
         }
@@ -69,7 +81,7 @@ class AsyncLoaderServiceProvider extends ServiceProvider
         /** @var \DOMElement $tag */
         $tag = $dom->getElementsByTagName('link')->item(0);
         $tag->setAttribute('media', 'print');
-        $tag->setAttribute('onload', "this.media='all'");
+        $tag->setAttribute('data-async-styles', '');
         $tag->removeAttribute('type');
         $html = $dom->saveHTML($tag);
 
