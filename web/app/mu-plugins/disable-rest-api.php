@@ -28,7 +28,7 @@ add_filter('rest_authentication_errors', function ($access) {
 
     // Allow logged out users access to the following endpoints, prevent access
     // to others.
-    if (preg_match('@^/(facetwp|gds|wc)/@', $route)) {
+    if (preg_match('@^/(facetwp|gds|wc|wp-passkey)/@', $route)) {
         return $access;
     }
 
