@@ -131,3 +131,30 @@ add_filter('gform_form_block_attributes', function (array $attributes) {
  * Disable gravityforms styling.
  */
 add_filter('gform_disable_css', '__return_true');
+
+/**
+ * Separators should be decorative.
+ */
+add_filter('render_block_core/separator', function (string $content) {
+    $content = str_replace('<hr ', '<hr aria-hidden="true" ', $content);
+    return $content;
+});
+
+/**
+ * Fix accessibility issues with inlined SVGs.
+ */
+add_filter('safe_svg_inline_markup', function (string $markup) {
+    $processor = new WP_HTML_Tag_Processor($markup);
+    $processor->next_tag('svg');
+
+    // SVGs should be images so their content isnt read out
+    if (! $processor->get_attribute('role')) {
+        $processor->set_attribute('role', 'img');
+    }
+
+    if (! str_contains($markup, '<title')) {
+        $processor->set_attribute('aria-hidden', 'true');
+    }
+
+    return $processor->get_updated_html();
+});

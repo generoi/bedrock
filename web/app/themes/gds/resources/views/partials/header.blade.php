@@ -70,6 +70,7 @@
                 aria-current="page"
               @endif
               href="{{ $item->url }}"
+              lang="{{ $item->locale }}"
             >
               {!! esc_html($item->name) !!}
             </a>

@@ -1,7 +1,7 @@
 /**
  * @example
  * <share-button
- *   title="Page title"
+ *   share-title="Page title"
  *   url="https://www.example.org"
  * >
  *   Fallback content in case native share is not available.
@@ -23,11 +23,11 @@ export class ShareButton extends HTMLElement {
   }
 
   static get observedAttributes() {
-    return ['title', 'url'];
+    return ['share-title', 'url'];
   }
 
-  get title() {
-    return this.getAttribute('title');
+  get shareTitle() {
+    return this.getAttribute('share-title');
   }
 
   get url() {
@@ -37,7 +37,7 @@ export class ShareButton extends HTMLElement {
   handleClick(event) {
     if (window.navigator?.share) {
       navigator.share({
-        title: this.title,
+        title: this.shareTitle,
         url: this.url,
       });
       event.stopImmediatePropagation();

@@ -1,6 +1,6 @@
 
 <div {!! get_block_wrapper_attributes() !!}>
-  <share-button title="{{ $title }}" url="{{ $url }}">
+  <share-button share-title="{{ $title }}" url="{{ $url }}">
     <toggle-button
       class="wp-block-gds-share__button"
       aria-controls="{{ $share_id }}"

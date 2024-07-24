@@ -22,6 +22,10 @@ register_block_type(asset('blocks/breadcrumb/block.json')->path(), [
     }
 ]);
 
+add_filter('wpseo_breadcrumb_separator', function () {
+    return '<span aria-hidden="true">&nbsp;»&nbsp;</span>';
+});
+
 add_filter('rank_math/frontend/breadcrumb/settings', function ($settings) {
     $settings['separator'] = '<span aria-hidden="true">&nbsp;&gt;&nbsp;</span>';
     return $settings;

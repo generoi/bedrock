@@ -40,7 +40,7 @@
   --gds-box-shadow: 1px 1px 4px rgba(0 0 0 / 10%);
   --gds-box-shadow--hover: 3px 3px 8px rgba(0 0 0 / 16%);
   --gds-box-shadow--active: 3px 3px 8px rgba(0 0 0 / 16%);
-  --gds-outline--focus: solid 2px var(--gds-color-black);
+  --gds-outline--focus: solid 2px currentcolor;
 
   // Block vertical gutters
   --block-gutter: var(--block-gutter-m);

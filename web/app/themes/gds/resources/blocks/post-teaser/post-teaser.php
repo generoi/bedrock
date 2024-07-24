@@ -26,6 +26,7 @@ register_block_type(asset('blocks/post-teaser/block.json')->path(), [
             'attributes' => $attributes,
             'content' => $content,
             'block' => $block,
+            'heading_level' => (is_tax() || is_archive() || is_home()) ? 2 : 3,
         ])->render();
 
         $GLOBALS['post'] = $originalPost;
