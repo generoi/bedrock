@@ -1,5 +1,133 @@
 @use "@/common/breakpoints" as *;
+@use "@/components/typography" as typography;
+
+:root {
+  --footer-padding: 60px 0 30px 0;
+
+  @include mq($from: medium) {
+    --footer-padding: 70px 0 40px;
+  }
+}
+
+// Add a gutter between last block and footer
+#app:has(.is-root-container > :last-child:not(.alignfull)) .content-info {
+  margin-top: var(--block-gutter-l);
+}
 
 .content-info {
-  //
+  padding-left: var(--viewport-gutter);
+  padding-right: var(--viewport-gutter);
+
+  .footer {
+    padding: var(--footer-padding);
+    display: grid;
+    grid-template-areas:
+      "logo"
+      "social"
+      "contact"
+      "menu"
+      "newsletter";
+    grid-template-columns: 1fr;
+    grid-gap: var(--block-gutter);
+    text-align: center;
+
+    .menu {
+      padding-left: 0;
+      align-items: center;
+    }
+
+    .wp-block-social-links {
+      justify-content: center;
+    }
+
+    &__logo {
+      grid-area: logo;
+    }
+
+    &__social {
+      grid-area: social;
+    }
+
+    &__contact {
+      grid-area: contact;
+    }
+
+    &__menu {
+      grid-area: menu;
+    }
+
+    &__newsletter {
+      grid-area: newsletter;
+    }
+
+    /* stylelint-disable-next-line selector-class-pattern */
+    .widget_block:not(:last-child) {
+      margin-bottom: var(--block-gutter-s);
+    }
+  }
+
+  &__terms-conditions {
+    text-align: center;
+    border-top: solid 1px var(--gds-color-white);
+    padding: var(--block-gutter-xs);
+  }
+
+  a {
+    font-weight: inherit;
+    text-decoration: none;
+
+    &:hover {
+      text-decoration: underline;
+      color: inherit;
+    }
+  }
+
+  // Larger mobile screens
+  @media (width > 400px) {
+    .footer {
+      text-align: left;
+      grid-template-areas:
+        "logo   contact"
+        "social contact"
+        "menu   menu"
+        "newsletter newsletter";
+      grid-template-columns: auto auto;
+      justify-content: space-between;
+      grid-template-rows: auto 1fr;
+
+      .menu {
+        align-items: flex-start;
+      }
+
+      .wp-block-social-links {
+        justify-content: flex-start;
+      }
+    }
+  }
+
+  // Tablet and desktop
+  @include mq($from: medium) {
+    .footer {
+      display: grid;
+      grid-template-areas:
+        "logo   contact menu newsletter"
+        "social contact menu newsletter";
+      grid-template-columns: 3fr 3fr 4fr 2fr;
+      grid-template-rows: auto 1fr;
+      grid-gap: var(--grid-gutter);
+
+      // Let menu wrap as two per row
+      .menu {
+        display: flex;
+        gap: 16px;
+        padding-left: 0;
+        flex-wrap: wrap;
+        flex-direction: row;
+
+        &-item {
+          flex: 1 0 calc(50% - 16px);
+        }
+      }
+    }
+  }
 }

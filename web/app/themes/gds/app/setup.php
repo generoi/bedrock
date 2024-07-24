@@ -97,7 +97,8 @@ add_action('after_setup_theme', function () {
      * @link https://developer.wordpress.org/reference/functions/register_nav_menus/
      */
     register_nav_menus([
-        'primary_navigation' => __('Primary Navigation', 'gds')
+        'primary_navigation' => __('Primary Navigation', 'gds'),
+        'footer_navigation' => __('Footer Navigation', 'gds'),
     ]);
 
     /**
@@ -195,6 +196,11 @@ add_action('widgets_init', function () {
     register_sidebar([
         'name' => __('Footer: Newsletter', 'gds'),
         'id' => 'footer-newsletter'
+    ] + $config);
+
+    register_sidebar([
+        'name' => __('Footer: Terms & conditions', 'gds'),
+        'id' => 'footer-terms-conditions'
     ] + $config);
 });
 
