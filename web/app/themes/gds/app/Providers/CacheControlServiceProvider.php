@@ -13,7 +13,7 @@ class CacheControlServiceProvider extends ServiceProvider
 
     public function register()
     {
-        add_action('send_headers', [$this, 'sendHeaders'], 1000);
+        add_action('send_headers', [$this, 'sendHeaders'], PHP_INT_MAX);
         add_filter('rest_post_dispatch', [$this, 'restPostDispatch']);
     }
 
@@ -28,6 +28,16 @@ class CacheControlServiceProvider extends ServiceProvider
 
         // Exit unless we're responding to a GET request
         if ($_SERVER['REQUEST_METHOD'] !== 'GET') {
+            return;
+        }
+
+        if ($roles = $this->getCurrentUserRoles()) {
+            header(sprintf('X-WP-User-Roles: %s', implode(', ', $roles)));
+            header('Vary: X-WP-User-Roles, Accept-Encoding', true);
+        }
+
+        if (is_admin_bar_showing() || is_admin()) {
+            header('Cache-Control: private, no-cache');
             return;
         }
 
@@ -70,6 +80,14 @@ class CacheControlServiceProvider extends ServiceProvider
 
         $response->set_headers($headers);
         return $response;
+    }
+
+    protected function getCurrentUserRoles(): array
+    {
+        return collect(is_user_logged_in() ? wp_get_current_user()->roles : ['anonymous'])
+            ->values()
+            ->sort()
+            ->all();
     }
 
     protected function hasCacheControlHeader(array $headers): bool
