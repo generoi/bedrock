@@ -38,27 +38,22 @@ class CspPolicy extends Basic
             ->addDirective(Directive::UPGRADE_INSECURE_REQUESTS, Value::NO_VALUE)
             // Google Tag Manager
             // @see https://developers.google.com/tag-platform/security/guides/csp
-            // ->addDirective(Directive::IMG, 'www.googletagmanager.com')
-            // ->addDirective(Directive::CONNECT, 'www.googletagmanager.com')
-            // // Google Tag Manager - Preview
-            // ->addDirective(Directive::SCRIPT, ['https://googletagmanager.com', 'https://tagmanager.google.com'])
-            // ->addDirective(Directive::STYLE, ['https://googletagmanager.com', 'https://tagmanager.google.com', 'https://fonts.googleapis.com'])
-            // ->addDirective(Directive::IMG, ['https://googletagmanager.com', 'https://ssl.gstatic.com', 'https://www.gstatic.com'])
-            // ->addDirective(Directive::FONT, ['https://fonts.gstatic.com', self::KEYWORD_DATA])
-            // // Google Analytics 4
-            // ->addDirective(Directive::SCRIPT, 'https://*.googletagmanager.com')
-            // ->addDirective(Directive::IMG, ['https://*.google-analytics.com', 'https://*.googletagmanager.com'])
+            ->addDirective(Directive::IMG, 'www.googletagmanager.com')
+            ->addDirective(Directive::CONNECT, 'www.googletagmanager.com')
+            // Google Tag Manager - Preview
+            ->addDirective(Directive::STYLE, ['https://googletagmanager.com', 'https://www.googletagmanager.com', 'https://tagmanager.google.com', 'https://fonts.googleapis.com'])
+            ->addDirective(Directive::IMG, ['https://googletagmanager.com', 'https://ssl.gstatic.com', 'https://www.gstatic.com', 'https://fonts.gstatic.com'])
+            ->addDirective(Directive::FONT, ['https://fonts.gstatic.com', self::KEYWORD_DATA])
+            // Google Analytics 4
+            ->addDirective(Directive::IMG, ['https://*.google-analytics.com', 'https://*.googletagmanager.com'])
             ->addDirective(Directive::CONNECT, ['https://*.google-analytics.com', 'https://*.analytics.google.com', 'https://*.googletagmanager.com'])
             // // Google Ads conversions
-            // ->addDirective(Directive::SCRIPT, ['https://www.googleadservices.com', 'https://www.google.com', 'https://www.googletagmanager.com'])
             ->addDirective(Directive::IMG, ['https://googleads.g.doubleclick.net', 'https://www.google.com', 'https://google.com'])
             ->addDirective(Directive::FRAME, ['https://www.googletagmanager.com'])
             // // Google Ads remarketing
-            // ->addDirective(Directive::SCRIPT, ['https://www.googleadservices.com', 'https://googleads.g.doubleclick.net', 'https://www.google.com'])
             ->addDirective(Directive::IMG, ['https://www.google.com', 'https://google.com'])
             ->addDirective(Directive::FRAME, ['https://bid.g.doubleclick.net', 'https://td.doubleclick.net'])
             // Facebook Pixel
-            // ->addDirective(Directive::SCRIPT, ['https://connect.facebook.net'])
             ->addDirective(Directive::IMG, ['https://www.facebook.com'])
             ;
 
