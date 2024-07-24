@@ -23,6 +23,8 @@ class WooCommerceServiceProvider extends ServiceProvider
         add_action('woocommerce_init', [$this, 'removeGlobalTemplateHooks']);
         add_action('woocommerce_init', [$this, 'removeSingleProductTemplateHooks']);
         add_action('woocommerce_archive_description', [$this, 'printArchiveContent']);
+
+        add_filter('doing_it_wrong_trigger_error', [$this, 'fixWooCommerceWidgetsEditor'], 10, 3);
     }
 
     public function removeGlobalTemplateHooks(): void
@@ -84,6 +86,17 @@ class WooCommerceServiceProvider extends ServiceProvider
     {
         $classes[] = 'woocommerce-block-theme-has-button-styles';
         return $classes;
+    }
+
+    /**
+     * @see https://github.com/woocommerce/woocommerce/issues/47831
+     */
+    public function fixWooCommerceWidgetsEditor(bool $trigger, string $functionName, string $message): bool
+    {
+        if ($functionName === 'wp_enqueue_script()' && str_contains($message, '"wp-editor"')) {
+            return false;
+        }
+        return $trigger;
     }
 
     public function enqueueAssets(): void
