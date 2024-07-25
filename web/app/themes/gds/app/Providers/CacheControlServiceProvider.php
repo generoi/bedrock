@@ -3,7 +3,9 @@
 namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
+use WP_REST_Request;
 use WP_REST_Response;
+use WP_REST_Server;
 
 class CacheControlServiceProvider extends ServiceProvider
 {
@@ -14,7 +16,7 @@ class CacheControlServiceProvider extends ServiceProvider
     public function register()
     {
         add_action('send_headers', [$this, 'sendHeaders'], PHP_INT_MAX);
-        add_filter('rest_post_dispatch', [$this, 'restPostDispatch']);
+        add_filter('rest_post_dispatch', [$this, 'restPostDispatch'], 10, 3);
     }
 
     /**
@@ -70,7 +72,7 @@ class CacheControlServiceProvider extends ServiceProvider
     /**
      * REST API response headers
      */
-    public function restPostDispatch(WP_REST_Response $response): WP_REST_Response
+    public function restPostDispatch(WP_REST_Response $response, WP_REST_Server $server, WP_REST_Request $request): WP_REST_Response
     {
         if (is_user_logged_in()) {
             return $response;
@@ -78,6 +80,10 @@ class CacheControlServiceProvider extends ServiceProvider
 
         $headers = $response->get_headers();
         if ($this->hasCacheControlHeader($headers)) {
+            return $response;
+        }
+
+        if ($request->get_method() !== 'GET') {
             return $response;
         }
 
