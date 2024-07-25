@@ -21,9 +21,13 @@ class AsyncLoaderServiceProvider extends ServiceProvider
     public function printScript(): void
     {
         echo wp_get_inline_script_tag("
-            Array.prototype.slice.call(document.querySelectorAll('[data-async-styles]')).forEach(function (e) {
-                e.addEventListener('load', function() {
-                    this.media = 'all'
+            Array.prototype.slice.call(document.querySelectorAll('[data-async-styles]')).forEach(function (link) {
+                if (link.sheet && link.sheet.rules) {
+                    link.media = 'all';
+                    return;
+                }
+                link.addEventListener('load', function() {
+                    link.media = 'all'
                 });
             });
         ");
@@ -83,7 +87,7 @@ class AsyncLoaderServiceProvider extends ServiceProvider
         $tag->setAttribute('media', 'print');
         $tag->setAttribute('data-async-styles', '');
         $tag->removeAttribute('type');
-        $html = $dom->saveHTML($tag);
+        $html = $dom->saveHTML($tag) . PHP_EOL;
 
         return $html;
     }
