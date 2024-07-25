@@ -27,6 +27,8 @@ class CspPolicy extends Basic
             ->addDirective(Directive::STYLE, Keyword::SELF)
             // Prevent clickjacking by not allowing page to be embedded
             ->addDirective(Directive::FRAME_ANCESTORS, Keyword::SELF)
+            // Gravityform AJAX requires iframes of itself
+            ->addDirective(Directive::FRAME, Keyword::SELF)
 
             // There's no filter for inline styles in WordPress.
             ->addDirective(Directive::STYLE, Keyword::UNSAFE_INLINE)

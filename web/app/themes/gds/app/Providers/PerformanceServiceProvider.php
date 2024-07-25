@@ -66,7 +66,9 @@ class PerformanceServiceProvider extends ServiceProvider
         // Enqeueue stylesheets of the firt block.
         if (is_singular() && $post = get_post()) {
             if ($blocks = parse_blocks($post->post_content)) {
-                render_block($blocks[0]);
+                if (! in_array($blocks[0]['blockName'], ['gravityforms/form'])) {
+                    render_block($blocks[0]);
+                }
             }
         }
     }

@@ -122,9 +122,17 @@ add_filter('render_block_core/group', function (string $content, array $block) {
  * Set default attributes for gravityforms block.
  */
 add_filter('gform_form_block_attributes', function (array $attributes) {
-    $attributes['formPreview']['default'] = true;
     $attributes['ajax']['default'] = true;
     return $attributes;
+});
+
+add_filter('render_block_data', function (array $parsedBlock) {
+    if ($parsedBlock['blockName'] === 'gravityforms/form') {
+        if (! isset($parsedBlock['attrs']['ajax'])) {
+            $parsedBlock['attrs']['ajax'] = true;
+        }
+    }
+    return $parsedBlock;
 });
 
 /**
