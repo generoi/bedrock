@@ -56,6 +56,8 @@ class CspPolicy extends Basic
             ->addDirective(Directive::IMG, ['https://www.google.com', 'https://google.com'])
             ->addDirective(Directive::FRAME, ['https://bid.g.doubleclick.net', 'https://td.doubleclick.net'])
             // Facebook Pixel
+            ->addDirective(Directive::FORM_ACTION, ['https://www.facebook.com'])
+            ->addDirective(Directive::FRAME, ['https://www.facebook.com'])
             ->addDirective(Directive::IMG, ['https://www.facebook.com'])
             ;
 
