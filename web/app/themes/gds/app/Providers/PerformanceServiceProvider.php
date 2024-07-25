@@ -40,6 +40,8 @@ class PerformanceServiceProvider extends ServiceProvider
             // Load essential mini cart styles, not _all_ assets
             wp_enqueue_style('wc-blocks-style-mini-cart');
             wp_enqueue_style('sage/block/woocommerce-mini-cart');
+            // Load store notices styling without triggering a render
+            wp_enqueue_style('sage/block/woocommerce-store-notices');
 
             render_block(['blockName' => 'woocommerce/customer-account', 'attrs' => []]);
 
@@ -49,7 +51,6 @@ class PerformanceServiceProvider extends ServiceProvider
             }
 
             if (is_singular('product')) {
-                render_block(['blockName' => 'woocommerce/store-notices', 'attrs' => []]);
                 render_block(['blockName' => 'core/columns', 'attrs' => []]);
                 render_block(['blockName' => 'core/column', 'attrs' => []]);
                 render_block(['blockName' => 'woocommerce/product-rating', 'attrs' => []]);
@@ -66,7 +67,7 @@ class PerformanceServiceProvider extends ServiceProvider
         // Enqeueue stylesheets of the firt block.
         if (is_singular() && $post = get_post()) {
             if ($blocks = parse_blocks($post->post_content)) {
-                if (! in_array($blocks[0]['blockName'], ['gravityforms/form'])) {
+                if (! in_array($blocks[0]['blockName'], ['gravityforms/form', 'woocommerce/store-notices'])) {
                     render_block($blocks[0]);
                 }
             }

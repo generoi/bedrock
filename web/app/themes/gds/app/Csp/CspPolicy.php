@@ -85,5 +85,10 @@ class CspPolicy extends Basic
         if (defined('SCRIPT_DEBUG') && SCRIPT_DEBUG && wp_get_environment_type() === 'development') {
             $this->addDirective(Directive::SCRIPT, Keyword::UNSAFE_EVAL);
         }
+
+        // WooCommerce variable products use underscore templates
+        if (function_exists('is_product') && is_product() && wc_get_product()->is_type('variable')) {
+            $this->addDirective(Directive::SCRIPT, Keyword::UNSAFE_EVAL);
+        }
     }
 }
