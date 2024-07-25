@@ -1,5 +1,6 @@
 import {onIdle, ready} from './utils'
-import './components/toggle-button';
+
+import('./components/toggle-button');
 
 ready(() => {
   if (document.querySelector('modal-dialog')) {
