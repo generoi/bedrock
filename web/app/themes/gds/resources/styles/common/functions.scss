@@ -34,3 +34,11 @@
 @function em($value, $base: 16) {
   @return (strip-unit($value) / $base) * 1em;
 }
+
+@function auto-columns($columns, $min-width: 200px) {
+  $gap-count: calc(#{$columns} - 1);
+  $total-gap-width: calc(#{$gap-count} * var(--grid-gutter));
+  $max-width: calc((100% - #{$total-gap-width}) / #{$columns});
+
+  @return repeat(auto-fill, minmax(max(#{$min-width}, #{$max-width}), 1fr));
+}

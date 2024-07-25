@@ -33,12 +33,29 @@ class PerformanceServiceProvider extends ServiceProvider
         render_block(['blockName' => 'core/paragraph']);
 
         if (function_exists('is_woocommerce')) {
-            render_block(['blockName' => 'woocommerce/mini-cart', 'attrs' => []]);
+            wp_style_add_data('wc-blocks-packages-style', 'async', true);
+            wp_style_add_data('wc-blocks-style', 'async', true);
+            wp_style_add_data('wc-blocks-style-mini-cart-contents', 'async', true);
+
+            // Load essential mini cart styles, not _all_ assets
+            wp_enqueue_style('wc-blocks-style-mini-cart');
+            wp_enqueue_style('sage/block/woocommerce-mini-cart');
+
             render_block(['blockName' => 'woocommerce/customer-account', 'attrs' => []]);
 
             if (is_shop() || is_product_taxonomy()) {
                 render_block(['blockName' => 'woocommerce/product-collection', 'attrs' => []]);
                 render_block(['blockName' => 'woocommerce/product-template', 'attrs' => []]);
+            }
+
+            if (is_singular('product')) {
+                render_block(['blockName' => 'woocommerce/store-notices', 'attrs' => []]);
+                render_block(['blockName' => 'woocommerce/product-rating', 'attrs' => []]);
+                render_block(['blockName' => 'woocommerce/product-price', 'attrs' => []]);
+                render_block(['blockName' => 'woocommerce/product-sku', 'attrs' => []]);
+                render_block(['blockName' => 'woocommerce/add-to-cart-form', 'attrs' => []]);
+                render_block(['blockName' => 'core/post-terms', 'attrs' => []]);
+                render_block(['blockName' => 'gds/gallery-carousel', 'attrs' => []]);
             }
         }
 

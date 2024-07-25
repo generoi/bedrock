@@ -157,8 +157,14 @@ add_action('after_setup_theme', function () {
         ->each(function (Asset $asset) {
             $filename = pathinfo(basename($asset->path()), PATHINFO_FILENAME);
             [$collection, $blockName] = explode('-', $filename, 2);
+            $handle = "sage/block/$filename";
+
+            // Register the handles early so we can enqueue them even without the block
+            wp_register_style($handle, $asset->uri());
+            wp_style_add_data($handle, 'path', $asset->path());
+
             wp_enqueue_block_style("$collection/$blockName", [
-                'handle' => "sage/block/$filename",
+                'handle' => $handle,
                 'src' => $asset->uri(),
                 'path' => $asset->path(),
             ]);

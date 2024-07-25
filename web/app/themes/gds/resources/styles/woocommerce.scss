@@ -1,3 +1,4 @@
+@use "@/common/functions";
 @use "@/components/typography";
 
 // Legacy shortcode pages (account, thankyou)
@@ -12,6 +13,24 @@
   max-width: var(--alignwide-width);
   margin-left: auto;
   margin-right: auto;
+}
+
+/**
+ * Layout view used on login page, orders page and thank you page.
+ */
+.woocommerce .col2-set {
+  display: grid;
+  grid-gap: var(--grid-gutter);
+  row-gap: var(--block-gutter-l);
+  grid-template-columns: functions.auto-columns(2, 300px);
+
+  &:not(:first-child) {
+    margin-top: var(--block-gutter);
+  }
+
+  &:not(:last-child) {
+    margin-bottom: var(--block-gutter);
+  }
 }
 
 /**
@@ -47,8 +66,13 @@
 
     .woocommerce-form-login__rememberme {
       order: 1;
-      margin-left: 0.5ch;
+      margin-left: var(--grid-gutter);
+      margin-bottom: 0;
     }
+  }
+
+  .woocommerce-privacy-policy-text {
+    font-size: var(--gds-body-s-font-size);
   }
 }
 

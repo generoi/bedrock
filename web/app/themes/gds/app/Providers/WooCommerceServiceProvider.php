@@ -25,6 +25,7 @@ class WooCommerceServiceProvider extends ServiceProvider
         add_action('woocommerce_archive_description', [$this, 'printArchiveContent']);
 
         add_filter('doing_it_wrong_trigger_error', [$this, 'fixWooCommerceWidgetsEditor'], 10, 3);
+        add_filter('woocommerce_enqueue_styles', [$this, 'dequeueStylesheets']);
     }
 
     public function removeGlobalTemplateHooks(): void
@@ -97,6 +98,14 @@ class WooCommerceServiceProvider extends ServiceProvider
             return false;
         }
         return $trigger;
+    }
+
+    public function dequeueStylesheets(array $styles): array
+    {
+        // unset($styles['woocommerce-general']);
+        unset($styles['woocommerce-layout']);
+        unset($styles['woocommerce-smallscreen']);
+        return $styles;
     }
 
     public function enqueueAssets(): void
