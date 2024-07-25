@@ -295,6 +295,7 @@ export class Carousel extends HTMLElement {
     }
 
     const slides = this.slides();
+    const columnCount = this.columnCount();
     for (const [idx, slide] of slides.entries()) {
       if (!slide.getAttribute('role')) {
         slide.setAttribute('role', 'group');
@@ -306,7 +307,7 @@ export class Carousel extends HTMLElement {
       }
 
       if (!slide.getAttribute('aria-hidden')) {
-        if (idx < this.columnCount()) {
+        if (idx < columnCount) {
           slide.setAttribute('aria-hidden', 'false');
         } else {
           slide.setAttribute('aria-hidden', 'true');
