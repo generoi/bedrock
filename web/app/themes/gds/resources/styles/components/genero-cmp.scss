@@ -1,0 +1,17 @@
+@use "@/components/button";
+@use "@/components/typography";
+
+gds-cmp-modal-dialog {
+  .wp-block-button__link.wp-block-button__link.wp-block-button__link.wp-block-button__link {
+    @include button.size-s;
+  }
+
+  p {
+    @include typography.body-s;
+  }
+
+  &::part(overlay) {
+    backdrop-filter: none !important;
+    animation: none !important;
+  }
+}
