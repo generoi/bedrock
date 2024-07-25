@@ -8,7 +8,7 @@
     @elseif ($attributes->mediaId ?? false)
       {!! wp_get_attachment_image($attributes->mediaId, 'large', false, $imageAttributes) !!}
     @elseif ($attributes->mediaUrl ?? false)
-      <img src="{!! $attributes->mediaUrl !!}" alt="{{ $attributes->mediaAlt ?? '' }}" />
+      <img src="{!! $attributes->mediaUrl !!}" alt="{{ $attributes->mediaAlt ?? '' }}" loading="lazy" sizes="auto" />
     @endif
   </figure>
   <div class="wp-block-gds-media-card__content">
