@@ -2,6 +2,7 @@ import throttle from 'lodash-es/throttle';
 import { onIdle } from '../../utils';
 
 export const EVENT_SLIDE = 'carousel.slide';
+const FOCUSABLE_NODES = 'a, button, textarea, input, select, iframe, video';
 
 export class Carousel extends HTMLElement {
   static #idCounter = 0;
@@ -138,20 +139,10 @@ export class Carousel extends HTMLElement {
     // @todo hack depends on flex
     this.reflow(slide);
 
-    slide.setAttribute('aria-hidden', 'false');
-    for (const el of slide.querySelectorAll('video')) {
-      el.removeAttribute('tabindex');
-    }
-
     for (const el of this.slides()) {
-      if (el === slide) {
-        continue;
-      }
+      const isCurrent = el === slide;
 
-      el.setAttribute('aria-hidden', 'true');
-      for (const el of slide.querySelectorAll('video')) {
-        el.removeAttribute('tabindex');
-      }
+      this.updateVisibility(el, isCurrent);
     }
 
     // Pause other videos
@@ -168,6 +159,14 @@ export class Carousel extends HTMLElement {
 
     // Play video
     slide.querySelector('.embed-youtube__play')?.click();
+  }
+
+  updateVisibility(slide, isVisible) {
+    slide.setAttribute('aria-hidden', isVisible ? 'false' : 'true');
+
+    for (const node of slide.querySelectorAll(FOCUSABLE_NODES)) {
+      node.setAttribute('tabindex', isVisible ? '' : '-1');
+    }
   }
 
   render() {
@@ -297,6 +296,8 @@ export class Carousel extends HTMLElement {
     const slides = this.slides();
     const columnCount = this.columnCount();
     for (const [idx, slide] of slides.entries()) {
+      const isVisible = idx < columnCount;
+
       if (!slide.getAttribute('role')) {
         slide.setAttribute('role', 'group');
         slide.setAttribute('aria-roledescription', 'slide');
@@ -306,17 +307,7 @@ export class Carousel extends HTMLElement {
         }
       }
 
-      if (!slide.getAttribute('aria-hidden')) {
-        if (idx < columnCount) {
-          slide.setAttribute('aria-hidden', 'false');
-        } else {
-          slide.setAttribute('aria-hidden', 'true');
-        }
-
-        for (const el of slide.querySelectorAll('video')) {
-          el.setAttribute('tabindex', '-1');
-        }
-      }
+      this.updateVisibility(slide, isVisible);
 
       // CSS snap doesnt like it when DOM changes while scrolling
       // @see https://stackoverflow.com/q/74211636
