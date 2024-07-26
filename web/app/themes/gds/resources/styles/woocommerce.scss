@@ -170,7 +170,7 @@ body.my-account.logged-in .woocommerce {
 }
 
 /* stylelint-disable selector-class-pattern */
-.wc-block-review-list-item__rating__stars.wc-block-components-review-list-item__rating__stars,
+.wc-block-review-list-item__rating__stars.wc-block-components-review-list-item__rating__stars.wc-block-review-list-item__rating__stars,
 .wc-block-grid__product-rating__stars.wc-block-grid__product-rating__stars,
 .star-rating.star-rating {
   mask-image: svg-load("solid/star.svg");
@@ -181,6 +181,10 @@ body.my-account.logged-in .woocommerce {
   width: 5em;
   position: relative;
 
+  &::before {
+    display: none;
+  }
+
   > span {
     overflow: hidden;
     position: absolute;
@@ -189,12 +193,13 @@ body.my-account.logged-in .woocommerce {
 
     &::before {
       display: block;
-      content: '';
+      content: '' !important;
       mask-image: svg-load("solid/star.svg");
       mask-repeat: repeat-x;
       mask-size: 1em;
       height: 1em;
       background-color: var(--gds-color-black);
+      width: 100%;
     }
   }
 }

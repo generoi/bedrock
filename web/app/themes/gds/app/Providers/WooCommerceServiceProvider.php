@@ -114,7 +114,21 @@ class WooCommerceServiceProvider extends ServiceProvider
 
     public function enqueueAssets(): void
     {
-        if (is_account_page() || is_cart() || is_checkout() || is_order_received_page() || is_checkout_pay_page() || is_woocommerce()) {
+        $isWooCommercePage = (
+            is_account_page() ||
+            is_cart() ||
+            is_checkout() ||
+            is_order_received_page() ||
+            is_checkout_pay_page() ||
+            is_woocommerce()
+        );
+        $hasRatingsBlock = (
+            has_block('woocommerce/product-rating') ||
+            has_block('woocommerce/all-reviews') ||
+            has_block('woocommerce/reviews-by-category') ||
+            has_block('woocommerce/reviews-by-product')
+        );
+        if ($isWooCommercePage || $hasRatingsBlock) {
             wp_enqueue_style('sage/woocommerce.css', asset('styles/woocommerce.css')->uri(), [], null);
         }
 
