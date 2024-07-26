@@ -2,6 +2,7 @@
   "$schema": "https://json.schemastore.org/babelrc.json",
   "plugins": [],
   "presets": [
+    "@babel/preset-env",
     "@babel/preset-react"
   ]
 }

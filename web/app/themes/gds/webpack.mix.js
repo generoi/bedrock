@@ -32,8 +32,6 @@ mix.setPublicPath('./public')
       },
     },
   })
-  // For some reason this is required
-  //.babelConfig(JSON.parse(fs.readFileSync('.babelrc')))
   .browserSync({
     // You need to make sure the host is hardcoded in robo.yml
     proxy: 'https://gdsbedrock.ddev.site',
