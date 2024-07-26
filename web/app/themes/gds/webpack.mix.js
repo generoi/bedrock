@@ -45,7 +45,7 @@ mix.sass('resources/styles/app.scss', 'styles')
    .sass('resources/styles/editor-overrides.scss', 'styles');
 
 mix.js('resources/scripts/app.js', 'scripts')
-   .blocks('resources/scripts/editor.js', 'scripts', {disableRegenerator: true});
+   .blocks('resources/scripts/editor.jsx', 'scripts', {disableRegenerator: true});
 
 glob.sync('resources/styles/blocks/*').forEach((file) => {
   mix.sass(file, 'styles/blocks');
@@ -55,7 +55,7 @@ const assetCompiler = (buildPath) => {
   return (file) => {
     if (/.scss$/.test(file)) {
       mix.sass(file, buildPath(file))
-    } else if (/index.js$/.test(file)) {
+    } else if (/.jsx$/.test(file)) {
       mix.blocks(file, buildPath(file), {disableRegenerator: true});
     } else if (/.js$/.test(file)) {
       mix.js(file, buildPath(file));
