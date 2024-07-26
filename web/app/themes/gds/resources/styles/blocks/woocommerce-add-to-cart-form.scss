@@ -27,18 +27,14 @@
     tr:not(:last-child) th {
       padding-bottom: 10px;
     }
-
-    // .label tbody > tr:not(:last-child) {
-    //   margin-bottom: 10px;
-    // }
-
-    & + .single_variation_wrap > .single_variation {
-      margin-bottom: var(--block-gutter-xs);
-    }
   }
 
   [type="submit"] {
     height: var(--gds-input-height);
+  }
+
+  .woocommerce-variation-add-to-cart {
+    margin-top: var(--block-gutter-s);
   }
 
   // Reset woocommerce default styling
