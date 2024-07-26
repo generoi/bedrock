@@ -17,19 +17,15 @@
 /**
  * Additional information
  */
-.wp-block-gds-woo-product-tabs table.shop_attributes {
-  border: 0;
-
-  &:last-child {
-    margin-bottom: 0;
+.wp-block-gds-woo-product-tabs table {
+  th {
+    width: 150px;
+    padding: 5px var(--gds-container-padding);
+    text-align: left;
   }
 
-  td,
-  th {
-    padding-left: var(--gds-container-padding);
-    padding-right: var(--gds-container-padding);
-    text-align: left;
-    border: 0;
+  td {
+    font-style: italic;
   }
 }
 
@@ -49,45 +45,87 @@
     margin-bottom: 0;
   }
 
+  .star-rating {
+    float: right;
+
+    & + * {
+      margin-top: 0;
+    }
+  }
+
   .commentlist {
     padding-left: 0;
-  }
+    list-style: none;
 
-  #comments ol.commentlist li {
-    margin-bottom: var(--gds-container-padding);
-  }
-
-  #comments ol.commentlist li .comment-text {
-    margin-left: 0 !important;
-    border: 0 !important;
-    background-color: var(--gds-color-light-gray);
-    border-radius: var(--gds-border-radius);
-    padding: var(--gds-container-padding);
-
-    p {
-      margin-bottom: var(--block-gutter-xs);
+    li {
+      margin-bottom: var(--gds-container-padding);
     }
-
-    p.meta {
-      font-size: var(--gds-body-s-font-size) !important;
-    }
-
-    .description p:last-child {
-      margin-bottom: 0;
-    }
-  }
-
-  // Comment reply
-  #comments .comment.depth-1 {
-    margin-left: var(--grid-gutter);
 
     .comment-text {
-      background-color: var(--gds-color-white);
+      margin-left: 0;
+      border: 0;
+      background-color: var(--gds-color-light-gray);
+      border-radius: var(--gds-border-radius);
+      padding: var(--gds-container-padding);
+
+      p {
+        margin-bottom: var(--block-gutter-xs);
+      }
+
+      p.meta {
+        font-size: var(--gds-body-s-font-size);
+        color: var(--gds-color-dark-gray);
+      }
+
+      .description p:last-child {
+        margin-bottom: 0;
+      }
+    }
+
+    // Comment reply
+    .comment.depth-1 {
+      margin-left: var(--grid-gutter);
+
+      .comment-text {
+        background-color: var(--gds-color-white);
+      }
     }
   }
 
   [type="submit"] {
     @include button.size-s;
+  }
+
+  p.stars {
+    margin-top: 0;
+
+    span {
+      display: flex;
+    }
+
+    a {
+      text-indent: -999em;
+      width: 1em;
+      height: 1em;
+      display: inline-block;
+      text-decoration: none;
+      mask-image: svg-load("solid/star.svg");
+      mask-repeat: no-repeat;
+      mask-size: 1em;
+      background-color: var(--gds-color-mid-gray);
+    }
+
+    &.selected a,
+    &:hover a,
+    a:hover {
+      color: inherit;
+      background-color: currentcolor;
+    }
+
+    a.active ~ a,
+    a:hover ~ a {
+      background-color: var(--gds-color-mid-gray);
+    }
   }
 }
 

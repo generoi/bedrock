@@ -103,7 +103,7 @@ class WooCommerceServiceProvider extends ServiceProvider
 
     public function dequeueStylesheets(array $styles): array
     {
-        // unset($styles['woocommerce-general']);
+        unset($styles['woocommerce-general']);
         unset($styles['woocommerce-layout']);
         unset($styles['woocommerce-smallscreen']);
         return $styles;
@@ -111,7 +111,9 @@ class WooCommerceServiceProvider extends ServiceProvider
 
     public function enqueueAssets(): void
     {
-        wp_enqueue_style('sage/woocommerce.css', asset('styles/woocommerce.css')->uri(), ['woocommerce-general'], null);
+        if (is_account_page() || is_cart() || is_checkout() || is_order_received_page() || is_checkout_pay_page() || is_woocommerce()) {
+            wp_enqueue_style('sage/woocommerce.css', asset('styles/woocommerce.css')->uri(), [], null);
+        }
 
         // Do not use select2 on edit address page
         wp_dequeue_script('selectWoo');

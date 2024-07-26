@@ -50,6 +50,7 @@
   }
 
   &[disabled],
+  &.disabled,
   .is-disabled > & {
     background-color: var(--gds-color-light-gray);
     cursor: pointer;

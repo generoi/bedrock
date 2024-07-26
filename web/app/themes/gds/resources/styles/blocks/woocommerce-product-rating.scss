@@ -14,10 +14,4 @@
   .wp-block-post-title + & {
     margin-top: calc(-1 * var(--block-gutter-m) + var(--block-gutter-xs));
   }
-
-  /* stylelint-disable-next-line selector-class-pattern */
-  .wc-block-grid__product-rating__stars span,
-  .star-rating span {
-    @include sr.sr-only;
-  }
 }
