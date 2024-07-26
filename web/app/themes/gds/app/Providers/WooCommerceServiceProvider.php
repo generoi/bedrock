@@ -26,6 +26,8 @@ class WooCommerceServiceProvider extends ServiceProvider
 
         add_filter('doing_it_wrong_trigger_error', [$this, 'fixWooCommerceWidgetsEditor'], 10, 3);
         add_filter('woocommerce_enqueue_styles', [$this, 'dequeueStylesheets']);
+
+        add_filter('woocommerce_admin_get_feature_config', [$this, 'filterFeatures']);
     }
 
     public function removeGlobalTemplateHooks(): void
@@ -118,5 +120,12 @@ class WooCommerceServiceProvider extends ServiceProvider
         // Do not use select2 on edit address page
         wp_dequeue_script('selectWoo');
         wp_dequeue_style('select2');
+    }
+
+    public function filterFeatures(array $features): array
+    {
+        // Adds custom fonts to the site
+        unset($features['launch-your-store']);
+        return $features;
     }
 }

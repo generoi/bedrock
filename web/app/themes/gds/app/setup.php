@@ -56,10 +56,18 @@ add_action('enqueue_block_editor_assets', function () {
 /**
  * Remove some default global-styles set by core.
  */
-add_filter('wp_theme_json_data_default', function (\WP_Theme_JSON_Data $jsonData) {
+add_filter('wp_theme_json_data_default', function (WP_Theme_JSON_Data $jsonData) {
     $data = $jsonData->get_data();
     unset($data['styles']['elements']['button']);
     unset($data['styles']['elements']['link']);
+
+    $data['settings']['color']['palette']['default'] = [];
+    $data['settings']['color']['duotone']['default'] = [];
+    $data['settings']['color']['gradients']['default'] = [];
+    $data['settings']['typography']['fontSizes']['default'] = [];
+    $data['settings']['spacing']['spacingSizes']['default'] = [];
+    $data['settings']['spacing']['spacingScale']['default'] = [];
+    $data['settings']['shadow']['presets']['default'] = [];
 
     $jsonData = new WP_Theme_JSON_Data($data);
     return $jsonData;
