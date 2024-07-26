@@ -1,4 +1,4 @@
-import classnames from 'classnames';
+import clsx from 'clsx';
 
 /** @wordpress */
 import { __ } from '@wordpress/i18n'
@@ -147,7 +147,7 @@ function BlockEdit(props) {
   );
 
   const blockProps = useBlockProps({
-    className: classnames({
+    className: clsx({
       [`has-text-align-${textAlign}`]: textAlign,
     })
   });

@@ -15,8 +15,6 @@ import {
   __experimentalLinkControl as LinkControl,
 } from '@wordpress/block-editor';
 
-import classnames from 'classnames';
-
 function URLPicker({
   isSelected,
   url,
@@ -91,7 +89,7 @@ function LinkButton(props) {
 
   return (
     <>
-      <div className={ classnames('wp-block-button', 'wp-block-button__link', className) }>
+      <div className={ `wp-block-button wp-block-button__link ${className}` }>
         <RichText
           placeholder={ placeholder }
           value={ label }

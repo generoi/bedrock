@@ -1,4 +1,4 @@
-import classnames from 'classnames';
+import clsx from 'clsx';
 
 /** @wordpress */
 import { __ } from '@wordpress/i18n'
@@ -67,7 +67,7 @@ function BlockEdit(props) {
 
   const showPlaceholder = !isInsideQueryBlock && (!postId || isSelected);
   const blockProps = useBlockProps({
-    className: classnames(
+    className: clsx(
       `wp-block-gds-post-teaser--${postType}`,
       {
         [`has-text-align-${textAlign}`]: textAlign,

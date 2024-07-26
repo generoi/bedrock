@@ -408,7 +408,7 @@ img.gform_ajax_spinner {
 
   .ui-icon-circle-triangle-w,
   .ui-icon-circle-triangle-e {
-    mask-image: svg-load("../node_modules/@fortawesome/fontawesome-free/svgs/solid/chevron-left.svg");
+    mask-image: svg-load("solid/chevron-left.svg");
     mask-repeat: no-repeat;
     background-color: currentcolor;
     display: inline-block;
@@ -419,7 +419,7 @@ img.gform_ajax_spinner {
   }
 
   .ui-icon-circle-triangle-e {
-    mask-image: svg-load("../node_modules/@fortawesome/fontawesome-free/svgs/solid/chevron-right.svg");
+    mask-image: svg-load("solid/chevron-right.svg");
   }
 
   &-title {

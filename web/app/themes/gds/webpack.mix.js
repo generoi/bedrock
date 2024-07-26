@@ -77,8 +77,7 @@ glob.sync('resources/components/*/*').forEach(assetCompiler(
 mix.copyWatched('resources/images', 'public/images', {base: 'resources/images'})
   .copyWatched('resources/fonts', 'public/fonts', {base: 'resources/fonts'});
 
-mix.copyWatched('node_modules/@fortawesome/fontawesome-pro/webfonts', 'public/webfonts')
-  .copy('node_modules/jquery/dist/jquery.min.js', 'public/scripts/jquery.js');
+mix.copy('node_modules/jquery/dist/jquery.min.js', 'public/scripts/jquery.js');
 
 mix.extend('copyDirectoryDirectly', function (webpackConfig, from, to) {
   fs.cpSync(from, to, {recursive: true});
