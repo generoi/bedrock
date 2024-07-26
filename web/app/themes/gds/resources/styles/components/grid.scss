@@ -1,6 +1,6 @@
 @use "@/common/breakpoints" as *;
 
-.grid {
+@mixin grid {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
@@ -12,7 +12,7 @@
   }
 }
 
-.cell {
+@mixin cell {
   flex: 0 0 auto;
   min-height: 0;
   min-width: 0;
@@ -23,28 +23,50 @@
   }
 }
 
-@each $name, $breakpoint in $mq-breakpoints {
-  @for $i from 1 through 12 {
-    @include mq($from: $name) {
-      .#{$name}\:#{$i} {
-        width: calc(
-          (#{$i} / var(--grid-columns) * 100%) - (
-            var(--grid-gutter-x) - (#{$i} / var(--grid-columns) * var(--grid-gutter-x))
-          )
-        );
-      }
-    }
+@mixin auto {
+  width: auto;
+  flex: 1 1 0;
+}
+
+@mixin shrink {
+  width: auto;
+  flex: 0 0 auto;
+}
+
+@mixin size($i) {
+  width: calc(
+    (#{$i} / var(--grid-columns) * 100%) - (
+      var(--grid-gutter-x) - (#{$i} / var(--grid-columns) * var(--grid-gutter-x))
+    )
+  );
+}
+
+@mixin classes {
+  .grid {
+    @include grid;
   }
 
-  @include mq($from: $name) {
-    .#{$name}\:auto {
-      width: auto;
-      flex: 1 1 0;
+  .cell {
+    @include cell;
+  }
+
+  @each $name, $breakpoint in $mq-breakpoints {
+    @for $i from 1 through 12 {
+      @include mq($from: $name) {
+        .#{$name}\:#{$i} {
+          @include size($i);
+        }
+      }
     }
 
-    .#{$name}\:shrink {
-      width: auto;
-      flex: 0 0 auto;
+    @include mq($from: $name) {
+      .#{$name}\:auto {
+        @include auto;
+      }
+
+      .#{$name}\:shrink {
+        @include shrink;
+      }
     }
   }
 }
