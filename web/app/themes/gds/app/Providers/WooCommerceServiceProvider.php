@@ -86,6 +86,7 @@ class WooCommerceServiceProvider extends ServiceProvider
     public function addBodyClasses(array $classes): array
     {
         $classes[] = 'woocommerce-block-theme-has-button-styles';
+        $classes[] = 'woocommerce-uses-block-theme';
         return $classes;
     }
 
