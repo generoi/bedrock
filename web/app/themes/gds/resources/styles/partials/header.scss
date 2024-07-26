@@ -113,6 +113,10 @@
       z-index: 100000; /* higher than the admin menu */
       background-color: var(--gds-color-white);
 
+      body:has(&) {
+        overflow: hidden;
+      }
+
       .header__search,
       .header__navigation,
       .header__languages {
