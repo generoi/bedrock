@@ -137,11 +137,11 @@ select:not([multiple]) {
 }
 
 [type="file"]::-webkit-file-upload-button {
+  margin-right: 8px;
+
   @include button.button;
   @include button.outline;
   @include button.size-s;
-
-  margin-right: 8px;
 }
 
 [type="submit"] {

@@ -5,7 +5,10 @@
   a:not(.wp-block-file__button) {
     @include typography.link;
 
-    text-decoration: none;
+    /* stylelint-disable-next-line no-duplicate-selectors */
+    & {
+      text-decoration: none;
+    }
 
     &:hover {
       text-decoration: underline;
@@ -13,9 +16,9 @@
   }
 
   &__button {
+    margin-left: var(--grid-gutter);
+
     @include button.button;
     @include button.size-s;
-
-    margin-left: var(--grid-gutter);
   }
 }

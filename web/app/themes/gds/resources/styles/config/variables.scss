@@ -53,10 +53,6 @@
   --viewport-gutter: 15px;
   --alignwide-width: var(--grid-column-12);
 
-  @include mq($from: medium) {
-    --content-width: var(--grid-column-8);
-  }
-
   @if config.$alignfull-max-width {
     --alignfull-width: #{config.$alignfull-max-width};
   } @else {
@@ -70,10 +66,6 @@
   --grid-gutter-x: var(--grid-gutter);
   --grid-gutter-y: var(--grid-gutter);
 
-  @include mq($from: medium) {
-    --grid-gutter: 24px;
-  }
-
   @for $i from 1 through 12 {
     --grid-column-#{$i}: calc(var(--grid-column) * #{$i} + var(--grid-gutter) * (#{$i} - 1));
   }
@@ -84,10 +76,6 @@
 
   // Media Text
   --media-text-gutter: var(--viewport-gutter);
-
-  @media (width >= 600px) {
-    --media-text-gutter: var(--grid-column-1);
-  }
 
   // Forms
   --gds-input-padding-y: 9px;
@@ -114,4 +102,13 @@
   --gds-hamburger-color: currentcolor;
   --gds-hamburger-thickness: 2px;
   --gds-hamburger-line-separation: 4px;
+
+  @include mq($from: medium) {
+    --content-width: var(--grid-column-8);
+    --grid-gutter: 24px;
+  }
+
+  @media (width >= 600px) {
+    --media-text-gutter: var(--grid-column-1);
+  }
 }

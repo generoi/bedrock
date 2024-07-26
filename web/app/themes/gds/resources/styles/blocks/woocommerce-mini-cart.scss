@@ -21,10 +21,9 @@
 
   &__drawer {
     .wp-block-woocommerce-mini-cart-cart-button-block.wp-block-woocommerce-mini-cart-cart-button-block {
-      @include button.button;
-
       flex-grow: 0;
-      justify-content: center; // mobile
+
+      @include button.button;
     }
 
     .wp-block-woocommerce-mini-cart-checkout-button-block {

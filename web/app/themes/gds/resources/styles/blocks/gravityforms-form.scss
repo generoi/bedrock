@@ -51,8 +51,6 @@
   }
 
   &_submission_error {
-    @include typography.body-s;
-
     font-family: var(--gds-body-font-family);
     font-size: var(--gds-paragraph-m-font-size);
   }
@@ -75,11 +73,11 @@
     justify-content: center;
 
     .gform_button_select_files {
+      margin-left: 8px;
+
       @include button.button;
       @include button.outline;
       @include button.size-s;
-
-      margin-left: 8px;
     }
   }
 }
@@ -137,9 +135,9 @@
   }
 
   &_description {
-    @include typography.body-s;
-
     margin-block-start: 4px;
+
+    @include typography.body-s;
   }
 
   &_label {
@@ -215,11 +213,11 @@
   }
 
   .gform_submission_error {
-    @include typography.body-m;
-
     color: var(--gds-color-error);
     margin-block-end: var(--block-gutter-s);
     font-weight: 600;
+
+    @include typography.body-m;
   }
 }
 
@@ -242,9 +240,9 @@
 
   input + label,
   select + label {
-    @include typography.body-s;
-
     margin-top: 2px;
+
+    @include typography.body-s;
   }
 }
 
@@ -361,10 +359,6 @@ img.gform_ajax_spinner {
 .ui-datepicker {
   --ui-gutter: 8px;
 
-  &:empty {
-    display: none;
-  }
-
   background-color: var(--gds-color-white);
   box-shadow: var(--gds-box-shadow);
   padding: var(--gds-container-padding);
@@ -373,6 +367,10 @@ img.gform_ajax_spinner {
   gap: var(--ui-gutter);
   border-radius: var(--gds-border-radius);
   font-size: var(--gds-body-s-font-size);
+
+  &:empty {
+    display: none;
+  }
 
   // On mobile, fix it to the bottom of the viewport
   @include mq($until: medium) {

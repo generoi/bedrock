@@ -3,7 +3,7 @@
   box-sizing: border-box;
   display: inline-flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
   text-align: center;
   text-decoration: none;
   cursor: pointer;
@@ -14,7 +14,7 @@
   line-height: 1;
   font-size: 1em;
   border: none;
-  border-radius: 2.5em;
+  border-radius: var(--gds-button-border-radius, 2.5em);
   padding: 1.3em 2.5em;
   z-index: 1;
   outline-offset: 0;
@@ -60,22 +60,30 @@
 }
 
 @mixin size-s {
-  font-size: var(--gds-button-s-font-size);
-  padding: 0.9em 1.5em;
+  & {
+    font-size: var(--gds-button-s-font-size);
+    padding: 0.9em 1.5em;
+  }
 }
 
 @mixin size-m {
-  font-size: var(--gds-button-m-font-size);
+  & {
+    font-size: var(--gds-button-m-font-size);
+  }
 }
 
 @mixin size-l {
-  font-size: var(--gds-button-l-font-size);
+  & {
+    font-size: var(--gds-button-l-font-size);
+  }
 }
 
 @mixin outline {
-  box-shadow: inset 0 0 0 1px currentcolor;
-  background-color: transparent;
-  color: currentcolor;
+  & {
+    box-shadow: inset 0 0 0 1px currentcolor;
+    background-color: transparent;
+    color: currentcolor;
+  }
 
   &:hover {
     box-shadow: inset 0 0 0 2px rgba(0 0 0 / 100%);

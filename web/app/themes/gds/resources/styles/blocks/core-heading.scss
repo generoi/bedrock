@@ -7,10 +7,10 @@ h3,
 h4,
 h5,
 h6 {
-  @include heading;
-
   --block-gutter-start: var(--gds-heading-margin-start);
   --block-gutter-end: var(--gds-heading-margin-end);
+
+  @include heading;
 }
 
 h1 {

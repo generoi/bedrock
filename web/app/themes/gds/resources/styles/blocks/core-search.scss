@@ -10,17 +10,18 @@
   }
 
   &__label {
-    @include heading;
-    @include heading-m;
-
     margin-block-end: 12px;
+
+    @include heading-m;
+    @include heading;
   }
 
   & &__button {
-    @include button.button;
+    --gds-button-border-radius: var(--gds-border-radius);
 
-    border-radius: var(--gds-border-radius);
     margin-left: 0;
+
+    @include button.button;
 
     .wp-block-search__icon-button & {
       padding: 1em;

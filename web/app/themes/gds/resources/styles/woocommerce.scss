@@ -122,10 +122,10 @@ body.my-account.logged-in .woocommerce {
     }
 
     legend {
-      @include typography.heading;
-      @include typography.heading-xs;
+      --gds-heading-margin-end: 0;
 
-      margin-bottom: 0;
+      @include typography.heading-xs;
+      @include typography.heading;
     }
 
     .form-row.form-row {
@@ -169,7 +169,8 @@ body.my-account.logged-in .woocommerce {
   }
 }
 
-/* stylelint-disable-next-line selector-class-pattern */
+/* stylelint-disable selector-class-pattern */
+.wc-block-review-list-item__rating__stars.wc-block-components-review-list-item__rating__stars,
 .wc-block-grid__product-rating__stars.wc-block-grid__product-rating__stars,
 .star-rating.star-rating {
   mask-image: svg-load("solid/star.svg");
@@ -197,6 +198,7 @@ body.my-account.logged-in .woocommerce {
     }
   }
 }
+/* stylelint-enable selector-class-pattern */
 
 /**
  * Info messages

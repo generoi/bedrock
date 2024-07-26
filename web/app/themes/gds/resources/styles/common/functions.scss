@@ -28,11 +28,11 @@
 }
 
 @function rem($value, $base: 16) {
-  @return (strip-unit($value) / $base) * 1rem;
+  @return math.div(strip-unit($value), $base) * 1rem;
 }
 
 @function em($value, $base: 16) {
-  @return (strip-unit($value) / $base) * 1em;
+  @return math.div(strip-unit($value), $base) * 1em;
 }
 
 @function auto-columns($columns, $min-width: 200px) {

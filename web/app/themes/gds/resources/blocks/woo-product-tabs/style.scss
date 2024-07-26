@@ -39,10 +39,10 @@
   }
 
   .comment-reply-title {
-    @include typography.heading;
-    @include typography.heading-xs;
+    --gds-heading-margin-end: 0;
 
-    margin-bottom: 0;
+    @include typography.heading-xs;
+    @include typography.heading;
   }
 
   .star-rating {

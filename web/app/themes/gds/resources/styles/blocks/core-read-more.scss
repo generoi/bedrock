@@ -1,12 +1,12 @@
 @use "@/components/typography";
 
 .wp-block-read-more.wp-block-read-more {
+  --gds-link-color: var(--gds-color-primary);
+
   display: flex;
   align-items: center;
 
   @include typography.link;
-
-  --gds-link-color: var(--gds-color-primary);
 
   .has-background & {
     --gds-link-color: currentcolor;

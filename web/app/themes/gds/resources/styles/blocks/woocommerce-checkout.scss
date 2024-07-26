@@ -11,7 +11,5 @@
 
   .wc-block-components-checkout-place-order-button {
     @include button.button;
-
-    justify-content: center; // mobile
   }
 }
