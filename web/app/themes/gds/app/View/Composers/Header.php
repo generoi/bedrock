@@ -27,7 +27,7 @@ class Header extends Composer
         return [
             'current_language' => $this->currentLanguage(),
             'languages' => $this->languages(),
-            'primary_navigation' => $this->primaryNavigation(),
+            'primary_navigation' => $this->navigation('primary_navigation'),
             'is_webshop' => $this->isWebshop(),
         ];
     }
@@ -48,19 +48,20 @@ class Header extends Composer
             ->all();
     }
 
-    public function primaryNavigation(): array
+    public function navigation(string $location): array
     {
-        if (!has_nav_menu('primary_navigation')) {
+        if (! has_nav_menu($location)) {
             return [];
         }
 
-        $navigation = (new Navi())->build('primary_navigation');
+        $navigation = (new Navi())->build($location);
 
         if ($navigation->isEmpty()) {
             return [];
         }
 
-        return $navigation->toArray();
+        $menu = apply_filters('wp_nav_menu_objects', $navigation->toArray(), []);
+        return $menu;
     }
 
     /**
