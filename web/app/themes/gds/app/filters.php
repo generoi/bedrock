@@ -166,3 +166,11 @@ add_filter('safe_svg_inline_markup', function (string $markup) {
 
     return $processor->get_updated_html();
 });
+
+/**
+ * Use aria roles for heading in footer widgets in an attempt to improve SEO.
+ */
+add_filter('widget_block_content', function (string $content) {
+    $content = str_replace(['<h2 ', '</h2>'], ['<p role="heading" aria-level="2" ', '</p>'], $content);
+    return $content;
+}, 11);
