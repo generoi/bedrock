@@ -28,9 +28,10 @@ add_action('wp_enqueue_scripts', function () {
     }
 
     wp_enqueue_style('sage/app.css', asset('styles/app.css')->uri(), [], null);
+    wp_style_add_data('sage/app.css', 'path', asset('styles/app.css')->path());
     // Print out global stylesheet in the <head>
     wp_add_inline_style('sage/app.css', wp_get_global_stylesheet());
-}, 100);
+}, 0);
 
 add_action('wp_head', function () {
     echo app(GoogleFonts::class)->load()->toHtml();
