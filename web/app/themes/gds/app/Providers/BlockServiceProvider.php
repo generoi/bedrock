@@ -3,6 +3,7 @@
 namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
+use Roots\Acorn\Assets\Contracts\Asset;
 use Symfony\Component\Finder\Finder;
 use WP_Block_Supports;
 use WP_Block_Type;
@@ -20,6 +21,7 @@ class BlockServiceProvider extends ServiceProvider
     {
         add_action('init', [$this, 'registerBlocks']);
         add_action('init', [$this, 'registerBlockSupports']);
+        add_action('after_setup_theme', [$this, 'registerBlockStyleAssets']);
 
         $this->attachBladeDirective();
         $this->addViewNamespace();
@@ -136,5 +138,35 @@ class BlockServiceProvider extends ServiceProvider
         $this->isRunning = false;
 
         return $output;
+    }
+
+    public function registerBlockStyleAssets(): void
+    {
+        // @see https://make.wordpress.org/core/2021/12/15/using-multiple-stylesheets-per-block/
+        $manifestFile = config('assets.manifests.theme.assets');
+        if (! file_exists($manifestFile)) {
+            return;
+        }
+
+        $manifest = json_decode(file_get_contents($manifestFile), true);
+
+        collect($manifest)
+            ->keys()
+            ->filter(fn ($file) => str_starts_with($file, 'styles/blocks/'))
+            ->map(fn ($file) => asset($file))
+            ->each(function (Asset $asset) {
+                $filename = pathinfo(basename($asset->path()), PATHINFO_FILENAME);
+                [$collection, $blockName] = explode('-', $filename, 2);
+                $handle = "sage/block/$filename";
+
+                // Register the handles early so we can enqueue them even without the block
+                wp_register_style($handle, $asset->uri());
+                wp_style_add_data($handle, 'path', $asset->path());
+                wp_enqueue_block_style("$collection/$blockName", [
+                    'handle' => "sage/block/$filename",
+                    'src' => $asset->uri(),
+                    'path' => $asset->path(),
+                ]);
+            });
     }
 }

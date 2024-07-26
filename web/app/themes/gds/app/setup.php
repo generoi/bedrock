@@ -8,7 +8,6 @@ namespace App;
 
 use GeneroWP\ImageResizer\Rewriters\InlineStyles;
 use GeneroWP\ImageResizer\Rewriters\Urls;
-use Roots\Acorn\Assets\Contracts\Asset;
 use Spatie\GoogleFonts\GoogleFonts;
 use WP_Theme_JSON_Data;
 
@@ -141,28 +140,6 @@ add_action('after_setup_theme', function () {
 
     // Enqueue editor styles
     add_editor_style('public/styles/editor.css');
-
-    // @see https://make.wordpress.org/core/2021/12/15/using-multiple-stylesheets-per-block/
-    $manifest = config('assets.manifests.theme.assets');
-    collect(json_decode(file_get_contents($manifest), true))
-        ->keys()
-        ->filter(fn ($file) => strpos($file, '/styles/blocks/') === 0)
-        ->map(fn ($file) => asset($file))
-        ->each(function (Asset $asset) {
-            $filename = pathinfo(basename($asset->path()), PATHINFO_FILENAME);
-            [$collection, $blockName] = explode('-', $filename, 2);
-            $handle = "sage/block/$filename";
-
-            // Register the handles early so we can enqueue them even without the block
-            wp_register_style($handle, $asset->uri());
-            wp_style_add_data($handle, 'path', $asset->path());
-
-            wp_enqueue_block_style("$collection/$blockName", [
-                'handle' => $handle,
-                'src' => $asset->uri(),
-                'path' => $asset->path(),
-            ]);
-        });
 }, 20);
 
 /**

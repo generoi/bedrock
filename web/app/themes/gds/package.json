@@ -4,7 +4,10 @@
     "extends @wordpress/browserslist-config"
   ],
   "scripts": {
-    "build": "mix",
+    "dev": "vite",
+    "build": "vite build",
+    "serve": "vite preview",
+
     "build:production": "mix --production",
     "start": "mix watch",
     "start:poll": "mix watch -- --watch-options-poll=1000",
@@ -47,7 +50,14 @@
     "stylelint": "^16.0",
     "stylelint-checkstyle-reporter": "^1.0.0",
     "stylelint-config-standard-scss": "^13.0",
-    "vue-template-compiler": "^2.6.12"
+    "vue-template-compiler": "^2.6.12",
+
+
+    "rollup-plugin-copy": "^3.5.0",
+    "rollup-plugin-multi-input": "^1.4.1",
+    "rollup-plugin-output-manifest": "^2.0.0",
+    "rollup-plugin-wp-resolve": "^1.0.9",
+    "vite": "^5.1.4"
   },
   "dependencies": {
     "@fortawesome/fontawesome-pro": "^6.2.1",
