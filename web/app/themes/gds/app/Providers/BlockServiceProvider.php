@@ -160,8 +160,8 @@ class BlockServiceProvider extends ServiceProvider
                 $handle = "sage/block/$filename";
 
                 // Register the handles early so we can enqueue them even without the block
-                wp_register_style($handle, $asset->uri());
-                wp_style_add_data($handle, 'path', $asset->path());
+                // wp_register_style($handle, $asset->uri());
+                // wp_style_add_data($handle, 'path', $asset->path());
                 wp_enqueue_block_style("$collection/$blockName", [
                     'handle' => "sage/block/$filename",
                     'src' => $asset->uri(),
