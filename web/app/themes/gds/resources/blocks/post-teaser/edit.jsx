@@ -1,7 +1,6 @@
 import clsx from 'clsx';
 
 /** @wordpress */
-import { __ } from '@wordpress/i18n'
 import {
   AlignmentControl,
   BlockControls,
@@ -30,11 +29,11 @@ function BlockEdit(props) {
   context,
   isSelected,
   } = props;
-  const isInsideQueryBlock = context.hasOwnProperty('queryId');
+  const isInsideQueryBlock = 'queryId' in context;
 
   const {
     postId,
-    postType
+    postType,
   } = isInsideQueryBlock ? context : attributes;
 
   const {
