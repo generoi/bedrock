@@ -103,7 +103,7 @@ function BlockEdit(props) {
 
   const {
     postId,
-    postType
+    postType,
   } = context;
 
   const [featuredImage] = useEntityProp('postType', postType, 'featured_media', postId);
@@ -149,7 +149,7 @@ function BlockEdit(props) {
   const blockProps = useBlockProps({
     className: clsx({
       [`has-text-align-${textAlign}`]: textAlign,
-    })
+    }),
   });
   const innerBlockProps = useInnerBlocksProps(
     { className: 'wp-block-gds-media-card__content' },

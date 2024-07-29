@@ -30,7 +30,7 @@ import { useRef, useEffect } from '@wordpress/element';
 import { useSelect, useDispatch } from '@wordpress/data';
 
 const TEMPLATE = [
-  ['gds/carousel-item']
+  ['gds/carousel-item'],
 ];
 const ALLOWED_BLOCKS = ['gds/carousel-item'];
 

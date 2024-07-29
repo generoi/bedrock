@@ -4,7 +4,7 @@ import {
   useBlockProps,
 } from '@wordpress/block-editor'
 
-function BlockEdit(props) {
+function BlockEdit() {
   return (
     <>
       <div { ...useBlockProps({}) }>
