@@ -23,5 +23,5 @@
   },
   "editorScript": "file:./index.js",
   "editorStyle": "file:./editor.css",
-  "script": "file:/script.js"
+  "script": "file:./script.js"
 }
