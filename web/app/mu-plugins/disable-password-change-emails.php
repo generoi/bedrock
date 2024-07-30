@@ -10,7 +10,7 @@ Author URI:   https://genero.fi/
 License:      MIT License
 */
 
-if (!is_blog_installed()) {
+if (! is_blog_installed()) {
     return;
 }
 
@@ -19,9 +19,6 @@ if (!is_blog_installed()) {
  *
  * @see pluggable.php
  */
-if (!function_exists('wp_password_change_notification')) {
-    function wp_password_change_notification($user)
-    {
-        return;
-    }
+if (! function_exists('wp_password_change_notification')) {
+    function wp_password_change_notification($user) {}
 }

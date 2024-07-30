@@ -12,7 +12,7 @@ License:      MIT License
 
 namespace Genero\Site;
 
-if (!is_blog_installed()) {
+if (! is_blog_installed()) {
     return;
 }
 
@@ -23,7 +23,6 @@ if (!is_blog_installed()) {
  * @see https://premium.wpmudev.org/blog/how-to-hide-your-wordpress-version-number/
  * @see http://frankiejarrett.com/2012/05/how-to-hide-your-wordpress-version-number-completely/
  */
-
 
 /**
  *  Removes the Wordpress version number from the head in the output
@@ -52,11 +51,12 @@ function genero_remove_wp_version_strings(string $src): string
 {
     global $wp_version;
     parse_str(parse_url($src, PHP_URL_QUERY) ?: '', $query);
-    if (!empty($query['ver']) && $query['ver'] === $wp_version) {
+    if (! empty($query['ver']) && $query['ver'] === $wp_version) {
         $src = remove_query_arg('ver', $src);
         $src = add_query_arg('xyz', crypt($wp_version, 'somesalt'), $src);
     }
+
     return $src;
 }
-add_filter('script_loader_src', __NAMESPACE__ . '\\genero_remove_wp_version_strings');
-add_filter('style_loader_src', __NAMESPACE__ . '\\genero_remove_wp_version_strings');
+add_filter('script_loader_src', __NAMESPACE__.'\\genero_remove_wp_version_strings');
+add_filter('style_loader_src', __NAMESPACE__.'\\genero_remove_wp_version_strings');

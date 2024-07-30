@@ -22,7 +22,7 @@ class PerformanceServiceProvider extends ServiceProvider
         add_action('wp_enqueue_scripts', [$this, 'replaceWithModernJquery']);
         add_action('wp_enqueue_scripts', [$this, 'maybeRemoveJquery'], 100);
         add_action('wp_print_styles', [$this, 'dequeueAssets'], 100);
-        add_filter('styles_inline_size_limit', fn() => 60_000);
+        add_filter('styles_inline_size_limit', fn () => 60_000);
     }
 
     /**
@@ -99,7 +99,7 @@ class PerformanceServiceProvider extends ServiceProvider
         wp_deregister_script('jquery');
         wp_deregister_script('jquery-core');
         wp_deregister_script('jquery-migrate');
-        wp_register_script('jquery', asset('jquery.min.js')->uri(), [], null, ['strategy'  => 'defer']);
+        wp_register_script('jquery', asset('jquery.min.js')->uri(), [], null, ['strategy' => 'defer']);
     }
 
     public function dequeueAssets(): void

@@ -37,7 +37,7 @@ register_block_type(asset('blocks/post-teaser/block.json')->path(), [
         ]);
 
         return $content;
-    }
+    },
 ]);
 
 add_action('rest_api_init', function () {
@@ -55,6 +55,7 @@ add_action('rest_api_init', function () {
                     'postType' => $object['type'],
                 ],
             ]);
+
             return $content;
         },
         'schema' => [

@@ -19,5 +19,5 @@ register_block_type(asset('blocks/gallery-carousel/block.json')->path(), [
             'media' => $media,
             'gallery_id' => wp_unique_id('carousel-slide-'),
         ]);
-    }
+    },
 ]);

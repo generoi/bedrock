@@ -44,6 +44,7 @@ class ContentSecurityPolicyServiceProvider extends ServiceProvider
     public function addScriptNonce(array $attributes): array
     {
         $attributes['nonce'] = csp_nonce();
+
         return $attributes;
     }
 

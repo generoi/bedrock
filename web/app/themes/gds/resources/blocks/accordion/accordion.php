@@ -11,7 +11,7 @@ register_block_type(asset('blocks/accordion/block.json')->path(), [
             'content' => $content,
             'block' => $block,
         ]);
-    }
+    },
 ]);
 
 add_action('wp_enqueue_scripts', function () {

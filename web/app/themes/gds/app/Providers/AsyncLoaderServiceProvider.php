@@ -47,9 +47,9 @@ class AsyncLoaderServiceProvider extends ServiceProvider
         }
 
         if (wp_styles()->get_data($handle, 'async')) {
-            $tag = str_replace(' src', " async src", $tag);
+            $tag = str_replace(' src', ' async src', $tag);
         } elseif (wp_styles()->get_data($handle, 'defer')) {
-            $tag = str_replace(' src', " defer src", $tag);
+            $tag = str_replace(' src', ' defer src', $tag);
         } else {
             foreach (
                 [
@@ -76,18 +76,18 @@ class AsyncLoaderServiceProvider extends ServiceProvider
         }
 
         $isAsync = wp_styles()->get_data($handle, 'async') && doing_action('wp_head');
-        if (!$isAsync && !in_array($handle, config('assets.async_styles'))) {
+        if (! $isAsync && ! in_array($handle, config('assets.async_styles'))) {
             return $html;
         }
 
-        $dom = new \DOMDocument();
+        $dom = new \DOMDocument;
         $dom->loadHTML($html);
         /** @var \DOMElement $tag */
         $tag = $dom->getElementsByTagName('link')->item(0);
         $tag->setAttribute('media', 'print');
         $tag->setAttribute('data-async-styles', '');
         $tag->removeAttribute('type');
-        $html = $dom->saveHTML($tag) . PHP_EOL;
+        $html = $dom->saveHTML($tag).PHP_EOL;
 
         return $html;
     }

@@ -11,7 +11,7 @@ License:      MIT License
 */
 
 add_action('admin_enqueue_scripts', function ($hook) {
-    if ('user-edit.php' == $hook or 'user-new.php' == $hook or 'profile.php' == $hook or 'wp-login?action=rp' == $hook) {
+    if ($hook == 'user-edit.php' or $hook == 'user-new.php' or $hook == 'profile.php' or $hook == 'wp-login?action=rp') {
         echo '
             <script>
                 window.addEventListener("load", function () {

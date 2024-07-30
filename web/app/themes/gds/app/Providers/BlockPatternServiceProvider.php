@@ -24,7 +24,7 @@ class BlockPatternServiceProvider extends ServiceProvider
 
         foreach ($patterns as $pattern) {
             $slug = $pattern['name'];
-            $filepath = $patternDir . '/' . ($pattern['file'] ?? "$slug.html");
+            $filepath = $patternDir.'/'.($pattern['file'] ?? "$slug.html");
 
             register_block_pattern("$appName/$slug", [
                 'title' => $pattern['title'],
@@ -39,7 +39,5 @@ class BlockPatternServiceProvider extends ServiceProvider
      *
      * @return void
      */
-    public function boot()
-    {
-    }
+    public function boot() {}
 }

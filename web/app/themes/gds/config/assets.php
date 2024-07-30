@@ -1,7 +1,5 @@
 <?php
 
-use function Roots\public_path;
-
 return [
 
     /*
@@ -38,7 +36,7 @@ return [
             'url' => get_theme_file_uri('public'),
             'assets' => get_theme_file_path('public/manifest.json'),
             'bundles' => get_theme_file_path('public/entrypoints.json'),
-        ]
+        ],
     ],
 
     'deferred_scripts' => [

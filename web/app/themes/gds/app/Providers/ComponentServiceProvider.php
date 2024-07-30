@@ -22,13 +22,13 @@ class ComponentServiceProvider extends ServiceProvider
     {
         $dir = $this->app->resourcePath('components');
 
-        foreach ((new Finder())->in($dir)->name('*.php') as $file) {
+        foreach ((new Finder)->in($dir)->name('*.php') as $file) {
             $blockDefinitions = [
                 'index.php',
-                basename($file->getPath()) . '.php',
+                basename($file->getPath()).'.php',
             ];
 
-            if (!in_array($file->getFilename(), $blockDefinitions)) {
+            if (! in_array($file->getFilename(), $blockDefinitions)) {
                 continue;
             }
 

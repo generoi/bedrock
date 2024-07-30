@@ -11,5 +11,5 @@ register_block_type(asset('blocks/carousel-item/block.json')->path(), [
             'content' => $content,
             'block' => $block,
         ]);
-    }
+    },
 ]);

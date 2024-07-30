@@ -80,6 +80,7 @@ class WooCommerceServiceProvider extends ServiceProvider
     public function filterProductTabs(array $tabs): array
     {
         unset($tabs['description']);
+
         return $tabs;
     }
 
@@ -90,6 +91,7 @@ class WooCommerceServiceProvider extends ServiceProvider
     {
         $classes[] = 'woocommerce-block-theme-has-button-styles';
         $classes[] = 'woocommerce-uses-block-theme';
+
         return $classes;
     }
 
@@ -101,6 +103,7 @@ class WooCommerceServiceProvider extends ServiceProvider
         if ($functionName === 'wp_enqueue_script()' && str_contains($message, '"wp-editor"')) {
             return false;
         }
+
         return $trigger;
     }
 
@@ -109,6 +112,7 @@ class WooCommerceServiceProvider extends ServiceProvider
         unset($styles['woocommerce-general']);
         unset($styles['woocommerce-layout']);
         unset($styles['woocommerce-smallscreen']);
+
         return $styles;
     }
 
@@ -141,6 +145,7 @@ class WooCommerceServiceProvider extends ServiceProvider
     {
         // Adds custom fonts to the site
         unset($features['launch-your-store']);
+
         return $features;
     }
 

@@ -29,14 +29,14 @@ class BlockServiceProvider extends ServiceProvider
     {
         $blocksDir = $this->app->resourcePath('blocks');
 
-        foreach ((new Finder())->in($blocksDir)->name('*.php') as $block) {
+        foreach ((new Finder)->in($blocksDir)->name('*.php') as $block) {
             $blockDefinitions = [
                 'index.php',
                 // block-name.php
-                basename($block->getPath()) . '.php',
+                basename($block->getPath()).'.php',
             ];
 
-            if (!in_array($block->getFilename(), $blockDefinitions)) {
+            if (! in_array($block->getFilename(), $blockDefinitions)) {
                 continue;
             }
 
@@ -53,6 +53,7 @@ class BlockServiceProvider extends ServiceProvider
      * Add a blade directive for rendering blocks with custom attributes
      *
      * @example
+     *
      * @block('gds/article-list', [
      *   'align' => 'wide',
      * ])
@@ -86,9 +87,7 @@ class BlockServiceProvider extends ServiceProvider
      *
      * @return void
      */
-    public function boot()
-    {
-    }
+    public function boot() {}
 
     public function registerBlockSupports(): void
     {
@@ -115,8 +114,8 @@ class BlockServiceProvider extends ServiceProvider
         $originalAttributes = WP_Block_Supports::$block_to_render['attrs'] ?? [];
 
         $defaultAttributes = collect($blockType->attributes)
-            ->filter(fn ($definition, $key) => !isset($originalAttributes[$key]))
-            ->filter(fn ($definition) => !empty($definition['default']))
+            ->filter(fn ($definition, $key) => ! isset($originalAttributes[$key]))
+            ->filter(fn ($definition) => ! empty($definition['default']))
             ->map(fn ($definition) => $definition['default'])
             ->all();
 

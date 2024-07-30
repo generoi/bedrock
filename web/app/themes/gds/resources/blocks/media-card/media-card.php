@@ -11,5 +11,5 @@ register_block_type(asset('blocks/media-card/block.json')->path(), [
             'content' => $content,
             'block' => $block,
         ]);
-    }
+    },
 ]);

@@ -14,7 +14,7 @@ namespace Genero\Site;
 
 use WP_Error;
 
-if (!is_blog_installed()) {
+if (! is_blog_installed()) {
     return;
 }
 
@@ -23,7 +23,7 @@ add_action('init', function () {
         return;
     }
 
-    if (!preg_match('/author=([0-9]*)/i', $_SERVER['QUERY_STRING'] ?? '')) {
+    if (! preg_match('/author=([0-9]*)/i', $_SERVER['QUERY_STRING'] ?? '')) {
         return;
     }
 
@@ -34,6 +34,7 @@ add_action('init', function () {
                 unset($query_vars[$key]);
             }
         }
+
         return $query_vars;
     });
 });
@@ -62,7 +63,7 @@ add_filter('login_errors', function ($message) {
 add_action('lost_password', function (WP_Error $errors) {
     // Always redirect even if there are errors.
     if ($errors->has_errors()) {
-        $redirect_to = !empty($_REQUEST['redirect_to']) ? $_REQUEST['redirect_to'] : 'wp-login.php?checkemail=confirm';
+        $redirect_to = ! empty($_REQUEST['redirect_to']) ? $_REQUEST['redirect_to'] : 'wp-login.php?checkemail=confirm';
         wp_safe_redirect($redirect_to);
     }
 });
