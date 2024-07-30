@@ -1,5 +1,5 @@
-@use "@/common/breakpoints" as *;
-@use "@/components/typography" as typography;
+@use "@styles/common/breakpoints" as *;
+@use "@styles/components/typography" as typography;
 
 :root {
   --footer-padding: 60px 0 30px 0;

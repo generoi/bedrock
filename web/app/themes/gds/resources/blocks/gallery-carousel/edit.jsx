@@ -1,4 +1,4 @@
-import '~/components/carousel';
+import '@scripts/components/carousel';
 
 /** @wordpress */
 import { __ } from '@wordpress/i18n'

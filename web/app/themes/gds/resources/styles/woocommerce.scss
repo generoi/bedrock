@@ -1,6 +1,6 @@
-@use "@/common/breakpoints" as *;
-@use "@/common/functions";
-@use "@/components/typography";
+@use "common/breakpoints" as *;
+@use "common/functions";
+@use "components/typography";
 
 // Legacy shortcode pages (account, thankyou)
 .is-root-container > .woocommerce {

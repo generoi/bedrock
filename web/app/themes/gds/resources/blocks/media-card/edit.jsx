@@ -19,7 +19,7 @@ import {
 import { useEntityProp, store as coreStore } from '@wordpress/core-data';
 import { useSelect } from '@wordpress/data';
 
-import { attributesFromMedia } from '~/editor/utils.js';
+import { attributesFromMedia } from '@scripts/editor/utils.js';
 
 const ALLOWED_MEDIA_TYPES = ['image'];
 const INNER_BLOCKS_TEMPLATE = [

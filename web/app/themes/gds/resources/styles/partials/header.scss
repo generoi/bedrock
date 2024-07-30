@@ -1,6 +1,6 @@
-@use "@/components/hamburger";
-@use "@/components/collapsed-search";
-@use "@/common/breakpoints" as *;
+@use "@styles/components/hamburger";
+@use "@styles/components/collapsed-search";
+@use "@styles/common/breakpoints" as *;
 
 .header {
   --action-gutter: 16px;

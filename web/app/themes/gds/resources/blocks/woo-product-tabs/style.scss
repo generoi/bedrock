@@ -1,8 +1,8 @@
 /* stylelint-disable selector-class-pattern */
 
-@use "@/components/screen-reader" as *;
-@use "@/components/button";
-@use "@/components/typography";
+@use "@styles/components/screen-reader" as *;
+@use "@styles/components/button";
+@use "@styles/components/typography";
 
 .wp-block-gds-woo-product-tabs {
   h2 {

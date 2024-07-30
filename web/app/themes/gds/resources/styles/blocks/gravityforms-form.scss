@@ -1,6 +1,6 @@
-@use "@/common/breakpoints" as *;
-@use "@/components/typography";
-@use "@/components/button";
+@use "@styles/common/breakpoints" as *;
+@use "@styles/components/typography";
+@use "@styles/components/button";
 
 // @note requires Gravityforms 2.5+ with default styles not loaded.
 /* stylelint-disable selector-class-pattern */

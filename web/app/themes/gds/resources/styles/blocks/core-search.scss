@@ -1,6 +1,6 @@
-@use "@/components/form";
-@use "@/components/button" as button;
-@use "@/components/typography" as *;
+@use "@styles/components/form";
+@use "@styles/components/button" as button;
+@use "@styles/components/typography" as *;
 
 .wp-block-search {
   position: relative;
