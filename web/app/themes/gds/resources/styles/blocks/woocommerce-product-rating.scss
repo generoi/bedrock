@@ -1,4 +1,4 @@
-@use "@/components/screen-reader" as sr;
+@use "@styles/components/screen-reader" as sr;
 
 .wc-block-components-product-rating {
   --block-gutter: var(--block-gutter-xs);

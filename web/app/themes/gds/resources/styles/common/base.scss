@@ -1,7 +1,7 @@
-@use "@/components/typography" as *;
-@use "@/components/button" as button;
-@use "@/components/form" as form;
-@use "@/config";
+@use "@styles/components/typography" as *;
+@use "@styles/components/button" as button;
+@use "@styles/components/form" as form;
+@use "@styles/config";
 
 body {
   @include body;

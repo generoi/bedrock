@@ -1,5 +1,5 @@
-@use "@/components/button" as button;
-@use "@/components/typography" as typography;
+@use "@styles/components/button" as button;
+@use "@styles/components/typography" as typography;
 
 .wp-block-file {
   a:not(.wp-block-file__button) {
