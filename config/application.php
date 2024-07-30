@@ -17,20 +17,20 @@ use function Env\env;
 $root_dir = dirname(__DIR__);
 
 /** @var string Document Root */
-$webroot_dir = $root_dir . '/web';
+$webroot_dir = $root_dir.'/web';
 
 /**
  * Use Dotenv to set required environment variables and load .env file in root
  * .env.local will override .env if it exists
  */
-if (file_exists($root_dir . '/.env')) {
-    $env_files = file_exists($root_dir . '/.env.local')
+if (file_exists($root_dir.'/.env')) {
+    $env_files = file_exists($root_dir.'/.env.local')
         ? ['.env', '.env.local']
         : ['.env'];
 
     $dotenv = Dotenv\Dotenv::createUnsafeImmutable($root_dir, $env_files, false);
     $dotenv->load();
-    if (!env('DATABASE_URL')) {
+    if (! env('DATABASE_URL')) {
         $dotenv->required(['DB_NAME', 'DB_USER', 'DB_PASSWORD']);
     }
 }
@@ -48,14 +48,14 @@ define('WP_ENVIRONMENT_TYPE', env('WP_ENVIRONMENT_TYPE') ?: match (true) {
  * URLs
  */
 Config::define('WP_HOME', env('WP_HOME') ?: env('DDEV_PRIMARY_URL') ?: 'https://gdsbedrock.kinsta.cloud');
-Config::define('WP_SITEURL', env('WP_SITEURL') ?: Config::get('WP_HOME') . '/wp');
+Config::define('WP_SITEURL', env('WP_SITEURL') ?: Config::get('WP_HOME').'/wp');
 
 /**
  * Custom Content Directory
  */
 Config::define('CONTENT_DIR', '/app');
-Config::define('WP_CONTENT_DIR', $webroot_dir . Config::get('CONTENT_DIR'));
-Config::define('WP_CONTENT_URL', Config::get('WP_HOME') . Config::get('CONTENT_DIR'));
+Config::define('WP_CONTENT_DIR', $webroot_dir.Config::get('CONTENT_DIR'));
+Config::define('WP_CONTENT_URL', Config::get('WP_HOME').Config::get('CONTENT_DIR'));
 
 /**
  * DB settings
@@ -131,7 +131,7 @@ Config::define('ACF_LITE', true);
 // Do not connect Jetpack to a WP account.
 Config::define('JETPACK_DEV_DEBUG', true);
 // Fix Kinsta MU Plugins URL path with Bedrock
-Config::define('KINSTAMU_CUSTOM_MUPLUGIN_URL', Config::get('WP_CONTENT_URL') . '/mu-plugins/kinsta-mu-plugins');
+Config::define('KINSTAMU_CUSTOM_MUPLUGIN_URL', Config::get('WP_CONTENT_URL').'/mu-plugins/kinsta-mu-plugins');
 
 /**
  * Debugging Settings
@@ -149,7 +149,7 @@ if (isset($_SERVER['HTTP_X_FORWARDED_PROTO']) && $_SERVER['HTTP_X_FORWARDED_PROT
     $_SERVER['HTTPS'] = 'on';
 }
 
-$env_config = __DIR__ . '/environments/' . WP_ENVIRONMENT_TYPE . '.php';
+$env_config = __DIR__.'/environments/'.WP_ENVIRONMENT_TYPE.'.php';
 
 if (file_exists($env_config)) {
     require_once $env_config;
@@ -160,6 +160,6 @@ Config::apply();
 /**
  * Bootstrap WordPress
  */
-if (!defined('ABSPATH')) {
-    define('ABSPATH', $webroot_dir . '/wp/');
+if (! defined('ABSPATH')) {
+    define('ABSPATH', $webroot_dir.'/wp/');
 }

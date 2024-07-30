@@ -16,5 +16,5 @@ register_block_type(asset('blocks/share/block.json')->path(), [
             'url' => $attributes->url ?? get_permalink(),
             'share_id' => wp_unique_id('share'),
         ]);
-    }
+    },
 ]);

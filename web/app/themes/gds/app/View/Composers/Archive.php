@@ -2,9 +2,7 @@
 
 namespace App\View\Composers;
 
-use App\View\Composers\Traits\HasPost;
 use Roots\Acorn\View\Composer;
-use WP_Post;
 use WP_Query;
 
 class Archive extends Composer

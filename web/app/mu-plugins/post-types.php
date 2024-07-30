@@ -15,7 +15,7 @@ namespace Genero\Site;
 use PostTypes\PostType;
 use PostTypes\Taxonomy;
 
-if (!is_blog_installed()) {
+if (! is_blog_installed()) {
     return;
 }
 
@@ -34,9 +34,10 @@ class PostTypes
 
     public static function getInstance()
     {
-        if (null === self::$instance) {
-            self::$instance = new self();
+        if (self::$instance === null) {
+            self::$instance = new self;
         }
+
         return self::$instance;
     }
 
@@ -48,6 +49,7 @@ class PostTypes
 
     /**
      * Register all post types and their taxonomies.
+     *
      * @note needs to run during `init`.
      */
     public function register()
@@ -71,6 +73,7 @@ class PostTypes
                     'with_front' => true,
                 ];
             }
+
             return $args;
         }, 10, 2);
 

@@ -28,6 +28,7 @@ class Content extends Composer
         if (str_contains($post->post_content, '<!-- wp:post-title')) {
             return true;
         }
+
         return false;
     }
 }

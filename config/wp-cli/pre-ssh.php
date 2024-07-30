@@ -16,7 +16,6 @@
  *   bin_path: $HOME/.config/composer/vendor/bin
  *   php_path: /usr/bin/php72
  */
-
 WP_CLI::add_hook('before_ssh', function () {
     $runner = WP_CLI::get_runner();
     $runner->init_config();
@@ -30,7 +29,7 @@ WP_CLI::add_hook('before_ssh', function () {
     // Eg. /var/www/wordpress
     $project_root = dirname(dirname($wp_path));
     // Eg. /var/www/wordpress/vendor/bin
-    if (!empty($config['bin_path'])) {
+    if (! empty($config['bin_path'])) {
         $paths[] = $config['bin_path'];
     }
     $paths[] = "$project_root/vendor/bin";
@@ -45,7 +44,7 @@ WP_CLI::add_hook('before_ssh', function () {
     $source_profile = '[ -e /etc/profile.d/composer.sh ] && source /etc/profile.d/composer.sh';
 
     // path to php binary
-    $php_path = !empty($config['php_path']) ? 'export WP_CLI_PHP=' . $config['php_path'] : '';
+    $php_path = ! empty($config['php_path']) ? 'export WP_CLI_PHP='.$config['php_path'] : '';
 
-    putenv('WP_CLI_SSH_PRE_CMD=' . $source_profile . ';export PATH=' . implode(':', $paths) . ';' . $php_path . '');
+    putenv('WP_CLI_SSH_PRE_CMD='.$source_profile.';export PATH='.implode(':', $paths).';'.$php_path.'');
 });

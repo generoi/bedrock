@@ -95,6 +95,7 @@ add_filter('wp_theme_json_data_default', function (WP_Theme_JSON_Data $jsonData)
     $data['settings']['shadow']['presets']['default'] = [];
 
     $jsonData = new WP_Theme_JSON_Data($data);
+
     return $jsonData;
 }, 1000);
 
@@ -106,12 +107,14 @@ add_filter('wp_theme_json_data_default', function (WP_Theme_JSON_Data $jsonData)
 add_action('after_setup_theme', function () {
     /**
      * Enable plugins to manage the document title
+     *
      * @link https://developer.wordpress.org/reference/functions/add_theme_support/#title-tag
      */
     add_theme_support('title-tag');
 
     /**
      * Register navigation menus
+     *
      * @link https://developer.wordpress.org/reference/functions/register_nav_menus/
      */
     register_nav_menus([
@@ -121,30 +124,35 @@ add_action('after_setup_theme', function () {
 
     /**
      * Enable post thumbnails
+     *
      * @link https://developer.wordpress.org/themes/functionality/featured-images-post-thumbnails/
      */
     add_theme_support('post-thumbnails');
 
     /**
      * Enable responsive embeds
+     *
      * @link https://wordpress.org/gutenberg/handbook/designers-developers/developers/themes/theme-support/#responsive-embedded-content
      */
     add_theme_support('responsive-embeds');
 
     /**
      * Enable HTML5 markup support
+     *
      * @link https://developer.wordpress.org/reference/functions/add_theme_support/#html5
      */
     add_theme_support('html5', ['caption', 'comment-form', 'comment-list', 'gallery', 'search-form', 'style', 'script']);
 
     /**
      * Enable selective refresh for widgets in customizer
+     *
      * @link https://developer.wordpress.org/themes/advanced-topics/customizer-api/#theme-support-in-sidebars
      */
     add_theme_support('customize-selective-refresh-widgets');
 
     /**
      * Enable editor styles in block editor
+     *
      * @link https://developer.wordpress.org/block-editor/how-to-guides/themes/theme-support/#editor-styles
      */
     add_theme_support('editor-styles');
@@ -177,35 +185,34 @@ add_action('widgets_init', function () {
         'before_widget' => '',
         'after_widget' => '',
         'before_title' => '<h5 class="widget__title">',
-        'after_title' => '</h5>'
+        'after_title' => '</h5>',
     ];
 
     register_sidebar([
         'name' => __('Footer: Contact', 'gds'),
-        'id' => 'footer-contact'
+        'id' => 'footer-contact',
     ] + $config);
 
     register_sidebar([
         'name' => __('Footer: Social', 'gds'),
-        'id' => 'footer-social'
+        'id' => 'footer-social',
     ] + $config);
 
     register_sidebar([
         'name' => __('Footer: Menu', 'gds'),
-        'id' => 'footer-menu'
+        'id' => 'footer-menu',
     ] + $config);
 
     register_sidebar([
         'name' => __('Footer: Newsletter', 'gds'),
-        'id' => 'footer-newsletter'
+        'id' => 'footer-newsletter',
     ] + $config);
 
     register_sidebar([
         'name' => __('Footer: Terms & conditions', 'gds'),
-        'id' => 'footer-terms-conditions'
+        'id' => 'footer-terms-conditions',
     ] + $config);
 });
-
 
 /**
  * Disable Image URL rewriters but keep other optimizations.

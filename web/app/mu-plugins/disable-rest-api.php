@@ -14,7 +14,7 @@ namespace Genero\Site;
 
 use WP_Error;
 
-if (!is_blog_installed()) {
+if (! is_blog_installed()) {
     return;
 }
 
@@ -32,9 +32,10 @@ add_filter('rest_authentication_errors', function ($access) {
         return $access;
     }
 
-    if (!is_user_logged_in()) {
+    if (! is_user_logged_in()) {
         $message = apply_filters('disable_wp_rest_api_error', __('REST API restricted to authenticated users.', 'disable-wp-rest-api'));
-        return new WP_Error('rest_login_required', $message, array('status' => rest_authorization_required_code()));
+
+        return new WP_Error('rest_login_required', $message, ['status' => rest_authorization_required_code()]);
     }
 
     return $access;

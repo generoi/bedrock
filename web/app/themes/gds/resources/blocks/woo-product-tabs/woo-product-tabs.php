@@ -11,5 +11,5 @@ register_block_type(asset('blocks/woo-product-tabs/block.json')->path(), [
         echo view('blocks::woo-product-tabs.woo-product-tabs', [
             'is_preview' => is_bool($isPreview) ? $isPreview : false,
         ]);
-    }
+    },
 ]);

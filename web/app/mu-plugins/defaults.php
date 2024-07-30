@@ -12,7 +12,7 @@ License:      MIT License
 
 namespace Genero\Site;
 
-if (!is_blog_installed()) {
+if (! is_blog_installed()) {
     return;
 }
 /**
@@ -25,15 +25,15 @@ if (defined('XMLRPC_REQUEST') && XMLRPC_REQUEST) {
 /**
  * Disable dashboard browse-happy requests / widget
  */
-if (is_blog_admin() && !empty($_SERVER['HTTP_USER_AGENT'])) {
-    add_filter('pre_site_transient_browser_' . md5($_SERVER['HTTP_USER_AGENT']), '__return_empty_array');
+if (is_blog_admin() && ! empty($_SERVER['HTTP_USER_AGENT'])) {
+    add_filter('pre_site_transient_browser_'.md5($_SERVER['HTTP_USER_AGENT']), '__return_empty_array');
 }
 
 /**
  * Disable dashboard php version widget (avoid unecessary SQL queries and HTTP requests)
  */
 if (is_blog_admin()) {
-    add_filter('pre_site_transient_php_check_' . md5(phpversion()), function ($default) {
+    add_filter('pre_site_transient_php_check_'.md5(phpversion()), function ($default) {
         return ['is_acceptable' => true];
     });
 }
@@ -83,10 +83,10 @@ add_action('init', function () {
                 apply_filters('emoji_svg_url', 'https://s.w.org/images/core/emoji/2/svg/'),
             ]);
         }
+
         return $urls;
     }, 10, 2);
 });
-
 
 /**
  * @see https://github.com/Automattic/wp-super-cache/issues/397
@@ -110,6 +110,7 @@ remove_filter('comment_text', 'capital_P_dangit', 31);
 add_filter('default_hidden_columns', function () {
     $hidden[] = 'wpseo-score';
     $hidden[] = 'wpseo-score-readability';
+
     return $hidden;
 });
 
@@ -141,7 +142,7 @@ add_filter('pre_option_scporder_notice', '__return_true');
 remove_action('admin_notices', 'woothemes_updater_notice');
 remove_action('admin_notices', 'widgetopts_admin_notices');
 add_action('admin_head', function () {
-    if (!current_user_can('update_core')) {
+    if (! current_user_can('update_core')) {
         remove_action('admin_notices', 'update_nag', 3);
     }
 });
@@ -178,7 +179,7 @@ add_action('admin_enqueue_scripts', function () {
         return;
     }
     foreach ($wp_filter["{$taxonomy}_edit_form"]->callbacks['10'] as $callback) {
-        if (!empty($callback['function'][0]) && $callback['function'][0] instanceof \acf_form_taxonomy) {
+        if (! empty($callback['function'][0]) && $callback['function'][0] instanceof \acf_form_taxonomy) {
             remove_action("{$taxonomy}_edit_form", $callback['function']);
             add_action("{$taxonomy}_edit_form", $callback['function'], 9, 2);
             break;
@@ -203,12 +204,12 @@ add_action('admin_bar_menu', function () {
 /**
  * Show Environment in Admin Bar color is backwards from a clients perspective
  */
-add_action('wp_enqueue_scripts', __NAMESPACE__ . '\\shc_styling', 11);
-add_action('admin_enqueue_scripts', __NAMESPACE__ . '\\shc_styling', 11);
+add_action('wp_enqueue_scripts', __NAMESPACE__.'\\shc_styling', 11);
+add_action('admin_enqueue_scripts', __NAMESPACE__.'\\shc_styling', 11);
 
 function shc_styling()
 {
-    $styles = "
+    $styles = '
         #wpadminbar .ab-top-menu .shc-show-env.prod .ab-item,
         #wpadminbar .ab-top-menu .shc-show-env.prod:hover .ab-item {
             background-color: #46b450;
@@ -217,7 +218,7 @@ function shc_styling()
         #wpadminbar .ab-top-menu .shc-show-env.dev:hover .ab-item {
             background-color: #dc3232;
         }
-    ";
+    ';
     wp_add_inline_style('shc-show-env', $styles);
 }
 

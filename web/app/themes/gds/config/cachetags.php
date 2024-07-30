@@ -1,12 +1,10 @@
 <?php
 
-use Genero\Sage\CacheTags\Actions\Blocks;
 use Genero\Sage\CacheTags\Actions\Core;
 use Genero\Sage\CacheTags\Actions\DebugComment;
 use Genero\Sage\CacheTags\Actions\Gravityform;
-use Genero\Sage\CacheTags\Actions\WooCommerce;
 use Genero\Sage\CacheTags\Actions\Site;
-use Genero\Sage\CacheTags\Invalidators\DebugCacheInvalidator;
+use Genero\Sage\CacheTags\Actions\WooCommerce;
 use Genero\Sage\CacheTags\Invalidators\KinstaCacheInvalidator;
 use Genero\Sage\CacheTags\Stores\WordpressDbStore;
 
@@ -29,5 +27,5 @@ return [
         Gravityform::class,
         WooCommerce::class,
         Site::class,
-    ]
+    ],
 ];

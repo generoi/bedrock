@@ -16,6 +16,7 @@ class SageSvg extends BaseSageSvg
             if (! isset($attrs['aria-hidden'])) {
                 $attrs['aria-hidden'] = 'true';
             }
+
             return parent::render($image, $class, $attrs);
         }
 
@@ -30,6 +31,7 @@ class SageSvg extends BaseSageSvg
             sprintf('$1<title id="%s">%s</title>', $titleId, $title),
             parent::render($image, $class, $attrs)
         );
+
         return new HtmlString($svg);
     }
 }

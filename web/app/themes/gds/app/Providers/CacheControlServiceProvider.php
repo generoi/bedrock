@@ -40,19 +40,21 @@ class CacheControlServiceProvider extends ServiceProvider
 
         if (is_admin_bar_showing() || is_admin()) {
             nocache_headers();
+
             return;
         }
 
         if ($_REQUEST['add-to-cart'] ?? null) {
             nocache_headers();
+
             return;
         }
 
         if ($_REQUEST['show-reset-form'] ?? null) {
             nocache_headers();
+
             return;
         }
-
 
         // Cache 404s for 1h
         if (is_404()) {
@@ -60,6 +62,7 @@ class CacheControlServiceProvider extends ServiceProvider
                 'Cache-Control: %s',
                 $this->buildCacheControlHeader(sharedMaxAge: HOUR_IN_SECONDS)
             ));
+
             return;
         }
 
@@ -96,6 +99,7 @@ class CacheControlServiceProvider extends ServiceProvider
         }
 
         $response->set_headers($headers);
+
         return $response;
     }
 
@@ -115,7 +119,7 @@ class CacheControlServiceProvider extends ServiceProvider
                 if (strtolower($header) === 'cache-control') {
                     return true;
                 }
-            // Sequential
+                // Sequential
             } else {
                 if (str_starts_with('cache-control:', strtolower($value))) {
                     return true;
@@ -127,11 +131,11 @@ class CacheControlServiceProvider extends ServiceProvider
     }
 
     /**
-     * @param string $type Cache Control type. Defaults to public
-     * @param int $maxAge Browser cache. Defaults to 0, do not store
-     * @param int $sharedMaxAge Shared proxy caches. Defaults to 1 week
-     * @param int $staleWhileRevlidate Serve stale content while revalidating. Defaults to 1 month
-     * @param int $staleIfError Serve stale content if error. Defaults to 1 month
+     * @param  string  $type  Cache Control type. Defaults to public
+     * @param  int  $maxAge  Browser cache. Defaults to 0, do not store
+     * @param  int  $sharedMaxAge  Shared proxy caches. Defaults to 1 week
+     * @param  int  $staleWhileRevlidate  Serve stale content while revalidating. Defaults to 1 month
+     * @param  int  $staleIfError  Serve stale content if error. Defaults to 1 month
      */
     protected function buildCacheControlHeader(
         string $type = 'public',

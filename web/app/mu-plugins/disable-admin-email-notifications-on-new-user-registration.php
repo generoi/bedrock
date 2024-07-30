@@ -12,9 +12,7 @@ License:      MIT License
 
 namespace Genero\Site;
 
-use WP_Error;
-
-if (!is_blog_installed()) {
+if (! is_blog_installed()) {
     return;
 }
 
@@ -33,5 +31,5 @@ function sendNewUserNotifications($userId, $notify = 'both')
 
 remove_action('register_new_user', 'wp_send_new_user_notifications');
 remove_action('edit_user_created_user', 'wp_send_new_user_notifications');
-add_action('register_new_user', __NAMESPACE__ . '\\sendNewUserNotifications');
-add_action('edit_user_created_user', __NAMESPACE__ . '\\sendNewUserNotifications', 10, 2);
+add_action('register_new_user', __NAMESPACE__.'\\sendNewUserNotifications');
+add_action('edit_user_created_user', __NAMESPACE__.'\\sendNewUserNotifications', 10, 2);

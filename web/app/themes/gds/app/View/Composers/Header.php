@@ -2,8 +2,8 @@
 
 namespace App\View\Composers;
 
-use Roots\Acorn\View\Composer;
 use Log1x\Navi\Navi;
+use Roots\Acorn\View\Composer;
 use stdClass;
 
 class Header extends Composer
@@ -40,9 +40,10 @@ class Header extends Composer
 
     public function languages(): array
     {
-        if (!function_exists('pll_the_languages')) {
+        if (! function_exists('pll_the_languages')) {
             return [];
         }
+
         return collect(pll_the_languages(['raw' => true]))
             ->map(fn ($language) => (object) $language)
             ->all();
@@ -54,13 +55,14 @@ class Header extends Composer
             return [];
         }
 
-        $navigation = (new Navi())->build($location);
+        $navigation = (new Navi)->build($location);
 
         if ($navigation->isEmpty()) {
             return [];
         }
 
         $menu = apply_filters('wp_nav_menu_objects', $navigation->toArray(), []);
+
         return $menu;
     }
 

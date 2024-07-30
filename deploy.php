@@ -12,11 +12,11 @@ import('vendor/generoi/deployer-genero/common.php');
 import('vendor/generoi/deployer-genero/setup.php');
 import('vendor/generoi/deployer-genero/wordpress.php');
 
-require_once __DIR__ . '/vendor/autoload.php';
+require_once __DIR__.'/vendor/autoload.php';
 $robo = Robo::createConfiguration(['robo.yml'])->export();
 
 set('scaffold_machine_name', $robo['machine_name']);
-set('scaffold_env_file', __DIR__ . '/.env.example');
+set('scaffold_env_file', __DIR__.'/.env.example');
 set('theme_dir', $robo['theme_path']);
 set('keep_releases', 5);
 // set('branch', 'master')
@@ -39,23 +39,23 @@ set('bin/wp', './vendor/bin/wp');
 set('rsync_src', '{{build_artifact_dir}}');
 set('rsync_dest', '{{release_path}}');
 set('rsync', [
-    'exclude'       => [...get('writable_dirs'), ...get('shared_files')],
-    'include'       => [],
-    'filter'        => [],
-    'exclude-file'  => false,
-    'include-file'  => false,
-    'filter-file'   => false,
+    'exclude' => [...get('writable_dirs'), ...get('shared_files')],
+    'include' => [],
+    'filter' => [],
+    'exclude-file' => false,
+    'include-file' => false,
+    'filter-file' => false,
     'filter-perdir' => false,
-    'flags'         => 'rv',
-    'options'       => ['delete', 'links', 'chmod=u+w'],
-    'timeout'       => 3600,
+    'flags' => 'rv',
+    'options' => ['delete', 'links', 'chmod=u+w'],
+    'timeout' => 3600,
 ]);
 
 /**
  * Build configuration
  */
 set('build_repository', __DIR__); // @todo github
-set('build_path', '/tmp/dep-' . basename(__DIR__));
+set('build_path', '/tmp/dep-'.basename(__DIR__));
 set('build_artifact_dir', '{{build_path}}/artifact');
 set('build_artifact_exclude', [
     '.git',
@@ -75,7 +75,7 @@ set('build_artifact_exclude', [
 /**
  * Hosts
  */
-if (!empty($prod = $robo['env']['@production'])) {
+if (! empty($prod = $robo['env']['@production'])) {
     host('production')
         ->setHostname($prod['host'])
         ->setPort($prod['port'] ?? 22)
@@ -83,12 +83,12 @@ if (!empty($prod = $robo['env']['@production'])) {
         ->set('url', $prod['url'])
         ->set('deploy_path', dirname($prod['path']))
         ->set('bin/wp', '{{ release_path }}/vendor/bin/wp');
-        // ->set('http_user', 'apache')
-        // ->set('bin/wp', '/usr/local/bin/wp')
-        // ->set('cachetool', '127.0.0.1:11000')
+    // ->set('http_user', 'apache')
+    // ->set('bin/wp', '/usr/local/bin/wp')
+    // ->set('cachetool', '127.0.0.1:11000')
 }
 
-if (!empty($staging = $robo['env']['@staging'])) {
+if (! empty($staging = $robo['env']['@staging'])) {
     host('staging')
         ->setHostname($staging['host'])
         ->setPort($staging['port'] ?? 22)
@@ -123,7 +123,7 @@ task('build:theme', function () {
 task('build:artifact', function () {
     // Sanitize content by copying files into an artifact directory
     $exclude = array_reduce(get('build_artifact_exclude'), function ($carry, $exclude) {
-        return $carry . ' --exclude=' . escapeshellarg($exclude);
+        return $carry.' --exclude='.escapeshellarg($exclude);
     }, '');
     runLocally("rsync -r --delete --links $exclude '{{build_path}}/' '{{build_artifact_dir}}/'");
 });

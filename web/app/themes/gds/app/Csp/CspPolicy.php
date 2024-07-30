@@ -58,8 +58,7 @@ class CspPolicy extends Basic
             // Facebook Pixel
             ->addDirective(Directive::FORM_ACTION, ['https://www.facebook.com'])
             ->addDirective(Directive::FRAME, ['https://www.facebook.com'])
-            ->addDirective(Directive::IMG, ['https://www.facebook.com'])
-            ;
+            ->addDirective(Directive::IMG, ['https://www.facebook.com']);
 
         // Custom
         $this
