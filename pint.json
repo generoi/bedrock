@@ -1,0 +1,20 @@
+{
+  "preset": "laravel",
+  "exclude": [
+    "web/app/cache",
+    "web/app/languages",
+    "web/app/mu-plugins/kinsta-mu-plugins",
+    "web/app/mu-plugins/show-environment-in-admin-bar",
+    "web/app/plugins",
+    "web/app/uploads",
+    "web/wp"
+  ],
+  "notPath": [
+    "web/genero-status.php",
+    "web/index.php",
+    "web/app/advanced-cache.php",
+    "web/app/object-cache.php",
+    "web/app/wp-cache-config.php",
+    "web/app/mu-plugins/wp-cli-login-server.php"
+  ]
+}
