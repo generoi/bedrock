@@ -81,7 +81,8 @@
     "brainmaestro/composer-git-hooks": "^3.0.0",
     "deployer/deployer": "^7.0",
     "generoi/deployer-genero": "^0.3",
-    "staabm/annotate-pull-request-from-checkstyle": "^1.5"
+    "staabm/annotate-pull-request-from-checkstyle": "^1.5",
+    "laravel/pint": "^1.17"
   },
   "config": {
     "optimize-autoloader": true,
