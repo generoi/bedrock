@@ -42,10 +42,7 @@
       "mediaType": "image",
       "mediaUrl": "https://cldup.com/Fz-ASbo2s3.jpg"
     },
-    "innerBlocks": [
-      { "name": "core/heading" },
-      { "name": "core/paragraph" }
-    ],
+    "innerBlocks": [{"name": "core/heading"}, {"name": "core/paragraph"}],
     "viewportWidth": 400
   },
   "editorScript": "file:./index.js",

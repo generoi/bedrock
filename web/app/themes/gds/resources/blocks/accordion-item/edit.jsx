@@ -1,14 +1,12 @@
 import {__} from '@wordpress/i18n';
-import { useRef } from '@wordpress/element';
+import {useRef} from '@wordpress/element';
 import {
   useBlockProps,
   useInnerBlocksProps,
   RichText,
 } from '@wordpress/block-editor';
 
-const TEMPLATE = [
-  ['core/paragraph'],
-];
+const TEMPLATE = [['core/paragraph']];
 
 const ALLOWED_BLOCKS = [
   'core/paragraph',
@@ -22,16 +20,17 @@ const ALLOWED_BLOCKS = [
 ];
 
 function Edit({attributes, setAttributes}) {
-  const {
-    label,
-  } = attributes;
+  const {label} = attributes;
 
   const blockProps = useBlockProps({});
 
-  const innerBlockProps = useInnerBlocksProps({}, {
-    template: TEMPLATE,
-    allowedBlocks: ALLOWED_BLOCKS,
-  });
+  const innerBlockProps = useInnerBlocksProps(
+    {},
+    {
+      template: TEMPLATE,
+      allowedBlocks: ALLOWED_BLOCKS,
+    },
+  );
 
   const ref = useRef();
 
@@ -43,7 +42,7 @@ function Edit({attributes, setAttributes}) {
             tagName="div"
             slot="label"
             value={label}
-            onChange={(label) => setAttributes({ label })}
+            onChange={(label) => setAttributes({label})}
             onClick={() => {
               // Force expanded since stopPropagation doesnt work.
               ref.current.setAttribute('expanded', '');

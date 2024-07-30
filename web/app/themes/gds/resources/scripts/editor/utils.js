@@ -1,7 +1,7 @@
 export function attributesFromMedia(setAttributes) {
-  return ( media ) => {
+  return (media) => {
     if (!media || !media.url) {
-      setAttributes({ url: undefined, id: undefined });
+      setAttributes({url: undefined, id: undefined});
       return;
     }
     let mediaType;
@@ -20,13 +20,13 @@ export function attributesFromMedia(setAttributes) {
       mediaType = media.type;
     }
 
-    setAttributes( {
+    setAttributes({
       mediaAlt: media.alt,
       mediaId: media.id,
       mediaUrl: media.url,
       mediaType,
       focalPoint: undefined,
-    } );
+    });
   };
 }
 

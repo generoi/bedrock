@@ -15,7 +15,6 @@
         color: var(--gds-color-primary);
         text-decoration: underline;
       }
-
     }
   }
 
@@ -24,7 +23,7 @@
     text-decoration: underline;
   }
 
-  &:not([class*="is-content-justification-"]) {
+  &:not([class*='is-content-justification-']) {
     justify-content: center;
   }
 }

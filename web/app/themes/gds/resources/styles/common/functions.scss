@@ -1,6 +1,11 @@
-@use "sass:math";
+@use 'sass:math';
 
-@function sloped-size($min-size, $max-size, $min-width: 375px, $max-width: 1400px) {
+@function sloped-size(
+  $min-size,
+  $max-size,
+  $min-width: 375px,
+  $max-width: 1400px
+) {
   @if math.unit($min-size) == 'rem' {
     $min-width: rem($min-width);
     $max-width: rem($max-width);
@@ -13,10 +18,8 @@
   @return clamp(
     #{$min-size},
     (
-      #{$min-size} +
-      #{strip-unit($max-size - $min-size)} *
-      (100vw - #{$min-width}) /
-      #{strip-unit($max-width - $min-width)}
+      #{$min-size} + #{strip-unit($max-size - $min-size)} *
+        (100vw - #{$min-width}) / #{strip-unit($max-width - $min-width)}
     ),
     #{$max-size}
   );

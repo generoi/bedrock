@@ -7,11 +7,7 @@
   "keywords": ["preview"],
   "category": "media",
   "icon": "id-alt",
-  "usesContext": [
-    "postId",
-    "postType",
-    "queryId"
-	],
+  "usesContext": ["postId", "postType", "queryId"],
   "attributes": {
     "postId": {
       "type": "number"
@@ -27,8 +23,7 @@
     "html": false,
     "color": {}
   },
-  "example": {
-  },
+  "example": {},
   "editorScript": "file:./index.js",
   "editorStyle": "file:./editor.css",
   "style": "file:./style.css"

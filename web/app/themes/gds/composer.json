@@ -40,7 +40,10 @@
     }
   },
   "repositories": [
-    { "type": "composer", "url": "https://packagist.minasithil.genero.fi/" }
+    {
+      "type": "composer",
+      "url": "https://packagist.minasithil.genero.fi/"
+    }
   ],
   "require": {
     "php": "^7.3|^8.0"

@@ -7,8 +7,7 @@
   "icon": "format-image",
   "category": "layout",
   "parent": ["gds/carousel"],
-  "attributes": {
-  },
+  "attributes": {},
   "supports": {
     "html": false,
     "color": {},

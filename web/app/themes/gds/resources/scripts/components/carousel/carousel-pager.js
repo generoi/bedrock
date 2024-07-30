@@ -1,4 +1,4 @@
-import { EVENT_SLIDE } from './carousel';
+import {EVENT_SLIDE} from './carousel';
 
 export class CarouselPager extends HTMLElement {
   #buttons;
@@ -6,7 +6,7 @@ export class CarouselPager extends HTMLElement {
   constructor() {
     super();
 
-    this.attachShadow({ mode: 'open' });
+    this.attachShadow({mode: 'open'});
   }
 
   connectedCallback() {
@@ -15,11 +15,11 @@ export class CarouselPager extends HTMLElement {
   }
 
   onSlide(e) {
-    const { slide } = e.detail;
+    const {slide} = e.detail;
     if (!this.contains(slide)) {
       return;
     }
-    const activeTab  = this.#buttons.find((button) => {
+    const activeTab = this.#buttons.find((button) => {
       return button.getAttribute('aria-controls') === slide.id;
     });
 
@@ -33,9 +33,7 @@ export class CarouselPager extends HTMLElement {
 
   onPagerClick(e) {
     const tab = e.target.closest('button');
-    const slide = document.getElementById(
-      tab.getAttribute('aria-controls')
-    );
+    const slide = document.getElementById(tab.getAttribute('aria-controls'));
     const carousel = slide.closest('gds-carousel');
     carousel.slideTo(slide);
     slide.focus();
@@ -57,7 +55,7 @@ export class CarouselPager extends HTMLElement {
 
     for (const [idx, button] of this.#buttons.entries()) {
       if (!button.getAttribute('aria-label')) {
-        button.setAttribute('aria-label', `Go to slide ${idx}`)
+        button.setAttribute('aria-label', `Go to slide ${idx}`);
       }
       if (!button.getAttribute('aria-current')) {
         button.setAttribute('aria-current', idx === 0 ? 'true' : 'false');

@@ -7,13 +7,13 @@ import {
 const PRODUCT_TEMPLATE_BLOCK = [
   'woocommerce/product-template',
   {},
-  [
-    ['gds/post-teaser', {}],
-  ],
+  [['gds/post-teaser', {}]],
 ];
 
 window._wpLoadBlockEditor.then(() => {
-  for (const variation of getBlockVariations('woocommerce/product-collection')) {
+  for (const variation of getBlockVariations(
+    'woocommerce/product-collection',
+  )) {
     variation.innerBlocks = variation.innerBlocks.map((block) => {
       const [name, attributes, innerBlocks] = block;
       switch (name) {
@@ -25,7 +25,7 @@ window._wpLoadBlockEditor.then(() => {
       }
 
       return [name, attributes, innerBlocks].filter(Boolean);
-    })
+    });
 
     unregisterBlockVariation('woocommerce/product-collection', variation.name);
 
@@ -42,4 +42,3 @@ window._wpLoadBlockEditor.then(() => {
     registerBlockVariation('woocommerce/product-collection', variation);
   }
 });
-

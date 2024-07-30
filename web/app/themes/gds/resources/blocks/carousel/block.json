@@ -27,19 +27,28 @@
       {
         "name": "gds/carousel-item",
         "innerBlocks": [
-          { "name": "core/image", "attributes": { "url": "https://cldup.com/Fz-ASbo2s3.jpg" } }
+          {
+            "name": "core/image",
+            "attributes": {"url": "https://cldup.com/Fz-ASbo2s3.jpg"}
+          }
         ]
       },
       {
         "name": "gds/carousel-item",
         "innerBlocks": [
-          { "name": "core/image", "attributes": { "url": "https://cldup.com/Fz-ASbo2s3.jpg" } }
+          {
+            "name": "core/image",
+            "attributes": {"url": "https://cldup.com/Fz-ASbo2s3.jpg"}
+          }
         ]
       },
       {
         "name": "gds/carousel-item",
         "innerBlocks": [
-          { "name": "core/image", "attributes": { "url": "https://cldup.com/Fz-ASbo2s3.jpg" } }
+          {
+            "name": "core/image",
+            "attributes": {"url": "https://cldup.com/Fz-ASbo2s3.jpg"}
+          }
         ]
       }
     ],

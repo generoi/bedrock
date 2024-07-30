@@ -1,4 +1,4 @@
-@use "@styles/components/typography";
+@use '@styles/components/typography';
 
 .wp-block-gds-share {
   position: relative;
@@ -63,7 +63,7 @@
     }
   }
 
-  &__button[aria-expanded="true"] ~ &__list {
+  &__button[aria-expanded='true'] ~ &__list {
     display: inline-flex;
   }
 
@@ -73,12 +73,12 @@
       display: none;
     }
 
-    &[status="success"] [data-success-icon] {
+    &[status='success'] [data-success-icon] {
       display: inline-block;
       color: var(--gds-color-success);
     }
 
-    &[status="failed"] [data-failed-icon] {
+    &[status='failed'] [data-failed-icon] {
       display: inline-block;
       color: var(--gds-color-error);
     }

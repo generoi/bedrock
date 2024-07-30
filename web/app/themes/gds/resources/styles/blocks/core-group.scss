@@ -14,6 +14,9 @@
     $min-width: 200px;
     $max-width: calc((100% - #{$total-gap-width}) / var(--grid-columns));
 
-    grid-template-columns: repeat(auto-fill, minmax(max(#{$min-width}, #{$max-width}), 1fr));
+    grid-template-columns: repeat(
+      auto-fill,
+      minmax(max(#{$min-width}, #{$max-width}), 1fr)
+    );
   }
 }

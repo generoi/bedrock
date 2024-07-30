@@ -1,13 +1,11 @@
 /** @wordpress */
-import { __ } from '@wordpress/i18n'
-import {
-  useBlockProps,
-} from '@wordpress/block-editor'
+import {__} from '@wordpress/i18n';
+import {useBlockProps} from '@wordpress/block-editor';
 
 function BlockEdit() {
   return (
     <>
-      <div { ...useBlockProps({}) }>
+      <div {...useBlockProps({})}>
         <toggle-button class="wp-block-gds-share__button">
           <span className="wp-block-gds-share__button-label">
             {__('Share', 'gds')}
@@ -16,7 +14,7 @@ function BlockEdit() {
         </toggle-button>
       </div>
     </>
-  )
+  );
 }
 
 export default BlockEdit;

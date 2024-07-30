@@ -1,8 +1,8 @@
 /* stylelint-disable selector-class-pattern */
 
-@use "@styles/components/screen-reader" as *;
-@use "@styles/components/button";
-@use "@styles/components/typography";
+@use '@styles/components/screen-reader' as *;
+@use '@styles/components/button';
+@use '@styles/components/typography';
 
 .wp-block-gds-woo-product-tabs {
   h2 {
@@ -92,7 +92,7 @@
     }
   }
 
-  [type="submit"] {
+  [type='submit'] {
     @include button.size-s;
   }
 
@@ -109,7 +109,7 @@
       height: 1em;
       display: inline-block;
       text-decoration: none;
-      mask-image: svg-load("solid/star.svg");
+      mask-image: svg-load('solid/star.svg');
       mask-repeat: no-repeat;
       mask-size: 1em;
       background-color: var(--gds-color-mid-gray);
@@ -128,4 +128,3 @@
     }
   }
 }
-

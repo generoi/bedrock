@@ -1,6 +1,6 @@
-@use "@styles/common/breakpoints" as *;
-@use "@styles/components/typography";
-@use "@styles/components/button";
+@use '@styles/common/breakpoints' as *;
+@use '@styles/components/typography';
+@use '@styles/components/button';
 
 // @note requires Gravityforms 2.5+ with default styles not loaded.
 /* stylelint-disable selector-class-pattern */
@@ -173,8 +173,8 @@
       flex: 1 0 0;
     }
 
-    input[type="checkbox"],
-    input[type="radio"] {
+    input[type='checkbox'],
+    input[type='radio'] {
       flex: 0 0 auto;
       margin-top: 0.27em; // just an approximation
     }
@@ -187,20 +187,20 @@
 
 .gform_validation_error {
   .gfield_error {
-    [type="text"],
-    [type="password"],
-    [type="date"],
-    [type="datetime"],
-    [type="datetime-local"],
-    [type="month"],
-    [type="week"],
-    [type="email"],
-    [type="number"],
-    [type="search"],
-    [type="tel"],
-    [type="time"],
-    [type="url"],
-    [type="color"],
+    [type='text'],
+    [type='password'],
+    [type='date'],
+    [type='datetime'],
+    [type='datetime-local'],
+    [type='month'],
+    [type='week'],
+    [type='email'],
+    [type='number'],
+    [type='search'],
+    [type='tel'],
+    [type='time'],
+    [type='url'],
+    [type='color'],
     select,
     textarea {
       border-color: var(--gds-color-error);
@@ -294,7 +294,7 @@
   flex-wrap: wrap;
   gap: 8px;
 
-  input[type="checkbox"] {
+  input[type='checkbox'] {
     flex: 0 0 auto;
     margin-top: 0.27em; // just an approximation
   }
@@ -408,7 +408,7 @@ img.gform_ajax_spinner {
 
   .ui-icon-circle-triangle-w,
   .ui-icon-circle-triangle-e {
-    mask-image: svg-load("solid/chevron-left.svg");
+    mask-image: svg-load('solid/chevron-left.svg');
     mask-repeat: no-repeat;
     background-color: currentcolor;
     display: inline-block;
@@ -419,7 +419,7 @@ img.gform_ajax_spinner {
   }
 
   .ui-icon-circle-triangle-e {
-    mask-image: svg-load("solid/chevron-right.svg");
+    mask-image: svg-load('solid/chevron-right.svg');
   }
 
   &-title {

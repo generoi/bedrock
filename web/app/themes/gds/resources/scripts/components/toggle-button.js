@@ -14,7 +14,7 @@ export class ToggleButton extends HTMLElement {
   constructor() {
     super();
 
-    this.attachShadow({ mode: 'open' });
+    this.attachShadow({mode: 'open'});
   }
 
   connectedCallback() {
@@ -25,8 +25,14 @@ export class ToggleButton extends HTMLElement {
 
     if (!this.persistent) {
       this.controls.forEach((target) => {
-        target.addEventListener('focusout', this.handleTargetContainerBlur.bind(this, target));
-        target.addEventListener('keydown', this.handleTargetContainerKeyDown.bind(this));
+        target.addEventListener(
+          'focusout',
+          this.handleTargetContainerBlur.bind(this, target),
+        );
+        target.addEventListener(
+          'keydown',
+          this.handleTargetContainerKeyDown.bind(this),
+        );
       });
     }
     this.render();
@@ -41,7 +47,9 @@ export class ToggleButton extends HTMLElement {
     if (!controls) {
       return [];
     }
-    controls = controls.split(' ').map((target) => document.getElementById(target));
+    controls = controls
+      .split(' ')
+      .map((target) => document.getElementById(target));
     return controls;
   }
 
@@ -55,10 +63,10 @@ export class ToggleButton extends HTMLElement {
 
   set expanded(value) {
     this.dispatchEvent(
-      new CustomEvent(
-        value ? EVENT_OPEN : EVENT_CLOSE,
-        {cancelable: true, bubbles: true}
-      )
+      new CustomEvent(value ? EVENT_OPEN : EVENT_CLOSE, {
+        cancelable: true,
+        bubbles: true,
+      }),
     );
   }
 
@@ -78,16 +86,12 @@ export class ToggleButton extends HTMLElement {
 
   #openTarget(target) {
     target.classList.add('is-active');
-    target.dispatchEvent(
-      new CustomEvent(EVENT_OPEN, {bubbles: false})
-    );
+    target.dispatchEvent(new CustomEvent(EVENT_OPEN, {bubbles: false}));
   }
 
   #closeTarget(target) {
     target.classList.remove('is-active');
-    target.dispatchEvent(
-      new CustomEvent(EVENT_CLOSE, {bubbles: false})
-    );
+    target.dispatchEvent(new CustomEvent(EVENT_CLOSE, {bubbles: false}));
   }
 
   handleKeyDown(event) {

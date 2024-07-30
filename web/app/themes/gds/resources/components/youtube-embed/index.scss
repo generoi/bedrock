@@ -1,7 +1,7 @@
 youtube-embed {
   position: relative;
 
-  [slot="button"] {
+  [slot='button'] {
     position: absolute;
     inset: 0;
     display: flex;
@@ -26,7 +26,7 @@ youtube-embed {
     z-index: 1;
   }
 
-  &[playing] [slot="button"] {
+  &[playing] [slot='button'] {
     display: none;
   }
 }

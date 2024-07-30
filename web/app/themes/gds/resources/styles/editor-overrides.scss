@@ -2,10 +2,12 @@
  * Styles in this file wont be prefixed with .editor-styles-wrapper unlike editor.scss
  */
 
-@use "config" with ($is-editor: true);
-@use "config/variables";
-@use "components/colors";
-@use "@fortawesome/fontawesome-pro/css/all";
+@use 'config' with (
+  $is-editor: true
+);
+@use 'config/variables';
+@use 'components/colors';
+@use '@fortawesome/fontawesome-pro/css/all';
 
 // undo wp-admin/css/common.css
 :where(.editor-styles-wrapper) {
@@ -24,7 +26,12 @@
 
 // Undo the styles leaked from our theme styles into the editor sidebar
 .edit-post-sidebar {
-  h1, h2, h3, h4, h5, h6 {
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
     font-family: revert;
     line-height: revert;
     font-weight: revert;

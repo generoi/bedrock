@@ -1,4 +1,4 @@
-import { Path, SVG } from '@wordpress/components';
+import {Path, SVG} from '@wordpress/components';
 
 const variations = [
   {
@@ -15,14 +15,10 @@ const variations = [
       </SVG>
     ),
     innerBlocks: [
-      ['gds/carousel-item', {}, [
-        ['core/paragraph', {}],
-      ]],
-      ['gds/carousel-item', {}, [
-        ['core/paragraph', {}],
-      ]],
+      ['gds/carousel-item', {}, [['core/paragraph', {}]]],
+      ['gds/carousel-item', {}, [['core/paragraph', {}]]],
     ],
-		scope: ['block'],
+    scope: ['block'],
   },
   {
     name: 'three-media-cards',
@@ -39,18 +35,24 @@ const variations = [
       </SVG>
     ),
     innerBlocks: [
-      ['gds/carousel-item', {templateLock: 'all'}, [
-        ['gds/media-card', {lock:{remove: true}}],
-      ]],
-      ['gds/carousel-item', {templateLock: 'all'}, [
-        ['gds/media-card', {lock:{remove: true}}],
-      ]],
-      ['gds/carousel-item', {templateLock: 'all'}, [
-        ['gds/media-card', {lock:{remove: true}}],
-      ]],
+      [
+        'gds/carousel-item',
+        {templateLock: 'all'},
+        [['gds/media-card', {lock: {remove: true}}]],
+      ],
+      [
+        'gds/carousel-item',
+        {templateLock: 'all'},
+        [['gds/media-card', {lock: {remove: true}}]],
+      ],
+      [
+        'gds/carousel-item',
+        {templateLock: 'all'},
+        [['gds/media-card', {lock: {remove: true}}]],
+      ],
     ],
     attributes: {columnCount: 3},
-		scope: ['block', 'inserter'],
+    scope: ['block', 'inserter'],
   },
 ];
 

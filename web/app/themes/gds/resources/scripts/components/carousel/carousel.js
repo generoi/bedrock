@@ -1,5 +1,5 @@
 import throttle from 'lodash-es/throttle';
-import { onIdle } from '../../utils';
+import {onIdle} from '../../utils';
 
 export const EVENT_SLIDE = 'carousel.slide';
 const FOCUSABLE_NODES = 'a, button, textarea, input, select, iframe, video';
@@ -16,13 +16,13 @@ export class Carousel extends HTMLElement {
   constructor() {
     super();
 
-    this.attachShadow({ mode: 'open' });
+    this.attachShadow({mode: 'open'});
   }
 
   connectedCallback() {
     ++this.constructor.#idCounter;
 
-    this.carouselId = `carousel-${this.constructor.#idCounter}`
+    this.carouselId = `carousel-${this.constructor.#idCounter}`;
 
     this.resizeObserver = this.createResizeObserver();
     this.render();
@@ -30,21 +30,19 @@ export class Carousel extends HTMLElement {
   }
 
   reflow(slide) {
-    if (! slide) {
+    if (!slide) {
       slide = this.slide();
     }
     this.style.height = `${slide.clientHeight}px`;
   }
 
   createResizeObserver() {
-    return new ResizeObserver(
-      throttle(this.onResize.bind(this), 500)
-    );
+    return new ResizeObserver(throttle(this.onResize.bind(this), 500));
   }
 
   onResize() {
     this.toggleNavigation();
-    this.reflow()
+    this.reflow();
   }
 
   toggleNavigation() {
@@ -66,7 +64,10 @@ export class Carousel extends HTMLElement {
   }
 
   isAtEnd() {
-    return (this.#carousel.scrollLeft + this.#carousel.clientWidth) >= this.#carousel.scrollWidth;
+    return (
+      this.#carousel.scrollLeft + this.#carousel.clientWidth >=
+      this.#carousel.scrollWidth
+    );
   }
 
   currentSlideIdx() {
@@ -93,7 +94,7 @@ export class Carousel extends HTMLElement {
       left: slide.offsetLeft,
     });
 
-    setTimeout(() => this.#slideToTarget = null, 500);
+    setTimeout(() => (this.#slideToTarget = null), 500);
 
     this.updateLiveRegion(slide);
   }
@@ -124,14 +125,14 @@ export class Carousel extends HTMLElement {
         new CustomEvent(EVENT_SLIDE, {
           cancelable: true,
           bubbles: true,
-          detail: { slide: currentSlide },
-        })
+          detail: {slide: currentSlide},
+        }),
       );
     }
   }
 
   onSlide(e) {
-    const { slide } = e.detail;
+    const {slide} = e.detail;
     if (!this.contains(slide)) {
       return;
     }
@@ -151,10 +152,13 @@ export class Carousel extends HTMLElement {
         console.debug('skip pausing video');
         continue;
       }
-      player.contentWindow.postMessage(JSON.stringify({
-        'event': 'command',
-        'func': 'pauseVideo',
-      }), '*');
+      player.contentWindow.postMessage(
+        JSON.stringify({
+          event: 'command',
+          func: 'pauseVideo',
+        }),
+        '*',
+      );
     }
 
     // Play video
@@ -282,7 +286,10 @@ export class Carousel extends HTMLElement {
 
     this.dataset.isInitialized = '';
     this.#carousel = this.shadowRoot.querySelector('.carousel');
-    this.#carousel.addEventListener('scroll', throttle(this.onScroll.bind(this), 100))
+    this.#carousel.addEventListener(
+      'scroll',
+      throttle(this.onScroll.bind(this), 100),
+    );
 
     if (!this.getAttribute('role')) {
       this.setAttribute('role', 'region');
@@ -303,7 +310,7 @@ export class Carousel extends HTMLElement {
         slide.setAttribute('aria-roledescription', 'slide');
 
         if (!slide.getAttribute('aria-label')) {
-          slide.setAttribute('aria-label', `${idx + 1} of ${slides.length}`)
+          slide.setAttribute('aria-label', `${idx + 1} of ${slides.length}`);
         }
       }
 
@@ -313,10 +320,12 @@ export class Carousel extends HTMLElement {
       // @see https://stackoverflow.com/q/74211636
       if (window.wpImageResizer) {
         onIdle(() => {
-          for (const el of slide.querySelectorAll(window.wpImageResizer.selector)) {
+          for (const el of slide.querySelectorAll(
+            window.wpImageResizer.selector,
+          )) {
             window.wpImageResizer.observer.triggerLoad(el);
           }
-        })
+        });
       }
     }
 
@@ -327,8 +336,14 @@ export class Carousel extends HTMLElement {
 
     if (slides.length > 1) {
       this.resizeObserver.observe(this.#carousel);
-      this.#buttonNextEl?.addEventListener('click', this.slideToNext.bind(this));
-      this.#buttonPrevEl?.addEventListener('click', this.slideToPrev.bind(this));
+      this.#buttonNextEl?.addEventListener(
+        'click',
+        this.slideToNext.bind(this),
+      );
+      this.#buttonPrevEl?.addEventListener(
+        'click',
+        this.slideToPrev.bind(this),
+      );
 
       this.style.height = `${slides[0].clientHeight}px`;
     }

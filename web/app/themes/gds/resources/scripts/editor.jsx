@@ -6,11 +6,11 @@ import {
   registerBlockCollection,
 } from '@wordpress/blocks';
 
-import './editor/block-variations/woocommerce-product-collection'
-import './editor/block-variations/core-query'
-import './editor/filters/with-handpicked-posts'
+import './editor/block-variations/woocommerce-product-collection';
+import './editor/block-variations/core-query';
+import './editor/filters/with-handpicked-posts';
 
-registerBlockCollection('gds', { title: 'Genero Design System' } );
+registerBlockCollection('gds', {title: 'Genero Design System'});
 
 domReady(() => {
   registerBlockStyle('core/list', {
@@ -46,5 +46,5 @@ window._wpLoadBlockEditor.then(() => {
     // 'woocommerce/reviews-by-product',
   ].forEach((block) => {
     unregisterBlockType(block);
-  })
+  });
 });

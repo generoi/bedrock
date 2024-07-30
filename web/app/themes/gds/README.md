@@ -44,12 +44,12 @@ Sage is a WordPress starter theme with a modern development workflow.
 
 ## Features
 
-* Sass for stylesheets
-* Modern JavaScript
-* [Laravel Mix](https://github.com/JeffreyWay/laravel-mix) for compiling assets and concatenating and minifying files
-* [Browsersync](http://www.browsersync.io/) for synchronized browser testing
-* [Blade](https://laravel.com/docs/5.8/blade) as a templating engine
-* [Bootstrap 4](https://getbootstrap.com/) (optional)
+- Sass for stylesheets
+- Modern JavaScript
+- [Laravel Mix](https://github.com/JeffreyWay/laravel-mix) for compiling assets and concatenating and minifying files
+- [Browsersync](http://www.browsersync.io/) for synchronized browser testing
+- [Blade](https://laravel.com/docs/5.8/blade) as a templating engine
+- [Bootstrap 4](https://getbootstrap.com/) (optional)
 
 See a working example at [roots-example-project.com](https://roots-example-project.com/).
 
@@ -57,15 +57,15 @@ See a working example at [roots-example-project.com](https://roots-example-proje
 
 Make sure all dependencies have been installed before moving on:
 
-* [WordPress](https://wordpress.org/) >= 5.4
-* [PHP](https://secure.php.net/manual/en/install.php) >= 7.2.0 (with [`php-mbstring`](https://secure.php.net/manual/en/book.mbstring.php) enabled)
-* [Composer](https://getcomposer.org/download/)
-* [Node.js](http://nodejs.org/) >= 8.0.0
-* NPM
+- [WordPress](https://wordpress.org/) >= 5.4
+- [PHP](https://secure.php.net/manual/en/install.php) >= 7.2.0 (with [`php-mbstring`](https://secure.php.net/manual/en/book.mbstring.php) enabled)
+- [Composer](https://getcomposer.org/download/)
+- [Node.js](http://nodejs.org/) >= 8.0.0
+- NPM
 
 ### Plugin requirements
 
-* Gutenberg 8.2.0+
+- Gutenberg 8.2.0+
 
 ## Theme installation
 
@@ -130,18 +130,18 @@ Edit `app/setup.php` to enable or disable theme features, setup navigation menus
 
 ## Theme development
 
-* Run `npm i` from the theme directory to install dependencies
-* Update `webpack.mix.js` with your local dev URL
+- Run `npm i` from the theme directory to install dependencies
+- Update `webpack.mix.js` with your local dev URL
 
 ### Build commands
 
-* `npm run start` — Compile assets when file changes are made, start Browsersync session
-* `run run build` — Compile and optimize the files in your assets directory
-* `run run build:production` — Compile assets for production
+- `npm run start` — Compile assets when file changes are made, start Browsersync session
+- `run run build` — Compile and optimize the files in your assets directory
+- `run run build:production` — Compile assets for production
 
 ## Documentation
 
-* [Sage documentation](https://roots.io/sage/docs/)
+- [Sage documentation](https://roots.io/sage/docs/)
 
 ## Contributing
 
@@ -157,8 +157,8 @@ Help support our open-source development efforts by [becoming a patron](https://
 
 Keep track of development and community news.
 
-* Participate on the [Roots Discourse](https://discourse.roots.io/)
-* Follow [@rootswp on Twitter](https://twitter.com/rootswp)
-* Read and subscribe to the [Roots Blog](https://roots.io/blog/)
-* Subscribe to the [Roots Newsletter](https://roots.io/subscribe/)
-* Listen to the [Roots Radio podcast](https://roots.io/podcast/)
+- Participate on the [Roots Discourse](https://discourse.roots.io/)
+- Follow [@rootswp on Twitter](https://twitter.com/rootswp)
+- Read and subscribe to the [Roots Blog](https://roots.io/blog/)
+- Subscribe to the [Roots Newsletter](https://roots.io/subscribe/)
+- Listen to the [Roots Radio podcast](https://roots.io/podcast/)

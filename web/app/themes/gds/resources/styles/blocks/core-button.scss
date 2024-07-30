@@ -1,5 +1,5 @@
-@use "@styles/config";
-@use "@styles/components/button" as button;
+@use '@styles/config';
+@use '@styles/components/button' as button;
 
 .wp-block-button {
   &__link,
@@ -21,14 +21,17 @@
 }
 
 // Override .has-custom-font-size which sets it to inherit.
-.has-s-button-font-size.has-s-button-font-size.has-s-button-font-size > .wp-block-button__link {
+.has-s-button-font-size.has-s-button-font-size.has-s-button-font-size
+  > .wp-block-button__link {
   @include button.size-s;
 }
 
-.has-m-button-font-size.has-m-button-font-size.has-m-button-font-size > .wp-block-button__link {
+.has-m-button-font-size.has-m-button-font-size.has-m-button-font-size
+  > .wp-block-button__link {
   @include button.size-m;
 }
 
-.has-l-button-font-size.has-l-button-font-size.has-l-button-font-size > .wp-block-button__link {
+.has-l-button-font-size.has-l-button-font-size.has-l-button-font-size
+  > .wp-block-button__link {
   @include button.size-l;
 }

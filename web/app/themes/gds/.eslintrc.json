@@ -1,9 +1,7 @@
 {
   "$schema": "https://json.schemastore.org/eslintrc.json",
   "root": true,
-  "extends": [
-    "@roots/eslint-config/sage"
-  ],
+  "extends": ["@roots/eslint-config/sage"],
   "parserOptions": {
     "ecmaVersion": "latest"
   },

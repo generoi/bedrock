@@ -1,4 +1,4 @@
-import './modal-dialog.scss'
+import './modal-dialog.scss';
 import {
   EVENT_CLOSE as EVENT_TOGGLE_BUTTON_CLOSE,
   EVENT_OPEN as EVENT_TOGGLE_BUTTON_OPEN,
@@ -34,22 +34,28 @@ export class ModalDialog extends HTMLElement {
   constructor() {
     super();
 
-    this.attachShadow({ mode: 'open' });
+    this.attachShadow({mode: 'open'});
   }
 
   connectedCallback() {
     ++this.constructor.#idCounter;
 
     if (!this.id) {
-      this.id = `modal-dialog-${this.constructor.#idCounter}`
+      this.id = `modal-dialog-${this.constructor.#idCounter}`;
     }
 
     this.addEventListener(EVENT_SHOW, this.show.bind(this));
     this.addEventListener(EVENT_HIDE, this.hide.bind(this));
 
     // Integrate with toggle-button
-    this.addEventListener(EVENT_TOGGLE_BUTTON_OPEN, () => this.visible = true);
-    this.addEventListener(EVENT_TOGGLE_BUTTON_CLOSE, () => this.visible = false);
+    this.addEventListener(
+      EVENT_TOGGLE_BUTTON_OPEN,
+      () => (this.visible = true),
+    );
+    this.addEventListener(
+      EVENT_TOGGLE_BUTTON_CLOSE,
+      () => (this.visible = false),
+    );
 
     this.render();
 
@@ -57,7 +63,10 @@ export class ModalDialog extends HTMLElement {
 
     if (!this.persistent) {
       this.addEventListener('keydown', this.closeOnEsc.bind(this));
-      this.#overlayEl.addEventListener('click', this.closeWhenClickOutside.bind(this));
+      this.#overlayEl.addEventListener(
+        'click',
+        this.closeWhenClickOutside.bind(this),
+      );
     }
   }
 
@@ -73,9 +82,12 @@ export class ModalDialog extends HTMLElement {
     }
 
     const focusableElements = Array.from(
-      this.querySelectorAll(FOCUSABLE_SELECTORS.join(','))
+      this.querySelectorAll(FOCUSABLE_SELECTORS.join(',')),
     ).filter(
-      (child) => child.offsetWidth && child.offsetHeight && child.getClientRects().length
+      (child) =>
+        child.offsetWidth &&
+        child.offsetHeight &&
+        child.getClientRects().length,
     );
 
     const firstFocusableElement = focusableElements.at(0);
@@ -116,10 +128,10 @@ export class ModalDialog extends HTMLElement {
 
   set visible(value) {
     this.dispatchEvent(
-      new CustomEvent(
-        value ? EVENT_SHOW : EVENT_HIDE,
-        {cancelable: true, bubbles: true}
-      )
+      new CustomEvent(value ? EVENT_SHOW : EVENT_HIDE, {
+        cancelable: true,
+        bubbles: true,
+      }),
     );
   }
 
@@ -139,9 +151,15 @@ export class ModalDialog extends HTMLElement {
     // Move focus
     this.focus();
 
-    document.body.addEventListener('focus', this.maintainDialogFocus.bind(this), true);
+    document.body.addEventListener(
+      'focus',
+      this.maintainDialogFocus.bind(this),
+      true,
+    );
     // Mark any element controlling this dialog as expanded
-    for (const el of document.querySelectorAll(`[aria-controls="${this.id}"][aria-expanded]`)) {
+    for (const el of document.querySelectorAll(
+      `[aria-controls="${this.id}"][aria-expanded]`,
+    )) {
       el.setAttribute('aria-expanded', 'true');
     }
   }
@@ -153,9 +171,15 @@ export class ModalDialog extends HTMLElement {
       this.unlockScrolling();
     }
 
-    document.body.removeEventListener('focus', this.maintainDialogFocus.bind(this), true);
+    document.body.removeEventListener(
+      'focus',
+      this.maintainDialogFocus.bind(this),
+      true,
+    );
     // Mark any element controlling this dialog as closed
-    for (const el of document.querySelectorAll(`[aria-controls="${this.id}"][aria-expanded]`)) {
+    for (const el of document.querySelectorAll(
+      `[aria-controls="${this.id}"][aria-expanded]`,
+    )) {
       el.setAttribute('aria-expanded', 'false');
     }
   }
@@ -209,15 +233,17 @@ export class ModalDialog extends HTMLElement {
         role="document"
         part="dialog"
       >
-        ${this.querySelector('[slot="close-icon"]') && (
-          `<button
+        ${
+          (this.querySelector('[slot="close-icon"]') &&
+            `<button
             class="close-button"
             aria-controls="${this.id}"
             part="close-button"
           >
             <slot name="close-icon"></slot>
-          </button>`
-        ) || ''}
+          </button>`) ||
+          ''
+        }
 
         <slot></slot>
       </div>
@@ -225,8 +251,9 @@ export class ModalDialog extends HTMLElement {
 
     this.#overlayEl = this.shadowRoot.querySelector('.overlay');
 
-    this.shadowRoot.querySelector('.close-button')
-      .addEventListener?.('click', () => this.visible = false);
+    this.shadowRoot
+      .querySelector('.close-button')
+      .addEventListener?.('click', () => (this.visible = false));
 
     if (!this.hasAttribute('role')) {
       this.setAttribute('role', 'dialog');

@@ -1,7 +1,11 @@
 @mixin base {
   position: relative;
-  margin-top: calc(var(--gds-hamburger-thickness) + var(--gds-hamburger-line-separation));
-  margin-bottom: calc(var(--gds-hamburger-thickness) + var(--gds-hamburger-line-separation));
+  margin-top: calc(
+    var(--gds-hamburger-thickness) + var(--gds-hamburger-line-separation)
+  );
+  margin-bottom: calc(
+    var(--gds-hamburger-thickness) + var(--gds-hamburger-line-separation)
+  );
   user-select: none;
 
   &,
@@ -22,12 +26,13 @@
   &::before,
   &::after {
     position: absolute;
-    content: "";
+    content: '';
   }
 
   &::before {
     top: calc(
-      -1 * (var(--gds-hamburger-thickness) + var(--gds-hamburger-line-separation))
+      -1 * (var(--gds-hamburger-thickness) +
+            var(--gds-hamburger-line-separation))
     );
   }
 
@@ -47,8 +52,7 @@
   }
 
   &::before {
-    transform:
-      translateY(
+    transform: translateY(
         calc(
           var(--gds-hamburger-line-separation) + var(--gds-hamburger-thickness)
         )
@@ -57,10 +61,10 @@
   }
 
   &::after {
-    transform:
-      translateY(
+    transform: translateY(
         calc(
-          -1 * (var(--gds-hamburger-line-separation) + var(--gds-hamburger-thickness))
+          -1 * (var(--gds-hamburger-line-separation) +
+                var(--gds-hamburger-thickness))
         )
       )
       rotate(-45deg);

@@ -1,17 +1,9 @@
-import {
-  useBlockProps,
-  useInnerBlocksProps,
-} from '@wordpress/block-editor';
+import {useBlockProps, useInnerBlocksProps} from '@wordpress/block-editor';
 
-const TEMPLATE = [
-  ['core/paragraph'],
-];
+const TEMPLATE = [['core/paragraph']];
 
 function Edit({attributes}) {
-	const {
-		templateLock,
-		allowedBlocks,
-	} = attributes;
+  const {templateLock, allowedBlocks} = attributes;
 
   const blockProps = useBlockProps({});
   const innerBlockProps = useInnerBlocksProps(blockProps, {
@@ -20,9 +12,7 @@ function Edit({attributes}) {
     allowedBlocks,
   });
 
-  return (
-    <div {...innerBlockProps} />
-  );
+  return <div {...innerBlockProps} />;
 }
 
 export default Edit;

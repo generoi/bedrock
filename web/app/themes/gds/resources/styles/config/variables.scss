@@ -1,6 +1,6 @@
-@use "@styles/common/breakpoints" as *;
-@use "@styles/common/functions" as *;
-@use "@styles/config";
+@use '@styles/common/breakpoints' as *;
+@use '@styles/common/functions' as *;
+@use '@styles/config';
 
 :root {
   // Colors
@@ -16,7 +16,7 @@
   --gds-color-error: #df5c4e;
 
   // Headings
-  --gds-heading-font-family: "Open sans", sans-serif;
+  --gds-heading-font-family: 'Open sans', sans-serif;
   --gds-heading-xl-font-size: #{sloped-size(em(30px), em(56px))};
   --gds-heading-l-font-size: #{sloped-size(em(30px), em(36px))};
   --gds-heading-m-font-size: #{sloped-size(em(22px), em(30px))};
@@ -27,7 +27,7 @@
   --gds-heading-line-height: 1.4;
 
   // Body
-  --gds-body-font-family: "Open sans", sans-serif;
+  --gds-body-font-family: 'Open sans', sans-serif;
   --gds-body-line-height: 1.7;
   --gds-body-l-font-size: 18px;
   --gds-body-m-font-size: 16px;
@@ -67,7 +67,9 @@
   --grid-gutter-y: var(--grid-gutter);
 
   @for $i from 1 through 12 {
-    --grid-column-#{$i}: calc(var(--grid-column) * #{$i} + var(--grid-gutter) * (#{$i} - 1));
+    --grid-column-#{$i}: calc(
+      var(--grid-column) * #{$i} + var(--grid-gutter) * (#{$i} - 1)
+    );
   }
 
   // Container
@@ -83,7 +85,8 @@
   --gds-input-font-size: 18px;
   --gds-input-line-height: 1.7;
   --gds-input-height: calc(
-    var(--gds-input-padding-y) * 2 + var(--gds-input-font-size) * var(--gds-input-line-height)
+    var(--gds-input-padding-y) * 2 + var(--gds-input-font-size) *
+      var(--gds-input-line-height)
   );
 
   // Buttons

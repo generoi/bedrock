@@ -4,12 +4,15 @@ export class GdsAccordion extends HTMLElement {
   constructor() {
     super();
 
-    this.attachShadow({ mode: 'open' });
+    this.attachShadow({mode: 'open'});
   }
 
   connectedCallback() {
     this.render();
-    this.addEventListener(EVENT_OPEN, this.maybeCloseOtherAccordions.bind(this));
+    this.addEventListener(
+      EVENT_OPEN,
+      this.maybeCloseOtherAccordions.bind(this),
+    );
   }
 
   static get observedAttributes() {

@@ -5,10 +5,7 @@ export default {
   plugins: [
     presetEnv(),
     inlineSvg({
-      paths: [
-        'resources',
-        'public/svgs',
-      ],
+      paths: ['resources', 'public/svgs'],
       encode(code) {
         return code
           .replace(/\(/g, '%28')
@@ -21,6 +18,6 @@ export default {
           .replace(/{/g, '%7B')
           .replace(/}/g, '%7D');
       },
-    })
+    }),
   ],
 };
