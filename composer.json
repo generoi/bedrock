@@ -18,16 +18,30 @@
     }
   ],
   "keywords": [
-    "bedrock", "composer", "roots", "wordpress", "wp", "wp-config"
+    "bedrock",
+    "composer",
+    "roots",
+    "wordpress",
+    "wp",
+    "wp-config"
   ],
   "support": {
     "issues": "https://github.com/roots/bedrock/issues",
     "forum": "https://discourse.roots.io/category/bedrock"
   },
   "repositories": [
-    { "type": "composer", "url": "https://wpackagist.org" },
-    { "type": "composer", "url": "https://packagist.minasithil.genero.fi/" },
-    { "type": "composer", "url": "https://satispress.generodigital.com/satispress/" }
+    {
+      "type": "composer",
+      "url": "https://wpackagist.org"
+    },
+    {
+      "type": "composer",
+      "url": "https://packagist.minasithil.genero.fi/"
+    },
+    {
+      "type": "composer",
+      "url": "https://satispress.generodigital.com/satispress/"
+    }
   ],
   "require": {
     "php": ">=8.0",
@@ -47,12 +61,10 @@
     "generoi/robo-genero": "^0.4",
     "wp-cli/wp-cli-bundle": "^2.9",
     "aaemnnosttv/wp-cli-login-command": "^1.5",
-
     "wpackagist-plugin/show-environment-in-admin-bar": "^1.1",
     "jameelmoses/wordpress-kint-debugger": "^2.0",
     "wpackagist-plugin/query-monitor": "^3.3",
     "wpackagist-plugin/user-switching": "^1.5",
-
     "roots/acorn": "^4.0",
     "log1x/navi": "^3.0",
     "log1x/sage-svg": "^2.0",
@@ -61,7 +73,6 @@
     "spatie/laravel-google-fonts": "^1.2",
     "generoi/sage-woocommerce": "^1.1",
     "generoi/sage-cachetags": "^1.1",
-
     "wpackagist-plugin/safe-svg": "^2.1",
     "wpackagist-plugin/limit-login-attempts-reloaded": "^2.6.1",
     "wpackagist-plugin/wp-sanitize-file-name-plus": "^1.0",
@@ -105,8 +116,12 @@
   "prefer-stable": true,
   "extra": {
     "dropin-paths": {
-      "web/app/mu-plugins": ["package:aaemnnosttv/wp-cli-login-command:plugin/wp-cli-login-server.php"],
-      "web/": ["package:generoi/genero-status:genero-status.php"]
+      "web/app/mu-plugins": [
+        "package:aaemnnosttv/wp-cli-login-command:plugin/wp-cli-login-server.php"
+      ],
+      "web/": [
+        "package:generoi/genero-status:genero-status.php"
+      ]
     },
     "hooks": {
       "pre-commit": "composer test",
@@ -117,8 +132,12 @@
         "type:wordpress-muplugin",
         "wpackagist-plugin/show-environment-in-admin-bar"
       ],
-      "web/app/plugins/{$name}/": ["type:wordpress-plugin"],
-      "web/app/themes/{$name}/": ["type:wordpress-theme"]
+      "web/app/plugins/{$name}/": [
+        "type:wordpress-plugin"
+      ],
+      "web/app/themes/{$name}/": [
+        "type:wordpress-theme"
+      ]
     },
     "wordpress-install-dir": "web/wp",
     "wp-translation-downloader": {
