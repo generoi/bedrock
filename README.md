@@ -4,21 +4,22 @@ _See [roots/bedrock](https://github.com/roots/bedrock#readme) readme for notes a
 
 ## Genero features
 
-* Build tasks using [Robo](https://robo.li/) and our [generoi/robo-genero](https://github.com/generoi/robo-genero) package.
-* Atomic deploys using [Deployer](https://deployer.org/) and our [generoi/deployer-genero](https://github.com/generoi/deployer-genero) package.
-* Composer tasks for building and linting the project. If needed you can customize these for your project.
-* [DDEV](https://ddev.readthedocs.io/) local development environment.
-* [GitHub actions](https://github.com/generoi/bedrock/tree/master/.github/workflows) for deploying, linting, e2e and lighthouse.
-* Bundled opinionated [sage fork](https://github.com/generoi/bedrock/tree/master/web/app/themes/gds) using laravel mix
-* Automatic production/staging `.env` environment detection on Kinsta
-* Various [mu-plugins](https://github.com/generoi/bedrock/tree/master/web/app/mu-plugins) to increase security and set sane defaults.
-
+- Build tasks using [Robo](https://robo.li/) and our [generoi/robo-genero](https://github.com/generoi/robo-genero) package.
+- Atomic deploys using [Deployer](https://deployer.org/) and our [generoi/deployer-genero](https://github.com/generoi/deployer-genero) package.
+- Composer tasks for building and linting the project. If needed you can customize these for your project.
+- [DDEV](https://ddev.readthedocs.io/) local development environment.
+- [GitHub actions](https://github.com/generoi/bedrock/tree/master/.github/workflows) for deploying, linting, e2e and lighthouse.
+- Bundled opinionated [sage fork](https://github.com/generoi/bedrock/tree/master/web/app/themes/gds) using laravel mix
+- Automatic production/staging `.env` environment detection on Kinsta
+- Various [mu-plugins](https://github.com/generoi/bedrock/tree/master/web/app/mu-plugins) to increase security and set sane defaults.
 
 ## Requirements
 
-* PHP 8.0 - [Installation](https://formulae.brew.sh/formula/php@8.0)
-* Composer - [Installation](https://getcomposer.org/doc/00-intro.md#installation-linux-unix-macos)
-* DDEV - [Installation](https://ddev.readthedocs.io/en/latest/users/install/ddev-installation/)
+- PHP 8.0 - [Installation](https://formulae.brew.sh/formula/php@8.0)
+- Composer - [Installation](https://getcomposer.org/doc/00-intro.md#installation-linux-unix-macos)
+- DDEV - [Installation](https://ddev.readthedocs.io/en/latest/users/install/ddev-installation/)
+- Prettier - [Installation](https://prettier.io/docs/en/editors.html)
+- EditorConfig - [Installation](https://editorconfig.org/#download)
 
 ### Authenticate with satispress
 
@@ -31,6 +32,15 @@ You will need to create a user-specific API key on satispress.generodigital.com.
 You will need an authentication token, we have a shared one added to LastPass/1Password.
 
     npm config set "//npm.fontawesome.com/:_authToken" <API-KEY>
+
+### Suggested extensions for Visual Studio Code
+
+- [EditorConfig for VS Code](https://marketplace.visualstudio.com/items?itemName=EditorConfig.EditorConfig)
+- [Prettier - Code formatter](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode)
+- [PHP Intelephense](https://marketplace.visualstudio.com/items?itemName=bmewburn.vscode-intelephense-client)
+- [PHP Debug](https://marketplace.visualstudio.com/items?itemName=xdebug.php-debug)
+- [laravel-blade](https://marketplace.visualstudio.com/items?itemName=cjhowe7.laravel-blade)
+- [Laravel Pint](https://marketplace.visualstudio.com/items?itemName=open-southeners.laravel-pint)
 
 ## Local project development with DDEV
 
@@ -124,45 +134,45 @@ _NOTE: If possible set the project name and repo name to use the domain name of 
 
 1. Create a new project in a new folder for your project
 
-    ```sh
-    # Prompt, create and enter directory
-    echo 'Project directory:'; read project; composer create-project --keep-vcs --repository-url="https://packagist.minasithil.genero.fi" generoi/bedrock:dev-master $project; cd $project;
+   ```sh
+   # Prompt, create and enter directory
+   echo 'Project directory:'; read project; composer create-project --keep-vcs --repository-url="https://packagist.minasithil.genero.fi" generoi/bedrock:dev-master $project; cd $project;
 
-    # Just create
-    composer create-project --keep-vcs --repository-url="https://packagist.minasithil.genero.fi" generoi/bedrock:dev-master <project-dir>
-    
-    # If you cloned the repo rather than used `create-project` you'll need to:
-    # 1. You need to first install robo.
-    composer install:development
-    # 2. replace the placeholder names with a project machine name.
-    ./vendor/bin/robo search:replace
-    ```
+   # Just create
+   composer create-project --keep-vcs --repository-url="https://packagist.minasithil.genero.fi" generoi/bedrock:dev-master <project-dir>
+
+   # If you cloned the repo rather than used `create-project` you'll need to:
+   # 1. You need to first install robo.
+   composer install:development
+   # 2. replace the placeholder names with a project machine name.
+   ./vendor/bin/robo search:replace
+   ```
 
 2. Setup the DDEV container
 
-    ```sh
-    ddev start
-    ```
+   ```sh
+   ddev start
+   ```
 
 3. Setup the staging/production environment
 
-    ```sh
-    # Configure the environment
-    vim wp-cli.yml
-    vim robo.yml
+   ```sh
+   # Configure the environment
+   vim wp-cli.yml
+   vim robo.yml
 
-    # Prep the remote environment
-    ./vendor/bin/dep setup staging
+   # Prep the remote environment
+   ./vendor/bin/dep setup staging
 
-    # Make a first deployment (this will fail due to there not being any database)
-    ./vendor/bin/dep setup staging
+   # Make a first deployment (this will fail due to there not being any database)
+   ./vendor/bin/dep setup staging
 
-    # Deploy your code, files and database
-    ./vendor/bin/robo db:push @staging
-    ./vendor/bin/robo files:push @staging
+   # Deploy your code, files and database
+   ./vendor/bin/robo db:push @staging
+   ./vendor/bin/robo files:push @staging
 
-    # Deploy once more with database available
-    ./vendor/bin/dep deploy staging
-    ```
+   # Deploy once more with database available
+   ./vendor/bin/dep deploy staging
+   ```
 
 4. Setup the GitHub actions, E2E tests etc.
