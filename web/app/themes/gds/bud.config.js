@@ -24,30 +24,6 @@ export default async (app) => {
   //app.copyDir(['svgs', 'icons'], await app.module.getDirectory(`@fortawesome/fontawesome-pro`));
   app.copyWithoutManifest('svgs', await app.module.getDirectory(`@fortawesome/fontawesome-pro`));
 
-  app.postcss
-    .setPlugin('postcss-inline-svg', [
-      'postcss-inline-svg',
-      {
-        paths: [
-          'resources',
-          'public/svgs',
-        ],
-        encode(code) {
-          return code
-            .replace(/\(/g, '%28')
-            .replace(/\)/g, '%29')
-            .replace(/%/g, '%25')
-            .replace(/</g, '%3C')
-            .replace(/>/g, '%3E')
-            .replace(/&/g, '%26')
-            .replace(/#/g, "%23")
-            .replace(/{/g, "%7B")
-            .replace(/}/g, "%7D");
-        },
-      }
-    ])
-    .use(['postcss-inline-svg']);
-
   app
     .alias('@', resolve('resources/styles'))
     .alias('~', resolve('resources/scripts'))
