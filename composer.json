@@ -77,7 +77,6 @@
     "spatie/laravel-csp": "^2.10"
   },
   "require-dev": {
-    "squizlabs/php_codesniffer": "^3.4.2",
     "brainmaestro/composer-git-hooks": "^3.0.0",
     "deployer/deployer": "^7.0",
     "generoi/deployer-genero": "^0.3",
@@ -154,10 +153,21 @@
   "scripts": {
     "post-create-project-cmd": "Generoi\\Robo\\Composer\\ComposerScript::postCreateProject",
     "post-update-cmd": "php -r \"if (is_executable('vendor/bin/cghooks')) exec('vendor/bin/cghooks update');\"",
-    "test": "Generoi\\Robo\\Composer\\ComposerScript::test",
+    "test": [
+      "@composer validate --no-check-all",
+      "@composer lint"
+    ],
+    "lint": [
+      "pint --test",
+      "cd web/app/themes/gds; npm run lint"
+    ],
+    "lint:fix": [
+      "pint",
+      "cd web/app/themes/gds; npm run lint:fix"
+    ],
     "ci": [
-      "composer validate --no-check-all",
-      "vendor/bin/phpcs --report=checkstyle | vendor/bin/cs2pr",
+      "@composer validate --no-check-all",
+      "pint --report=checkstyle | vendor/bin/cs2pr",
       "(cd web/app/themes/gds; npm run ci:scripts --silent) | vendor/bin/cs2pr",
       "(cd web/app/themes/gds; npm run ci:styles --silent 2>&1) | vendor/bin/cs2pr"
     ],
