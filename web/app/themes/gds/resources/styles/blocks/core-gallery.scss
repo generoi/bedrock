@@ -2,7 +2,9 @@
   --wp--style--gallery-gap-default: var(--grid-gutter);
 
   > .wp-element-caption {
-    margin-top: calc(-1 * var(--wp--style--gallery-gap-default) + var(--gds-caption-gutter));
+    margin-top: calc(
+      -1 * var(--wp--style--gallery-gap-default) + var(--gds-caption-gutter)
+    );
   }
 
   &.has-nested-images figure.wp-block-image figcaption {

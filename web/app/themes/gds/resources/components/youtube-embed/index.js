@@ -18,7 +18,7 @@ export class YoutubeEmbed extends HTMLElement {
   constructor() {
     super();
 
-    this.attachShadow({ mode: 'open' });
+    this.attachShadow({mode: 'open'});
   }
 
   connectedCallback() {
@@ -37,10 +37,10 @@ export class YoutubeEmbed extends HTMLElement {
 
   set playing(value) {
     this.dispatchEvent(
-      new CustomEvent(
-        value ? EVENT_PLAY : EVENT_STOP,
-        {cancelable: true, bubbles: true}
-      )
+      new CustomEvent(value ? EVENT_PLAY : EVENT_STOP, {
+        cancelable: true,
+        bubbles: true,
+      }),
     );
   }
 
@@ -80,12 +80,18 @@ export class YoutubeEmbed extends HTMLElement {
     const iframe = document.createElement('iframe');
     iframe.setAttribute('frameborder', '0');
     iframe.setAttribute('allowfullscreen', '');
-    iframe.setAttribute('allow', 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; fullscreen;');
+    iframe.setAttribute(
+      'allow',
+      'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; fullscreen;',
+    );
     // Important: add the autoplay GET parameter, otherwise the user would need to click over the YouTube video again to play it
-    iframe.setAttribute('src', `https://www.youtube.com/embed/${this.youtubeId}?rel=0&showinfo=0&autoplay=1`);
+    iframe.setAttribute(
+      'src',
+      `https://www.youtube.com/embed/${this.youtubeId}?rel=0&showinfo=0&autoplay=1`,
+    );
 
     this.removeIframe();
-    this.#iframeContainer.appendChild(iframe)
+    this.#iframeContainer.appendChild(iframe);
   }
 
   removeIframe() {

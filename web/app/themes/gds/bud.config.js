@@ -1,7 +1,7 @@
 import {homedir} from 'os';
-import {resolve, relative} from 'node:path'
-import BudBlock from './build/bud-block.js'
-import BudCopyWithoutManifest from './build/bud-copy-without-manifest.js'
+import {resolve, relative} from 'node:path';
+import BudBlock from './build/bud-block.js';
+import BudCopyWithoutManifest from './build/bud-copy-without-manifest.js';
 
 /**
  * @type {import('@roots/bud').Config}
@@ -19,7 +19,10 @@ export default async (app) => {
     .entry('styles/woocommerce', ['@styles/woocommerce'])
     .assets(['images', 'fonts'])
     .copyFile('jquery.min.js', await app.module.getDirectory(`jquery/dist`))
-    .copyWithoutManifest('svgs', await app.module.getDirectory(`@fortawesome/fontawesome-pro`));
+    .copyWithoutManifest(
+      'svgs',
+      await app.module.getDirectory(`@fortawesome/fontawesome-pro`),
+    );
 
   app
     .alias('@blocks', resolve('resources/blocks'))
@@ -50,7 +53,8 @@ export default async (app) => {
 
   app.build.items.precss.setLoader('minicss');
   app.hooks.action('build.before', (bud) => {
-    bud.extensions.get('@roots/bud-extensions/mini-css-extract-plugin').enable();
+    bud.extensions
+      .get('@roots/bud-extensions/mini-css-extract-plugin')
+      .enable();
   });
-
 };

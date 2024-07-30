@@ -1,13 +1,13 @@
 export function ready(fn) {
   if (document.readyState !== 'loading') {
-    return setTimeout(fn, 0)
+    return setTimeout(fn, 0);
   }
   document.addEventListener('DOMContentLoaded', fn);
 }
 
 export function onLoad(fn) {
   if (document.readyState === 'complete') {
-    return setTimeout(fn, 0)
+    return setTimeout(fn, 0);
   }
   window.addEventListener('load', fn);
 }
@@ -20,7 +20,7 @@ export function onIdle(fn) {
 }
 
 export function setCookie(name, value) {
-  const domain = location.hostname.split('.').splice(-2).join('.')
+  const domain = location.hostname.split('.').splice(-2).join('.');
 
   const expires = new Date();
   expires.setMonth(expires.getMonth() + 13);

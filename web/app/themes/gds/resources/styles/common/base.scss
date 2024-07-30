@@ -1,7 +1,7 @@
-@use "@styles/components/typography" as *;
-@use "@styles/components/button" as button;
-@use "@styles/components/form" as form;
-@use "@styles/config";
+@use '@styles/components/typography' as *;
+@use '@styles/components/button' as button;
+@use '@styles/components/form' as form;
+@use '@styles/config';
 
 body {
   @include body;
@@ -46,7 +46,7 @@ body {
 }
 
 // Avoid FOUC
-[class^="fa-"],
+[class^='fa-'],
 .fa,
 .fal,
 .far,
@@ -94,20 +94,20 @@ ul {
   margin-bottom: 0;
 }
 
-[type="text"],
-[type="password"],
-[type="date"],
-[type="datetime"],
-[type="datetime-local"],
-[type="month"],
-[type="week"],
-[type="email"],
-[type="number"],
-[type="search"],
-[type="tel"],
-[type="time"],
-[type="url"],
-[type="color"],
+[type='text'],
+[type='password'],
+[type='date'],
+[type='datetime'],
+[type='datetime-local'],
+[type='month'],
+[type='week'],
+[type='email'],
+[type='number'],
+[type='search'],
+[type='tel'],
+[type='time'],
+[type='url'],
+[type='color'],
 select,
 textarea {
   @include form.base;
@@ -136,7 +136,7 @@ select:not([multiple]) {
   @include form.select;
 }
 
-[type="file"]::-webkit-file-upload-button {
+[type='file']::-webkit-file-upload-button {
   margin-right: 8px;
 
   @include button.button;
@@ -144,7 +144,7 @@ select:not([multiple]) {
   @include button.size-s;
 }
 
-[type="submit"] {
+[type='submit'] {
   appearance: none;
   cursor: pointer;
 

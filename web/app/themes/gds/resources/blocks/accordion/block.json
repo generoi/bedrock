@@ -17,8 +17,8 @@
   },
   "example": {
     "innerBlocks": [
-      { "name": "gds/accordion-item" },
-      { "name": "gds/accordion-item" }
+      {"name": "gds/accordion-item"},
+      {"name": "gds/accordion-item"}
     ]
   },
   "editorScript": "file:./index.js",

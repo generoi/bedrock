@@ -1,9 +1,9 @@
-import { __ } from '@wordpress/i18n';
-import { decodeEntities } from '@wordpress/html-entities';
-import { addFilter } from '@wordpress/hooks';
-import { InspectorControls } from '@wordpress/block-editor';
-import { useState, useCallback, useMemo } from '@wordpress/element';
-import { useDebounce } from '@wordpress/compose';
+import {__} from '@wordpress/i18n';
+import {decodeEntities} from '@wordpress/html-entities';
+import {addFilter} from '@wordpress/hooks';
+import {InspectorControls} from '@wordpress/block-editor';
+import {useState, useCallback, useMemo} from '@wordpress/element';
+import {useDebounce} from '@wordpress/compose';
 import {
   FormTokenField,
   __experimentalToolsPanel as ToolsPanel,
@@ -16,16 +16,14 @@ import usePosts from '../hooks/use-posts';
  * @see https://developer.wordpress.org/block-editor/how-to-guides/block-tutorial/extending-the-query-loop-block/
  */
 
-function HandPickedPostsControl({
-  setAttributes,
-  attributes,
-}) {
+function HandPickedPostsControl({setAttributes, attributes}) {
   const query = attributes.query;
   const selectedPostIds = query?.include;
   const postType = query?.postType;
 
-  const formatPostName = postType && postType !== 'any'
-    ? (post) => `${post.title || 'Untitled'} (#${post.id})`
+  const formatPostName =
+    postType && postType !== 'any' ?
+      (post) => `${post.title || 'Untitled'} (#${post.id})`
     : (post) => `${post.title || 'Untitled'} (${post.subtype} #${post.id})`;
 
   const [searchQuery, setSearchQuery] = useState('');
@@ -41,21 +39,24 @@ function HandPickedPostsControl({
   const updateQuery = (newQuery) => {
     setAttributes({
       query: {...query, ...newQuery},
-    })
+    });
   };
 
-  const onTokenChange = useCallback((values) => {
-    // Map the tokens to post ids.
-    const newPostsSet = values.reduce((acc, nameOrId) => {
-      const post = postsMap.get(nameOrId) || postsMap.get(Number(nameOrId));
-      if (post) {
-        acc.add(String(post.id));
-      }
-      return acc;
-    }, new Set());
+  const onTokenChange = useCallback(
+    (values) => {
+      // Map the tokens to post ids.
+      const newPostsSet = values.reduce((acc, nameOrId) => {
+        const post = postsMap.get(nameOrId) || postsMap.get(Number(nameOrId));
+        if (post) {
+          acc.add(String(post.id));
+        }
+        return acc;
+      }, new Set());
 
-    updateQuery({ include: Array.from(newPostsSet) });
-  }, [postsMap]);
+      updateQuery({include: Array.from(newPostsSet)});
+    },
+    [postsMap],
+  );
 
   const suggestions = useMemo(() => {
     return (
@@ -79,22 +80,22 @@ function HandPickedPostsControl({
 
   return (
     <ToolsPanelItem
-      label={ __('Hand-picked posts', 'gds' ) }
-      hasValue={ () => !! selectedPostIds?.length }
-      onDeselect={ () => updateQuery({ include: [] }) }
-      resetAllFilter={ () => updateQuery({ include: [] }) }
-      isShownByDefault={ true }
+      label={__('Hand-picked posts', 'gds')}
+      hasValue={() => !!selectedPostIds?.length}
+      onDeselect={() => updateQuery({include: []})}
+      resetAllFilter={() => updateQuery({include: []})}
+      isShownByDefault={true}
     >
       <FormTokenField
-        displayTransform={ transformTokenIntoPostName }
-        label={ __('Hand-picked posts', 'gds') }
-        onChange={ onTokenChange }
-        onInputChange={ handleSearch }
-        suggestions={ suggestions }
-        __experimentalValidateInput={ (value) => postsMap.has(value) }
-        value={ ! postsMap.size ? [__('Loading…', 'gds')] : selectedPostIds || [] }
-        __experimentalExpandOnFocus={ true }
-        __experimentalShowHowTo={ false }
+        displayTransform={transformTokenIntoPostName}
+        label={__('Hand-picked posts', 'gds')}
+        onChange={onTokenChange}
+        onInputChange={handleSearch}
+        suggestions={suggestions}
+        __experimentalValidateInput={(value) => postsMap.has(value)}
+        value={!postsMap.size ? [__('Loading…', 'gds')] : selectedPostIds || []}
+        __experimentalExpandOnFocus={true}
+        __experimentalShowHowTo={false}
       />
     </ToolsPanelItem>
   );
@@ -107,13 +108,10 @@ export const withHandpickedPostsQueryControls = (BlockEdit) => (props) => {
 
   return (
     <>
-      <BlockEdit { ...props } />
+      <BlockEdit {...props} />
       <InspectorControls>
-        <ToolsPanel
-        >
-          <HandPickedPostsControl
-            {...props}
-          />
+        <ToolsPanel>
+          <HandPickedPostsControl {...props} />
         </ToolsPanel>
       </InspectorControls>
     </>

@@ -9,7 +9,7 @@ export class GdsAccordionItem extends HTMLElement {
   constructor() {
     super();
 
-    this.attachShadow({ mode: 'open' });
+    this.attachShadow({mode: 'open'});
     this.toggle = this.toggle.bind(this);
   }
 
@@ -23,10 +23,10 @@ export class GdsAccordionItem extends HTMLElement {
 
   set expanded(isExpanded) {
     this.dispatchEvent(
-      new CustomEvent(
-        isExpanded ? EVENT_OPEN : EVENT_CLOSE,
-        {cancelable: true, bubbles: true}
-      )
+      new CustomEvent(isExpanded ? EVENT_OPEN : EVENT_CLOSE, {
+        cancelable: true,
+        bubbles: true,
+      }),
     );
   }
 
@@ -49,8 +49,8 @@ export class GdsAccordionItem extends HTMLElement {
   connectedCallback() {
     ++this.constructor.#idCounter;
 
-    this.contentId = `accordion-content-${this.constructor.#idCounter}`
-    this.titleId = `accordion-title-${this.constructor.#idCounter}`
+    this.contentId = `accordion-content-${this.constructor.#idCounter}`;
+    this.titleId = `accordion-title-${this.constructor.#idCounter}`;
 
     this.addEventListener('keydown', this.handleKeyDown.bind(this));
     this.addEventListener(EVENT_OPEN, this.open.bind(this));

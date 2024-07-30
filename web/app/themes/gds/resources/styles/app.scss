@@ -1,6 +1,8 @@
-@use "config" with ($is-editor: false);
-@use "config/variables";
-@use "common/reset";
-@use "common/base";
-@use "components";
-@use "partials";
+@use 'config' with (
+  $is-editor: false
+);
+@use 'config/variables';
+@use 'common/reset';
+@use 'common/base';
+@use 'components';
+@use 'partials';

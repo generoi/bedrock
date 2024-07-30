@@ -1,4 +1,4 @@
-@use "@styles/common/functions" as *;
+@use '@styles/common/functions' as *;
 
 modal-dialog {
   display: flex;
@@ -6,9 +6,7 @@ modal-dialog {
   &::part(dialog) {
     box-sizing: border-box;
     max-width: 680px;
-    padding:
-      #{sloped-size(24px, 60px)}
-      #{sloped-size(12px, 60px)};
+    padding: #{sloped-size(24px, 60px)} #{sloped-size(12px, 60px)};
     border-radius: var(--gds-border-radius);
     box-shadow: var(--gds-box-shadow);
     max-height: 90vh;

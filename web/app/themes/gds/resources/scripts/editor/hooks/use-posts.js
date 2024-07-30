@@ -1,7 +1,7 @@
-import { useState, useEffect } from '@wordpress/element';
+import {useState, useEffect} from '@wordpress/element';
 import apiFetch from '@wordpress/api-fetch';
-import { addQueryArgs } from '@wordpress/url';
-import { uniqBy } from '../utils';
+import {addQueryArgs} from '@wordpress/url';
+import {uniqBy} from '../utils';
 
 /**
  * @see https://github.com/woocommerce/woocommerce/blob/0608eb7542cef26a11d259703420381d1acb1d0c/plugins/woocommerce-blocks/assets/js/blocks/product-collection/edit/inspector-controls/hand-picked-products-control.tsx
@@ -26,7 +26,7 @@ export function getPostsRequests({
     addQueryArgs('/wp/v2/search', {
       ...defaultArgs,
       ...queryArgs,
-    } ),
+    }),
   ];
   // Ensure the selected posts are always included regardless of per_page limit
   if (selected.length) {
@@ -34,7 +34,7 @@ export function getPostsRequests({
       addQueryArgs('/wp/v2/search', {
         include: selected,
         per_page: 100,
-      })
+      }),
     );
   }
 
@@ -47,7 +47,7 @@ export function getPosts({
   queryArgs = {},
   postType,
 }) {
-  const requests = getPostsRequests({ selected, search, queryArgs, postType });
+  const requests = getPostsRequests({selected, search, queryArgs, postType});
   return Promise.all(requests.map((path) => apiFetch({path})))
     .then((data) => {
       const flatData = data.flat();
@@ -65,7 +65,7 @@ export default function usePosts(
   search,
   selected,
   postType,
-  formatPostName = (post) => post.title
+  formatPostName = (post) => post.title,
 ) {
   const [postsMap, setPostsMap] = useState(new Map());
   const [postsList, setPostsList] = useState([]);
@@ -82,13 +82,11 @@ export default function usePosts(
       results.forEach((post) => {
         newPostsMap.set(post.id, post);
         newPostsMap.set(formatPostName(post), post);
-
       });
       setPostsList(results);
       setPostsMap(newPostsMap);
     });
   }, [search, selected, postType]);
 
-  return { postsMap, postsList };
+  return {postsMap, postsList};
 }
-

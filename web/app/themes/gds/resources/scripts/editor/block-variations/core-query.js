@@ -17,13 +17,11 @@ const ARCHIVE_GRID_TEMPLATE = [
         columnCount: 3,
       },
     },
-    [
-      ['gds/post-teaser'],
-    ],
+    [['gds/post-teaser']],
   ],
   ['core/query-pagination'],
   ['core/query-no-results'],
-]
+];
 
 window._wpLoadBlockEditor.then(() => {
   // Remove all default query block variations
@@ -45,9 +43,7 @@ window._wpLoadBlockEditor.then(() => {
         postType: 'post',
       },
     },
-    innerBlocks: [
-      ...ARCHIVE_GRID_TEMPLATE,
-    ],
+    innerBlocks: [...ARCHIVE_GRID_TEMPLATE],
   });
 
   registerBlockVariation('core/query', {
@@ -64,8 +60,6 @@ window._wpLoadBlockEditor.then(() => {
         postType: 'page',
       },
     },
-    innerBlocks: [
-      ...ARCHIVE_GRID_TEMPLATE,
-    ],
+    innerBlocks: [...ARCHIVE_GRID_TEMPLATE],
   });
 });

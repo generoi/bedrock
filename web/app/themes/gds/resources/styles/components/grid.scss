@@ -1,4 +1,4 @@
-@use "@styles/common/breakpoints" as *;
+@use '@styles/common/breakpoints' as *;
 
 @mixin grid {
   display: flex;
@@ -35,9 +35,11 @@
 
 @mixin size($i) {
   width: calc(
-    (#{$i} / var(--grid-columns) * 100%) - (
-      var(--grid-gutter-x) - (#{$i} / var(--grid-columns) * var(--grid-gutter-x))
-    )
+    (#{$i} / var(--grid-columns) * 100%) -
+      (
+        var(--grid-gutter-x) -
+          (#{$i} / var(--grid-columns) * var(--grid-gutter-x))
+      )
   );
 }
 

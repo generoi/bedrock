@@ -1,10 +1,10 @@
 /** @wordpress */
-import { registerBlockType } from '@wordpress/blocks'
-import { InnerBlocks } from '@wordpress/block-editor'
-import { createBlock } from '@wordpress/blocks';
+import {registerBlockType} from '@wordpress/blocks';
+import {InnerBlocks} from '@wordpress/block-editor';
+import {createBlock} from '@wordpress/blocks';
 
-import edit from './edit'
-import variations from './variations'
+import edit from './edit';
+import variations from './variations';
 import meta from './block.json';
 
 registerBlockType(meta.name, {
@@ -43,7 +43,11 @@ registerBlockType(meta.name, {
             meta.name,
             attributes,
             innerBlocks.map((innerBlock) => {
-              return createBlock('gds/carousel-item', innerBlock.attributes, innerBlock.innerBlocks);
+              return createBlock(
+                'gds/carousel-item',
+                innerBlock.attributes,
+                innerBlock.innerBlocks,
+              );
             }),
           );
         },
@@ -59,7 +63,7 @@ registerBlockType(meta.name, {
             type: 'grid',
             minimumColumnWidth: null,
             columnCount: attributes.columnCount,
-          }
+          };
           return createBlock(
             'core/group',
             attributes,
@@ -77,7 +81,11 @@ registerBlockType(meta.name, {
             'core/columns',
             attributes,
             innerBlocks.map((innerBlock) => {
-              return createBlock('core/column', innerBlock.attributes, innerBlock.innerBlocks);
+              return createBlock(
+                'core/column',
+                innerBlock.attributes,
+                innerBlock.innerBlocks,
+              );
             }),
           );
         },
@@ -85,4 +93,3 @@ registerBlockType(meta.name, {
     ],
   },
 });
-

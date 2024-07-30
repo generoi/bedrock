@@ -1,4 +1,4 @@
-@use "@styles/common/breakpoints" as *;
+@use '@styles/common/breakpoints' as *;
 
 @include mq($until: desktopmenu) {
   .language-menu {
@@ -38,7 +38,7 @@
         padding: 4px;
 
         .language-menu:hover &,
-        [aria-expanded="true"] > & {
+        [aria-expanded='true'] > & {
           transform: rotate(180deg);
         }
       }
@@ -72,7 +72,7 @@
       margin-left: -8px;
 
       .language-menu:hover > &,
-      .language-menu__toggle[aria-expanded="true"] ~ & {
+      .language-menu__toggle[aria-expanded='true'] ~ & {
         display: flex;
       }
 

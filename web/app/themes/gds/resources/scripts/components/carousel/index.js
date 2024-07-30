@@ -1,2 +1,2 @@
-import './carousel'
-import './carousel-pager'
+import './carousel';
+import './carousel-pager';

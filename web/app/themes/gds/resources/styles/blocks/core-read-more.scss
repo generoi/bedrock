@@ -1,4 +1,4 @@
-@use "@styles/components/typography";
+@use '@styles/components/typography';
 
 .wp-block-read-more.wp-block-read-more {
   --gds-link-color: var(--gds-color-primary);
@@ -18,7 +18,7 @@
     width: 1em;
     height: 1em;
     display: block;
-    mask-image: svg-load("solid/chevron-right.svg");
+    mask-image: svg-load('solid/chevron-right.svg');
     mask-position: center;
     mask-size: contain;
     mask-repeat: no-repeat;
@@ -28,7 +28,7 @@
 
   // Make the whole block clickable
   .wp-block-gds-post-teaser &::before {
-    content: "";
+    content: '';
     display: block;
     position: absolute;
     inset: 0;

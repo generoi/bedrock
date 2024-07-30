@@ -1,4 +1,4 @@
-@use "@styles/common/breakpoints" as *;
+@use '@styles/common/breakpoints' as *;
 
 .wp-block-image {
   @include mq($from: medium) {

@@ -1,5 +1,5 @@
-@use "@styles/common/breakpoints" as *;
-@use "@styles/components/typography" as typography;
+@use '@styles/common/breakpoints' as *;
+@use '@styles/components/typography' as typography;
 
 :root {
   --footer-padding: 60px 0 30px 0;
@@ -22,11 +22,11 @@
     padding: var(--footer-padding);
     display: grid;
     grid-template-areas:
-      "logo"
-      "social"
-      "contact"
-      "menu"
-      "newsletter";
+      'logo'
+      'social'
+      'contact'
+      'menu'
+      'newsletter';
     grid-template-columns: 1fr;
     grid-gap: var(--block-gutter);
     text-align: center;
@@ -87,10 +87,10 @@
     .footer {
       text-align: left;
       grid-template-areas:
-        "logo   contact"
-        "social contact"
-        "menu   menu"
-        "newsletter newsletter";
+        'logo   contact'
+        'social contact'
+        'menu   menu'
+        'newsletter newsletter';
       grid-template-columns: auto auto;
       justify-content: space-between;
       grid-template-rows: auto 1fr;
@@ -110,8 +110,8 @@
     .footer {
       display: grid;
       grid-template-areas:
-        "logo   contact menu newsletter"
-        "social contact menu newsletter";
+        'logo   contact menu newsletter'
+        'social contact menu newsletter';
       grid-template-columns: 3fr 3fr 4fr 2fr;
       grid-template-rows: auto 1fr;
       grid-gap: var(--grid-gutter);

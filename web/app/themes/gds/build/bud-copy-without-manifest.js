@@ -1,11 +1,11 @@
-import {Extension} from '@roots/bud-framework/extension'
-import {cp} from 'node:fs/promises'
+import {Extension} from '@roots/bud-framework/extension';
+import {cp} from 'node:fs/promises';
 
 export default class BudCopyWithoutManifest extends Extension {
   tasks = [];
 
   constructor(...args) {
-    super(...args)
+    super(...args);
     this.app['copyWithoutManifest'] = this.copy.bind(this);
   }
 

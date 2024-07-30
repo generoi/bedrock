@@ -1,4 +1,4 @@
-@use "@styles/common/functions";
+@use '@styles/common/functions';
 
 :root {
   --carousel-gutter: 5px;
@@ -6,8 +6,8 @@
 
 gds-carousel {
   // safari bug
-  svg[slot="icon-prev"],
-  svg[slot="icon-next"] {
+  svg[slot='icon-prev'],
+  svg[slot='icon-next'] {
     width: auto;
   }
 
@@ -24,13 +24,13 @@ gds-carousel {
 
   &:not([data-is-initialized]) {
     // Hide icons so they do not occupy flex space
-    > [slot^="icon-"] {
+    > [slot^='icon-'] {
       display: none;
     }
 
     // Hide items not shown in the first view so that height is correct
     @for $i from 1 through 4 {
-      &[column-count="#{$i}"] {
+      &[column-count='#{$i}'] {
         > *:not([slot]):nth-child(n + #{$i + 1}) {
           display: none;
         }
@@ -53,7 +53,7 @@ gds-carousel-pager {
     height: auto;
 
     // Video has incorrect aspect ratio before src has loaded so support aspect-ratio box
-    &[style*="--aspect-ratio"] {
+    &[style*='--aspect-ratio'] {
       aspect-ratio: var(--aspect-ratio);
     }
   }
@@ -62,7 +62,7 @@ gds-carousel-pager {
   // too.
   @for $i from 1 through 4 {
     @media (width >= 600px) {
-      &[column-count="#{$i}"] {
+      &[column-count='#{$i}'] {
         --carousel-columns: #{$i};
       }
     }
@@ -73,7 +73,11 @@ gds-carousel-pager {
     width: calc(100% / var(--carousel-columns, 1));
     flex-shrink: 0;
     flex-basis: calc(
-      100% / var(--carousel-columns, 1) - (var(--carousel-gutter, 0) - (1 / var(--carousel-columns, 1) * var(--carousel-gutter, 0)))
+      100% / var(--carousel-columns, 1) -
+        (
+          var(--carousel-gutter, 0) -
+            (1 / var(--carousel-columns, 1) * var(--carousel-gutter, 0))
+        )
     );
   }
 }

@@ -1,35 +1,35 @@
-@use "@styles/components/typography" as *;
+@use '@styles/components/typography' as *;
 
 gds-accordion-item:not([data-is-initialized]) {
-  > :not([slot="label"]) {
+  > :not([slot='label']) {
     display: none;
   }
 
-  [slot="label"] {
+  [slot='label'] {
     display: block;
   }
 }
 
 .wp-block-gds-accordion-item {
   gds-accordion-item {
-    @at-root gds-accordion-item:not([data-is-initialized]) [slot="label"],
-    &::part(header) {
+    @at-root gds-accordion-item:not([data-is-initialized]) [slot='label'],
+      &::part(header) {
       border-bottom: solid 1px currentcolor;
       padding: var(--gds-container-padding);
       z-index: 1;
     }
 
-    [slot="label"] {
+    [slot='label'] {
       @include body-l;
 
       margin-block-end: 0;
     }
 
-    [slot="icon"] {
+    [slot='icon'] {
       transition: transform 0.2s ease-out;
     }
 
-    &[expanded] [slot="icon"] {
+    &[expanded] [slot='icon'] {
       transform: rotate(180deg);
     }
 

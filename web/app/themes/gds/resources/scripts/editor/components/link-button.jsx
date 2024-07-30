@@ -1,6 +1,6 @@
 /** @wordpress */
-import { __ } from '@wordpress/i18n';
-import { useState } from '@wordpress/element';
+import {__} from '@wordpress/i18n';
+import {useState} from '@wordpress/element';
 import {
   PanelBody,
   ToggleControl,
@@ -15,14 +15,9 @@ import {
   __experimentalLinkControl as LinkControl,
 } from '@wordpress/block-editor';
 
-function URLPicker({
-  isSelected,
-  url,
-  opensInNewTab,
-  onChange,
-}) {
+function URLPicker({isSelected, url, opensInNewTab, onChange}) {
   const [isURLPickerOpen, setIsURLPickerOpen] = useState(false);
-  const urlIsSet = !! url;
+  const urlIsSet = !!url;
   const urlIsSetandSelected = urlIsSet && isSelected;
   const openLinkControl = () => {
     setIsURLPickerOpen(true);
@@ -36,14 +31,11 @@ function URLPicker({
     setIsURLPickerOpen(false);
   };
   const linkControl = (isURLPickerOpen || urlIsSetandSelected) && (
-    <Popover
-      position="bottom center"
-      onClose={ () => setIsURLPickerOpen(false) }
-    >
+    <Popover position="bottom center" onClose={() => setIsURLPickerOpen(false)}>
       <LinkControl
         className="wp-block-navigation-link__inline-link-input"
-        value={ { url, opensInNewTab } }
-        onChange={ onChange }
+        value={{url, opensInNewTab}}
+        onChange={onChange}
       />
     </Popover>
   );
@@ -52,26 +44,26 @@ function URLPicker({
     <>
       <BlockControls>
         <ToolbarGroup>
-          { !urlIsSet && (
+          {!urlIsSet && (
             <ToolbarButton
               name="link"
               icon="admin-links"
-              title={ __('Link') }
-              onClick={ openLinkControl }
+              title={__('Link')}
+              onClick={openLinkControl}
             />
-          ) }
-          { urlIsSetandSelected && (
+          )}
+          {urlIsSetandSelected && (
             <ToolbarButton
               name="link"
               icon="editor-unlink"
-              title={ __('Unlink') }
-              onClick={ unlinkButton }
-              isActive={ true }
+              title={__('Unlink')}
+              onClick={unlinkButton}
+              isActive={true}
             />
-          ) }
+          )}
         </ToolbarGroup>
       </BlockControls>
-      { linkControl }
+      {linkControl}
     </>
   );
 }
@@ -89,30 +81,30 @@ function LinkButton(props) {
 
   return (
     <>
-      <div className={ `wp-block-button wp-block-button__link ${className}` }>
+      <div className={`wp-block-button wp-block-button__link ${className}`}>
         <RichText
-          placeholder={ placeholder }
-          value={ label }
-          onChange={ value => setLabel(value) }
+          placeholder={placeholder}
+          value={label}
+          onChange={(value) => setLabel(value)}
         />
       </div>
 
       <URLPicker
-        onChange={ ({ url, opensInNewTab}) => {
+        onChange={({url, opensInNewTab}) => {
           setUrl(url);
           setOpensInNewTab(opensInNewTab);
-        } }
-        { ...props }
+        }}
+        {...props}
       />
 
       <InspectorControls>
-        <PanelBody title={ __('Link settings') }>
+        <PanelBody title={__('Link settings')}>
           <ToggleControl
-            label={ __('Open in new tab') }
-            onChange={ (value) => {
+            label={__('Open in new tab')}
+            onChange={(value) => {
               setOpensInNewTab(!value);
-            } }
-            checked={ opensInNewTab }
+            }}
+            checked={opensInNewTab}
           />
         </PanelBody>
       </InspectorControls>

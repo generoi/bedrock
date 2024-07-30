@@ -1,11 +1,11 @@
-@use "@styles/common/breakpoints" as *;
+@use '@styles/common/breakpoints' as *;
 
 @mixin styles {
   position: relative;
   font-size: var(--gds-body-s-font-size);
 
   // Position the submit button on top of the search input
-  [type="submit"] {
+  [type='submit'] {
     all: unset;
     position: absolute;
     right: 0;
@@ -32,7 +32,7 @@
     }
   }
 
-  [type="search"] {
+  [type='search'] {
     box-shadow: var(--gds-box-shadow--active);
     border: 1px solid #eee;
     border-radius: var(--gds-border-radius);
@@ -44,7 +44,7 @@
 
     &::-webkit-search-cancel-button {
       appearance: none;
-      mask-image: svg-load("solid/xmark.svg");
+      mask-image: svg-load('solid/xmark.svg');
       mask-size: contain;
       mask-repeat: no-repeat;
       background-color: currentcolor;
@@ -57,7 +57,7 @@
     justify-content: flex-end;
 
     // Position below input
-    [type="submit"] {
+    [type='submit'] {
       height: var(--gds-input-height);
       box-sizing: border-box;
       z-index: 0;
@@ -74,7 +74,7 @@
 
     // Hide the search input visually so that it remains clickable/focusable but
     // the submit button is shown.
-    [type="search"] {
+    [type='search'] {
       opacity: 0;
       z-index: 1;
       max-width: calc(1em + 8px * 2);
@@ -86,8 +86,8 @@
     }
 
     // When input is focused or has content, expand and make it visually shown
-    [type="search"]:not(:placeholder-shown),
-    &:focus-within [type="search"] {
+    [type='search']:not(:placeholder-shown),
+    &:focus-within [type='search'] {
       opacity: 1;
       min-width: 200px;
       right: 0;
@@ -98,12 +98,14 @@
       padding-top: var(--gds-input-padding-y);
       padding-bottom: var(--gds-input-padding-y);
       padding-left: var(--gds-input-padding-x);
-      padding-right: calc(var(--gds-input-padding-x) + 10px); // make room for the "x" to remove search
+      padding-right: calc(var(--gds-input-padding-x) + 10px);
+
+      // make room for the "x" to remove search
       position: absolute;
       margin-right: -4px;
 
       // Once focused, move submit button above input
-      & ~ [type="submit"] {
+      & ~ [type='submit'] {
         z-index: 2;
         position: relative;
       }

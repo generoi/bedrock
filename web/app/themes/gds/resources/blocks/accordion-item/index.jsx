@@ -1,8 +1,8 @@
 /** @wordpress */
-import { registerBlockType } from '@wordpress/blocks'
-import { InnerBlocks } from '@wordpress/block-editor'
+import {registerBlockType} from '@wordpress/blocks';
+import {InnerBlocks} from '@wordpress/block-editor';
 
-import edit from './edit'
+import edit from './edit';
 import meta from './block.json';
 
 registerBlockType(meta.name, {

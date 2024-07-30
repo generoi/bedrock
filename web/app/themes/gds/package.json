@@ -24,6 +24,7 @@
     "@roots/bud": "^6.23.1",
     "@roots/bud-eslint": "^6.23.1",
     "@roots/bud-postcss": "^6.23.1",
+    "@roots/bud-prettier": "^6.23.1",
     "@roots/bud-sass": "^6.23.1",
     "@roots/bud-stylelint": "^6.23.1",
     "@roots/eslint-config": "^6.23.1",
