@@ -1,9 +1,6 @@
-import {bind} from '@roots/bud-framework/extension/decorators'
-import {label} from '@roots/bud-framework/extension/decorators'
 import {Extension} from '@roots/bud-framework/extension'
-import {readFile, realpath} from 'node:fs/promises'
+import {readFile} from 'node:fs/promises'
 import {relative, resolve, dirname, parse as parsePath} from 'node:path'
-
 
 export default class BudBlock extends Extension {
   constructor(...args) {
@@ -25,10 +22,8 @@ export default class BudBlock extends Extension {
         [path]
       ));
 
-    return [
-      this.app.copyFile(path),
-      ...assets,
-    ]
+    this.app.copyFile(path);
+    return this.app;
   }
 
   resolvePathPlaceholder(path, root) {
