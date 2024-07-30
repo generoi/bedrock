@@ -1,4 +1,7 @@
-<header class="header" id="header">
+<header
+  class="header"
+  id="header"
+>
   <div class="header__inner-container">
     <a
       class="header__logo"
@@ -53,7 +56,7 @@
           <span aria-hidden="true">
             {!! strtoupper(esc_html($current_language->slug)) !!}
           </span>
-          <span class="sr-only">{{__('Languages')}} </span>
+          <span class="sr-only">{{ __('Languages') }}</span>
           <span class="language-menu__toggle__icon">
             @svg('icons.solid.chevron-down')
           </span>
@@ -65,10 +68,8 @@
         >
           @foreach ($languages as $item)
             <a
-              class="language-menu__link {{ ($item->current_lang ) ? 'is-active': '' }}"
-              @if ($item->current_lang)
-                aria-current="page"
-              @endif
+              class="language-menu__link {{ $item->current_lang ? 'is-active' : '' }}"
+              @if ($item->current_lang) aria-current="page" @endif
               href="{{ $item->url }}"
               lang="{{ $item->locale }}"
             >
@@ -92,10 +93,20 @@
       role="search"
       class="header__search"
     >
-      <label for="s" class="sr-only">
+      <label
+        for="s"
+        class="sr-only"
+      >
         {{ __('Search this site', 'gds') }}
       </label>
-      <input slot="input" type="search" name="s" id="s" placeholder="{{ __('Search', 'gds') }}" autocomplete="off" />
+      <input
+        slot="input"
+        type="search"
+        name="s"
+        id="s"
+        placeholder="{{ __('Search', 'gds') }}"
+        autocomplete="off"
+      />
 
       <button type="submit">
         @svg('icons.solid.magnifying-glass', '', ['title' => __('Search', 'gds')])

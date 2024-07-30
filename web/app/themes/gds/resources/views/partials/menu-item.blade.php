@@ -3,7 +3,7 @@
   id="menu-item-{{ $item->id }}"
 >
   <a
-    class="menu-item__link {{ ($item->active || $item->activeAncestor) ? 'is-active': '' }}"
+    class="menu-item__link {{ $item->active || $item->activeAncestor ? 'is-active' : '' }}"
     href="{{ $item->url }}"
     target="{{ $item->target ?? '' }}"
     title="{{ $item->title ?? '' }}"
@@ -19,7 +19,6 @@
       aria-controls="submenu-{{ $item->id }} menu-item-{{ $item->id }}"
       aria-label="{{ $item->label }}"
     >
-
       @svg('icons.solid.chevron-down')
     </toggle-button>
 

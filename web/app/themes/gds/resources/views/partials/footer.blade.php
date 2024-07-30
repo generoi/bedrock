@@ -1,7 +1,13 @@
-<footer class="content-info has-primary-background-color has-background is-block-container">
+<footer
+  class="content-info has-primary-background-color has-background is-block-container"
+>
   <div class="footer alignwide">
     <div class="footer__logo">
-      <a href="{{ $home_url }}" rel="home" aria-label="{{ sprintf(__('%s frontpage', 'gds'), $siteName) }}">
+      <a
+        href="{{ $home_url }}"
+        rel="home"
+        aria-label="{{ sprintf(__('%s frontpage', 'gds'), $siteName) }}"
+      >
         <img
           src="{{ Roots\asset('images/logo-white.svg')->uri() }}"
           alt=""
@@ -20,7 +26,10 @@
     <div class="footer__social">
       @php(dynamic_sidebar('footer-social'))
     </div>
-    <nav class="footer__menu" aria-label="{{ __('Footer navigation', 'gds') }}">
+    <nav
+      class="footer__menu"
+      aria-label="{{ __('Footer navigation', 'gds') }}"
+    >
       @php(dynamic_sidebar('footer-menu'))
     </nav>
     <div class="footer__newsletter">

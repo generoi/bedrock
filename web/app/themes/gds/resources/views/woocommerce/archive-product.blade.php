@@ -1,17 +1,17 @@
 {{--
-The Template for displaying product archives, including the main shop page which is a post type archive
+  The Template for displaying product archives, including the main shop page which is a post type archive
 
-This template can be overridden by copying it to yourtheme/woocommerce/archive-product.php.
+  This template can be overridden by copying it to yourtheme/woocommerce/archive-product.php.
 
-HOWEVER, on occasion WooCommerce will need to update template files and you
-(the theme developer) will need to copy the new files to your theme to
-maintain compatibility. We try to do this as little as possible, but it does
-happen. When this occurs the version of the template file will be bumped and
-the readme will list any important changes.
+  HOWEVER, on occasion WooCommerce will need to update template files and you
+  (the theme developer) will need to copy the new files to your theme to
+  maintain compatibility. We try to do this as little as possible, but it does
+  happen. When this occurs the version of the template file will be bumped and
+  the readme will list any important changes.
 
-@see https://docs.woocommerce.com/document/template-structure/
-@package WooCommerce/Templates
-@version 3.3.9
+  @see https://docs.woocommerce.com/document/template-structure/
+  @package WooCommerce/Templates
+  @version 3.3.9
 --}}
 
 @extends('layouts.app')
@@ -29,14 +29,18 @@ the readme will list any important changes.
     @endif
 
     {{-- Prints the content --}}
-    @php do_action('woocommerce_archive_description') @endphp
+    @php
+      do_action('woocommerce_archive_description');
+    @endphp
 
     @php
-      $page = is_post_type_archive('product') ? get_post(wc_get_page_id('shop')) : null;
+      $page = is_post_type_archive('product')
+          ? get_post(wc_get_page_id('shop'))
+          : null;
     @endphp
 
     {{-- Skip the default loop template if there's a product-collection block --}}
-    @if (! $page || ! has_block('woocommerce/product-collection', $page))
+    @if (!$page || !has_block('woocommerce/product-collection', $page))
       @blocks
         <!-- wp:group {"layout":{"type":"flex","flexWrap":"wrap","justifyContent":"space-between"}} -->
         <div class="wp-block-group alignwide">
@@ -51,13 +55,13 @@ the readme will list any important changes.
         <!-- wp:woocommerce/product-collection {"query":{"inherit":true},"displayLayout":{"type":"flex","columns":3,"shrinkColumns":true},"collection":"woocommerce/product-collection/product-catalog"} -->
         <div class="wp-block-woocommerce-product-collection alignwide">
           <!-- wp:woocommerce/product-template -->
-            <!-- wp:gds/post-teaser /-->
+          <!-- wp:gds/post-teaser /-->
           <!-- /wp:post-template -->
 
           <!-- wp:query-pagination -->
-            <!-- wp:query-pagination-previous /-->
-            <!-- wp:query-pagination-numbers /-->
-            <!-- wp:query-pagination-next /-->
+          <!-- wp:query-pagination-previous /-->
+          <!-- wp:query-pagination-numbers /-->
+          <!-- wp:query-pagination-next /-->
           <!-- /wp:query-pagination -->
         </div>
         <!-- /wp:woocommerce/product-collection -->
@@ -77,7 +81,9 @@ the readme will list any important changes.
       </x-slot>
     </x-not-found>
 
-    @php do_action('woocommerce_no_products_found') @endphp
+    @php
+      do_action('woocommerce_no_products_found');
+    @endphp
   @endif
 
   @php
