@@ -124,7 +124,7 @@
       ]
     },
     "hooks": {
-      "pre-commit": "composer test",
+      "pre-commit": "composer lint:fix && composer test",
       "post-merge": "composer install:development"
     },
     "installer-paths": {

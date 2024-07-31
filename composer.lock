@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "c2737d177a9d53b179bf631f030a1753",
+    "content-hash": "73ad5ca242b7272913b0ae82b4a12fe2",
     "packages": [
         {
             "name": "aaemnnosttv/wp-cli-login-command",
