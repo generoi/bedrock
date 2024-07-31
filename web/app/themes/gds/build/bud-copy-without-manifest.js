@@ -20,9 +20,18 @@ export default class BudCopyWithoutManifest extends Extension {
     return this.app;
   }
 
+  /**
+   * @type {import('@roots/bud').Config}
+   */
   async register(bud) {
-    bud.hooks.action('compiler.before', async () => {
+    const copy = async () => {
       await Promise.all(this.tasks.map((args) => cp(...args)));
-    });
+    };
+
+    bud.hooks.action('compiler.before', copy);
+
+    if (bud.isProduction) {
+      bud.hooks.action('compiler.done', copy);
+    }
   }
 }

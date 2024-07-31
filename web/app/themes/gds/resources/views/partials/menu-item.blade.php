@@ -19,7 +19,7 @@
       aria-controls="submenu-{{ $item->id }} menu-item-{{ $item->id }}"
       aria-label="{{ $item->label }}"
     >
-      @svg('icons.solid.chevron-down')
+      @svg('svgs.solid.chevron-down')
     </toggle-button>
 
     <div

@@ -38,11 +38,11 @@
     @endforeach
 
     <span slot="icon-prev">
-      @svg('icons.solid.chevron-left')
+      @svg('svgs.solid.chevron-left')
       <span class="sr-only">{{ __('Previous slide', 'gds') }}</span>
     </span>
     <span slot="icon-next">
-      @svg('icons.solid.chevron-right')
+      @svg('svgs.solid.chevron-right')
       <span class="sr-only">{{ __('Next slide', 'gds') }}</span>
     </span>
   </gds-carousel>
