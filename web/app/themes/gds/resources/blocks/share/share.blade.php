@@ -11,7 +11,7 @@
       <span class="wp-block-gds-share__button-label">
         {{ __('Share', 'gds') }}
       </span>
-      @svg('icons.regular.share-nodes', 'is-lg')
+      @svg('svgs.regular.share-nodes', 'is-lg')
     </toggle-button>
 
     <ul
@@ -24,11 +24,11 @@
           announce-success="{{ __('Copied!', 'gds') }}"
           announce-failed="{{ __('Failed to copy!', 'gds') }}"
         >
-          @svg('icons.regular.link', 'is-xs')
+          @svg('svgs.regular.link', 'is-xs')
           <span>{{ __('Copy link', 'gds') }}</span>
 
-          @svg('icons.solid.check', '', ['data-success-icon'])
-          @svg('icons.solid.xmark', '', ['data-failed-icon'])
+          @svg('svgs.solid.check', '', ['data-success-icon'])
+          @svg('svgs.solid.xmark', '', ['data-failed-icon'])
         </clipboard-copy>
       </li>
       <li>
@@ -37,7 +37,7 @@
           rel="nofollow"
           target="_blank"
         >
-          @svg('icons.regular.envelope', 'is-xs')
+          @svg('svgs.regular.envelope', 'is-xs')
           <span>{{ __('Send email', 'gds') }}</span>
         </a>
       </li>
@@ -47,7 +47,7 @@
           rel="nofollow"
           target="_blank"
         >
-          @svg('icons.brands.facebook', 'is-xs')
+          @svg('svgs.brands.facebook', 'is-xs')
           <span>{{ __('Share on Facebook', 'gds') }}</span>
         </a>
       </li>
@@ -57,7 +57,7 @@
           rel="nofollow"
           target="_blank"
         >
-          @svg('icons.brands.twitter', 'is-xs')
+          @svg('svgs.brands.twitter', 'is-xs')
           <span>{{ __('Share on Twitter') }}</span>
         </a>
       </li>

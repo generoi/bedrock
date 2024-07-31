@@ -24,6 +24,6 @@
     target="_blank"
   >
     <span class="sr-only">{{ __('Play', 'gds') }}</span>
-    @svg('icons.brands.youtube')
+    @svg('svgs.brands.youtube')
   </a>
 </youtube-embed>

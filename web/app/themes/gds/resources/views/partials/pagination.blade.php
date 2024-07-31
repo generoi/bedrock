@@ -13,10 +13,10 @@
             '<span class="sr-only">%s</span>',
             __('Page', 'gds')
         ),
-        'prev_text' => get_svg('icons.solid.chevron-left', 'is-xs', [
+        'prev_text' => get_svg('solid.chevron-left', 'is-xs', [
             'title' => __('Previous page', 'gds')
         ]),
-        'next_text' => get_svg('icons.solid.chevron-right', 'is-xs', [
+        'next_text' => get_svg('solid.chevron-right', 'is-xs', [
             'title' => __('Next page', 'gds')
         ]),
         'add_fragment' => !empty($fragment) ? "#$fragment" : null

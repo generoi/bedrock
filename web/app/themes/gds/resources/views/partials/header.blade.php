@@ -58,7 +58,7 @@
           </span>
           <span class="sr-only">{{ __('Languages') }}</span>
           <span class="language-menu__toggle__icon">
-            @svg('icons.solid.chevron-down')
+            @svg('svgs.solid.chevron-down')
           </span>
         </toggle-button>
 
@@ -109,7 +109,7 @@
       />
 
       <button type="submit">
-        @svg('icons.solid.magnifying-glass', '', ['title' => __('Search', 'gds')])
+        @svg('svgs.solid.magnifying-glass', '', ['title' => __('Search', 'gds')])
       </button>
     </form>
   </div>
