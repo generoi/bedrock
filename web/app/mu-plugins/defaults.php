@@ -170,6 +170,14 @@ add_filter('the_seo_framework_term_metabox_priority', function () {
 });
 
 /**
+ * Add a prefix to the wp-cli-login-command magic url so it's not cached by
+ * Kinsta.
+ */
+add_filter('wp_cli_login/url_prefix', function (string $url) {
+    return '/wp/wp-admin/';
+});
+
+/**
  * Move ACF fields above other fields on taxonomy term forms.
  */
 add_action('admin_enqueue_scripts', function () {
