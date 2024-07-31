@@ -3,6 +3,7 @@
 namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
+use Roots\Acorn\Assets\Contracts\Asset;
 use Symfony\Component\Finder\Finder;
 use WP_Block_Supports;
 use WP_Block_Type;
@@ -20,6 +21,8 @@ class BlockServiceProvider extends ServiceProvider
     {
         add_action('init', [$this, 'registerBlocks']);
         add_action('init', [$this, 'registerBlockSupports']);
+        add_action('wp_enqueue_scripts', [$this, 'enqueueBlockStyles']);
+        add_action('enqueue_block_editor_assets', [$this, 'enqueueBlockStyles']);
 
         $this->attachBladeDirective();
         $this->addViewNamespace();
@@ -135,5 +138,32 @@ class BlockServiceProvider extends ServiceProvider
         $this->isRunning = false;
 
         return $output;
+    }
+
+    public function enqueueBlockStyles(): void
+    {
+        // @see https://make.wordpress.org/core/2021/12/15/using-multiple-stylesheets-per-block/
+        $manifest = config('assets.manifests.theme.assets');
+        collect(json_decode(file_get_contents($manifest), true))
+            ->keys()
+            ->filter(fn ($file) => str_starts_with($file, 'styles/blocks/'))
+            ->filter(fn ($file) => str_ends_with($file, '.css'))
+            ->map(fn ($file) => asset($file))
+            ->each(function (Asset $asset) {
+                $filename = pathinfo(basename($asset->path()), PATHINFO_FILENAME);
+                [$collection, $blockName] = explode('-', $filename, 2);
+                $blockName = strtok($blockName, '.');
+                $handle = "sage/block/$filename";
+
+                // Register the handles early so we can enqueue them even without the block
+                wp_register_style($handle, $asset->uri());
+                wp_style_add_data($handle, 'path', $asset->path());
+
+                wp_enqueue_block_style("$collection/$blockName", [
+                    'handle' => $handle,
+                    'src' => $asset->uri(),
+                    'path' => $asset->path(),
+                ]);
+            });
     }
 }
