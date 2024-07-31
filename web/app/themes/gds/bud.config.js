@@ -41,13 +41,13 @@ export default async (app) => {
   app.setPublicPath('/app/themes/gds/public/');
 
   app
-    .setPath({'@certs': `${homedir()}/Library/Application Support/mkcert`})
+    .setPath({'@certs': `${homedir()}/.ddev/traefik/certs`})
     .serve({
       host: 'gdsbedrock.ddev.site',
-      cert: app.path('@certs/rootCA.pem'),
-      key: app.path('@certs/rootCA-key.pem'),
+      cert: app.path('@certs/default_cert.crt'),
+      key: app.path('@certs/default_key.key'),
     })
-    .setUrl('http://localhost:3000')
+    .setUrl('https://localhost:3000')
     .setProxyUrl('https://gdsbedrock.ddev.site')
     .watch(['resources/views', 'app']);
 
