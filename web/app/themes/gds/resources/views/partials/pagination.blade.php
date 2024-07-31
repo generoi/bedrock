@@ -11,15 +11,15 @@
         'type' => 'list',
         'before_page_number' => sprintf(
             '<span class="sr-only">%s</span>',
-            __('Page', 'gds'),
+            __('Page', 'gds')
         ),
         'prev_text' => get_svg('icons.solid.chevron-left', 'is-xs', [
-            'title' => __('Previous page', 'gds'),
+            'title' => __('Previous page', 'gds')
         ]),
         'next_text' => get_svg('icons.solid.chevron-right', 'is-xs', [
-            'title' => __('Next page', 'gds'),
+            'title' => __('Next page', 'gds')
         ]),
-        'add_fragment' => !empty($fragment) ? "#$fragment" : null,
+        'add_fragment' => !empty($fragment) ? "#$fragment" : null
     ]) !!}
   </nav>
 @endif

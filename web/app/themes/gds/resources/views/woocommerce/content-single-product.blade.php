@@ -28,7 +28,7 @@
 @php
   $gallery = collect([
       $product->get_image_id(),
-      ...$product->get_gallery_image_ids(),
+      ...$product->get_gallery_image_ids()
   ])
       ->filter()
       ->map(fn(int $id) => ['id' => $id])

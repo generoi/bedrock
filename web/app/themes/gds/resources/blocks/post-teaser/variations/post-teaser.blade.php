@@ -3,14 +3,14 @@
         !empty($attributes->textAlign)
             ? sprintf('has-text-align-%s', $attributes->textAlign)
             : '',
-        'wp-block-gds-post-teaser--' . get_post_type(),
-    ])->filter()->join(' '),
+        'wp-block-gds-post-teaser--' . get_post_type()
+    ])->filter()->join(' ')
 ]) !!}>
   @blocks
     <!-- wp:gds/media-card @json([
         'useFeaturedImage' => has_post_thumbnail(),
         'mediaUrl' => Roots\asset('images/default-teaser.webp')->uri(),
-        'mediaAlt' => '',
+        'mediaAlt' => ''
     ]) -->
     <!-- wp:core/post-title {"level": {{ $heading_level ?? 3 }}} /-->
 

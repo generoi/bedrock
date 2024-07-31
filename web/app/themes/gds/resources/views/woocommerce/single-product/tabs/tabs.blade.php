@@ -34,8 +34,8 @@
             apply_filters(
                 'woocommerce_product_' . $key . '_tab_title',
                 $product_tab['title'],
-                $key,
-            ),
+                $key
+            )
         );
       @endphp
 

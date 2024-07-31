@@ -3,7 +3,7 @@
     'search' => null,
     'title' => null,
     'searchLabel' => null,
-    'description' => null,
+    'description' => null
 ])
 
 @php(render_block(['blockName' => 'core/media-text']))
@@ -42,7 +42,7 @@
     @else
       @block('core/search', [
           'label' => $searchLabel ?? __('Wanna try searching for it?', 'gds'),
-          'buttonUseIcon' => true,
+          'buttonUseIcon' => true
       ])
     @endif
   </div>
