@@ -28,7 +28,7 @@
           @else
             {!! wp_get_attachment_image($item->id, 'large', false, [
                 'sizes' => '(max-width: 670px) 100vw, (max-width: 1200px) 50vw, 537px',
-                'loading' => $loop->first ? 'eager' : 'lazy',
+                'loading' => $loop->first ? 'eager' : 'lazy'
             ]) !!}
           @endif
         @elseif ($item->embed ?? null)
@@ -64,7 +64,7 @@
               ></video>
             @else
               {!! wp_get_attachment_image($item->id, 'thumbnail', false, [
-                  'sizes' => '100px',
+                  'sizes' => '100px'
               ]) !!}
             @endif
           @elseif (!empty($item->thumbnail))

@@ -20,7 +20,7 @@
     @php
       $heading = apply_filters(
           'woocommerce_product_upsells_products_heading',
-          __('You may also like&hellip;', 'woocommerce'),
+          __('You may also like&hellip;', 'woocommerce')
       );
     @endphp
 

@@ -1,7 +1,7 @@
 <div {!! get_block_wrapper_attributes([
     'class' => !empty($attributes->textAlign)
         ? sprintf('has-text-align-%s', $attributes->textAlign)
-        : '',
+        : ''
 ]) !!}>
   @php
     $imageAttributes = isset($attributes->mediaAlt)
@@ -15,14 +15,14 @@
           get_post_thumbnail_id(),
           'large',
           false,
-          $imageAttributes,
+          $imageAttributes
       ) !!}
     @elseif ($attributes->mediaId ?? false)
       {!! wp_get_attachment_image(
           $attributes->mediaId,
           'large',
           false,
-          $imageAttributes,
+          $imageAttributes
       ) !!}
     @elseif ($attributes->mediaUrl ?? false)
       <img

@@ -1,5 +1,5 @@
 <h1 {!! get_block_wrapper_attributes([
-    'className' => 'has-xl-heading-font-size',
+    'className' => 'has-xl-heading-font-size'
 ]) !!}>
   @if (is_home())
     @if ($home = get_option('page_for_posts', true))
@@ -12,7 +12,7 @@
   @elseif (is_search())
     {!! sprintf(
         __('Search Results for <span class="has-primary-color">%s</span>', 'gds'),
-        get_search_query(),
+        get_search_query()
     ) !!}
   @elseif (is_404())
     {{ __('Not Found', 'gds') }}

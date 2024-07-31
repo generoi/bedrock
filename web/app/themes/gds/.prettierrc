@@ -9,7 +9,8 @@
       "options": {
         "parser": "blade",
         "tabWidth": 2,
-        "wrapAttributes": "force-expand-multiline"
+        "wrapAttributes": "force-expand-multiline",
+        "trailingCommaPHP": false
       }
     }
   ]

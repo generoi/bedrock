@@ -1,6 +1,6 @@
 @props([
     'type' => 'primary',
-    'message' => null,
+    'message' => null
 ])
 
 <div class="alert alert-{{ $type }}">

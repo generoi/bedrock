@@ -20,7 +20,7 @@
     @php
       $heading = apply_filters(
           'woocommerce_product_related_products_heading',
-          __('Related products', 'woocommerce'),
+          __('Related products', 'woocommerce')
       );
     @endphp
 
