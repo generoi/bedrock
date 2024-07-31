@@ -71,6 +71,9 @@ _If you are on Windows you should read the latest DDEV documentation and recomme
     # Fetch the remote database
     ./vendor/bin/robo db:pull @production
 
+    # Login as admin
+    ddev wp login create <user>
+
 Additional useful tasks
 
     # Fetch the remote files (we also use a nginx fallback redirect for missing
