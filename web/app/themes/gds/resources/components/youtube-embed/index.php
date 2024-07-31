@@ -7,7 +7,7 @@
 namespace components\youtube_embed;
 
 add_action('wp_enqueue_scripts', function () {
-    wp_register_style('sage/youtube-embed.css', asset('components/youtube-embed/index.scss.css')->uri(), [], null);
+    wp_register_style('sage/youtube-embed.css', asset('components/youtube-embed/index.css')->uri(), [], null);
 });
 
 /**
