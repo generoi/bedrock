@@ -1756,16 +1756,16 @@
         },
         {
             "name": "generoi/genero-cmp",
-            "version": "v2.1.2",
+            "version": "v2.1.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/generoi/genero-cmp.git",
-                "reference": "21598318f09aac53612286f513605e98fef63c81"
+                "reference": "a2a49acd304097da81a944c0319093860ed7d824"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/generoi/genero-cmp/zipball/21598318f09aac53612286f513605e98fef63c81",
-                "reference": "21598318f09aac53612286f513605e98fef63c81",
+                "url": "https://api.github.com/repos/generoi/genero-cmp/zipball/a2a49acd304097da81a944c0319093860ed7d824",
+                "reference": "a2a49acd304097da81a944c0319093860ed7d824",
                 "shasum": ""
             },
             "require": {
@@ -1808,9 +1808,9 @@
             ],
             "support": {
                 "issues": "https://github.com/generoi/genero-cmp/issues",
-                "source": "https://github.com/generoi/genero-cmp/tree/v2.1.2"
+                "source": "https://github.com/generoi/genero-cmp/tree/v2.1.3"
             },
-            "time": "2024-07-26T11:10:09+00:00"
+            "time": "2024-07-31T12:43:27+00:00"
         },
         {
             "name": "generoi/robo-genero",
@@ -2782,7 +2782,7 @@
         },
         {
             "name": "illuminate/bus",
-            "version": "v10.48.17",
+            "version": "v10.48.18",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/bus.git",
@@ -2835,7 +2835,7 @@
         },
         {
             "name": "illuminate/cache",
-            "version": "v10.48.17",
+            "version": "v10.48.18",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/cache.git",
@@ -2897,7 +2897,7 @@
         },
         {
             "name": "illuminate/collections",
-            "version": "v10.48.17",
+            "version": "v10.48.18",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/collections.git",
@@ -2952,7 +2952,7 @@
         },
         {
             "name": "illuminate/conditionable",
-            "version": "v10.48.17",
+            "version": "v10.48.18",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/conditionable.git",
@@ -2998,7 +2998,7 @@
         },
         {
             "name": "illuminate/config",
-            "version": "v10.48.17",
+            "version": "v10.48.18",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/config.git",
@@ -3046,7 +3046,7 @@
         },
         {
             "name": "illuminate/console",
-            "version": "v10.48.17",
+            "version": "v10.48.18",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/console.git",
@@ -3111,7 +3111,7 @@
         },
         {
             "name": "illuminate/container",
-            "version": "v10.48.17",
+            "version": "v10.48.18",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/container.git",
@@ -3162,7 +3162,7 @@
         },
         {
             "name": "illuminate/contracts",
-            "version": "v10.48.17",
+            "version": "v10.48.18",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/contracts.git",
@@ -3210,16 +3210,16 @@
         },
         {
             "name": "illuminate/database",
-            "version": "v10.48.17",
+            "version": "v10.48.18",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/database.git",
-                "reference": "1e3989b81798d48ed0511c646eefed4626fad36f"
+                "reference": "ba9a3fe3a834c47f7a0aef1697816c3063cb692e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/illuminate/database/zipball/1e3989b81798d48ed0511c646eefed4626fad36f",
-                "reference": "1e3989b81798d48ed0511c646eefed4626fad36f",
+                "url": "https://api.github.com/repos/illuminate/database/zipball/ba9a3fe3a834c47f7a0aef1697816c3063cb692e",
+                "reference": "ba9a3fe3a834c47f7a0aef1697816c3063cb692e",
                 "shasum": ""
             },
             "require": {
@@ -3279,11 +3279,11 @@
                 "issues": "https://github.com/laravel/framework/issues",
                 "source": "https://github.com/laravel/framework"
             },
-            "time": "2024-07-22T14:24:00+00:00"
+            "time": "2024-07-30T06:53:27+00:00"
         },
         {
             "name": "illuminate/encryption",
-            "version": "v10.48.17",
+            "version": "v10.48.18",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/encryption.git",
@@ -3334,7 +3334,7 @@
         },
         {
             "name": "illuminate/events",
-            "version": "v10.48.17",
+            "version": "v10.48.18",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/events.git",
@@ -3389,7 +3389,7 @@
         },
         {
             "name": "illuminate/filesystem",
-            "version": "v10.48.17",
+            "version": "v10.48.18",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/filesystem.git",
@@ -3456,16 +3456,16 @@
         },
         {
             "name": "illuminate/http",
-            "version": "v10.48.17",
+            "version": "v10.48.18",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/http.git",
-                "reference": "ff053b2a01e1f2cd3db2d1bdb8dd82eb34eecc69"
+                "reference": "44b22f724338919dd7015830c2b40b15b1a84330"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/illuminate/http/zipball/ff053b2a01e1f2cd3db2d1bdb8dd82eb34eecc69",
-                "reference": "ff053b2a01e1f2cd3db2d1bdb8dd82eb34eecc69",
+                "url": "https://api.github.com/repos/illuminate/http/zipball/44b22f724338919dd7015830c2b40b15b1a84330",
+                "reference": "44b22f724338919dd7015830c2b40b15b1a84330",
                 "shasum": ""
             },
             "require": {
@@ -3512,11 +3512,11 @@
                 "issues": "https://github.com/laravel/framework/issues",
                 "source": "https://github.com/laravel/framework"
             },
-            "time": "2024-07-03T21:19:27+00:00"
+            "time": "2024-07-29T06:54:36+00:00"
         },
         {
             "name": "illuminate/log",
-            "version": "v10.48.17",
+            "version": "v10.48.18",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/log.git",
@@ -3565,7 +3565,7 @@
         },
         {
             "name": "illuminate/macroable",
-            "version": "v10.48.17",
+            "version": "v10.48.18",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/macroable.git",
@@ -3611,7 +3611,7 @@
         },
         {
             "name": "illuminate/pipeline",
-            "version": "v10.48.17",
+            "version": "v10.48.18",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/pipeline.git",
@@ -3659,7 +3659,7 @@
         },
         {
             "name": "illuminate/queue",
-            "version": "v10.48.17",
+            "version": "v10.48.18",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/queue.git",
@@ -3726,7 +3726,7 @@
         },
         {
             "name": "illuminate/routing",
-            "version": "v10.48.17",
+            "version": "v10.48.18",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/routing.git",
@@ -3790,7 +3790,7 @@
         },
         {
             "name": "illuminate/session",
-            "version": "v10.48.17",
+            "version": "v10.48.18",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/session.git",
@@ -3847,7 +3847,7 @@
         },
         {
             "name": "illuminate/support",
-            "version": "v10.48.17",
+            "version": "v10.48.18",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/support.git",
@@ -3918,7 +3918,7 @@
         },
         {
             "name": "illuminate/translation",
-            "version": "v10.48.17",
+            "version": "v10.48.18",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/translation.git",
@@ -3969,7 +3969,7 @@
         },
         {
             "name": "illuminate/validation",
-            "version": "v10.48.17",
+            "version": "v10.48.18",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/validation.git",
@@ -4030,7 +4030,7 @@
         },
         {
             "name": "illuminate/view",
-            "version": "v10.48.17",
+            "version": "v10.48.18",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/view.git",
@@ -4881,16 +4881,16 @@
         },
         {
             "name": "log1x/sage-svg",
-            "version": "v2.0.0",
+            "version": "v2.0.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Log1x/sage-svg.git",
-                "reference": "510f911ef4d3fa6ce915da897e7feb12b2038901"
+                "reference": "257b533cf69975951401c66b62fc7bab8821c94d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Log1x/sage-svg/zipball/510f911ef4d3fa6ce915da897e7feb12b2038901",
-                "reference": "510f911ef4d3fa6ce915da897e7feb12b2038901",
+                "url": "https://api.github.com/repos/Log1x/sage-svg/zipball/257b533cf69975951401c66b62fc7bab8821c94d",
+                "reference": "257b533cf69975951401c66b62fc7bab8821c94d",
                 "shasum": ""
             },
             "require": {
@@ -4937,7 +4937,7 @@
             ],
             "support": {
                 "issues": "https://github.com/log1x/sage-svg/issues",
-                "source": "https://github.com/Log1x/sage-svg/tree/v2.0.0"
+                "source": "https://github.com/Log1x/sage-svg/tree/v2.0.1"
             },
             "funding": [
                 {
@@ -4945,7 +4945,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2024-07-16T06:44:37+00:00"
+            "time": "2024-07-28T16:53:54+00:00"
         },
         {
             "name": "mck89/peast",
@@ -6964,11 +6964,11 @@
         },
         {
             "name": "satispress/polylang-pro",
-            "version": "3.6.3",
+            "version": "3.6.4",
             "dist": {
                 "type": "zip",
-                "url": "https://satispress.generodigital.com/satispress/polylang-pro/3.6.3",
-                "shasum": "35884454ee3f86ff68f692635a499eddc34f9fc7"
+                "url": "https://satispress.generodigital.com/satispress/polylang-pro/3.6.4",
+                "shasum": "d9e36419744c3dfc4e8aaa86e973bf9dcf62470b"
             },
             "require": {
                 "composer/installers": "^1.0 || ^2.0"
@@ -9942,16 +9942,16 @@
         },
         {
             "name": "wp-cli/config-command",
-            "version": "v2.3.4",
+            "version": "v2.3.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/wp-cli/config-command.git",
-                "reference": "445dfd0276a8e717ed4d2dd6f9dd0b769097fba4"
+                "reference": "a4ae2c73a03706b7f5b8c74426a44b4df198352c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/wp-cli/config-command/zipball/445dfd0276a8e717ed4d2dd6f9dd0b769097fba4",
-                "reference": "445dfd0276a8e717ed4d2dd6f9dd0b769097fba4",
+                "url": "https://api.github.com/repos/wp-cli/config-command/zipball/a4ae2c73a03706b7f5b8c74426a44b4df198352c",
+                "reference": "a4ae2c73a03706b7f5b8c74426a44b4df198352c",
                 "shasum": ""
             },
             "require": {
@@ -10010,9 +10010,9 @@
             "homepage": "https://github.com/wp-cli/config-command",
             "support": {
                 "issues": "https://github.com/wp-cli/config-command/issues",
-                "source": "https://github.com/wp-cli/config-command/tree/v2.3.4"
+                "source": "https://github.com/wp-cli/config-command/tree/v2.3.5"
             },
-            "time": "2024-03-01T12:07:39+00:00"
+            "time": "2024-07-22T10:31:46+00:00"
         },
         {
             "name": "wp-cli/core-command",
@@ -10297,16 +10297,16 @@
         },
         {
             "name": "wp-cli/entity-command",
-            "version": "v2.8.0",
+            "version": "v2.8.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/wp-cli/entity-command.git",
-                "reference": "93476c25ce620396b44dd88d1c5f5768d4f3dc5a"
+                "reference": "c270cc9a2367cb8f5845f26a6b5e203397c91392"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/wp-cli/entity-command/zipball/93476c25ce620396b44dd88d1c5f5768d4f3dc5a",
-                "reference": "93476c25ce620396b44dd88d1c5f5768d4f3dc5a",
+                "url": "https://api.github.com/repos/wp-cli/entity-command/zipball/c270cc9a2367cb8f5845f26a6b5e203397c91392",
+                "reference": "c270cc9a2367cb8f5845f26a6b5e203397c91392",
                 "shasum": ""
             },
             "require": {
@@ -10528,9 +10528,9 @@
             "homepage": "https://github.com/wp-cli/entity-command",
             "support": {
                 "issues": "https://github.com/wp-cli/entity-command/issues",
-                "source": "https://github.com/wp-cli/entity-command/tree/v2.8.0"
+                "source": "https://github.com/wp-cli/entity-command/tree/v2.8.1"
             },
-            "time": "2024-05-04T10:49:23+00:00"
+            "time": "2024-07-29T13:52:21+00:00"
         },
         {
             "name": "wp-cli/eval-command",
@@ -10753,16 +10753,16 @@
         },
         {
             "name": "wp-cli/i18n-command",
-            "version": "2.6.1",
+            "version": "v2.6.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/wp-cli/i18n-command.git",
-                "reference": "7538d684d4f06b0e10c8a0166ce4e6d9e1687aa1"
+                "reference": "53518a11f314119e320597c7a8274f11b1295bdc"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/wp-cli/i18n-command/zipball/7538d684d4f06b0e10c8a0166ce4e6d9e1687aa1",
-                "reference": "7538d684d4f06b0e10c8a0166ce4e6d9e1687aa1",
+                "url": "https://api.github.com/repos/wp-cli/i18n-command/zipball/53518a11f314119e320597c7a8274f11b1295bdc",
+                "reference": "53518a11f314119e320597c7a8274f11b1295bdc",
                 "shasum": ""
             },
             "require": {
@@ -10816,9 +10816,9 @@
             "homepage": "https://github.com/wp-cli/i18n-command",
             "support": {
                 "issues": "https://github.com/wp-cli/i18n-command/issues",
-                "source": "https://github.com/wp-cli/i18n-command/tree/2.6.1"
+                "source": "https://github.com/wp-cli/i18n-command/tree/v2.6.2"
             },
-            "time": "2024-02-28T11:27:34+00:00"
+            "time": "2024-07-03T12:50:00+00:00"
         },
         {
             "name": "wp-cli/import-command",
