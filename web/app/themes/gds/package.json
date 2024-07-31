@@ -5,8 +5,9 @@
   ],
   "type": "module",
   "scripts": {
-    "build": "bud build development",
+    "build": "bud build production --no-minimize",
     "build:production": "bud build production",
+    "start": "bud build development",
     "test": "npm run lint",
     "lint": "npm run lint:prettier && npm run lint:js && npm run lint:css",
     "lint:js": "eslint --ext .jsx,.js resources",
