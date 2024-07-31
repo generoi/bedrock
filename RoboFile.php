@@ -8,6 +8,7 @@ if (file_exists($composer = __DIR__.'/vendor/autoload.php')) {
 class RoboFile extends \Robo\Tasks
 {
     use \Generoi\Robo\Command\loadCommands;
+
     // phpcs:enable
     use \Generoi\Robo\Task\loadTasks;
 
