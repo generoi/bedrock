@@ -40,6 +40,7 @@
   },
   "dependencies": {
     "@fortawesome/fontawesome-pro": "^6.2.1",
+    "@types/wordpress__blocks": "^12.5.14",
     "@wordpress/base-styles": "^5.4.0",
     "clsx": "^2.1.1",
     "jquery": "^3.7.0",

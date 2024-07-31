@@ -1,0 +1,12 @@
+{
+  "extends": "@roots/bud/config/tsconfig.json",
+  "compilerOptions": {
+    "paths": {
+      "@scripts/*": ["./resources/scripts/*"],
+      "@styles/*": ["./resources/styles/*"],
+      "@blocks/*": ["./resources/blocks/*"],
+      "@components/*": ["./resources/components/*"]
+    }
+  },
+  "include": ["./resources"]
+}
