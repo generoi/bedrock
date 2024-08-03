@@ -58,6 +58,7 @@ _If you are on Windows you should read the latest DDEV documentation and recomme
 
     # Login as admin
     ddev wp login create <user>
+    wp @production login create <user>
 
 Additional useful tasks
 
