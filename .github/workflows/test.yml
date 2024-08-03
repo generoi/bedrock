@@ -75,8 +75,8 @@ jobs:
           ./vendor/bin/wp core install \
             --url=http://localhost:8080 \
             --title="Bedrock" \
+            --admin_user="admin" \
             --admin_email="bedrock@example.test" \
-            --skip-config \
             --skip-email
 
       # - name: Install WordPress (multisite)
