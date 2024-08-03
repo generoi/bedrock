@@ -114,6 +114,11 @@
   },
   "minimum-stability": "dev",
   "prefer-stable": true,
+  "autoload": {
+    "psr-4": {
+      "App\\": "web/app/themes/gds/app/"
+    }
+  },
   "extra": {
     "dropin-paths": {
       "web/app/mu-plugins": [
@@ -170,6 +175,11 @@
       "aaemnnosttv/wp-cli-login-command": {
         "Add support for url prefix": "https://github.com/aaemnnosttv/wp-cli-login-command/pull/77/commits/c9e74057c7d872a6d7492e0ece850bea15cb1a6f.patch"
       }
+    },
+    "acorn": {
+      "providers": [
+        "App\\Providers\\ThemeServiceProvider"
+      ]
     }
   },
   "scripts": {

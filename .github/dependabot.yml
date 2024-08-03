@@ -16,13 +16,6 @@ updates:
     registries:
       - satispress
 
-  - package-ecosystem: "composer"
-    directory: "/web/app/themes/gds/"
-    schedule:
-      interval: "weekly"
-    registries:
-      - satispress
-
   - package-ecosystem: "github-actions"
     directory: "/"
     schedule:
