@@ -44,10 +44,17 @@ define('WP_ENVIRONMENT_TYPE', env('WP_ENVIRONMENT_TYPE') ?: match (true) {
     default => 'production',
 });
 
+/** @var string Hostname */
+$host = match (true) {
+    ! empty($_SERVER['HTTP_HOST']) => $_SERVER['HTTP_HOST'],
+    ! empty(env('DDEV_PRIMARY_URL')) => parse_url(env('DDEV_PRIMARY_URL'), PHP_URL_HOST),
+    default => 'gdsbedrock.kinsta.cloud'
+};
+
 /**
  * URLs
  */
-Config::define('WP_HOME', env('WP_HOME') ?: env('DDEV_PRIMARY_URL') ?: 'https://gdsbedrock.kinsta.cloud');
+Config::define('WP_HOME', env('WP_HOME') ?: ('https://'.$host));
 Config::define('WP_SITEURL', env('WP_SITEURL') ?: Config::get('WP_HOME').'/wp');
 
 /**
@@ -71,8 +78,8 @@ Config::define('DB_CHARSET', 'utf8mb4');
 Config::define('DB_COLLATE', 'utf8mb4_swedish_ci');
 $table_prefix = env('DB_PREFIX') ?: 'wp_';
 
-if (env('DATABASE_URL')) {
-    $dsn = (object) parse_url(env('DATABASE_URL'));
+if (env('DATABASE_URL') || env('IS_DDEV_PROJECT')) {
+    $dsn = (object) parse_url(env('DATABASE_URL') ?: 'mysql://db:db@db/db');
 
     Config::define('DB_NAME', substr($dsn->path, 1));
     Config::define('DB_USER', $dsn->user);
@@ -85,20 +92,17 @@ if (env('DATABASE_URL')) {
  */
 /** Step 1: Uncomment this line and visit: /wp/wp-admin/network.php */
 // Config::define('WP_ALLOW_MULTISITE', true);
-/** Step 3: Edit your .env to include DOMAIN_CURRENT_SITE, eg. drupal-vm.dev */
-/** Step 4: Uncomment the following lines */
+/** Step 2: Uncomment the following lines */
 // Config::define('MULTISITE', true);
 // Config::define('SUBDOMAIN_INSTALL', true);
-// Config::define('DOMAIN_CURRENT_SITE', env('DOMAIN_CURRENT_SITE'));
+// Config::define('DOMAIN_CURRENT_SITE', $host);
 // Config::define('PATH_CURRENT_SITE', '/');
 // Config::define('SITE_ID_CURRENT_SITE', 1);
 // Config::define('BLOG_ID_CURRENT_SITE', 1);
-/** Step 5: Uncomment the multisite lines in web/.htaccess */
+/** Step 3: Uncomment the multisite lines in web/.htaccess */
 // Config::define('ADMIN_COOKIE_PATH', '/');
 // Config::define('COOKIE_DOMAIN', '');
 // Config::define('COOKIEPATH', '/');
-// // Used by LOGGED_IN_COOKIE and needs to be available for front-end
-// // otherwise Customizer fails.
 // Config::define('SITECOOKIEPATH', '/');
 
 /**
