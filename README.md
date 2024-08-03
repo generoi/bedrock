@@ -2,17 +2,6 @@
 
 _See [roots/bedrock](https://github.com/roots/bedrock#readme) readme for notes about the stack._
 
-## Genero features
-
-- Build tasks using [Robo](https://robo.li/) and our [generoi/robo-genero](https://github.com/generoi/robo-genero) package.
-- Atomic deploys using [Deployer](https://deployer.org/) and our [generoi/deployer-genero](https://github.com/generoi/deployer-genero) package.
-- Composer tasks for building and linting the project. If needed you can customize these for your project.
-- [DDEV](https://ddev.readthedocs.io/) local development environment.
-- [GitHub actions](https://github.com/generoi/bedrock/tree/master/.github/workflows) for deploying, linting, e2e and lighthouse.
-- Bundled opinionated [sage fork](https://github.com/generoi/bedrock/tree/master/web/app/themes/gds) using laravel mix
-- Automatic production/staging `.env` environment detection on Kinsta
-- Various [mu-plugins](https://github.com/generoi/bedrock/tree/master/web/app/mu-plugins) to increase security and set sane defaults.
-
 ## Requirements
 
 - PHP 8.0 - [Installation](https://formulae.brew.sh/formula/php@8.0)
@@ -55,11 +44,11 @@ _If you are on Windows you should read the latest DDEV documentation and recomme
     # Install composer dependencies and development tools (vendor folder)
     composer install:development
 
-    # Build and watch theme assets from your host computer (macOS/linux)
-    cd web/app/themes/gds
-    node --run build
-    node --run build:production
-    node --run start
+    # The repo uses `npm` workspaces so you can also run commands across all
+    # themes from root of project
+
+    npm run install -ws
+    npm run build:production -w gds
 
     # Start the container
     ddev start
