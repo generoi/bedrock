@@ -65,8 +65,6 @@ set('build_artifact_exclude', [
     '/*.md',
     '/config/*.yml',
     '/config/patches',
-    '/composer.json',
-    '/composer.lock',
     '/*.php',
     '/*.xml',
     '/*.yml',
@@ -113,7 +111,6 @@ task('build:composer', function () {
 });
 
 task('build:theme', function () {
-    runLocally('cd {{build_path}}/{{theme_dir}} && composer {{composer_action}} {{composer_options}}');
     runLocally('cd {{build_path}}/{{theme_dir}} && npm install --no-audit', ['timeout' => 1000]);
     runLocally('cd {{build_path}}/{{theme_dir}} && npm run lint');
     runLocally('cd {{build_path}} && {{bin/robo}} build:production');
