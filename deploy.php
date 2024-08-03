@@ -30,7 +30,6 @@ set('writable_mode', 'chmod');
 set('writable_use_sudo', false);
 set('writable_chmod_mode', 'ug+w');
 
-set('bin/robo', './vendor/bin/robo');
 set('bin/wp', './vendor/bin/wp');
 
 /**
@@ -113,7 +112,7 @@ task('build:composer', function () {
 task('build:theme', function () {
     runLocally('cd {{build_path}}/{{theme_dir}} && npm install --no-audit', ['timeout' => 1000]);
     runLocally('cd {{build_path}}/{{theme_dir}} && npm run lint');
-    runLocally('cd {{build_path}} && {{bin/robo}} build:production');
+    runLocally('cd {{build_path}}/{{theme_dir}} && npm run build:production');
     runLocally('ls {{build_path}}/{{theme_dir}}/public');
 });
 

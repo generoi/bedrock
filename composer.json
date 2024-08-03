@@ -129,7 +129,7 @@
       ]
     },
     "hooks": {
-      "pre-commit": "composer lint:fix && composer test",
+      "pre-commit": "composer lint:fix",
       "post-merge": "composer install:development"
     },
     "installer-paths": {
@@ -194,7 +194,7 @@
       "cd web/app/themes/gds; npm run lint"
     ],
     "lint:fix": [
-      "pint",
+      "pint --quiet",
       "cd web/app/themes/gds; npm run lint:fix"
     ],
     "ci": [
@@ -203,10 +203,12 @@
       "(cd web/app/themes/gds; npm run ci:scripts --silent) | vendor/bin/cs2pr",
       "(cd web/app/themes/gds; npm run ci:styles --silent 2>&1) | vendor/bin/cs2pr"
     ],
-    "build": "vendor/bin/robo build:production",
+    "build": [
+      "cd web/app/themes/gds; npm run build:production"
+    ],
     "install:development": [
       "@composer install",
-      "vendor/bin/robo install:development",
+      "cd web/app/themes/gds; npm install",
       "vendor/bin/cghooks update"
     ],
     "post-autoload-dump": [
