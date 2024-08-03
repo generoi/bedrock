@@ -191,22 +191,22 @@
     ],
     "lint": [
       "pint --test",
-      "cd web/app/themes/gds; node --no-warnings --run lint"
+      "npm run lint --workspaces"
     ],
     "lint:fix": [
       "pint --quiet",
-      "cd web/app/themes/gds; node --no-warnings --run lint:fix"
+      "npm run lint:fix --workspaces"
     ],
     "ci": [
       "@composer validate --no-check-all",
       "pint --format=checkstyle | vendor/bin/cs2pr",
-      "(cd web/app/themes/gds; node --no-warnings --run ci:scripts) | vendor/bin/cs2pr",
-      "(cd web/app/themes/gds; node --no-warnings --run ci:styles 2>&1) | vendor/bin/cs2pr"
+      "npm run ci:scripts --silent --workspaces | while read xml; do echo $xml | ./vendor/bin/cs2pr; done",
+      "npm run ci:styles --silent --workspaces | while read xml; do echo $xml | ./vendor/bin/cs2pr; done"
     ],
     "build": [
-      "cd web/app/themes/gds; npm install",
-      "cd web/app/themes/gds; node --no-warnings --run lint",
-      "cd web/app/themes/gds; node --no-warnings --run build:production"
+      "npm install --workspaces",
+      "npm run lint --workspaces",
+      "npm run build:production --workspaces"
     ],
     "install:development": [
       "@composer install",

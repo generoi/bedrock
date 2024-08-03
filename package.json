@@ -1,0 +1,7 @@
+{
+  "name": "bedrock",
+  "private": true,
+  "workspaces": [
+    "web/app/themes/gds"
+  ]
+}
