@@ -61,9 +61,6 @@ jobs:
       - name: Run CI tests
         run: composer ci --no-interaction
 
-      - name: Build assets
-        run: composer build --no-interaction
-
       - name: Launch web server
         run: ./vendor/bin/wp server &
 
