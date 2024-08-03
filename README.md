@@ -57,13 +57,9 @@ _If you are on Windows you should read the latest DDEV documentation and recomme
 
     # Build and watch theme assets from your host computer (macOS/linux)
     cd web/app/themes/gds
-    npm run build
-    npm run build:production
-    npm run start
-
-    # Note that if use Windows or otherwise want to run commands from within the
-    # container, you need to use `start:poll` instead of `start`
-    npm run start:poll
+    node --run build
+    node --run build:production
+    node --run start
 
     # Start the container
     ddev start

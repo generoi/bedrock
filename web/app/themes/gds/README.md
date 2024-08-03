@@ -130,14 +130,14 @@ Edit `app/setup.php` to enable or disable theme features, setup navigation menus
 
 ## Theme development
 
-- Run `npm i` from the theme directory to install dependencies
+- Run `npm install` from the theme directory to install dependencies
 - Update `webpack.mix.js` with your local dev URL
 
 ### Build commands
 
-- `npm run start` — Compile assets when file changes are made, start Browsersync session
-- `run run build` — Compile and optimize the files in your assets directory
-- `run run build:production` — Compile assets for production
+- `node --run start` — Compile assets when file changes are made, start Browsersync session
+- `node --run build` — Compile and optimize the files in your assets directory
+- `node --run build:production` — Compile assets for production
 
 ## Documentation
 

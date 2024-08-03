@@ -111,8 +111,8 @@ task('build:composer', function () {
 
 task('build:theme', function () {
     runLocally('cd {{build_path}}/{{theme_dir}} && npm install --no-audit', ['timeout' => 1000]);
-    runLocally('cd {{build_path}}/{{theme_dir}} && npm run lint');
-    runLocally('cd {{build_path}}/{{theme_dir}} && npm run build:production');
+    runLocally('cd {{build_path}}/{{theme_dir}} && node --run lint');
+    runLocally('cd {{build_path}}/{{theme_dir}} && node --run build:production');
     runLocally('ls {{build_path}}/{{theme_dir}}/public');
 });
 
