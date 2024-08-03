@@ -1,6 +1,7 @@
 machine_name: gdsbedrock
 organization: generoi
 theme_path: 'web/app/themes/gds'
+multisite: false
 placeholders:
   '%files': web/app/uploads/
 env:

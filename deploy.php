@@ -78,7 +78,7 @@ if (! empty($prod = $robo['env']['@production'])) {
         ->setHostname($prod['host'])
         ->setPort($prod['port'] ?? 22)
         ->setRemoteUser($prod['user'])
-        ->set('url', $prod['url'])
+        ->set('url', is_array($prod['url']) ? $prod['url'][0] : $prod['url'])
         ->set('deploy_path', dirname($prod['path']))
         ->set('bin/wp', '{{ release_path }}/vendor/bin/wp');
     // ->set('http_user', 'apache')
@@ -91,10 +91,10 @@ if (! empty($staging = $robo['env']['@staging'])) {
         ->setHostname($staging['host'])
         ->setPort($staging['port'] ?? 22)
         ->setRemoteUser($staging['user'])
-        ->set('url', $staging['url'])
+        ->set('url', is_array($staging['url']) ? $staging['url'][0] : $staging['url'])
         ->set('deploy_path', dirname($staging['path']))
         ->set('bin/wp', '{{ release_path }}/vendor/bin/wp')
-        ->set('scaffold_home_url', $staging['url']);
+        ->set('scaffold_home_url', is_array($staging['url']) ? $staging['url'][0] : $staging['url']);
 }
 
 /**

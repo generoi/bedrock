@@ -4,6 +4,7 @@
     "web/app/cache",
     "web/app/languages",
     "web/app/mu-plugins/kinsta-mu-plugins",
+    "web/app/mu-plugins/multisite-url-fixer",
     "web/app/mu-plugins/show-environment-in-admin-bar",
     "web/app/plugins",
     "web/app/uploads",
