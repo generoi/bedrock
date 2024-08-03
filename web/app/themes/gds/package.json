@@ -10,7 +10,7 @@
     "start": "bud build development",
     "test": "npm run lint",
     "lint": "npm run lint:prettier && npm run lint:js && npm run lint:css",
-    "lint:js": "eslint --ext .jsx,.js resources",
+    "lint:js": "eslint resources",
     "lint:css": "stylelint \"resources/**/*.{css,scss,vue}\"",
     "lint:prettier": "prettier . --check",
     "lint:fix": "npm run lint:fix:prettier && npm run lint:fix:js && npm run lint:fix:css",
