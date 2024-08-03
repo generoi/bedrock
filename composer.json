@@ -204,11 +204,13 @@
       "(cd web/app/themes/gds; node --no-warnings --run ci:styles 2>&1) | vendor/bin/cs2pr"
     ],
     "build": [
+      "cd web/app/themes/gds; npm install",
+      "cd web/app/themes/gds; node --no-warnings --run lint",
       "cd web/app/themes/gds; node --no-warnings --run build:production"
     ],
     "install:development": [
       "@composer install",
-      "cd web/app/themes/gds; npm install",
+      "@composer build",
       "vendor/bin/cghooks update"
     ],
     "post-autoload-dump": [
