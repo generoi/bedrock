@@ -47,7 +47,11 @@ _If you are on Windows you should read the latest DDEV documentation and recomme
     # The repo uses `npm` workspaces so you can also run commands across all
     # themes from root of project
 
-    npm run install -ws
+    npm run install
+    npm run build:production
+
+    # Same as
+    npm run build:production -ws
     npm run build:production -w gds
 
     # Start the container
