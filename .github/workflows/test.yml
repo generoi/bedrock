@@ -93,3 +93,6 @@ jobs:
 
       - name: Load frontpage and verify app.js script is loaded
         run: curl http://localhost:8080/ | grep '<script.*src=".*app/themes/gds/public/scripts/app.js'
+
+      - name: Run unit tests
+        run: composer phpunit
