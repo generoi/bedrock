@@ -1,6 +1,7 @@
 {
   "name": "bedrock",
   "private": true,
+  "type": "module",
   "workspaces": [
     "web/app/themes/gds"
   ],
@@ -21,6 +22,11 @@
     "ci:styles": "npm run ci:styles -ws --silent",
     "translate": "npm run translate -ws",
     "translate:pot": "npm run translate:pot -ws",
-    "translate:js": "npm run translate:js -ws"
+    "translate:js": "npm run translate:js -ws",
+    "e2e:install": "npm install --workspaces=false && npx playwright install --with-deps chromium",
+    "e2e:test": "npx playwright test --config=./test/e2e/playwright.config.js"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.45.3"
   }
 }

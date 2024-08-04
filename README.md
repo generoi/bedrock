@@ -126,6 +126,30 @@ See [deployer-genero](https://github.com/generoi/deployer-genero) and run `./ven
 ./vendor/bin/dep rollback production
 ```
 
+## Testing
+
+### PHPUnit unit tests
+
+Tests require a database so they need to run either in `ddev`, using `wp serve`
+or with a local database available.
+
+```sh
+ddev composer phpunit
+```
+
+### Playwright E2E Tests
+
+```sh
+# Install dependencies
+npm run e2e:install
+
+# Run against ddev environment
+npm run e2e:test
+
+# Run it against production
+URL=https://gdsbedrock.kinsta.cloudd npm run e2e:test
+```
+
 ## Create a new project and Git repository
 
 _NOTE: If possible set the project name and repo name to use the domain name of the website. Example: `www.my-site.fi` => `my-site`. This will help with configuring all the different environments in the future._
