@@ -18,7 +18,7 @@ use_dns_when_possible: true
 performance_mode: none
 web_environment: []
 #  WP_HOME=/var/www
-nodejs_version: "20"
+nodejs_version: "22"
 provider: default
 upload_dir: web/app/uploads
 hooks:

@@ -17,12 +17,10 @@ jobs:
         run: echo "URL=${{ inputs.url }}" >> $GITHUB_ENV
 
       - name: Install dependencies
-        run: |
-          npm install @playwright/test
-          npx playwright install --with-deps
+        run: npm e2e:install
 
       - name: Run E2E tests
-        run: npx playwright test --config=./test/e2e/playwright.config.js
+        run: npm e2e:test
 
       - uses: actions/upload-artifact@v4
         with:
