@@ -38,7 +38,6 @@ export default async (app) => {
     app.entry(relative(app.path('@src'), file));
   });
 
-  app.esm.enable();
   app.setPublicPath('/app/themes/gds/public/');
 
   app
