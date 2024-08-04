@@ -92,7 +92,10 @@
     "deployer/deployer": "^7.0",
     "generoi/deployer-genero": "^0.3",
     "staabm/annotate-pull-request-from-checkstyle": "^1.5",
-    "laravel/pint": "^1.17"
+    "laravel/pint": "^1.17",
+    "wp-phpunit/wp-phpunit": "^6.6",
+    "phpunit/phpunit": "^9.0",
+    "yoast/phpunit-polyfills": "^2.0"
   },
   "config": {
     "optimize-autoloader": true,
@@ -189,6 +192,7 @@
       "@composer validate --no-check-all",
       "@composer lint"
     ],
+    "phpunit": "phpunit",
     "lint": [
       "pint --test",
       "npm run lint"

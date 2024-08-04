@@ -39,6 +39,7 @@ if (file_exists($root_dir.'/.env')) {
  * Set up our global environment constant and load its config first
  */
 define('WP_ENVIRONMENT_TYPE', env('WP_ENVIRONMENT_TYPE') ?: match (true) {
+    ! empty(env('IS_WP_PHPUNIT')) => 'test',
     env('IS_DDEV_PROJECT') => 'development',
     preg_match('/\bstaging\b/', gethostname()) => 'staging',
     default => 'production',
@@ -121,7 +122,7 @@ Config::define('NONCE_SALT', env('NONCE_SALT'));
  * Custom Settings
  */
 Config::define('AUTOMATIC_UPDATER_DISABLED', true);
-Config::define('DISABLE_WP_CRON', env('DISABLE_WP_CRON') ?: false);
+defined('DISABLE_WP_CRON') or Config::define('DISABLE_WP_CRON', env('DISABLE_WP_CRON') ?: false);
 Config::define('WP_POST_REVISIONS', 10);
 Config::define('WP_DEFAULT_THEME', 'gds');
 // Disable the plugin and theme file editor in the admin

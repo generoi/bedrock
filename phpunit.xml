@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<phpunit
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  bootstrap="test/unit/bootstrap.php"
+  backupGlobals="false"
+  colors="true"
+  xsi:noNamespaceSchemaLocation="https://schema.phpunit.de/10.5/phpunit.xsd"
+>
+  <testsuites>
+    <testsuite name="unit">
+      <directory suffix="Test.php">./test/unit/</directory>
+    </testsuite>
+  </testsuites>
+  <php>
+    <env name="WP_PHPUNIT__TESTS_CONFIG" value="test/unit/wp-config.php"/>
+    <env name="IS_WP_PHPUNIT" value="true"/>
+  </php>
+</phpunit>
