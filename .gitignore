@@ -54,3 +54,9 @@ local.config.yml
 
 # WP-CLI
 wp-cli.local.yml
+
+# Unit tests
+.phpunit.cache
+.phpunit.result.cache
+screenshot.jpg
+test-results
