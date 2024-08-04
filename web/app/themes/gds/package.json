@@ -36,7 +36,7 @@
     "@roots/sage": "^6.23.1",
     "@shufo/prettier-plugin-blade": "^1.14.1",
     "postcss-inline-svg": "^6.0.0",
-    "postcss-preset-env": "^9.6.0",
+    "postcss-preset-env": "^10.0.0",
     "stylelint-checkstyle-reporter": "^1.0.0",
     "stylelint-config-standard-scss": "^13.1.0"
   },
