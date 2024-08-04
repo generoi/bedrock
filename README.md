@@ -44,15 +44,10 @@ _If you are on Windows you should read the latest DDEV documentation and recomme
     # Install composer dependencies and development tools (vendor folder)
     composer install:development
 
-    # The repo uses `npm` workspaces so you can also run commands across all
-    # themes from root of project
-
+    # The repo uses `npm` workspaces so you you should run commands from root of
+    # project.
     npm run install
     npm run build:production
-
-    # Same as
-    npm run build:production -ws
-    npm run build:production -w gds
 
     # Start the container
     ddev start
@@ -84,6 +79,16 @@ Additional useful tasks
     ./vendor/bin/robo
     ./vendor/bin/dep
     ./vendor/bin/wp
+
+### NPM
+
+    # The root `package.json` delegates all scripts with a `--workspaces` flag
+    # so no flags is the same as
+    npm run build:production -ws
+    npm run build:production -w gds
+
+    # To install/remove a package you need to explicitly add the flag
+    npm install postcss-preset-env --save-dev -ws
 
 ### Deploying with GitHub actions
 
