@@ -3,5 +3,24 @@
   "private": true,
   "workspaces": [
     "web/app/themes/gds"
-  ]
+  ],
+  "scripts": {
+    "build": "npm run build -ws",
+    "build:production": "npm run build:production -ws",
+    "start": "npm run start -ws",
+    "test": "npm run test -ws",
+    "lint": "npm run lint -ws",
+    "lint:js": "npm run lint:js -ws",
+    "lint:css": "npm run lint:css -ws",
+    "lint:prettier": "npm run lint:prettier -ws",
+    "lint:fix": "npm run lint:fix -ws",
+    "lint:fix:prettier": "npm run lint:fix:prettier -ws",
+    "lint:fix:js": "npm run lint:fix:js -ws",
+    "lint:fix:css": "npm run lint:fix:css -ws",
+    "ci:scripts": "npm run ci:scripts -ws --silent",
+    "ci:styles": "npm run ci:styles -ws --silent",
+    "translate": "npm run translate -ws",
+    "translate:pot": "npm run translate:pot -ws",
+    "translate:js": "npm run translate:js -ws"
+  }
 }

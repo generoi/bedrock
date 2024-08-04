@@ -191,22 +191,22 @@
     ],
     "lint": [
       "pint --test",
-      "npm run lint --workspaces"
+      "npm run lint"
     ],
     "lint:fix": [
       "pint --quiet",
-      "npm run lint:fix --workspaces"
+      "npm run lint:fix"
     ],
     "ci": [
       "@composer validate --no-check-all",
       "pint --format=checkstyle | vendor/bin/cs2pr",
-      "npm run ci:scripts --silent --workspaces | while read xml; do echo $xml | ./vendor/bin/cs2pr; done",
-      "npm run ci:styles --silent --workspaces | while read xml; do echo $xml | ./vendor/bin/cs2pr; done"
+      "npm run ci:scripts --silent | while read xml; do echo $xml | ./vendor/bin/cs2pr; done",
+      "npm run ci:styles --silent | while read xml; do echo $xml | ./vendor/bin/cs2pr; done"
     ],
     "build": [
-      "npm install --workspaces",
-      "npm run lint --workspaces",
-      "npm run build:production --workspaces"
+      "npm install",
+      "npm run lint",
+      "npm run build:production"
     ],
     "install:development": [
       "@composer install",
