@@ -1,5 +1,10 @@
 name: E2E tests
 on:
+  workflow_dispatch:
+    inputs:
+      url:
+        description: 'url'
+        default: 'https://gdsbedrock.kinsta.cloud'
   workflow_call:
     inputs:
       url:
@@ -17,10 +22,10 @@ jobs:
         run: echo "URL=${{ inputs.url }}" >> $GITHUB_ENV
 
       - name: Install dependencies
-        run: npm e2e:install
+        run: npm run e2e:install
 
       - name: Run E2E tests
-        run: npm e2e:test
+        run: npm run e2e:test
 
       - uses: actions/upload-artifact@v4
         with:
