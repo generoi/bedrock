@@ -28,7 +28,6 @@ class WooCommerceServiceProvider extends ServiceProvider
         add_filter('woocommerce_enqueue_styles', [$this, 'dequeueStylesheets']);
 
         add_filter('woocommerce_admin_get_feature_config', [$this, 'filterFeatures']);
-        add_filter('wp_nav_menu_objects', [$this, 'setShopMenuItem']);
     }
 
     public function removeGlobalTemplateHooks(): void
@@ -147,29 +146,5 @@ class WooCommerceServiceProvider extends ServiceProvider
         unset($features['launch-your-store']);
 
         return $features;
-    }
-
-    /**
-     * Mark shop page as ancestor when a product or product taxonomy page is
-     * active.
-     */
-    public function setShopMenuItem(array $items): array
-    {
-        if (! is_woocommerce()) {
-            return $items;
-        }
-
-        $shopPageId = wc_get_page_id('shop');
-        if (! $shopPageId) {
-            return $items;
-        }
-
-        foreach ($items as $item) {
-            if ($item->type === 'post_type' && $shopPageId === (int) $item->objectId) {
-                $item->activeAncestor = true;
-            }
-        }
-
-        return $items;
     }
 }

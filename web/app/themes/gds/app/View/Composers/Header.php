@@ -61,9 +61,7 @@ class Header extends Composer
             return [];
         }
 
-        $menu = apply_filters('wp_nav_menu_objects', $navigation->toArray(), []);
-
-        return $menu;
+        return $navigation->toArray();
     }
 
     /**
