@@ -20,7 +20,7 @@ return [
      * Prepend all files that are written to the selected disk with this path.
      * This allows separating the fonts from other data in the public disk.
      */
-    'path' => 'uploads/fonts',
+    'path' => 'uploads/fonts/'.get_current_blog_id(),
 
     /*
      * By default, CSS will be inlined to reduce the amount of round trips
