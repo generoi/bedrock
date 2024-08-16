@@ -11,3 +11,6 @@ Config::define('WP_TESTS_EMAIL', 'admin@example.org');
 Config::define('WP_TESTS_TITLE', 'Test');
 Config::define('WP_PHP_BINARY', 'php');
 Config::define('WPLANG', '');
+// Run tests as single-site
+Config::define('WP_TESTS_MULTISITE', false);
+Config::define('MULTISITE', false);
