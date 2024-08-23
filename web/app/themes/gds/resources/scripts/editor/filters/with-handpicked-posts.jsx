@@ -53,7 +53,11 @@ function HandPickedPostsControl({setAttributes, attributes}) {
         return acc;
       }, new Set());
 
-      updateQuery({include: Array.from(newPostsSet)});
+      updateQuery({
+        include: Array.from(newPostsSet),
+        orderby: 'include',
+        order: 'desc'
+      });
     },
     [postsMap],
   );
@@ -82,8 +86,8 @@ function HandPickedPostsControl({setAttributes, attributes}) {
     <ToolsPanelItem
       label={__('Hand-picked posts', 'gds')}
       hasValue={() => !!selectedPostIds?.length}
-      onDeselect={() => updateQuery({include: []})}
-      resetAllFilter={() => updateQuery({include: []})}
+      onDeselect={() => updateQuery({include: [], orderby: 'date', order: 'desc'})}
+      resetAllFilter={() => updateQuery({include: [], orderby: 'date', order: 'desc'})}
       isShownByDefault={true}
     >
       <FormTokenField

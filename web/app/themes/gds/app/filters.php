@@ -42,7 +42,9 @@ add_filter('get_the_archive_title', function ($title) {
  */
 add_filter('query_loop_block_query_vars', function (array $query, WP_Block $block) {
     if (! empty($block->context['query']['include'])) {
-        $query['post__in'] = $block->context['query']['include'];
+        $query['include'] = $block->context['query']['include'];
+        $query['orderby'] = 'include';
+        $query['order'] = 'DESC';
     }
 
     return $query;
