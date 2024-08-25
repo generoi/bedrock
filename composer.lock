@@ -1805,16 +1805,16 @@
         },
         {
             "name": "generoi/genero-cmp",
-            "version": "v2.1.4",
+            "version": "v2.1.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/generoi/genero-cmp.git",
-                "reference": "a46308c2b3a3b9b5320a97bc390bac10d5b99f64"
+                "reference": "b032e4e097d69c041ae8297f1a92c3a28fc1160f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/generoi/genero-cmp/zipball/a46308c2b3a3b9b5320a97bc390bac10d5b99f64",
-                "reference": "a46308c2b3a3b9b5320a97bc390bac10d5b99f64",
+                "url": "https://api.github.com/repos/generoi/genero-cmp/zipball/b032e4e097d69c041ae8297f1a92c3a28fc1160f",
+                "reference": "b032e4e097d69c041ae8297f1a92c3a28fc1160f",
                 "shasum": ""
             },
             "require": {
@@ -1857,9 +1857,9 @@
             ],
             "support": {
                 "issues": "https://github.com/generoi/genero-cmp/issues",
-                "source": "https://github.com/generoi/genero-cmp/tree/v2.1.4"
+                "source": "https://github.com/generoi/genero-cmp/tree/v2.1.5"
             },
-            "time": "2024-08-12T13:16:26+00:00"
+            "time": "2024-08-22T13:17:26+00:00"
         },
         {
             "name": "generoi/robo-genero",
