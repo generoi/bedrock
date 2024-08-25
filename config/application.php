@@ -137,6 +137,8 @@ Config::define('ACF_LITE', true);
 Config::define('JETPACK_DEV_DEBUG', true);
 // Fix Kinsta MU Plugins URL path with Bedrock
 Config::define('KINSTAMU_CUSTOM_MUPLUGIN_URL', Config::get('WP_CONTENT_URL').'/mu-plugins/kinsta-mu-plugins');
+// 10up/wpcli-vulnerability-scanner
+Config::define('VULN_API_PROVIDER', 'wordfence');
 
 /**
  * Debugging Settings

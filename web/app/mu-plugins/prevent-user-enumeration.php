@@ -1,7 +1,7 @@
 <?php
 
 /*
-Plugin Name:  Stop User Enumeration
+Plugin Name:  Prevent User Enumeration
 Plugin URI:   https://genero.fi
 Description:  Do not allow user enumeration using WP pretty URLs.
 Version:      1.0.0
