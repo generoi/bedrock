@@ -34,43 +34,13 @@ jobs:
           ssh-private-key: |
             ${{ secrets.KINSTA_DEPLOY_PRIVATE_KEY }}
 
-      - name: Setup Node
-        uses: actions/setup-node@v4
+      - name: Setup project
+        uses: ./.github/actions/setup
         with:
-          node-version-file: .nvmrc
-          cache: 'npm'
-          cache-dependency-path: '**/package-lock.json'
-
-      - name: Authenticate with Fontawesome NPM reposity
-        run: |
-          npm config set "//npm.fontawesome.com/:_authToken" ${{ secrets.NPM_FONTAWESOME_AUTH_TOKEN }}
-
-      - name: Read PHP version from composer.json to env
-        run: |
-          echo "PHP_VERSION=$(cat ./composer.json | jq -r '.config.platform.php')" >> "$GITHUB_ENV"
-
-      - name: Setup PHP
-        uses: shivammathur/setup-php@v2
-        with:
-          php-version: ${{ env.PHP_VERSION }}
-        env:
-          COMPOSER_TOKEN: ${{ secrets.PACKAGIST_GITHUB_TOKEN }}
-
-      - name: Configure basic http authentication for Composer
-        run: composer config --global http-basic.satispress.generodigital.com ${{ secrets.SATISPRESS_API_KEY }} ${{ secrets.SATISPRESS_PASSWORD }}
-
-      - name: Get Composer Cache Directory
-        id: composer-cache
-        run: |
-          echo "dir=$(composer config cache-files-dir)" >> $GITHUB_OUTPUT
-
-      - name: Composer Cache
-        uses: actions/cache@v4
-        with:
-          path: ${{ steps.composer-cache.outputs.dir }}
-          key: ${{ runner.os }}-composer-${{ hashFiles('**/composer.lock') }}
-          restore-keys: |
-            ${{ runner.os }}-composer-
+          npm_fontawesome_auth_token: ${{ secrets.NPM_FONTAWESOME_AUTH_TOKEN }}
+          packagist_github_token: ${{ secrets.PACKAGIST_GITHUB_TOKEN }}
+          satispress_api_key: ${{ secrets.SATISPRESS_API_KEY }}
+          satispress_password: ${{ secrets.SATISPRESS_PASSWORD }}
 
       - name: Install development packages to run tests
         run: composer install:development

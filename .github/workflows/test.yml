@@ -11,50 +11,13 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@v4
 
-      - name: Setup Node
-        uses: actions/setup-node@v4
+      - name: Setup project
+        uses: ./.github/actions/setup
         with:
-          node-version-file: .nvmrc
-          cache: 'npm'
-          cache-dependency-path: '**/package-lock.json'
-
-      - name: Authenticate with Fontawesome NPM reposity
-        run: |
-          npm config set "//npm.fontawesome.com/:_authToken" ${{ secrets.NPM_FONTAWESOME_AUTH_TOKEN }}
-
-      - name: Read PHP version from composer.json to env
-        run: |
-          echo "PHP_VERSION=$(cat ./composer.json | jq -r '.config.platform.php')" >> "$GITHUB_ENV"
-
-      - name: Setup PHP
-        uses: shivammathur/setup-php@v2
-        with:
-          php-version: ${{ env.PHP_VERSION }}
-        env:
-          COMPOSER_TOKEN: ${{ secrets.PACKAGIST_GITHUB_TOKEN }}
-
-      - name: Start MySQL service
-        run: |
-          sudo /etc/init.d/mysql start
-          mysql -e 'CREATE DATABASE db;' -uroot -proot
-          mysql -e "CREATE USER 'db'@'localhost' IDENTIFIED BY 'db';" -uroot -proot
-          mysql -e "GRANT ALL PRIVILEGES ON db.* TO 'db'@'localhost' WITH GRANT OPTION;" -uroot -proot
-
-      - name: Configure basic http authentication for Composer
-        run: composer config --global http-basic.satispress.generodigital.com ${{ secrets.SATISPRESS_API_KEY }} ${{ secrets.SATISPRESS_PASSWORD }}
-
-      - name: Get Composer Cache Directory
-        id: composer-cache
-        run: |
-          echo "dir=$(composer config cache-files-dir)" >> $GITHUB_OUTPUT
-
-      - name: Composer Cache
-        uses: actions/cache@v4
-        with:
-          path: ${{ steps.composer-cache.outputs.dir }}
-          key: ${{ runner.os }}-composer-${{ hashFiles('**/composer.lock') }}
-          restore-keys: |
-            ${{ runner.os }}-composer-
+          npm_fontawesome_auth_token: ${{ secrets.NPM_FONTAWESOME_AUTH_TOKEN }}
+          packagist_github_token: ${{ secrets.PACKAGIST_GITHUB_TOKEN }}
+          satispress_api_key: ${{ secrets.SATISPRESS_API_KEY }}
+          satispress_password: ${{ secrets.SATISPRESS_PASSWORD }}
 
       - name: Install development packages to run tests
         run: composer install:development
@@ -62,32 +25,10 @@ jobs:
       - name: Run CI tests
         run: composer ci --no-interaction
 
-      - name: Launch web server
-        run: ./vendor/bin/wp server &
-
-      - name: Setup .env
-        run: |
-          cp .env.example .env
-          sed -i 's/WP_HOME=.*/WP_HOME=http:\/\/localhost:8080/g' .env
-          sed -i 's/DB_HOST=.*/DB_HOST=localhost/g' .env
-
       - name: Install WordPress
-        run: |
-          ./vendor/bin/wp core install \
-            --url=http://localhost:8080 \
-            --title="Bedrock" \
-            --admin_user="admin" \
-            --admin_email="bedrock@example.test" \
-            --skip-email
-
-      # - name: Install WordPress (multisite)
-      #   run: |
-      #     ./vendor/bin/wp core multisite-install \
-      #       --url=http://localhost:8080 \
-      #       --title="Bedrock" \
-      #       --admin_email="bedrock@example.test" \
-      #       --skip-config \
-      #       --skip-email
+        uses: ./.github/actions/install-wordpress
+        with:
+          multisite: 'false'
 
       - name: Optimize acorn
         run: ./vendor/bin/wp acorn optimize
