@@ -85,7 +85,8 @@
     "wpackagist-plugin/woocommerce": "^9.1",
     "generoi/genero-cmp": "^2.0",
     "generoi/wp-image-resizer": "^1.0",
-    "spatie/laravel-csp": "^2.10"
+    "spatie/laravel-csp": "^2.10",
+    "10up/wpcli-vulnerability-scanner": "^1.2"
   },
   "require-dev": {
     "brainmaestro/composer-git-hooks": "^3.0.0",

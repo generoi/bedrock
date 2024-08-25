@@ -4,8 +4,57 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "ebbe4d30ea6d2c143114d8d8fb15bbc7",
+    "content-hash": "ca025226b2465de5c6789476cb3a00b0",
     "packages": [
+        {
+            "name": "10up/wpcli-vulnerability-scanner",
+            "version": "1.2.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/10up/wpcli-vulnerability-scanner.git",
+                "reference": "10308a87b55ee8cf2912fd4195b192ace71dca1e"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/10up/wpcli-vulnerability-scanner/zipball/10308a87b55ee8cf2912fd4195b192ace71dca1e",
+                "reference": "10308a87b55ee8cf2912fd4195b192ace71dca1e",
+                "shasum": ""
+            },
+            "require": {
+                "halaxa/json-machine": "^1.1",
+                "php": ">=7.0"
+            },
+            "require-dev": {
+                "wp-cli/extension-command": "^2.1",
+                "wp-cli/wp-cli-tests": "^3.1"
+            },
+            "type": "wp-cli-package",
+            "autoload": {
+                "files": [
+                    "wpcli-vulnerability-scanner.php"
+                ],
+                "classmap": [
+                    "includes/"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "10up",
+                    "homepage": "https://10up.com"
+                }
+            ],
+            "description": "Check installed plugins and themes for vulnerabilities",
+            "homepage": "https://github.com/10up/wpcli-vulnerability-scanner",
+            "support": {
+                "issues": "https://github.com/10up/wpcli-vulnerability-scanner/issues",
+                "source": "https://github.com/10up/wpcli-vulnerability-scanner/tree/1.2.1"
+            },
+            "time": "2024-04-01T13:45:29+00:00"
+        },
         {
             "name": "aaemnnosttv/wp-cli-login-command",
             "version": "v1.5.0",
@@ -2779,6 +2828,65 @@
                 }
             ],
             "time": "2023-12-03T19:50:20+00:00"
+        },
+        {
+            "name": "halaxa/json-machine",
+            "version": "1.1.4",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/halaxa/json-machine.git",
+                "reference": "5147f38f74d7ab3e27733e3f3bdabbd2fd28e3fa"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/halaxa/json-machine/zipball/5147f38f74d7ab3e27733e3f3bdabbd2fd28e3fa",
+                "reference": "5147f38f74d7ab3e27733e3f3bdabbd2fd28e3fa",
+                "shasum": ""
+            },
+            "require": {
+                "php": "7.0 - 8.3"
+            },
+            "require-dev": {
+                "ext-json": "*",
+                "friendsofphp/php-cs-fixer": "^3.0",
+                "phpstan/phpstan": "^1.10",
+                "phpunit/phpunit": "^8.0"
+            },
+            "suggest": {
+                "ext-json": "To run JSON Machine out of the box without custom decoders.",
+                "guzzlehttp/guzzle": "To run example with GuzzleHttp"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "JsonMachine\\": "src/"
+                },
+                "exclude-from-classmap": [
+                    "src/autoloader.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "Apache-2.0"
+            ],
+            "authors": [
+                {
+                    "name": "Filip Halaxa",
+                    "email": "filip@halaxa.cz"
+                }
+            ],
+            "description": "Efficient, easy-to-use and fast JSON pull parser",
+            "support": {
+                "issues": "https://github.com/halaxa/json-machine/issues",
+                "source": "https://github.com/halaxa/json-machine/tree/1.1.4"
+            },
+            "funding": [
+                {
+                    "url": "https://ko-fi.com/G2G57KTE4",
+                    "type": "other"
+                }
+            ],
+            "time": "2023-11-28T21:12:40+00:00"
         },
         {
             "name": "illuminate/bus",
