@@ -93,7 +93,7 @@ add_filter('render_block', function (string $content, array $block) {
         $posterImage = get_the_post_thumbnail_url($attachmentId, 'large');
         if ($posterImage ?? null) {
             $processor = new WP_HTML_Tag_Processor($content);
-            while ($processor->next_tag()) {
+            while ($processor->next_tag('video')) {
                 if ($processor->get_attribute('poster')) {
                     continue;
                 }
