@@ -18,7 +18,8 @@ on:
         required: true
       SATISPRESS_PASSWORD:
         required: true
-
+      NPM_FONTAWESOME_AUTH_TOKEN:
+        required: true
 jobs:
   build_deploy:
     name: Build and deploy
