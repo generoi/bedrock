@@ -27,6 +27,6 @@
     "e2e:test": "npx playwright test --config=./test/e2e/playwright.config.js"
   },
   "devDependencies": {
-    "@playwright/test": "^1.45.3"
+    "@playwright/test": "^1.46.1"
   }
 }
