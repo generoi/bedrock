@@ -108,6 +108,9 @@ function HandPickedPostsControl({setAttributes, attributes}) {
 
   const displayMovableToken = (token) => {
     const name = transformTokenIntoPostName(token);
+    if (!selectedPostIds) {
+      return name;
+    }
     const idx = selectedPostIds.findIndex((postId) => postId === token);
     if (idx === -1) {
       return name;
