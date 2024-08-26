@@ -41,7 +41,7 @@ if (file_exists($root_dir.'/.env')) {
 define('WP_ENVIRONMENT_TYPE', env('WP_ENVIRONMENT_TYPE') ?: match (true) {
     ! empty(env('IS_WP_PHPUNIT')) => 'test',
     env('IS_DDEV_PROJECT') => 'development',
-    preg_match('/\bstaging\b/', gethostname()) => 'staging',
+    ! empty(preg_match('/\bstaging\b/', gethostname())) => 'staging',
     default => 'production',
 });
 
