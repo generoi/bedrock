@@ -10,7 +10,7 @@ additional_hostnames: []
 additional_fqdns: []
 database:
   type: mariadb
-  version: "10.4"
+  version: "10.11"
 nfs_mount_enabled: false
 mutagen_enabled: false
 composer_version: "2"
