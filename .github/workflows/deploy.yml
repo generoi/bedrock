@@ -14,10 +14,6 @@ on:
         required: true
       PACKAGIST_GITHUB_TOKEN:
         required: true
-      SATISPRESS_API_KEY:
-        required: true
-      SATISPRESS_PASSWORD:
-        required: true
       NPM_FONTAWESOME_AUTH_TOKEN:
         required: true
 jobs:
@@ -39,8 +35,6 @@ jobs:
         with:
           npm_fontawesome_auth_token: ${{ secrets.NPM_FONTAWESOME_AUTH_TOKEN }}
           packagist_github_token: ${{ secrets.PACKAGIST_GITHUB_TOKEN }}
-          satispress_api_key: ${{ secrets.SATISPRESS_API_KEY }}
-          satispress_password: ${{ secrets.SATISPRESS_PASSWORD }}
 
       - name: Install development packages to run tests
         run: composer install:development

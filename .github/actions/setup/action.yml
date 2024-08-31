@@ -5,10 +5,6 @@ inputs:
     required: true
   packagist_github_token:
     required: true
-  satispress_api_key:
-    required: true
-  satispress_password:
-    required: true
 
 runs:
   using: 'composite'
@@ -36,10 +32,6 @@ runs:
         php-version: ${{ env.PHP_VERSION }}
       env:
         COMPOSER_TOKEN: ${{ inputs.packagist_github_token }}
-
-    - name: Configure basic http authentication for Composer
-      shell: bash
-      run: composer config --global http-basic.satispress.generodigital.com ${{ inputs.satispress_api_key }} ${{ inputs.satispress_password }}
 
     - name: Get Composer Cache Directory
       id: composer-cache

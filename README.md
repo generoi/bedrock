@@ -10,12 +10,6 @@ _See [roots/bedrock](https://github.com/roots/bedrock#readme) readme for notes a
 - Prettier - [Installation](https://prettier.io/docs/en/editors.html)
 - EditorConfig - [Installation](https://editorconfig.org/#download)
 
-### Authenticate with satispress
-
-You will need to create a user-specific API key on satispress.generodigital.com. Note that the API key is used as the username and the password is always `satispress`.
-
-    composer config --global http-basic.satispress.generodigital.com <API-KEY> satispress
-
 ### Authenticate with fontawesome registry
 
 You will need an authentication token, we have a shared one added to LastPass/1Password.

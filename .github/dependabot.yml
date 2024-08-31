@@ -6,7 +6,7 @@ updates:
       interval: "weekly"
       day: "sunday"
     registries:
-      - fortawesome
+      - fontawesome
     groups:
       production-dependencies:
         dependency-type: "production"
@@ -19,7 +19,7 @@ updates:
       interval: "weekly"
       day: "sunday"
     registries:
-      - satispress
+      - github-generoi
     groups:
       production-dependencies:
         dependency-type: "production"
@@ -33,12 +33,12 @@ updates:
       day: "sunday"
 
 registries:
-  satispress:
-    type: composer-repository
-    url: https://satispress.generodigital.com/satispress/
-    username: ${{ secrets.SATISPRESS_API_KEY }}
-    password: ${{ secrets.SATISPRESS_PASSWORD }}
-  fortawesome:
+  github-generoi:
+    type: git
+    url: https://github.com
+    username: x-access-token
+    password: ${{ secrets.PACKAGIST_GITHUB_TOKEN }}
+  fontawesome:
     type: npm-registry
     url: //npm.fontawesome.com/
-    token: ${{ secrets.NPM_FONTAWESOME_AUTH_TOKEN  }}
+    token: ${{ secrets.NPM_FONTAWESOME_AUTH_TOKEN }}
