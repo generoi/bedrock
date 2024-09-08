@@ -5,7 +5,7 @@ export default {
   plugins: [
     presetEnv(),
     inlineSvg({
-      paths: ['resources', 'public/svgs'],
+      paths: ['resources', 'public'],
       encode(code) {
         return code
           .replace(/\(/g, '%28')

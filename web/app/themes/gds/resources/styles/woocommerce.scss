@@ -173,7 +173,7 @@ body.my-account.logged-in .woocommerce {
 .wc-block-review-list-item__rating__stars.wc-block-components-review-list-item__rating__stars.wc-block-review-list-item__rating__stars,
 .wc-block-grid__product-rating__stars.wc-block-grid__product-rating__stars,
 .star-rating.star-rating {
-  mask-image: svg-load('solid/star.svg');
+  mask-image: svg-load('svgs/solid/star.svg');
   mask-repeat: repeat-x;
   mask-size: 1em;
   height: 1em;
@@ -194,7 +194,7 @@ body.my-account.logged-in .woocommerce {
     &::before {
       display: block;
       content: '' !important;
-      mask-image: svg-load('solid/star.svg');
+      mask-image: svg-load('svgs/solid/star.svg');
       mask-repeat: repeat-x;
       mask-size: 1em;
       height: 1em;
@@ -224,7 +224,7 @@ body.my-account.logged-in .woocommerce {
 
   &::before {
     content: '';
-    mask-image: svg-load('solid/circle-check.svg');
+    mask-image: svg-load('svgs/solid/circle-check.svg');
     mask-position: center;
     mask-repeat: no-repeat;
     background: var(--message-color);
@@ -251,7 +251,7 @@ body.my-account.logged-in .woocommerce {
   --message-color: var(--gds-color-primary);
 
   &::before {
-    mask-image: svg-load('solid/circle-info.svg');
+    mask-image: svg-load('svgs/solid/circle-info.svg');
   }
 }
 
@@ -259,7 +259,7 @@ body.my-account.logged-in .woocommerce {
   --message-color: var(--gds-color-error);
 
   &::before {
-    mask-image: svg-load('solid/circle-exclamation.svg');
+    mask-image: svg-load('svgs/solid/circle-exclamation.svg');
   }
 }
 

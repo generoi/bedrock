@@ -34,7 +34,7 @@
 
 @mixin select {
   appearance: none; // safari
-  background-image: svg-load('solid/chevron-down.svg');
+  background-image: svg-load('svgs/solid/chevron-down.svg');
   background-repeat: no-repeat;
   background-position: calc(100% - 16px) center;
   background-size: 14px;
