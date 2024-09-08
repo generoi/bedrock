@@ -43,11 +43,11 @@
   "dependencies": {
     "@fortawesome/fontawesome-pro": "^6.2.1",
     "@types/wordpress__blocks": "^12.5.14",
-    "@wordpress/base-styles": "^5.6.0",
+    "@wordpress/base-styles": "^5.7.0",
     "clsx": "^2.1.1",
     "jquery": "^3.7.0",
     "lodash-es": "^4.17.21",
-    "modern-normalize": "^3.0.0",
+    "modern-normalize": "^3.0.1",
     "sass-mq": "^6.0"
   }
 }
