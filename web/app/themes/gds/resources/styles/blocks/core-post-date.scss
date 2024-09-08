@@ -14,7 +14,7 @@
     display: inline-block;
     width: 1em;
     height: 1em;
-    mask-image: svg-load('solid/calendar-week.svg');
+    mask-image: svg-load('svgs/solid/calendar-week.svg');
     mask-size: contain;
     mask-repeat: no-repeat;
     background: var(--icon-color, var(--gds-color-primary));

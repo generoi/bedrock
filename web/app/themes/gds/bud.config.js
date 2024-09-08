@@ -1,14 +1,12 @@
 import {homedir} from 'os';
 import {resolve, relative} from 'node:path';
 import BudBlock from './build/bud-block.js';
-import BudCopyWithoutManifest from './build/bud-copy-without-manifest.js';
 
 /**
  * @type {import('@roots/bud').Config}
  */
 export default async (app) => {
   app.extensions.add(BudBlock);
-  app.extensions.add(BudCopyWithoutManifest);
 
   app
     .entry('scripts/app', ['@scripts/app'])
@@ -18,11 +16,31 @@ export default async (app) => {
     .entry('styles/editor-overrides', ['@styles/editor-overrides'])
     .entry('styles/woocommerce', ['@styles/woocommerce'])
     .assets(['images', 'fonts'])
-    .copyFile('jquery.min.js', await app.module.getDirectory(`jquery/dist`))
-    .copyWithoutManifest(
-      'svgs',
-      await app.module.getDirectory(`@fortawesome/fontawesome-pro`),
-    );
+    .copyFile('jquery.min.js', await app.module.getDirectory(`jquery/dist`));
+
+  const fontawesomeDir = await app.module.getDirectory(
+    `@fortawesome/fontawesome-pro`,
+  );
+
+  [
+    'svgs/brands/facebook.svg',
+    'svgs/brands/twitter.svg',
+    'svgs/brands/youtube.svg',
+    'svgs/regular/envelope.svg',
+    'svgs/regular/link.svg',
+    'svgs/regular/share-nodes.svg',
+    'svgs/solid/calendar-week.svg',
+    'svgs/solid/circle-check.svg',
+    'svgs/solid/circle-exclamation.svg',
+    'svgs/solid/circle-info.svg',
+    'svgs/solid/check.svg',
+    'svgs/solid/chevron-down.svg',
+    'svgs/solid/chevron-left.svg',
+    'svgs/solid/chevron-right.svg',
+    'svgs/solid/magnifying-glass.svg',
+    'svgs/solid/star.svg',
+    'svgs/solid/xmark.svg',
+  ].forEach((file) => app.copyFile(file, fontawesomeDir));
 
   app
     .alias('@blocks', resolve('resources/blocks'))
