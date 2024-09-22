@@ -89,7 +89,7 @@
     "staabm/annotate-pull-request-from-checkstyle": "^1.5",
     "laravel/pint": "^1.17",
     "wp-phpunit/wp-phpunit": "^6.6",
-    "phpunit/phpunit": "^9.0",
+    "phpunit/phpunit": "^11.3",
     "yoast/phpunit-polyfills": "^3.0"
   },
   "config": {
