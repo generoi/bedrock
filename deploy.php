@@ -24,7 +24,12 @@ set('default_stage', 'production');
 set('ssh_multiplexing', true);
 
 set('shared_files', ['.env']);
-set('shared_dirs', ['web/app/uploads']);
+set('shared_dirs', [
+    'web/app/uploads',
+    // @note allow WordPress to manage updates
+    // 'web/wp',
+    // 'web/app/plugins',
+]);
 set('writable_dirs', ['web/app/cache', ...get('shared_dirs')]);
 set('writable_mode', 'chmod');
 set('writable_use_sudo', false);
@@ -67,6 +72,10 @@ set('build_artifact_exclude', [
     '/*.php',
     '/*.xml',
     '/*.yml',
+    // @note to allow automatically updated plugins, uncomment this after the
+    // first deploy
+    // '/web/wp',
+    // '/web/app/plugins',
 ]);
 
 /**
