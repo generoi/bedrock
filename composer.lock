@@ -1805,59 +1805,38 @@
         },
         {
             "name": "generoi/advanced-custom-fields-pro",
-            "version": "6.3.6.1",
+            "version": "6.3.8",
             "source": {
                 "type": "git",
                 "url": "git@github.com:generoi/advanced-custom-fields-pro.git",
-                "reference": "bdc621194c3dbeb092fdc8e2bc72fd3073dd8285"
+                "reference": "d8d5e826561114af57acba1c0c67b865f4627c1b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/generoi/advanced-custom-fields-pro/zipball/bdc621194c3dbeb092fdc8e2bc72fd3073dd8285",
-                "reference": "bdc621194c3dbeb092fdc8e2bc72fd3073dd8285",
+                "url": "https://api.github.com/repos/generoi/advanced-custom-fields-pro/zipball/d8d5e826561114af57acba1c0c67b865f4627c1b",
+                "reference": "d8d5e826561114af57acba1c0c67b865f4627c1b",
                 "shasum": ""
             },
-            "require": {
-                "php": ">=5.4.0"
-            },
             "type": "wordpress-plugin",
-            "archive": {
-                "exclude": [
-                    ".gitignore"
-                ]
-            },
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Oskar Schöldström",
-                    "email": "public@oxy.fi"
-                }
-            ],
-            "description": "Advanced Custom Fields Pro",
             "homepage": "https://www.advancedcustomfields.com/",
-            "keywords": [
-                "wordpress"
-            ],
             "support": {
-                "issues": "https://github.com/generoi/advanced-custom-fields-pro/issues",
-                "source": "https://github.com/generoi/advanced-custom-fields-pro/tree/6.3.6.1"
+                "source": "https://github.com/generoi/advanced-custom-fields-pro/tree/6.3.8",
+                "issues": "https://github.com/generoi/advanced-custom-fields-pro/issues"
             },
-            "time": "2024-08-31T18:30:48+00:00"
+            "time": "2024-10-08T04:13:06+00:00"
         },
         {
             "name": "generoi/genero-cmp",
-            "version": "v2.1.5",
+            "version": "v2.1.6",
             "source": {
                 "type": "git",
                 "url": "https://github.com/generoi/genero-cmp.git",
-                "reference": "b032e4e097d69c041ae8297f1a92c3a28fc1160f"
+                "reference": "59ca39eeaeb77c70ae6987ecfb4802e40d6e0b62"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/generoi/genero-cmp/zipball/b032e4e097d69c041ae8297f1a92c3a28fc1160f",
-                "reference": "b032e4e097d69c041ae8297f1a92c3a28fc1160f",
+                "url": "https://api.github.com/repos/generoi/genero-cmp/zipball/59ca39eeaeb77c70ae6987ecfb4802e40d6e0b62",
+                "reference": "59ca39eeaeb77c70ae6987ecfb4802e40d6e0b62",
                 "shasum": ""
             },
             "require": {
@@ -1891,52 +1870,31 @@
             ],
             "support": {
                 "issues": "https://github.com/generoi/genero-cmp/issues",
-                "source": "https://github.com/generoi/genero-cmp/tree/v2.1.5"
+                "source": "https://github.com/generoi/genero-cmp/tree/v2.1.6"
             },
-            "time": "2024-08-22T13:17:26+00:00"
+            "time": "2024-10-08T10:41:05+00:00"
         },
         {
             "name": "generoi/gravityforms",
-            "version": "2.8.17",
+            "version": "2.8.18",
             "source": {
                 "type": "git",
                 "url": "git@github.com:generoi/gravityforms.git",
-                "reference": "8ab0f2e257dbea1a133a1435762be2dc038040ab"
+                "reference": "e93b600d54e208dd6038a57ebc0769a332ec9de9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/generoi/gravityforms/zipball/8ab0f2e257dbea1a133a1435762be2dc038040ab",
-                "reference": "8ab0f2e257dbea1a133a1435762be2dc038040ab",
+                "url": "https://api.github.com/repos/generoi/gravityforms/zipball/e93b600d54e208dd6038a57ebc0769a332ec9de9",
+                "reference": "e93b600d54e208dd6038a57ebc0769a332ec9de9",
                 "shasum": ""
             },
-            "require": {
-                "php": ">=5.6.0"
-            },
             "type": "wordpress-plugin",
-            "archive": {
-                "exclude": [
-                    ".gitignore"
-                ]
-            },
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Oskar Schöldström",
-                    "email": "public@oxy.fi"
-                }
-            ],
-            "description": "Gravity Forms",
-            "homepage": "http://www.gravityhelp.com",
-            "keywords": [
-                "wordpress"
-            ],
+            "homepage": "https://www.gravityforms.com/",
             "support": {
-                "issues": "https://github.com/generoi/gravityforms/issues",
-                "source": "https://github.com/generoi/gravityforms/tree/2.8.17"
+                "source": "https://github.com/generoi/gravityforms/tree/2.8.18",
+                "issues": "https://github.com/generoi/gravityforms/issues"
             },
-            "time": "2024-08-29T23:39:23+00:00"
+            "time": "2024-10-02T04:11:39+00:00"
         },
         {
             "name": "generoi/polylang-pro",
@@ -4285,23 +4243,23 @@
         },
         {
             "name": "jjgrainger/posttypes",
-            "version": "v2.2",
+            "version": "v2.2.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/jjgrainger/PostTypes.git",
-                "reference": "20f5a203316783a71ddfcd047ffebf1dc2bacb51"
+                "reference": "2f20f628ec44404960df4b1ae5d623397a66aec1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/jjgrainger/PostTypes/zipball/20f5a203316783a71ddfcd047ffebf1dc2bacb51",
-                "reference": "20f5a203316783a71ddfcd047ffebf1dc2bacb51",
+                "url": "https://api.github.com/repos/jjgrainger/PostTypes/zipball/2f20f628ec44404960df4b1ae5d623397a66aec1",
+                "reference": "2f20f628ec44404960df4b1ae5d623397a66aec1",
                 "shasum": ""
             },
             "require": {
                 "php": ">=7.2"
             },
             "require-dev": {
-                "phpunit/phpunit": "8.*",
+                "phpunit/phpunit": "^9.6",
                 "squizlabs/php_codesniffer": "3.*"
             },
             "type": "library",
@@ -4330,7 +4288,7 @@
                 "issues": "https://github.com/jjgrainger/posttypes/issues",
                 "source": "https://github.com/jjgrainger/posttypes"
             },
-            "time": "2022-05-21T14:15:12+00:00"
+            "time": "2024-10-13T17:23:48+00:00"
         },
         {
             "name": "justinrainbow/json-schema",
@@ -4856,23 +4814,24 @@
         },
         {
             "name": "log1x/navi",
-            "version": "v3.0.3",
+            "version": "v3.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Log1x/navi.git",
-                "reference": "d84b4ce2484b0f9a9ee4b0bba2f222f3a03b820a"
+                "reference": "ed28a3aacf1750b99e1f379c23944bb14265e012"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Log1x/navi/zipball/d84b4ce2484b0f9a9ee4b0bba2f222f3a03b820a",
-                "reference": "d84b4ce2484b0f9a9ee4b0bba2f222f3a03b820a",
+                "url": "https://api.github.com/repos/Log1x/navi/zipball/ed28a3aacf1750b99e1f379c23944bb14265e012",
+                "reference": "ed28a3aacf1750b99e1f379c23944bb14265e012",
                 "shasum": ""
             },
             "require": {
                 "php": "^8.0"
             },
             "require-dev": {
-                "laravel/pint": "^1.14"
+                "laravel/pint": "^1.14",
+                "roots/acorn": "^4.3"
             },
             "type": "package",
             "extra": {
@@ -4908,7 +4867,7 @@
             ],
             "support": {
                 "issues": "https://github.com/log1x/navi/issues",
-                "source": "https://github.com/Log1x/navi/tree/v3.0.3"
+                "source": "https://github.com/Log1x/navi/tree/v3.1.0"
             },
             "funding": [
                 {
@@ -4916,20 +4875,20 @@
                     "type": "github"
                 }
             ],
-            "time": "2024-04-23T11:30:08+00:00"
+            "time": "2024-10-01T17:41:30+00:00"
         },
         {
             "name": "log1x/sage-svg",
-            "version": "v2.0.1",
+            "version": "v2.0.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Log1x/sage-svg.git",
-                "reference": "257b533cf69975951401c66b62fc7bab8821c94d"
+                "reference": "c871fa875830b69ee751e97d1914a5c5458376d2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Log1x/sage-svg/zipball/257b533cf69975951401c66b62fc7bab8821c94d",
-                "reference": "257b533cf69975951401c66b62fc7bab8821c94d",
+                "url": "https://api.github.com/repos/Log1x/sage-svg/zipball/c871fa875830b69ee751e97d1914a5c5458376d2",
+                "reference": "c871fa875830b69ee751e97d1914a5c5458376d2",
                 "shasum": ""
             },
             "require": {
@@ -4976,7 +4935,7 @@
             ],
             "support": {
                 "issues": "https://github.com/log1x/sage-svg/issues",
-                "source": "https://github.com/Log1x/sage-svg/tree/v2.0.1"
+                "source": "https://github.com/Log1x/sage-svg/tree/v2.0.2"
             },
             "funding": [
                 {
@@ -4984,7 +4943,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2024-07-28T16:53:54+00:00"
+            "time": "2024-08-29T14:11:41+00:00"
         },
         {
             "name": "mck89/peast",
@@ -11994,15 +11953,15 @@
         },
         {
             "name": "wpackagist-plugin/wordpress-seo",
-            "version": "23.5",
+            "version": "23.6",
             "source": {
                 "type": "svn",
                 "url": "https://plugins.svn.wordpress.org/wordpress-seo/",
-                "reference": "tags/23.5"
+                "reference": "tags/23.6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://downloads.wordpress.org/plugin/wordpress-seo.23.5.zip"
+                "url": "https://downloads.wordpress.org/plugin/wordpress-seo.23.6.zip"
             },
             "require": {
                 "composer/installers": "^1.0 || ^2.0"
