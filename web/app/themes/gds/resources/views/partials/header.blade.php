@@ -82,8 +82,10 @@
 
     @if ($is_webshop)
       <div class="header__actions">
-        @block('woocommerce/mini-cart')
-        @block('woocommerce/customer-account', ['displayStyle' => 'icon_only'])
+        @blocks
+          <!-- wp:woocommerce/mini-cart {"addToCartBehaviour":"open_drawer"} /-->
+          <!-- wp:woocommerce/customer-account {"displayStyle":"icon_only"} /-->
+        @endblocks
       </div>
     @endif
 
