@@ -5,6 +5,7 @@
 
 # Application
 web/app/plugins/*
+!web/app/plugins/genero-woocommerce
 !web/app/plugins/.gitkeep
 web/app/mu-plugins/*/
 web/app/languages/*

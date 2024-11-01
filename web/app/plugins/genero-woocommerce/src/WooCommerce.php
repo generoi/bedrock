@@ -1,24 +1,14 @@
 <?php
 
-namespace App\Providers;
+namespace GeneroWoo\Woocommerce;
 
-use Illuminate\Support\ServiceProvider;
 use WC_Product;
 use WC_Product_Variable;
 
-class WooCommerceServiceProvider extends ServiceProvider
+class WooCommerce
 {
-    /**
-     * Register any application services.
-     *
-     * @return void
-     */
-    public function register()
+    public function __construct()
     {
-        if (! function_exists('is_woocommerce')) {
-            return;
-        }
-
         add_action('wp_enqueue_scripts', [$this, 'enqueueAssets']);
         add_filter('body_class', [$this, 'addBodyClasses']);
         add_filter('woocommerce_product_tabs', [$this, 'filterProductTabs']);
@@ -26,10 +16,8 @@ class WooCommerceServiceProvider extends ServiceProvider
         add_action('woocommerce_init', [$this, 'removeSingleProductTemplateHooks']);
         add_action('woocommerce_archive_description', [$this, 'printArchiveContent']);
         add_filter('woocommerce_get_price_html', [$this, 'changeVariablePriceDisplay'], 10, 2);
-
         add_filter('doing_it_wrong_trigger_error', [$this, 'fixWooCommerceWidgetsEditor'], 10, 3);
         add_filter('woocommerce_enqueue_styles', [$this, 'dequeueStylesheets']);
-
         add_filter('woocommerce_admin_get_feature_config', [$this, 'filterFeatures']);
     }
 
