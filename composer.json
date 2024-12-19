@@ -150,7 +150,6 @@
       ],
       "excludes": [
         "generoi/*",
-        "satispress/*",
         "jameelmoses/*",
         "wpackagist-plugin/safe-svg",
         "wpackagist-plugin/limit-login-attempts-reloaded",
