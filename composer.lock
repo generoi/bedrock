@@ -1876,46 +1876,25 @@
         },
         {
             "name": "generoi/gravityforms",
-            "version": "2.8.17",
+            "version": "2.9.2",
             "source": {
                 "type": "git",
                 "url": "git@github.com:generoi/gravityforms.git",
-                "reference": "8ab0f2e257dbea1a133a1435762be2dc038040ab"
+                "reference": "2df49a2dcbebffcabadc12dbe6d4f9a07fd4ddf9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/generoi/gravityforms/zipball/8ab0f2e257dbea1a133a1435762be2dc038040ab",
-                "reference": "8ab0f2e257dbea1a133a1435762be2dc038040ab",
+                "url": "https://api.github.com/repos/generoi/gravityforms/zipball/2df49a2dcbebffcabadc12dbe6d4f9a07fd4ddf9",
+                "reference": "2df49a2dcbebffcabadc12dbe6d4f9a07fd4ddf9",
                 "shasum": ""
             },
-            "require": {
-                "php": ">=5.6.0"
-            },
             "type": "wordpress-plugin",
-            "archive": {
-                "exclude": [
-                    ".gitignore"
-                ]
-            },
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Oskar Schöldström",
-                    "email": "public@oxy.fi"
-                }
-            ],
-            "description": "Gravity Forms",
-            "homepage": "http://www.gravityhelp.com",
-            "keywords": [
-                "wordpress"
-            ],
+            "homepage": "https://www.gravityforms.com/",
             "support": {
-                "issues": "https://github.com/generoi/gravityforms/issues",
-                "source": "https://github.com/generoi/gravityforms/tree/2.8.17"
+                "source": "https://github.com/generoi/gravityforms/tree/2.9.2",
+                "issues": "https://github.com/generoi/gravityforms/issues"
             },
-            "time": "2024-08-29T23:39:23+00:00"
+            "time": "2025-01-17T04:11:51+00:00"
         },
         {
             "name": "generoi/polylang-pro",
