@@ -1805,38 +1805,38 @@
         },
         {
             "name": "generoi/advanced-custom-fields-pro",
-            "version": "6.3.9",
+            "version": "6.3.12",
             "source": {
                 "type": "git",
                 "url": "git@github.com:generoi/advanced-custom-fields-pro.git",
-                "reference": "e589fd3b00980f42a0254210eed32e5394600413"
+                "reference": "4218e442d48413c6138209b099f9528108823fea"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/generoi/advanced-custom-fields-pro/zipball/e589fd3b00980f42a0254210eed32e5394600413",
-                "reference": "e589fd3b00980f42a0254210eed32e5394600413",
+                "url": "https://api.github.com/repos/generoi/advanced-custom-fields-pro/zipball/4218e442d48413c6138209b099f9528108823fea",
+                "reference": "4218e442d48413c6138209b099f9528108823fea",
                 "shasum": ""
             },
             "type": "wordpress-plugin",
             "homepage": "https://www.advancedcustomfields.com/",
             "support": {
-                "source": "https://github.com/generoi/advanced-custom-fields-pro/tree/6.3.9",
+                "source": "https://github.com/generoi/advanced-custom-fields-pro/tree/6.3.12",
                 "issues": "https://github.com/generoi/advanced-custom-fields-pro/issues"
             },
-            "time": "2024-10-16T04:13:09+00:00"
+            "time": "2025-01-22T04:13:38+00:00"
         },
         {
             "name": "generoi/genero-cmp",
-            "version": "v2.1.5",
+            "version": "v2.1.6",
             "source": {
                 "type": "git",
                 "url": "https://github.com/generoi/genero-cmp.git",
-                "reference": "b032e4e097d69c041ae8297f1a92c3a28fc1160f"
+                "reference": "59ca39eeaeb77c70ae6987ecfb4802e40d6e0b62"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/generoi/genero-cmp/zipball/b032e4e097d69c041ae8297f1a92c3a28fc1160f",
-                "reference": "b032e4e097d69c041ae8297f1a92c3a28fc1160f",
+                "url": "https://api.github.com/repos/generoi/genero-cmp/zipball/59ca39eeaeb77c70ae6987ecfb4802e40d6e0b62",
+                "reference": "59ca39eeaeb77c70ae6987ecfb4802e40d6e0b62",
                 "shasum": ""
             },
             "require": {
@@ -1870,73 +1870,53 @@
             ],
             "support": {
                 "issues": "https://github.com/generoi/genero-cmp/issues",
-                "source": "https://github.com/generoi/genero-cmp/tree/v2.1.5"
+                "source": "https://github.com/generoi/genero-cmp/tree/v2.1.6"
             },
-            "time": "2024-08-22T13:17:26+00:00"
+            "time": "2024-10-08T10:41:05+00:00"
         },
         {
             "name": "generoi/gravityforms",
-            "version": "2.9.2",
+            "version": "2.9.5",
             "source": {
                 "type": "git",
                 "url": "git@github.com:generoi/gravityforms.git",
-                "reference": "2df49a2dcbebffcabadc12dbe6d4f9a07fd4ddf9"
+                "reference": "8e2231190334b048dc11b0347b51974ac3ba3ac5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/generoi/gravityforms/zipball/2df49a2dcbebffcabadc12dbe6d4f9a07fd4ddf9",
-                "reference": "2df49a2dcbebffcabadc12dbe6d4f9a07fd4ddf9",
+                "url": "https://api.github.com/repos/generoi/gravityforms/zipball/8e2231190334b048dc11b0347b51974ac3ba3ac5",
+                "reference": "8e2231190334b048dc11b0347b51974ac3ba3ac5",
                 "shasum": ""
             },
             "type": "wordpress-plugin",
             "homepage": "https://www.gravityforms.com/",
             "support": {
-                "source": "https://github.com/generoi/gravityforms/tree/2.9.2",
+                "source": "https://github.com/generoi/gravityforms/tree/2.9.5",
                 "issues": "https://github.com/generoi/gravityforms/issues"
             },
-            "time": "2025-01-17T04:11:51+00:00"
+            "time": "2025-03-21T04:11:35+00:00"
         },
         {
             "name": "generoi/polylang-pro",
-            "version": "v3.6.4.1",
+            "version": "3.6.7",
             "source": {
                 "type": "git",
                 "url": "git@github.com:generoi/polylang-pro.git",
-                "reference": "5a29feaed6adf2d209ccca290c375314ceaf1bcf"
+                "reference": "42576c5e67cde10a09b67ef5f299a957d80ae1ef"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/generoi/polylang-pro/zipball/5a29feaed6adf2d209ccca290c375314ceaf1bcf",
-                "reference": "5a29feaed6adf2d209ccca290c375314ceaf1bcf",
+                "url": "https://api.github.com/repos/generoi/polylang-pro/zipball/42576c5e67cde10a09b67ef5f299a957d80ae1ef",
+                "reference": "42576c5e67cde10a09b67ef5f299a957d80ae1ef",
                 "shasum": ""
             },
-            "require": {
-                "php": ">=5.4.0"
-            },
             "type": "wordpress-plugin",
-            "archive": {
-                "exclude": [
-                    ".gitignore"
-                ]
-            },
-            "license": [
-                "GPL-2.0"
-            ],
-            "authors": [
-                {
-                    "name": "Frédéric Demarle"
-                }
-            ],
-            "description": "Polylang PRO",
             "homepage": "https://polylang.pro",
-            "keywords": [
-                "wordpress"
-            ],
             "support": {
-                "issues": "https://github.com/generoi/polylang-pro/issues",
-                "source": "https://github.com/generoi/polylang-pro/tree/v3.6.4.1"
+                "source": "https://github.com/generoi/polylang-pro/tree/3.6.7",
+                "issues": "https://github.com/generoi/polylang-pro/issues"
             },
-            "time": "2024-08-29T21:38:54+00:00"
+            "time": "2025-03-12T04:11:20+00:00"
         },
         {
             "name": "generoi/robo-genero",
@@ -2094,16 +2074,16 @@
         },
         {
             "name": "generoi/wp-image-resizer",
-            "version": "v1.4.0",
+            "version": "v1.5.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/generoi/wp-image-resizer.git",
-                "reference": "1cb3e1f7696a35d02e2a1a6c379f2597f5e1fb9f"
+                "reference": "e329c4321916224261819a0931819e1a9850c9e1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/generoi/wp-image-resizer/zipball/1cb3e1f7696a35d02e2a1a6c379f2597f5e1fb9f",
-                "reference": "1cb3e1f7696a35d02e2a1a6c379f2597f5e1fb9f",
+                "url": "https://api.github.com/repos/generoi/wp-image-resizer/zipball/e329c4321916224261819a0931819e1a9850c9e1",
+                "reference": "e329c4321916224261819a0931819e1a9850c9e1",
                 "shasum": ""
             },
             "require": {
@@ -2140,9 +2120,9 @@
             ],
             "support": {
                 "issues": "https://github.com/generoi/wp-image-resizer/issues",
-                "source": "https://github.com/generoi/wp-image-resizer/tree/v1.4.0"
+                "source": "https://github.com/generoi/wp-image-resizer/tree/v1.5.0"
             },
-            "time": "2024-07-18T17:13:08+00:00"
+            "time": "2024-10-31T15:41:02+00:00"
         },
         {
             "name": "gettext/gettext",
