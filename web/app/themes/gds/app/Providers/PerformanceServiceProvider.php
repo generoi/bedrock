@@ -60,7 +60,6 @@ class PerformanceServiceProvider extends ServiceProvider
                 render_block(['blockName' => 'woocommerce/add-to-cart-form', 'attrs' => []]);
                 render_block(['blockName' => 'core/post-title', 'attrs' => []]);
                 render_block(['blockName' => 'core/post-excerpt', 'attrs' => []]);
-                render_block(['blockName' => 'core/post-terms', 'attrs' => []]);
                 render_block(['blockName' => 'gds/gallery-carousel', 'attrs' => []]);
             }
         }
