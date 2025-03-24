@@ -2,8 +2,6 @@
 
 namespace blocks\post_teaser;
 
-use Genero\Sage\CacheTags\CacheTags;
-use Genero\Sage\CacheTags\Tags\CoreTags;
 use Illuminate\Support\Facades\View;
 use WP_Block;
 
@@ -31,10 +29,6 @@ register_block_type(asset('blocks/post-teaser/block.json')->path(), [
 
         $GLOBALS['post'] = $originalPost;
         wp_reset_postdata();
-
-        app(CacheTags::class)->add([
-            ...CoreTags::posts($post),
-        ]);
 
         return $content;
     },

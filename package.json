@@ -3,7 +3,8 @@
   "private": true,
   "type": "module",
   "workspaces": [
-    "web/app/themes/gds"
+    "web/app/themes/gds",
+    "web/app/plugins/genero-woocommerce"
   ],
   "scripts": {
     "build": "npm run build -ws",

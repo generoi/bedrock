@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "3f4807593b80fc1d23c4659bbe68c251",
+    "content-hash": "3058eda6deede9b22112384e79f440f2",
     "packages": [
         {
             "name": "10up/wpcli-vulnerability-scanner",
@@ -2011,6 +2011,57 @@
                 "source": "https://github.com/generoi/robo-genero/tree/v0.4.7"
             },
             "time": "2024-05-24T13:40:47+00:00"
+        },
+        {
+            "name": "generoi/sage-cachetags",
+            "version": "v1.2.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/generoi/sage-cachetags.git",
+                "reference": "076027388c14b4c93b4414d8154af3eb88bcfad8"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/generoi/sage-cachetags/zipball/076027388c14b4c93b4414d8154af3eb88bcfad8",
+                "reference": "076027388c14b4c93b4414d8154af3eb88bcfad8",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.4",
+                "roots/acorn": "*"
+            },
+            "require-dev": {
+                "squizlabs/php_codesniffer": "~3.0"
+            },
+            "type": "library",
+            "extra": {
+                "acorn": {
+                    "providers": [
+                        "Genero\\Sage\\CacheTags\\CacheTagsServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Genero\\Sage\\CacheTags\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Oskar Schöldström",
+                    "email": "public@oxy.fi"
+                }
+            ],
+            "homepage": "https://github.com/generoi/sage-cachetags",
+            "support": {
+                "issues": "https://github.com/generoi/sage-cachetags/issues",
+                "source": "https://github.com/generoi/sage-cachetags/tree/v1.2.0"
+            },
+            "time": "2024-07-19T14:21:57+00:00"
         },
         {
             "name": "generoi/sage-woocommerce",

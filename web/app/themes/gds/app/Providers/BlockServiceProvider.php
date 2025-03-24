@@ -24,9 +24,6 @@ class BlockServiceProvider extends ServiceProvider
         add_action('wp_enqueue_scripts', [$this, 'enqueueBlockStyles']);
         add_action('enqueue_block_editor_assets', [$this, 'enqueueBlockStyles']);
 
-        add_action('wp_head', [$this, 'fixInlineStylesRelativeLinks'], 2);
-        add_action('wp_footer', [$this, 'fixInlineStylesRelativeLinks'], 2);
-
         $this->attachBladeDirective();
         $this->addViewNamespace();
     }
@@ -168,49 +165,5 @@ class BlockServiceProvider extends ServiceProvider
                     'path' => $asset->path(),
                 ]);
             });
-    }
-
-    /**
-     * Fix issue where WordPress incorrectly appends the theme path to absolute
-     * urls (beginning with /) referenced in the css.
-     *
-     * @see wp_maybe_inline_styles()
-     * @see _wp_normalize_relative_css_links()
-     */
-    public function fixInlineStylesRelativeLinks(): void
-    {
-        /** @var WP_Styles $wp_styles */
-        global $wp_styles;
-
-        $themePath = get_stylesheet_directory();
-        $themeUri = get_stylesheet_directory_uri();
-
-        foreach ($wp_styles->registered as $handle => $style) {
-            if (empty($style->extra['after']) || empty($style->extra['path'])) {
-                continue;
-            }
-            // Stylesheet absolute directory path
-            $styleDir = dirname($style->extra['path']);
-
-            // Only act on styles in the theme.
-            if (! str_starts_with($styleDir, $themePath)) {
-                continue;
-            }
-
-            // Process all inline styles
-            foreach ($style->extra['after'] as $idx => $css) {
-                // /var/www/html/web/app/themes/gds/public/blocks/post-teaser -> public/blocks/post-teaser
-                $styleDirRelativeToTheme = str_replace($themePath, '', $styleDir);
-                // -> https://gdsbedrock.ddev.site/app/themes/gds/public/blocks/post-teaser
-                $styleUri = $themeUri.$styleDirRelativeToTheme;
-                // -> /app/themes/gds/public/blocks/post-teaser
-                $styleRelativeUri = wp_make_link_relative($styleUri);
-
-                // Remove the theme path which WordPress adds in
-                // `_wp_normalize_relative_css_links()` if the asset had an
-                // absolute path beginning with a /
-                $style->extra['after'][$idx] = str_replace($styleRelativeUri.'//', '/', $css);
-            }
-        }
     }
 }

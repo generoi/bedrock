@@ -1,0 +1,46 @@
+{
+  "name": "genero-woocommerce",
+  "private": true,
+  "browserslist": [
+    "extends @roots/browserslist-config/wordpress"
+  ],
+  "type": "module",
+  "packageManager": "npm@10.8.2",
+  "scripts": {
+    "build": "bud build production --no-minimize",
+    "build:production": "bud build production",
+    "start": "bud build development",
+    "test": "node --no-warnings --run lint",
+    "lint": "node --no-warnings --run lint:prettier && node --no-warnings --run lint:js && node --no-warnings --run lint:css",
+    "lint:js": "eslint resources",
+    "lint:css": "stylelint \"resources/**/*.{css,scss,vue}\"",
+    "lint:prettier": "prettier . --check",
+    "lint:fix": "node --no-warnings --run lint:fix:prettier && node --no-warnings --run lint:fix:js && node --no-warnings --run lint:fix:css",
+    "lint:fix:prettier": "prettier . --write --list-different",
+    "lint:fix:js": "node --no-warnings --run lint:js -- --fix",
+    "lint:fix:css": "node --no-warnings --run lint:css -- --fix",
+    "ci:scripts": "eslint resources/scripts --format checkstyle",
+    "ci:styles": "stylelint -f json \"resources/**/*.{vue,css,sass,scss,less}\" 2>&1 | npx stylelint-checkstyle-reporter",
+    "translate": "node --no-warnings --run translate:pot && node --no-warnings --run translate:js",
+    "translate:pot": "wp i18n make-pot . ./resources/lang/sage.pot --ignore-domain --include=\"app,resources\"",
+    "translate:js": "wp i18n make-json ./resources/lang --pretty-print"
+  },
+  "devDependencies": {
+    "@roots/bud": "^6.23.3",
+    "@roots/bud-eslint": "^6.23.3",
+    "@roots/bud-postcss": "^6.23.3",
+    "@roots/bud-prettier": "^6.23.3",
+    "@roots/bud-sass": "^6.23.3",
+    "@roots/bud-stylelint": "^6.23.3",
+    "@roots/eslint-config": "^6.23.3",
+    "@roots/sage": "^6.23.3",
+    "@shufo/prettier-plugin-blade": "^1.14.1",
+    "postcss-inline-svg": "^6.0.0",
+    "postcss-preset-env": "^10.0.2",
+    "stylelint-checkstyle-reporter": "^1.0.0",
+    "stylelint-config-standard-scss": "^13.1.0"
+  },
+  "dependencies": {
+    "@types/wordpress__blocks": "^12.5.14"
+  }
+}

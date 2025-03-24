@@ -30,15 +30,6 @@ window._wpLoadBlockEditor.then(() => {
     unregisterBlockVariation('woocommerce/product-collection', variation.name);
 
     variation.attributes.align = 'wide';
-    // The default one has to be removed and added with a different name to take effect
-    if (variation.name === 'woocommerce/product-collection/product-catalog') {
-      variation.attributes.query.inherit = false;
-      registerBlockVariation('woocommerce/product-collection', {
-        ...variation,
-        name: 'woocommerce/product-collection/product-catalog-2',
-      });
-      continue;
-    }
     registerBlockVariation('woocommerce/product-collection', variation);
   }
 });

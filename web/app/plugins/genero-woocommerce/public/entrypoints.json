@@ -1,0 +1,8 @@
+{
+  "app": {
+    "js?v=5e0850": ["runtime.js?v=5e0850"],
+    "css?v=b434ee": ["app.css?v=b434ee"],
+    "js?v=b94159": ["app.js?v=b94159"],
+    "dependencies": []
+  }
+}

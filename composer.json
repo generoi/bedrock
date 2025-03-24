@@ -80,7 +80,8 @@
     "generoi/wp-image-resizer": "^1.0",
     "spatie/laravel-csp": "^2.10",
     "10up/wpcli-vulnerability-scanner": "^1.2",
-    "wpackagist-plugin/woo-ajax-add-to-cart": "^2.4"
+    "wpackagist-plugin/woo-ajax-add-to-cart": "^2.4",
+    "generoi/sage-cachetags": "^1.2"
   },
   "require-dev": {
     "brainmaestro/composer-git-hooks": "^3.0.0",
