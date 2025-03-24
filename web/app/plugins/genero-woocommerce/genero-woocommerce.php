@@ -9,8 +9,11 @@ Author URI:         http://genero.fi/
 License:            MIT License
 License URI:        http://opensource.org/licenses/MIT
 */
+
 use GeneroWoo\Woocommerce\Plugin;
-if (! defined('ABSPATH')) {
-    exit;
+
+if (! is_blog_installed()) {
+    return;
 }
+
 Plugin::getInstance();

@@ -4,7 +4,7 @@
     "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
     "This file is @generated automatically"
   ],
-  "content-hash": "55d6d93d27d99d1d4cd4204336ea646e",
+  "content-hash": "0f25671bdd5d151c659350cf6386eed9",
   "packages": [
     {
       "name": "10up/wpcli-vulnerability-scanner",
