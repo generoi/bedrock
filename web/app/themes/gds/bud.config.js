@@ -69,6 +69,27 @@ export default async (app) => {
     .setProxyUrl('https://gdsbedrock.ddev.site')
     .watch(['resources/views', 'app']);
 
+  app.postcss
+    .use((plugins) => [...plugins, 'postcss-inline-svg'])
+    .setPlugin('postcss-inline-svg', [
+      'postcss-inline-svg',
+      {
+        paths: ['resources', fontawesomeDir],
+        encode(code) {
+          return code
+            .replace(/\(/g, '%28')
+            .replace(/\)/g, '%29')
+            .replace(/%/g, '%25')
+            .replace(/</g, '%3C')
+            .replace(/>/g, '%3E')
+            .replace(/&/g, '%26')
+            .replace(/#/g, '%23')
+            .replace(/{/g, '%7B')
+            .replace(/}/g, '%7D');
+        },
+      },
+    ]);
+
   app.build.items.precss.setLoader('minicss');
   app.hooks.action('build.before', (bud) => {
     bud.extensions
