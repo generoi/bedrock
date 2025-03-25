@@ -34,6 +34,28 @@ class RoboFile extends \Robo\Tasks
         return $this->rsyncPush("{$destination}:%files", $options);
     }
 
+    /**
+     * Pull plugins directory from remote to local.
+     *
+     * @param  string  $source  Source alias eg. `production`
+     * @return \Robo\Result
+     */
+    public function pluginsPull(string $source, $options = ['exclude' => null, 'dry-run' => false, 'options' => null])
+    {
+        return $this->rsyncPull("{$source}:web/app/plugins/", $options);
+    }
+
+    /**
+     * Push uploads directory from local to remote.
+     *
+     * @param  string  $destination  Destination alias eg. `production`
+     * @return \Robo\Result
+     */
+    public function pluginsPush(string $destination, $options = ['exclude' => null, 'dry-run' => true, 'options' => null])
+    {
+        return $this->rsyncPush("{$destination}:web/app/plugins/", $options);
+    }
+
     // You can override common tasks by overloading their functions in this file. Eg.
     //
     //   public function buildDevelopment($options = ['npm-script' => 'build'])
