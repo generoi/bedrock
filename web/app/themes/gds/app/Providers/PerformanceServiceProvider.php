@@ -32,6 +32,8 @@ class PerformanceServiceProvider extends ServiceProvider
     {
         render_block(['blockName' => 'core/heading']);
         render_block(['blockName' => 'core/paragraph']);
+        render_block(['blockName' => 'core/buttons']);
+        render_block(['blockName' => 'core/button']);
 
         if (function_exists('is_woocommerce')) {
             wp_style_add_data('wc-blocks-packages-style', 'async', true);
