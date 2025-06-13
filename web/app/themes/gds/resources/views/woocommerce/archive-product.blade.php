@@ -75,11 +75,7 @@
       @endphp
     @endif
   @else
-    <x-not-found>
-      <x-slot name="header">
-        @include('partials.page-header')
-      </x-slot>
-    </x-not-found>
+    @php(block_template_part('not-found'))
 
     @php
       do_action('woocommerce_no_products_found');

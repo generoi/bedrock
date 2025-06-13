@@ -1,12 +1,11 @@
 {
   "$schema": "https://schemas.wp.org/trunk/block.json",
   "apiVersion": 3,
-  "name": "gds/woo-product-tabs",
+  "name": "genero-woocommerce/woo-product-tabs",
   "title": "WooCommerce Product Tabs",
   "description": "Show the WooCommerce Product tabs belonging to the current page",
   "category": "theme",
   "icon": "admin-multisite",
-  "style": "file:./style.css",
   "attributes": {},
   "supports": {
     "align": ["wide"],
@@ -16,7 +15,6 @@
     }
   },
   "example": {},
-  "acf": {
-    "mode": "preview"
-  }
+  "style": "file:./style.css",
+  "editorScript": "file:./index.js"
 }

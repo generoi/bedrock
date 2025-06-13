@@ -8,6 +8,8 @@ use Symfony\Component\Finder\Finder;
 use WP_Block_Supports;
 use WP_Block_Type;
 
+use function Roots\asset;
+
 class BlockServiceProvider extends ServiceProvider
 {
     protected bool $isRunning = false;
@@ -21,8 +23,8 @@ class BlockServiceProvider extends ServiceProvider
     {
         add_action('init', [$this, 'registerBlocks']);
         add_action('init', [$this, 'registerBlockSupports']);
-        add_action('wp_enqueue_scripts', [$this, 'enqueueBlockStyles']);
-        add_action('enqueue_block_editor_assets', [$this, 'enqueueBlockStyles']);
+        add_action('wp_enqueue_scripts', [$this, 'enqueueBlockStyles'], 10, 0);
+        add_action('enqueue_block_editor_assets', [$this, 'enqueueBlockStyles'], 10, 0);
         add_filter('theme_file_uri', [$this, 'filterBlockAssetUri'], 10, 2);
 
         $this->attachBladeDirective();
@@ -147,22 +149,23 @@ class BlockServiceProvider extends ServiceProvider
         return $output;
     }
 
-    public function enqueueBlockStyles(): void
+    public function enqueueBlockStyles(?string $manifestPath = null, ?string $manifest = null, ?string $namespace = 'sage'): void
     {
         // @see https://make.wordpress.org/core/2021/12/15/using-multiple-stylesheets-per-block/
-        $manifest = config('assets.manifests.theme.assets');
-        collect(json_decode(file_get_contents($manifest), true))
+        $manifestPath = $manifestPath ?? config('assets.manifests.theme.assets');
+
+        collect(json_decode(file_get_contents($manifestPath), true))
             ->keys()
             ->filter(fn ($file) => str_starts_with($file, 'styles/blocks/'))
             ->filter(fn ($file) => str_ends_with($file, '.css'))
-            ->map(fn ($file) => asset($file))
-            ->each(function (Asset $asset) {
+            ->map(fn ($file) => asset($file, $manifest))
+            ->each(function (Asset $asset) use ($namespace) {
                 $filename = pathinfo(basename($asset->path()), PATHINFO_FILENAME);
                 // In case a block collection uses dashes, you can use -- to
                 // separate the collection and the block name.
                 [$collection, $blockName] = explode(str_contains($filename, '--') ? '--' : '-', $filename, 2);
                 $blockName = strtok($blockName, '.');
-                $handle = "sage/block/$filename";
+                $handle = "$namespace/block/$filename";
 
                 // Register the handles early so we can enqueue them even without the block
                 wp_register_style($handle, $asset->uri());

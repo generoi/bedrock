@@ -7,11 +7,11 @@ use WC_Product_Variable;
 
 class WooCommerce
 {
-    public function __construct()
+    public function init(): void
     {
+        add_filter('woocommerce_product_tabs', [$this, 'filterProductTabs']);
         add_action('wp_enqueue_scripts', [$this, 'enqueueAssets']);
         add_filter('body_class', [$this, 'addBodyClasses']);
-        add_filter('woocommerce_product_tabs', [$this, 'filterProductTabs']);
         add_action('woocommerce_init', [$this, 'removeGlobalTemplateHooks']);
         add_action('woocommerce_init', [$this, 'removeSingleProductTemplateHooks']);
         add_action('woocommerce_archive_description', [$this, 'printArchiveContent']);
@@ -123,7 +123,7 @@ class WooCommerce
             has_block('woocommerce/reviews-by-product')
         );
         if ($isWooCommercePage || $hasRatingsBlock) {
-            wp_enqueue_style('sage/woocommerce.css', asset('styles/woocommerce.css')->uri(), [], null);
+            wp_enqueue_style('genero-woocommerce/woocommerce.css', asset('styles/woocommerce.css')->uri(), [], null);
         }
 
         // Do not use select2 on edit address page

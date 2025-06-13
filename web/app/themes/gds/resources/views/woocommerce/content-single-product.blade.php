@@ -77,7 +77,7 @@
         the_content();
       @endphp
 
-      <!-- wp:gds/woo-product-tabs /-->
+      <!-- wp:genero-woocommerce/woo-product-tabs /-->
       @php
         do_action('woocommerce_after_single_product_summary');
       @endphp

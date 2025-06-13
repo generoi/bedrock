@@ -4,7 +4,7 @@
     "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
     "This file is @generated automatically"
   ],
-  "content-hash": "ff399a0d824e319723511bf4d3141d72",
+  "content-hash": "024e8b6a076834303eb6200db336b29c",
   "packages": [
     {
       "name": "10up/wpcli-vulnerability-scanner",
@@ -2089,16 +2089,16 @@
     },
     {
       "name": "generoi/sage-woocommerce",
-      "version": "v1.1.3",
+      "version": "dev-fix/mu-loaded-acorn",
       "source": {
         "type": "git",
         "url": "https://github.com/generoi/sage-woocommerce.git",
-        "reference": "827339655ddcb98da90b2be3c62cd335043546cd"
+        "reference": "003247ac611ea8796c322416a475895248af18df"
       },
       "dist": {
         "type": "zip",
-        "url": "https://api.github.com/repos/generoi/sage-woocommerce/zipball/827339655ddcb98da90b2be3c62cd335043546cd",
-        "reference": "827339655ddcb98da90b2be3c62cd335043546cd",
+        "url": "https://api.github.com/repos/generoi/sage-woocommerce/zipball/003247ac611ea8796c322416a475895248af18df",
+        "reference": "003247ac611ea8796c322416a475895248af18df",
         "shasum": ""
       },
       "require": {
@@ -2133,9 +2133,9 @@
       "homepage": "https://github.com/generoi/sage-woocommerce",
       "support": {
         "issues": "https://github.com/generoi/sage-woocommerce/issues",
-        "source": "https://github.com/generoi/sage-woocommerce/tree/v1.1.3"
+        "source": "https://github.com/generoi/sage-woocommerce/tree/fix/mu-loaded-acorn"
       },
-      "time": "2024-03-18T15:10:41+00:00"
+      "time": "2025-06-13T16:32:24+00:00"
     },
     {
       "name": "generoi/wp-image-resizer",
@@ -14524,7 +14524,9 @@
   ],
   "aliases": [],
   "minimum-stability": "dev",
-  "stability-flags": {},
+  "stability-flags": {
+    "generoi/sage-woocommerce": 20
+  },
   "prefer-stable": true,
   "prefer-lowest": false,
   "platform": {

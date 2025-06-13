@@ -4,7 +4,7 @@
 @use '@styles/components/button';
 @use '@styles/components/typography';
 
-.wp-block-gds-woo-product-tabs {
+.wp-block-genero-woocommerce-woo-product-tabs {
   h2 {
     @include sr-only;
 
@@ -17,7 +17,7 @@
 /**
  * Additional information
  */
-.wp-block-gds-woo-product-tabs table {
+.wp-block-genero-woocommerce-woo-product-tabs table {
   th {
     width: 150px;
     padding: 5px var(--gds-container-padding);
@@ -32,7 +32,7 @@
 /**
  * Reviews
  */
-.wp-block-gds-woo-product-tabs #reviews {
+.wp-block-genero-woocommerce-woo-product-tabs #reviews {
   .woocommerce-noreviews {
     font-style: italic;
     margin-bottom: 1rem;

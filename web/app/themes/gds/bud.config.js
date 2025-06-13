@@ -16,7 +16,6 @@ export default async (app) => {
     .entry('scripts/editor', ['@scripts/editor'])
     .entry('styles/editor', ['@styles/editor'])
     .entry('styles/editor-overrides', ['@styles/editor-overrides'])
-    .entry('styles/woocommerce', ['@styles/woocommerce'])
     .assets(['images', 'fonts'])
     .copyFile('jquery.min.js', await app.module.getDirectory(`jquery/dist`));
 

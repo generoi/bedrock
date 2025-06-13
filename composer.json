@@ -64,7 +64,7 @@
     "log1x/sage-svg": "^2.0",
     "stoutlogic/acf-builder": "^1.12",
     "spatie/laravel-google-fonts": "^1.2",
-    "generoi/sage-woocommerce": "^1.1",
+    "generoi/sage-woocommerce": "dev-fix/mu-loaded-acorn",
     "wpackagist-plugin/safe-svg": "^2.1",
     "wpackagist-plugin/limit-login-attempts-reloaded": "^2.6.1",
     "wpackagist-plugin/wp-sanitize-file-name-plus": "^1.0",

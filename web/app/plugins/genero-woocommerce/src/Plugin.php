@@ -2,6 +2,8 @@
 
 namespace GeneroWoo\Woocommerce;
 
+use App\Providers\BlockServiceProvider;
+
 use function Roots\asset;
 use function Roots\bundle;
 
@@ -11,11 +13,14 @@ class Plugin
 
     protected static $instance;
 
-    protected string $file;
+    public readonly string $file;
 
-    protected string $path;
+    public readonly string $path;
 
-    protected string $url;
+    public readonly string $url;
+
+    protected BlockServiceProvider $blockServiceProvider;
+    protected WooCommerce $woocommerce;
 
     public static function getInstance(): static
     {
@@ -31,12 +36,16 @@ class Plugin
         $this->file = realpath(__DIR__.'/../genero-woocommerce.php');
         $this->path = untrailingslashit(plugin_dir_path($this->file));
         $this->url = untrailingslashit(plugin_dir_url($this->file));
+        $this->blockServiceProvider = new BlockServiceProvider(app());
+        $this->woocommerce = new WooCommerce;
 
         add_action('init', [$this, 'registerApp'], 9);
         add_action('init', [$this, 'registerAssets']);
+        add_filter('plugins_url', [$this, 'filterBlockAssetUri'], 10, 3);
         add_action('enqueue_block_editor_assets', [$this, 'registerBlockEditorAssets'], 100);
-
-        new WooCommerce;
+        add_action('wp_enqueue_scripts', [$this, 'enqueueBlockStyles']);
+        add_action('enqueue_block_editor_assets', [$this, 'enqueueBlockStyles']);
+        add_action('plugins_loaded', [$this->woocommerce, 'init']);
     }
 
     public function registerApp()
@@ -50,19 +59,46 @@ class Plugin
 
         app('view')->addNamespace('genero-woocommerce', $this->path.'/resources/views');
         app('view')->addNamespace('genero-woocommerce-blocks', $this->path.'/resources/blocks');
-        // (new BlockServiceProvider(app()))->registerBlocks($this->path.'/resources/blocks');
+        $this->blockServiceProvider->registerBlocks($this->path.'/resources/blocks');
     }
 
     public function registerAssets(): void
     {
         wp_register_style(
-            'genero-woocommerce/app.css',
-            asset('app.css', self::MANIFEST),
+            'genero-woocommerce/woocommerce.css',
+            asset('styles/app.css', self::MANIFEST),
         );
+
+        wp_register_script(
+            'genero-woocommerce/woocommerce.js',
+            asset('scripts/app.js', self::MANIFEST),
+        );
+        wp_add_inline_script('genero-woocommerce/woocommerce.js', asset('runtime.js', self::MANIFEST)->contents(), 'before');
     }
 
     public function registerBlockEditorAssets(): void
     {
+        if ($bundle = bundle('scripts/editor', self::MANIFEST)) {
+            wp_enqueue_script('genero-woocommerce/editor.js', asset('scripts/editor.js', self::MANIFEST)->uri(), $bundle->dependencies(), null, true);
+            wp_add_inline_script('genero-woocommerce/editor.js', asset('runtime.js', self::MANIFEST)->contents(), 'before');
+        }
+    }
 
+    public function filterBlockAssetUri(string $url, string $path, string $plugin): string
+    {
+        $distPath = $this->path.'/public/';
+        if (str_starts_with($plugin, $distPath.'blocks/')) {
+            $relativePath = mb_substr($plugin, strlen($distPath));
+
+            return asset($relativePath, self::MANIFEST)->uri();
+        }
+
+        return $url;
+    }
+
+    public function enqueueBlockStyles(): void
+    {
+        $manifestPath = $this->path.'/public/manifest.json';
+        $this->blockServiceProvider->enqueueBlockStyles($manifestPath, self::MANIFEST, 'genero-woocommerce');
     }
 }
