@@ -23,14 +23,21 @@ class BlockServiceProvider extends ServiceProvider
         add_action('init', [$this, 'registerBlockSupports']);
         add_action('wp_enqueue_scripts', [$this, 'enqueueBlockStyles']);
         add_action('enqueue_block_editor_assets', [$this, 'enqueueBlockStyles']);
+        add_filter('theme_file_uri', [$this, 'filterBlockAssetUri'], 10, 2);
 
         $this->attachBladeDirective();
         $this->addViewNamespace();
     }
 
-    public function registerBlocks()
+    public function registerBlocks(?string $blocksDir = null)
     {
-        $blocksDir = $this->app->resourcePath('blocks');
+        if (! $blocksDir) {
+            $blocksDir = $this->app->resourcePath('blocks');
+        }
+
+        if (! is_dir($blocksDir)) {
+            return;
+        }
 
         foreach ((new Finder)->in($blocksDir)->name('*.php') as $block) {
             $blockDefinitions = [
@@ -151,7 +158,9 @@ class BlockServiceProvider extends ServiceProvider
             ->map(fn ($file) => asset($file))
             ->each(function (Asset $asset) {
                 $filename = pathinfo(basename($asset->path()), PATHINFO_FILENAME);
-                [$collection, $blockName] = explode('-', $filename, 2);
+                // In case a block collection uses dashes, you can use -- to
+                // separate the collection and the block name.
+                [$collection, $blockName] = explode(str_contains($filename, '--') ? '--' : '-', $filename, 2);
                 $blockName = strtok($blockName, '.');
                 $handle = "sage/block/$filename";
 
@@ -165,5 +174,19 @@ class BlockServiceProvider extends ServiceProvider
                     'path' => $asset->path(),
                 ]);
             });
+    }
+
+    /**
+     * Fix cache bursting of block assets in the editor.
+     */
+    public function filterBlockAssetUri(string $url, string $file): string
+    {
+        if (str_starts_with($file, 'public/blocks')) {
+            $relativePath = mb_substr($file, strlen('public/'));
+
+            return asset($relativePath)->uri();
+        }
+
+        return $url;
     }
 }
