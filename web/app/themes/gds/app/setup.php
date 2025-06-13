@@ -146,6 +146,13 @@ add_action('after_setup_theme', function () {
      */
     add_theme_support('custom-logo');
 
+    /**
+     * Allow template parts
+     *
+     * @link https://make.wordpress.org/core/2022/10/04/block-based-template-parts-in-traditional-themes/
+     */
+    add_theme_support('block-template-parts');
+
     remove_theme_support('core-block-patterns');
 
     add_image_size('tiny', 50, 50, true);

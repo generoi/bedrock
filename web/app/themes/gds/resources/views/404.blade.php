@@ -1,5 +1,5 @@
 @extends('layouts.app')
 
 @section('content')
-  <x-not-found />
+  @php(block_template_part('not-found'))
 @endsection

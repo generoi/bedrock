@@ -20,13 +20,6 @@
       <!-- /wp:query -->
     @endblocks
   @else
-    <x-not-found
-      :description="__('Sorry, no results were found.', 'gds')"
-      :search-label="__('Wanna try again?', 'gds')"
-    >
-      <x-slot name="header">
-        @include('partials.page-header')
-      </x-slot>
-    </x-not-found>
+    @php(block_template_part('not-found'))
   @endif
 @endsection
