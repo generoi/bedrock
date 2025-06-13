@@ -73,14 +73,14 @@
     "generoi/polylang-pro": "^3.3",
     "wpackagist-plugin/wordpress-seo": "^25.0",
     "wpackagist-plugin/google-tag-manager": "^1.0",
-    "wpackagist-plugin/redirection": "^5.0",
     "wpackagist-plugin/woocommerce": "^9.1",
     "generoi/genero-cmp": "^2.0",
     "generoi/wp-image-resizer": "^1.0",
     "spatie/laravel-csp": "^3.10",
     "10up/wpcli-vulnerability-scanner": "^1.2",
     "wpackagist-plugin/woo-ajax-add-to-cart": "^2.4",
-    "generoi/sage-cachetags": "^1.2"
+    "generoi/sage-cachetags": "^1.2",
+    "wpackagist-plugin/safe-redirect-manager": "^2.2"
   },
   "require-dev": {
     "brainmaestro/composer-git-hooks": "^3.0.0",

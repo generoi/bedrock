@@ -4,7 +4,7 @@
     "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
     "This file is @generated automatically"
   ],
-  "content-hash": "0dc0df4cd822f27373d39f8a7db051c7",
+  "content-hash": "ff399a0d824e319723511bf4d3141d72",
   "packages": [
     {
       "name": "10up/wpcli-vulnerability-scanner",
@@ -12228,22 +12228,22 @@
       "homepage": "https://wordpress.org/plugins/query-monitor/"
     },
     {
-      "name": "wpackagist-plugin/redirection",
-      "version": "5.5.2",
+      "name": "wpackagist-plugin/safe-redirect-manager",
+      "version": "2.2.2",
       "source": {
         "type": "svn",
-        "url": "https://plugins.svn.wordpress.org/redirection/",
-        "reference": "tags/5.5.2"
+        "url": "https://plugins.svn.wordpress.org/safe-redirect-manager/",
+        "reference": "tags/2.2.2"
       },
       "dist": {
         "type": "zip",
-        "url": "https://downloads.wordpress.org/plugin/redirection.5.5.2.zip"
+        "url": "https://downloads.wordpress.org/plugin/safe-redirect-manager.2.2.2.zip"
       },
       "require": {
         "composer/installers": "^1.0 || ^2.0"
       },
       "type": "wordpress-plugin",
-      "homepage": "https://wordpress.org/plugins/redirection/"
+      "homepage": "https://wordpress.org/plugins/safe-redirect-manager/"
     },
     {
       "name": "wpackagist-plugin/safe-svg",
