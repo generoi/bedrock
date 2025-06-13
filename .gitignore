@@ -36,6 +36,7 @@ auth.json
 # Node Package Manager
 node_modules
 npm-debug.log
+yarn-error.log
 
 # Vagrant
 .vagrant
@@ -61,3 +62,6 @@ wp-cli.local.yml
 .phpunit.result.cache
 screenshot.jpg
 test-results
+
+# Theme
+web/app/themes/*/public
