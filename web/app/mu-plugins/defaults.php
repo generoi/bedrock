@@ -238,3 +238,35 @@ add_action('shc_show_env_id_env', function () {
         'staging' => ['Staging', 'staging'],
     };
 });
+
+/**
+ * @see https://github.com/roots/acorn/issues/198#issuecomment-1365942893
+ */
+add_action('admin_footer', function () {
+    $isGravityFormsEditPage = isset($_GET['page']) && $_GET['page'] === 'gf_edit_forms';
+    if (! $isGravityFormsEditPage) {
+        return;
+    }
+    ?>
+    <script>
+    function MaybeAddSaveLinkMergeTag(mergeTags, elementId, hideAllFields, excludeFieldTypes, isPrepop, option) {
+        const eventSelectEl = document.querySelector('select[name="_gform_setting_event"]');
+        if (!eventSelectEl) {
+            return mergeTags;
+        }
+        var event = eventSelectEl.value;
+        if (event === 'form_saved' || event === 'form_save_email_requested') {
+            mergeTags['other'].tags.push({
+                tag: '{save_link}',
+                label: <?php echo json_encode(esc_html__('Save & Continue Link', 'gravityforms')); ?>
+            });
+            mergeTags['other'].tags.push({
+                tag: '{save_token}',
+                label: <?php echo json_encode(esc_html__('Save & Continue Token', 'gravityforms')); ?>
+            });
+        }
+        return mergeTags;
+    }
+    </script>
+    <?php
+});
