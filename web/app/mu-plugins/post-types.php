@@ -68,7 +68,6 @@ class PostTypes
         // Set `has_archive` for compatibility with `post-type-archive-mapping`.
         add_filter('register_post_type_args', function ($args, $post_type) {
             if ($post_type === 'post') {
-                $args['has_archive'] = true;
                 $args['rewrite'] = [
                     'with_front' => true,
                 ];
