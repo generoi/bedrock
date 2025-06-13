@@ -199,3 +199,23 @@ add_filter('render_block', function (string $content, array $block) {
 
     return $content;
 }, 10, 2);
+
+/**
+ * Autoplay media & text videos.
+ */
+add_filter('render_block', function ($content, $block) {
+    if ($block['blockName'] === 'core/media-text') {
+        $processor = new WP_HTML_Tag_Processor($content);
+
+        if ($processor->next_tag('video')) {
+            $processor->set_attribute('autoplay', 'true');
+            $processor->set_attribute('muted', 'true');
+            $processor->set_attribute('playsinline', 'true');
+            $processor->set_attribute('loop', 'true');
+            $processor->remove_attribute('controls');
+            $content = $processor->get_updated_html();
+        }
+    }
+
+    return $content;
+}, 10, 2);

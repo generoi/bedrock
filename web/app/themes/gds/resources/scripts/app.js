@@ -1,4 +1,5 @@
 import {onIdle, ready} from './utils';
+import initPrefersReducedMotion from './components/prefers-reduced-motion';
 
 import('./components/toggle-button');
 
@@ -10,6 +11,8 @@ ready(() => {
   if (document.querySelector('youtube-embed')) {
     onIdle(() => import('@components/youtube-embed'));
   }
+
+  initPrefersReducedMotion();
 });
 
 ready(() => {
