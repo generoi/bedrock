@@ -2,7 +2,7 @@
 
 class ThemeTest extends WP_UnitTestCase
 {
-    public function testThemeBoots()
+    public function test_theme_boots()
     {
         $this->assertTrue(
             \app()->providerIsLoaded(\App\Providers\SageServiceProvider::class),

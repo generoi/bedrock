@@ -20,6 +20,7 @@ class Plugin
     public readonly string $url;
 
     protected BlockServiceProvider $blockServiceProvider;
+
     protected WooCommerce $woocommerce;
 
     public static function getInstance(): static
