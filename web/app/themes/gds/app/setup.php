@@ -171,6 +171,14 @@ add_action('after_setup_theme', function () {
     add_editor_style('public/styles/editor.css');
 }, 20);
 
+add_action('init', function () {
+    register_block_pattern_category('hero', ['label' => __('Hero', 'gds')]);
+    register_block_pattern_category('sections', ['label' => __('Sections', 'gds')]);
+    register_block_pattern_category('cards', ['label' => __('Cards', 'gds')]);
+    register_block_pattern_category('ctas', ['label' => __('CTAs', 'gds')]);
+    register_block_pattern_category('listings', ['label' => __('Listings', 'gds')]);
+});
+
 /**
  * Register the theme sidebars.
  *
