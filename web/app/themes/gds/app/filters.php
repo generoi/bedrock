@@ -183,3 +183,19 @@ add_filter('widget_block_content', function (string $content) {
 
     return $content;
 }, 11);
+
+/**
+ * Add a data attribute for block namespaces so that they can be used for styling.
+ */
+add_filter('render_block', function (string $content, array $block) {
+    $namespace = $block['attrs']['namespace'] ?? null;
+
+    if ($namespace) {
+        $processor = new WP_HTML_Tag_Processor($content);
+        $processor->next_tag();
+        $processor->set_attribute('data-namespace', $namespace);
+        $content = $processor->get_updated_html();
+    }
+
+    return $content;
+}, 10, 2);

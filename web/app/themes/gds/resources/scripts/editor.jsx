@@ -9,6 +9,7 @@ import {
 import './editor/block-variations/woocommerce-product-collection';
 import './editor/block-variations/core-query';
 import './editor/filters/with-handpicked-posts';
+import './editor/filters/with-namespace-attribute';
 
 registerBlockCollection('gds', {title: 'Genero Design System'});
 

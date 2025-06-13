@@ -37,6 +37,7 @@ window._wpLoadBlockEditor.then(() => {
     scope: ['inserter', 'block', 'transform'],
     isActive: ['namespace', 'query.postType'],
     attributes: {
+      namespace: 'article-grid',
       align: 'wide',
       query: {
         itemsPerPage: 9,
@@ -54,6 +55,7 @@ window._wpLoadBlockEditor.then(() => {
     scope: ['inserter', 'block', 'transform'],
     isActive: ['namespace', 'query.postType'],
     attributes: {
+      namespace: 'page-grid',
       align: 'wide',
       query: {
         itemsPerPage: 9,
