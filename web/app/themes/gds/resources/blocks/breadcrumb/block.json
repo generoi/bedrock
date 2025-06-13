@@ -6,7 +6,6 @@
   "description": "Show the breadcrumb...",
   "category": "widgets",
   "icon": "admin-multisite",
-  "style": "file:./style.css",
   "attributes": {
     "align": {
       "type": "string",
@@ -20,8 +19,7 @@
       "background": false
     }
   },
-  "example": {},
-  "acf": {
-    "mode": "preview"
-  }
+  "style": "file:./style.css",
+  "editorScript": "file:./index.js",
+  "example": {}
 }

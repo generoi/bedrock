@@ -6,7 +6,6 @@
   "description": "Show the title of the current page",
   "category": "theme",
   "icon": "admin-multisite",
-  "style": "file:./style.css",
   "attributes": {},
   "supports": {
     "align": ["wide"],
@@ -16,7 +15,6 @@
     }
   },
   "example": {},
-  "acf": {
-    "mode": "preview"
-  }
+  "style": "file:./style.css",
+  "editorScript": "file:./index.js"
 }

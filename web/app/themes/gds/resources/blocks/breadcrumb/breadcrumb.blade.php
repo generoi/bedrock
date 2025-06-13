@@ -1,9 +1,6 @@
 <nav {!! get_block_wrapper_attributes([
+    /* translators: Screen reader label */
     'aria-label' => __('Breadcrumb', 'gds')
 ]) !!}>
-  @if (!$is_preview)
-    {!! $content !!}
-  @else
-    Breadcrumb placeholder...
-  @endif
+  {!! $content !!}
 </nav>
