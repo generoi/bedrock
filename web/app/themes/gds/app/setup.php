@@ -134,6 +134,13 @@ add_action('after_setup_theme', function () {
      */
     add_theme_support('editor-styles');
 
+    /**
+     * Enable custom logo support
+     *
+     * @link https://developer.wordpress.org/themes/functionality/custom-logo/
+     */
+    add_theme_support('custom-logo');
+
     remove_theme_support('core-block-patterns');
 
     add_image_size('tiny', 50, 50, true);

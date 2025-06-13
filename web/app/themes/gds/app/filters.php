@@ -219,3 +219,26 @@ add_filter('render_block', function ($content, $block) {
 
     return $content;
 }, 10, 2);
+
+/**
+ * Add role="home" and aria-label to site logo.
+ */
+add_filter('render_block_core/site-logo', function (string $content) {
+    $processor = new WP_HTML_Tag_Processor($content);
+
+    if ($processor->next_tag('a')) {
+        $processor->set_attribute('rel', 'home');
+        $processor->set_attribute(
+            'aria-label',
+            /* translators: %s is replaced with the name of the site */
+            sprintf(__('%s frontpage', 'gds'), get_bloginfo('name', 'display'))
+        );
+    }
+
+    if ($processor->next_tag('img')) {
+        $processor->set_attribute('aria-hidden', 'true');
+        $processor->set_attribute('alt', '');
+    }
+
+    return $processor->get_updated_html();
+});
