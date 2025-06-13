@@ -3,22 +3,51 @@
 return [
 
     /*
-     * A policy will determine which CSP headers will be set. A valid CSP policy is
-     * any class that extends `Spatie\Csp\Policies\Policy`
+     * Presets will determine which CSP headers will be set. A valid CSP preset is
+     * any class that extends `Spatie\Csp\Preset`
      */
-    'policy' => App\Csp\CspPolicy::class,
+    'presets' => [
+        Spatie\Csp\Presets\Basic::class,
+        Spatie\Csp\Presets\GoogleFonts::class,
+        Spatie\Csp\Presets\AdobeFonts::class,
+        Spatie\Csp\Presets\GoogleAnalytics::class,
+        Spatie\Csp\Presets\GoogleTagManager::class,
+        Spatie\Csp\Presets\Vimeo::class,
+        Spatie\Csp\Presets\MetaPixel::class,
+
+        App\Csp\Security::class,
+        App\Csp\SampleContent::class,
+        App\Csp\YouTube::class,
+        App\Csp\GoogleAds::class,
+        App\Csp\GoogleTagManagerPreview::class,
+        App\Csp\WordPress::class,
+    ],
+
+    /**
+     * Register additional global CSP directives here.
+     */
+    'directives' => [
+        // [Directive::SCRIPT, [Keyword::UNSAFE_EVAL, Keyword::UNSAFE_INLINE]],
+    ],
 
     /*
-     * This policy which will be put in report only mode. This is great for testing out
-     * a new policy or changes to existing csp policy without breaking anything.
+     * These presets which will be put in a report-only policy. This is great for testing out
+     * a new policy or changes to existing CSP policy without breaking anything.
      */
-    'report_only_policy' => '',
+    'report_only_presets' => [
+        //
+    ],
+
+    /**
+     * Register additional global report-only CSP directives here.
+     */
+    'report_only_directives' => [
+        // [Directive::SCRIPT, [Keyword::UNSAFE_EVAL, Keyword::UNSAFE_INLINE]],
+    ],
 
     /*
-     * All violations against the policy will be reported to this url.
+     * All violations against a policy will be reported to this url.
      * A great service you could use for this is https://report-uri.com/
-     *
-     * You can override this setting by calling `reportTo` on your policy.
      */
     'report_uri' => env('CSP_REPORT_URI', ''),
 
@@ -27,8 +56,21 @@ return [
      */
     'enabled' => env('CSP_ENABLED', true),
 
+    /**
+     * Headers will be added when Vite is hot reloading.
+     */
+    'enabled_while_hot_reloading' => env('CSP_ENABLED_WHILE_HOT_RELOADING', false),
+
     /*
      * The class responsible for generating the nonces used in inline tags and headers.
      */
     'nonce_generator' => Spatie\Csp\Nonce\RandomString::class,
+
+    /*
+     * Set false to disable automatic nonce generation and handling.
+     * This is useful when you want to use 'unsafe-inline' for scripts/styles
+     * and cannot add inline nonces.
+     * Note that this will make your CSP policy less secure.
+     */
+    'nonce_enabled' => env('CSP_NONCE_ENABLED', true),
 ];

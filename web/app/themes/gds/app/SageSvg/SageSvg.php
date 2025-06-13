@@ -10,7 +10,7 @@ class SageSvg extends BaseSageSvg
     /**
      * {@inheritDoc}
      */
-    public function render(string $image, string|array $class = '', array $attrs = [], array $options = []): HtmlString
+    public function render(string|array $image, string|array $class = '', array $attrs = [], array $options = []): HtmlString
     {
         if (empty($attrs['title'])) {
             if (! isset($attrs['aria-hidden'])) {
