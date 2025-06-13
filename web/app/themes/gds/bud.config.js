@@ -2,11 +2,13 @@ import {homedir} from 'os';
 import {resolve, relative} from 'node:path';
 import BudBlock from './build/bud-block.js';
 
+const PROJECT_NAME = 'gdsbedrock';
+
 /**
  * @type {import('@roots/bud').Config}
  */
 export default async (app) => {
-  app.extensions.add(BudBlock);
+  await app.extensions.add(BudBlock);
 
   app
     .entry('scripts/app', ['@scripts/app'])
@@ -49,9 +51,13 @@ export default async (app) => {
   app.globSync('resources/styles/blocks/*').forEach((file) => {
     app.entry(relative(app.path('@src'), file));
   });
-  app.globSync('resources/blocks/*/*.json').forEach((file) => {
-    app.block(relative(app.path('@src'), file));
-  });
+
+  await Promise.all(
+    app.globSync('resources/blocks/*/*.json').map(async (file) => {
+      return app.block(relative(app.path('@src'), file));
+    }),
+  );
+
   app.globSync('resources/components/*/*.{js,scss}').forEach((file) => {
     app.entry(relative(app.path('@src'), file));
   });
@@ -61,13 +67,16 @@ export default async (app) => {
   app
     .setPath({'@certs': `${homedir()}/.ddev/traefik/certs`})
     .serve({
-      host: 'gdsbedrock.ddev.site',
+      host: `${PROJECT_NAME}.ddev.site`,
       cert: app.path('@certs/default_cert.crt'),
       key: app.path('@certs/default_key.key'),
     })
     .setUrl('https://localhost:3000')
-    .setProxyUrl('https://gdsbedrock.ddev.site')
+    .setProxyUrl(process.env.URL || `https://${PROJECT_NAME}.ddev.site`)
     .watch(['resources/views', 'app']);
+
+  app.experiments({lazyCompilation: false});
+  app.extensions.get('@roots/bud-eslint').setUseEslintrc(true);
 
   app.postcss
     .use((plugins) => [...plugins, 'postcss-inline-svg'])
@@ -95,5 +104,14 @@ export default async (app) => {
     bud.extensions
       .get('@roots/bud-extensions/mini-css-extract-plugin')
       .enable();
+  });
+
+  app.hooks.on(`build.module.rules.oneOf`, (rules = []) => {
+    rules.push({
+      test: /\.svg$/,
+      resourceQuery: /source/,
+      type: 'asset/source',
+    });
+    return rules;
   });
 };
