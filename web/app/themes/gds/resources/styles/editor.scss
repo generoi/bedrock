@@ -1,6 +1,8 @@
 @use 'config' with (
   $is-editor: true
 );
+@use 'config/variables';
+@use 'common/reset';
 @use 'common/base';
 @use 'components';
 

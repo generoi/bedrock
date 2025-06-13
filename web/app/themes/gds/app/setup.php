@@ -51,9 +51,14 @@ add_action('enqueue_block_editor_assets', function () {
         wp_enqueue_script('sage/editor.js', asset('scripts/editor.js')->uri(), $bundle->dependencies(), null, true);
         wp_add_inline_script('sage/editor.js', asset('runtime.js')->contents(), 'before');
     }
-    wp_enqueue_style('sage/editor-overrides.css', asset('styles/editor-overrides.css')->uri(), ['wp-edit-blocks', 'common'], null);
-    wp_enqueue_style('sage/googlefonts.css', app(GoogleFonts::class)->load()->url(), [], null);
 }, 100);
+
+add_action('enqueue_block_assets', function () {
+    if (is_admin()) {
+        wp_enqueue_style('sage/googlefonts.css', app(GoogleFonts::class)->load()->url(), [], null);
+        wp_enqueue_style('sage/editor-overrides.css', asset('styles/editor-overrides.css')->uri(), [], null);
+    }
+});
 
 /**
  * Remove some default global-styles set by core.

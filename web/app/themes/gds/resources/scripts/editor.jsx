@@ -22,10 +22,7 @@ domReady(() => {
     name: 'media-text',
     label: 'Media & Text',
   });
-});
 
-// @see https://github.com/WordPress/gutenberg/issues/25330
-window._wpLoadBlockEditor.then(() => {
   // Unregister Default Blocks Styles
   unregisterBlockStyle('core/separator', 'dots');
   unregisterBlockStyle('core/separator', 'wide');

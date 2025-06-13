@@ -1,8 +1,5 @@
-import {
-  getBlockVariations,
-  registerBlockVariation,
-  unregisterBlockVariation,
-} from '@wordpress/blocks';
+import domReady from '@wordpress/dom-ready';
+import {registerBlockVariation} from '@wordpress/blocks';
 
 /**
  * @see https://developer.wordpress.org/block-editor/how-to-guides/block-tutorial/extending-the-query-loop-block/
@@ -23,12 +20,7 @@ const ARCHIVE_GRID_TEMPLATE = [
   ['core/query-no-results'],
 ];
 
-window._wpLoadBlockEditor.then(() => {
-  // Remove all default query block variations
-  for (const variation of getBlockVariations('core/query')) {
-    unregisterBlockVariation('core/query', variation.name);
-  }
-
+domReady(() => {
   registerBlockVariation('core/query', {
     name: 'gds/article-grid',
     title: 'Article Grid',
