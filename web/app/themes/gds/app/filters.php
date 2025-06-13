@@ -242,3 +242,27 @@ add_filter('render_block_core/site-logo', function (string $content) {
 
     return $processor->get_updated_html();
 });
+
+/**
+ * Optimize images in blocks.
+ */
+add_filter('render_block', function (string $content, array $block) {
+    switch ($block['blockName']) {
+        case 'core/media-text':
+            $focalPoint = $block['attrs']['focalPoint'] ?? null;
+            $mediaWidth = $block['attrs']['mediaWidth'] ?? 50;
+            // We hide the background image use the <img> with objet-fit: contain, but need the position.
+            if ($focalPoint) {
+                $style = sprintf('object-position: %s%% %s%%;', $focalPoint['x'] * 100, $focalPoint['y'] * 100);
+                $content = preg_replace('/^(\s*<div[^>]+>\s*<figure[^>]+>\s*<img )/', sprintf('$1style="%s" ', $style), $content);
+            }
+            // Calculate the sizes based on media width.
+            if ($mediaWidth) {
+                $sizes = sprintf('(min-width: 600px) %svw, (min-width: 1230px) %spx, 100vw', $mediaWidth, 1200 * ($mediaWidth / 100));
+                $content = preg_replace('/^(\s*<div[^>]+>\s*<figure[^>]+>\s*<img )/', sprintf('$1sizes="%s" ', $sizes), $content);
+            }
+            break;
+    }
+
+    return $content;
+}, 10, 2);
