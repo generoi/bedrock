@@ -2,22 +2,27 @@
 
 namespace App\Providers;
 
+use Genero\Sage\CacheTags\CacheTagsServiceProvider;
+use Genero\Sage\WooCommerce\WooCommerceServiceProvider;
 use Illuminate\Support\AggregateServiceProvider;
+use Log1x\SageSvg\SageSvgServiceProvider;
+use Spatie\Csp\CspServiceProvider;
+use Spatie\GoogleFonts\GoogleFontsServiceProvider;
 
 class ThemeServiceProvider extends AggregateServiceProvider
 {
     protected $providers = [
-        \App\Providers\BlockServiceProvider::class,
-        \App\Providers\ComponentServiceProvider::class,
-        \App\Providers\SageServiceProvider::class,
-        \App\Providers\PerformanceServiceProvider::class,
-        \App\Providers\AsyncLoaderServiceProvider::class,
-        \Spatie\Csp\CspServiceProvider::class,
-        \App\Providers\CacheControlServiceProvider::class,
-        \App\Providers\ContentSecurityPolicyServiceProvider::class,
-        \Spatie\GoogleFonts\GoogleFontsServiceProvider::class,
-        \Log1x\SageSvg\SageSvgServiceProvider::class,
-        \Genero\Sage\CacheTags\CacheTagsServiceProvider::class,
-        \Genero\Sage\WooCommerce\WooCommerceServiceProvider::class,
+        BlockServiceProvider::class,
+        ComponentServiceProvider::class,
+        SageServiceProvider::class,
+        PerformanceServiceProvider::class,
+        AsyncLoaderServiceProvider::class,
+        CspServiceProvider::class,
+        CacheControlServiceProvider::class,
+        ContentSecurityPolicyServiceProvider::class,
+        GoogleFontsServiceProvider::class,
+        SageSvgServiceProvider::class,
+        CacheTagsServiceProvider::class,
+        WooCommerceServiceProvider::class,
     ];
 }

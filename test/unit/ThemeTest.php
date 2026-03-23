@@ -1,11 +1,13 @@
 <?php
 
+use App\Providers\SageServiceProvider;
+
 class ThemeTest extends WP_UnitTestCase
 {
     public function test_theme_boots()
     {
         $this->assertTrue(
-            \app()->providerIsLoaded(\App\Providers\SageServiceProvider::class),
+            \app()->providerIsLoaded(SageServiceProvider::class),
             'Sage provider is loaded'
         );
 

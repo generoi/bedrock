@@ -34,17 +34,7 @@ class PerformanceServiceProvider extends ServiceProvider
         render_block(['blockName' => 'core/paragraph']);
 
         if (function_exists('is_woocommerce')) {
-            wp_style_add_data('wc-blocks-packages-style', 'async', true);
-            wp_style_add_data('wc-blocks-style', 'async', true);
-            wp_style_add_data('wc-blocks-style-mini-cart-contents', 'async', true);
-
-            // Load essential mini cart styles, not _all_ assets
-            wp_enqueue_style('wc-blocks-style-mini-cart');
-            wp_enqueue_style('sage/block/woocommerce-mini-cart');
-            // Load store notices styling without triggering a render
             wp_enqueue_style('sage/block/woocommerce-store-notices');
-
-            render_block(['blockName' => 'woocommerce/customer-account', 'attrs' => []]);
 
             if (is_shop() || is_product_taxonomy()) {
                 render_block(['blockName' => 'woocommerce/product-collection', 'attrs' => []]);
@@ -54,10 +44,7 @@ class PerformanceServiceProvider extends ServiceProvider
             if (is_singular('product')) {
                 render_block(['blockName' => 'core/columns', 'attrs' => []]);
                 render_block(['blockName' => 'core/column', 'attrs' => []]);
-                render_block(['blockName' => 'woocommerce/product-rating', 'attrs' => []]);
                 render_block(['blockName' => 'woocommerce/product-price', 'attrs' => []]);
-                render_block(['blockName' => 'woocommerce/product-sku', 'attrs' => []]);
-                // render_block(['blockName' => 'woocommerce/add-to-cart-form', 'attrs' => []]);
                 render_block(['blockName' => 'core/post-title', 'attrs' => []]);
                 render_block(['blockName' => 'core/post-excerpt', 'attrs' => []]);
                 render_block(['blockName' => 'gds/gallery-carousel', 'attrs' => []]);
@@ -98,7 +85,10 @@ class PerformanceServiceProvider extends ServiceProvider
         wp_deregister_script('jquery');
         wp_deregister_script('jquery-core');
         wp_deregister_script('jquery-migrate');
-        wp_register_script('jquery', asset('jquery.min.js')->uri(), [], null, ['strategy' => 'defer']);
+        // jQuery must not use `defer`: wp-util and WooCommerce (e.g. add-to-cart-variation) load in
+        // the same batch; deferred jQuery runs after non-deferred deps → "jQuery is not defined",
+        // then wp.template (from wp-util) never attaches.
+        wp_register_script('jquery', asset('jquery.min.js')->uri(), [], null, ['in_footer' => true]);
     }
 
     public function dequeueAssets(): void

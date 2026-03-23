@@ -1,22 +1,27 @@
 <?php
 
+use Generoi\Robo\Command\loadCommands;
+use Generoi\Robo\Task\loadTasks;
+use Robo\Result;
+use Robo\Tasks;
+
 if (file_exists($composer = __DIR__.'/vendor/autoload.php')) {
     require_once $composer;
 }
 
 // phpcs:disable PSR1.Classes.ClassDeclaration.MissingNamespace
-class RoboFile extends \Robo\Tasks
+class RoboFile extends Tasks
 {
-    use \Generoi\Robo\Command\loadCommands;
+    use loadCommands;
 
     // phpcs:enable
-    use \Generoi\Robo\Task\loadTasks;
+    use loadTasks;
 
     /**
      * Pull uploads directory from remote to local.
      *
      * @param  string  $source  Source alias eg. `production`
-     * @return \Robo\Result
+     * @return Result
      */
     public function filesPull(string $source, $options = ['exclude' => null, 'dry-run' => false, 'options' => null])
     {
@@ -27,7 +32,7 @@ class RoboFile extends \Robo\Tasks
      * Push uploads directory from local to remote.
      *
      * @param  string  $destination  Destination alias eg. `production`
-     * @return \Robo\Result
+     * @return Result
      */
     public function filesPush(string $destination, $options = ['exclude' => null, 'dry-run' => true, 'options' => null])
     {

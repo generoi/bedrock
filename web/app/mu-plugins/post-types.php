@@ -12,6 +12,7 @@ License:      MIT License
 
 namespace Genero\Site;
 
+use PostTypes\Columns;
 use PostTypes\PostType;
 use PostTypes\Taxonomy;
 
@@ -62,38 +63,57 @@ class PostTypes
 
     public function registerPost()
     {
-        $post = new PostType('post');
-        $post->register();
-
-        // Set `has_archive` for compatibility with `post-type-archive-mapping`.
-        add_filter('register_post_type_args', function ($args, $post_type) {
-            if ($post_type === 'post') {
-                $args['rewrite'] = [
-                    'with_front' => true,
-                ];
+        $post = new class extends PostType
+        {
+            public function name(): string
+            {
+                return 'post';
             }
 
-            return $args;
-        }, 10, 2);
+            public function options(): array
+            {
+                return [
+                    'rewrite' => [
+                        'with_front' => true,
+                    ],
+                ];
+            }
+        };
+        $post->register();
 
         return $post;
     }
 
     public function registerPage()
     {
-        $page = new PostType('page');
-        $page->register();
+        $page = new class extends PostType
+        {
+            public function name(): string
+            {
+                return 'page';
+            }
 
-        add_action('init', function () {
-            add_post_type_support('page', 'excerpt');
-        });
+            public function hooks(): void
+            {
+                add_action('init', function () {
+                    add_post_type_support('page', 'excerpt');
+                });
+            }
+        };
+        $page->register();
 
         return $page;
     }
 
     public function registerProduct()
     {
-        $product = new PostType('product');
+        $product = new class extends PostType
+        {
+            public function name(): string
+            {
+                return 'product';
+            }
+        };
         $product->register();
 
         return $product;
@@ -101,22 +121,58 @@ class PostTypes
 
     public function registerPerson()
     {
-        $person = new PostType('person', [
-            'has_archive' => false,
-            'show_in_rest' => true,
-            'supports' => ['title', 'thumbnail'],
-        ]);
-        $person->icon('dashicons-admin-users');
-        $person->taxonomy('department');
-        $person->columns()
-            ->add(['thumbnail' => ''])
-            ->order(['thumbnail' => 1])
-            ->populate('thumbnail', function ($column, $post_id) {
-                echo get_the_post_thumbnail($post_id, 'thumbnail');
-            });
+        $person = new class extends PostType
+        {
+            public function name(): string
+            {
+                return 'person';
+            }
+
+            public function options(): array
+            {
+                return [
+                    'has_archive' => false,
+                    'show_in_rest' => true,
+                    'supports' => ['title', 'thumbnail'],
+                ];
+            }
+
+            public function icon(): ?string
+            {
+                return 'dashicons-admin-users';
+            }
+
+            public function taxonomies(): array
+            {
+                return ['department'];
+            }
+
+            public function columns(Columns $columns): Columns
+            {
+                $columns->add('thumbnail')
+                    ->label('')
+                    ->before('title')
+                    ->populate(function ($postId) {
+                        echo get_the_post_thumbnail($postId, 'thumbnail');
+                    });
+
+                return $columns;
+            }
+        };
         $person->register();
 
-        $department = new Taxonomy('department');
+        $department = new class extends Taxonomy
+        {
+            public function name(): string
+            {
+                return 'department';
+            }
+
+            public function posttypes(): array
+            {
+                return ['person'];
+            }
+        };
         $department->register();
 
         return $person;

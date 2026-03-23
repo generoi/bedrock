@@ -1,5 +1,20 @@
 <?php
 
+use App\Csp\GoogleAds;
+use App\Csp\GoogleTagManagerPreview;
+use App\Csp\SampleContent;
+use App\Csp\Security;
+use App\Csp\WordPress;
+use App\Csp\YouTube;
+use Spatie\Csp\Nonce\RandomString;
+use Spatie\Csp\Presets\AdobeFonts;
+use Spatie\Csp\Presets\Basic;
+use Spatie\Csp\Presets\GoogleAnalytics;
+use Spatie\Csp\Presets\GoogleFonts;
+use Spatie\Csp\Presets\GoogleTagManager;
+use Spatie\Csp\Presets\MetaPixel;
+use Spatie\Csp\Presets\Vimeo;
+
 return [
 
     /*
@@ -7,20 +22,20 @@ return [
      * any class that extends `Spatie\Csp\Preset`
      */
     'presets' => [
-        Spatie\Csp\Presets\Basic::class,
-        Spatie\Csp\Presets\GoogleFonts::class,
-        Spatie\Csp\Presets\AdobeFonts::class,
-        Spatie\Csp\Presets\GoogleAnalytics::class,
-        Spatie\Csp\Presets\GoogleTagManager::class,
-        Spatie\Csp\Presets\Vimeo::class,
-        Spatie\Csp\Presets\MetaPixel::class,
+        Basic::class,
+        GoogleFonts::class,
+        AdobeFonts::class,
+        GoogleAnalytics::class,
+        GoogleTagManager::class,
+        Vimeo::class,
+        MetaPixel::class,
 
-        App\Csp\Security::class,
-        App\Csp\SampleContent::class,
-        App\Csp\YouTube::class,
-        App\Csp\GoogleAds::class,
-        App\Csp\GoogleTagManagerPreview::class,
-        App\Csp\WordPress::class,
+        Security::class,
+        SampleContent::class,
+        YouTube::class,
+        GoogleAds::class,
+        GoogleTagManagerPreview::class,
+        WordPress::class,
     ],
 
     /**
@@ -64,7 +79,7 @@ return [
     /*
      * The class responsible for generating the nonces used in inline tags and headers.
      */
-    'nonce_generator' => Spatie\Csp\Nonce\RandomString::class,
+    'nonce_generator' => RandomString::class,
 
     /*
      * Set false to disable automatic nonce generation and handling.

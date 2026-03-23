@@ -20,12 +20,22 @@ WP_CLI::add_hook('before_ssh', function () {
     $runner = WP_CLI::get_runner();
     $runner->init_config();
     $project_config = $runner->get_project_config_path();
+    $config = [];
     if ($runner->alias && $project_config) {
         $config = Spyc::YAMLLoad($project_config)[$runner->alias] ?? [];
     }
 
+    // Local aliases (e.g. @ddev) have no ssh: key. Exiting quietly avoids PHP
+    // notices on stdout corrupting piped db export | db import.
+    if (empty($config['ssh'])) {
+        return;
+    }
+
     // Eg. /var/www/wordpress/web/wp
     $wp_path = WP_CLI\Utils\parse_ssh_url($config['ssh'], PHP_URL_PATH);
+    if (! is_string($wp_path) || $wp_path === '') {
+        return;
+    }
     // Eg. /var/www/wordpress
     $project_root = dirname(dirname($wp_path));
     // Eg. /var/www/wordpress/vendor/bin

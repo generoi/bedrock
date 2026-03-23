@@ -1,11 +1,14 @@
 <?php
 
+use App\Providers\ThemeServiceProvider;
+use Roots\Acorn\Application;
+
 /**
  * Register the theme service provider.
  * Bootstrap happens in mu-plugins/00-acorn.php.
  */
-\Roots\Acorn\Application::getInstance()->registerDeferredProvider(
-    \App\Providers\ThemeServiceProvider::class
+Application::getInstance()->registerDeferredProvider(
+    ThemeServiceProvider::class
 );
 
 /*

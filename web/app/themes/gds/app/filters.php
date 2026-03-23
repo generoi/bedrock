@@ -266,3 +266,70 @@ add_filter('render_block', function (string $content, array $block) {
 
     return $content;
 }, 10, 2);
+
+/**
+ * Fix WP 6.9 site health crashes caused by Acorn converting PHP warnings to
+ * exceptions. Both issues occur when plugin/core data is missing required keys.
+ */
+add_filter('debug_information', function (array $info) {
+    foreach ($info as &$section) {
+        if (empty($section['fields'])) {
+            continue;
+        }
+        foreach ($section['fields'] as $key => &$field) {
+            if (! is_array($field)) {
+                continue;
+            }
+            $field['value'] = $field['value'] ?? '';
+            $field['label'] = $field['label'] ?? $key;
+        }
+    }
+
+    return $info;
+}, PHP_INT_MAX);
+
+add_filter('site_status_tests', function (array $tests) {
+    if (! isset($tests['direct']['php_version'])) {
+        return $tests;
+    }
+
+    $tests['direct']['php_version']['test'] = function () {
+        $response = wp_check_php_version();
+
+        $result = [
+            'label' => sprintf(__('Your site is running PHP %s'), PHP_VERSION),
+            'status' => 'good',
+            'badge' => ['label' => __('Performance'), 'color' => 'blue'],
+            'description' => sprintf('<p>%s</p>', __('PHP is one of the programming languages used to build WordPress. Newer versions of PHP receive regular security updates and may increase your site&#8217;s performance.')),
+            'actions' => sprintf(
+                '<p><a href="%s" target="_blank">%s<span class="screen-reader-text"> %s</span><span aria-hidden="true" class="dashicons dashicons-external"></span></a></p>',
+                esc_url(wp_get_update_php_url()),
+                __('Learn more about updating PHP'),
+                __('(opens in a new tab)')
+            ),
+            'test' => 'php_version',
+        ];
+
+        if (! $response) {
+            $result['status'] = 'recommended';
+            $result['description'] = '<p><em>'.sprintf(
+                __('Unable to access the WordPress.org API for <a href="%s">Serve Happy</a>.'),
+                'https://codex.wordpress.org/WordPress.org_API#Serve_Happy'
+            ).'</em></p>'.$result['description'];
+
+            return $result;
+        }
+
+        // recommended_version absent means current PHP is above the API's known range.
+        if (! isset($response['recommended_version'])) {
+            $result['label'] = sprintf(__('Your site is running a recommended version of PHP (%s)'), PHP_VERSION);
+
+            return $result;
+        }
+
+        // Delegate to core now that we know recommended_version exists.
+        return WP_Site_Health::get_instance()->get_test_php_version();
+    };
+
+    return $tests;
+});

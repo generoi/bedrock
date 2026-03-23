@@ -12,6 +12,8 @@ License:      MIT License
 
 namespace Genero\Site;
 
+use Illuminate\Session\Middleware\StartSession;
+use Illuminate\View\Middleware\ShareErrorsFromSession;
 use Roots\Acorn\Application;
 use Roots\Acorn\Configuration\Middleware;
 
@@ -51,8 +53,8 @@ Application::configure()
     ->withMiddleware(function (Middleware $middleware) {
         // Remove session cookie
         $middleware->removeFromGroup('web', [
-            \Illuminate\Session\Middleware\StartSession::class,
-            \Illuminate\View\Middleware\ShareErrorsFromSession::class,
+            StartSession::class,
+            ShareErrorsFromSession::class,
         ]);
     })
     ->boot();
