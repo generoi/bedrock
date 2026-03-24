@@ -14,9 +14,7 @@
   @version     1.6.4
 --}}
 
-@extends('layouts.app.not-root')
-
-@section('skip_to_content', '')
+@extends('layouts.app')
 
 @section('content')
   @php

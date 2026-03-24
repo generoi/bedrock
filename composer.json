@@ -75,7 +75,6 @@
     "generoi/genero-cmp": ">=2.0",
     "generoi/wp-image-resizer": ">=1.0",
     "spatie/laravel-csp": ">=3.10",
-    "10up/wpcli-vulnerability-scanner": ">=1.2",
     "generoi/sage-cachetags": ">=1.2",
     "wpackagist-plugin/safe-redirect-manager": ">=2.2"
   },

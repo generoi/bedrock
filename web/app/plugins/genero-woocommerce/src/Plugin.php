@@ -40,6 +40,9 @@ class Plugin
         $this->blockServiceProvider = new BlockServiceProvider(app());
         $this->woocommerce = new WooCommerce;
 
+        // After WooCommerce sets product args; still before `init` finishes registration.
+        add_filter('register_post_type_args', [$this->woocommerce, 'registerProductBlockTemplate'], 1000, 2);
+
         add_action('init', [$this, 'registerApp'], 9);
         add_action('init', [$this, 'registerAssets']);
         add_filter('plugins_url', [$this, 'filterBlockAssetUri'], 10, 3);
