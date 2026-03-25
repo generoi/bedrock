@@ -80,15 +80,6 @@
       </nav>
     @endif
 
-    @if ($is_webshop)
-      <div class="header__actions">
-        @blocks
-          <!-- wp:woocommerce/mini-cart {"addToCartBehaviour":"open_drawer"} /-->
-          <!-- wp:woocommerce/customer-account {"displayStyle":"icon_only"} /-->
-        @endblocks
-      </div>
-    @endif
-
     <form
       action="{{ $home_url }}"
       method="get"

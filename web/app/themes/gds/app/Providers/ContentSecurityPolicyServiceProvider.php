@@ -12,7 +12,6 @@ class ContentSecurityPolicyServiceProvider extends ServiceProvider
         add_action('send_headers', [$this, 'sendHeaders']);
         add_filter('wp_inline_script_attributes', [$this, 'addScriptNonce']);
         add_filter('wp_script_attributes', [$this, 'addScriptNonce']);
-        add_action('wp_footer', [$this, 'removeWooCommerceNoJs'], 0);
     }
 
     public function sendHeaders(): void
@@ -47,22 +46,5 @@ class ContentSecurityPolicyServiceProvider extends ServiceProvider
         $attributes['nonce'] = app('csp-nonce');
 
         return $attributes;
-    }
-
-    /**
-     * Currently there's no way to easily add a nonce here so we replace it.
-     */
-    public function removeWooCommerceNoJs(): void
-    {
-        remove_action('wp_footer', 'wc_no_js');
-        add_action('wp_footer', function () {
-            echo wp_get_inline_script_tag("
-                (function () {
-                    var c = document.body.className;
-                    c = c.replace(/woocommerce-no-js/, 'woocommerce-js');
-                    document.body.className = c;
-                })();
-            ");
-        });
     }
 }

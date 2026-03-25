@@ -38,10 +38,5 @@ class WordPress implements Preset
         if (defined('SCRIPT_DEBUG') && SCRIPT_DEBUG && wp_get_environment_type() === 'development') {
             $policy->add(Directive::SCRIPT, Keyword::UNSAFE_EVAL);
         }
-
-        // WooCommerce variable products use underscore templates
-        if (function_exists('is_product') && is_product() && wc_get_product()->is_type('variable')) {
-            $policy->add(Directive::SCRIPT, Keyword::UNSAFE_EVAL);
-        }
     }
 }

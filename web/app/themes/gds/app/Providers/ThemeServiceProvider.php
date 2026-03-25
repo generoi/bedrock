@@ -3,7 +3,6 @@
 namespace App\Providers;
 
 use Genero\Sage\CacheTags\CacheTagsServiceProvider;
-use Genero\Sage\WooCommerce\WooCommerceServiceProvider;
 use Illuminate\Support\AggregateServiceProvider;
 use Log1x\SageSvg\SageSvgServiceProvider;
 use Spatie\Csp\CspServiceProvider;
@@ -23,6 +22,5 @@ class ThemeServiceProvider extends AggregateServiceProvider
         GoogleFontsServiceProvider::class,
         SageSvgServiceProvider::class,
         CacheTagsServiceProvider::class,
-        WooCommerceServiceProvider::class,
     ];
 }

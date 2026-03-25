@@ -34,8 +34,8 @@ img {
   height: auto;
 }
 
-// WooCommerce cart line items (and similar) output two <img> nodes; one stays [hidden]
-// until Interactivity binds. Our `img { display: inline-block }` must not override that.
+// Some blocks output two <img> nodes; one stays [hidden] until Interactivity binds.
+// Our `img { display: inline-block }` must not override that.
 img[hidden] {
   display: none !important;
 }

@@ -13,7 +13,6 @@
         'mediaAlt' => ''
     ]) -->
     <!-- wp:core/post-title {"level": {{ $heading_level ?? 3 }}} /-->
-    <!-- wp:woocommerce/product-price /-->
     <!-- wp:core/read-more {"content": "{{ __('Read more', 'gds') }}"} /-->
     <!-- /wp:gds/media-card -->
   @endblocks
