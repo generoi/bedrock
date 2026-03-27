@@ -19,7 +19,8 @@ set('scaffold_machine_name', $robo['machine_name']);
 set('scaffold_env_file', __DIR__.'/.env.example');
 set('theme_dir', $robo['theme_path']);
 set('keep_releases', 5);
-// set('branch', 'master')
+// set('branch', 'woo-base');
+set('what', get('branch'));
 set('default_stage', 'production');
 set('ssh_multiplexing', true);
 
