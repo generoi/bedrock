@@ -4,7 +4,7 @@
     "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
     "This file is @generated automatically"
   ],
-  "content-hash": "05901d14dbd95864792346c486807a8b",
+  "content-hash": "9b7a540966b3a06fce369f9fcbca4251",
   "packages": [
     {
       "name": "aaemnnosttv/wp-cli-login-command",
@@ -1900,6 +1900,51 @@
         "issues": "https://github.com/generoi/advanced-custom-fields-pro/issues"
       },
       "time": "2026-03-04T04:41:20+00:00"
+    },
+    {
+      "name": "generoi/gds-block-animations",
+      "version": "dev-master",
+      "source": {
+        "type": "git",
+        "url": "https://github.com/generoi/gds-block-animations.git",
+        "reference": "5739f9e324fb25c4533d3dcfea68c264ce31c37c"
+      },
+      "dist": {
+        "type": "zip",
+        "url": "https://api.github.com/repos/generoi/gds-block-animations/zipball/5739f9e324fb25c4533d3dcfea68c264ce31c37c",
+        "reference": "5739f9e324fb25c4533d3dcfea68c264ce31c37c",
+        "shasum": ""
+      },
+      "require": {
+        "php": ">=7.0.0"
+      },
+      "default-branch": true,
+      "type": "wordpress-plugin",
+      "archive": {
+        "exclude": [
+          ".gitignore"
+        ]
+      },
+      "license": [
+        "MIT"
+      ],
+      "authors": [
+        {
+          "name": "Jonatan Storlund",
+          "email": "storlundjonatan@gmail.com"
+        }
+      ],
+      "description": "Animate WordPress blocks on scroll with customizable settings.",
+      "homepage": "https://github.com/generoi/gds-block-animations",
+      "keywords": [
+        "gutenberg",
+        "wordpress"
+      ],
+      "support": {
+        "issues": "https://github.com/generoi/gds-block-animations/issues",
+        "source": "https://github.com/generoi/gds-block-animations/tree/v.0.2.0"
+      },
+      "time": "2026-03-30T11:30:07+00:00"
     },
     {
       "name": "generoi/genero-cmp",
@@ -14848,6 +14893,7 @@
   "aliases": [],
   "minimum-stability": "dev",
   "stability-flags": {
+    "generoi/gds-block-animations": 20,
     "generoi/sage-woocommerce": 20
   },
   "prefer-stable": true,
@@ -14859,5 +14905,5 @@
   "platform-overrides": {
     "php": "8.3.9"
   },
-  "plugin-api-version": "2.6.0"
+  "plugin-api-version": "2.9.0"
 }
