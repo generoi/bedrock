@@ -32,7 +32,7 @@
   "repositories": [
     {
       "type": "composer",
-      "url": "https://wpackagist.org"
+      "url": "https://repo.wp-packages.org"
     },
     {
       "type": "composer",
@@ -56,27 +56,27 @@
     "generoi/robo-genero": ">=0.5",
     "wp-cli/wp-cli-bundle": ">=2.9",
     "aaemnnosttv/wp-cli-login-command": ">=1.5",
-    "wpackagist-plugin/show-environment-in-admin-bar": ">=1.1",
+    "wp-plugin/show-environment-in-admin-bar": ">=1.1",
     "roots/acorn": ">=5.0",
     "log1x/navi": ">=3.0",
     "log1x/sage-svg": ">=2.0",
     "stoutlogic/acf-builder": ">=1.12",
     "spatie/laravel-google-fonts": ">=1.2",
     "generoi/sage-woocommerce": "dev-fix/mu-loaded-acorn",
-    "wpackagist-plugin/safe-svg": ">=2.1",
-    "wpackagist-plugin/limit-login-attempts-reloaded": ">=2.6.1",
-    "wpackagist-plugin/wp-sanitize-file-name-plus": ">=1.0",
+    "wp-plugin/safe-svg": ">=2.1",
+    "wp-plugin/limit-login-attempts-reloaded": ">=2.6.1",
+    "wp-plugin/wp-sanitize-file-name-plus": ">=1.0",
     "generoi/advanced-custom-fields-pro": ">=6.0",
     "generoi/gravityforms": ">=2.4",
     "generoi/polylang-pro": ">=3.3",
-    "wpackagist-plugin/wordpress-seo": ">=25.0",
-    "wpackagist-plugin/google-tag-manager": ">=1.0",
-    "wpackagist-plugin/woocommerce": ">=9.1",
+    "wp-plugin/wordpress-seo": ">=25.0",
+    "wp-plugin/google-tag-manager": ">=1.0",
+    "wp-plugin/woocommerce": ">=9.1",
     "generoi/genero-cmp": ">=2.0",
     "generoi/wp-image-resizer": ">=1.0",
     "spatie/laravel-csp": ">=3.10",
     "generoi/sage-cachetags": ">=1.2",
-    "wpackagist-plugin/safe-redirect-manager": ">=2.2",
+    "wp-plugin/safe-redirect-manager": ">=2.2",
     "generoi/gds-block-animations": "dev-master"
   },
   "require-dev": {
@@ -131,7 +131,7 @@
     "installer-paths": {
       "web/app/mu-plugins/{$name}/": [
         "type:wordpress-muplugin",
-        "wpackagist-plugin/show-environment-in-admin-bar"
+        "wp-plugin/show-environment-in-admin-bar"
       ],
       "web/app/plugins/{$name}/": [
         "type:wordpress-plugin"
@@ -149,17 +149,17 @@
       "excludes": [
         "generoi/*",
         "jameelmoses/*",
-        "wpackagist-plugin/safe-svg",
-        "wpackagist-plugin/limit-login-attempts-reloaded",
-        "wpackagist-plugin/wp-sanitize-file-name-plus",
-        "wpackagist-plugin/google-tag-manager",
-        "wpackagist-plugin/redirection",
-        "wpackagist-plugin/show-environment-in-admin-bar",
-        "wpackagist-plugin/regenerate-thumbnails",
-        "wpackagist-plugin/debug-bar",
-        "wpackagist-plugin/debug-bar-remote-requests",
-        "wpackagist-plugin/query-monitor",
-        "wpackagist-plugin/user-switching"
+        "wp-plugin/safe-svg",
+        "wp-plugin/limit-login-attempts-reloaded",
+        "wp-plugin/wp-sanitize-file-name-plus",
+        "wp-plugin/google-tag-manager",
+        "wp-plugin/redirection",
+        "wp-plugin/show-environment-in-admin-bar",
+        "wp-plugin/regenerate-thumbnails",
+        "wp-plugin/debug-bar",
+        "wp-plugin/debug-bar-remote-requests",
+        "wp-plugin/query-monitor",
+        "wp-plugin/user-switching"
       ],
       "languageRootDir": "web/app/languages"
     },

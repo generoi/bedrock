@@ -4,7 +4,7 @@
     "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
     "This file is @generated automatically"
   ],
-  "content-hash": "9b7a540966b3a06fce369f9fcbca4251",
+  "content-hash": "19b465078f5f9c932487cdfe1f67003c",
   "packages": [
     {
       "name": "aaemnnosttv/wp-cli-login-command",
@@ -12656,7 +12656,7 @@
       "time": "2026-01-22T09:07:20+00:00"
     },
     {
-      "name": "wpackagist-plugin/google-tag-manager",
+      "name": "wp-plugin/google-tag-manager",
       "version": "1.0.3",
       "source": {
         "type": "svn",
@@ -12668,31 +12668,56 @@
         "url": "https://downloads.wordpress.org/plugin/google-tag-manager.1.0.3.zip"
       },
       "require": {
-        "composer/installers": "^1.0 || ^2.0"
+        "composer/installers": "~1.0|~2.0"
       },
       "type": "wordpress-plugin",
-      "homepage": "https://wordpress.org/plugins/google-tag-manager/"
+      "notification-url": "https://wp-packages.org/downloads",
+      "authors": [
+        {
+          "name": "George Stephanis"
+        }
+      ],
+      "description": "The Google Tag Manager plugin adds a field to the existing General Settings page for the ID and outputs the javascript to make it work.",
+      "homepage": "http://wordpress.org/extend/plugins/google-tag-manager/",
+      "support": {
+        "changelog": "https://wordpress.org/plugins/google-tag-manager/#developers",
+        "issues": "https://wordpress.org/support/plugin/google-tag-manager",
+        "source": "https://plugins.svn.wordpress.org/google-tag-manager"
+      },
+      "time": "2026-03-23T19:23:21+00:00"
     },
     {
-      "name": "wpackagist-plugin/limit-login-attempts-reloaded",
-      "version": "3.0.0",
+      "name": "wp-plugin/limit-login-attempts-reloaded",
+      "version": "3.2.4",
       "source": {
         "type": "svn",
         "url": "https://plugins.svn.wordpress.org/limit-login-attempts-reloaded/",
-        "reference": "tags/3.0.0"
+        "reference": "tags/3.2.4"
       },
       "dist": {
         "type": "zip",
-        "url": "https://downloads.wordpress.org/plugin/limit-login-attempts-reloaded.3.0.0.zip"
+        "url": "https://downloads.wordpress.org/plugin/limit-login-attempts-reloaded.3.2.4.zip"
       },
       "require": {
-        "composer/installers": "^1.0 || ^2.0"
+        "composer/installers": "~1.0|~2.0"
       },
       "type": "wordpress-plugin",
-      "homepage": "https://wordpress.org/plugins/limit-login-attempts-reloaded/"
+      "notification-url": "https://wp-packages.org/downloads",
+      "authors": [
+        {
+          "name": "WPChef"
+        }
+      ],
+      "description": "WordPress login security with brute force protection, Two-factor authentication (2FA/MFA), firewall, IP/country blocking, and login monitoring",
+      "support": {
+        "changelog": "https://wordpress.org/plugins/limit-login-attempts-reloaded/#developers",
+        "issues": "https://wordpress.org/support/plugin/limit-login-attempts-reloaded",
+        "source": "https://plugins.svn.wordpress.org/limit-login-attempts-reloaded"
+      },
+      "time": "2026-05-19T13:36:14+00:00"
     },
     {
-      "name": "wpackagist-plugin/safe-redirect-manager",
+      "name": "wp-plugin/safe-redirect-manager",
       "version": "2.2.2",
       "source": {
         "type": "svn",
@@ -12704,13 +12729,26 @@
         "url": "https://downloads.wordpress.org/plugin/safe-redirect-manager.2.2.2.zip"
       },
       "require": {
-        "composer/installers": "^1.0 || ^2.0"
+        "composer/installers": "~1.0|~2.0"
       },
       "type": "wordpress-plugin",
-      "homepage": "https://wordpress.org/plugins/safe-redirect-manager/"
+      "notification-url": "https://wp-packages.org/downloads",
+      "authors": [
+        {
+          "name": "10up"
+        }
+      ],
+      "description": "Safely manage your website's HTTP redirects.",
+      "homepage": "https://wordpress.org/plugins/safe-redirect-manager",
+      "support": {
+        "changelog": "https://wordpress.org/plugins/safe-redirect-manager/#developers",
+        "issues": "https://wordpress.org/support/plugin/safe-redirect-manager",
+        "source": "https://plugins.svn.wordpress.org/safe-redirect-manager"
+      },
+      "time": "2026-05-11T04:50:49+00:00"
     },
     {
-      "name": "wpackagist-plugin/safe-svg",
+      "name": "wp-plugin/safe-svg",
       "version": "2.4.0",
       "source": {
         "type": "svn",
@@ -12722,13 +12760,26 @@
         "url": "https://downloads.wordpress.org/plugin/safe-svg.2.4.0.zip"
       },
       "require": {
-        "composer/installers": "^1.0 || ^2.0"
+        "composer/installers": "~1.0|~2.0"
       },
       "type": "wordpress-plugin",
-      "homepage": "https://wordpress.org/plugins/safe-svg/"
+      "notification-url": "https://wp-packages.org/downloads",
+      "authors": [
+        {
+          "name": "10up"
+        }
+      ],
+      "description": "Enable SVG uploads and sanitize them to stop XML/SVG vulnerabilities in your WordPress website.",
+      "homepage": "https://wordpress.org/plugins/safe-svg/",
+      "support": {
+        "changelog": "https://wordpress.org/plugins/safe-svg/#developers",
+        "issues": "https://wordpress.org/support/plugin/safe-svg",
+        "source": "https://plugins.svn.wordpress.org/safe-svg"
+      },
+      "time": "2026-04-14T13:36:11+00:00"
     },
     {
-      "name": "wpackagist-plugin/show-environment-in-admin-bar",
+      "name": "wp-plugin/show-environment-in-admin-bar",
       "version": "1.2.1",
       "source": {
         "type": "svn",
@@ -12740,49 +12791,88 @@
         "url": "https://downloads.wordpress.org/plugin/show-environment-in-admin-bar.1.2.1.zip"
       },
       "require": {
-        "composer/installers": "^1.0 || ^2.0"
+        "composer/installers": "~1.0|~2.0"
       },
       "type": "wordpress-plugin",
-      "homepage": "https://wordpress.org/plugins/show-environment-in-admin-bar/"
+      "notification-url": "https://wp-packages.org/downloads",
+      "authors": [
+        {
+          "name": "Paul Biron"
+        }
+      ],
+      "description": "Add an indication to the Admin Bar of the environment WordPress is running in (e.g., Prod, Staging, QA, Dev, etc).",
+      "homepage": "https://github.com/pbiron/shc-show-env",
+      "support": {
+        "changelog": "https://wordpress.org/plugins/show-environment-in-admin-bar/#developers",
+        "issues": "https://wordpress.org/support/plugin/show-environment-in-admin-bar",
+        "source": "https://plugins.svn.wordpress.org/show-environment-in-admin-bar"
+      },
+      "time": "2026-03-23T19:23:21+00:00"
     },
     {
-      "name": "wpackagist-plugin/woocommerce",
-      "version": "10.6.1",
+      "name": "wp-plugin/woocommerce",
+      "version": "10.7.0",
       "source": {
         "type": "svn",
         "url": "https://plugins.svn.wordpress.org/woocommerce/",
-        "reference": "tags/10.6.1"
+        "reference": "tags/10.7.0"
       },
       "dist": {
         "type": "zip",
-        "url": "https://downloads.wordpress.org/plugin/woocommerce.10.6.1.zip"
+        "url": "https://downloads.wordpress.org/plugin/woocommerce.10.7.0.zip"
       },
       "require": {
-        "composer/installers": "^1.0 || ^2.0"
+        "composer/installers": "~1.0|~2.0"
       },
       "type": "wordpress-plugin",
-      "homepage": "https://wordpress.org/plugins/woocommerce/"
+      "notification-url": "https://wp-packages.org/downloads",
+      "authors": [
+        {
+          "name": "Automattic"
+        }
+      ],
+      "description": "Everything you need to launch an online store in days and keep it growing for years. From your first sale to millions in revenue, Woo is with you.",
+      "homepage": "https://woocommerce.com/",
+      "support": {
+        "changelog": "https://wordpress.org/plugins/woocommerce/#developers",
+        "issues": "https://wordpress.org/support/plugin/woocommerce",
+        "source": "https://plugins.svn.wordpress.org/woocommerce"
+      },
+      "time": "2026-05-11T14:56:11+00:00"
     },
     {
-      "name": "wpackagist-plugin/wordpress-seo",
-      "version": "27.2",
+      "name": "wp-plugin/wordpress-seo",
+      "version": "27.6",
       "source": {
         "type": "svn",
         "url": "https://plugins.svn.wordpress.org/wordpress-seo/",
-        "reference": "tags/27.2"
+        "reference": "tags/27.6"
       },
       "dist": {
         "type": "zip",
-        "url": "https://downloads.wordpress.org/plugin/wordpress-seo.27.2.zip"
+        "url": "https://downloads.wordpress.org/plugin/wordpress-seo.27.6.zip"
       },
       "require": {
-        "composer/installers": "^1.0 || ^2.0"
+        "composer/installers": "~1.0|~2.0"
       },
       "type": "wordpress-plugin",
-      "homepage": "https://wordpress.org/plugins/wordpress-seo/"
+      "notification-url": "https://wp-packages.org/downloads",
+      "authors": [
+        {
+          "name": "Yoast"
+        }
+      ],
+      "description": "Improve your SEO with real-time feedback, schema, and clear guidance. Upgrade for AI tools, Google Docs integration, and 24/7 support, no hidden fees.",
+      "homepage": "https://yoa.st/1uj",
+      "support": {
+        "changelog": "https://wordpress.org/plugins/wordpress-seo/#developers",
+        "issues": "https://wordpress.org/support/plugin/wordpress-seo",
+        "source": "https://plugins.svn.wordpress.org/wordpress-seo"
+      },
+      "time": "2026-05-21T09:51:09+00:00"
     },
     {
-      "name": "wpackagist-plugin/wp-sanitize-file-name-plus",
+      "name": "wp-plugin/wp-sanitize-file-name-plus",
       "version": "1.0.3",
       "source": {
         "type": "svn",
@@ -12794,10 +12884,23 @@
         "url": "https://downloads.wordpress.org/plugin/wp-sanitize-file-name-plus.1.0.3.zip"
       },
       "require": {
-        "composer/installers": "^1.0 || ^2.0"
+        "composer/installers": "~1.0|~2.0"
       },
       "type": "wordpress-plugin",
-      "homepage": "https://wordpress.org/plugins/wp-sanitize-file-name-plus/"
+      "notification-url": "https://wp-packages.org/downloads",
+      "authors": [
+        {
+          "name": "Yslo"
+        }
+      ],
+      "description": "Sanitize file names and enhance security.",
+      "homepage": "http://wordpress.org/plugins/wp-sanitize-file-name-plus/",
+      "support": {
+        "changelog": "https://wordpress.org/plugins/wp-sanitize-file-name-plus/#developers",
+        "issues": "https://wordpress.org/support/plugin/wp-sanitize-file-name-plus",
+        "source": "https://plugins.svn.wordpress.org/wp-sanitize-file-name-plus"
+      },
+      "time": "2026-03-23T19:23:21+00:00"
     }
   ],
   "packages-dev": [
@@ -14905,5 +15008,5 @@
   "platform-overrides": {
     "php": "8.3.9"
   },
-  "plugin-api-version": "2.6.0"
+  "plugin-api-version": "2.9.0"
 }
