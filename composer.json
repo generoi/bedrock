@@ -85,8 +85,8 @@
     "generoi/deployer-genero": ">=0.3",
     "staabm/annotate-pull-request-from-checkstyle": ">=1.5",
     "laravel/pint": ">=1.17",
-    "wp-phpunit/wp-phpunit": ">=6.6",
-    "phpunit/phpunit": ">=9.0",
+    "wp-phpunit/wp-phpunit": "^6.6",
+    "phpunit/phpunit": "^9.0",
     "yoast/phpunit-polyfills": ">=3.0"
   },
   "config": {
