@@ -15,8 +15,19 @@
   --gds-color-success: #1fc900;
   --gds-color-error: #df5c4e;
 
+  // Spacing
+  --gds-spacing-xxxs: 4px;
+  --gds-spacing-xxs: #{sloped-size(6px, 8px)};
+  --gds-spacing-xs: #{sloped-size(8px, 12px)};
+  --gds-spacing-s: #{sloped-size(12px, 16px)};
+  --gds-spacing-m: #{sloped-size(16px, 24px)};
+  --gds-spacing-l: #{sloped-size(24px, 32px)};
+  --gds-spacing-xl: #{sloped-size(32px, 40px)};
+  --gds-spacing-xxl: #{sloped-size(56px, 72px)};
+
   // Headings
   --gds-heading-font-family: 'Open sans', sans-serif;
+  --gds-heading-xxl-font-size: #{sloped-size(em(40px), em(72px))};
   --gds-heading-xl-font-size: #{sloped-size(em(30px), em(56px))};
   --gds-heading-l-font-size: #{sloped-size(em(30px), em(36px))};
   --gds-heading-m-font-size: #{sloped-size(em(22px), em(30px))};
@@ -50,7 +61,7 @@
   --block-gutter-l: #{sloped-size(32px, 40px)};
 
   // Layout
-  --viewport-gutter: 15px;
+  --viewport-gutter: #{sloped-size(12px, 40px)};
   --alignwide-width: var(--grid-column-12);
 
   @if config.$alignfull-max-width {
@@ -61,7 +72,7 @@
 
   // Grid
   --grid-columns: 12;
-  --grid-gutter: 12px;
+  --grid-gutter: 16px;
   --grid-column: 78px;
   --grid-gutter-x: var(--grid-gutter);
   --grid-gutter-y: var(--grid-gutter);

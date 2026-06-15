@@ -201,6 +201,17 @@ add_filter('render_block', function (string $content, array $block) {
 }, 10, 2);
 
 /**
+ * Limit Media & Text alignment to content width and wide only.
+ */
+add_filter('register_block_type_args', function (array $args, string $blockType): array {
+    if ($blockType === 'core/media-text') {
+        $args['supports']['align'] = ['wide'];
+    }
+
+    return $args;
+}, 10, 2);
+
+/**
  * Autoplay media & text videos.
  */
 add_filter('render_block', function ($content, $block) {
