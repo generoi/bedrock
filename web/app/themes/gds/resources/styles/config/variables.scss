@@ -55,10 +55,11 @@
 
   // Block vertical gutters
   --block-gutter: var(--block-gutter-m);
-  --block-gutter-xs: 10px;
+  --block-gutter-xs: #{sloped-size(8px, 12px)};
   --block-gutter-s: #{sloped-size(16px, 24px)};
-  --block-gutter-m: #{sloped-size(24px, 32px)};
-  --block-gutter-l: #{sloped-size(32px, 40px)};
+  --block-gutter-m: #{sloped-size(24px, 40px)};
+  --block-gutter-l: #{sloped-size(32px, 60px)};
+  --block-gutter-xl: #{sloped-size(40px, 80px)};
 
   // Layout
   --viewport-gutter: #{sloped-size(12px, 40px)};
