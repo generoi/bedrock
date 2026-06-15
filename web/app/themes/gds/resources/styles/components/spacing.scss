@@ -87,8 +87,8 @@
 // overridden on a per block basis.
 .alignwide,
 .alignfull {
-  margin-top: var(--block-gutter-l);
-  margin-bottom: var(--block-gutter-l);
+  margin-top: var(--block-gutter-xl);
+  margin-bottom: var(--block-gutter-xl);
 }
 
 // Adjacent full aligned blocks should not have a gutter.
@@ -96,5 +96,5 @@
 .wp-block-cover.alignfull + .wp-block-cover.alignfull,
 .alignfull.has-background + .wp-block-cover.alignfull,
 .alignfull.has-background + .alignfull.has-background {
-  margin-top: calc(var(--block-gutter-l) * -1);
+  margin-top: calc(var(--block-gutter-xl) * -1);
 }
