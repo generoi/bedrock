@@ -121,14 +121,15 @@ Config::define('NONCE_SALT', env('NONCE_SALT'));
 /**
  * Custom Settings
  */
+// Set to false to manage updates in WordPress and edit deploy.php
 Config::define('AUTOMATIC_UPDATER_DISABLED', true);
 defined('DISABLE_WP_CRON') or Config::define('DISABLE_WP_CRON', env('DISABLE_WP_CRON') ?: false);
 Config::define('WP_POST_REVISIONS', 10);
 Config::define('WP_DEFAULT_THEME', 'gds');
 // Disable the plugin and theme file editor in the admin
-Config::define('DISALLOW_FILE_EDIT', true);
+Config::define('DISALLOW_FILE_EDIT', Config::get('AUTOMATIC_UPDATER_DISABLED'));
 // Disable plugin and theme updates and installation from the admin
-Config::define('DISALLOW_FILE_MODS', true);
+Config::define('DISALLOW_FILE_MODS', Config::get('AUTOMATIC_UPDATER_DISABLED'));
 // Avoid using event attempting FTP updates
 Config::define('FS_METHOD', 'direct');
 // Disable ACF Admin UI when in production
