@@ -5,7 +5,8 @@
  */
 
 use Genero\Sage\CacheTags\Concerns\CreatesDatabaseTable;
-use Throwable;
+use Illuminate\Contracts\Http\Kernel;
+use Roots\Acorn\Application;
 
 // Give access to tests_add_filter() function.
 require_once getenv('WP_PHPUNIT__DIR').'/includes/functions.php';
@@ -19,19 +20,16 @@ tests_add_filter('muplugins_loaded', function () {
     };
 
     $helper->createTable();
-});
 
-// DIAGNOSTIC: surface the masked exception chain from theme/Acorn boot.
-try {
-    require getenv('WP_PHPUNIT__DIR').'/includes/bootstrap.php';
-} catch (Throwable $e) {
-    fwrite(STDERR, "\n=== MASKED BOOTSTRAP ERROR CHAIN ===\n");
-
-    for ($x = $e; $x; $x = $x->getPrevious()) {
-        fwrite(STDERR, get_class($x).': '.$x->getMessage()."\n    at ".$x->getFile().':'.$x->getLine()."\n");
+    // Under PHPUnit, Acorn's bootAcorn() is a no-op: it only bootstraps the
+    // container for WP-CLI or real HTTP requests, neither of which applies
+    // here. Without it `config` (and the rest of the container) is never bound
+    // before the theme registers its service providers during theme load,
+    // which throws. Bootstrap the kernel now so theme providers can resolve.
+    if (Application::getInstance()->bound(Kernel::class)) {
+        Application::getInstance()->make(Kernel::class)->bootstrap();
     }
+}, PHP_INT_MAX);
 
-    fwrite(STDERR, "=== END CHAIN ===\n");
-
-    throw $e;
-}
+// Start up the WP testing environment.
+require getenv('WP_PHPUNIT__DIR').'/includes/bootstrap.php';
