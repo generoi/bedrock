@@ -22,7 +22,11 @@ WP_CLI::add_hook('before_ssh', function () {
     $project_config = $runner->get_project_config_path();
     $config = [];
     if ($runner->alias && $project_config) {
-        $config = Spyc::YAMLLoad($project_config)[$runner->alias] ?? [];
+        // wp-cli 2.13+ exposes the alias without its leading "@" (e.g.
+        // "production"), while the config is keyed with it ("@production").
+        // Normalise so the lookup works on both old and new wp-cli.
+        $alias = str_starts_with($runner->alias, '@') ? $runner->alias : '@'.$runner->alias;
+        $config = Spyc::YAMLLoad($project_config)[$alias] ?? [];
     }
 
     // Local aliases (e.g. @ddev) have no ssh: key. Exiting quietly avoids PHP
@@ -38,7 +42,9 @@ WP_CLI::add_hook('before_ssh', function () {
     }
     // Eg. /var/www/wordpress
     $project_root = dirname(dirname($wp_path));
+
     // Eg. /var/www/wordpress/vendor/bin
+    $paths = [];
     if (! empty($config['bin_path'])) {
         $paths[] = $config['bin_path'];
     }
