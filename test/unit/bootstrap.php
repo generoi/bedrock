@@ -10,8 +10,6 @@ use Genero\Sage\CacheTags\Concerns\CreatesDatabaseTable;
 require_once getenv('WP_PHPUNIT__DIR').'/includes/functions.php';
 
 tests_add_filter('muplugins_loaded', function () {
-    // sage-cachetags moved createTable() into a protected trait method, so wrap
-    // the trait in an anonymous class to expose it for the test database.
     $helper = new class
     {
         use CreatesDatabaseTable {
@@ -22,5 +20,14 @@ tests_add_filter('muplugins_loaded', function () {
     $helper->createTable();
 });
 
-// Start up the WP testing environment.
-require getenv('WP_PHPUNIT__DIR').'/includes/bootstrap.php';
+// DIAGNOSTIC: surface the masked exception chain from theme/Acorn boot.
+try {
+    require getenv('WP_PHPUNIT__DIR').'/includes/bootstrap.php';
+} catch (\Throwable $e) {
+    fwrite(STDERR, "\n=== MASKED BOOTSTRAP ERROR CHAIN ===\n");
+    for ($x = $e; $x; $x = $x->getPrevious()) {
+        fwrite(STDERR, get_class($x).': '.$x->getMessage()."\n    at ".$x->getFile().':'.$x->getLine()."\n");
+    }
+    fwrite(STDERR, "=== END CHAIN ===\n");
+    throw $e;
+}
