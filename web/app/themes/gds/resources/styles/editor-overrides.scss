@@ -24,6 +24,29 @@
   }
 }
 
+// WordPress FontSizePicker toggles use hardcoded S/M/L/XL labels by index.
+// Tooltips use theme.json names (e.g. XS), so override visible button text.
+.components-font-size-picker
+  .components-toggle-group-control-option-base[aria-label] {
+  position: relative;
+
+  > * {
+    visibility: hidden;
+  }
+
+  &::after {
+    content: attr(aria-label);
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    visibility: visible;
+    font-size: 13px;
+    line-height: 1;
+  }
+}
+
 // Undo the styles leaked from our theme styles into the editor sidebar
 .edit-post-sidebar {
   h1,

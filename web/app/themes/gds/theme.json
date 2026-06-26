@@ -75,17 +75,22 @@
       "writingMode": false,
       "fontSizes": [
         {
-          "name": "S Body",
+          "name": "XS",
+          "size": "var(--gds-body-xs-font-size)",
+          "slug": "xs-body"
+        },
+        {
+          "name": "S",
           "size": "var(--gds-body-s-font-size)",
           "slug": "s-body"
         },
         {
-          "name": "M Body",
+          "name": "M",
           "size": "var(--gds-body-m-font-size)",
           "slug": "m-body"
         },
         {
-          "name": "L Body",
+          "name": "L",
           "size": "var(--gds-body-l-font-size)",
           "slug": "l-body"
         }
@@ -121,27 +126,27 @@
         "typography": {
           "fontSizes": [
             {
-              "name": "XS Heading",
+              "name": "XS",
               "size": "var(--gds-heading-xs-font-size)",
               "slug": "xs-heading"
             },
             {
-              "name": "S Heading",
+              "name": "S",
               "size": "var(--gds-heading-s-font-size)",
               "slug": "s-heading"
             },
             {
-              "name": "M Heading",
+              "name": "M",
               "size": "var(--gds-heading-m-font-size)",
               "slug": "m-heading"
             },
             {
-              "name": "L Heading",
+              "name": "L",
               "size": "var(--gds-heading-l-font-size)",
               "slug": "l-heading"
             },
             {
-              "name": "XL Heading",
+              "name": "XL",
               "size": "var(--gds-heading-xl-font-size)",
               "slug": "xl-heading"
             }
@@ -152,6 +157,11 @@
         "color": {
           "custom": false,
           "palette": []
+        },
+        "typography": {
+          "fontSize": true,
+          "customFontSize": false,
+          "defaultFontSizes": false
         }
       },
       "core/button": {
@@ -162,17 +172,17 @@
         "typography": {
           "fontSizes": [
             {
-              "name": "S Button",
+              "name": "S",
               "size": "var(--gds-button-s-font-size)",
               "slug": "s-button"
             },
             {
-              "name": "M Button",
+              "name": "M",
               "size": "var(--gds-button-m-font-size)",
               "slug": "m-button"
             },
             {
-              "name": "L Button",
+              "name": "L",
               "size": "var(--gds-button-l-font-size)",
               "slug": "l-button"
             }
