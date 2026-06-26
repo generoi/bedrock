@@ -37,7 +37,7 @@
     border-radius: 0 var(--gds-border-radius) var(--gds-border-radius);
     z-index: 5;
 
-    @include typography.body-s;
+    @include typography.text-s;
 
     a,
     button,

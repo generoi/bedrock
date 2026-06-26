@@ -73,7 +73,7 @@
   }
 
   .woocommerce-privacy-policy-text {
-    font-size: var(--gds-body-s-font-size);
+    font-size: var(--gds-text-s-font-size);
   }
 }
 
@@ -137,7 +137,7 @@ body.my-account.logged-in .woocommerce {
       }
 
       input + span {
-        @include typography.body-s;
+        @include typography.text-s;
 
         display: block;
         margin-block-start: 4px;
@@ -233,7 +233,7 @@ body.my-account.logged-in .woocommerce {
     top: 1em;
     left: 1.5em;
     width: 1em;
-    height: calc(1em * var(--gds-body-line-height));
+    height: calc(1em * var(--gds-text-line-height));
   }
 
   .button {
@@ -316,7 +316,7 @@ body.my-account.logged-in .woocommerce {
     strong {
       display: block;
       text-transform: none;
-      font-size: var(--gds-body-m-font-size);
+      font-size: var(--gds-text-m-font-size);
     }
   }
 }

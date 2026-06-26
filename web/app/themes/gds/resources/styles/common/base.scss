@@ -4,7 +4,7 @@
 @use '@styles/config';
 
 body {
-  @include body;
+  @include text;
 
   background-color: var(--gds-color-white);
   -webkit-font-smoothing: antialiased;

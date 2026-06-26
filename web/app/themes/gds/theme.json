@@ -76,23 +76,23 @@
       "fontSizes": [
         {
           "name": "XS",
-          "size": "var(--gds-body-xs-font-size)",
-          "slug": "xs-body"
+          "size": "var(--gds-text-xs-font-size)",
+          "slug": "xs-text"
         },
         {
           "name": "S",
-          "size": "var(--gds-body-s-font-size)",
-          "slug": "s-body"
+          "size": "var(--gds-text-s-font-size)",
+          "slug": "s-text"
         },
         {
           "name": "M",
-          "size": "var(--gds-body-m-font-size)",
-          "slug": "m-body"
+          "size": "var(--gds-text-m-font-size)",
+          "slug": "m-text"
         },
         {
           "name": "L",
-          "size": "var(--gds-body-l-font-size)",
-          "slug": "l-body"
+          "size": "var(--gds-text-l-font-size)",
+          "slug": "l-text"
         }
       ]
     },

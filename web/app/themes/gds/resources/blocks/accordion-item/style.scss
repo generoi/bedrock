@@ -20,7 +20,7 @@ gds-accordion-item:not([data-is-initialized]) {
     }
 
     [slot='label'] {
-      @include body-l;
+      @include text-l;
 
       margin-block-end: 0;
     }

@@ -44,7 +44,7 @@
   }
 
   .woocommerce-variation-availability {
-    font-size: var(--gds-body-s-font-size);
+    font-size: var(--gds-text-s-font-size);
   }
 
   .woocommerce &.product {
@@ -53,6 +53,6 @@
 
   .reset_variations {
     visibility: hidden;
-    font-size: var(--gds-body-s-font-size);
+    font-size: var(--gds-text-s-font-size);
   }
 }

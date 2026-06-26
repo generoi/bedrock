@@ -2,7 +2,7 @@
 
 @mixin styles {
   position: relative;
-  font-size: var(--gds-body-s-font-size);
+  font-size: var(--gds-text-s-font-size);
 
   // Position the submit button on top of the search input
   [type='submit'] {
@@ -40,7 +40,7 @@
     padding-bottom: 10px;
     padding-left: calc(var(--action-gutter, 1em) / 2);
     padding-right: calc(var(--action-gutter, 1em) / 2 + 1em);
-    font-size: var(--gds-body-s-font-size);
+    font-size: var(--gds-text-s-font-size);
 
     &::-webkit-search-cancel-button {
       appearance: none;

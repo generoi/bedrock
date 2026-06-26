@@ -7,7 +7,7 @@ gds-cmp-modal-dialog {
   }
 
   p {
-    @include typography.body-s;
+    @include typography.text-s;
   }
 
   &::part(overlay) {
