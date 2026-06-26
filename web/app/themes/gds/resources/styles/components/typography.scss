@@ -54,6 +54,10 @@
   font-size: var(--gds-body-m-font-size);
 }
 
+@mixin body-xs {
+  font-size: var(--gds-body-xs-font-size);
+}
+
 @mixin body-s {
   font-size: var(--gds-body-s-font-size);
 }

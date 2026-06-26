@@ -43,11 +43,15 @@
   --gds-body-l-font-size: 18px;
   --gds-body-m-font-size: 16px;
   --gds-body-s-font-size: 14px;
+  --gds-body-xs-font-size: 11px;
 
   // Other typography
   --gds-link-color: inherit;
   --gds-link-hover-color: var(--gds-color-primary);
-  --gds-border-radius: 10px;
+  --gds-border-radius: var(--gds-border-radius-medium);
+  --gds-border-radius-small: 8px;
+  --gds-border-radius-medium: 24px;
+  --gds-border-radius-large: 32px;
   --gds-box-shadow: 1px 1px 4px rgba(0 0 0 / 10%);
   --gds-box-shadow--hover: 3px 3px 8px rgba(0 0 0 / 16%);
   --gds-box-shadow--active: 3px 3px 8px rgba(0 0 0 / 16%);
