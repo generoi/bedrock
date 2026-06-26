@@ -41,18 +41,25 @@
   }
 
   &__button-inside &__inside-wrapper {
+    position: relative;
+
     .wp-block-search__button {
       all: unset;
       position: absolute;
       top: 0;
       right: 0;
-      bottom: 0;
+      height: 100%;
+      aspect-ratio: 1;
       cursor: pointer;
       box-sizing: border-box;
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      padding: 1em;
+      padding: 0;
+
+      svg {
+        display: block;
+      }
 
       &:focus-visible {
         outline: var(--gds-outline--focus);
@@ -64,6 +71,8 @@
     }
 
     .wp-block-search__input {
+      padding-right: var(--gds-input-height);
+
       &::-webkit-search-cancel-button {
         display: none;
       }
