@@ -41,7 +41,7 @@
     "stylelint-config-standard-scss": "^13.1.0"
   },
   "dependencies": {
-    "@fortawesome/fontawesome-pro": "^6.2.1",
+    "@fortawesome/fontawesome-pro": "^7.0.0",
     "@types/wordpress__blocks": "^12.5.14",
     "@wordpress/base-styles": "^5.7.0",
     "clsx": "^2.1.1",
