@@ -5,6 +5,7 @@
 @use 'common/reset';
 @use 'common/base';
 @use 'components';
+@use 'partials/footer';
 
 .wp-block {
   max-width: var(--content-width);
@@ -17,12 +18,15 @@
     margin-bottom: 0;
   }
 
-  &[data-align='wide'] {
+  &[data-align='wide'],
+  &.alignwide {
     max-width: var(--alignwide-width);
   }
 
-  &[data-align='full'] {
+  &[data-align='full'],
+  &.alignfull {
     max-width: var(--alignfull-width);
+    width: 100%;
   }
 }
 

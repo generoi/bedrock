@@ -62,3 +62,14 @@
     margin-block-end: revert;
   }
 }
+
+footer.wp-block-group {
+  margin: 0 !important;
+  max-width: none !important;
+}
+
+.block-editor-block-list__layout {
+  &:has(footer.wp-block-group) {
+    padding: 0 !important;
+  }
+}

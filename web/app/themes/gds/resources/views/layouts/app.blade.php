@@ -19,4 +19,4 @@
   @show
 </div>
 
-@include('partials.footer')
+@php(block_template_part('footer'))

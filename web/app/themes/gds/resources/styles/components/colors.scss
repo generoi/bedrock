@@ -1,9 +1,23 @@
-.has-primary-background-color,
-.has-secondary-background-color,
+.has-primary-background-color {
+  color: var(--gds-color-white);
+
+  --gds-link-hover-color: var(--gds-color-secondary);
+}
+
+.has-secondary-background-color {
+  color: var(--gds-color-white);
+
+  --gds-link-hover-color: var(--gds-color-primary);
+}
+
 .has-black-background-color {
   color: var(--gds-color-white);
+
+  --gds-link-hover-color: var(--gds-color-primary);
 }
 
 .has-white-background-color {
   color: var(--gds-color-black);
+
+  --gds-link-hover-color: var(--gds-color-primary);
 }
