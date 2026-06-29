@@ -76,8 +76,8 @@
     "generoi/wp-image-resizer": ">=1.0",
     "spatie/laravel-csp": ">=3.10",
     "generoi/sage-cachetags": ">=1.2",
-    "wpackagist-plugin/safe-redirect-manager": ">=2.2",
-    "generoi/gds-block-animations": "dev-master"
+    "generoi/gds-block-animations": "dev-master",
+    "wpackagist-plugin/redirection": "^5.8"
   },
   "require-dev": {
     "brainmaestro/composer-git-hooks": ">=3.0.0",

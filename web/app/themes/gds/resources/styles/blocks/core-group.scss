@@ -1,5 +1,5 @@
 .wp-block-group {
-  &.has-background {
+  &.has-background:not(.header, .header__announcement) {
     padding: var(--grid-gutter);
   }
 

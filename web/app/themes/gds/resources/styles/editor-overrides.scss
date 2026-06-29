@@ -8,6 +8,7 @@
 @use 'config/variables';
 @use 'components/colors';
 @use '@fortawesome/fontawesome-pro/css/all';
+@use 'common/breakpoints' as *;
 
 // undo wp-admin/css/common.css
 :where(.editor-styles-wrapper) {
@@ -63,13 +64,159 @@
   }
 }
 
-footer.wp-block-group {
+footer.wp-block-group,
+header.wp-block-group {
   margin: 0 !important;
   max-width: none !important;
 }
 
+header.header.alignfull {
+  width: 100% !important;
+  max-width: none !important;
+  margin-inline: 0 !important;
+  margin-block: 0 !important;
+}
+
+header.header .header__announcement.is-layout-constrained,
+header.header .header__utility.is-layout-constrained,
+header.header .header__main.is-layout-constrained {
+  max-width: none !important;
+}
+
+header.header .header__announcement {
+  width: calc(100% + 2 * var(--viewport-gutter)) !important;
+  max-width: none !important;
+  margin-inline: calc(var(--viewport-gutter) * -1) !important;
+  padding-block: var(--gds-spacing-xxxs) !important;
+  padding-inline: 0 !important;
+}
+
+.header__main-inner > .wp-block-html,
+.header__main-inner > .block-library-html__edit,
+.header__main-inner > .wp-block.wp-block-html {
+  display: none !important;
+  width: 0 !important;
+  min-width: 0 !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  overflow: hidden !important;
+  flex: 0 0 0 !important;
+}
+
+header.header .header__main-inner .header__navigation,
+header.header .header__main-inner .wp-block-gds-menu.header__navigation {
+  display: flex !important;
+  flex: 1 1 auto;
+  flex-wrap: nowrap !important;
+  justify-content: flex-end;
+  margin-inline-start: auto;
+  min-width: 0;
+}
+
+// Block editor wraps the menu block — keep it in the main row and align right
+header.header .header__main-inner {
+  display: flex !important;
+  flex-flow: row nowrap !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  gap: var(--gds-spacing-m);
+
+  > .wp-block:has(.header__navigation),
+  > .block-editor-block-list__block:has(.header__navigation) {
+    flex: 1 1 auto;
+    display: flex !important;
+    justify-content: flex-end;
+    margin-inline-start: auto;
+    min-width: 0;
+    max-width: none !important;
+  }
+}
+
+// Template part / site editor canvas — remove root padding so header can go full bleed
+.is-root-container.is-desktop-preview:has(> header.header),
+.wp-site-blocks:has(> header.header),
+.is-root-container:has(> header.header),
+.block-editor-block-list__layout:has(> header.header),
+.editor-styles-wrapper .is-root-container:has(> header.header) {
+  padding-inline: 0 !important;
+  max-width: none !important;
+  width: 100% !important;
+}
+
+.is-root-container > header.header.alignfull {
+  width: 100% !important;
+  max-width: none !important;
+  margin-inline: 0 !important;
+}
+
+// Shell is full width; alignwide rows follow spacing.scss
+header.header .header__inner-container.alignwide {
+  width: 100% !important;
+  margin-inline: 0 !important;
+}
+
+header.header .header__utility,
+header.header .header__main {
+  width: 100%;
+  margin-inline: 0;
+}
+
+header.header .header__utility-inner.alignwide,
+header.header .header__main-inner.alignwide {
+  max-width: var(--alignwide-width);
+  margin-inline: auto;
+  padding-block: var(--gds-spacing-xs);
+}
+
+header.header .header__utility-inner.alignwide {
+  gap: var(--gds-spacing-s);
+}
+
+// Always show desktop collapsed search in the editor header
+header.header .header__search .wp-block-gds-site-search__form {
+  font-size: 14px;
+  margin-right: calc(var(--gds-spacing-s) * -1);
+
+  [type='search'] {
+    border: 0;
+    font-size: 14px;
+    padding-right: var(--gds-spacing-m);
+    text-align: right;
+    max-width: 87px;
+    font-weight: 600;
+    z-index: 1;
+    position: relative;
+    background-color: transparent;
+
+    &:not(:focus-visible) {
+      padding-left: 0;
+    }
+
+    &:focus-visible {
+      border: var(--gds-outline--focus);
+    }
+
+    &::placeholder {
+      color: currentcolor;
+    }
+  }
+
+  [type='submit'] {
+    font-size: 16px;
+    padding: var(--gds-spacing-s);
+  }
+}
+
+.editor-styles-wrapper .header {
+  .header__utility-inner > *,
+  .header__main-inner > * {
+    margin-block: 0 !important;
+  }
+}
+
 .block-editor-block-list__layout {
-  &:has(footer.wp-block-group) {
+  &:has(footer.wp-block-group),
+  &:has(header.wp-block-group) {
     padding: 0 !important;
   }
 }

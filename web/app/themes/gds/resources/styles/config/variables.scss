@@ -25,7 +25,9 @@
   --gds-spacing-xl: #{sloped-size(32px, 40px)};
   --gds-spacing-xxl: #{sloped-size(56px, 72px)};
 
-  // Headings
+  // Layout / accessibility
+  --gds-min-touch-target: 44px;
+  --gds-outline-offset: 2px;
   --gds-heading-font-family: 'Open sans', sans-serif;
   --gds-heading-xxl-font-size: #{sloped-size(em(40px), em(72px))};
   --gds-heading-xl-font-size: #{sloped-size(em(30px), em(56px))};
@@ -106,6 +108,7 @@
   );
 
   // Buttons
+  --gds-button-border-radius: var(--gds-border-radius-medium);
   --gds-button-color: var(--gds-color-white);
   --gds-button-background-color: var(--gds-color-primary);
   --gds-button-s-font-size: 14px;

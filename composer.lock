@@ -4,7 +4,7 @@
     "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
     "This file is @generated automatically"
   ],
-  "content-hash": "9b7a540966b3a06fce369f9fcbca4251",
+  "content-hash": "c7a181de476f706cb3dc6880541c6a0e",
   "packages": [
     {
       "name": "aaemnnosttv/wp-cli-login-command",
@@ -12701,22 +12701,22 @@
       "homepage": "https://wordpress.org/plugins/limit-login-attempts-reloaded/"
     },
     {
-      "name": "wpackagist-plugin/safe-redirect-manager",
-      "version": "2.2.2",
+      "name": "wpackagist-plugin/redirection",
+      "version": "5.8.0",
       "source": {
         "type": "svn",
-        "url": "https://plugins.svn.wordpress.org/safe-redirect-manager/",
-        "reference": "tags/2.2.2"
+        "url": "https://plugins.svn.wordpress.org/redirection/",
+        "reference": "tags/5.8.0"
       },
       "dist": {
         "type": "zip",
-        "url": "https://downloads.wordpress.org/plugin/safe-redirect-manager.2.2.2.zip"
+        "url": "https://downloads.wordpress.org/plugin/redirection.5.8.0.zip"
       },
       "require": {
         "composer/installers": "^1.0 || ^2.0"
       },
       "type": "wordpress-plugin",
-      "homepage": "https://wordpress.org/plugins/safe-redirect-manager/"
+      "homepage": "https://wordpress.org/plugins/redirection/"
     },
     {
       "name": "wpackagist-plugin/safe-svg",

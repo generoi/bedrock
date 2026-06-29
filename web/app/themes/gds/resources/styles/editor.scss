@@ -6,6 +6,7 @@
 @use 'common/base';
 @use 'components';
 @use 'partials/footer';
+@use 'partials/header';
 
 .wp-block {
   max-width: var(--content-width);
@@ -28,6 +29,24 @@
     max-width: var(--alignfull-width);
     width: 100%;
   }
+}
+
+.editor-styles-wrapper .header .wp-block {
+  max-width: none;
+}
+
+.editor-styles-wrapper header.header.alignfull,
+.editor-styles-wrapper .header.alignfull {
+  max-width: none !important;
+  width: 100% !important;
+}
+
+.editor-styles-wrapper .header > .alignfull {
+  margin-block: 0 !important;
+}
+
+.editor-styles-wrapper .header .header__inner-container.alignwide {
+  width: 100% !important;
 }
 
 // Disable links rendered in ACF blocks

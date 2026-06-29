@@ -5,7 +5,7 @@
   {{ __('Skip to content', 'gds') }}
 </a>
 
-@include('partials.header')
+@php(block_template_part('header'))
 
 <div class="container">
   @section('root_container')

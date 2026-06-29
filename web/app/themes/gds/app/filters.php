@@ -67,10 +67,21 @@ add_filter('wp_kses_allowed_html', function (array $tags) {
         'd' => [],
         'fill' => [],
     ];
+    $tags['toggle-button'] = [
+        'class' => [],
+        'aria-controls' => [],
+        'aria-expanded' => [],
+        'aria-haspopup' => [],
+        'aria-label' => [],
+        'data-label-open' => [],
+        'data-label-close' => [],
+        'persistent' => [],
+        'role' => [],
+        'tabindex' => [],
+    ];
 
     return $tags;
 }, 10, 2);
-
 /**
  * Use video featured images as poster images.
  */
