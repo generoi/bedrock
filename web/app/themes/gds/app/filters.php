@@ -67,10 +67,21 @@ add_filter('wp_kses_allowed_html', function (array $tags) {
         'd' => [],
         'fill' => [],
     ];
+    $tags['toggle-button'] = [
+        'class' => [],
+        'aria-controls' => [],
+        'aria-expanded' => [],
+        'aria-haspopup' => [],
+        'aria-label' => [],
+        'data-label-open' => [],
+        'data-label-close' => [],
+        'persistent' => [],
+        'role' => [],
+        'tabindex' => [],
+    ];
 
     return $tags;
 }, 10, 2);
-
 /**
  * Use video featured images as poster images.
  */
@@ -198,6 +209,17 @@ add_filter('render_block', function (string $content, array $block) {
     }
 
     return $content;
+}, 10, 2);
+
+/**
+ * Limit Media & Text alignment to content width and wide only.
+ */
+add_filter('register_block_type_args', function (array $args, string $blockType): array {
+    if ($blockType === 'core/media-text') {
+        $args['supports']['align'] = ['wide'];
+    }
+
+    return $args;
 }, 10, 2);
 
 /**

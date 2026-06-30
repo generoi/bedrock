@@ -1,0 +1,13 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "name": "gds/site-search",
+  "title": "Site search",
+  "description": "Show the site search...",
+  "category": "widgets",
+  "icon": "admin-multisite",
+  "style": "file:./style.css",
+  "supports": {},
+  "example": {},
+  "editorScript": "file:./index.js"
+}

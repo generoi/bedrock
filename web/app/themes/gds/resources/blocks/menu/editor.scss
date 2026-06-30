@@ -1,0 +1,46 @@
+div:has(> .wp-block-gds-menu) {
+  display: contents;
+}
+
+.wp-block-gds-menu {
+  flex-direction: row !important;
+  align-items: center !important;
+  flex-wrap: nowrap !important;
+  gap: var(--header-nav-gap, var(--gds-spacing-xl)) !important;
+  width: auto !important;
+
+  a,
+  toggle-button,
+  button {
+    pointer-events: none;
+  }
+
+  .wp-block-gds-menu-item {
+    width: auto;
+  }
+
+  .wp-block-gds-menu-item__link,
+  .wp-block-gds-menu-item__toggle,
+  .wp-block-gds-menu-item__submenu-link {
+    width: auto;
+    padding: 0;
+    font-weight: inherit;
+  }
+
+  .wp-block-gds-menu-item__submenu,
+  .wp-block-gds-menu-item__submenu.is-active {
+    display: none !important;
+  }
+
+  .wp-block-gds-menu-item.has-child:hover > .wp-block-gds-menu-item__submenu,
+  .wp-block-gds-menu-item.has-child:focus-within
+    > .wp-block-gds-menu-item__submenu,
+  .wp-block-gds-menu-item__submenu
+    > .wp-block-gds-menu-item.has-child:hover
+    > .wp-block-gds-menu-item__submenu,
+  .wp-block-gds-menu-item__submenu
+    > .wp-block-gds-menu-item.has-child:focus-within
+    > .wp-block-gds-menu-item__submenu {
+    display: none !important;
+  }
+}

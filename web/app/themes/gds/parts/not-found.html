@@ -1,19 +1,23 @@
-<!-- wp:media-text {"align":"wide","mediaPosition":"right","mediaType":"image","mediaWidth":32,"verticalAlignment":"top"} -->
-<div
-  class="wp-block-media-text alignwide has-media-on-the-right is-stacked-on-mobile is-vertically-aligned-top"
-  style="grid-template-columns: auto 32%"
->
-  <div class="wp-block-media-text__content">
-    <!-- wp:gds/page-title /-->
+<!-- wp:group {"layout":{"type":"constrained"}} -->
+<div class="wp-block-group">
+  <!-- wp:gds/page-title /-->
 
-    <!-- wp:paragraph -->
-    <p>Valitettavasti sisältöä ei löytynyt.</p>
-    <!-- /wp:paragraph -->
+  <!-- wp:paragraph -->
+  <p>Valitettavasti sisältöä ei löytynyt.</p>
+  <!-- /wp:paragraph -->
 
-    <!-- wp:search {"label":"Haluaisitko hakea muuta sisältöä?","buttonText":"Hae","buttonPosition":"button-inside","buttonUseIcon":true} /-->
+  <!-- wp:search {"label":"Haluaisitko hakea muuta sisältöä?","buttonText":"Hae","buttonPosition":"button-inside","buttonUseIcon":true} /-->
+
+  <!-- wp:buttons -->
+  <div class="wp-block-buttons">
+    <!-- wp:button {"className":"is-style-outline"} -->
+    <div class="wp-block-button is-style-outline">
+      <a class="wp-block-button__link wp-element-button" href="/"
+        >Siirry etusivulle</a
+      >
+    </div>
+    <!-- /wp:button -->
   </div>
-  <figure class="wp-block-media-text__media">
-    <img src="/app/themes/gds/public/images/404.webp" alt="" />
-  </figure>
+  <!-- /wp:buttons -->
 </div>
-<!-- /wp:media-text -->
+<!-- /wp:group -->

@@ -39,23 +39,27 @@
   font-size: var(--gds-heading-xs-font-size);
 }
 
-@mixin body {
-  font-family: var(--gds-body-font-family);
-  font-size: var(--gds-body-m-font-size);
+@mixin text {
+  font-family: var(--gds-text-font-family);
+  font-size: var(--gds-text-m-font-size);
   font-weight: 400;
-  line-height: var(--gds-body-line-height);
+  line-height: var(--gds-text-line-height);
 }
 
-@mixin body-l {
-  font-size: var(--gds-body-l-font-size);
+@mixin text-l {
+  font-size: var(--gds-text-l-font-size);
 }
 
-@mixin body-m {
-  font-size: var(--gds-body-m-font-size);
+@mixin text-m {
+  font-size: var(--gds-text-m-font-size);
 }
 
-@mixin body-s {
-  font-size: var(--gds-body-s-font-size);
+@mixin text-xs {
+  font-size: var(--gds-text-xs-font-size);
+}
+
+@mixin text-s {
+  font-size: var(--gds-text-s-font-size);
 }
 
 @mixin link {

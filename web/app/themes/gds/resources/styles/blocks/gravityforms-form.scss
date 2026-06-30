@@ -17,7 +17,7 @@
   &_required_legend {
     font-style: italic;
 
-    @include typography.body-s;
+    @include typography.text-s;
   }
 
   &_footer {
@@ -51,12 +51,12 @@
   }
 
   &_submission_error {
-    font-family: var(--gds-body-font-family);
-    font-size: var(--gds-paragraph-m-font-size);
+    font-family: var(--gds-text-font-family);
+    font-size: var(--gds-text-m-font-size);
   }
 
   &_fileupload_rules {
-    @include typography.body-s;
+    @include typography.text-s;
 
     display: block;
     margin-block-start: 4px;
@@ -137,7 +137,7 @@
   &_description {
     margin-block-start: 4px;
 
-    @include typography.body-s;
+    @include typography.text-s;
   }
 
   &_label {
@@ -217,7 +217,7 @@
     margin-block-end: var(--block-gutter-s);
     font-weight: 600;
 
-    @include typography.body-m;
+    @include typography.text-m;
   }
 }
 
@@ -242,7 +242,7 @@
   select + label {
     margin-top: 2px;
 
-    @include typography.body-s;
+    @include typography.text-s;
   }
 }
 
@@ -366,7 +366,7 @@ img.gform_ajax_spinner {
   flex-direction: column;
   gap: var(--ui-gutter);
   border-radius: var(--gds-border-radius);
-  font-size: var(--gds-body-s-font-size);
+  font-size: var(--gds-text-s-font-size);
 
   &:empty {
     display: none;

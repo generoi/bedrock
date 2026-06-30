@@ -15,8 +15,21 @@
   --gds-color-success: #1fc900;
   --gds-color-error: #df5c4e;
 
-  // Headings
+  // Spacing
+  --gds-spacing-xxxs: 4px;
+  --gds-spacing-xxs: #{sloped-size(6px, 8px)};
+  --gds-spacing-xs: #{sloped-size(8px, 12px)};
+  --gds-spacing-s: #{sloped-size(12px, 16px)};
+  --gds-spacing-m: #{sloped-size(16px, 24px)};
+  --gds-spacing-l: #{sloped-size(24px, 32px)};
+  --gds-spacing-xl: #{sloped-size(32px, 40px)};
+  --gds-spacing-xxl: #{sloped-size(56px, 72px)};
+
+  // Layout / accessibility
+  --gds-min-touch-target: 44px;
+  --gds-outline-offset: 2px;
   --gds-heading-font-family: 'Open sans', sans-serif;
+  --gds-heading-xxl-font-size: #{sloped-size(em(40px), em(72px))};
   --gds-heading-xl-font-size: #{sloped-size(em(30px), em(56px))};
   --gds-heading-l-font-size: #{sloped-size(em(30px), em(36px))};
   --gds-heading-m-font-size: #{sloped-size(em(22px), em(30px))};
@@ -26,17 +39,21 @@
   --gds-heading-margin-end: var(--block-gutter-s);
   --gds-heading-line-height: 1.4;
 
-  // Body
-  --gds-body-font-family: 'Open sans', sans-serif;
-  --gds-body-line-height: 1.7;
-  --gds-body-l-font-size: 18px;
-  --gds-body-m-font-size: 16px;
-  --gds-body-s-font-size: 14px;
+  // Text
+  --gds-text-font-family: 'Open sans', sans-serif;
+  --gds-text-line-height: 1.7;
+  --gds-text-l-font-size: 18px;
+  --gds-text-m-font-size: 16px;
+  --gds-text-s-font-size: 14px;
+  --gds-text-xs-font-size: 11px;
 
   // Other typography
   --gds-link-color: inherit;
   --gds-link-hover-color: var(--gds-color-primary);
-  --gds-border-radius: 10px;
+  --gds-border-radius: var(--gds-border-radius-medium);
+  --gds-border-radius-small: 8px;
+  --gds-border-radius-medium: 24px;
+  --gds-border-radius-large: 32px;
   --gds-box-shadow: 1px 1px 4px rgba(0 0 0 / 10%);
   --gds-box-shadow--hover: 3px 3px 8px rgba(0 0 0 / 16%);
   --gds-box-shadow--active: 3px 3px 8px rgba(0 0 0 / 16%);
@@ -44,13 +61,14 @@
 
   // Block vertical gutters
   --block-gutter: var(--block-gutter-m);
-  --block-gutter-xs: 10px;
+  --block-gutter-xs: #{sloped-size(8px, 12px)};
   --block-gutter-s: #{sloped-size(16px, 24px)};
-  --block-gutter-m: #{sloped-size(24px, 32px)};
-  --block-gutter-l: #{sloped-size(32px, 40px)};
+  --block-gutter-m: #{sloped-size(24px, 40px)};
+  --block-gutter-l: #{sloped-size(32px, 60px)};
+  --block-gutter-xl: #{sloped-size(40px, 80px)};
 
   // Layout
-  --viewport-gutter: 15px;
+  --viewport-gutter: #{sloped-size(12px, 40px)};
   --alignwide-width: var(--grid-column-12);
 
   @if config.$alignfull-max-width {
@@ -61,7 +79,7 @@
 
   // Grid
   --grid-columns: 12;
-  --grid-gutter: 12px;
+  --grid-gutter: 16px;
   --grid-column: 78px;
   --grid-gutter-x: var(--grid-gutter);
   --grid-gutter-y: var(--grid-gutter);
@@ -90,6 +108,7 @@
   );
 
   // Buttons
+  --gds-button-border-radius: var(--gds-border-radius-medium);
   --gds-button-color: var(--gds-color-white);
   --gds-button-background-color: var(--gds-color-primary);
   --gds-button-s-font-size: 14px;

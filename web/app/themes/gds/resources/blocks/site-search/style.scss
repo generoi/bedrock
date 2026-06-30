@@ -1,0 +1,109 @@
+@use '@styles/common/breakpoints' as *;
+
+.wp-block-gds-site-search__form {
+  position: relative;
+
+  [type='search'] {
+    border: 1px solid var(--gds-color-light-gray);
+    border-radius: var(--gds-border-radius);
+    padding-right: var(--gds-spacing-l);
+    box-shadow: none;
+
+    &:focus-visible {
+      border-color: var(--gds-color-primary);
+    }
+
+    &::-webkit-search-cancel-button {
+      appearance: none;
+      mask-image: svg-load('svgs/solid/xmark.svg');
+      mask-size: contain;
+      mask-repeat: no-repeat;
+      background-color: currentcolor;
+      width: 1em;
+      height: 1em;
+    }
+  }
+
+  [type='submit'] {
+    all: unset;
+    position: absolute;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    cursor: pointer;
+    color: var(--gds-color-primary);
+    padding: var(--gds-spacing-s);
+    font-size: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    &:focus-visible {
+      outline: var(--gds-outline--focus);
+    }
+
+    svg {
+      fill: currentcolor;
+      width: 1em;
+      height: 1em;
+      display: block;
+    }
+  }
+}
+
+@include mq($from: desktopmenu) {
+  .wp-block-gds-site-search__form {
+    font-size: 14px;
+    margin-right: calc(var(--gds-spacing-s) * -1);
+
+    [type='search'] {
+      border: 0;
+      font-size: 14px;
+      padding-right: var(--gds-spacing-m);
+      text-align: right;
+      max-width: 87px;
+      font-weight: 600;
+      z-index: 1;
+      position: relative;
+      background-color: transparent;
+      transition: max-width 0.2s ease-in-out;
+
+      &:not(:focus-visible) {
+        padding-left: 0;
+      }
+
+      &:focus-visible {
+        border: var(--gds-outline--focus);
+      }
+
+      &::placeholder {
+        color: currentcolor;
+      }
+
+      &:hover::placeholder {
+        color: var(--gds-color-primary);
+      }
+    }
+
+    &:focus-within [type='search'],
+    [type='search']:not(:placeholder-shown) {
+      font-weight: 400;
+      max-width: 150px;
+      text-align: left;
+      padding-right: var(--gds-spacing-xl);
+
+      &::placeholder {
+        color: revert;
+      }
+    }
+
+    &:focus-within [type='submit'],
+    [type='search']:not(:placeholder-shown) ~ [type='submit'] {
+      z-index: 2;
+    }
+
+    [type='submit'] {
+      font-size: 16px;
+    }
+  }
+}

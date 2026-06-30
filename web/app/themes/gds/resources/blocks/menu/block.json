@@ -1,0 +1,20 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "name": "gds/menu",
+  "title": "Menu",
+  "description": "Show a menu...",
+  "category": "widgets",
+  "icon": "admin-multisite",
+  "style": "file:./style.css",
+  "attributes": {
+    "menu": {
+      "type": "string"
+    }
+  },
+  "supports": {},
+  "example": {},
+  "editorScript": "file:./index.js",
+  "editorStyle": "file:./editor.css",
+  "script": "file:./script.js"
+}
