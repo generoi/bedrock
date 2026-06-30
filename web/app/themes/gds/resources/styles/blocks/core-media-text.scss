@@ -1,32 +1,83 @@
 @use '@styles/common/breakpoints' as *;
+@use '@styles/common/functions' as *;
 
 .wp-block-media-text {
-  & &__content {
-    padding: var(--media-text-gutter);
+  min-height: var(--media-text-min-height);
+
+  @media (width <= 599px) {
+    min-height: unset;
   }
 
-  // When aligning to top/bottom, it's expected that content is aligned with media
-  &.is-vertically-aligned-top:not(.has-background) &__content,
-  &.is-vertically-aligned-bottom:not(.has-background) &__content {
-    padding-top: 0;
-    padding-bottom: 0;
+  &__media,
+  .wp-block-media-text__content {
+    align-self: stretch;
   }
 
-  // Remove the outer gutter since there's a viewport gutter
-  &:not(.alignfull, .has-background) {
-    @media (width <= 600px) {
-      .wp-block-media-text__content {
-        padding-left: 0;
-        padding-right: 0;
-      }
+  &__media {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    img,
+    video {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+  }
+
+  &.is-image-fill-element &__media {
+    img,
+    video {
+      object-fit: cover;
+    }
+  }
+
+  .wp-block-media-text__content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 0;
+  }
+
+  // No background: inset only between media and content columns.
+  &:not(.has-background) {
+    .wp-block-media-text__content {
+      padding-block: 0;
+      padding-inline-start: var(--media-text-column-gap);
+      padding-inline-end: 0;
     }
 
     &.has-media-on-the-right .wp-block-media-text__content {
-      padding-left: 0;
+      padding-inline-start: 0;
+      padding-inline-end: var(--media-text-column-gap);
     }
 
-    &:not(.has-media-on-the-right) .wp-block-media-text__content {
-      padding-right: 0;
+    @media (width <= 599px) {
+      .wp-block-media-text__content,
+      &.has-media-on-the-right .wp-block-media-text__content {
+        padding-inline: 0;
+        padding-block-start: var(--media-text-column-gap);
+        padding-block-end: 0;
+      }
     }
+  }
+
+  // Background: inset around the whole block and gap between columns.
+  &.has-background {
+    padding: var(--media-text-content-padding);
+    gap: var(--media-text-column-gap);
+  }
+
+  &.alignfull.has-background {
+    padding: var(--block-gutter-xl) var(--viewport-gutter);
+  }
+
+  &.is-vertically-aligned-top .wp-block-media-text__content {
+    justify-content: flex-start;
+  }
+
+  &.is-vertically-aligned-bottom .wp-block-media-text__content {
+    justify-content: flex-end;
   }
 }

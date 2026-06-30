@@ -1,6 +1,10 @@
 .wp-block-group {
   &.has-background:not(.header, .header__announcement) {
     padding: var(--grid-gutter);
+
+    &.alignfull {
+      padding: var(--block-gutter-xl) var(--viewport-gutter);
+    }
   }
 
   &.is-layout-grid,

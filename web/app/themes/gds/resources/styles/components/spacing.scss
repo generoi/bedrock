@@ -74,6 +74,65 @@
     margin-right: auto;
   }
 
+  // Vertical rhythm pair exceptions (default --block-gutter unchanged).
+  $heading: ':is(.wp-block-heading, h1, h2, h3, h4, h5, h6)';
+  $paragraph: ':is(.wp-block-paragraph, p)';
+  $section-block: ':is(.wp-block-group, .wp-block-columns, .wp-block-cover, .wp-block-media-text, .alignwide, .alignfull)';
+
+  // Title + intro line.
+  #{$heading}:has(+ #{$paragraph}) {
+    --block-gutter-end: var(--block-gutter-pair-heading-text);
+
+    margin-block-end: var(--block-gutter-pair-heading-text);
+  }
+
+  #{$heading} + #{$paragraph} {
+    --block-gutter-start: 0;
+
+    margin-block-start: 0;
+  }
+
+  // Section title + content block.
+  :is(.wp-block-heading, h2, h3):has(+ #{$section-block}) {
+    --block-gutter-end: var(--block-gutter-pair-heading-section);
+
+    margin-block-end: var(--block-gutter-pair-heading-section);
+  }
+
+  :is(.wp-block-heading, h2, h3) + #{$section-block} {
+    --block-gutter-start: 0;
+
+    margin-block-start: 0;
+  }
+
+  // Intro paragraph + section block.
+  #{$paragraph}:has(+ #{$section-block}) {
+    --block-gutter-end: var(--block-gutter-l);
+
+    margin-block-end: var(--block-gutter-l);
+  }
+
+  #{$paragraph} + #{$section-block} {
+    --block-gutter-start: 0;
+
+    margin-block-start: 0;
+  }
+
+  // Separator framing.
+  .wp-block-separator {
+    --block-gutter-start: var(--block-gutter-s);
+    --block-gutter-end: var(--block-gutter-s);
+  }
+
+  :is(.wp-block-heading, .wp-block-paragraph, p):has(+ .wp-block-separator) {
+    --block-gutter-end: var(--block-gutter-s);
+  }
+
+  .wp-block-separator
+    + :is(.wp-block-heading, .wp-block-group, .wp-block-columns) {
+    --block-gutter-start: var(--block-gutter-l);
+  }
+
   > :first-child {
     margin-top: 0;
   }
@@ -96,5 +155,10 @@
 .wp-block-cover.alignfull + .wp-block-cover.alignfull,
 .alignfull.has-background + .wp-block-cover.alignfull,
 .alignfull.has-background + .alignfull.has-background {
+  margin-top: calc(var(--block-gutter-xl) * -1);
+}
+
+.wp-block-cover.alignfull + .wp-block-group.alignfull,
+.wp-block-group.alignfull + .wp-block-cover.alignfull {
   margin-top: calc(var(--block-gutter-xl) * -1);
 }
