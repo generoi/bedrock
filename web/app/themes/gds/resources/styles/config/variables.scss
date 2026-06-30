@@ -15,15 +15,19 @@
   --gds-color-success: #1fc900;
   --gds-color-error: #df5c4e;
 
-  // Spacing
+  // Spacing (Figma: mobile → desktop)
   --gds-spacing-xxxs: 4px;
   --gds-spacing-xxs: #{sloped-size(6px, 8px)};
   --gds-spacing-xs: #{sloped-size(8px, 12px)};
   --gds-spacing-s: #{sloped-size(12px, 16px)};
   --gds-spacing-m: #{sloped-size(16px, 24px)};
   --gds-spacing-l: #{sloped-size(24px, 32px)};
-  --gds-spacing-xl: #{sloped-size(32px, 40px)};
-  --gds-spacing-xxl: #{sloped-size(56px, 72px)};
+  --gds-spacing-xl: var(
+    --gds-spacing-xxl
+  ); // todo: remove this once we have the correct spacing in Figma
+
+  --gds-spacing-xxl: #{sloped-size(32px, 40px)};
+  --gds-spacing-xxxl: #{sloped-size(56px, 72px)};
 
   // Layout / accessibility
   --gds-min-touch-target: 44px;
@@ -66,6 +70,8 @@
   --block-gutter-m: #{sloped-size(24px, 40px)};
   --block-gutter-l: #{sloped-size(32px, 60px)};
   --block-gutter-xl: #{sloped-size(40px, 80px)};
+  --block-gutter-pair-heading-text: var(--gds-spacing-xs);
+  --block-gutter-pair-heading-section: var(--gds-spacing-l);
 
   // Layout
   --viewport-gutter: #{sloped-size(12px, 40px)};
@@ -95,7 +101,10 @@
   --gds-media-card-padding: 24px; // @note container query reduces this
 
   // Media Text
-  --media-text-gutter: var(--viewport-gutter);
+  --media-text-min-height: #{sloped-size(280px, 420px)};
+  --media-text-content-padding: var(--grid-gutter);
+  --media-text-column-gap: var(--gds-spacing-xxl);
+  --media-text-gutter: var(--grid-gutter);
 
   // Forms
   --gds-input-padding-y: 9px;
@@ -128,9 +137,5 @@
   @include mq($from: medium) {
     --content-width: var(--grid-column-8);
     --grid-gutter: 24px;
-  }
-
-  @media (width >= 600px) {
-    --media-text-gutter: var(--grid-column-1);
   }
 }

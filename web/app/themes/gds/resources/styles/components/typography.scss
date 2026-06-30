@@ -5,8 +5,11 @@
   font-family: var(--gds-heading-font-family);
   font-weight: 600;
   line-height: var(--gds-heading-line-height);
-  margin-block-start: var(--gds-heading-margin-start);
-  margin-block-end: var(--gds-heading-margin-end);
+  margin-block-start: var(
+    --block-gutter-start,
+    var(--gds-heading-margin-start)
+  );
+  margin-block-end: var(--block-gutter-end, var(--gds-heading-margin-end));
 
   &:first-child {
     margin-block-start: 0;

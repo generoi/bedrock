@@ -77,7 +77,13 @@
     "spatie/laravel-csp": ">=3.10",
     "generoi/sage-cachetags": ">=1.2",
     "generoi/gds-block-animations": "dev-master",
-    "wpackagist-plugin/redirection": "^5.8"
+    "generoi/gds-assistant": "^0.1.15",
+    "wpackagist-plugin/theme-translation-for-polylang": "^3.4",
+    "wordpress/mcp-adapter": "^0.5.0",
+    "wpackagist-plugin/duplicate-page": "^4.5",
+    "generoi/gds-mcp": "dev-master",
+    "wpackagist-plugin/redirection": "^5.8",
+    "generoi/wp-gutenberg-shy": "^0.2.1"
   },
   "require-dev": {
     "brainmaestro/composer-git-hooks": ">=3.0.0",
