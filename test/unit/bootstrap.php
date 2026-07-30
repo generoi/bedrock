@@ -6,11 +6,13 @@
 
 use Genero\Sage\CacheTags\Concerns\CreatesDatabaseTable;
 use Illuminate\Contracts\Http\Kernel;
-use Roots\Acorn\Application;
 
 // Give access to tests_add_filter() function.
 require_once getenv('WP_PHPUNIT__DIR').'/includes/functions.php';
 
+// Create the cache_tags table for the test database.
+// DatabaseCommand::createTable() is protected and extends Illuminate\Console\Command,
+// which routes unknown calls through __call() — use the trait directly instead.
 tests_add_filter('muplugins_loaded', function () {
     $helper = new class
     {
@@ -18,16 +20,15 @@ tests_add_filter('muplugins_loaded', function () {
             createTable as public;
         }
     };
-
     $helper->createTable();
+});
 
-    // Under PHPUnit, Acorn's bootAcorn() is a no-op: it only bootstraps the
-    // container for WP-CLI or real HTTP requests, neither of which applies
-    // here. Without it `config` (and the rest of the container) is never bound
-    // before the theme registers its service providers during theme load,
-    // which throws. Bootstrap the kernel now so theme providers can resolve.
-    if (Application::getInstance()->bound(Kernel::class)) {
-        Application::getInstance()->make(Kernel::class)->bootstrap();
+// Acorn skips HTTP bootstrapping in console mode (PHPUnit), leaving
+// config/view/etc unbound. Boot the HTTP kernel after mu-plugins load
+// (which includes 00-acorn.php) but before the theme's functions.php.
+tests_add_filter('muplugins_loaded', function () {
+    if (function_exists('app') && app()->bound(Kernel::class)) {
+        app(Kernel::class)->bootstrap();
     }
 }, PHP_INT_MAX);
 

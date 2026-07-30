@@ -1,0 +1,88 @@
+<!-- wp:group {"tagName":"header","className":"header alignfull","layout":{"type":"default"},"anchor":"header"} -->
+<header id="header" class="wp-block-group header alignfull">
+  <!-- wp:group {"align":"full","className":"header__announcement is-layout-constrained wp-block-group-is-layout-constrained","backgroundColor":"primary","layout":{"type":"constrained"}} -->
+  <div
+    class="wp-block-group alignfull header__announcement is-layout-constrained wp-block-group-is-layout-constrained has-primary-background-color has-background"
+  >
+    <!-- wp:paragraph {"style":{"typography":{"textAlign":"center"}}} -->
+    <p class="has-text-align-center">
+      Ilmoituspaikka - tänne voitte ilmoita eri asiat.
+    </p>
+    <!-- /wp:paragraph -->
+  </div>
+  <!-- /wp:group -->
+
+  <!-- wp:group {"align":"wide","className":"header__inner-container","layout":{"type":"default"}} -->
+  <div class="wp-block-group alignwide header__inner-container">
+    <!-- wp:group {"className":"header__utility is-layout-constrained wp-block-group-is-layout-constrained","layout":{"type":"constrained"}} -->
+    <div
+      class="wp-block-group header__utility is-layout-constrained wp-block-group-is-layout-constrained"
+    >
+      <!-- wp:group {"align":"wide","className":"header__utility-inner","layout":{"type":"default"}} -->
+      <div class="wp-block-group alignwide header__utility-inner">
+        <!-- wp:gds/site-search {"className":"header__search"} /-->
+
+        <!-- wp:gds/language-menu {"className":"header__language-menu"} /-->
+
+        <!-- wp:paragraph {"className":"header__utility-link"} -->
+        <p class="header__utility-link"><a href="#">link</a></p>
+        <!-- /wp:paragraph -->
+
+        <!-- wp:paragraph {"className":"header__utility-link"} -->
+        <p class="header__utility-link"><a href="#">link</a></p>
+        <!-- /wp:paragraph -->
+
+        <!-- wp:buttons {"className":"header__utility-actions","layout":{"type":"flex","justifyContent":"right"}} -->
+        <div class="wp-block-buttons header__utility-actions">
+          <!-- wp:button {"className":"is-style-outline"} -->
+          <div class="wp-block-button is-style-outline">
+            <a class="wp-block-button__link wp-element-button">button link</a>
+          </div>
+          <!-- /wp:button -->
+        </div>
+        <!-- /wp:buttons -->
+      </div>
+      <!-- /wp:group -->
+    </div>
+    <!-- /wp:group -->
+
+    <!-- wp:group {"className":"header__main is-layout-constrained wp-block-group-is-layout-constrained","layout":{"type":"constrained"}} -->
+    <div
+      class="wp-block-group header__main is-layout-constrained wp-block-group-is-layout-constrained"
+    >
+      <!-- wp:group {"align":"wide","className":"header__main-inner","layout":{"type":"default"}} -->
+      <div class="wp-block-group alignwide header__main-inner">
+        <!-- wp:site-logo {"width":100,"shouldSyncIcon":true,"className":"header__logo"} /-->
+
+        <!-- wp:html -->
+        <toggle-button
+          class="header__menu-toggler"
+          aria-controls="header"
+          aria-label="Open menu"
+          aria-haspopup="true"
+          persistent
+          data-label-open="Open menu"
+          data-label-close="Close menu"
+        >
+          <span class="header__menu-toggler-icon" aria-hidden="true"></span>
+          <span
+            class="header__menu-toggler-label sr-only"
+            id="header-menu-toggler-label"
+            >Open menu</span
+          >
+        </toggle-button>
+        <!-- /wp:html -->
+
+        <!-- wp:gds/menu {"menu":"primary_navigation","className":"header__navigation"} /-->
+
+        <!-- wp:buttons {"className":"header__main-actions","layout":{"type":"flex","justifyContent":"right"}} -->
+        <div class="wp-block-buttons header__main-actions"></div>
+        <!-- /wp:buttons -->
+      </div>
+      <!-- /wp:group -->
+    </div>
+    <!-- /wp:group -->
+  </div>
+  <!-- /wp:group -->
+</header>
+<!-- /wp:group -->

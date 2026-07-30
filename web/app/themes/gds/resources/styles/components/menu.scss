@@ -1,0 +1,70 @@
+@use '@styles/components/typography' as typography;
+
+@mixin link {
+  align-items: center;
+  display: flex;
+  gap: var(--gds-spacing-xxxs);
+  padding: var(--gds-spacing-xs);
+  text-decoration: none;
+  border: 0;
+  background: transparent;
+  color: inherit;
+  cursor: pointer;
+  font: inherit;
+  font-weight: 600;
+  padding-inline: 0;
+
+  &:hover {
+    color: var(--gds-color-primary);
+  }
+}
+
+@mixin dropdown-link {
+  display: block;
+  padding: var(--gds-spacing-xs) var(--gds-spacing-s);
+  text-decoration: none;
+
+  &:hover {
+    color: var(--gds-color-primary);
+  }
+
+  &.is-active {
+    text-decoration: underline;
+  }
+}
+
+@mixin dropdown {
+  display: none;
+  flex-direction: column;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  z-index: 10;
+  min-width: 150px;
+  margin-top: 0;
+  border-radius: var(--gds-border-radius);
+  background-color: var(--gds-color-white);
+  box-shadow: var(--gds-box-shadow);
+
+  @include typography.text;
+
+  &.is-active {
+    display: flex;
+  }
+}
+
+@mixin toggle-icon {
+  flex-shrink: 0;
+  width: 12px;
+  height: 12px;
+  mask-image: svg-load('svgs/solid/chevron-down.svg');
+  mask-position: center;
+  mask-size: contain;
+  mask-repeat: no-repeat;
+  background-color: currentcolor;
+  transition: transform 0.2s ease;
+
+  [aria-expanded='true'] > & {
+    transform: rotate(180deg);
+  }
+}

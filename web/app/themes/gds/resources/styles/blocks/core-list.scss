@@ -11,6 +11,14 @@
   ul {
     margin-left: 0;
   }
+
+  > li:not(:first-child) {
+    margin-block-start: var(--gds-spacing-xs);
+  }
+
+  > li > .wp-block-list {
+    margin-block-start: var(--gds-spacing-xs);
+  }
 }
 
 .is-style-spacious {

@@ -4,6 +4,10 @@ import initPrefersReducedMotion from './components/prefers-reduced-motion';
 import('./components/toggle-button');
 
 ready(() => {
+  if (document.getElementById('header')) {
+    import('./components/header');
+  }
+
   if (document.querySelector('modal-dialog')) {
     import('./components/modal-dialog');
   }

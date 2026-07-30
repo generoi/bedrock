@@ -1,5 +1,6 @@
 @block('core/heading')
 
+@if (! is_404())
 <h1 {!! get_block_wrapper_attributes([]) !!}>
   @if (is_home())
     @if ($home = get_option('page_for_posts', true))
@@ -20,9 +21,8 @@
     ) !!}
   @elseif (is_search())
     {{ /* translators: page title on search page */ __('Search results', 'gds') }}
-  @elseif (is_404())
-    {{ /* translators: page title on error page */ __('Sorry...', 'gds') }}
   @else
     {!! esc_html(get_the_title()) !!}
   @endif
 </h1>
+@endif

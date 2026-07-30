@@ -49,35 +49,9 @@
       "text": true
     },
     "spacing": {
-      "spacingScale": {},
-      "customSpacingSize": false,
-      "defaultSpacingSizes": false,
-      "padding": true,
-      "margin": true,
-      "blockGap": null,
-      "spacingSizes": [
-        {
-          "name": "XS",
-          "slug": "block-gutter-xs",
-          "size": "var(--block-gutter-xs)"
-        },
-        {
-          "name": "S",
-          "slug": "block-gutter-s",
-          "size": "var(--block-gutter-s)"
-        },
-        {
-          "name": "M",
-          "slug": "block-gutter-m",
-          "size": "var(--block-gutter-m)"
-        },
-        {
-          "name": "L",
-          "slug": "block-gutter-l",
-          "size": "var(--block-gutter-l)"
-        }
-      ],
-      "units": ["px", "%", "em", "rem", "vw", "vh"]
+      "padding": false,
+      "margin": false,
+      "blockGap": false
     },
     "border": {
       "color": false,
@@ -101,19 +75,24 @@
       "writingMode": false,
       "fontSizes": [
         {
-          "name": "S Body",
-          "size": "var(--gds-body-s-font-size)",
-          "slug": "s-body"
+          "name": "XS",
+          "size": "var(--gds-text-xs-font-size)",
+          "slug": "xs-text"
         },
         {
-          "name": "M Body",
-          "size": "var(--gds-body-m-font-size)",
-          "slug": "m-body"
+          "name": "S",
+          "size": "var(--gds-text-s-font-size)",
+          "slug": "s-text"
         },
         {
-          "name": "L Body",
-          "size": "var(--gds-body-l-font-size)",
-          "slug": "l-body"
+          "name": "M",
+          "size": "var(--gds-text-m-font-size)",
+          "slug": "m-text"
+        },
+        {
+          "name": "L",
+          "size": "var(--gds-text-l-font-size)",
+          "slug": "l-text"
         }
       ]
     },
@@ -147,27 +126,27 @@
         "typography": {
           "fontSizes": [
             {
-              "name": "XS Heading",
+              "name": "XS",
               "size": "var(--gds-heading-xs-font-size)",
               "slug": "xs-heading"
             },
             {
-              "name": "S Heading",
+              "name": "S",
               "size": "var(--gds-heading-s-font-size)",
               "slug": "s-heading"
             },
             {
-              "name": "M Heading",
+              "name": "M",
               "size": "var(--gds-heading-m-font-size)",
               "slug": "m-heading"
             },
             {
-              "name": "L Heading",
+              "name": "L",
               "size": "var(--gds-heading-l-font-size)",
               "slug": "l-heading"
             },
             {
-              "name": "XL Heading",
+              "name": "XL",
               "size": "var(--gds-heading-xl-font-size)",
               "slug": "xl-heading"
             }
@@ -178,6 +157,11 @@
         "color": {
           "custom": false,
           "palette": []
+        },
+        "typography": {
+          "fontSize": true,
+          "customFontSize": false,
+          "defaultFontSizes": false
         }
       },
       "core/button": {
@@ -188,17 +172,17 @@
         "typography": {
           "fontSizes": [
             {
-              "name": "S Button",
+              "name": "S",
               "size": "var(--gds-button-s-font-size)",
               "slug": "s-button"
             },
             {
-              "name": "M Button",
+              "name": "M",
               "size": "var(--gds-button-m-font-size)",
               "slug": "m-button"
             },
             {
-              "name": "L Button",
+              "name": "L",
               "size": "var(--gds-button-l-font-size)",
               "slug": "l-button"
             }

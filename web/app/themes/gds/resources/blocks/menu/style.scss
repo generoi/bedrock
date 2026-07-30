@@ -1,0 +1,29 @@
+@use '@styles/components/typography' as typography;
+@use '@styles/common/breakpoints' as *;
+@use '@styles/components/menu' as menu;
+
+:where(.wp-block-gds-menu) {
+  display: flex;
+  gap: var(--gds-spacing-m);
+}
+
+.wp-block-gds-menu-item {
+  position: relative;
+
+  &__link,
+  &__toggle {
+    @include menu.link;
+  }
+
+  &__toggle-icon {
+    @include menu.toggle-icon;
+  }
+
+  &__submenu-link {
+    @include menu.dropdown-link;
+  }
+
+  &__submenu {
+    @include menu.dropdown;
+  }
+}

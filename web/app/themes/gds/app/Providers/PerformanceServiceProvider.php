@@ -101,8 +101,10 @@ class PerformanceServiceProvider extends ServiceProvider
 
     public function dequeueAssets(): void
     {
-        if (! is_admin_bar_showing()) {
-            wp_deregister_style('dashicons'); // wp core
+        if (is_admin() || is_customize_preview() || is_admin_bar_showing()) {
+            return;
         }
+
+        wp_deregister_style('dashicons'); // wp core
     }
 }

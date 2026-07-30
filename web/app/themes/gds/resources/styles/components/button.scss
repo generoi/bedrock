@@ -14,8 +14,8 @@
   line-height: 1;
   font-size: 1em;
   border: none;
-  border-radius: var(--gds-button-border-radius, 2.5em);
-  padding: 1.3em 2.5em;
+  border-radius: var(--gds-button-border-radius);
+  padding: var(--gds-spacing-s) var(--gds-spacing-m);
   z-index: 1;
   outline-offset: 0;
 
