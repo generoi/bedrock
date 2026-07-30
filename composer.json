@@ -113,7 +113,6 @@
     },
     "prepend-autoloader": false
   },
-  "minimum-stability": "dev",
   "prefer-stable": true,
   "autoload": {
     "psr-4": {
