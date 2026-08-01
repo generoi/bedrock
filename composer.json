@@ -196,7 +196,7 @@
     ],
     "ci": [
       "@composer validate --no-check-all",
-      "pint --format=checkstyle | vendor/bin/cs2pr",
+      "env -u AI_AGENT -u CLAUDECODE pint --format=checkstyle | vendor/bin/cs2pr",
       "npm run ci:scripts --silent | while read xml; do echo $xml | ./vendor/bin/cs2pr; done",
       "npm run ci:styles --silent | while read xml; do echo $xml | ./vendor/bin/cs2pr; done"
     ],
