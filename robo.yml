@@ -18,10 +18,10 @@ env:
     path: '/www/gdsbedrock_154/public/current'
     url: 'https://stg-gdsbedrock-staging.kinsta.cloud'
   '@production':
-    host: 35.228.245.82
+    host: 79.76.40.134
     user: gdsbedrock
-    port: 32263
-    ssh: 'ssh -p 32263'
+    port: 34506
+    ssh: 'ssh -p 34506'
     path: '/www/gdsbedrock_154/public/current'
     url: 'https://gdsbedrock.kinsta.cloud'
 command:
