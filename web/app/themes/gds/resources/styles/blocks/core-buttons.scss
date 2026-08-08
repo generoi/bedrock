@@ -1,5 +1,6 @@
 .wp-block-buttons {
   display: flex;
+  flex-wrap: wrap;
 
   // Set the block gap so button width settings work
   --wp--style--block-gap: var(--grid-gutter);
