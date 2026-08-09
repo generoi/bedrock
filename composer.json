@@ -77,7 +77,7 @@
     "spatie/laravel-csp": ">=3.10",
     "generoi/sage-cachetags": ">=1.2",
     "generoi/gds-block-animations": "dev-master",
-    "generoi/gds-assistant": "^0.1.15",
+    "generoi/gds-assistant": "^0.5.0",
     "wpackagist-plugin/theme-translation-for-polylang": "^3.4",
     "wordpress/mcp-adapter": "^0.5.0",
     "wpackagist-plugin/duplicate-page": "^4.5",
