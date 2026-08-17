@@ -20,6 +20,21 @@ class ContentSecurityPolicyServiceProvider extends ServiceProvider
         if (! config('csp.enabled')) {
             return;
         }
+
+        // wp-admin cannot work under a nonce. Core prints inline scripts that
+        // never pass through `wp_inline_script_attributes` — `ajaxurl` in
+        // admin-header.php among them — so they can never carry one, and a
+        // nonce anywhere in script-src makes the browser ignore
+        // 'unsafe-inline'. The result is `ajaxurl is not defined`.
+        //
+        // Spatie's Basic, GoogleAnalytics and GoogleTagManager presets add a
+        // nonce unconditionally, so omitting it in App\Csp\WordPress is not
+        // enough on its own. Turning the generator off covers every preset at
+        // once, and admin keeps a real policy ('self' plus 'unsafe-inline').
+        if (is_admin()) {
+            config(['csp.nonce_enabled' => false]);
+        }
+
         $policy = Policy::create(
             presets: config('csp.presets'),
             directives: config('csp.directives'),
@@ -39,7 +54,11 @@ class ContentSecurityPolicyServiceProvider extends ServiceProvider
         header('Referrer-Policy: strict-origin-when-cross-origin');
 
         // Add Content-Security-Policy
-        header(sprintf('Content-Security-Policys: %s', $policy->getContents()), true);
+        $header = config('csp.report_only')
+            ? 'Content-Security-Policy-Report-Only'
+            : 'Content-Security-Policy';
+
+        header(sprintf('%s: %s', $header, $policy->getContents()), true);
     }
 
     public function addScriptNonce(array $attributes): array
