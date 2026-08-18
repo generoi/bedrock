@@ -1,5 +1,6 @@
 <?php
 
+use App\Csp\BasicWithoutNonce;
 use App\Csp\GoogleAds;
 use App\Csp\GoogleTagManagerPreview;
 use App\Csp\SampleContent;
@@ -8,7 +9,6 @@ use App\Csp\WordPress;
 use App\Csp\YouTube;
 use Spatie\Csp\Nonce\RandomString;
 use Spatie\Csp\Presets\AdobeFonts;
-use Spatie\Csp\Presets\Basic;
 use Spatie\Csp\Presets\GoogleAnalytics;
 use Spatie\Csp\Presets\GoogleFonts;
 use Spatie\Csp\Presets\GoogleTagManager;
@@ -22,7 +22,7 @@ return [
      * any class that extends `Spatie\Csp\Preset`
      */
     'presets' => [
-        Basic::class,
+        BasicWithoutNonce::class,
         GoogleFonts::class,
         AdobeFonts::class,
         GoogleAnalytics::class,
@@ -65,6 +65,14 @@ return [
      * A great service you could use for this is https://report-uri.com/
      */
     'report_uri' => env('CSP_REPORT_URI', ''),
+
+    /*
+     * Send the policy as Content-Security-Policy-Report-Only, which reports
+     * violations without blocking anything. Deploy any policy change this way
+     * first and check the console before enforcing — an enforcing policy that
+     * has never run is untested by definition.
+     */
+    'report_only' => env('CSP_REPORT_ONLY', false),
 
     /*
      * Headers will only be added if this setting is set to true.
