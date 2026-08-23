@@ -42,12 +42,12 @@
   },
   "dependencies": {
     "@fortawesome/fontawesome-pro": "^7.0.0",
-    "@types/wordpress__blocks": "^12.5.14",
-    "@wordpress/base-styles": "^5.7.0",
+    "@types/wordpress__blocks": "^15.17.0",
+    "@wordpress/base-styles": "^12.1.0",
     "clsx": "^2.1.1",
-    "jquery": "^3.7.0",
-    "lodash-es": "^4.17.21",
+    "jquery": "^4.0.0",
+    "lodash-es": "^4.18.1",
     "modern-normalize": "^3.0.1",
-    "sass-mq": "^6.0"
+    "sass-mq": "^7.0"
   }
 }

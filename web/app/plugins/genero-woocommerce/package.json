@@ -41,6 +41,6 @@
     "stylelint-config-standard-scss": "^13.1.0"
   },
   "dependencies": {
-    "@types/wordpress__blocks": "^12.5.14"
+    "@types/wordpress__blocks": "^15.17.0"
   }
 }
