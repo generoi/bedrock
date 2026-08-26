@@ -3,41 +3,51 @@ updates:
   - package-ecosystem: "npm"
     directory: "/"
     schedule:
-      interval: "weekly"
-      day: "sunday"
+      interval: "monthly"
     registries:
       - fontawesome
+    open-pull-requests-limit: 1
     groups:
-      production-dependencies:
-        dependency-type: "production"
-      dev-dependencies:
-        dependency-type: "development"
+      npm:
+        applies-to: version-updates
+        patterns:
+          - "*"
+        update-types:
+          - "major"
+          - "minor"
+          - "patch"
 
   - package-ecosystem: "composer"
     directory: "/"
     schedule:
-      interval: "weekly"
-      day: "sunday"
-    registries:
-      - github-generoi
+      interval: "monthly"
+    open-pull-requests-limit: 1
     groups:
-      production-dependencies:
-        dependency-type: "production"
-      dev-dependencies:
-        dependency-type: "development"
+      composer:
+        applies-to: version-updates
+        patterns:
+          - "*"
+        update-types:
+          - "major"
+          - "minor"
+          - "patch"
 
   - package-ecosystem: "github-actions"
     directory: "/"
     schedule:
-      interval: "weekly"
-      day: "sunday"
+      interval: "monthly"
+    open-pull-requests-limit: 1
+    groups:
+      github-actions:
+        applies-to: version-updates
+        patterns:
+          - "*"
+        update-types:
+          - "major"
+          - "minor"
+          - "patch"
 
 registries:
-  github-generoi:
-    type: git
-    url: https://github.com
-    username: x-access-token
-    password: ${{ secrets.PACKAGIST_GITHUB_TOKEN }}
   fontawesome:
     type: npm-registry
     url: //npm.fontawesome.com/
