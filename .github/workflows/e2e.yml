@@ -1,4 +1,4 @@
-name: E2E tests
+name: 'CI: E2E'
 on:
   workflow_dispatch:
     inputs:
@@ -10,24 +10,12 @@ on:
       url:
         required: true
         type: string
+
+permissions:
+  contents: read
+
 jobs:
   e2e:
-    name: Run E2E tests
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout Repository
-        uses: actions/checkout@v4
-
-      - name: Set URL as environmnet variable so playwright uses it
-        run: echo "URL=${{ inputs.url }}" >> $GITHUB_ENV
-
-      - name: Install dependencies
-        run: npm run e2e:install
-
-      - name: Run E2E tests
-        run: npm run e2e:test
-
-      - uses: actions/upload-artifact@v4
-        with:
-          name: Screenshot
-          path: screenshot.jpg
+    uses: generoi/github-actions/.github/workflows/e2e.yml@v2
+    with:
+      url: ${{ inputs.url }}
