@@ -1,36 +1,16 @@
-name: Test
+name: "CI: Test"
 on:
   pull_request:
   workflow_dispatch:
 
+permissions:
+  contents: read
+
 jobs:
   test:
-    name: Run tests
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout Repository
-        uses: actions/checkout@v4
-
-      - name: Setup project
-        uses: ./.github/actions/setup
-        with:
-          npm_fontawesome_auth_token: ${{ secrets.NPM_FONTAWESOME_AUTH_TOKEN }}
-          packagist_github_token: ${{ secrets.PACKAGIST_GITHUB_TOKEN }}
-
-      - name: Install development packages to run tests
-        run: composer install:development
-
-      - name: Run CI tests
-        run: composer ci --no-interaction
-
-      - name: Install WordPress
-        uses: ./.github/actions/install-wordpress
-
-      - name: Optimize acorn
-        run: ./vendor/bin/wp acorn optimize
-
-      - name: Load frontpage and verify app.js script is loaded
-        run: curl http://localhost:8080/ | grep '<script.*src=".*app/themes/gds/public/scripts/app.js'
-
-      - name: Run unit tests
-        run: composer phpunit
+    uses: generoi/github-actions/.github/workflows/test.yml@v2
+    secrets:
+      NPM_FONTAWESOME_AUTH_TOKEN: ${{ secrets.NPM_FONTAWESOME_AUTH_TOKEN }}
+      COMPOSER_BOT_PRIVATE_KEY: ${{ secrets.COMPOSER_BOT_PRIVATE_KEY }}
+    with:
+      smoke_grep: 'app/themes/gds/public/scripts/app.js'
