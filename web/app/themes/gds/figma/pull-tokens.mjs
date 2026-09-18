@@ -51,7 +51,11 @@ function render(t, current) {
       ).toLowerCase();
     return expand(current) === expand(t.mobile) ? current : t.mobile;
   }
-  if (t.type === 'STRING') return `'${t.mobile}', sans-serif`;
+  if (t.type === 'STRING') {
+    // font family: CSS matching is case-insensitive, keep the SCSS spelling if only case differs
+    const next = `'${t.mobile}', sans-serif`;
+    return current.toLowerCase() === next.toLowerCase() ? current : next;
+  }
   if (t.type !== 'FLOAT') return null;
   const unitless = /line-height|columns$/.test(t.css);
   const unit = unitless ? '' : 'px';
