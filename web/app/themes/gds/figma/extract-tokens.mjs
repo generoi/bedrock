@@ -209,12 +209,26 @@ try {
   }
 } catch {}
 
+// Which collection a token lives in. "GDS Responsive" has Mobile/Desktop modes and holds every
+// fluid value, every font size (so all sizes are in one place), the spacing/gutter/grid groups and
+// anything aliasing those. "GDS" has a single mode for colours, radii, breakpoints and fixed values.
+const byName = new Map(tokens.map((t) => [t.name, t]));
+const responsive = (t) =>
+  /font-size$/.test(t.name) ||
+  /^(spacing|block-gutter|grid\/column-\d)/.test(t.name) ||
+  (t.type === 'FLOAT' && t.mobile !== t.desktop) ||
+  (t.type === 'ALIAS' &&
+    byName.get(t.alias) &&
+    responsive(byName.get(t.alias)));
+for (const t of tokens)
+  if (t.type !== 'SHADOW')
+    t.collection = responsive(t) ? 'GDS Responsive' : 'GDS';
+
 const out = {
   $schema: 'gds-figma-tokens/1',
   generatedFrom: scssPath.replace(process.cwd() + '/', ''),
   fluid: {minViewport: 375, maxViewport: 1400},
-  collection: 'GDS',
-  modes: ['Mobile', 'Desktop'],
+  collections: {GDS: ['Value'], 'GDS Responsive': ['Mobile', 'Desktop']},
   tokens,
   skipped,
 };

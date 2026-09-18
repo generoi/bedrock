@@ -3,7 +3,8 @@
 // Run it through the Figma MCP `use_figma` tool (or the Figma console / Scripter) after
 // inlining tokens.json:
 //   node figma/render-push-script.mjs > /tmp/push.js
-// Idempotent: variables are matched by name inside the "GDS" collection and updated in place.
+// Idempotent: variables are matched by name and updated in place; a variable whose collection changed
+// is recreated in the right one (its bindings in the file then need re-linking, see README).
 // Shadow tokens become effect styles, everything else becomes a variable with
 // Mobile and Desktop modes and WEB code syntax `var(--css-name)`.
 
@@ -48,37 +49,40 @@ function hex(h) {
   };
 }
 
-// 1. Collection + modes
+// 1. Collections + modes
 const collections = await figma.variables.getLocalVariableCollectionsAsync();
-let col = collections.find((c) => c.name === DATA.collection);
-if (!col) col = figma.variables.createVariableCollection(DATA.collection);
-const modeIds = {};
-DATA.modes.forEach((m, i) => {
-  let mode = col.modes.find((x) => x.name === m);
-  if (!mode) {
-    if (i === 0) {
-      col.renameMode(col.modes[0].modeId, m);
-      mode = col.modes[0];
-    } else {
-      const id = col.addMode(m);
-      mode = {modeId: id, name: m};
+const cols = {};
+for (const [name, modes] of Object.entries(DATA.collections)) {
+  let col = collections.find((c) => c.name === name);
+  if (!col) col = figma.variables.createVariableCollection(name);
+  const modeIds = modes.map((m, i) => {
+    let mode = col.modes.find((x) => x.name === m);
+    if (!mode) {
+      if (i === 0) {
+        col.renameMode(col.modes[0].modeId, m);
+        mode = col.modes[0];
+      } else mode = {modeId: col.addMode(m)};
     }
-  }
-  modeIds[m] = mode.modeId;
-});
-const [MOBILE, DESKTOP] = DATA.modes.map((m) => modeIds[m]);
+    return mode.modeId;
+  });
+  cols[name] = {col, modeIds};
+}
 
 // 2. Variables (values first, aliases second so targets exist)
 const existing = new Map();
-for (const id of col.variableIds) {
-  const v = await figma.variables.getVariableByIdAsync(id);
-  if (v) existing.set(v.name, v);
-}
+for (const {col} of Object.values(cols))
+  for (const id of col.variableIds) {
+    const v = await figma.variables.getVariableByIdAsync(id);
+    if (v) existing.set(v.name, v);
+  }
 const created = [],
-  updated = [];
-function upsert(name, type) {
+  updated = [],
+  moved = [];
+function upsert(name, type, colName) {
   let v = existing.get(name);
-  if (v && v.resolvedType !== type) {
+  const {col} = cols[colName];
+  if (v && (v.resolvedType !== type || v.variableCollectionId !== col.id)) {
+    moved.push(name);
     v.remove();
     v = null;
   }
@@ -89,15 +93,19 @@ function upsert(name, type) {
   } else updated.push(name);
   return v;
 }
+// value per mode: single-mode collections take the desktop value
+const valuesFor = (t) =>
+  cols[t.collection].modeIds.length === 1 ? ['desktop'] : ['mobile', 'desktop'];
 const plain = DATA.tokens.filter(
   (t) => t.type !== 'ALIAS' && t.type !== 'SHADOW',
 );
 const aliases = DATA.tokens.filter((t) => t.type === 'ALIAS');
 for (const t of plain) {
-  const v = upsert(t.name, t.type);
-  const val = (m) => (t.type === 'COLOR' ? hex(t[m]) : t[m]);
-  v.setValueForMode(MOBILE, val('mobile'));
-  v.setValueForMode(DESKTOP, val('desktop'));
+  const v = upsert(t.name, t.type, t.collection);
+  cols[t.collection].modeIds.forEach((modeId, i) => {
+    const m = valuesFor(t)[i];
+    v.setValueForMode(modeId, t.type === 'COLOR' ? hex(t[m]) : t[m]);
+  });
   v.scopes = scopesFor(t.name);
   if (t.css) v.setVariableCodeSyntax('WEB', `var(${t.css})`);
   v.description = t.source ? `${t.css ?? ''} = ${t.source}`.trim() : '';
@@ -114,10 +122,10 @@ for (let pass = 0; pass < 5 && pending.length; pass++) {
 const unresolved = pending.map((t) => `${t.name} → ${t.alias}`);
 function upsertAlias(t) {
   const target = existing.get(t.alias);
-  const v = upsert(t.name, target.resolvedType);
+  const v = upsert(t.name, target.resolvedType, t.collection);
   const ref = {type: 'VARIABLE_ALIAS', id: target.id};
-  v.setValueForMode(MOBILE, ref);
-  v.setValueForMode(DESKTOP, ref);
+  for (const modeId of cols[t.collection].modeIds)
+    v.setValueForMode(modeId, ref);
   v.scopes = scopesFor(t.name);
   if (t.css) v.setVariableCodeSyntax('WEB', `var(${t.css})`);
   v.description = `${t.css} = ${t.source}`;
@@ -149,10 +157,12 @@ for (const t of DATA.tokens.filter((t) => t.type === 'SHADOW')) {
 }
 
 return {
-  collection: col.id,
-  modes: modeIds,
+  collections: Object.fromEntries(
+    Object.entries(cols).map(([k, c]) => [k, c.col.id]),
+  ),
   created: created.length,
   updated: updated.length,
+  moved,
   unresolved,
   effectStyles: styles,
 };

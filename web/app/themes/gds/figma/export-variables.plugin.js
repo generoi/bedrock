@@ -1,18 +1,21 @@
-// Figma Plugin API script (read-only): dump the GDS variable collection as tokens JSON.
+// Figma Plugin API script (read-only): dump the GDS and GDS Responsive collections as tokens JSON.
 //
 // Run through the Figma MCP `use_figma` tool, save the returned JSON as figma/figma-export.json,
 // then `node figma/pull-tokens.mjs figma/figma-export.json` writes the values back into
 // resources/styles/config/variables.scss. Same shape as tokens.json so the two can be diffed.
 
-const cols = await figma.variables.getLocalVariableCollectionsAsync();
-const col = cols.find((c) => c.name === 'GDS');
-if (!col) throw new Error('No "GDS" variable collection in this file');
-const modes = col.modes.map((m) => m.name);
+const all = await figma.variables.getLocalVariableCollectionsAsync();
+const gds = all.filter((c) => c.name === 'GDS' || c.name === 'GDS Responsive');
+if (!gds.length)
+  throw new Error(
+    'No "GDS" / "GDS Responsive" variable collection in this file',
+  );
 const byId = new Map();
-for (const id of col.variableIds) {
-  const v = await figma.variables.getVariableByIdAsync(id);
-  if (v) byId.set(v.id, v);
-}
+for (const col of gds)
+  for (const id of col.variableIds) {
+    const v = await figma.variables.getVariableByIdAsync(id);
+    if (v) byId.set(v.id, {v, col});
+  }
 const hex = (c) =>
   '#' +
   [c.r, c.g, c.b]
@@ -23,7 +26,7 @@ const hex = (c) =>
     )
     .join('');
 const tokens = [];
-for (const v of byId.values()) {
+for (const {v, col} of byId.values()) {
   const css =
     v.codeSyntax && v.codeSyntax.WEB ?
       v.codeSyntax.WEB.replace(/^var\((.*)\)$/, '$1')
@@ -35,15 +38,22 @@ for (const v of byId.values()) {
       name: v.name,
       css,
       type: 'ALIAS',
-      alias: target ? target.name : first.id,
+      collection: col.name,
+      alias: target ? target.v.name : first.id,
     });
     continue;
   }
-  const out = {name: v.name, css, type: v.resolvedType};
-  col.modes.forEach((m) => {
-    const val = v.valuesByMode[m.modeId];
-    out[m.name.toLowerCase()] = v.resolvedType === 'COLOR' ? hex(val) : val;
-  });
+  const out = {name: v.name, css, type: v.resolvedType, collection: col.name};
+  const val = (m) => {
+    const x = v.valuesByMode[m.modeId];
+    return v.resolvedType === 'COLOR' ? hex(x) : x;
+  };
+  if (col.modes.length === 1) {
+    out.mobile = out.desktop = val(col.modes[0]);
+  } else
+    col.modes.forEach((m) => {
+      out[m.name.toLowerCase()] = val(m);
+    });
   tokens.push(out);
 }
 const shadows = figma

@@ -1,15 +1,23 @@
 # Figma ↔ theme tokens
 
 The design tokens of this theme are the CSS custom properties in
-`resources/styles/config/variables.scss`. This folder keeps them in sync with a
-Figma variable collection called **GDS**, in both directions, without a Figma
-Enterprise plan: the Figma side runs as Plugin API scripts through the Figma MCP
+`resources/styles/config/variables.scss`. This folder keeps them in sync with two
+Figma variable collections, in both directions, without a Figma Enterprise plan:
+
+- **GDS Responsive** — modes Mobile (value at 375 px) and Desktop (1400 px).
+  Every `sloped-size()` value, every font size (so all sizes sit in one place),
+  the `spacing/*`, `block-gutter/*` and `grid/column-*` groups, and aliases of those.
+- **GDS** — one mode. Colours, radii, breakpoints, line heights, font families and
+  other fixed values.
+
+`extract-tokens.mjs` decides the collection per token (`collection` field in
+`tokens.json`); the push script creates both collections. the Figma side runs as Plugin API scripts through the Figma MCP
 server (Claude Code, Cursor, or the Figma desktop console), the code side is
 plain Node.
 
 ```
-variables.scss  ──extract-tokens──▶  tokens.json  ──push-variables.plugin.js──▶  Figma "GDS" collection
-variables.scss  ◀──pull-tokens────  figma-export.json  ◀──export-variables.plugin.js──  Figma "GDS" collection
+variables.scss  ──extract-tokens──▶  tokens.json  ──push-variables.plugin.js──▶  Figma "GDS" + "GDS Responsive"
+variables.scss  ◀──pull-tokens────  figma-export.json  ◀──export-variables.plugin.js──  Figma "GDS" + "GDS Responsive"
 ```
 
 ## How the tokens map
@@ -38,9 +46,11 @@ npm run figma:push           # prints push-variables.plugin.js with tokens.json 
 ```
 
 Run the printed script with the Figma MCP `use_figma` tool against the target
-file. It is idempotent: the GDS collection and its Mobile/Desktop modes are
-created if missing, variables are matched by name and updated in place, scopes
-and WEB code syntax are set, shadow tokens become effect styles. Commit
+file. It is idempotent: both collections and their modes are created if
+missing, variables are matched by name and updated in place, scopes and WEB
+code syntax are set, shadow tokens become effect styles. A variable that has to
+change collection is recreated, which drops its bindings in the file; the
+result lists them under `moved`, re-link those by hand (or ask Claude to rebind). Commit
 `tokens.json` so the last pushed state is in git.
 
 ## Figma → code
