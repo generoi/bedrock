@@ -1,0 +1,11 @@
+.wp-block-gds-tab {
+  display: none;
+
+  &.active {
+    display: block;
+  }
+
+  &__content {
+    padding-top: var(--block-gutter-s);
+  }
+}
