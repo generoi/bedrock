@@ -22,6 +22,16 @@ remove_action('template_redirect', 'rest_output_link_header', 11);
 remove_action('wp_head', 'rest_output_link_wp_head', 10);
 remove_action('xmlrpc_rsd_apis', 'rest_output_rsd');
 
+/*
+ * Priority 101 runs after core's application password (90) and cookie (100)
+ * handlers. A request carrying a valid wordpress_logged_in cookie but no
+ * X-WP-Nonce is is_user_logged_in() === true until rest_cookie_check_errors
+ * calls wp_set_current_user(0) at priority 100; run earlier, this check would
+ * wave that request through, and it would then reach a closed route as an
+ * anonymous caller.
+ *
+ * @see rest_application_password_check_errors() and rest_cookie_check_errors()
+ */
 add_filter('rest_authentication_errors', function ($access) {
     // @see https://github.com/WordPress/wordpress-develop/blob/b316c8b25fc71920d89ee37ee26609a77b2a305a/src/wp-includes/rest-api.php#L390
     $route = untrailingslashit($GLOBALS['wp']->query_vars['rest_route']) ?: '/';
@@ -39,4 +49,4 @@ add_filter('rest_authentication_errors', function ($access) {
     }
 
     return $access;
-});
+}, 101);

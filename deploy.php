@@ -68,6 +68,8 @@ set('build_artifact_exclude', [
     '/*.php',
     '/*.xml',
     '/*.yml',
+    '/web/wp/readme.html',
+    '/web/wp/license.txt',
 ]);
 
 /**
