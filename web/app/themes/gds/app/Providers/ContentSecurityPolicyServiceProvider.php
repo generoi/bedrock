@@ -42,7 +42,9 @@ class ContentSecurityPolicyServiceProvider extends ServiceProvider
         );
 
         // Force client-side TLS (Transport Layer Security) redirection.
-        header('Strict-Transport-Security: max-age=63072000; includeSubDomains; preload');
+        // No 'preload': submitting the domain to the browser preload lists
+        // is practically irreversible and has to be a deliberate decision.
+        header('Strict-Transport-Security: max-age=63072000; includeSubDomains');
 
         // Disable content sniffing, since it's an attack vector.
         header('X-Content-Type-Options: nosniff');
