@@ -11,6 +11,10 @@ updates:
     registries:
       - fontawesome
     groups:
+      npm-security:
+        applies-to: security-updates
+        patterns:
+          - "*"
       npm:
         applies-to: version-updates
         patterns:
@@ -26,6 +30,10 @@ updates:
     schedule:
       interval: "monthly"
     groups:
+      composer-security:
+        applies-to: security-updates
+        patterns:
+          - "*"
       composer:
         applies-to: version-updates
         patterns:
