@@ -24,7 +24,7 @@
     "translate": "npm run translate -ws",
     "translate:pot": "npm run translate:pot -ws",
     "translate:js": "npm run translate:js -ws",
-    "e2e:install": "npm install --workspaces=false && npx playwright install --with-deps chromium",
+    "e2e:install": "npm install --workspaces=false",
     "e2e:test": "npx playwright test --config=./test/e2e/playwright.config.js"
   },
   "devDependencies": {
