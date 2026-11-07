@@ -108,10 +108,6 @@ if (env('DATABASE_URL') || env('IS_DDEV_PROJECT')) {
 
 /**
  * Authentication Unique Keys and Salts
- *
- * An unset one is '' rather than null: wp_salt() uses the values as array
- * keys, and a null key is deprecated on PHP 8.5. Empty falls back to the salt
- * WordPress stores in the database, as null did.
  */
 Config::define('AUTH_KEY', env('AUTH_KEY') ?: '');
 Config::define('SECURE_AUTH_KEY', env('SECURE_AUTH_KEY') ?: '');
