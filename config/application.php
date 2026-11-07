@@ -108,15 +108,19 @@ if (env('DATABASE_URL') || env('IS_DDEV_PROJECT')) {
 
 /**
  * Authentication Unique Keys and Salts
+ *
+ * An unset one is '' rather than null: wp_salt() uses the values as array
+ * keys, and a null key is deprecated on PHP 8.5. Empty falls back to the salt
+ * WordPress stores in the database, as null did.
  */
-Config::define('AUTH_KEY', env('AUTH_KEY'));
-Config::define('SECURE_AUTH_KEY', env('SECURE_AUTH_KEY'));
-Config::define('LOGGED_IN_KEY', env('LOGGED_IN_KEY'));
-Config::define('NONCE_KEY', env('NONCE_KEY'));
-Config::define('AUTH_SALT', env('AUTH_SALT'));
-Config::define('SECURE_AUTH_SALT', env('SECURE_AUTH_SALT'));
-Config::define('LOGGED_IN_SALT', env('LOGGED_IN_SALT'));
-Config::define('NONCE_SALT', env('NONCE_SALT'));
+Config::define('AUTH_KEY', env('AUTH_KEY') ?: '');
+Config::define('SECURE_AUTH_KEY', env('SECURE_AUTH_KEY') ?: '');
+Config::define('LOGGED_IN_KEY', env('LOGGED_IN_KEY') ?: '');
+Config::define('NONCE_KEY', env('NONCE_KEY') ?: '');
+Config::define('AUTH_SALT', env('AUTH_SALT') ?: '');
+Config::define('SECURE_AUTH_SALT', env('SECURE_AUTH_SALT') ?: '');
+Config::define('LOGGED_IN_SALT', env('LOGGED_IN_SALT') ?: '');
+Config::define('NONCE_SALT', env('NONCE_SALT') ?: '');
 
 /**
  * Custom Settings
