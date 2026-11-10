@@ -12,7 +12,7 @@ License:      MIT License
 
 namespace Genero\Site;
 
-if (! is_blog_installed()) {
+if (! is_blog_installed() || wp_get_environment_type() === 'production') {
     return;
 }
 
@@ -22,10 +22,6 @@ if (! is_blog_installed()) {
 // staging. This mu-plugin loads before regular plugins, so flipping `enabled`
 // off here means Postmark never installs its wp_mail override there.
 add_filter('option_postmark_settings', function ($settings) {
-    if (wp_get_environment_type() === 'production') {
-        return $settings;
-    }
-
     $decoded = json_decode((string) $settings, true);
     if (! is_array($decoded)) {
         return $settings;
