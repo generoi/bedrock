@@ -1,0 +1,13 @@
+name: 'Manage: Sync Production'
+
+on:
+  workflow_dispatch:
+
+jobs:
+  sync:
+    uses: generoi/github-actions/.github/workflows/sync-db.yml@v2
+    secrets:
+      DEPLOY_SSH_PRIVATE_KEY: ${{ secrets.KINSTA_DEPLOY_PRIVATE_KEY }}
+      NPM_FONTAWESOME_AUTH_TOKEN: ${{ secrets.NPM_FONTAWESOME_AUTH_TOKEN }}
+      COMPOSER_BOT_PRIVATE_KEY: ${{ secrets.COMPOSER_BOT_PRIVATE_KEY }}
+      DB_ARTIFACT_KEY: ${{ secrets.DB_ARTIFACT_KEY }}

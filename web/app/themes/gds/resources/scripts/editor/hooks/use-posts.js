@@ -61,11 +61,15 @@ export function getPosts({
     });
 }
 
+// Module-level so the default is the same function on every render; the
+// effect below depends on it.
+const defaultFormatPostName = (post) => post.title;
+
 export default function usePosts(
   search,
   selected,
   postType,
-  formatPostName = (post) => post.title,
+  formatPostName = defaultFormatPostName,
 ) {
   const [postsMap, setPostsMap] = useState(new Map());
   const [postsList, setPostsList] = useState([]);
@@ -86,7 +90,7 @@ export default function usePosts(
       setPostsList(results);
       setPostsMap(newPostsMap);
     });
-  }, [search, selected, postType]);
+  }, [search, selected, postType, formatPostName]);
 
   return {postsMap, postsList};
 }

@@ -27,29 +27,45 @@
 
 @if (!empty($product_tabs))
   @blocks
-    <!-- wp:gds/accordion {"className": "woocommerce-tabs"} -->
-    @foreach ($product_tabs as $key => $product_tab)
-      @php
-        $label = wp_kses_post(
-            apply_filters(
-                'woocommerce_product_' . $key . '_tab_title',
-                $product_tab['title'],
-                $key
-            )
-        );
-      @endphp
-
-      <!-- wp:gds/accordion-item {"label":"{{ esc_attr($label) }}"} -->
-      @if (isset($product_tab['callback']))
+    <!-- wp:accordion {"className":"woocommerce-tabs"} -->
+    <div role="group" class="wp-block-accordion woocommerce-tabs">
+      @foreach ($product_tabs as $key => $product_tab)
         @php
-          call_user_func($product_tab['callback'], $key, $product_tab);
+          $label = wp_kses_post(
+              apply_filters(
+                  'woocommerce_product_' . $key . '_tab_title',
+                  $product_tab['title'],
+                  $key,
+              ),
+          );
         @endphp
-      @endif
 
-      <!-- /wp:gds/accordion-item -->
-    @endforeach
-
-    <!-- /wp:gds/accordion -->
+        <!-- wp:accordion-item -->
+        <div class="wp-block-accordion-item">
+          <!-- wp:accordion-heading {"level":3} -->
+          <h3 class="wp-block-accordion-heading">
+            <button type="button" class="wp-block-accordion-heading__toggle">
+              <span
+                class="wp-block-accordion-heading__toggle-title">{!! $label !!}</span>
+              <span class="wp-block-accordion-heading__toggle-icon"
+                aria-hidden="true">+</span>
+            </button>
+          </h3>
+          <!-- /wp:accordion-heading -->
+          <!-- wp:accordion-panel -->
+          <div role="region" class="wp-block-accordion-panel">
+            @if (isset($product_tab['callback']))
+              @php
+                call_user_func($product_tab['callback'], $key, $product_tab);
+              @endphp
+            @endif
+          </div>
+          <!-- /wp:accordion-panel -->
+        </div>
+        <!-- /wp:accordion-item -->
+      @endforeach
+    </div>
+    <!-- /wp:accordion -->
   @endblocks
 
   @php

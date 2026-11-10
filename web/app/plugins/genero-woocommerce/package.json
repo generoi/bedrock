@@ -1,46 +1,34 @@
 {
   "name": "genero-woocommerce",
   "private": true,
-  "browserslist": [
-    "extends @roots/browserslist-config/wordpress"
-  ],
   "type": "module",
-  "packageManager": "npm@10.8.2",
   "scripts": {
-    "build": "bud build production --no-minimize",
-    "build:production": "bud build production",
-    "start": "bud build development",
-    "test": "node --no-warnings --run lint",
-    "lint": "node --no-warnings --run lint:prettier && node --no-warnings --run lint:js && node --no-warnings --run lint:css",
-    "lint:js": "eslint resources",
-    "lint:css": "stylelint \"resources/**/*.{css,scss,vue}\"",
-    "lint:prettier": "prettier . --check",
-    "lint:fix": "node --no-warnings --run lint:fix:prettier && node --no-warnings --run lint:fix:js && node --no-warnings --run lint:fix:css",
-    "lint:fix:prettier": "prettier . --write --list-different",
-    "lint:fix:js": "node --no-warnings --run lint:js -- --fix",
-    "lint:fix:css": "node --no-warnings --run lint:css -- --fix",
-    "ci:scripts": "eslint resources/scripts --format checkstyle",
-    "ci:styles": "stylelint -f json \"resources/**/*.{vue,css,sass,scss,less}\" 2>&1 | npx stylelint-checkstyle-reporter",
-    "translate": "node --no-warnings --run translate:pot && node --no-warnings --run translate:js",
-    "translate:pot": "wp i18n make-pot . ./resources/lang/sage.pot --ignore-domain --include=\"app,resources\"",
-    "translate:js": "wp i18n make-json ./resources/lang --pretty-print"
+    "build": "wp-scripts build",
+    "build:production": "wp-scripts build",
+    "start": "wp-scripts start",
+    "test": "pnpm run lint",
+    "lint": "pnpm run lint:prettier && pnpm run lint:js && pnpm run lint:css",
+    "lint:js": "wp-scripts lint-js resources --cache",
+    "lint:css": "stylelint 'resources/**/*.{css,scss}' --cache",
+    "lint:prettier": "prettier --check --cache .",
+    "lint:fix": "pnpm run lint:fix:prettier && pnpm run lint:fix:js && pnpm run lint:fix:css",
+    "lint:fix:prettier": "prettier --write --cache .",
+    "lint:fix:js": "wp-scripts lint-js resources --fix --cache",
+    "lint:fix:css": "stylelint 'resources/**/*.{css,scss}' --fix --cache",
+    "ci:scripts": "wp-scripts lint-js resources/scripts --format checkstyle",
+    "ci:styles": "stylelint 'resources/**/*.{css,scss}' -f json 2>&1 | npx stylelint-checkstyle-reporter",
+    "translate": "pnpm run translate:pot && pnpm run translate:js",
+    "translate:pot": "pnpm run wp -- i18n make-pot . ./resources/lang/genero-woocommerce.pot --ignore-domain --include=\"src,resources\"",
+    "translate:js": "pnpm run wp -- i18n make-json ./resources/lang --pretty-print --use-map=build/i18n-map.json",
+    "wp": "../../../../vendor/bin/wp"
   },
   "devDependencies": {
-    "@roots/bud": "^6.23.3",
-    "@roots/bud-eslint": "^6.23.3",
-    "@roots/bud-postcss": "^6.23.3",
-    "@roots/bud-prettier": "^6.23.3",
-    "@roots/bud-sass": "^6.23.3",
-    "@roots/bud-stylelint": "^6.23.3",
-    "@roots/eslint-config": "^6.23.3",
-    "@roots/sage": "^6.23.3",
-    "@shufo/prettier-plugin-blade": "^1.14.1",
+    "@shufo/prettier-plugin-blade": "^1.16.2",
+    "@wordpress/scripts": "~37.0.0",
+    "copy-webpack-plugin": "^14.0.0",
+    "eslint-formatter-checkstyle": "^9.0.1",
     "postcss-inline-svg": "^6.0.0",
-    "postcss-preset-env": "^10.0.2",
-    "stylelint-checkstyle-reporter": "^1.0.0",
-    "stylelint-config-standard-scss": "^13.1.0"
-  },
-  "dependencies": {
-    "@types/wordpress__blocks": "^12.5.14"
+    "stylelint-checkstyle-reporter": "^1.1.1",
+    "stylelint-config-standard-scss": "^17.0.0"
   }
 }

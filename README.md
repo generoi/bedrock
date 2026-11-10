@@ -1,194 +1,174 @@
 # gdsbedrock
 
-_See [roots/bedrock](https://github.com/roots/bedrock#readme) readme for notes about the stack._
+Genero's WordPress starter template: [Bedrock](https://roots.io/bedrock/) with a
+Sage/Acorn block theme (`gds`), Polylang Pro (Finnish and Swedish), WooCommerce
+and Gravity Forms, hosted on Kinsta. The demo runs at
+[gdsbedrock.kinsta.cloud](https://gdsbedrock.kinsta.cloud).
 
-## Requirements
+`gdsbedrock` is the placeholder a new project replaces with its own machine name
+(see [Create a new project](#create-a-new-project)).
 
-- PHP 8.0 - [Installation](https://formulae.brew.sh/formula/php@8.0)
-- Composer - [Installation](https://getcomposer.org/doc/00-intro.md#installation-linux-unix-macos)
-- DDEV - [Installation](https://ddev.readthedocs.io/en/latest/users/install/ddev-installation/)
-- Prettier - [Installation](https://prettier.io/docs/en/editors.html)
-- EditorConfig - [Installation](https://editorconfig.org/#download)
+## Setup
 
-### Authenticate with fontawesome registry
+Needs [DDEV](https://ddev.com), SSH access to the Kinsta site, and the
+FontAwesome Pro npm token in `~/.npmrc` (in the password manager; `.npmrc`
+points `@fortawesome` at its registry). PHP, Composer and Node versions:
+`composer.json` `config.platform.php` (8.5) and `.nvmrc`. If the host PHP is
+older, run Composer inside DDEV (`ddev composer …`).
 
-You will need an authentication token, we have a shared one added to LastPass/1Password.
+```sh
+# Clone into a directory named gdsbedrock: the DDEV project and hostname follow it
+git clone --recursive git@github.com:generoi/bedrock.git gdsbedrock
+cd gdsbedrock
 
-    npm config set "//npm.fontawesome.com/:_authToken" <API-KEY>
+# Composer packages, pnpm install + production build, git hooks, agent setup
+composer install:development
 
-### Suggested extensions for Visual Studio Code
+ddev start
+./vendor/bin/robo db:pull @production
+```
 
-- [EditorConfig for VS Code](https://marketplace.visualstudio.com/items?itemName=EditorConfig.EditorConfig)
-- [Prettier - Code formatter](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode)
-- [PHP Intelephense](https://marketplace.visualstudio.com/items?itemName=bmewburn.vscode-intelephense-client)
-- [PHP Debug](https://marketplace.visualstudio.com/items?itemName=xdebug.php-debug)
-- [laravel-blade](https://marketplace.visualstudio.com/items?itemName=cjhowe7.laravel-blade)
-- [Laravel Pint](https://marketplace.visualstudio.com/items?itemName=open-southeners.laravel-pint)
+Uploads missing locally are redirected to production by DDEV's nginx, so
+`./vendor/bin/robo files:pull @production` is only needed for a full copy.
 
-## Local project development with DDEV
+### Previewing a worktree
 
-_If you are on Windows you should read the latest DDEV documentation and recommendations for getting things running. You'll need to run all composer, npm, robo and dep commands from within the DDEV container. Remember to send your SSH keys to container using `ddev auth ssh`_
+`.ddev/config.yaml` has no `name:`, so each `git worktree` is its own DDEV
+project. [hostshift][] maps the worktree's hostnames to the ones in the
+database; nothing is rewritten. Steps: the `worktree-preview` skill, or
+[hostshift's README][hostshift].
 
-### Setup and run project
+[hostshift]: https://github.com/generoi/hostshift
 
-    # Clone the repository and install the development dependencies.
-    git clone --recursive git@github.com:generoi/bedrock.git gdsbedrock
-    cd gdsbedrock
+## Development
 
-    # Install composer dependencies and development tools (vendor folder)
-    composer install:development
+```sh
+# Build all workspaces, or one (faster); watch mode with `start`
+pnpm run build
+pnpm --filter gds run build
+pnpm --filter gds run start
 
-    # The repo uses `npm` workspaces so you you should run commands from root of
-    # project.
-    npm run install
-    npm run build:production
+# Lint, and fix
+composer lint          # Pint + JS/SCSS/Prettier
+composer lint:fix
+```
 
-    # Start the container
-    ddev start
+The pre-commit hook lints staged files, fixes what it can and blocks the commit
+for you to re-stage.
 
-    # Fetch the remote database
-    ./vendor/bin/robo db:pull @production
+The root `package.json` runs each script in every workspace (`gds`,
+`genero-woocommerce`). Use `--filter <package name>` to target one. Not npm's
+`-w`: pnpm reads it as "the workspace root", so `pnpm run build -w gds` fails.
 
-    # Login as admin
-    ddev wp login create <user>
-    wp @production login create <user>
+```sh
+pnpm --filter gds add clsx
+```
 
-Additional useful tasks
+Other tasks: `./vendor/bin/robo` (database and file sync, search-replace),
+`./vendor/bin/dep` (deploy, caches, SSH, rollback). Remote aliases
+(`@production`, `@staging`) are in [`wp-cli.yml`](wp-cli.yml).
 
-    # Fetch the remote files (we also use a nginx fallback redirect for missing
-    # files)
-    ./vendor/bin/robo files:pull @production
+DDEV services: `ddev mailpit` (outgoing email), `ddev phpmyadmin`,
+`ddev xhgui` (PHP profiler). `ddev describe` lists the URLs.
 
-    # Importing database from a sql dump
-    ddev import-db < dump.sql
+### Caching
 
-    # Create a database dump and import it
-    ./vendor/bin/robo db:export @ddev
-    ./vendor/bin/robo db:import @ddev
+[sage-cachetags](https://github.com/generoi/sage-cachetags) tags every page and
+REST response with what it shows, and purges exactly that when content changes:
+Kinsta on staging and production, and Fastly or Cloudflare as soon as their API
+credentials are in `.env` (see `.env.example` and
+`web/app/themes/gds/config/cachetags.php`). Each deploy resets OPcache and
+flushes every cache layer (`deploy.php` `cache:clear`).
 
-    # Run tests which also prompts attempt to fix lint errors automatically.
-    ./vendor/bin/robo test
+### Email
 
-    # To see all tasks available
-    ./vendor/bin/robo
-    ./vendor/bin/dep
-    ./vendor/bin/wp
+[Postmark](https://postmarkapp.com) delivers email in production only. Everywhere
+else `web/app/mu-plugins/disable-postmarkapp.php` turns it off, so staging and
+DDEV (which run copies of the production database) never email real customers;
+DDEV catches mail in Mailpit.
 
-### NPM
+### AI tools
 
-    # The root `package.json` delegates all scripts with a `--workspaces` flag
-    # so no flags is the same as
-    npm run build:production -ws
-    npm run build:production -w gds
+Content editors can manage pages, translations, forms and SEO from Claude or any
+MCP client through [gds-mcp](https://github.com/generoi/gds-mcp); its README
+covers connecting. Agent instructions for this repo are in [AGENTS.md](AGENTS.md).
+`/llms.txt` and markdown versions of every page come from
+[gds-llms](https://github.com/generoi/gds-llms). On Kinsta, exclude `txt` from
+the CDN as its README says.
 
-    # To install/remove a package you need to explicitly add the flag
-    npm install postcss-preset-env --save-dev -ws
-
-### Deploying with GitHub actions
-
-Go to [GitHub Actions deploy_production.yml](https://github.com/generoi/gdsbedrock/actions/workflows/deploy_production.yml) workflow and trigger a deploy.
-
-You can also trigger the workflows from the command line.
+## Deploying
 
 ```sh
 ./vendor/bin/robo deploy:production
-./vendor/bin/robo deploy:staging --branch=patch-1
-./vendor/bin/robo deploy:staging --log_level='-vvv'
-
-# You can still use `dep` directly like described in the section below
-./vendor/bin/dep cache:clear production
+./vendor/bin/robo deploy:staging --branch=<branch>
 ```
 
-### Deploying from local
-
-See [deployer-genero](https://github.com/generoi/deployer-genero) and run `./vendor/bin/dep` to see all available commands.
-
-```sh
-# Deploy to staging/production
-./vendor/bin/dep deploy staging
-./vendor/bin/dep deploy production
-
-# Clear all caches on production
-./vendor/bin/dep cache:clear production
-# Clear only WP Super Cache cache
-./vendor/bin/dep cache:clear:wpsc production
-
-# Open a shell on production server
-./vendor/bin/dep ssh production
-
-# Rollback a failed deploy
-./vendor/bin/dep rollback production
-```
+Both trigger the GitHub Actions workflows
+([deploy_production.yml](https://github.com/generoi/gdsbedrock/actions/workflows/deploy_production.yml),
+[deploy_staging.yml](https://github.com/generoi/gdsbedrock/actions/workflows/deploy_staging.yml)),
+which run the E2E suite against the deployed site afterwards. `./vendor/bin/dep`
+deploys from your machine; see
+[deployer-genero](https://github.com/generoi/deployer-genero).
 
 ## Testing
 
-### PHPUnit unit tests
-
-Tests require a database so they need to run either in `ddev`, using `wp serve`
-or with a local database available.
-
 ```sh
+# PHPUnit (needs a database: run in DDEV)
 ddev composer phpunit
+
+# Playwright E2E, against $URL (default https://gdsbedrock.ddev.site)
+pnpm run e2e:install
+URL=https://gdsbedrock.ddev.site pnpm run e2e:test
+URL=https://gdsbedrock.ddev.site pnpm run e2e:editor   # local only: uses ddev wp
+
+# Visual regression
+pnpm run e2e:visual:update    # baseline
+pnpm run e2e:visual           # compare
 ```
 
-### Playwright E2E Tests
+- `e2e:test` is the smoke suite the deploy workflows run against staging and
+  production. It sends fake logged-in cookies (`global-setup.js`), so Kinsta
+  serves the new deploy instead of cached HTML.
+- Specs visit the pages listed in `test/e2e/pages.js`. Its comment says what
+  kinds of pages belong there; update it when a site adds a template or layout.
+- Visual screenshots must match exactly. Motion is frozen and media hidden
+  before each capture instead of tolerating a diff.
+- `e2e:editor` is local only: it creates and deletes a throwaway admin and a
+  draft page through WP-CLI (`WP_CLI`, default `ddev wp`), and skips without it.
+- Visual baselines are not committed (`test/e2e/snapshots/` is gitignored): take
+  them on `master` with `e2e:visual:update`, then compare your branch.
+
+## Create a new project
+
+Name the project after the site's domain (`www.my-site.fi` → `my-site`); the
+environments, repository and DDEV hostname all follow it.
 
 ```sh
-# Install dependencies
-npm run e2e:install
-
-# Run against ddev environment
-npm run e2e:test
-
-# Run it against production
-URL=https://gdsbedrock.kinsta.cloudd npm run e2e:test
+composer create-project generoi/bedrock my-site dev-master \
+  --repository='{"type":"vcs","url":"git@github.com:generoi/bedrock.git"}'
 ```
 
-## Create a new project and Git repository
+The `post-create-project-cmd` runs `robo setup`, which replaces the placeholder
+across the repo with the machine name. When it asks for the placeholder, enter
+`gdsbedrock` (its default, `<example-project>`, matches nothing here). A Composer install carries no
+git submodules, so add the agent setup with `/setup-project` (ai-agency) or
+`git submodule add git@github.com:generoi/ai-agency.git .claude/agency` and
+`composer claude:install`.
 
-_NOTE: If possible set the project name and repo name to use the domain name of the website. Example: `www.my-site.fi` => `my-site`. This will help with configuring all the different environments in the future._
+Then:
 
-1. Create a new project in a new folder for your project
-
-   ```sh
-   # Prompt, create and enter directory
-   echo 'Project directory:'; read project; composer create-project --keep-vcs --repository-url="https://packagist.minasithil.genero.fi" generoi/bedrock:dev-master $project; cd $project;
-
-   # Just create
-   composer create-project --keep-vcs --repository-url="https://packagist.minasithil.genero.fi" generoi/bedrock:dev-master <project-dir>
-
-   # If you cloned the repo rather than used `create-project` you'll need to:
-   # 1. You need to first install robo.
-   composer install:development
-   # 2. replace the placeholder names with a project machine name.
-   ./vendor/bin/robo search:replace
-   ```
-
-2. Setup the DDEV container
+1. `ddev start`
+2. Fill in `robo.yml` and `wp-cli.yml` (SSH hosts, ports and paths from
+   MyKinsta), the hostnames in `config/application.php`'s `$trustedHosts`, and
+   staging's `WP_HOME` in `config/environments/staging.php`.
+3. Prepare the remote and push the first copy:
 
    ```sh
-   ddev start
-   ```
-
-3. Setup the staging/production environment
-
-   ```sh
-   # Configure the environment
-   vim wp-cli.yml
-   vim robo.yml
-
-   # Prep the remote environment
    ./vendor/bin/dep setup staging
-
-   # Make a first deployment (this will fail due to there not being any database)
-   ./vendor/bin/dep setup staging
-
-   # Deploy your code, files and database
    ./vendor/bin/robo db:push @staging
    ./vendor/bin/robo files:push @staging
-
-   # Deploy once more with database available
    ./vendor/bin/dep deploy staging
    ```
 
-4. Setup the GitHub actions, E2E tests etc.
+4. Add the repository secrets the workflows use (`KINSTA_DEPLOY_PRIVATE_KEY`,
+   `NPM_FONTAWESOME_AUTH_TOKEN`, `COMPOSER_BOT_PRIVATE_KEY`).

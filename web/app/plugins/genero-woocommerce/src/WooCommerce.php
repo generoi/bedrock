@@ -4,8 +4,6 @@ namespace GeneroWoo\Woocommerce;
 
 use WC_Product;
 use WC_Product_Variable;
-use WP_REST_Request;
-use WP_REST_Response;
 
 class WooCommerce
 {
@@ -26,15 +24,78 @@ class WooCommerce
         add_action('woocommerce_init', [$this, 'removeSingleProductTemplateHooks']);
         add_action('woocommerce_archive_description', [$this, 'printArchiveContent']);
         add_filter('woocommerce_get_price_html', [$this, 'changeVariablePriceDisplay'], 10, 2);
-        add_filter('doing_it_wrong_trigger_error', [$this, 'fixWooCommerceWidgetsEditor'], 10, 4);
         add_filter('woocommerce_enqueue_styles', [$this, 'dequeueStylesheets']);
-        add_filter('woocommerce_admin_get_feature_config', [$this, 'filterFeatures']);
+        add_filter('pre_option_woocommerce_show_marketplace_suggestions', [$this, 'disableMarketplaceSuggestions']);
 
-        // Prevent server-side block rendering on REST edit requests. The block editor
-        // uses content.raw (not content.rendered) for editing; rendering the full
-        // WooCommerce block tree (gallery, single-product, add-to-cart…) was causing
-        // 10+ second REST responses.
-        add_filter('rest_prepare_product', [$this, 'skipRenderedContentInEditContext'], 10, 3);
+        add_action('pre_get_posts', [$this, 'excludeHiddenProducts']);
+
+        add_filter('woocommerce_has_block_template', [$this, 'hasSingleProductTemplate'], 10, 2);
+        add_action('init', [$this, 'editProductsInTemplate'], 20);
+    }
+
+    /**
+     * Product pages render the theme's templates/single-product.html.
+     * WooCommerce only looks for its own registered block templates, which
+     * exist in block themes alone, and otherwise swaps in its PHP template;
+     * tell it the theme has one.
+     */
+    public function hasSingleProductTemplate(bool $hasTemplate, string $templateName): bool
+    {
+        return $templateName === 'single-product' ? true : $hasTemplate;
+    }
+
+    /**
+     * Edit products inside their template, so editors see the whole page and
+     * click into the description. Core hides the "Show template" toggle outside
+     * block themes, but honours the post type's default mode.
+     */
+    public function editProductsInTemplate(): void
+    {
+        add_post_type_support('product', 'editor', ['default-mode' => 'template-locked']);
+    }
+
+    /**
+     * WooCommerce applies catalogue visibility to its own archive and to
+     * product-collection blocks with a stock filter, but not to core/query
+     * loops or the REST and AJAX requests that render listings, so a product
+     * hidden from the catalogue still shows up there. Apply it to every
+     * frontend product query.
+     *
+     * WP-CLI is left alone: importers and audits look products up and have to
+     * see the hidden ones. Other lookups that need hidden products pass
+     * `include_hidden_products`.
+     */
+    public function excludeHiddenProducts(\WP_Query $query): void
+    {
+        if ((defined('WP_CLI') && WP_CLI) || $query->get('include_hidden_products')) {
+            return;
+        }
+
+        if ((is_admin() && ! wp_doing_ajax()) || $query->is_singular() || ! function_exists('wc_get_product_visibility_term_ids')) {
+            return;
+        }
+
+        if (! in_array('product', (array) $query->get('post_type'), true)) {
+            return;
+        }
+
+        $visibilityTermIds = wc_get_product_visibility_term_ids();
+        $excluded = $query->is_search()
+            ? $visibilityTermIds['exclude-from-search']
+            : $visibilityTermIds['exclude-from-catalog'];
+
+        if (! $excluded) {
+            return;
+        }
+
+        $taxQuery = (array) $query->get('tax_query');
+        $taxQuery[] = [
+            'taxonomy' => 'product_visibility',
+            'field' => 'term_taxonomy_id',
+            'terms' => [$excluded],
+            'operator' => 'NOT IN',
+        ];
+        $query->set('tax_query', $taxQuery);
     }
 
     public function setShowInRest(array $objectType): array
@@ -47,32 +108,6 @@ class WooCommerce
     public function useBlockEditor(bool $use, string $postType): bool
     {
         return $postType === 'product' ? true : $use;
-    }
-
-    /**
-     * Apply default block template from config/product-default-blocks.php for new products.
-     *
-     * @see https://developer.wordpress.org/reference/functions/register_post_type/#template
-     */
-    public function registerProductBlockTemplate(array $args, string $postType): array
-    {
-        if ($postType !== 'product') {
-            return $args;
-        }
-
-        $file = dirname(__DIR__).'/config/product-default-blocks.php';
-        if (! is_readable($file)) {
-            return $args;
-        }
-
-        $template = require $file;
-        if (! is_array($template) || $template === []) {
-            return $args;
-        }
-
-        $args['template'] = $template;
-
-        return $args;
     }
 
     public function removeGlobalTemplateHooks(): void
@@ -139,29 +174,6 @@ class WooCommerce
         return $classes;
     }
 
-    /**
-     * @see https://github.com/woocommerce/woocommerce/issues/47831
-     *
-     * WooCommerce Blocks can output `loading="lazy"` and `fetchpriority="high"` on the same img; core
-     * calls `_doing_it_wrong()` (WP 6.3.0). Acorn turns that into a fatal ErrorException — suppress
-     * only that notice, no HTML filters.
-     */
-    public function fixWooCommerceWidgetsEditor(bool $trigger, string $functionName, string $message, string $version = ''): bool
-    {
-        if ($functionName === 'wp_enqueue_script()' && str_contains($message, '"wp-editor"')) {
-            return false;
-        }
-
-        if (
-            $version === '6.3.0'
-            && in_array($functionName, ['wp_get_loading_optimization_attributes', 'wp_img_tag_add_loading_optimization_attrs'], true)
-        ) {
-            return false;
-        }
-
-        return $trigger;
-    }
-
     public function dequeueStylesheets(array $styles): array
     {
         unset($styles['woocommerce-general']);
@@ -197,31 +209,16 @@ class WooCommerce
         wp_dequeue_style('select2');
     }
 
-    public function filterFeatures(array $features): array
-    {
-        // Adds custom fonts to the site
-        unset($features['launch-your-store']);
-
-        return $features;
-    }
-
     /**
-     * Skip expensive server-side block rendering in the REST edit context.
-     *
-     * WordPress populates `content.rendered` by running `do_blocks()` on the raw
-     * post content, which renders the entire WooCommerce block tree (gallery,
-     * single-product, add-to-cart…) on every GET/POST to the editor REST endpoint.
-     * The block editor only uses `content.raw` for editing; clearing `rendered` in
-     * edit context has no effect on the editing experience but avoids the expensive
-     * render pass that was causing 10+ second REST responses.
+     * Turn off WooCommerce's phone-home suggestions. Since WooCommerce 11.1 the
+     * remote inbox notifications, free extension recommendations and payment
+     * gateway suggestions are no longer feature flags; this option is what
+     * stops them fetching specs from woocommerce.com and wordpress.com on admin
+     * page loads and background queue runs. Configured gateways are unaffected.
      */
-    public function skipRenderedContentInEditContext(WP_REST_Response $response, $post, WP_REST_Request $request): WP_REST_Response
+    public function disableMarketplaceSuggestions(): string
     {
-        if ($request->get_param('context') === 'edit' && isset($response->data['content']['rendered'])) {
-            $response->data['content']['rendered'] = '';
-        }
-
-        return $response;
+        return 'no';
     }
 
     /**

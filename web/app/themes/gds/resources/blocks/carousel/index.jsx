@@ -1,7 +1,7 @@
+import './style.scss';
 /** @wordpress */
-import {registerBlockType} from '@wordpress/blocks';
+import {registerBlockType, createBlock} from '@wordpress/blocks';
 import {InnerBlocks} from '@wordpress/block-editor';
-import {createBlock} from '@wordpress/blocks';
 
 import edit from './edit';
 import variations from './variations';

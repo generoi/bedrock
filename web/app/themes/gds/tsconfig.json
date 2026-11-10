@@ -1,6 +1,8 @@
 {
-  "extends": "@roots/bud/config/tsconfig.json",
   "compilerOptions": {
+    "allowJs": true,
+    "noEmit": true,
+    "jsx": "react-jsx",
     "paths": {
       "@scripts/*": ["./resources/scripts/*"],
       "@styles/*": ["./resources/styles/*"],

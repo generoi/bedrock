@@ -2,11 +2,12 @@
   "$schema": "https://schemas.wp.org/trunk/block.json",
   "apiVersion": 3,
   "name": "gds/language-menu",
+  "textdomain": "gds",
   "title": "Language menu",
   "description": "Show the language menu...",
   "category": "widgets",
   "icon": "admin-multisite",
-  "style": "file:./style.css",
+  "style": "file:./style-index.css",
   "supports": {},
   "example": {},
   "editorScript": "file:./index.js"

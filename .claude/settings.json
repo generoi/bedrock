@@ -1,0 +1,75 @@
+{
+  "permissions": {
+    "deny": [
+      "Read(**/.env)",
+      "Read(**/.env*.sw?)",
+      "Read(**/auth.json)",
+      "Bash(robo db:push*)",
+      "Bash(vendor/bin/robo db:push*)",
+      "Bash(./vendor/bin/robo db:push*)",
+      "Bash(robo files:push*)",
+      "Bash(vendor/bin/robo files:push*)",
+      "Bash(./vendor/bin/robo files:push*)",
+      "Bash(dep deploy*)",
+      "Bash(vendor/bin/dep deploy*)",
+      "Bash(./vendor/bin/dep deploy*)",
+      "mcp__kinsta__kinsta_dns_records_update",
+      "mcp__kinsta__kinsta_domains_set-primary",
+      "mcp__kinsta__kinsta_environments_redirects_update",
+      "mcp__kinsta__kinsta_environments_ssh_ip-allowlist"
+    ]
+  },
+  "enableAllProjectMcpServers": true,
+  "hooks": {
+    "PostToolUse": [
+      {
+        "matcher": "Edit|Write",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bash \"$CLAUDE_PROJECT_DIR/.claude/agency/hooks/post-edit-composer.sh\"",
+            "if": "Edit(**/composer.json)|Write(**/composer.json)",
+            "timeout": 60,
+            "statusMessage": "Updating composer.lock..."
+          }
+        ]
+      },
+      {
+        "matcher": "Bash",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bash \"$CLAUDE_PROJECT_DIR/.claude/agency/hooks/post-composer-update.sh\"",
+            "if": "Bash(composer update*)|Bash(composer require*)",
+            "timeout": 10
+          }
+        ]
+      }
+    ],
+    "SessionStart": [
+      {
+        "matcher": "",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "m=; [ -e \"$CLAUDE_PROJECT_DIR/.claude/agency/install.sh\" ] || m=1; git -C \"$CLAUDE_PROJECT_DIR\" submodule update --init --quiet .claude/agency 2>/dev/null; [ -n \"$m\" ] && echo \"Shared rules and skills in .claude/agency were just checked out and load from the next session. Until then read .claude/rules/shared/ and .claude/skills/ directly.\"; true",
+            "timeout": 60
+          }
+        ]
+      }
+    ],
+    "Stop": [
+      {
+        "matcher": "",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bash \"$CLAUDE_PROJECT_DIR/.claude/agency/hooks/stop-build.sh\"",
+            "timeout": 120,
+            "statusMessage": "Building assets..."
+          }
+        ]
+      }
+    ]
+  }
+}

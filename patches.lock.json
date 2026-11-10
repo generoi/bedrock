@@ -1,5 +1,5 @@
 {
-    "_hash": "41260082f8933cc29a0134768a9b312f033a7605f44ce10c127b2bc68668ba6f",
+    "_hash": "4d0a08c0f932d6542ba9da409d3ce94f145e5197347efd5c68766855fb2a8db1",
     "patches": {
         "generoi/advanced-custom-fields-pro": [
             {
@@ -13,12 +13,12 @@
                 }
             }
         ],
-        "aaemnnosttv/wp-cli-login-command": [
+        "wp-plugin/cookiebot": [
             {
-                "package": "aaemnnosttv/wp-cli-login-command",
-                "description": "Add support for url prefix",
-                "url": "https://github.com/aaemnnosttv/wp-cli-login-command/pull/77/commits/c9e74057c7d872a6d7492e0ece850bea15cb1a6f.patch",
-                "sha256": "2fa7df3eb88165ec76e3b07a9acf7a4d8f5ee6511551bdcb61ebfa9a6170c870",
+                "package": "wp-plugin/cookiebot",
+                "description": "Print script tags through the core API so they carry the CSP nonce",
+                "url": "./config/patches/cookiebot-support-csp.patch",
+                "sha256": "6f00162d0466d91a35e84d831427de6914f53373db71830ec8d88a5068a28896",
                 "depth": 1,
                 "extra": {
                     "provenance": "root"

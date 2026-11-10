@@ -1,3 +1,4 @@
+import './style.scss';
 /** @wordpress */
 import {registerBlockType} from '@wordpress/blocks';
 import {InnerBlocks} from '@wordpress/block-editor';

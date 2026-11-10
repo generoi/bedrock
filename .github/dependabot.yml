@@ -1,62 +1,112 @@
+# Aligned with the monthly maintenance pass rather than a weekly drip.
+#
+# `interval: monthly` runs on the 1st of the month. Each ecosystem produces
+# exactly ONE consolidated PR — majors included — which is the same shape as a
+# hand-run `composer update` plus constraint bumps, so the whole month's
+# dependency work is one branch, one CI run, one QA pass.
+#
+# One PR per ecosystem is also the hard ceiling — Dependabot cannot open a PR
+# spanning composer and npm. Worth keeping regardless: a composer break takes
+# the site down, an npm break only fails the build.
+
 # PRs disabled (open-pull-requests-limit: 0): dependency updates happen in the
 # maintenance pass, Dependabot PRs were only noise and CI minutes.
 
 version: 2
-updates:
-  - package-ecosystem: "npm"
-    open-pull-requests-limit: 0
-    directory: "/"
-    schedule:
-      interval: "monthly"
-    registries:
-      - fontawesome
-    groups:
-      npm-security:
-        applies-to: security-updates
-        patterns:
-          - "*"
-      npm:
-        applies-to: version-updates
-        patterns:
-          - "*"
-        update-types:
-          - "major"
-          - "minor"
-          - "patch"
 
-  - package-ecosystem: "composer"
+updates:
+  - package-ecosystem: 'composer'
     open-pull-requests-limit: 0
-    directory: "/"
+    directory: '/'
     schedule:
-      interval: "monthly"
+      interval: 'monthly'
+    labels:
+      - 'dependencies'
+      - 'maintenance'
+    commit-message:
+      prefix: 'chore(deps)'
     groups:
       composer-security:
         applies-to: security-updates
         patterns:
-          - "*"
+          - '*'
       composer:
         applies-to: version-updates
         patterns:
-          - "*"
+          - '*'
         update-types:
-          - "major"
-          - "minor"
-          - "patch"
+          - 'major'
+          - 'minor'
+          - 'patch'
+    # No cooldown: the monthly PR is reviewed and QA'd before merge, and the
+    # nightly vulnerability scan is the fast path for anything urgent.
+    # Mirrors the "Pinned / Blocked Upgrades" section of
+    # .claude/agency/rules/maintenance.md — keep the two in sync.
+    ignore:
+      # >= 10 is blocked by wp-phpunit/wp-phpunit, a read-only mirror of WP
+      # core's test lib; core skipped 10 and is working on 11+.
+      # @see https://core.trac.wordpress.org/ticket/62004
+      - dependency-name: 'phpunit/phpunit'
+        update-types:
+          - 'version-update:semver-major'
+      # Tracks the phpunit major above; bumping it alone breaks the suite.
+      - dependency-name: 'yoast/phpunit-polyfills'
+        update-types:
+          - 'version-update:semver-major'
+      # A wp-cli-bundle major moves the whole CLI surface the robo and deploy
+      # scripts call, so it should be a deliberate, tested upgrade.
+      - dependency-name: 'wp-cli/wp-cli-bundle'
+        update-types:
+          - 'version-update:semver-major'
 
-  - package-ecosystem: "github-actions"
+  # pnpm workspaces: `directory: '/'` covers the root package.json plus the gds
+  # theme and genero-woocommerce through the single root lockfile. Do not add
+  # workspace directories separately — that produces duplicate PRs.
+  - package-ecosystem: 'npm'
     open-pull-requests-limit: 0
-    directory: "/"
+    directory: '/'
     schedule:
-      interval: "monthly"
+      interval: 'monthly'
+    registries:
+      - fontawesome
+    labels:
+      - 'dependencies'
+      - 'maintenance'
+    commit-message:
+      prefix: 'chore(deps)'
+    groups:
+      npm-security:
+        applies-to: security-updates
+        patterns:
+          - '*'
+      npm:
+        applies-to: version-updates
+        patterns:
+          - '*'
+        update-types:
+          - 'major'
+          - 'minor'
+          - 'patch'
+    # Mirrors `minimumReleaseAge` (7 days) in pnpm-workspace.yaml. Dependabot
+    # does not read that setting — without this it proposes versions the
+    # install then refuses. Keep the two in sync.
+    cooldown:
+      default-days: 7
+
+  - package-ecosystem: 'github-actions'
+    open-pull-requests-limit: 0
+    directory: '/'
+    schedule:
+      interval: 'monthly'
+    labels:
+      - 'dependencies'
+    commit-message:
+      prefix: 'chore(deps)'
     groups:
       github-actions:
         applies-to: version-updates
         patterns:
-          - "*"
-        update-types:
-          - "major"
-          - "minor"
-          - "patch"
+          - '*'
 
 registries:
   fontawesome:

@@ -15,7 +15,7 @@
   &.is-layout-grid {
     $gap-count: calc(var(--grid-columns) - 1);
     $total-gap-width: calc(#{$gap-count} * var(--grid-gutter));
-    $min-width: 200px;
+    $min-width: min(var(--group-grid-min-width, 200px), 100%);
     $max-width: calc((100% - #{$total-gap-width}) / var(--grid-columns));
 
     grid-template-columns: repeat(

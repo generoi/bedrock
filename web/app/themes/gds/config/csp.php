@@ -1,8 +1,10 @@
 <?php
 
 use App\Csp\BasicWithoutNonce;
+use App\Csp\Cookiebot;
 use App\Csp\GoogleAds;
 use App\Csp\GoogleTagManagerPreview;
+use App\Csp\LocalEnvironment;
 use App\Csp\SampleContent;
 use App\Csp\Security;
 use App\Csp\WordPress;
@@ -36,6 +38,8 @@ return [
         GoogleAds::class,
         GoogleTagManagerPreview::class,
         WordPress::class,
+        Cookiebot::class,
+        LocalEnvironment::class,
     ],
 
     /**

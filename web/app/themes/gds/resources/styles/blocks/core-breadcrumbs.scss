@@ -1,0 +1,24 @@
+// Matches gds/breadcrumb (the Yoast trail): small, quiet uppercase links.
+.wp-block-breadcrumbs {
+  --block-gutter: var(--block-gutter-s);
+
+  font-size: var(--gds-text-xs-font-size);
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--gds-color-dark-gray);
+
+  li:not(:last-child)::after {
+    margin: 0 var(--gds-spacing-xxs);
+    opacity: 1;
+  }
+
+  a {
+    font-weight: inherit;
+    text-decoration: none;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}

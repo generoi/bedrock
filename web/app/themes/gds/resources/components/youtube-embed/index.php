@@ -6,8 +6,11 @@
 
 namespace components\youtube_embed;
 
+use App\Assets;
+
 add_action('wp_enqueue_scripts', function () {
-    wp_register_style('sage/youtube-embed.css', asset('components/youtube-embed/index.css')->uri(), [], null);
+    $css = Assets::asset('components/youtube-embed/index.css');
+    wp_register_style('sage/youtube-embed.css', $css->uri(), [], $css->version());
 });
 
 /**

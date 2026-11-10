@@ -65,7 +65,7 @@ function BlockEdit(props) {
   const blockProps = useBlockProps({
     className: clsx(`wp-block-gds-post-teaser--${postType}`, {
       [`has-text-align-${textAlign}`]: textAlign,
-      ['has-placeholder']: showPlaceholder,
+      'has-placeholder': showPlaceholder,
     }),
   });
 

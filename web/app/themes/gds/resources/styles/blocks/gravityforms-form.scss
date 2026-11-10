@@ -26,7 +26,7 @@
 
   &_fields {
     display: grid;
-    grid-gap: var(--grid-gutter);
+    gap: var(--grid-gutter);
     width: 100%;
     grid-template-columns: repeat(12, 1fr);
     grid-template-rows: repeat(auto-fill, auto);
@@ -301,7 +301,7 @@
 }
 
 .ginput_container_name {
-  grid-gap: var(--grid-gutter);
+  gap: var(--grid-gutter);
 }
 
 .ginput_container_date {

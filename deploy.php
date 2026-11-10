@@ -8,6 +8,7 @@ import('recipe/wordpress.php');
 import('contrib/cachetool.php');
 import('contrib/rsync.php');
 import('recipe/deploy/rollback.php');
+import('vendor/generoi/deployer-genero/cachetool.php');
 import('vendor/generoi/deployer-genero/common.php');
 import('vendor/generoi/deployer-genero/setup.php');
 import('vendor/generoi/deployer-genero/wordpress.php');
@@ -19,13 +20,11 @@ set('scaffold_machine_name', $robo['machine_name']);
 set('scaffold_env_file', __DIR__.'/.env.example');
 set('theme_dir', $robo['theme_path']);
 set('keep_releases', 5);
-// set('branch', 'woo-base');
-set('what', get('branch'));
 set('default_stage', 'production');
 set('ssh_multiplexing', true);
 
 set('shared_files', ['.env']);
-set('shared_dirs', ['web/app/uploads']);
+set('shared_dirs', ['web/app/uploads', 'storage/logs']);
 set('writable_dirs', ['web/app/cache', ...get('shared_dirs')]);
 set('writable_mode', 'chmod');
 set('writable_use_sudo', false);
@@ -83,9 +82,6 @@ if (! empty($prod = $robo['env']['@production'])) {
         ->set('url', is_array($prod['url']) ? $prod['url'][0] : $prod['url'])
         ->set('deploy_path', dirname($prod['path']))
         ->set('bin/wp', '{{ release_path }}/vendor/bin/wp');
-    // ->set('http_user', 'apache')
-    // ->set('bin/wp', '/usr/local/bin/wp')
-    // ->set('cachetool', '127.0.0.1:11000')
 }
 
 if (! empty($staging = $robo['env']['@staging'])) {
@@ -113,8 +109,8 @@ task('build:composer', function () {
 });
 
 task('build:theme', function () {
-    runLocally('cd {{build_path}} && composer build', ['timeout' => 1000]);
-    runLocally('ls {{build_path}}/{{theme_dir}}/public');
+    runLocally('cd {{build_path}} && composer build', timeout: 1000);
+    runLocally('ls {{build_path}}/{{theme_dir}}/build');
 });
 
 task('build:artifact', function () {
@@ -136,14 +132,27 @@ task('build', [
 /**
  * Cache clearing
  */
+/**
+ * Flush every cache tag, so a CDN in front (Fastly, Cloudflare) is purged
+ * too: Kinsta's clear-all only reaches Kinsta's own caches.
+ */
+task('cache:clear:cachetags', function () {
+    run('cd {{deploy_path}}/current/web && {{bin/wp}} acorn cachetags:flush');
+});
+
+/**
+ * OPcache first: Kinsta never resets it, and caches each release under its own
+ * releases/NNN path, so a few deploys fill it and requests compile most of the
+ * code themselves (suomentyokalu c67a00b8). The object cache holds whatever the
+ * previous release wrote, so it is flushed with the rest.
+ */
 desc('Clear caches');
 task('cache:clear', [
+    'cache:clear:opcache',
     'cache:clear:kinsta',
-    'cache:clear:wp:wpsc',
-    // 'cachetool:clear:opcache',
+    'cache:clear:cachetags',
     'cache:clear:wp:objectcache',
     'cache:clear:wp:acorn',
-    // 'cache:wp:acorn',
 ]);
 
 task('deploy:update_code', function () {
@@ -160,6 +169,5 @@ task('deploy', [
 ]);
 
 after('deploy:failed', 'deploy:unlock');
-// Clear the cache @todo setup
 after('deploy:symlink', 'cache:clear');
 after('rollback', 'cache:clear');

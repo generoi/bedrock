@@ -2,9 +2,10 @@
 
 namespace blocks\share;
 
+use App\Assets;
 use WP_Block;
 
-register_block_type(asset('blocks/share/block.json')->path(), [
+register_block_type(Assets::asset('blocks/share/block.json')->path(), [
     'render_callback' => function (array $attributes, string $content, WP_Block $block) {
         $attributes = (object) $attributes;
 

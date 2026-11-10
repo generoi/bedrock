@@ -32,7 +32,7 @@
   "repositories": [
     {
       "type": "composer",
-      "url": "https://wpackagist.org"
+      "url": "https://repo.wp-packages.org"
     },
     {
       "type": "composer",
@@ -40,78 +40,87 @@
     }
   ],
   "require": {
-    "php": ">=8.0",
-    "composer/installers": ">=2.0",
-    "koodimonni/composer-dropin-installer": ">=1.4",
-    "cweagans/composer-patches": ">=1.7",
-    "vlucas/phpdotenv": ">=5.3.0",
-    "roots/wordpress": ">=6.0",
-    "oscarotero/env": ">=2.1.0",
-    "roots/wp-config": ">=1.0",
-    "jjgrainger/posttypes": ">=2.0",
-    "roots/bedrock-autoloader": ">=1.0",
-    "kinsta/kinsta-mu-plugins": ">=3.0",
-    "inpsyde/wp-translation-downloader": ">=2.3",
-    "consolidation/robo": ">=5.0",
-    "generoi/robo-genero": ">=0.5",
-    "wp-cli/wp-cli-bundle": ">=2.9",
-    "aaemnnosttv/wp-cli-login-command": ">=1.5",
-    "wpackagist-plugin/show-environment-in-admin-bar": ">=1.1",
-    "roots/acorn": ">=5.0",
-    "log1x/navi": ">=3.0",
-    "log1x/sage-svg": ">=2.0",
-    "stoutlogic/acf-builder": ">=1.12",
-    "spatie/laravel-google-fonts": ">=1.2",
-    "generoi/sage-woocommerce": "^1.1.4",
-    "wpackagist-plugin/safe-svg": ">=2.1",
-    "wpackagist-plugin/limit-login-attempts-reloaded": ">=2.6.1",
-    "wpackagist-plugin/wp-sanitize-file-name-plus": ">=1.0",
-    "generoi/advanced-custom-fields-pro": ">=6.0",
-    "generoi/gravityforms": ">=2.4",
-    "generoi/polylang-pro": ">=3.3",
-    "wpackagist-plugin/wordpress-seo": ">=25.0",
-    "wpackagist-plugin/google-tag-manager": ">=1.0",
-    "wpackagist-plugin/woocommerce": ">=9.1",
-    "generoi/genero-cmp": ">=2.0",
-    "generoi/wp-image-resizer": ">=1.0",
-    "spatie/laravel-csp": ">=3.10",
-    "generoi/sage-cachetags": ">=1.2",
-    "generoi/gds-block-animations": "dev-master",
-    "generoi/gds-assistant": "^0.1.15",
-    "wpackagist-plugin/theme-translation-for-polylang": "^3.4",
-    "wordpress/mcp-adapter": "^0.5.0",
-    "wpackagist-plugin/duplicate-page": "^4.5",
-    "generoi/gds-mcp": "dev-master",
-    "wpackagist-plugin/redirection": "^5.8",
-    "generoi/wp-gutenberg-shy": "^0.2.1"
+    "php": ">=8.5",
+    "composer/installers": "^2.3",
+    "consolidation/robo": "^5.1",
+    "cweagans/composer-patches": "^2.0",
+    "generoi/advanced-custom-fields-pro": "^6.8",
+    "generoi/gds-assistant": "^0.5",
+    "generoi/gds-llms": "^0.4.5",
+    "generoi/gds-mcp": "^0.8.3",
+    "generoi/gds-security-hardening": "^2.4",
+    "generoi/gravityforms": "^3.2",
+    "generoi/polylang-pro": "^3.9",
+    "generoi/robo-genero": "^0.5.3",
+    "generoi/sage-cachetags": "^3.0.1",
+    "generoi/sage-woocommerce": "^1.1.7",
+    "generoi/wp-gutenberg-shy": "^0.2.1",
+    "generoi/wp-image-resizer": "^1.5.2",
+    "inpsyde/wp-translation-downloader": "^2.6",
+    "kinsta/kinsta-mu-plugins": "^3.7",
+    "koodimonni/composer-dropin-installer": "^1.4",
+    "log1x/navi": "^3.1",
+    "log1x/sage-svg": "^2.0",
+    "oscarotero/env": "^2.1",
+    "roots/acorn": "^6.3",
+    "roots/bedrock-autoloader": "^1.1",
+    "roots/wordpress": "^7.1",
+    "roots/wp-config": "^1.0",
+    "spatie/laravel-csp": "^3.31",
+    "spatie/laravel-google-fonts": "^1.7",
+    "symfony/var-exporter": "^8.1",
+    "vlucas/phpdotenv": "^5.6",
+    "wordpress/mcp-adapter": "^0.7.1",
+    "wp-cli/wp-cli-bundle": "^2.11",
+    "wp-plugin/cookiebot": "^4.7",
+    "wp-plugin/limit-login-attempts-reloaded": "^3.4",
+    "wp-plugin/postmark-approved-wordpress-plugin": "^1.19",
+    "wp-plugin/safe-redirect-manager": "^2.2",
+    "wp-plugin/safe-svg": "^2.5",
+    "wp-plugin/show-environment-in-admin-bar": "^1.2",
+    "wp-plugin/theme-translation-for-polylang": "^3.4",
+    "wp-plugin/user-switching": "^1.9",
+    "wp-plugin/woocommerce": "^11.2",
+    "wp-plugin/wordpress-seo": "^28.8",
+    "wp-plugin/wp-sanitize-file-name-plus": "^1.0"
   },
   "require-dev": {
-    "brainmaestro/composer-git-hooks": ">=3.0.0",
-    "deployer/deployer": ">=7.0",
-    "generoi/deployer-genero": ">=0.3",
-    "staabm/annotate-pull-request-from-checkstyle": ">=1.5",
-    "laravel/pint": ">=1.17",
-    "wp-phpunit/wp-phpunit": ">=6.6",
-    "phpunit/phpunit": ">=9.0 <10",
-    "yoast/phpunit-polyfills": ">=3.0"
+    "brainmaestro/composer-git-hooks": "^3.0",
+    "deployer/deployer": "^8.0",
+    "generoi/deployer-genero": "^0.4.5",
+    "laravel/pint": "^1.32",
+    "makers99/wp-cli-db-export-clean": "^1.0",
+    "phpunit/phpunit": "^9.6",
+    "staabm/annotate-pull-request-from-checkstyle": "^1.8",
+    "wp-phpunit/wp-phpunit": "^7.1",
+    "yoast/phpunit-polyfills": "^4.0"
   },
   "config": {
     "optimize-autoloader": true,
     "preferred-install": "dist",
     "dropin-installer": "copy",
     "platform": {
-      "php": "8.3.9"
+      "php": "8.5.0"
     },
     "process-timeout": 0,
     "theme-dir": "web/app/themes/gds",
     "allow-plugins": {
+      "automattic/jetpack-autoloader": true,
       "composer/installers": true,
       "roots/wordpress-core-installer": true,
       "inpsyde/wp-translation-downloader": true,
       "cweagans/composer-patches": true,
       "koodimonni/composer-dropin-installer": true
     },
-    "prepend-autoloader": false
+    "prepend-autoloader": false,
+    "sort-packages": true,
+    "audit": {
+      "ignore": {
+        "WPSECADV/WF/112ed4f2-fe91-4d83-a3f7-eaf889870af4/wordpress": "WP core unfixed — CVE-2022-3590 SSRF, no patched release.",
+        "WPSECADV/WF/9fda5e15-fdf9-4b67-93d3-2dbfa94aefe9/wordpress": "WP core unfixed — paired SSRF/disclosure advisory, no patched release.",
+        "WPSECADV/WF/ee5af42d-71d8-4e65-bd74-55456480da8b/wp-image-resizer": "False positive — wpsecadv 2013 advisory targets a different unrelated WordPress.org plugin that happens to share the slug 'wp-image-resizer'. Our generoi/wp-image-resizer is unrelated."
+      }
+    }
   },
   "prefer-stable": true,
   "autoload": {
@@ -122,21 +131,18 @@
   },
   "extra": {
     "dropin-paths": {
-      "web/app/mu-plugins": [
-        "package:aaemnnosttv/wp-cli-login-command:plugin/wp-cli-login-server.php"
-      ],
       "web/": [
         "package:generoi/genero-status:genero-status.php"
       ]
     },
     "hooks": {
-      "pre-commit": "composer lint:fix",
+      "pre-commit": "bash .claude/agency/hooks/pre-commit-lint.sh",
       "post-merge": "composer install:development"
     },
     "installer-paths": {
       "web/app/mu-plugins/{$name}/": [
         "type:wordpress-muplugin",
-        "wpackagist-plugin/show-environment-in-admin-bar"
+        "wp-plugin/show-environment-in-admin-bar"
       ],
       "web/app/plugins/{$name}/": [
         "type:wordpress-plugin"
@@ -151,20 +157,25 @@
         "fi",
         "sv_SE"
       ],
+      "api": {
+        "names": {
+          "generoi/gravityforms": "https://packages.translationspress.com/rocketgenius/gravityforms/packages.json"
+        }
+      },
       "excludes": [
-        "generoi/*",
-        "jameelmoses/*",
-        "wpackagist-plugin/safe-svg",
-        "wpackagist-plugin/limit-login-attempts-reloaded",
-        "wpackagist-plugin/wp-sanitize-file-name-plus",
-        "wpackagist-plugin/google-tag-manager",
-        "wpackagist-plugin/redirection",
-        "wpackagist-plugin/show-environment-in-admin-bar",
-        "wpackagist-plugin/regenerate-thumbnails",
-        "wpackagist-plugin/debug-bar",
-        "wpackagist-plugin/debug-bar-remote-requests",
-        "wpackagist-plugin/query-monitor",
-        "wpackagist-plugin/user-switching"
+        "generoi/advanced-custom-fields-pro",
+        "generoi/gds-assistant",
+        "generoi/gds-llms",
+        "generoi/gds-mcp",
+        "generoi/gds-security-hardening",
+        "generoi/polylang-pro",
+        "generoi/wp-gutenberg-shy",
+        "generoi/wp-image-resizer",
+        "wp-plugin/limit-login-attempts-reloaded",
+        "wp-plugin/safe-svg",
+        "wp-plugin/show-environment-in-admin-bar",
+        "wp-plugin/user-switching",
+        "wp-plugin/wp-sanitize-file-name-plus"
       ],
       "languageRootDir": "web/app/languages"
     },
@@ -172,8 +183,8 @@
       "generoi/advanced-custom-fields-pro": {
         "Fix get_block_wrapper_attributes not working with ACF preview": "./config/patches/acf-get_block_wrapper_attributes.patch"
       },
-      "aaemnnosttv/wp-cli-login-command": {
-        "Add support for url prefix": "https://github.com/aaemnnosttv/wp-cli-login-command/pull/77/commits/c9e74057c7d872a6d7492e0ece850bea15cb1a6f.patch"
+      "wp-plugin/cookiebot": {
+        "Print script tags through the core API so they carry the CSP nonce": "./config/patches/cookiebot-support-csp.patch"
       }
     }
   },
@@ -187,28 +198,34 @@
     "phpunit": "phpunit",
     "lint": [
       "pint --test",
-      "npm run lint"
+      "pnpm run lint"
     ],
     "lint:fix": [
       "pint --quiet",
-      "npm run lint:fix",
+      "pnpm run lint:fix",
       "pint --quiet web/app/plugins/genero-woocommerce/src/"
     ],
     "ci": [
       "@composer validate --no-check-all",
       "env -u AI_AGENT -u CLAUDECODE pint --format=checkstyle | vendor/bin/cs2pr",
-      "npm run ci:scripts --silent | while read xml; do echo $xml | ./vendor/bin/cs2pr; done",
-      "npm run ci:styles --silent | while read xml; do echo $xml | ./vendor/bin/cs2pr; done"
+      "pnpm run --silent ci:scripts | while read xml; do echo $xml | ./vendor/bin/cs2pr; done",
+      "pnpm run --silent ci:styles | while read xml; do echo $xml | ./vendor/bin/cs2pr; done"
     ],
     "build": [
-      "npm install",
-      "npm run lint",
-      "npm run build:production"
+      "pnpm install",
+      "pnpm run lint",
+      "pnpm run build:production"
     ],
+    "claude:install": "[ -f .claude/agency/install.sh ] && bash .claude/agency/install.sh || true",
     "install:development": [
       "@composer install",
       "@composer build",
-      "vendor/bin/cghooks update"
+      "vendor/bin/cghooks update",
+      "@composer claude:install"
+    ],
+    "db:export-clean": [
+      "ddev wp db export-clean .github/fixtures/sanitized-db.sql --remove-keys",
+      "gzip -kf .github/fixtures/sanitized-db.sql"
     ],
     "post-autoload-dump": [
       "Roots\\Acorn\\ComposerScripts::postAutoloadDump"

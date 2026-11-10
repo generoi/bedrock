@@ -8,6 +8,9 @@ web/app/plugins/*
 !web/app/plugins/genero-woocommerce
 !web/app/plugins/.gitkeep
 web/app/mu-plugins/*/
+# The site's own mu-plugins are gds-*; Composer installs the rest.
+!web/app/mu-plugins/gds-*/
+web/app/mu-plugins/gds-security-hardening/
 web/app/languages/*
 web/app/upgrade
 web/app/uploads/*
@@ -15,7 +18,6 @@ web/app/cache/*
 !web/app/uploads/.gitkeep
 web/app/advanced-cache.php
 web/genero-status.php
-web/app/mu-plugins/wp-cli-login-server.php
 wp-translation-downloader.lock
 
 # WordPress
@@ -29,12 +31,17 @@ web/wp
 .env.*
 !.env.example
 
+# Logs (ACORN_LOG_PATH)
+/storage/logs/
+
 # Composer
 /vendor
 auth.json
 
 # Node Package Manager
 node_modules
+.eslintcache
+.stylelintcache
 npm-debug.log
 yarn-error.log
 
@@ -50,6 +57,7 @@ log
 
 # Sensitive files
 *.sql
+*.sql.gz
 
 # Local configuration
 local.config.yml
@@ -57,11 +65,26 @@ local.config.yml
 # WP-CLI
 wp-cli.local.yml
 
+# Claude Code
+.claude/settings.local.json
+.claude/worktrees/
+.playwright-mcp/
+
+# hostshift's README has you write this uploads mount per worktree, and it
+# hardcodes a sibling path valid on one machine. Everything the add-on itself
+# installs it ignores in .git/info/exclude, which covers every checkout.
+.ddev/docker-compose.uploads.yaml
+
 # Unit tests
 .phpunit.cache
 .phpunit.result.cache
 screenshot.jpg
 test-results
 
+# Playwright: visual baselines are generated locally (e2e:visual:update), and
+# the cache-bypass cookie jar is written by test/e2e/global-setup.js.
+test/e2e/snapshots/
+state.json
+
 # Theme
-web/app/themes/*/public
+web/app/themes/*/build

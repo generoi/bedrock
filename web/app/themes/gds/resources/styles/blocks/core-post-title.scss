@@ -1,0 +1,25 @@
+.wp-block-post-title.is-style-underline {
+  position: relative;
+  padding-bottom: var(--gds-spacing-m);
+
+  &::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100px;
+    height: 2px;
+    border-radius: 1px;
+    background-color: var(--gds-color-primary);
+  }
+
+  &.has-text-align-center::after {
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  &.has-text-align-right::after {
+    left: auto;
+    right: 0;
+  }
+}

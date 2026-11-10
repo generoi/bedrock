@@ -51,6 +51,7 @@ command:
       options:
         dirs:
           - .ddev
+          - .devcontainer
           - .github
           - config
           - test/
@@ -58,7 +59,7 @@ command:
           - web/app/mu-plugins
         exclude:
           - robo.yml
-          - public
+          - build
   db:
     options:
       exclude_tables:

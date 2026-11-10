@@ -38,7 +38,7 @@ function BlockEditContainer({attributes, setAttributes, clientId, isSelected}) {
   const ref = useRef();
   const {getBlocks} = useSelect(blockEditorStore);
   const {replaceInnerBlocks, insertBlock} = useDispatch(blockEditorStore);
-  let innerBlocks = getBlocks(clientId);
+  const innerBlocks = getBlocks(clientId);
 
   useEffect(() => {
     ref?.current?.render?.();
@@ -109,6 +109,10 @@ function BlockEditContainer({attributes, setAttributes, clientId, isSelected}) {
     </>
   );
 
+  const isParentOfSelectedBlock = useSelect(
+    (select) => select(blockEditorStore).hasSelectedInnerBlock(clientId, true),
+    [clientId],
+  );
   const blockProps = useBlockProps({});
   const innerBlockProps = useInnerBlocksProps(
     {},
@@ -117,10 +121,6 @@ function BlockEditContainer({attributes, setAttributes, clientId, isSelected}) {
       template: TEMPLATE,
       allowedBlocks: ALLOWED_BLOCKS,
       renderAppender: () => {
-        const isParentOfSelectedBlock = useSelect((select) =>
-          select('core/block-editor').hasSelectedInnerBlock(clientId, true),
-        );
-
         return (
           <>
             {(isSelected || isParentOfSelectedBlock) && (

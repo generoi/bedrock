@@ -3,6 +3,7 @@
 namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
+use WP_Block_Type_Registry;
 
 class PerformanceServiceProvider extends ServiceProvider
 {
@@ -14,89 +15,101 @@ class PerformanceServiceProvider extends ServiceProvider
     public function register()
     {
         /**
+         * Each block's stylesheet loads only on pages that render the block.
+         *
          * @see https://make.wordpress.org/core/2021/07/01/block-styles-loading-enhancements-in-wordpress-5-8/
          */
-        add_filter('should_load_separate_core_block_assets', '__return_false');
-        // add_action('wp_enqueue_scripts', [$this, 'earlyEnqeueueBlockStyles'], 9);
+        add_filter('should_load_separate_core_block_assets', '__return_true');
+        // Run AFTER BlockServiceProvider::enqueueBlockStyles (priority 10)
+        // so the theme's `sage/block/{collection-name}` handles are
+        // registered by the time we try to enqueue them.
+        add_action('wp_enqueue_scripts', [$this, 'earlyEnqeueueBlockStyles'], 11);
 
-        add_action('wp_enqueue_scripts', [$this, 'replaceWithModernJquery']);
-        add_action('wp_enqueue_scripts', [$this, 'maybeRemoveJquery'], 100);
         add_action('wp_print_styles', [$this, 'dequeueAssets'], 100);
         add_filter('styles_inline_size_limit', fn () => 60_000);
     }
 
     /**
-     * Always enqueue stylesheets for the following blocks in the <head>
+     * Always enqueue stylesheets for the following blocks in the <head>, so
+     * what is above the fold doesn't wait for core to hoist the styles it
+     * enqueued while rendering the body.
      */
     public function earlyEnqeueueBlockStyles(): void
     {
-        render_block(['blockName' => 'core/heading']);
-        render_block(['blockName' => 'core/paragraph']);
+        self::enqueueBlockStyles('core/heading');
+        self::enqueueBlockStyles('core/paragraph');
 
         if (function_exists('is_woocommerce')) {
             wp_enqueue_style('sage/block/woocommerce-store-notices');
 
             if (is_shop() || is_product_taxonomy()) {
-                render_block(['blockName' => 'woocommerce/product-collection', 'attrs' => []]);
-                render_block(['blockName' => 'woocommerce/product-template', 'attrs' => []]);
+                self::enqueueBlockStyles('woocommerce/product-collection');
+                self::enqueueBlockStyles('woocommerce/product-template');
             }
 
             if (is_singular('product')) {
-                render_block(['blockName' => 'core/columns', 'attrs' => []]);
-                render_block(['blockName' => 'core/column', 'attrs' => []]);
-                render_block(['blockName' => 'woocommerce/product-price', 'attrs' => []]);
-                render_block(['blockName' => 'core/post-title', 'attrs' => []]);
-                render_block(['blockName' => 'core/post-excerpt', 'attrs' => []]);
-                // Default product template uses WooCommerce gallery, not gds/gallery-carousel;
-                // rendering that block here ran full carousel logic on every product page load.
+                self::enqueueBlockStyles('core/columns');
+                self::enqueueBlockStyles('core/column');
+                self::enqueueBlockStyles('woocommerce/product-price');
+                self::enqueueBlockStyles('core/post-title');
+                self::enqueueBlockStyles('core/post-excerpt');
                 if (($post = get_post()) && $post->post_content && has_block('gds/gallery-carousel', $post)) {
-                    render_block(['blockName' => 'gds/gallery-carousel', 'attrs' => []]);
+                    self::enqueueBlockStyles('gds/gallery-carousel');
                 }
             }
         }
 
-        // Enqueue styles from the first block on singular posts. Skip `product`: the first block is
-        // almost always `genero-woocommerce/woo-product` (full single-product tree). Rendering it
-        // here duplicates the entire layout during wp_enqueue_scripts and can exhaust memory (1G+).
-        // Product pages already trigger the WooCommerce block renders above.
-        if (is_singular() && ! is_singular('product') && ($post = get_post())) {
+        // Enqueue the styles of the first block's tree on singular posts.
+        if (is_singular() && ($post = get_post())) {
             if ($blocks = parse_blocks($post->post_content)) {
                 $firstName = $blocks[0]['blockName'] ?? '';
                 if (! in_array($firstName, ['gravityforms/form', 'woocommerce/store-notices'], true)) {
-                    render_block($blocks[0]);
+                    self::enqueueBlockTreeStyles($blocks[0]);
                 }
             }
-        }
-    }
-
-    public function maybeRemoveJquery(): void
-    {
-        $doRemovejQuery = collect([
-            // Has gravityform
-            wp_script_is('gform_gravityforms', 'enqueued'),
-            // Sees administration bar
-            is_admin() || current_user_can('edit_posts'),
-            // WooCommerce pages
-            function_exists('is_woocommerce') && (is_woocommerce() || is_checkout() || is_cart()),
-        ])->filter()->isEmpty();
-
-        if ($doRemovejQuery) {
-            wp_deregister_script('jquery');
         }
     }
 
     /**
-     * Replace core jQuery with theme's jQuery.
+     * Enqueue every frontend stylesheet declared by a block type. Reads
+     * `style_handles` + `view_style_handles` from the registry — both
+     * core block stylesheets (registered via block.json) and the theme's
+     * `sage/block/...` overrides land there, since BlockServiceProvider
+     * mirrors its handles into the registry after `wp_enqueue_block_style`.
      */
-    public function replaceWithModernJquery(): void
+    private static function enqueueBlockStyles(string $blockName): void
     {
-        wp_deregister_script('jquery');
-        wp_deregister_script('jquery-core');
-        wp_deregister_script('jquery-migrate');
-        // jQuery must not use `defer`: wp-util and WooCommerce (e.g. add-to-cart-variation) load in
-        // the same batch; deferred jQuery runs after non-deferred deps → "jQuery is not defined",
-        // then wp.template (from wp-util) never attaches.
-        wp_register_script('jquery', asset('jquery.min.js')->uri(), [], null, ['in_footer' => true]);
+        $type = WP_Block_Type_Registry::get_instance()->get_registered($blockName);
+        if (! $type) {
+            return;
+        }
+        $handles = array_merge(
+            (array) ($type->style_handles ?? []),
+            (array) ($type->view_style_handles ?? []),
+        );
+        foreach ($handles as $handle) {
+            if (is_string($handle) && $handle !== '') {
+                wp_enqueue_style($handle);
+            }
+        }
+    }
+
+    /**
+     * Recursively enqueue stylesheets for a parsed block and every nested
+     * inner block, without rendering it.
+     *
+     * @param  array<string, mixed>  $block
+     */
+    private static function enqueueBlockTreeStyles(array $block): void
+    {
+        if (! empty($block['blockName'])) {
+            self::enqueueBlockStyles((string) $block['blockName']);
+        }
+        foreach ((array) ($block['innerBlocks'] ?? []) as $inner) {
+            if (is_array($inner)) {
+                self::enqueueBlockTreeStyles($inner);
+            }
+        }
     }
 
     public function dequeueAssets(): void

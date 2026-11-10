@@ -2,10 +2,11 @@
 
 namespace blocks\post_teaser;
 
+use App\Assets;
 use Illuminate\Support\Facades\View;
 use WP_Block;
 
-register_block_type(asset('blocks/post-teaser/block.json')->path(), [
+register_block_type(Assets::asset('blocks/post-teaser/block.json')->path(), [
     'render_callback' => function (array $attributes, string $content, WP_Block $block) {
         $attributes = (object) $attributes;
 

@@ -17,6 +17,8 @@ class ThemeServiceProvider extends AggregateServiceProvider
         SageServiceProvider::class,
         PerformanceServiceProvider::class,
         AsyncLoaderServiceProvider::class,
+        BlockFiltersServiceProvider::class,
+        TemplateServiceProvider::class,
         CspServiceProvider::class,
         CacheControlServiceProvider::class,
         ContentSecurityPolicyServiceProvider::class,

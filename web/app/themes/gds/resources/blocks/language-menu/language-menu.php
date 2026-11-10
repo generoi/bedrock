@@ -2,6 +2,7 @@
 
 namespace blocks\language_menu;
 
+use App\Assets;
 use WP_Block;
 
 $blockName = str_replace('_', '-', substr(strrchr(__NAMESPACE__, '\\'), 1));
@@ -17,7 +18,7 @@ function languages(): array
         ->all();
 }
 
-register_block_type(asset("blocks/$blockName/block.json")->path(), [
+register_block_type(Assets::asset("blocks/$blockName/block.json")->path(), [
     'render_callback' => function (array $attributes, string $content, WP_Block $block) use ($blockName) {
         if (! function_exists('pll_the_languages')) {
             return '';

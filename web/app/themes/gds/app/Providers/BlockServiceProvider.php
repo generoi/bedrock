@@ -2,13 +2,12 @@
 
 namespace App\Providers;
 
+use App\Assets;
 use Illuminate\Support\ServiceProvider;
-use Roots\Acorn\Assets\Contracts\Asset;
 use Symfony\Component\Finder\Finder;
 use WP_Block_Supports;
 use WP_Block_Type;
-
-use function Roots\asset;
+use WP_Block_Type_Registry;
 
 class BlockServiceProvider extends ServiceProvider
 {
@@ -22,13 +21,11 @@ class BlockServiceProvider extends ServiceProvider
     public function register()
     {
         add_action('init', [$this, 'registerBlocks']);
+        add_action('init', [$this, 'registerBlockStyles']);
         add_action('init', [$this, 'registerBlockSupports']);
         add_action('wp_enqueue_scripts', [$this, 'enqueueBlockStyles'], 10, 0);
         add_action('enqueue_block_editor_assets', [$this, 'enqueueBlockStyles'], 10, 0);
         add_filter('theme_file_uri', [$this, 'filterBlockAssetUri'], 10, 2);
-
-        $this->attachBladeDirective();
-        $this->addViewNamespace();
     }
 
     public function registerBlocks(?string $blocksDir = null)
@@ -99,7 +96,29 @@ class BlockServiceProvider extends ServiceProvider
      *
      * @return void
      */
-    public function boot() {}
+    public function boot()
+    {
+        // Resolve the view service during boot, not register — the `view`
+        // binding is not available until all providers have registered.
+        $this->attachBladeDirective();
+        $this->addViewNamespace();
+    }
+
+    public function registerBlockStyles(): void
+    {
+        register_block_style('core/list', [
+            'name' => 'spacious',
+            'label' => __('Spacious', 'gds'),
+        ]);
+        register_block_style('core/columns', [
+            'name' => 'media-text',
+            'label' => __('Media & Text', 'gds'),
+        ]);
+        register_block_style('core/post-title', [
+            'name' => 'underline',
+            'label' => __('Underline', 'gds'),
+        ]);
+    }
 
     public function registerBlockSupports(): void
     {
@@ -152,30 +171,47 @@ class BlockServiceProvider extends ServiceProvider
     public function enqueueBlockStyles(?string $manifestPath = null, ?string $manifest = null, ?string $namespace = 'sage'): void
     {
         // @see https://make.wordpress.org/core/2021/12/15/using-multiple-stylesheets-per-block/
-        $manifestPath = $manifestPath ?? config('assets.manifests.theme.assets');
+        $manifestPath = $manifestPath ?? get_parent_theme_file_path('build/manifest.json');
+
+        if (! file_exists($manifestPath)) {
+            return;
+        }
 
         collect(json_decode(file_get_contents($manifestPath), true))
             ->keys()
-            ->filter(fn ($file) => str_starts_with($file, 'styles/blocks/'))
+            ->filter(fn ($file) => str_starts_with($file, 'block-styles/'))
             ->filter(fn ($file) => str_ends_with($file, '.css'))
-            ->map(fn ($file) => asset($file, $manifest))
-            ->each(function (Asset $asset) use ($namespace) {
+            ->map(fn ($file) => Assets::asset($file, $manifest))
+            ->each(function (object $asset) use ($namespace) {
                 $filename = pathinfo(basename($asset->path()), PATHINFO_FILENAME);
                 // In case a block collection uses dashes, you can use -- to
                 // separate the collection and the block name.
                 [$collection, $blockName] = explode(str_contains($filename, '--') ? '--' : '-', $filename, 2);
                 $blockName = strtok($blockName, '.');
                 $handle = "$namespace/block/$filename";
+                $version = $asset->version();
 
                 // Register the handles early so we can enqueue them even without the block
-                wp_register_style($handle, $asset->uri());
+                wp_register_style($handle, $asset->uri(), [], $version);
                 wp_style_add_data($handle, 'path', $asset->path());
 
                 wp_enqueue_block_style("$collection/$blockName", [
                     'handle' => $handle,
                     'src' => $asset->uri(),
                     'path' => $asset->path(),
+                    'ver' => $version,
                 ]);
+
+                // wp_enqueue_block_style hooks the handle behind a
+                // render_block filter — it never appears in the block type's
+                // style_handles array, so pre-enqueue paths (e.g.
+                // PerformanceServiceProvider) can't discover it via the
+                // registry. Mirror it onto style_handles so the registry
+                // stays the single source of truth.
+                $type = WP_Block_Type_Registry::get_instance()->get_registered("$collection/$blockName");
+                if ($type && ! in_array($handle, (array) $type->style_handles, true)) {
+                    $type->style_handles[] = $handle;
+                }
             });
     }
 
@@ -184,12 +220,25 @@ class BlockServiceProvider extends ServiceProvider
      */
     public function filterBlockAssetUri(string $url, string $file): string
     {
-        if (str_starts_with($file, 'public/blocks')) {
-            $relativePath = mb_substr($file, strlen('public/'));
-
-            return asset($relativePath)->uri();
+        if (! str_starts_with($file, 'build/')) {
+            return $url;
         }
 
-        return $url;
+        // Scripts already carry a version: core reads it from the .asset.php
+        // that wp-scripts emits beside each entry and appends its own ?ver=.
+        // Adding ?v= on top emitted both -- script.js?v=494824a5&ver=32dc134a...
+        //
+        // Stylesheets are deliberately not excluded. block.json's `style` has no
+        // sibling .asset.php, so core appends nothing and this filter is the
+        // only thing cache-busting them; skipping .css here would ship
+        // style-index.css with no version at all.
+        if (str_ends_with($file, '.js')) {
+            return $url;
+        }
+
+        $assetPath = substr($file, strlen('build/'));
+        $version = Assets::asset($assetPath)->version();
+
+        return $version ? add_query_arg('v', $version, $url) : $url;
     }
 }

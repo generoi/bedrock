@@ -6,6 +6,7 @@
   "description": "Show the WooCommerce Product tabs belonging to the current page",
   "category": "theme",
   "icon": "admin-multisite",
+  "textdomain": "genero-woocommerce",
   "attributes": {},
   "supports": {
     "align": ["wide"],
@@ -15,6 +16,6 @@
     }
   },
   "example": {},
-  "style": "file:./style.css",
+  "style": "file:./style-index.css",
   "editorScript": "file:./index.js"
 }

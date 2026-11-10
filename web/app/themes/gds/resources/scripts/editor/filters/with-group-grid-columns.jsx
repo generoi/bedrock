@@ -3,16 +3,19 @@ import {createHigherOrderComponent} from '@wordpress/compose';
 
 /**
  * Add custom classes we can use to apply styles.
- * @see app/filters.php for frontend side
+ * @see app/BlockFilters/GroupColumnCount.php for frontend side
  */
 const withGroupGridColumns = createHigherOrderComponent((BlockListBlock) => {
   return (props) => {
     if (props.block.name !== 'core/group') {
       return <BlockListBlock {...props} />;
     }
-    const layoutType = props.block.attributes?.layout?.type;
-    const columnCount = props.block.attributes?.layout?.columnCount;
-    if (layoutType !== 'grid' || columnCount === undefined) {
+    const {type, columnCount, minimumColumnWidth} =
+      props.block.attributes?.layout ?? {};
+    if (
+      type !== 'grid' ||
+      (columnCount === undefined && minimumColumnWidth === undefined)
+    ) {
       return <BlockListBlock {...props} />;
     }
     return (
@@ -20,13 +23,16 @@ const withGroupGridColumns = createHigherOrderComponent((BlockListBlock) => {
         {...props}
         wrapperProps={{
           style: {
-            '--grid-columns': columnCount,
+            ...(columnCount !== undefined && {'--grid-columns': columnCount}),
+            ...(minimumColumnWidth !== undefined && {
+              '--group-grid-min-width': minimumColumnWidth,
+            }),
           },
         }}
       />
     );
   };
-}, 'withNamespaceAttribute');
+}, 'withGroupGridColumns');
 
 addFilter(
   'editor.BlockListBlock',

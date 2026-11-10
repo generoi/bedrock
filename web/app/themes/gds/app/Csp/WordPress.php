@@ -25,14 +25,10 @@ class WordPress implements Preset
             ->add(Directive::IMG, Scheme::DATA)
             ->add(Directive::UPGRADE_INSECURE_REQUESTS, Value::NO_VALUE);
 
-        // Admin side requires unsafe-inline which doesnt work together with nonces or strict-dynamic.
-        if (is_admin()) {
-            $policy->add(Directive::SCRIPT, Keyword::UNSAFE_INLINE);
-        } else {
-            // Propagate trust for scripts with a nonce
-            $policy->addNonce(Directive::SCRIPT);
-            $policy->add(Directive::SCRIPT, [Keyword::STRICT_DYNAMIC, Keyword::UNSAFE_INLINE, 'https:']);
-        }
+        // Propagate trust for scripts with a nonce. Frontend only: wp-admin's
+        // policy is gds-security-hardening's.
+        $policy->addNonce(Directive::SCRIPT);
+        $policy->add(Directive::SCRIPT, [Keyword::STRICT_DYNAMIC, Keyword::UNSAFE_INLINE, 'https:']);
 
         // React development builds contain eval
         if (defined('SCRIPT_DEBUG') && SCRIPT_DEBUG && wp_get_environment_type() === 'development') {

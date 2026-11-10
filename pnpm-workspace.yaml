@@ -1,0 +1,35 @@
+# Workspaces live here rather than in package.json: pnpm does not read the npm
+# key, so leaving them there would silently install nothing but the root.
+packages:
+  - web/app/themes/gds
+  - web/app/plugins/genero-woocommerce
+
+# The supply-chain guard that was `min-release-age=7` in .npmrc, which pnpm does
+# not read at all. Its own setting is in MINUTES rather than days, so copying the
+# number across would have cut the wait from a week to seven minutes.
+# 7 days = 10080 minutes.
+minimumReleaseAge: 10080
+
+# npm runs every dependency's postinstall script silently. pnpm refuses unless
+# the package is named here, and an unanswered one fails the install rather than
+# being skipped — so a new dependency that wants to run a script has to be
+# decided on, not discovered later.
+#
+# @parcel/watcher ships a native binary that genuinely needs building.
+# core-js only prints a funding notice, so it is refused rather than left blank.
+allowBuilds:
+  '@parcel/watcher': true
+  core-js: false
+  core-js-pure: false
+
+# wp-scripts resolves deep paths assuming a flat tree, which pnpm's default
+# symlinked layout does not provide. Hoisted still installs from the shared
+# store, so the disk saving is unaffected.
+nodeLinker: hoisted
+
+# wp-scripts asks for `prettier: npm:wp-prettier@^3.9.6`; npm satisfied that
+# with the root prettier 3.9.10 and pnpm installs wp-prettier 3.9.6 instead.
+# Pinned to what npm resolved, so this change swaps the package manager and
+# nothing else.
+overrides:
+  '@wordpress/scripts>prettier': '3.9.10'

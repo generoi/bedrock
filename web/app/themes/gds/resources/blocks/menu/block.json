@@ -2,11 +2,12 @@
   "$schema": "https://schemas.wp.org/trunk/block.json",
   "apiVersion": 3,
   "name": "gds/menu",
+  "textdomain": "gds",
   "title": "Menu",
   "description": "Show a menu...",
   "category": "widgets",
   "icon": "admin-multisite",
-  "style": "file:./style.css",
+  "style": "file:./style-index.css",
   "attributes": {
     "menu": {
       "type": "string"

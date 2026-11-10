@@ -45,10 +45,44 @@ define('WP_ENVIRONMENT_TYPE', env('WP_ENVIRONMENT_TYPE') ?: match (true) {
     default => 'production',
 });
 
+/**
+ * Hosts this site answers on, as anchored patterns without delimiters — the same
+ * shape as Drupal's trusted_host_patterns.
+ *
+ * The Host header decides WP_HOME, and the caller chooses it, so it is believed
+ * only when it matches one of these. `(.+\.)?` trusts the domain and any
+ * subdomain of it, which is what lets a multisite network add a site without a
+ * config change. Name the domain, never a shared suffix: kinsta.cloud or
+ * genero-dev.com would trust every other tenant on that infrastructure.
+ *
+ * The D modifier matters: without it PCRE lets `$` match before a trailing
+ * newline, so "gdsbedrock.kinsta.cloud\n" would be trusted and used verbatim.
+ *
+ * Unlike Drupal, an unmatched host is not a 400. It falls through to the arms
+ * below and the site answers on its canonical name, so a domain nobody listed
+ * degrades instead of going dark.
+ *
+ * @var string[]
+ */
+$trustedHosts = [
+    '^(.+\.)?gdsbedrock\.kinsta\.cloud$',
+    '^(.+\.)?stg-gdsbedrock-staging\.kinsta\.cloud$',
+];
+
+$requestHost = (string) ($_SERVER['HTTP_HOST'] ?? '');
+
 /** @var string Hostname */
 $host = match (true) {
-    ! empty($_SERVER['HTTP_HOST']) => $_SERVER['HTTP_HOST'],
+    // Local development answers on whatever hostname ddev was given — ddev.site,
+    // an additional_fqdn, or a worktree's hostname through hostshift.
+    // IS_DDEV_PROJECT comes from the container, never from the request.
+    $requestHost !== '' && env('IS_DDEV_PROJECT') => $requestHost,
+    // Validate the syntax first: `(.+\.)?` would otherwise let something like
+    // `evil.example?.gdsbedrock.kinsta.cloud` through into WP_HOME.
+    filter_var($requestHost, FILTER_VALIDATE_DOMAIN, FILTER_FLAG_HOSTNAME)
+        && array_filter($trustedHosts, fn ($p) => preg_match('{'.$p.'}iD', $requestHost)) => $requestHost,
     ! empty(env('DDEV_PRIMARY_URL')) => parse_url(env('DDEV_PRIMARY_URL'), PHP_URL_HOST),
+    WP_ENVIRONMENT_TYPE === 'staging' => 'stg-gdsbedrock-staging.kinsta.cloud',
     default => 'gdsbedrock.kinsta.cloud'
 };
 
@@ -135,6 +169,11 @@ Config::define('FS_METHOD', 'direct');
 Config::define('ACF_LITE', true);
 // Do not connect Jetpack to a WP account.
 Config::define('JETPACK_DEV_DEBUG', true);
+// MCP Adapter classes come from the root Composer autoloader, not the plugin's own vendor/
+Config::define('WP_MCP_AUTOLOAD', false);
+// Opt in with GDS_MCP_OAUTH=true to let Claude connect to the site's MCP server
+// by URL, signing in with a WordPress account
+Config::define('GDS_MCP_OAUTH', env('GDS_MCP_OAUTH') ?? false);
 // Fix Kinsta MU Plugins URL path with Bedrock
 Config::define('KINSTAMU_CUSTOM_MUPLUGIN_URL', Config::get('WP_CONTENT_URL').'/mu-plugins/kinsta-mu-plugins');
 // 10up/wpcli-vulnerability-scanner
@@ -144,6 +183,9 @@ if (env('IS_DDEV_PROJECT')) {
     Config::define('WPMS_ON', true);
     Config::define('WPMS_MAILER', 'mail');
 }
+// Logs outside the docroot. The theme's config/logging.php points Acorn's file
+// channels here; deploy shares the directory between releases.
+Config::define('ACORN_LOG_PATH', $root_dir.'/storage/logs');
 
 /**
  * Debugging Settings
