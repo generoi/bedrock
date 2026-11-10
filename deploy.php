@@ -24,7 +24,7 @@ set('default_stage', 'production');
 set('ssh_multiplexing', true);
 
 set('shared_files', ['.env']);
-set('shared_dirs', ['web/app/uploads']);
+set('shared_dirs', ['web/app/uploads', 'storage/logs']);
 set('writable_dirs', ['web/app/cache', ...get('shared_dirs')]);
 set('writable_mode', 'chmod');
 set('writable_use_sudo', false);

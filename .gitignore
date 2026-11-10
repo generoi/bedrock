@@ -32,6 +32,9 @@ web/wp
 .env.*
 !.env.example
 
+# Logs (ACORN_LOG_PATH)
+/storage/logs/
+
 # Composer
 /vendor
 auth.json

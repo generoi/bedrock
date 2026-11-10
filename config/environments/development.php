@@ -10,7 +10,7 @@ Config::define('SAVEQUERIES', php_sapi_name() !== 'cli');
 Config::define('WP_DEBUG', true);
 Config::define('WP_DEBUG_DISPLAY', true);
 Config::define('SCRIPT_DEBUG', true);
-Config::define('WP_DEBUG_LOG', true);
+Config::define('WP_DEBUG_LOG', Config::get('ACORN_LOG_PATH').'/debug.log');
 Config::define('WP_CACHE', false);
 Config::define('WP_DISABLE_FATAL_ERROR_HANDLER', true);
 /** Access /wp/wp-admin/maint/repair.php **/

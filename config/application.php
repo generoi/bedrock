@@ -168,11 +168,9 @@ Config::define('JETPACK_DEV_DEBUG', true);
 Config::define('KINSTAMU_CUSTOM_MUPLUGIN_URL', Config::get('WP_CONTENT_URL').'/mu-plugins/kinsta-mu-plugins');
 // 10up/wpcli-vulnerability-scanner
 Config::define('VULN_API_PROVIDER', 'wordfence');
-// Use local mailer by WP Mail SMTP emails get caught by mailpit
-if (env('IS_DDEV_PROJECT')) {
-    Config::define('WPMS_ON', true);
-    Config::define('WPMS_MAILER', 'mail');
-}
+// Logs outside the docroot. The theme's config/logging.php points Acorn's file
+// channels here; deploy shares the directory between releases.
+Config::define('ACORN_LOG_PATH', $root_dir.'/storage/logs');
 
 /**
  * Debugging Settings
