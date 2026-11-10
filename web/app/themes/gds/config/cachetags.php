@@ -11,15 +11,14 @@ use Genero\Sage\CacheTags\Actions\Site;
 use Genero\Sage\CacheTags\Invalidators\CloudflareCacheInvalidator;
 use Genero\Sage\CacheTags\Invalidators\FastlySoftCacheInvalidator;
 use Genero\Sage\CacheTags\Invalidators\KinstaGroupCacheInvalidator;
-use Genero\Sage\CacheTags\Util;
 
 // Each cache layer is purged where it exists. Kinsta hosts staging and
 // production; its mu-plugin also loads locally, where its purge endpoint does
 // not, so the environment decides. A CDN in front is on once its API
 // credentials are in the environment (see .env.example).
 $kinsta = in_array(wp_get_environment_type(), ['staging', 'production'], true);
-$fastly = Util::env('FASTLY_SERVICE_ID') && Util::env('FASTLY_API_KEY');
-$cloudflare = Util::env('CLOUDFLARE_API_TOKEN') && Util::env('CLOUDFLARE_ZONE_IDS');
+$fastly = env('FASTLY_SERVICE_ID') && env('FASTLY_API_KEY');
+$cloudflare = env('CLOUDFLARE_API_TOKEN') && env('CLOUDFLARE_ZONE_IDS');
 
 return [
     // Tags are sent only to a CDN that purges by them. Kinsta purges by URL.

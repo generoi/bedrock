@@ -7,11 +7,11 @@
     ])->filter()->join(' '),
 ]) !!}>
   @blocks
-    <!-- wp:gds/media-card @json([
+    <!-- wp:gds/media-card {!! json_encode([
         'useFeaturedImage' => has_post_thumbnail(),
         'mediaUrl' => App\Assets::asset('images/default-teaser.webp')->uri(),
         'mediaAlt' => '',
-    ]) -->
+    ]) !!} -->
     <!-- wp:core/post-title {"level": {{ $heading_level ?? 3 }}} /-->
     <!-- wp:woocommerce/product-price /-->
     <!-- wp:core/read-more {"content": "{{ __('Read more', 'gds') }}"} /-->
