@@ -1,0 +1,54 @@
+name: 'CI: @claude'
+
+on:
+  issue_comment:
+    types: [created]
+  pull_request_review_comment:
+    types: [created]
+  issues:
+    types: [opened, assigned]
+  workflow_run:
+    # Matches the `name:` of this repo's test workflow, not the shared one it calls.
+    workflows: ['CI: Test']
+    types: [completed]
+
+jobs:
+  authorize:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    permissions:
+      contents: read
+      pull-requests: read
+    outputs:
+      allowed: ${{ steps.permission.outputs.allowed }}
+    steps:
+      # Never execute authorization code from the triggering PR/branch.
+      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+        with:
+          ref: ${{ github.event.repository.default_branch }}
+          persist-credentials: false
+      - uses: actions/github-script@ed597411d8f924073f98dfc5c65a23a2325f34cd # v8
+        id: permission
+        with:
+          script: |
+            const authorize = require('./.github/scripts/authorize-claude.cjs');
+            core.setOutput('allowed', await authorize({ github, context }));
+
+  claude:
+    needs: authorize
+    if: needs.authorize.outputs.allowed == 'true'
+    permissions:
+      actions: read
+      contents: write
+      id-token: write
+      pull-requests: write
+      issues: write
+    uses: generoi/github-actions/.github/workflows/claude.yml@v2
+    secrets:
+      CODESPACE_TOKEN: ${{ secrets.CODESPACE_TOKEN }}
+      NPM_FONTAWESOME_AUTH_TOKEN: ${{ secrets.NPM_FONTAWESOME_AUTH_TOKEN }}
+      PACKAGIST_GITHUB_TOKEN: ${{ secrets.PACKAGIST_GITHUB_TOKEN }}
+      ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+      FIGMA_API_KEY: ${{ secrets.FIGMA_API_KEY }}
+      CLOUDINARY_CLOUD_NAME: ${{ secrets.CLOUDINARY_CLOUD_NAME }}
+      CLOUDINARY_UPLOAD_PRESET: ${{ secrets.CLOUDINARY_UPLOAD_PRESET }}
