@@ -7,6 +7,7 @@ import postcssInlineSvg from 'postcss-inline-svg';
 import {
   discoverBlocks,
   ManifestPlugin,
+  I18nMapPlugin,
   injectPostcssInlineSvg,
 } from '../../../../webpack.shared.mjs';
 
@@ -105,5 +106,6 @@ export default {
       patterns: [...blocks.copyPatterns],
     }),
     new ManifestPlugin(),
+    new I18nMapPlugin(),
   ],
 };

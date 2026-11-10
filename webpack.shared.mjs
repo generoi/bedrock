@@ -231,6 +231,62 @@ export class ManifestPlugin {
 }
 
 /**
+ * Webpack plugin that writes build/i18n-map.json for `wp i18n make-json
+ * --use-map`. make-json names each JSON file after the source file a string
+ * came from, while WordPress looks a script's translations up by the built
+ * file it registered (build/editor.js, build/blocks/<name>/index.js), so the
+ * two never meet without a map. Each source file maps to the entry scripts
+ * that ship it, including through lazy-loaded chunks, which are not
+ * registered scripts of their own.
+ */
+export class I18nMapPlugin {
+  apply(compiler) {
+    compiler.hooks.afterEmit.tap('I18nMapPlugin', (compilation) => {
+      const context = compiler.context;
+      const buildDir = path.relative(context, compiler.options.output.path);
+      const map = {};
+
+      for (const [name, entrypoint] of compilation.entrypoints) {
+        const script = `${buildDir}/${name}.js`;
+        if (!compilation.assets[`${name}.js`]) continue;
+
+        // The entry's own chunks and every chunk it loads lazily.
+        const chunks = new Set();
+        const groups = [entrypoint];
+        for (const group of groups) {
+          group.chunks.forEach((chunk) => chunks.add(chunk));
+          groups.push(
+            ...group.getChildren().filter((g) => !groups.includes(g)),
+          );
+        }
+
+        for (const chunk of chunks) {
+          // Production builds merge modules into one concatenated module,
+          // which has no resource of its own; its parts do.
+          const modules = [
+            ...compilation.chunkGraph.getChunkModulesIterable(chunk),
+          ].flatMap((module) => module.modules ?? [module]);
+          for (const module of modules) {
+            const resource = module.resource?.split('?')[0];
+            if (!resource || !/\.[jt]sx?$/.test(resource)) continue;
+            const source = path.relative(context, resource);
+            if (source.startsWith('..') || source.includes('node_modules'))
+              continue;
+            map[source] = [...new Set([...(map[source] ?? []), script])];
+          }
+        }
+      }
+
+      const sorted = Object.fromEntries(Object.entries(map).sort());
+      fs.writeFileSync(
+        path.join(compiler.options.output.path, 'i18n-map.json'),
+        JSON.stringify(sorted, null, 2),
+      );
+    });
+  }
+}
+
+/**
  * Inject postcss-inline-svg into the PostCSS plugin chain before autoprefixer.
  * Allows using svg-load() in SCSS for CSS mask/background images.
  *
