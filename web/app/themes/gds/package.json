@@ -26,6 +26,7 @@
     "@shufo/prettier-plugin-blade": "^1.16.2",
     "@wordpress/scripts": "~37.0.0",
     "copy-webpack-plugin": "^14.0.0",
+    "eslint-formatter-checkstyle": "^9.0.1",
     "postcss-inline-svg": "^6.0.0",
     "stylelint-checkstyle-reporter": "^1.1.1",
     "stylelint-config-standard-scss": "^17.0.0"

@@ -32,10 +32,13 @@ importers:
         version: 1.16.3
       '@wordpress/scripts':
         specifier: ~37.0.0
-        version: 37.0.0(@playwright/test@1.64.1)(@types/node@26.6.6)(@types/react-dom@18.3.7(@types/react@18.3.31))(@types/react@18.3.31)(@typescript-eslint/eslint-plugin@8.72.1(@typescript-eslint/parser@8.72.1(eslint@9.39.5(jiti@1.21.7)(supports-color@10.2.2))(supports-color@10.2.2)(typescript@6.0.3))(eslint@9.39.5(jiti@1.21.7)(supports-color@10.2.2))(supports-color@10.2.2)(typescript@6.0.3))(@typescript-eslint/parser@8.72.1(eslint@9.39.5(jiti@1.21.7)(supports-color@10.2.2))(supports-color@10.2.2)(typescript@6.0.3))(ajv@6.15.0)(csso@5.0.5)(jiti@1.21.7)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(supports-color@10.2.2)(svgo@3.3.5)(type-fest@5.10.0)(typescript@6.0.3)
+        version: 37.0.0(@playwright/test@1.64.1)(@types/node@26.6.6)(@types/react-dom@18.3.7(@types/react@18.3.31))(@types/react@18.3.31)(@typescript-eslint/eslint-plugin@8.72.1(@typescript-eslint/parser@8.72.1(eslint@9.39.5(jiti@1.21.7)(supports-color@10.2.2))(supports-color@10.2.2)(typescript@6.0.3))(eslint@9.39.5(jiti@1.21.7)(supports-color@10.2.2))(supports-color@10.2.2)(typescript@6.0.3))(@typescript-eslint/parser@8.72.1(eslint@9.39.5(jiti@1.21.7)(supports-color@10.2.2))(supports-color@10.2.2)(typescript@6.0.3))(ajv@8.20.0)(csso@5.0.5)(jiti@1.21.7)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(supports-color@10.2.2)(svgo@3.3.5)(type-fest@5.10.0)(typescript@6.0.3)
       copy-webpack-plugin:
         specifier: ^14.0.0
         version: 14.0.0(webpack@5.112.2)
+      eslint-formatter-checkstyle:
+        specifier: ^9.0.1
+        version: 9.0.1
       postcss-inline-svg:
         specifier: ^6.0.0
         version: 6.0.0(postcss@8.5.32)
@@ -79,6 +82,9 @@ importers:
       copy-webpack-plugin:
         specifier: ^14.0.0
         version: 14.0.0(webpack@5.112.2)
+      eslint-formatter-checkstyle:
+        specifier: ^9.0.1
+        version: 9.0.1
       postcss-inline-svg:
         specifier: ^6.0.0
         version: 6.0.0(postcss@8.5.32)
@@ -3202,6 +3208,10 @@ packages:
     hasBin: true
     peerDependencies:
       eslint: '>=7.0.0'
+
+  eslint-formatter-checkstyle@9.0.1:
+    resolution: {integrity: sha512-DeD1XkqFr22ZK+KsREcW3YFUsYtS5hTZb52m+fLVeAHMnTtgtLP9xiA55b5qiNvNxDf/hbTN+9X8lZl9jHH/cQ==}
+    engines: {node: ^18.18.0 || ^20.9.0 || >=21.1.0}
 
   eslint-import-context@0.1.9:
     resolution: {integrity: sha512-K9Hb+yRaGAGUbwjhFNHvSmmkZs9+zbuoe3kFQ4V1wYjrepUFYM2dZAfNtjbbj3qsPfUfsA68Bx/ICWQMi+C8Eg==}
@@ -8702,26 +8712,6 @@ snapshots:
     dependencies:
       '@wordpress/deprecated': 5.0.0
 
-  '@wordpress/e2e-test-utils-playwright@3.1.0(@playwright/test@1.64.1)(@types/node@26.6.6)(ajv@6.15.0)(supports-color@10.2.2)(webpack@5.112.2)':
-    dependencies:
-      '@playwright/test': 1.64.1
-      change-case: 4.1.2
-      get-port: 5.1.1
-      lighthouse: 13.6.0(ajv@6.15.0)(supports-color@10.2.2)(webpack@5.112.2)
-      mime: 3.0.0
-      web-vitals: 4.2.4
-    optionalDependencies:
-      '@types/node': 26.6.6
-    transitivePeerDependencies:
-      - ajv
-      - bufferutil
-      - proxy-agent
-      - rollup
-      - supports-color
-      - utf-8-validate
-      - webpack
-      - yauzl
-
   '@wordpress/e2e-test-utils-playwright@3.1.0(@playwright/test@1.64.1)(@types/node@26.6.6)(ajv@8.20.0)(supports-color@10.2.2)(webpack@5.112.2)':
     dependencies:
       '@playwright/test': 1.64.1
@@ -8790,8 +8780,8 @@ snapshots:
       cosmiconfig: 7.1.0
       eslint: 10.14.0(jiti@1.21.7)(supports-color@10.2.2)
       eslint-config-prettier: 10.1.8(eslint@10.14.0(jiti@1.21.7)(supports-color@10.2.2))
-      eslint-import-resolver-typescript: 4.4.5(eslint-plugin-import@2.32.0(@typescript-eslint/parser@8.72.1(eslint@9.39.5(jiti@1.21.7)(supports-color@10.2.2))(supports-color@10.2.2)(typescript@6.0.3))(eslint-import-resolver-typescript@4.4.5)(eslint@9.39.5(jiti@1.21.7)(supports-color@10.2.2))(supports-color@10.2.2))(eslint@10.14.0(jiti@1.21.7)(supports-color@10.2.2))(supports-color@10.2.2)
-      eslint-plugin-import: 2.32.0(@typescript-eslint/parser@8.72.1(eslint@9.39.5(jiti@1.21.7)(supports-color@10.2.2))(supports-color@10.2.2)(typescript@6.0.3))(eslint-import-resolver-typescript@4.4.5(eslint-plugin-import@2.32.0)(eslint@9.39.5(jiti@1.21.7)(supports-color@10.2.2))(supports-color@10.2.2))(eslint@10.14.0(jiti@1.21.7)(supports-color@10.2.2))(supports-color@10.2.2)
+      eslint-import-resolver-typescript: 4.4.5(eslint-plugin-import@2.32.0)(eslint@10.14.0(jiti@1.21.7)(supports-color@10.2.2))(supports-color@10.2.2)
+      eslint-plugin-import: 2.32.0(@typescript-eslint/parser@8.72.1(eslint@9.39.5(jiti@1.21.7)(supports-color@10.2.2))(supports-color@10.2.2)(typescript@6.0.3))(eslint-import-resolver-typescript@4.4.5)(eslint@10.14.0(jiti@1.21.7)(supports-color@10.2.2))(supports-color@10.2.2)
       eslint-plugin-jest: 29.17.0(@typescript-eslint/eslint-plugin@8.72.1(@typescript-eslint/parser@8.72.1(eslint@9.39.5(jiti@1.21.7)(supports-color@10.2.2))(supports-color@10.2.2)(typescript@6.0.3))(eslint@9.39.5(jiti@1.21.7)(supports-color@10.2.2))(supports-color@10.2.2)(typescript@6.0.3))(eslint@10.14.0(jiti@1.21.7)(supports-color@10.2.2))(supports-color@10.2.2)(typescript@6.0.3)
       eslint-plugin-jsdoc: 64.5.4(eslint@10.14.0(jiti@1.21.7)(supports-color@10.2.2))(supports-color@10.2.2)(typescript@6.0.3)
       eslint-plugin-jsx-a11y: 6.10.2(eslint@10.14.0(jiti@1.21.7)(supports-color@10.2.2))
@@ -8973,104 +8963,6 @@ snapshots:
       '@wordpress/keycodes': 3.58.0
       memize: 2.1.1
       react: 18.3.1
-
-  '@wordpress/scripts@37.0.0(@playwright/test@1.64.1)(@types/node@26.6.6)(@types/react-dom@18.3.7(@types/react@18.3.31))(@types/react@18.3.31)(@typescript-eslint/eslint-plugin@8.72.1(@typescript-eslint/parser@8.72.1(eslint@9.39.5(jiti@1.21.7)(supports-color@10.2.2))(supports-color@10.2.2)(typescript@6.0.3))(eslint@9.39.5(jiti@1.21.7)(supports-color@10.2.2))(supports-color@10.2.2)(typescript@6.0.3))(@typescript-eslint/parser@8.72.1(eslint@9.39.5(jiti@1.21.7)(supports-color@10.2.2))(supports-color@10.2.2)(typescript@6.0.3))(ajv@6.15.0)(csso@5.0.5)(jiti@1.21.7)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(supports-color@10.2.2)(svgo@3.3.5)(type-fest@5.10.0)(typescript@6.0.3)':
-    dependencies:
-      '@babel/core': 7.29.7(supports-color@10.2.2)
-      '@pmmmwh/react-refresh-webpack-plugin': 0.6.3(react-refresh@0.14.2)(type-fest@5.10.0)(webpack-dev-server@6.1.0)(webpack@5.112.2)
-      '@svgr/webpack': 8.1.0(supports-color@10.2.2)(typescript@6.0.3)
-      '@wordpress/babel-preset-default': 10.0.0(supports-color@10.2.2)
-      '@wordpress/browserslist-config': 7.0.0
-      '@wordpress/dependency-extraction-webpack-plugin': 7.0.0(webpack@5.112.2)
-      '@wordpress/e2e-test-utils-playwright': 3.1.0(@playwright/test@1.64.1)(@types/node@26.6.6)(ajv@6.15.0)(supports-color@10.2.2)(webpack@5.112.2)
-      '@wordpress/eslint-plugin': 28.0.0(@types/react-dom@18.3.7(@types/react@18.3.31))(@types/react@18.3.31)(@typescript-eslint/eslint-plugin@8.72.1(@typescript-eslint/parser@8.72.1(eslint@9.39.5(jiti@1.21.7)(supports-color@10.2.2))(supports-color@10.2.2)(typescript@6.0.3))(eslint@9.39.5(jiti@1.21.7)(supports-color@10.2.2))(supports-color@10.2.2)(typescript@6.0.3))(@typescript-eslint/parser@8.72.1(eslint@9.39.5(jiti@1.21.7)(supports-color@10.2.2))(supports-color@10.2.2)(typescript@6.0.3))(eslint@10.14.0(jiti@1.21.7)(supports-color@10.2.2))(postcss@8.5.32)(prettier@3.9.10)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(stylelint@17.16.0(supports-color@10.2.2)(typescript@6.0.3))(supports-color@10.2.2)(typescript@6.0.3)
-      '@wordpress/npm-package-json-lint-config': 6.0.0(npm-package-json-lint@6.4.0(supports-color@10.2.2)(typescript@6.0.3))
-      '@wordpress/postcss-plugins-preset': 6.0.0(postcss@8.5.32)
-      '@wordpress/prettier-config': 5.0.0(prettier@3.9.10)
-      '@wordpress/stylelint-config': 27.0.0(@types/react-dom@18.3.7(@types/react@18.3.31))(@types/react@18.3.31)(postcss@8.5.32)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(stylelint-scss@7.4.0(stylelint@17.16.0(supports-color@10.2.2)(typescript@6.0.3)))(stylelint@17.16.0(supports-color@10.2.2)(typescript@6.0.3))
-      adm-zip: 0.6.1
-      babel-loader: 9.2.1(@babel/core@7.29.7(supports-color@10.2.2))(webpack@5.112.2)
-      browserslist: 4.29.5
-      chalk: 4.1.2
-      check-node-version: 4.2.1
-      copy-webpack-plugin: 10.2.4(webpack@5.112.2)
-      cross-spawn: 7.0.6
-      css-loader: 6.11.0(webpack@5.112.2)
-      cssnano: 6.1.2(postcss@8.5.32)
-      dir-glob: 3.0.1
-      eslint: 10.14.0(jiti@1.21.7)(supports-color@10.2.2)
-      fast-glob: 3.3.3
-      json2php: 0.0.9
-      markdownlint-cli: 0.49.1(supports-color@10.2.2)
-      mini-css-extract-plugin: 2.10.2(webpack@5.112.2)
-      minimist: 1.2.8
-      npm-package-json-lint: 6.4.0(supports-color@10.2.2)(typescript@6.0.3)
-      npm-packlist: 3.0.0
-      postcss: 8.5.32
-      postcss-loader: 6.2.1(postcss@8.5.32)(webpack@5.112.2)
-      prettier: 3.9.10
-      react: 18.3.1
-      react-dom: 18.3.1(react@18.3.1)
-      react-refresh: 0.14.2
-      read-pkg-up: 7.0.1
-      resolve-bin: 1.0.1
-      rtlcss: 4.3.0
-      sass: 1.107.1
-      sass-loader: 16.0.8(sass@1.107.1)(webpack@5.112.2)
-      schema-utils: 4.8.2(webpack@5.112.2)
-      source-map-loader: 3.0.2(webpack@5.112.2)
-      stylelint: 17.16.0(supports-color@10.2.2)(typescript@6.0.3)
-      stylelint-scss: 7.4.0(stylelint@17.16.0(supports-color@10.2.2)(typescript@6.0.3))
-      terser-webpack-plugin: 5.6.1(cssnano@6.1.2(postcss@8.5.32))(csso@5.0.5)(postcss@8.5.32)(webpack@5.112.2)
-      url-loader: 4.1.1(webpack@5.112.2)
-      webpack: 5.112.2(cssnano@6.1.2(postcss@8.5.32))(csso@5.0.5)(postcss@8.5.32)(svgo@3.3.5)(webpack-cli@5.1.4)
-      webpack-bundle-analyzer: 4.10.2
-      webpack-cli: 5.1.4(webpack-bundle-analyzer@4.10.2)(webpack-dev-server@6.1.0)(webpack@5.112.2)
-      webpack-dev-server: 6.1.0(supports-color@10.2.2)(webpack-cli@5.1.4)(webpack@5.112.2)
-    optionalDependencies:
-      '@playwright/test': 1.64.1
-    transitivePeerDependencies:
-      - '@minify-html/node'
-      - '@napi-rs/image'
-      - '@rspack/core'
-      - '@swc/core'
-      - '@swc/css'
-      - '@swc/html'
-      - '@types/eslint'
-      - '@types/node'
-      - '@types/react'
-      - '@types/react-dom'
-      - '@types/webpack'
-      - '@typescript-eslint/eslint-plugin'
-      - '@typescript-eslint/parser'
-      - '@webpack-cli/generators'
-      - ajv
-      - bufferutil
-      - clean-css
-      - csso
-      - esbuild
-      - eslint-import-resolver-webpack
-      - eslint-plugin-import-x
-      - file-loader
-      - html-minifier-terser
-      - imagemin
-      - jiti
-      - lightningcss
-      - node-sass
-      - proxy-agent
-      - rollup
-      - sass-embedded
-      - sharp
-      - sockjs-client
-      - supports-color
-      - svgo
-      - type-fest
-      - typescript
-      - uglify-js
-      - utf-8-validate
-      - webpack-hot-middleware
-      - webpack-plugin-serve
-      - yauzl
 
   '@wordpress/scripts@37.0.0(@playwright/test@1.64.1)(@types/node@26.6.6)(@types/react-dom@18.3.7(@types/react@18.3.31))(@types/react@18.3.31)(@typescript-eslint/eslint-plugin@8.72.1(@typescript-eslint/parser@8.72.1(eslint@9.39.5(jiti@1.21.7)(supports-color@10.2.2))(supports-color@10.2.2)(typescript@6.0.3))(eslint@9.39.5(jiti@1.21.7)(supports-color@10.2.2))(supports-color@10.2.2)(typescript@6.0.3))(@typescript-eslint/parser@8.72.1(eslint@9.39.5(jiti@1.21.7)(supports-color@10.2.2))(supports-color@10.2.2)(typescript@6.0.3))(ajv@8.20.0)(csso@5.0.5)(jiti@1.21.7)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(supports-color@10.2.2)(svgo@3.3.5)(type-fest@5.10.0)(typescript@6.0.3)':
     dependencies:
@@ -9291,10 +9183,6 @@ snapshots:
 
   ajv-errors@1.0.1(ajv@6.15.0):
     dependencies:
-      ajv: 6.15.0
-
-  ajv-formats@3.0.1(ajv@6.15.0):
-    optionalDependencies:
       ajv: 6.15.0
 
   ajv-formats@3.0.1(ajv@8.20.0):
@@ -10353,6 +10241,8 @@ snapshots:
     dependencies:
       eslint: 9.39.5(jiti@1.21.7)(supports-color@10.2.2)
 
+  eslint-formatter-checkstyle@9.0.1: {}
+
   eslint-import-context@0.1.9(unrs-resolver@1.13.0):
     dependencies:
       get-tsconfig: 4.14.3
@@ -10368,7 +10258,7 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  eslint-import-resolver-typescript@4.4.5(eslint-plugin-import@2.32.0(@typescript-eslint/parser@8.72.1(eslint@9.39.5(jiti@1.21.7)(supports-color@10.2.2))(supports-color@10.2.2)(typescript@6.0.3))(eslint-import-resolver-typescript@4.4.5)(eslint@9.39.5(jiti@1.21.7)(supports-color@10.2.2))(supports-color@10.2.2))(eslint@10.14.0(jiti@1.21.7)(supports-color@10.2.2))(supports-color@10.2.2):
+  eslint-import-resolver-typescript@4.4.5(eslint-plugin-import@2.32.0)(eslint@10.14.0(jiti@1.21.7)(supports-color@10.2.2))(supports-color@10.2.2):
     dependencies:
       debug: 4.4.3(supports-color@10.2.2)
       eslint: 10.14.0(jiti@1.21.7)(supports-color@10.2.2)
@@ -10398,7 +10288,7 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  eslint-module-utils@2.14.0(@typescript-eslint/parser@8.72.1(eslint@9.39.5(jiti@1.21.7)(supports-color@10.2.2))(supports-color@10.2.2)(typescript@6.0.3))(eslint-import-resolver-node@0.3.10(supports-color@10.2.2))(eslint-import-resolver-typescript@4.4.5(eslint-plugin-import@2.32.0)(eslint@9.39.5(jiti@1.21.7)(supports-color@10.2.2))(supports-color@10.2.2))(eslint@10.14.0(jiti@1.21.7)(supports-color@10.2.2))(supports-color@10.2.2):
+  eslint-module-utils@2.14.0(@typescript-eslint/parser@8.72.1(eslint@9.39.5(jiti@1.21.7)(supports-color@10.2.2))(supports-color@10.2.2)(typescript@6.0.3))(eslint-import-resolver-node@0.3.10(supports-color@10.2.2))(eslint-import-resolver-typescript@4.4.5)(eslint@10.14.0(jiti@1.21.7)(supports-color@10.2.2))(supports-color@10.2.2):
     dependencies:
       debug: 3.2.7(supports-color@10.2.2)
     optionalDependencies:
@@ -10420,7 +10310,7 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  eslint-plugin-import@2.32.0(@typescript-eslint/parser@8.72.1(eslint@9.39.5(jiti@1.21.7)(supports-color@10.2.2))(supports-color@10.2.2)(typescript@6.0.3))(eslint-import-resolver-typescript@4.4.5(eslint-plugin-import@2.32.0)(eslint@9.39.5(jiti@1.21.7)(supports-color@10.2.2))(supports-color@10.2.2))(eslint@10.14.0(jiti@1.21.7)(supports-color@10.2.2))(supports-color@10.2.2):
+  eslint-plugin-import@2.32.0(@typescript-eslint/parser@8.72.1(eslint@9.39.5(jiti@1.21.7)(supports-color@10.2.2))(supports-color@10.2.2)(typescript@6.0.3))(eslint-import-resolver-typescript@4.4.5)(eslint@10.14.0(jiti@1.21.7)(supports-color@10.2.2))(supports-color@10.2.2):
     dependencies:
       '@rtsao/scc': 1.1.0
       array-includes: 3.2.0
@@ -10431,7 +10321,7 @@ snapshots:
       doctrine: 2.1.0
       eslint: 10.14.0(jiti@1.21.7)(supports-color@10.2.2)
       eslint-import-resolver-node: 0.3.10(supports-color@10.2.2)
-      eslint-module-utils: 2.14.0(@typescript-eslint/parser@8.72.1(eslint@9.39.5(jiti@1.21.7)(supports-color@10.2.2))(supports-color@10.2.2)(typescript@6.0.3))(eslint-import-resolver-node@0.3.10(supports-color@10.2.2))(eslint-import-resolver-typescript@4.4.5(eslint-plugin-import@2.32.0)(eslint@9.39.5(jiti@1.21.7)(supports-color@10.2.2))(supports-color@10.2.2))(eslint@10.14.0(jiti@1.21.7)(supports-color@10.2.2))(supports-color@10.2.2)
+      eslint-module-utils: 2.14.0(@typescript-eslint/parser@8.72.1(eslint@9.39.5(jiti@1.21.7)(supports-color@10.2.2))(supports-color@10.2.2)(typescript@6.0.3))(eslint-import-resolver-node@0.3.10(supports-color@10.2.2))(eslint-import-resolver-typescript@4.4.5)(eslint@10.14.0(jiti@1.21.7)(supports-color@10.2.2))(supports-color@10.2.2)
       hasown: 2.0.4
       is-core-module: 2.17.0
       is-glob: 4.0.3
@@ -11589,40 +11479,6 @@ snapshots:
       - supports-color
 
   lighthouse-stack-packs@1.12.3: {}
-
-  lighthouse@13.6.0(ajv@6.15.0)(supports-color@10.2.2)(webpack@5.112.2):
-    dependencies:
-      '@paulirish/trace_engine': 0.0.67
-      '@sentry/node': 11.10.0(webpack@5.112.2)
-      ajv-formats: 3.0.1(ajv@6.15.0)
-      axe-core: 4.14.0
-      chrome-launcher: 1.2.2(supports-color@10.2.2)
-      configstore: 8.0.0
-      csp_evaluator: 1.1.8
-      devtools-protocol: 0.0.1727723
-      enquirer: 2.4.1
-      http-link-header: 1.1.4
-      intl-messageformat: 10.7.18
-      js-library-detector: 6.7.0
-      lighthouse-logger: 2.0.2(supports-color@10.2.2)
-      lighthouse-stack-packs: 1.12.3
-      open: 11.0.4
-      puppeteer-core: 25.16.0
-      robots-parser: 3.0.1
-      speedline-core: 1.4.3
-      third-party-web: 0.30.0
-      tldts-icann: 7.4.19
-      yargs: 18.2.0
-      yargs-parser: 22.0.0
-    transitivePeerDependencies:
-      - ajv
-      - bufferutil
-      - proxy-agent
-      - rollup
-      - supports-color
-      - utf-8-validate
-      - webpack
-      - yauzl
 
   lighthouse@13.6.0(ajv@8.20.0)(supports-color@10.2.2)(webpack@5.112.2):
     dependencies:
