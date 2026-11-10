@@ -98,11 +98,9 @@ export class ModalDialog extends HTMLElement {
         firstFocusableElement.focus();
         event.preventDefault();
       }
-    } else {
-      if (document.activeElement === firstFocusableElement) {
-        lastFocusableElement.focus();
-        event.preventDefault();
-      }
+    } else if (document.activeElement === firstFocusableElement) {
+      lastFocusableElement.focus();
+      event.preventDefault();
     }
   }
 

@@ -13,4 +13,4 @@ jobs:
       NPM_FONTAWESOME_AUTH_TOKEN: ${{ secrets.NPM_FONTAWESOME_AUTH_TOKEN }}
       COMPOSER_BOT_PRIVATE_KEY: ${{ secrets.COMPOSER_BOT_PRIVATE_KEY }}
     with:
-      smoke_grep: 'app/themes/gds/public/scripts/app.js'
+      smoke_grep: 'app/themes/gds/build/app.js'

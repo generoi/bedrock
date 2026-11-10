@@ -19,7 +19,7 @@
       "background": false
     }
   },
-  "style": "file:./style.css",
+  "style": "file:./style-index.css",
   "editorScript": "file:./index.js",
   "example": {}
 }

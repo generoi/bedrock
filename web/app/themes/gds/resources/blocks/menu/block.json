@@ -6,7 +6,7 @@
   "description": "Show a menu...",
   "category": "widgets",
   "icon": "admin-multisite",
-  "style": "file:./style.css",
+  "style": "file:./style-index.css",
   "attributes": {
     "menu": {
       "type": "string"

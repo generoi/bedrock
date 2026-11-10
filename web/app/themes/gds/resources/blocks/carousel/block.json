@@ -58,5 +58,5 @@
     "viewportWidth": 800
   },
   "editorScript": "file:./index.js",
-  "style": "file:/style.css"
+  "style": "file:./style-index.css"
 }

@@ -4,13 +4,8 @@ namespace GeneroWoo\Woocommerce;
 
 use App\Providers\BlockServiceProvider;
 
-use function Roots\asset;
-use function Roots\bundle;
-
 class Plugin
 {
-    public const MANIFEST = 'genero-woocommerce.assets.manifest';
-
     protected static $instance;
 
     public readonly string $file;
@@ -54,13 +49,6 @@ class Plugin
 
     public function registerApp()
     {
-        app('assets')->manifest(self::MANIFEST, [
-            'path' => $this->path.'/public',
-            'url' => $this->url.'/public',
-            'assets' => $this->path.'/public/manifest.json',
-            'bundles' => $this->path.'/public/entrypoints.json',
-        ]);
-
         app('view')->addNamespace('genero-woocommerce', $this->path.'/resources/views');
         app('view')->addNamespace('genero-woocommerce-blocks', $this->path.'/resources/blocks');
         $this->blockServiceProvider->registerBlocks($this->path.'/resources/blocks');
@@ -68,41 +56,119 @@ class Plugin
 
     public function registerAssets(): void
     {
+        $css = $this->asset('app-styles.css');
         wp_register_style(
             'genero-woocommerce/woocommerce.css',
-            asset('styles/app.css', self::MANIFEST),
+            $css->uri(),
+            [],
+            $css->version(),
         );
-
-        wp_register_script(
-            'genero-woocommerce/woocommerce.js',
-            asset('scripts/app.js', self::MANIFEST),
-        );
-        wp_add_inline_script('genero-woocommerce/woocommerce.js', asset('runtime.js', self::MANIFEST)->contents(), 'before');
     }
 
     public function registerBlockEditorAssets(): void
     {
-        if ($bundle = bundle('scripts/editor', self::MANIFEST)) {
-            wp_enqueue_script('genero-woocommerce/editor.js', asset('scripts/editor.js', self::MANIFEST)->uri(), $bundle->dependencies(), null, true);
-            wp_add_inline_script('genero-woocommerce/editor.js', asset('runtime.js', self::MANIFEST)->contents(), 'before');
-        }
+        $editor = $this->asset('editor.js');
+        wp_enqueue_script('genero-woocommerce/editor.js', $editor->uri(), $editor->dependencies(), $editor->version(), true);
     }
 
     public function filterBlockAssetUri(string $url, string $path, string $plugin): string
     {
-        $distPath = $this->path.'/public/';
-        if (str_starts_with($plugin, $distPath.'blocks/')) {
-            $relativePath = mb_substr($plugin, strlen($distPath));
-
-            return asset($relativePath, self::MANIFEST)->uri();
+        $buildPath = $this->path.'/build/';
+        // Scripts are versioned by core from .asset.php; block.json styles are not.
+        if (! str_starts_with($plugin, $buildPath.'blocks/') || str_ends_with($plugin, '.js')) {
+            return $url;
         }
 
-        return $url;
+        $version = $this->asset(mb_substr($plugin, strlen($buildPath)))->version();
+
+        return $version ? add_query_arg('v', $version, $url) : $url;
     }
 
     public function enqueueBlockStyles(): void
     {
-        $manifestPath = $this->path.'/public/manifest.json';
-        $this->blockServiceProvider->enqueueBlockStyles($manifestPath, self::MANIFEST, 'genero-woocommerce');
+        static $manifest = null;
+
+        if ($manifest === null) {
+            $manifestPath = $this->path.'/build/manifest.json';
+            $manifest = file_exists($manifestPath)
+                ? json_decode(file_get_contents($manifestPath), true) ?: []
+                : [];
+        }
+
+        collect($manifest)
+            ->keys()
+            ->filter(fn ($file) => str_starts_with($file, 'block-styles/'))
+            ->filter(fn ($file) => str_ends_with($file, '.css'))
+            ->map(fn ($file) => $this->asset($file))
+            ->each(function (object $asset): void {
+                $filename = pathinfo(basename($asset->path()), PATHINFO_FILENAME);
+                $separator = str_contains($filename, '--') ? '--' : '-';
+                [$collection, $blockName] = explode($separator, $filename, 2);
+                $handle = "genero-woocommerce/block/$filename";
+                $version = $asset->version();
+
+                wp_register_style($handle, $asset->uri(), [], $version);
+                wp_style_add_data($handle, 'path', $asset->path());
+
+                wp_enqueue_block_style("$collection/$blockName", [
+                    'handle' => $handle,
+                    'src' => $asset->uri(),
+                    'path' => $asset->path(),
+                    'ver' => $version,
+                ]);
+            });
+    }
+
+    public function asset(string $path): object
+    {
+        static $manifest = null;
+
+        if ($manifest === null) {
+            $manifestPath = $this->path.'/build/manifest.json';
+            $manifest = file_exists($manifestPath)
+                ? json_decode(file_get_contents($manifestPath), true) ?: []
+                : [];
+        }
+
+        $buildUrl = $this->url.'/build/';
+        $buildPath = $this->path.'/build/';
+
+        return new class($path, $buildUrl, $buildPath, $manifest)
+        {
+            public function __construct(
+                private readonly string $assetPath,
+                private readonly string $buildUrl,
+                private readonly string $buildPath,
+                private readonly array $manifestData,
+            ) {}
+
+            public function uri(): string
+            {
+                return $this->buildUrl.$this->assetPath;
+            }
+
+            public function path(): string
+            {
+                return $this->buildPath.$this->assetPath;
+            }
+
+            public function version(): string
+            {
+                return $this->manifestData[$this->assetPath]['hash']
+                    ?? (file_exists($this->path()) ? (string) filemtime($this->path()) : '');
+            }
+
+            public function dependencies(): array
+            {
+                $deps = $this->manifestData[$this->assetPath]['dependencies'] ?? null;
+                if ($deps !== null) {
+                    return $deps;
+                }
+
+                $assetFile = preg_replace('/\.js$/', '.asset.php', $this->path());
+
+                return file_exists($assetFile) ? (require $assetFile)['dependencies'] ?? [] : [];
+            }
+        };
     }
 }

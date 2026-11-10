@@ -1,17 +1,15 @@
 <div {!! get_block_wrapper_attributes() !!}>
-  <gds-carousel
-    class="wp-block-gds-carousel__carousel"
+  <gds-carousel class="wp-block-gds-carousel__carousel"
     column-count="{{ $columnCount ?? 1 }}"
-    aria-label="{{ $ariaLabel ?? __('Carousel', 'gds') }}"
-  >
+    aria-label="{{ $ariaLabel ?? __('Carousel', 'gds') }}">
     {!! $content !!}
 
     <span slot="icon-prev">
-      @svg('svgs.solid.chevron-left')
+      @svg('solid.chevron-left')
       <span class="sr-only">{{ __('Previous slide', 'gds') }}</span>
     </span>
     <span slot="icon-next">
-      @svg('svgs.solid.chevron-right')
+      @svg('solid.chevron-right')
       <span class="sr-only">{{ __('Next slide', 'gds') }}</span>
     </span>
   </gds-carousel>

@@ -38,7 +38,7 @@ function BlockEditContainer({attributes, setAttributes, clientId, isSelected}) {
   const ref = useRef();
   const {getBlocks} = useSelect(blockEditorStore);
   const {replaceInnerBlocks, insertBlock} = useDispatch(blockEditorStore);
-  let innerBlocks = getBlocks(clientId);
+  const innerBlocks = getBlocks(clientId);
 
   useEffect(() => {
     ref?.current?.render?.();

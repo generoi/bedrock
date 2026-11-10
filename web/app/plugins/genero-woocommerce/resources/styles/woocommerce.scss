@@ -21,7 +21,7 @@
  */
 .woocommerce .col2-set {
   display: grid;
-  grid-gap: var(--grid-gutter);
+  gap: var(--grid-gutter);
   row-gap: var(--block-gutter-l);
   grid-template-columns: functions.auto-columns(2, 300px);
 
@@ -220,7 +220,7 @@ body.my-account.logged-in .woocommerce {
   border-top: 3px solid var(--message-color);
   list-style: none outside;
   width: auto;
-  word-wrap: break-word;
+  overflow-wrap: break-word;
 
   &::before {
     content: '';
@@ -281,7 +281,7 @@ body.my-account.logged-in .woocommerce {
   tr:nth-child(even) {
     td,
     th {
-      background-color: rgba(0 0 0 / 2%);
+      background-color: rgb(0 0 0 / 2%);
     }
   }
 }
@@ -333,6 +333,6 @@ body.my-account.logged-in .woocommerce {
 
   tfoot td,
   tfoot th {
-    background-color: rgba(0 0 0 / 2%);
+    background-color: rgb(0 0 0 / 2%);
   }
 }

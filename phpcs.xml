@@ -21,7 +21,7 @@
   <exclude-pattern>web/app/mu-plugins/wp-cli-login-server.php</exclude-pattern>
 
   <!-- Ignore theme build files -->
-  <exclude-pattern>web/app/themes/*/public</exclude-pattern>
+  <exclude-pattern>web/app/themes/*/build</exclude-pattern>
   <exclude-pattern>web/app/themes/*/storage</exclude-pattern>
   <exclude-pattern>web/app/themes/*/bootstrap/cache</exclude-pattern>
 

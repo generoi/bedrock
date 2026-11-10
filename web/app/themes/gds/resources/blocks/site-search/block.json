@@ -6,7 +6,7 @@
   "description": "Show the site search...",
   "category": "widgets",
   "icon": "admin-multisite",
-  "style": "file:./style.css",
+  "style": "file:./style-index.css",
   "supports": {},
   "example": {},
   "editorScript": "file:./index.js"

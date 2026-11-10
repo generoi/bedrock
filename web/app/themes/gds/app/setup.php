@@ -11,24 +11,22 @@ use GeneroWP\ImageResizer\Rewriters\Urls;
 use Spatie\GoogleFonts\GoogleFonts;
 use WP_Theme_JSON_Data;
 
-use function Roots\asset;
-use function Roots\bundle;
-
 /**
  * Register the theme assets.
  *
  * @return void
  */
 add_action('wp_enqueue_scripts', function () {
-    wp_enqueue_script('sage/app.js', asset('scripts/app.js')->uri(), [], null, true);
-    wp_add_inline_script('sage/app.js', asset('runtime.js')->contents(), 'before');
+    $appJs = Assets::asset('app.js');
+    wp_enqueue_script('sage/app.js', $appJs->uri(), $appJs->dependencies(), $appJs->version(), true);
 
     if (is_single() && comments_open() && get_option('thread_comments')) {
         wp_enqueue_script('comment-reply');
     }
 
-    wp_enqueue_style('sage/app.css', asset('styles/app.css')->uri(), [], null);
-    wp_style_add_data('sage/app.css', 'path', asset('styles/app.css')->path());
+    $css = Assets::asset('app-styles.css');
+    wp_enqueue_style('sage/app.css', $css->uri(), [], $css->version());
+    wp_style_add_data('sage/app.css', 'path', $css->path());
     // Print out global stylesheet in the <head>
     wp_add_inline_style('sage/app.css', wp_get_global_stylesheet());
 }, 0);
@@ -47,16 +45,15 @@ add_action('enqueue_block_editor_assets', function () {
     wp_deregister_style('wp-reset-editor-styles');
     wp_register_style('wp-reset-editor-styles', false);
 
-    if ($bundle = bundle('scripts/editor')) {
-        wp_enqueue_script('sage/editor.js', asset('scripts/editor.js')->uri(), $bundle->dependencies(), null, true);
-        wp_add_inline_script('sage/editor.js', asset('runtime.js')->contents(), 'before');
-    }
+    $editor = Assets::asset('editor.js');
+    wp_enqueue_script('sage/editor.js', $editor->uri(), $editor->dependencies(), $editor->version(), true);
 }, 100);
 
 add_action('enqueue_block_assets', function () {
     if (is_admin()) {
         wp_enqueue_style('sage/googlefonts.css', app(GoogleFonts::class)->load()->url(), [], null);
-        wp_enqueue_style('sage/editor-overrides.css', asset('styles/editor-overrides.css')->uri(), [], null);
+        $editorOverrides = Assets::asset('editor-overrides.css');
+        wp_enqueue_style('sage/editor-overrides.css', $editorOverrides->uri(), [], $editorOverrides->version());
     }
 });
 
@@ -168,7 +165,7 @@ add_action('after_setup_theme', function () {
     }
 
     // Enqueue editor styles
-    add_editor_style('public/styles/editor.css');
+    add_editor_style('build/editor-styles.css');
 }, 20);
 
 add_action('init', function () {

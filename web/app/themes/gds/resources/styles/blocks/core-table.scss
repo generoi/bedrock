@@ -37,7 +37,7 @@
         border: 0;
 
         &:not(:last-child) {
-          border-right: solid 1px rgba(255 255 255 / 20%);
+          border-right: solid 1px rgb(255 255 255 / 20%);
         }
       }
     }
@@ -54,7 +54,7 @@
       thead th,
       tfoot th,
       tbody tr:nth-child(even) {
-        background-color: rgba(255 255 255 / 20%);
+        background-color: rgb(255 255 255 / 20%);
       }
     }
   }

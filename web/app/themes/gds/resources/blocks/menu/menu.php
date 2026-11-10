@@ -2,6 +2,7 @@
 
 namespace blocks\menu;
 
+use App\Assets;
 use Log1x\Navi\Navi;
 use WP_Block;
 
@@ -50,7 +51,7 @@ function navigation(string $menu): array
     return $navigation->toArray();
 }
 
-register_block_type(asset("blocks/$blockName/block.json")->path(), [
+register_block_type(Assets::asset("blocks/$blockName/block.json")->path(), [
     'render_callback' => function (array $attributes, string $content, WP_Block $block) use ($blockName) {
         $attributes = (object) $attributes;
         $menuSlug = resolveMenuSlug($attributes->menu ?? null);

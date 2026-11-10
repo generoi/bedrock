@@ -18,7 +18,6 @@
   @block('gds/breadcrumb')
 @endif
 
-
 @if (post_password_required())
   {!! get_the_password_form() !!}
 @else

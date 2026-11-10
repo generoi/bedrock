@@ -114,7 +114,7 @@ task('build:composer', function () {
 
 task('build:theme', function () {
     runLocally('cd {{build_path}} && composer build', ['timeout' => 1000]);
-    runLocally('ls {{build_path}}/{{theme_dir}}/public');
+    runLocally('ls {{build_path}}/{{theme_dir}}/build');
 });
 
 task('build:artifact', function () {

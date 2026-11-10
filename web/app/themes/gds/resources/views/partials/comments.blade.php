@@ -1,8 +1,5 @@
 @if (!post_password_required())
-  <section
-    id="comments"
-    class="comments"
-  >
+  <section id="comments" class="comments">
     @if (have_comments())
       <h2>
         {!! sprintf(
@@ -11,10 +8,10 @@
                 '%1$s responses to &ldquo;%2$s&rdquo;',
                 get_comments_number(),
                 'comments title',
-                'gds'
+                'gds',
             ),
             number_format_i18n(get_comments_number()),
-            '<span>' . get_the_title() . '</span>'
+            '<span>' . get_the_title() . '</span>',
         ) !!}
       </h2>
 
@@ -44,8 +41,7 @@
     @if (
         !comments_open() &&
             get_comments_number() != '0' &&
-            post_type_supports(get_post_type(), 'comments')
-    )
+            post_type_supports(get_post_type(), 'comments'))
       <x-alert type="warning">
         {!! __('Comments are closed.', 'gds') !!}
       </x-alert>

@@ -35,6 +35,8 @@ auth.json
 
 # Node Package Manager
 node_modules
+.eslintcache
+.stylelintcache
 npm-debug.log
 yarn-error.log
 
@@ -74,4 +76,4 @@ screenshot.jpg
 test-results
 
 # Theme
-web/app/themes/*/public
+web/app/themes/*/build

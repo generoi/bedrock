@@ -16,7 +16,7 @@ modal-dialog {
 
   &::part(overlay) {
     animation: fade-in 0.2s both;
-    background: rgba(0 0 0 / 10%);
+    background: rgb(0 0 0 / 10%);
     backdrop-filter: blur(2px);
   }
 

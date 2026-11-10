@@ -17,6 +17,6 @@
     "color": {}
   },
   "editorScript": "file:./index.js",
-  "style": "file:./style.css",
-  "script": "file:/script.js"
+  "style": "file:./style-index.css",
+  "script": "file:./script.js"
 }
