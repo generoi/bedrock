@@ -157,3 +157,20 @@ add_filter('single_template_hierarchy', function (array $templates): array {
 add_filter('template_include', function (string $template): string {
     return empty($GLOBALS['_wp_current_template_id']) ? $template : ABSPATH.WPINC.'/template-canvas.php';
 }, 101);
+
+/**
+ * A block template renders its blocks before wp_head, so block style
+ * variations enqueue in the head, depending on `global-styles`. In a classic
+ * theme core only registers that handle in the footer (and hoists it into the
+ * head from there), so the head fails dependency validation. Register it
+ * early on block-template pages only; Blade pages are left to core.
+ */
+add_action('wp_enqueue_scripts', function () {
+    if (empty($GLOBALS['_wp_current_template_id']) || wp_style_is('global-styles', 'registered')) {
+        return;
+    }
+
+    wp_register_style('global-styles', false);
+    wp_add_inline_style('global-styles', wp_get_global_stylesheet());
+    wp_enqueue_style('global-styles');
+}, 1);

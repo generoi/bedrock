@@ -29,20 +29,6 @@ add_action('wp_enqueue_scripts', function () {
     wp_style_add_data('sage/app.css', 'path', $css->path());
 }, 0);
 
-// With `should_load_separate_core_block_assets=true` on a classic theme, core's
-// wp_enqueue_global_styles() bails without registering the `global-styles` handle.
-// WP 6.9.1 added stricter dep validation, and core still declares `global-styles`
-// as a dep of `block-style-variation-styles`, which fires _doing_it_wrong.
-// Register and enqueue the handle ourselves to satisfy the dep and print the
-// global stylesheet in the <head>.
-add_action('wp_enqueue_scripts', function () {
-    if (! wp_style_is('global-styles', 'registered')) {
-        wp_register_style('global-styles', false);
-        wp_add_inline_style('global-styles', wp_get_global_stylesheet());
-        wp_enqueue_style('global-styles');
-    }
-}, 1);
-
 add_action('wp_head', function () {
     echo app(GoogleFonts::class)->load()->toHtml();
 }, 7);
