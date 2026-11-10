@@ -4,7 +4,9 @@ use Roots\WPConfig\Config;
 
 Config::define('WP_DEBUG', true);
 
-$table_prefix = 'tests_';
+// PHPUnit drops and recreates its tables on every run, so each checkout sharing
+// a database needs its own prefix; derive it from the checkout's path.
+$table_prefix = 'tests_'.substr(md5(dirname(__DIR__, 2)), 0, 6).'_';
 
 Config::define('WP_TESTS_DOMAIN', 'example.org');
 Config::define('WP_TESTS_EMAIL', 'admin@example.org');
