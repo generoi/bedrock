@@ -1,0 +1,3 @@
+[submodule ".claude/agency"]
+	path = .claude/agency
+	url = git@github.com:generoi/ai-agency.git

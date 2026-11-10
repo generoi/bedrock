@@ -141,7 +141,7 @@
       ]
     },
     "hooks": {
-      "pre-commit": "composer lint:fix",
+      "pre-commit": "bash .claude/agency/hooks/pre-commit-lint.sh",
       "post-merge": "composer install:development"
     },
     "installer-paths": {
@@ -225,10 +225,12 @@
       "npm run lint",
       "npm run build:production"
     ],
+    "claude:install": "[ -f .claude/agency/install.sh ] && bash .claude/agency/install.sh || true",
     "install:development": [
       "@composer install",
       "@composer build",
-      "vendor/bin/cghooks update"
+      "vendor/bin/cghooks update",
+      "@composer claude:install"
     ],
     "db:export-clean": [
       "ddev wp db export-clean .github/fixtures/sanitized-db.sql --remove-keys",
