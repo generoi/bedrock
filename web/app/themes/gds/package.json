@@ -33,8 +33,8 @@
   },
   "dependencies": {
     "@fortawesome/fontawesome-pro": "^7.3.1",
-    "@types/wordpress__blocks": "^12.5.14",
-    "@wordpress/base-styles": "^13.2.0",
+    "@wordpress/base-styles": "^14.0.0",
+    "@wordpress/icons": "^19.0.0",
     "clsx": "^2.1.1",
     "lodash-es": "^4.18.1",
     "modern-normalize": "^3.0.1",

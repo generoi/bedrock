@@ -30,8 +30,5 @@
     "postcss-inline-svg": "^6.0.0",
     "stylelint-checkstyle-reporter": "^1.1.1",
     "stylelint-config-standard-scss": "^17.0.0"
-  },
-  "dependencies": {
-    "@types/wordpress__blocks": "^12.5.14"
   }
 }

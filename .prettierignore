@@ -5,3 +5,6 @@ web/app/plugins
 web/app/uploads
 web/wp
 **/vendor
+
+# Written by pnpm; formatting it only produces churn pnpm undoes on install.
+pnpm-lock.yaml
