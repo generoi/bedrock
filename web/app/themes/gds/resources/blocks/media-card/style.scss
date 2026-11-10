@@ -51,7 +51,13 @@
       border-bottom-left-radius: inherit;
       border-top-right-radius: 0;
 
+      // The content sets the card's height and the image covers it. In flow,
+      // a portrait image's own height would stretch the row to match it.
+      position: relative;
+
       img {
+        position: absolute;
+        inset: 0;
         aspect-ratio: unset;
         height: 100%;
       }

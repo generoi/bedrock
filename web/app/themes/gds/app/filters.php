@@ -88,6 +88,14 @@ add_filter('wp_script_attributes', $cookiebotIgnoreModules = function (array $at
 add_filter('wp_inline_script_attributes', $cookiebotIgnoreModules);
 
 /**
+ * Keep wp-image-resizer's lazy-load rewriter off, as condite does: it moves
+ * `src` into `data-src` until a script puts it back, so an image it touches is
+ * empty until then (and for anything that never runs the script). WordPress
+ * core's native `loading="lazy"` still lazy-loads every image.
+ */
+add_filter('wp-image-resizer/skip-lazy-load', '__return_true', 10, 2);
+
+/**
  * Since WordPress 6.9 core dequeues the assets a block enqueued while
  * rendering when it rendered nothing. Keep them: a wrapper's stylesheet often
  * styles children that render on their own (luotokoti's people listing lost
