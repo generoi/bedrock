@@ -35,8 +35,6 @@ class Plugin
         $this->blockServiceProvider = new BlockServiceProvider(app());
         $this->woocommerce = new WooCommerce;
 
-        // After WooCommerce sets product args; still before `init` finishes registration.
-        add_filter('register_post_type_args', [$this->woocommerce, 'registerProductBlockTemplate'], 1000, 2);
         // Registered here rather than in WooCommerce::init() (plugins_loaded) so it
         // also catches notices raised while the other plugins are still loading.
         add_filter('doing_it_wrong_trigger_error', [$this->woocommerce, 'fixWooCommerceWidgetsEditor'], 10, 4);

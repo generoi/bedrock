@@ -59,10 +59,8 @@ class PerformanceServiceProvider extends ServiceProvider
             }
         }
 
-        // Enqueue the styles of the first block's tree on singular posts. Skip
-        // `product`: the first block is almost always
-        // `genero-woocommerce/woo-product`, covered by the list above.
-        if (is_singular() && ! is_singular('product') && ($post = get_post())) {
+        // Enqueue the styles of the first block's tree on singular posts.
+        if (is_singular() && ($post = get_post())) {
             if ($blocks = parse_blocks($post->post_content)) {
                 $firstName = $blocks[0]['blockName'] ?? '';
                 if (! in_array($firstName, ['gravityforms/form', 'woocommerce/store-notices'], true)) {

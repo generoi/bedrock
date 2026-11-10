@@ -4,8 +4,6 @@ namespace GeneroWoo\Woocommerce;
 
 use WC_Product;
 use WC_Product_Variable;
-use WP_REST_Request;
-use WP_REST_Response;
 
 class WooCommerce
 {
@@ -28,14 +26,6 @@ class WooCommerce
         add_filter('woocommerce_get_price_html', [$this, 'changeVariablePriceDisplay'], 10, 2);
         add_filter('woocommerce_enqueue_styles', [$this, 'dequeueStylesheets']);
         add_filter('pre_option_woocommerce_show_marketplace_suggestions', [$this, 'disableMarketplaceSuggestions']);
-        // Priority 1: before WooCommerce's do_blocks() at priority 9.
-        add_filter('woocommerce_short_description', [$this, 'stripBlockMarkupFromShortDescription'], 1);
-
-        // Prevent server-side block rendering on REST edit requests. The block editor
-        // uses content.raw (not content.rendered) for editing; rendering the full
-        // WooCommerce block tree (gallery, single-product, add-to-cart…) was causing
-        // 10+ second REST responses.
-        add_filter('rest_prepare_product', [$this, 'skipRenderedContentInEditContext'], 10, 3);
 
         add_action('pre_get_posts', [$this, 'excludeHiddenProducts']);
     }
@@ -94,32 +84,6 @@ class WooCommerce
     public function useBlockEditor(bool $use, string $postType): bool
     {
         return $postType === 'product' ? true : $use;
-    }
-
-    /**
-     * Apply default block template from config/product-default-blocks.php for new products.
-     *
-     * @see https://developer.wordpress.org/reference/functions/register_post_type/#template
-     */
-    public function registerProductBlockTemplate(array $args, string $postType): array
-    {
-        if ($postType !== 'product') {
-            return $args;
-        }
-
-        $file = dirname(__DIR__).'/config/product-default-blocks.php';
-        if (! is_readable($file)) {
-            return $args;
-        }
-
-        $template = require $file;
-        if (! is_array($template) || $template === []) {
-            return $args;
-        }
-
-        $args['template'] = $template;
-
-        return $args;
     }
 
     public function removeGlobalTemplateHooks(): void
@@ -265,39 +229,6 @@ class WooCommerce
     public function disableMarketplaceSuggestions(): string
     {
         return 'no';
-    }
-
-    /**
-     * Skip expensive server-side block rendering in the REST edit context.
-     *
-     * WordPress populates `content.rendered` by running `do_blocks()` on the raw
-     * post content, which renders the entire WooCommerce block tree (gallery,
-     * single-product, add-to-cart…) on every GET/POST to the editor REST endpoint.
-     * The block editor only uses `content.raw` for editing; clearing `rendered` in
-     * edit context has no effect on the editing experience but avoids the expensive
-     * render pass that was causing 10+ second REST responses.
-     */
-    public function skipRenderedContentInEditContext(WP_REST_Response $response, $post, WP_REST_Request $request): WP_REST_Response
-    {
-        if ($request->get_param('context') === 'edit' && isset($response->data['content']['rendered'])) {
-            $response->data['content']['rendered'] = '';
-        }
-
-        return $response;
-    }
-
-    /**
-     * Drop block markup before do_blocks() renders it without post context.
-     *
-     * wc_format_content() runs both the short description and the description
-     * (post_content) through this filter, e.g. for the Store API cart. Products
-     * here are built from blocks, so the description is block markup, and
-     * rendering WooCommerce blocks there without a postId crashes the request.
-     * Hand-written short descriptions carry no block comments and pass through.
-     */
-    public function stripBlockMarkupFromShortDescription(string $description): string
-    {
-        return str_contains($description, '<!-- wp:') ? '' : $description;
     }
 
     /**
