@@ -28,6 +28,30 @@ class WooCommerce
         add_filter('pre_option_woocommerce_show_marketplace_suggestions', [$this, 'disableMarketplaceSuggestions']);
 
         add_action('pre_get_posts', [$this, 'excludeHiddenProducts']);
+
+        add_filter('woocommerce_has_block_template', [$this, 'hasSingleProductTemplate'], 10, 2);
+        add_action('init', [$this, 'editProductsInTemplate'], 20);
+    }
+
+    /**
+     * Product pages render the theme's templates/single-product.html.
+     * WooCommerce only looks for its own registered block templates, which
+     * exist in block themes alone, and otherwise swaps in its PHP template;
+     * tell it the theme has one.
+     */
+    public function hasSingleProductTemplate(bool $hasTemplate, string $templateName): bool
+    {
+        return $templateName === 'single-product' ? true : $hasTemplate;
+    }
+
+    /**
+     * Edit products inside their template, so editors see the whole page and
+     * click into the description. Core hides the "Show template" toggle outside
+     * block themes, but honours the post type's default mode.
+     */
+    public function editProductsInTemplate(): void
+    {
+        add_post_type_support('product', 'editor', ['default-mode' => 'template-locked']);
     }
 
     /**
