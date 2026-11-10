@@ -1,0 +1,27 @@
+{
+  "image": "mcr.microsoft.com/devcontainers/base:debian-12",
+  "features": {
+    "ghcr.io/devcontainers/features/docker-in-docker:2": {
+      "version": "latest"
+    },
+    "ghcr.io/ddev/ddev/install-ddev:latest": {},
+    "ghcr.io/devcontainers/features/sshd:1": {},
+    "ghcr.io/devcontainers/features/github-cli:1": {},
+    "ghcr.io/devcontainers/features/node:1": {},
+    "ghcr.io/devcontainers/features/php:1": {},
+    "ghcr.io/generoi/devcontainer-features/codespace-network:1": {
+      "mode": "cloudflare",
+      "ddevDomain": "gdsbedrock.ddev.site",
+      "hosts": "main=gdsbedrock.genero-dev.app",
+      "repo": "generoi/gdsbedrock"
+    }
+  },
+  "forwardPorts": [80],
+  "portsAttributes": {
+    "80": { "label": "web", "onAutoForward": "silent" },
+    "3306": { "label": "database" },
+    "8027": { "label": "mailpit" }
+  },
+  "postCreateCommand": "/usr/local/share/codespace-network/cs-codespace-setup.sh",
+  "postStartCommand": "/usr/local/share/codespace-network/cs-network-start.sh"
+}

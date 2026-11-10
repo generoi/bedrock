@@ -51,6 +51,7 @@ command:
       options:
         dirs:
           - .ddev
+          - .devcontainer
           - .github
           - config
           - test/
