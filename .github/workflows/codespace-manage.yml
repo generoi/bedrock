@@ -1,0 +1,22 @@
+name: 'Manage: Codespace'
+
+on:
+  workflow_dispatch:
+    inputs:
+      action:
+        type: choice
+        description: 'Action to perform'
+        required: true
+        options:
+          - start
+          - stop
+          - rebuild
+          - delete
+
+jobs:
+  manage:
+    uses: generoi/github-actions/.github/workflows/codespace-manage.yml@v2
+    with:
+      action: ${{ inputs.action }}
+    secrets:
+      CODESPACE_TOKEN: ${{ secrets.CODESPACE_TOKEN }}
