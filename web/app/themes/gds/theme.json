@@ -49,9 +49,40 @@
       "text": true
     },
     "spacing": {
-      "padding": false,
-      "margin": false,
-      "blockGap": false
+      "spacingScale": {},
+      "customSpacingSize": false,
+      "defaultSpacingSizes": false,
+      "padding": true,
+      "margin": true,
+      "blockGap": null,
+      "spacingSizes": [
+        {
+          "name": "XS",
+          "slug": "block-gutter-xs",
+          "size": "var(--block-gutter-xs)"
+        },
+        {
+          "name": "S",
+          "slug": "block-gutter-s",
+          "size": "var(--block-gutter-s)"
+        },
+        {
+          "name": "M",
+          "slug": "block-gutter-m",
+          "size": "var(--block-gutter-m)"
+        },
+        {
+          "name": "L",
+          "slug": "block-gutter-l",
+          "size": "var(--block-gutter-l)"
+        },
+        {
+          "name": "XL",
+          "slug": "block-gutter-xl",
+          "size": "var(--block-gutter-xl)"
+        }
+      ],
+      "units": ["px", "%", "em", "rem", "vw", "vh"]
     },
     "border": {
       "color": false,
@@ -204,5 +235,17 @@
         }
       }
     }
-  }
+  },
+  "templateParts": [
+    {
+      "name": "header",
+      "title": "Header",
+      "area": "header"
+    },
+    {
+      "name": "footer",
+      "title": "Footer",
+      "area": "footer"
+    }
+  ]
 }
