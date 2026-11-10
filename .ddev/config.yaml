@@ -1,4 +1,5 @@
-name: gdsbedrock
+# No `name:` on purpose, so each git worktree is its own DDEV project.
+# Clone this repo as gdsbedrock: the project name and hostname follow the directory.
 type: wordpress
 docroot: web
 php_version: "8.5"
