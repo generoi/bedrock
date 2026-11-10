@@ -88,41 +88,12 @@ add_filter('wp_script_attributes', $cookiebotIgnoreModules = function (array $at
 add_filter('wp_inline_script_attributes', $cookiebotIgnoreModules);
 
 /**
- * Use aria roles for heading in footer widgets in an attempt to improve SEO.
- */
-add_filter('widget_block_content', function (string $content) {
-    $content = str_replace(['<h2 ', '</h2>'], ['<p role="heading" aria-level="2" ', '</p>'], $content);
-
-    return $content;
-}, 11);
-
-/**
  * Since WordPress 6.9 core dequeues the assets a block enqueued while
  * rendering when it rendered nothing. Keep them: a wrapper's stylesheet often
  * styles children that render on their own (luotokoti's people listing lost
  * its styles this way).
  */
 add_filter('enqueue_empty_block_content_assets', '__return_true');
-
-/**
- * Give every Query Loop a deterministic tiebreaker.
- *
- * Ordering by date alone leaves posts published in the same second in whatever
- * order MySQL happens to return them, so the same listing renders in a
- * different order between requests: cards swap places, page caches store
- * whichever order was rendered first, and visual regression tests compare a
- * page against a reshuffled copy of itself.
- */
-add_filter('query_loop_block_query_vars', function (array $query): array {
-    if (($query['orderby'] ?? 'date') !== 'date') {
-        return $query;
-    }
-
-    $order = $query['order'] ?? 'DESC';
-    $query['orderby'] = ['date' => $order, 'ID' => $order];
-
-    return $query;
-});
 
 /**
  * Limit Media & Text alignment to content width and wide only.
