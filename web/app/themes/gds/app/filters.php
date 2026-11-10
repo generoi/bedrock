@@ -73,6 +73,21 @@ add_filter('wp_kses_allowed_html', function (array $tags) {
 add_filter('gform_disable_css', '__return_true');
 
 /**
+ * Keep Cookiebot's auto-blocking away from script modules and the import map.
+ * Before consent it rewrites them, which breaks the Interactivity API: the
+ * accordion's toggle finds no item ("reading 'isOpen'") and never opens.
+ * These are WordPress's and the theme's own scripts, not tracking.
+ */
+add_filter('wp_script_attributes', $cookiebotIgnoreModules = function (array $attributes): array {
+    if (in_array($attributes['type'] ?? null, ['module', 'importmap'], true)) {
+        $attributes['data-cookieconsent'] = 'ignore';
+    }
+
+    return $attributes;
+});
+add_filter('wp_inline_script_attributes', $cookiebotIgnoreModules);
+
+/**
  * Use aria roles for heading in footer widgets in an attempt to improve SEO.
  */
 add_filter('widget_block_content', function (string $content) {

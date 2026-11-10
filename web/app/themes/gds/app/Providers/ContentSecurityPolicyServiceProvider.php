@@ -17,22 +17,16 @@ class ContentSecurityPolicyServiceProvider extends ServiceProvider
 
     public function sendHeaders(): void
     {
-        if (! config('csp.enabled')) {
+        // This is the frontend policy; gds-security-hardening owns wp-admin's
+        // and wp-login.php's, and sends the static security headers (HSTS,
+        // nosniff, Referrer-Policy) everywhere. Admin list screens still reach
+        // here, because wp_edit_posts_query() and wp_edit_attachments_query()
+        // call wp(), which fires send_headers. Sending this policy there would
+        // replace the admin one, and its nonce makes browsers ignore
+        // 'unsafe-inline', blocking the inline scripts core and plugins print,
+        // which can never carry a nonce.
+        if (! config('csp.enabled') || is_admin()) {
             return;
-        }
-
-        // wp-admin cannot work under a nonce. Core prints inline scripts that
-        // never pass through `wp_inline_script_attributes` — `ajaxurl` in
-        // admin-header.php among them — so they can never carry one, and a
-        // nonce anywhere in script-src makes the browser ignore
-        // 'unsafe-inline'. The result is `ajaxurl is not defined`.
-        //
-        // Spatie's Basic, GoogleAnalytics and GoogleTagManager presets add a
-        // nonce unconditionally, so omitting it in App\Csp\WordPress is not
-        // enough on its own. Turning the generator off covers every preset at
-        // once, and admin keeps a real policy ('self' plus 'unsafe-inline').
-        if (is_admin()) {
-            config(['csp.nonce_enabled' => false]);
         }
 
         $policy = Policy::create(
@@ -41,21 +35,8 @@ class ContentSecurityPolicyServiceProvider extends ServiceProvider
             reportUri: config('csp.report_uri'),
         );
 
-        // Force client-side TLS (Transport Layer Security) redirection.
-        // No 'preload': submitting the domain to the browser preload lists
-        // is practically irreversible and has to be a deliberate decision.
-        header('Strict-Transport-Security: max-age=63072000; includeSubDomains');
-
-        // Disable content sniffing, since it's an attack vector.
-        header('X-Content-Type-Options: nosniff');
-
-        // Prevent clickjacking
-        header('X-Frame-Options: SAMEORIGIN');
-
-        // Set a strict Referrer Policy to mitigate information leakage.
-        header('Referrer-Policy: strict-origin-when-cross-origin');
-
-        // Add Content-Security-Policy
+        // Add Content-Security-Policy. Its frame-ancestors 'self'
+        // (App\Csp\Security) is what prevents clickjacking.
         $header = config('csp.report_only')
             ? 'Content-Security-Policy-Report-Only'
             : 'Content-Security-Policy';

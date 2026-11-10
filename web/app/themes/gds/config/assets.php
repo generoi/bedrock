@@ -13,7 +13,6 @@ return [
         'debug-bar-js',
         'admin-bar',
         'debug-bar',
-        'wp-genero-cookieconsent/js',
         'moxiejs', // gravityforms
         'plupload', // gravityforms
     ],
@@ -32,7 +31,5 @@ return [
         'shc-show-env',
         'wp-block-library-theme',
         'wp-smart-crop-renderer',
-        'wp-genero-cookieconsent/css/library',
-        'wp-genero-cookieconsent/css',
     ],
 ];
