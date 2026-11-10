@@ -129,8 +129,10 @@ pnpm run e2e:visual           # compare
 - `e2e:test` is the smoke suite the deploy workflows run against staging and
   production. It sends fake logged-in cookies (`global-setup.js`), so Kinsta
   serves the new deploy instead of cached HTML.
-- Specs find their pages from the Yoast `page` and `product` sitemaps
-  (`discover.js`) and skip where a site has none.
+- Specs visit the pages listed in `test/e2e/pages.js`. Its comment says what
+  kinds of pages belong there; update it when a site adds a template or layout.
+- Visual screenshots must match exactly. Motion is frozen and media hidden
+  before each capture instead of tolerating a diff.
 - `e2e:editor` is local only: it creates and deletes a throwaway admin and a
   draft page through WP-CLI (`WP_CLI`, default `ddev wp`), and skips without it.
 - Visual baselines are not committed (`test/e2e/snapshots/` is gitignored): take

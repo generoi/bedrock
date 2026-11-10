@@ -13,11 +13,6 @@ export default {
     baseURL: process.env.URL || 'https://gdsbedrock.ddev.site',
     storageState: 'state.json',
   },
-  expect: {
-    toHaveScreenshot: {
-      threshold: 0.2,
-    },
-  },
   // Baselines are generated locally against DDEV (`e2e:visual:update`) and not
   // committed, so they never encode production content.
   snapshotDir: 'snapshots',

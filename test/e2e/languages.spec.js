@@ -1,23 +1,20 @@
 import {test, expect} from '@playwright/test';
-import {sitemap} from './discover.js';
+import {pages} from './pages.js';
 
 // Polylang: each translated page names its translations with hreflang, they
 // load on this host and link back, and the theme's language menu
 // (gds/language-menu) points at the same URLs. Skips until a page is
 // translated.
 
-const PAGE_LIMIT = 10;
-
 test('Translations link to each other through hreflang and the language menu', async ({
   page,
   request,
   baseURL,
 }) => {
-  const paths = ['/', ...(await sitemap(request, 'page'))];
   const {host} = new URL(baseURL);
   let checked = 0;
 
-  for (const path of [...new Set(paths)].slice(0, PAGE_LIMIT)) {
+  for (const path of pages) {
     const response = await page.goto(path);
     if (response.status() !== 200) {
       continue; // site.spec.js reports it.

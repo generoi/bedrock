@@ -1,7 +1,7 @@
 import {test, expect} from '@playwright/test';
-import {sitemap} from './discover.js';
+import {pages, product} from './pages.js';
 
-// Site-wide checks that need no site copy: pages come from the sitemaps.
+// Site-wide checks that need no site copy. Pages come from pages.js.
 
 test('An unknown URL returns a real 404', async ({page}) => {
   const response = await page.goto('/e2e-page-that-does-not-exist/');
@@ -19,10 +19,8 @@ test('The front page raises no uncaught page errors', async ({page}) => {
   expect(errors).toEqual([]);
 });
 
-test('Every page in the sitemap returns 200', async ({request, baseURL}) => {
-  const paths = await sitemap(request, 'page');
-  test.skip(!paths.length, 'No page sitemap on this site');
-
+test('Every listed page returns 200', async ({request, baseURL}) => {
+  const paths = [...pages, product].filter(Boolean);
   test.setTimeout(paths.length * 30000);
   const {host} = new URL(baseURL);
   const failed = [];
@@ -33,9 +31,9 @@ test('Every page in the sitemap returns 200', async ({request, baseURL}) => {
     const result = await request
       .get(path, {timeout: 20000})
       .then((response) =>
-        new URL(response.url()).host === host
-          ? response.status()
-          : `redirected to ${response.url()}`,
+        new URL(response.url()).host === host ?
+          response.status()
+        : `redirected to ${response.url()}`,
       )
       .catch(() => 'timeout');
     if (result !== 200) {
@@ -46,8 +44,7 @@ test('Every page in the sitemap returns 200', async ({request, baseURL}) => {
   expect(failed, failed.join('\n')).toEqual([]);
 });
 
-test('A product page renders without page errors', async ({page, request}) => {
-  const [product] = await sitemap(request, 'product');
+test('A product page renders without page errors', async ({page}) => {
   test.skip(!product, 'No WooCommerce products on this site');
 
   const errors = [];
