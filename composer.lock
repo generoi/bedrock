@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "ef3afe0efa5bb149ac5ab17e3ce44832",
+    "content-hash": "d5841d85084363f1c10bf5b7451bb5d3",
     "packages": [
         {
             "name": "aaemnnosttv/wp-cli-login-command",
@@ -13169,37 +13169,6 @@
                 "source": "https://plugins.svn.wordpress.org/postmark-approved-wordpress-plugin"
             },
             "time": "2026-09-29T13:03:58+00:00"
-        },
-        {
-            "name": "wp-plugin/query-monitor",
-            "version": "4.1.1",
-            "source": {
-                "type": "svn",
-                "url": "https://plugins.svn.wordpress.org/query-monitor/",
-                "reference": "tags/4.1.1"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://downloads.wordpress.org/plugin/query-monitor.4.1.1.zip"
-            },
-            "require": {
-                "composer/installers": "~1.0|~2.0"
-            },
-            "type": "wordpress-plugin",
-            "notification-url": "https://wp-packages.org/downloads",
-            "authors": [
-                {
-                    "name": "John Blackbourn"
-                }
-            ],
-            "description": "Query Monitor is the developer tools panel for WordPress and WooCommerce.",
-            "homepage": "https://querymonitor.com/",
-            "support": {
-                "changelog": "https://wordpress.org/plugins/query-monitor/#developers",
-                "issues": "https://wordpress.org/support/plugin/query-monitor",
-                "source": "https://plugins.svn.wordpress.org/query-monitor"
-            },
-            "time": "2026-10-27T01:21:23+00:00"
         },
         {
             "name": "wp-plugin/safe-redirect-manager",
