@@ -1,0 +1,16 @@
+// Panels share one grid cell: the tallest sets the height, so switching tabs
+// doesn't move what comes after the block.
+.wp-block-tab-panels {
+  display: grid;
+
+  > * {
+    grid-area: 1 / 1;
+  }
+
+  // Core hides inactive panels with `display: none !important`, which would
+  // take them out of the shared cell.
+  > .wp-block-tab-panel[hidden] {
+    display: block !important;
+    visibility: hidden;
+  }
+}

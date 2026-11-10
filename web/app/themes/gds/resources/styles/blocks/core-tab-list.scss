@@ -1,0 +1,41 @@
+// Core Tabs' tab buttons as pills.
+.wp-block-tab-list.is-layout-flex {
+  gap: var(--gds-spacing-xxs);
+}
+
+.wp-block-tab-list button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 44px;
+  padding: 0 20px;
+  font-size: var(--gds-text-m-font-size);
+  line-height: 1.4;
+  border: 1px solid var(--gds-color-mid-gray);
+  border-radius: 999px;
+  background-color: var(--gds-color-white);
+  transition:
+    background-color 0.15s,
+    border-color 0.15s,
+    color 0.15s;
+
+  &:hover {
+    border-color: var(--gds-color-primary);
+  }
+
+  &[aria-selected='true'] {
+    border-color: var(--gds-color-primary);
+    background-color: var(--gds-color-primary);
+    color: var(--gds-color-white);
+
+    // Core underlines the selected tab; the fill marks it here.
+    &::before {
+      content: none;
+    }
+  }
+
+  &:focus-visible {
+    outline: var(--gds-outline--focus);
+    outline-offset: 2px;
+  }
+}
