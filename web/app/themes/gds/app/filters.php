@@ -229,3 +229,44 @@ add_filter('site_status_tests', function (array $tests) {
 
     return $tests;
 });
+
+/**
+ * Product pages render templates/single-product.html. WooCommerce only looks
+ * for its own registered block templates, which exist in block themes alone,
+ * and otherwise swaps in its PHP template; tell it the theme has one.
+ */
+add_filter('woocommerce_has_block_template', function (bool $hasTemplate, string $templateName): bool {
+    return $templateName === 'single-product' ? true : $hasTemplate;
+}, 10, 2);
+
+/**
+ * Edit products inside their template, so editors see the whole page and
+ * click into the description. Core hides the "Show template" toggle outside
+ * block themes, but honours the post type's default mode.
+ */
+add_action('init', function () {
+    add_post_type_support('product', 'editor', ['default-mode' => 'template-locked']);
+}, 20);
+
+/**
+ * Temporary, until Acorn supports block templates in a classic theme.
+ *
+ * Acorn puts every Blade view ahead of core's template names unless the theme
+ * is a block theme, so core never matches templates/single-product.html, and
+ * it wraps whatever template is chosen in index.php, which would nest
+ * template-canvas.php's document inside ours
+ * (Roots\Acorn\Sage\Concerns\FiltersTemplates).
+ */
+add_filter('single_template_hierarchy', function (array $templates): array {
+    if (! is_singular('product')) {
+        return $templates;
+    }
+
+    $product = get_queried_object();
+
+    return ["single-product-{$product->post_name}.php", 'single-product.php', ...$templates];
+}, 11);
+
+add_filter('template_include', function (string $template): string {
+    return empty($GLOBALS['_wp_current_template_id']) ? $template : ABSPATH.WPINC.'/template-canvas.php';
+}, 101);

@@ -11,6 +11,8 @@
 
 <!-- Project-specific theme conventions, non-standard patterns, etc. -->
 
+- Product pages render the block template `web/app/themes/gds/templates/single-product.html`, not Blade; every other page is Blade. Products open in the editor in template mode: the layout is the template (edit it once, for all products), the product's content is only its description. The wiring and a temporary Acorn workaround are in `app/filters.php`.
+
 ## Integrations
 
 <!-- Notable third-party integrations and their config locations, e.g.:

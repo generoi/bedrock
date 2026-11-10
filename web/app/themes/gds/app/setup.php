@@ -197,6 +197,16 @@ add_action('after_setup_theme', function () {
      */
     add_theme_support('block-template-parts');
 
+    /**
+     * Allow block templates where the theme ships one (templates/), so far
+     * only product pages. Every other page keeps its Blade view: core uses a
+     * block template only when it matches at least as specifically as the PHP
+     * template.
+     *
+     * @link https://developer.wordpress.org/reference/functions/locate_block_template/
+     */
+    add_theme_support('block-templates');
+
     remove_theme_support('core-block-patterns');
 
     add_image_size('tiny', 50, 50, true);
