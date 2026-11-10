@@ -2,6 +2,7 @@
   "$schema": "https://schemas.wp.org/trunk/block.json",
   "apiVersion": 3,
   "name": "gds/site-search",
+  "textdomain": "gds",
   "title": "Site search",
   "description": "Show the site search...",
   "category": "widgets",

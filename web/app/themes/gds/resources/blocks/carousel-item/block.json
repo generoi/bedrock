@@ -2,6 +2,7 @@
   "$schema": "https://schemas.wp.org/trunk/block.json",
   "apiVersion": 3,
   "name": "gds/carousel-item",
+  "textdomain": "gds",
   "title": "Carousel Item",
   "description": "Display an carousel item",
   "icon": "format-image",

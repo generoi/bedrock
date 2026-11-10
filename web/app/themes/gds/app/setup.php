@@ -59,7 +59,37 @@ add_action('enqueue_block_editor_assets', function () {
 
     $editor = Assets::asset('editor.js');
     wp_enqueue_script('sage/editor.js', $editor->uri(), $editor->dependencies(), $editor->version(), true);
+    wp_set_script_translations('sage/editor.js', 'gds', get_parent_theme_file_path('resources/lang'));
 }, 100);
+
+/**
+ * Serve the theme's JS translations to every script that asks for the `gds`
+ * domain: the editor bundle, each block's editorScript (registered from
+ * block.json) and their lazy chunks. `wp i18n make-json` writes one file per
+ * source file, hashed by that source path, which matches no built script, so
+ * they are merged and handed to the first script printed. wp.i18n domains are
+ * global, so the scripts after it share them; the rest get an empty set rather
+ * than another copy. Only the editor needs them: no front-end script
+ * translates anything.
+ */
+add_filter('pre_load_script_translations', function (?string $translations, $file, string $handle, string $domain): ?string {
+    static $sent = false;
+    if ($domain !== 'gds' || $translations !== null || ! is_admin()) {
+        return $translations;
+    }
+    if ($sent) {
+        return '{"locale_data":{"messages":{"":{}}}}';
+    }
+    $sent = true;
+
+    $messages = [];
+    foreach (glob(get_parent_theme_file_path('resources/lang/gds-'.determine_locale().'-*.json')) ?: [] as $json) {
+        $data = json_decode((string) file_get_contents($json), true);
+        $messages += $data['locale_data']['messages'] ?? [];
+    }
+
+    return $messages ? (string) wp_json_encode(['locale_data' => ['messages' => $messages]]) : null;
+}, 10, 4);
 
 add_action('enqueue_block_assets', function () {
     if (is_admin()) {
@@ -96,6 +126,11 @@ add_filter('wp_theme_json_data_default', function (WP_Theme_JSON_Data $jsonData)
  * @return void
  */
 add_action('after_setup_theme', function () {
+    /**
+     * Load theme translations.
+     */
+    load_theme_textdomain('gds', get_parent_theme_file_path('resources/lang'));
+
     /**
      * Enable plugins to manage the document title
      *
