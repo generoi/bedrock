@@ -18,7 +18,7 @@
     "ci:scripts": "wp-scripts lint-js resources/scripts --format checkstyle",
     "ci:styles": "stylelint 'resources/**/*.{css,scss}' -f json 2>&1 | npx stylelint-checkstyle-reporter",
     "translate": "pnpm run translate:pot && pnpm run translate:js",
-    "translate:pot": "pnpm run wp -- i18n make-pot . ./resources/lang/sage.pot --ignore-domain --include=\"src,resources\"",
+    "translate:pot": "pnpm run wp -- i18n make-pot . ./resources/lang/genero-woocommerce.pot --ignore-domain --include=\"src,resources\"",
     "translate:js": "pnpm run wp -- i18n make-json ./resources/lang --pretty-print",
     "wp": "../../../../vendor/bin/wp"
   },
