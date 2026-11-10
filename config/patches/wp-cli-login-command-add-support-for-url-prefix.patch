@@ -1,0 +1,26 @@
+From c9e74057c7d872a6d7492e0ece850bea15cb1a6f Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Oskar=20Sch=C3=B6ldstr=C3=B6m?= <m@oxy.fi>
+Date: Wed, 31 Jul 2024 13:00:09 -0300
+Subject: [PATCH] Add support for url prefix
+
+---
+ src/LoginCommand.php | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/src/LoginCommand.php b/src/LoginCommand.php
+index ab25311..07bd754 100644
+--- a/src/LoginCommand.php
++++ b/src/LoginCommand.php
+@@ -419,10 +419,11 @@ private function makeMagicUrl(WP_User $user, $expires, $redirect_url)
+ 
+         $endpoint = $this->endpoint();
+         $magic    = new MagicUrl($user, $this->domain(), time() + $expires, $redirect_url);
++        $prefix   = apply_filters('wp_cli_login/url_prefix', '');
+ 
+         $this->persistMagicUrl($magic, $endpoint, $expires);
+ 
+-        return $this->homeUrl($endpoint . '/' . $magic->getKey());
++        return $this->homeUrl($prefix . $endpoint . '/' . $magic->getKey());
+     }
+ 
+     /**

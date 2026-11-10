@@ -4,6 +4,8 @@ server:
 
 require:
   - config/wp-cli/pre-ssh.php
+  - vendor/makers99/wp-cli-db-export-clean/package.php
+  - config/wp-cli/db-export-clean.php
 
 '@ddev':
   path: /var/www/html/web/wp
@@ -16,5 +18,3 @@ require:
 '@production':
   ssh: gdsbedrock@79.76.40.134:34506/www/gdsbedrock_154/public/current/web/wp
   url: gdsbedrock.kinsta.cloud
-  # bin_path: $HOME/.config/composer/vendor/bin
-  # php_path: /usr/bin/php72

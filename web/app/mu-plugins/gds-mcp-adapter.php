@@ -18,43 +18,9 @@ if (! defined('ABSPATH') || ! class_exists(McpAdapter::class)) {
 
 McpAdapter::instance();
 
-// mcp-adapter 0.5+ expects meta.mcp.uri / meta.mcp.mimeType / meta.mcp.annotations.
-// generoi/gds-mcp still uses top-level meta keys; without this, default server creation fails and no tools list.
-add_filter('wp_register_ability_args', function (array $args, string $name): array {
-    if (! isset($args['meta']) || ! is_array($args['meta'])) {
-        return $args;
-    }
-
-    $meta = &$args['meta'];
-
-    if (! isset($meta['mcp']) || ! is_array($meta['mcp'])) {
-        $meta['mcp'] = [];
-    }
-
-    foreach (['uri', 'mimeType'] as $legacyKey) {
-        if (isset($meta[$legacyKey]) && ! isset($meta['mcp'][$legacyKey])) {
-            $meta['mcp'][$legacyKey] = $meta[$legacyKey];
-            unset($meta[$legacyKey]);
-        }
-    }
-
-    if (isset($meta['annotations']) && ! isset($meta['mcp']['annotations'])) {
-        $meta['mcp']['annotations'] = $meta['annotations'];
-        unset($meta['annotations']);
-    }
-
-    return $args;
-}, 5, 2);
-
 add_filter('wp_register_ability_args', function (array $args, string $name): array {
     // Expose all gds/ and core/ abilities as public MCP tools.
     if (str_starts_with($name, 'gds/') || str_starts_with($name, 'core/')) {
-        if (! isset($args['meta']) || ! is_array($args['meta'])) {
-            $args['meta'] = [];
-        }
-        if (! isset($args['meta']['mcp']) || ! is_array($args['meta']['mcp'])) {
-            $args['meta']['mcp'] = [];
-        }
         $args['meta']['mcp']['public'] = true;
     }
 

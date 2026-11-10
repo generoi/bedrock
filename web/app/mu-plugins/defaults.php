@@ -15,12 +15,6 @@ namespace Genero\Site;
 if (! is_blog_installed()) {
     return;
 }
-/**
- * Entirely disable XMLRPC.
- */
-if (defined('XMLRPC_REQUEST') && XMLRPC_REQUEST) {
-    exit;
-}
 
 /**
  * Disable dashboard browse-happy requests / widget
@@ -39,14 +33,22 @@ if (is_blog_admin()) {
 }
 
 /**
+ * Skip WordPress.org translation API in local development.
+ *
+ * Translations are installed via Composer (wp-translation-downloader). When
+ * the HTTPS request fails, core calls wp_trigger_error() with E_USER_WARNING
+ * under WP_DEBUG, which Acorn turns into a fatal ErrorException.
+ */
+if (in_array(wp_get_environment_type(), ['development', 'local'], true)) {
+    add_filter('translations_api', function ($result, $type, $args) {
+        return ['translations' => []];
+    }, 10, 3);
+}
+
+/**
  * Disable creation of default gravityform admin notification.
  */
 add_filter('gform_default_notification', '__return_false');
-
-/**
- * Prevent modification of .htaccess by WordPress.
- */
-add_filter('flush_rewrite_rules_hard', '__return_false', 99, 1);
 
 /**
  * Remove accents from media uploads
@@ -57,11 +59,6 @@ add_filter('sanitize_file_name', 'remove_accents', 10, 1);
  * Disable conversion of wysiwyg smilies codes to images
  */
 add_filter('pre_option_use_smilies', '__return_zero', 10, 1);
-
-/**
- * Disable XML-RPC
- */
-add_filter('xmlrpc_enabled', '__return_false');
 
 /**
  * Remove emojis and smilies hooks
@@ -86,13 +83,6 @@ add_action('init', function () {
 
         return $urls;
     }, 10, 2);
-});
-
-/**
- * @see https://github.com/Automattic/wp-super-cache/issues/397
- */
-add_action('plugins_loaded', function () {
-    remove_action('gc_cache', 'wpsc_timestamp_cache_update');
 });
 
 /**
@@ -130,43 +120,12 @@ add_action('wp_dashboard_setup', function () {
 });
 
 /**
- * Remove nagging notices
+ * Only show the core update nag to users who can update core.
  */
-add_filter('pre_site_option_duplicate_post_show_notice', '__return_zero');
-add_filter('pre_option_CPT_configured', '__return_true');
-add_filter('pre_site_option_ewww_image_optimizer_tracking_notice', '__return_true');
-add_filter('pre_site_option_ewww_image_optimizer_enable_help_notice', '__return_true');
-add_filter('pre_option_ewww_image_optimizer_tracking_notice', '__return_true');
-add_filter('pre_option_ewww_image_optimizer_enable_help_notice', '__return_true');
-add_filter('pre_option_scporder_notice', '__return_true');
-remove_action('admin_notices', 'woothemes_updater_notice');
-remove_action('admin_notices', 'widgetopts_admin_notices');
 add_action('admin_head', function () {
     if (! current_user_can('update_core')) {
         remove_action('admin_notices', 'update_nag', 3);
     }
-});
-
-/**
- * Disable SEO for post types without title and editor.
- */
-add_filter('the_seo_framework_custom_post_type_support', function () {
-    return ['title', 'editor'];
-});
-
-/**
- * Disable the SEO Bar columns on the post/page/taxonomy selection screens.
- */
-add_filter('the_seo_framework_show_seo_column', '__return_false');
-
-/**
- * Set SEO Framework metabox priority to low so it's shown at the bottom.
- */
-add_filter('the_seo_framework_metabox_priority', function () {
-    return 'low';
-});
-add_filter('the_seo_framework_term_metabox_priority', function () {
-    return 100;
 });
 
 /**
@@ -196,17 +155,38 @@ add_action('admin_enqueue_scripts', function () {
 }, 11);
 
 /**
- * Add edit page links to admin toolbar when "page for post type" plugin is used.
+ * Add edit page links to admin toolbar for archives backed by a page
+ * (page-for-post-type plugin, WooCommerce shop page, etc.).
  */
-add_action('admin_bar_menu', function () {
-    global $wp_admin_bar;
-    if (function_exists('get_page_for_post_type') && is_archive() && $page_id = get_page_for_post_type()) {
-        $wp_admin_bar->add_node([
-            'id' => 'edit',
-            'title' => get_post_type_object(get_post_type($page_id))->labels->edit_item,
-            'href' => get_edit_post_link($page_id),
-        ]);
+add_action('admin_bar_menu', function (\WP_Admin_Bar $wp_admin_bar) {
+    if ($wp_admin_bar->get_node('edit')) {
+        return;
     }
+
+    $page_id = 0;
+
+    if (function_exists('get_page_for_post_type') && is_archive() && ($page_id = get_page_for_post_type())) {
+        // Page-for-post-type archives.
+    } elseif (function_exists('is_shop') && function_exists('wc_get_page_id') && is_shop()) {
+        $page_id = wc_get_page_id('shop');
+    } else {
+        return;
+    }
+
+    if (! $page_id || $page_id <= 0 || ! current_user_can('edit_post', $page_id)) {
+        return;
+    }
+
+    $post_type_object = get_post_type_object(get_post_type($page_id));
+    if (! $post_type_object) {
+        return;
+    }
+
+    $wp_admin_bar->add_node([
+        'id' => 'edit',
+        'title' => $post_type_object->labels->edit_item,
+        'href' => get_edit_post_link($page_id, 'url'),
+    ]);
 }, 100);
 
 /**

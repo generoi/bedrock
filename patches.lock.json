@@ -1,5 +1,5 @@
 {
-    "_hash": "41260082f8933cc29a0134768a9b312f033a7605f44ce10c127b2bc68668ba6f",
+    "_hash": "e8593cfcc1226139ae15ff3cec4ea39c2fa695a6d2f26e2eb987e0232448f8da",
     "patches": {
         "generoi/advanced-custom-fields-pro": [
             {
@@ -17,8 +17,20 @@
             {
                 "package": "aaemnnosttv/wp-cli-login-command",
                 "description": "Add support for url prefix",
-                "url": "https://github.com/aaemnnosttv/wp-cli-login-command/pull/77/commits/c9e74057c7d872a6d7492e0ece850bea15cb1a6f.patch",
+                "url": "./config/patches/wp-cli-login-command-add-support-for-url-prefix.patch",
                 "sha256": "2fa7df3eb88165ec76e3b07a9acf7a4d8f5ee6511551bdcb61ebfa9a6170c870",
+                "depth": 1,
+                "extra": {
+                    "provenance": "root"
+                }
+            }
+        ],
+        "wp-plugin/cookiebot": [
+            {
+                "package": "wp-plugin/cookiebot",
+                "description": "Print script tags through the core API so they carry the CSP nonce",
+                "url": "./config/patches/cookiebot-support-csp.patch",
+                "sha256": "6f00162d0466d91a35e84d831427de6914f53373db71830ec8d88a5068a28896",
                 "depth": 1,
                 "extra": {
                     "provenance": "root"
