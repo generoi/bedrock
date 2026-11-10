@@ -121,7 +121,7 @@ class CacheControlServiceProvider extends ServiceProvider
                 }
                 // Sequential
             } else {
-                if (str_starts_with('cache-control:', strtolower($value))) {
+                if (str_starts_with(strtolower($value), 'cache-control:')) {
                     return true;
                 }
             }
