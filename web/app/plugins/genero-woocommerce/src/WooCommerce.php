@@ -174,40 +174,6 @@ class WooCommerce
         return $classes;
     }
 
-    /**
-     * @see https://github.com/woocommerce/woocommerce/issues/47831
-     *
-     * WooCommerce Blocks can output `loading="lazy"` and `fetchpriority="high"` on the same img; core
-     * calls `_doing_it_wrong()` (WP 6.3.0). Acorn turns that into a fatal ErrorException — suppress
-     * only that notice, no HTML filters.
-     */
-    public function fixWooCommerceWidgetsEditor(bool $trigger, string $functionName, string $message, string $version = ''): bool
-    {
-        if ($functionName === 'wp_enqueue_script()' && str_contains($message, '"wp-editor"')) {
-            return false;
-        }
-
-        // WP 6.7+ warns when the `woocommerce` textdomain loads before `init`, which
-        // third-party code commonly triggers indirectly. The message is translated, so
-        // match on the function, version and domain only.
-        if (
-            $functionName === '_load_textdomain_just_in_time'
-            && $version === '6.7.0'
-            && str_contains($message, '<code>woocommerce</code>')
-        ) {
-            return false;
-        }
-
-        if (
-            $version === '6.3.0'
-            && in_array($functionName, ['wp_get_loading_optimization_attributes', 'wp_img_tag_add_loading_optimization_attrs'], true)
-        ) {
-            return false;
-        }
-
-        return $trigger;
-    }
-
     public function dequeueStylesheets(array $styles): array
     {
         unset($styles['woocommerce-general']);

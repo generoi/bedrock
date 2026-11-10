@@ -35,10 +35,6 @@ class Plugin
         $this->blockServiceProvider = new BlockServiceProvider(app());
         $this->woocommerce = new WooCommerce;
 
-        // Registered here rather than in WooCommerce::init() (plugins_loaded) so it
-        // also catches notices raised while the other plugins are still loading.
-        add_filter('doing_it_wrong_trigger_error', [$this->woocommerce, 'fixWooCommerceWidgetsEditor'], 10, 4);
-
         add_action('init', [$this, 'loadTextdomain'], 0);
         add_action('init', [$this, 'registerApp'], 9);
         add_action('init', [$this, 'registerAssets']);
