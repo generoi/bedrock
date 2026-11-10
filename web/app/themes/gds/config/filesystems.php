@@ -39,7 +39,9 @@ return [
         'uploads' => [
             'driver' => 'local',
             'root' => WP_CONTENT_DIR,
-            'url' => content_url(),
+            // Root-relative: spatie/laravel-google-fonts bakes this into the cached
+            // fonts.css, which is then served on every hostname the site answers on.
+            'url' => wp_make_link_relative(content_url()),
             'visibility' => 'public',
         ],
 
