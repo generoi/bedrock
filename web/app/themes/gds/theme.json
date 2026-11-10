@@ -164,6 +164,11 @@
           "defaultFontSizes": false
         }
       },
+      "core/columns": {
+        "spacing": {
+          "blockGap": true
+        }
+      },
       "core/button": {
         "appearanceTools": false,
         "border": {

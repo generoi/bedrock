@@ -1,6 +1,9 @@
 .wp-block-columns {
+  // The gaps are the block's Block spacing when set (--columns-*-gap, from
+  // app/BlockFilters/ColumnsGap.php and with-columns-gap), else the grid's.
   &.is-layout-flex {
-    gap: var(--grid-gutter);
+    gap: var(--columns-row-gap, var(--grid-gutter))
+      var(--columns-column-gap, var(--grid-gutter));
   }
 
   &.is-style-media-text {

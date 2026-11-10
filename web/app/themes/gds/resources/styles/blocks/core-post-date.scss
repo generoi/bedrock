@@ -1,4 +1,8 @@
 .wp-block-post-date {
+  &__label {
+    font-weight: 600;
+  }
+
   &.has-text-color,
   .has-background & {
     --icon-color: currentcolor;

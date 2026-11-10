@@ -6,9 +6,6 @@
 
 namespace App;
 
-use WP_Block;
-use WP_HTML_Tag_Processor;
-
 /**
  * Remove Read more to the excerpt.
  *
@@ -36,19 +33,6 @@ add_filter('get_the_archive_title', function ($title) {
 
     return $title;
 });
-
-/**
- * Support `include` in query loop block (used by handpicked-posts filter).
- */
-add_filter('query_loop_block_query_vars', function (array $query, WP_Block $block) {
-    if (! empty($block->context['query']['include'])) {
-        $query['post__in'] = $block->context['query']['include'];
-        $query['orderby'] = 'post__in';
-        $query['order'] = 'DESC';
-    }
-
-    return $query;
-}, 10, 2);
 
 /**
  * Support inline SVG in HTML.
@@ -82,109 +66,11 @@ add_filter('wp_kses_allowed_html', function (array $tags) {
 
     return $tags;
 }, 10, 2);
-/**
- * Use video featured images as poster images.
- */
-add_filter('render_block', function (string $content, array $block) {
-    $attachmentId = null;
-
-    switch ($block['blockName']) {
-        case 'core/cover':
-            $backgroundType = $block['attrs']['backgroundType'] ?? null;
-            if ($backgroundType === 'video') {
-                $attachmentId = $block['attrs']['id'] ?? null;
-            }
-            break;
-        case 'core/video':
-            $attachmentId = $block['attrs']['id'] ?? null;
-            break;
-    }
-
-    if ($attachmentId) {
-        $posterImage = get_the_post_thumbnail_url($attachmentId, 'large');
-        if ($posterImage ?? null) {
-            $processor = new WP_HTML_Tag_Processor($content);
-            while ($processor->next_tag('video')) {
-                if ($processor->get_attribute('poster')) {
-                    continue;
-                }
-                $processor->set_attribute('poster', $posterImage);
-            }
-            $content = $processor->get_updated_html();
-        }
-    }
-
-    return $content;
-}, 10, 2);
-
-/**
- * Add a variable exposing the column count so that we can use it in css for
- * responsive wrapping.
- */
-add_filter('render_block_core/group', function (string $content, array $block) {
-    $layoutType = $block['attrs']['layout']['type'] ?? null;
-    $columnCount = $block['attrs']['layout']['columnCount'] ?? null;
-    if ($layoutType === 'grid' && $columnCount) {
-        $processor = new WP_HTML_Tag_Processor($content);
-        $processor->next_tag('div');
-        $processor->set_attribute('style', sprintf('--grid-columns: %d', $columnCount));
-        $content = $processor->get_updated_html();
-    }
-
-    return $content;
-}, 10, 2);
-
-/**
- * Set default attributes for gravityforms block.
- */
-add_filter('gform_form_block_attributes', function (array $attributes) {
-    $attributes['ajax']['default'] = true;
-
-    return $attributes;
-});
-
-add_filter('render_block_data', function (array $parsedBlock) {
-    if ($parsedBlock['blockName'] === 'gravityforms/form') {
-        if (! isset($parsedBlock['attrs']['ajax'])) {
-            $parsedBlock['attrs']['ajax'] = true;
-        }
-    }
-
-    return $parsedBlock;
-});
 
 /**
  * Disable gravityforms styling.
  */
 add_filter('gform_disable_css', '__return_true');
-
-/**
- * Separators should be decorative.
- */
-add_filter('render_block_core/separator', function (string $content) {
-    $content = str_replace('<hr ', '<hr aria-hidden="true" ', $content);
-
-    return $content;
-});
-
-/**
- * Fix accessibility issues with inlined SVGs.
- */
-add_filter('safe_svg_inline_markup', function (string $markup) {
-    $processor = new WP_HTML_Tag_Processor($markup);
-    $processor->next_tag('svg');
-
-    // SVGs should be images so their content isnt read out
-    if (! $processor->get_attribute('role')) {
-        $processor->set_attribute('role', 'img');
-    }
-
-    if (! str_contains($markup, '<title')) {
-        $processor->set_attribute('aria-hidden', 'true');
-    }
-
-    return $processor->get_updated_html();
-});
 
 /**
  * Use aria roles for heading in footer widgets in an attempt to improve SEO.
@@ -196,22 +82,6 @@ add_filter('widget_block_content', function (string $content) {
 }, 11);
 
 /**
- * Add a data attribute for block namespaces so that they can be used for styling.
- */
-add_filter('render_block', function (string $content, array $block) {
-    $namespace = $block['attrs']['namespace'] ?? null;
-
-    if ($namespace) {
-        $processor = new WP_HTML_Tag_Processor($content);
-        $processor->next_tag();
-        $processor->set_attribute('data-namespace', $namespace);
-        $content = $processor->get_updated_html();
-    }
-
-    return $content;
-}, 10, 2);
-
-/**
  * Limit Media & Text alignment to content width and wide only.
  */
 add_filter('register_block_type_args', function (array $args, string $blockType): array {
@@ -220,73 +90,6 @@ add_filter('register_block_type_args', function (array $args, string $blockType)
     }
 
     return $args;
-}, 10, 2);
-
-/**
- * Autoplay media & text videos.
- */
-add_filter('render_block', function ($content, $block) {
-    if ($block['blockName'] === 'core/media-text') {
-        $processor = new WP_HTML_Tag_Processor($content);
-
-        if ($processor->next_tag('video')) {
-            $processor->set_attribute('autoplay', 'true');
-            $processor->set_attribute('muted', 'true');
-            $processor->set_attribute('playsinline', 'true');
-            $processor->set_attribute('loop', 'true');
-            $processor->remove_attribute('controls');
-            $content = $processor->get_updated_html();
-        }
-    }
-
-    return $content;
-}, 10, 2);
-
-/**
- * Add role="home" and aria-label to site logo.
- */
-add_filter('render_block_core/site-logo', function (string $content) {
-    $processor = new WP_HTML_Tag_Processor($content);
-
-    if ($processor->next_tag('a')) {
-        $processor->set_attribute('rel', 'home');
-        $processor->set_attribute(
-            'aria-label',
-            /* translators: %s is replaced with the name of the site */
-            sprintf(__('%s frontpage', 'gds'), get_bloginfo('name', 'display'))
-        );
-    }
-
-    if ($processor->next_tag('img')) {
-        $processor->set_attribute('aria-hidden', 'true');
-        $processor->set_attribute('alt', '');
-    }
-
-    return $processor->get_updated_html();
-});
-
-/**
- * Optimize images in blocks.
- */
-add_filter('render_block', function (string $content, array $block) {
-    switch ($block['blockName']) {
-        case 'core/media-text':
-            $focalPoint = $block['attrs']['focalPoint'] ?? null;
-            $mediaWidth = $block['attrs']['mediaWidth'] ?? 50;
-            // We hide the background image use the <img> with objet-fit: contain, but need the position.
-            if ($focalPoint) {
-                $style = sprintf('object-position: %s%% %s%%;', $focalPoint['x'] * 100, $focalPoint['y'] * 100);
-                $content = preg_replace('/^(\s*<div[^>]+>\s*<figure[^>]+>\s*<img )/', sprintf('$1style="%s" ', $style), $content);
-            }
-            // Calculate the sizes based on media width.
-            if ($mediaWidth) {
-                $sizes = sprintf('(min-width: 600px) %svw, (min-width: 1230px) %spx, 100vw', $mediaWidth, 1200 * ($mediaWidth / 100));
-                $content = preg_replace('/^(\s*<div[^>]+>\s*<figure[^>]+>\s*<img )/', sprintf('$1sizes="%s" ', $sizes), $content);
-            }
-            break;
-    }
-
-    return $content;
 }, 10, 2);
 
 /**
