@@ -38,10 +38,10 @@ _If you are on Windows you should read the latest DDEV documentation and recomme
     # Install composer dependencies and development tools (vendor folder)
     composer install:development
 
-    # The repo uses `npm` workspaces so you you should run commands from root of
+    # The repo uses pnpm workspaces so you should run commands from root of
     # project.
-    npm run install
-    npm run build:production
+    pnpm install
+    pnpm run build:production
 
     # Start the container
     ddev start
@@ -74,15 +74,15 @@ Additional useful tasks
     ./vendor/bin/dep
     ./vendor/bin/wp
 
-### NPM
+### pnpm
 
-    # The root `package.json` delegates all scripts with a `--workspaces` flag
-    # so no flags is the same as
-    npm run build:production -ws
-    npm run build:production -w gds
+    # The root `package.json` runs each script in every workspace (`pnpm -r`).
+    # Use --filter to target one; npm's -w means "workspace root" to pnpm.
+    pnpm run build:production
+    pnpm --filter gds run build:production
 
-    # To install/remove a package you need to explicitly add the flag
-    npm install postcss-preset-env --save-dev -ws
+    # Add a package to a workspace
+    pnpm --filter gds add -D postcss-preset-env
 
 ### Deploying with GitHub actions
 
@@ -135,13 +135,13 @@ ddev composer phpunit
 
 ```sh
 # Install dependencies
-npm run e2e:install
+pnpm run e2e:install
 
 # Run against ddev environment
-npm run e2e:test
+pnpm run e2e:test
 
 # Run it against production
-URL=https://gdsbedrock.kinsta.cloudd npm run e2e:test
+URL=https://gdsbedrock.kinsta.cloudd pnpm run e2e:test
 ```
 
 ## Create a new project and Git repository
