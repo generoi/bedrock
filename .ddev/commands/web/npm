@@ -1,7 +1,0 @@
-#!/bin/bash
-
-## Description: Run npm from project root (supports workspaces)
-## Usage: npm [flags] [args]
-## Example: "ddev npm run build" or "ddev npm run build -w web/app/themes/gds"
-
-npm "$@"
