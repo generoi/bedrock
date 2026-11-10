@@ -77,7 +77,10 @@ $host = match (true) {
     // an additional_fqdn, or a worktree's hostname through hostshift.
     // IS_DDEV_PROJECT comes from the container, never from the request.
     $requestHost !== '' && env('IS_DDEV_PROJECT') => $requestHost,
-    (bool) array_filter($trustedHosts, fn ($p) => preg_match('{'.$p.'}iD', $requestHost)) => $requestHost,
+    // Validate the syntax first: `(.+\.)?` would otherwise let something like
+    // `evil.example?.gdsbedrock.kinsta.cloud` through into WP_HOME.
+    filter_var($requestHost, FILTER_VALIDATE_DOMAIN, FILTER_FLAG_HOSTNAME)
+        && array_filter($trustedHosts, fn ($p) => preg_match('{'.$p.'}iD', $requestHost)) => $requestHost,
     ! empty(env('DDEV_PRIMARY_URL')) => parse_url(env('DDEV_PRIMARY_URL'), PHP_URL_HOST),
     WP_ENVIRONMENT_TYPE === 'staging' => 'stg-gdsbedrock-staging.kinsta.cloud',
     default => 'gdsbedrock.kinsta.cloud'
@@ -168,8 +171,9 @@ Config::define('ACF_LITE', true);
 Config::define('JETPACK_DEV_DEBUG', true);
 // MCP Adapter classes come from the root Composer autoloader, not the plugin's own vendor/
 Config::define('WP_MCP_AUTOLOAD', false);
-// Let Claude connect to the site's MCP server by URL, signing in with a WordPress account
-Config::define('GDS_MCP_OAUTH', env('GDS_MCP_OAUTH') ?? true);
+// Opt in with GDS_MCP_OAUTH=true to let Claude connect to the site's MCP server
+// by URL, signing in with a WordPress account
+Config::define('GDS_MCP_OAUTH', env('GDS_MCP_OAUTH') ?? false);
 // Fix Kinsta MU Plugins URL path with Bedrock
 Config::define('KINSTAMU_CUSTOM_MUPLUGIN_URL', Config::get('WP_CONTENT_URL').'/mu-plugins/kinsta-mu-plugins');
 // 10up/wpcli-vulnerability-scanner
