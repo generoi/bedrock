@@ -8,6 +8,9 @@ web/app/plugins/*
 !web/app/plugins/genero-woocommerce
 !web/app/plugins/.gitkeep
 web/app/mu-plugins/*/
+# The site's own mu-plugins are gds-*; Composer installs the rest.
+!web/app/mu-plugins/gds-*/
+web/app/mu-plugins/gds-security-hardening/
 web/app/languages/*
 web/app/upgrade
 web/app/uploads/*
@@ -52,6 +55,7 @@ log
 
 # Sensitive files
 *.sql
+*.sql.gz
 
 # Local configuration
 local.config.yml
