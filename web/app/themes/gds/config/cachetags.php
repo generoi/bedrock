@@ -4,6 +4,8 @@ use Genero\Sage\CacheTags\Actions\Core;
 use Genero\Sage\CacheTags\Actions\DebugComment;
 use Genero\Sage\CacheTags\Actions\HttpHeader;
 use Genero\Sage\CacheTags\Actions\Nonce;
+use Genero\Sage\CacheTags\Actions\RestApi;
+use Genero\Sage\CacheTags\Actions\Site;
 use Genero\Sage\CacheTags\Invalidators\CloudflareCacheInvalidator;
 use Genero\Sage\CacheTags\Invalidators\FastlySoftCacheInvalidator;
 use Genero\Sage\CacheTags\Invalidators\KinstaGroupCacheInvalidator;
@@ -38,6 +40,13 @@ return [
         // Purges pages tagged 'nonce' twice a day, so a cached page never
         // serves an expired nonce.
         Nonce::class,
+        // Prefixes every tag with the site, so a flush purges this site's tags
+        // rather than everything in a shared CDN zone, and multisite sites
+        // can't purge each other.
+        Site::class,
+        // Tags REST API reads too, so blocks and scripts that fetch over REST
+        // are purged with the content they show.
+        RestApi::class,
 
         // Added automatically while their plugin is active ('auto-detect-actions'),
         // so listing them changes nothing: cart, checkout and account stay
@@ -47,10 +56,6 @@ return [
         // \Genero\Sage\CacheTags\Actions\Gravityform::class,
 
         // Opt in where a site needs them:
-        // Multisite: prefix tags per site so sites can't purge each other.
-        // \Genero\Sage\CacheTags\Actions\Site::class,
-        // Tag REST API reads, for headless or JS-rendered content.
-        // \Genero\Sage\CacheTags\Actions\RestApi::class,
         // Tag every post and term a query fetches, instead of per template or block.
         // \Genero\Sage\CacheTags\Actions\AutoTag::class,
         // Serve cached pages to logged-in customers when no markup is per user.
