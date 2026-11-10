@@ -2,8 +2,10 @@
 
 use Genero\Sage\CacheTags\Actions\Core;
 use Genero\Sage\CacheTags\Actions\DebugComment;
+use Genero\Sage\CacheTags\Actions\Gravityform;
 use Genero\Sage\CacheTags\Actions\HttpHeader;
 use Genero\Sage\CacheTags\Actions\Nonce;
+use Genero\Sage\CacheTags\Actions\Polylang;
 use Genero\Sage\CacheTags\Actions\RestApi;
 use Genero\Sage\CacheTags\Actions\Site;
 use Genero\Sage\CacheTags\Invalidators\CloudflareCacheInvalidator;
@@ -47,13 +49,16 @@ return [
         // Tags REST API reads too, so blocks and scripts that fetch over REST
         // are purged with the content they show.
         RestApi::class,
+        // Purges follow translations. Hooks only Polylang's own events, so it
+        // is inert without the plugin.
+        Polylang::class,
+        // Purges pages showing a form when it is saved, and leaves prepopulated
+        // forms uncached. Inert without Gravity Forms.
+        Gravityform::class,
 
-        // Added automatically while their plugin is active ('auto-detect-actions'),
-        // so listing them changes nothing: cart, checkout and account stay
-        // uncached, purges follow translations, prepopulated forms are skipped.
+        // Added automatically while WooCommerce is active ('auto-detect-actions'):
+        // cart, checkout and account stay uncached, product changes purge.
         // \Genero\Sage\CacheTags\Actions\WooCommerce::class,
-        // \Genero\Sage\CacheTags\Actions\Polylang::class,
-        // \Genero\Sage\CacheTags\Actions\Gravityform::class,
 
         // Opt in where a site needs them:
         // Tag every post and term a query fetches, instead of per template or block.
