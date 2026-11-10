@@ -72,7 +72,6 @@
     "generoi/gds-llms": "^0.4.3",
     "generoi/gds-assistant": "^0.5",
     "generoi/gds-mcp": "^0.8.3",
-    "generoi/gds-block-animations": "dev-master",
     "wordpress/mcp-adapter": "^0.7.1",
     "wp-plugin/cookiebot": "^4.7",
     "wp-plugin/limit-login-attempts-reloaded": "^3.4",
@@ -171,7 +170,6 @@
       "excludes": [
         "generoi/advanced-custom-fields-pro",
         "generoi/gds-assistant",
-        "generoi/gds-block-animations",
         "generoi/gds-llms",
         "generoi/gds-mcp",
         "generoi/gds-security-hardening",

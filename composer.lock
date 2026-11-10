@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "8898c6e60e94f21f40c800d1944d05dd",
+    "content-hash": "a0092821f30cd9c863b8142fcf1f393b",
     "packages": [
         {
             "name": "aaemnnosttv/wp-cli-login-command",
@@ -2028,51 +2028,6 @@
                 "issues": "https://github.com/generoi/gds-assistant/issues"
             },
             "time": "2026-06-01T16:59:04+00:00"
-        },
-        {
-            "name": "generoi/gds-block-animations",
-            "version": "dev-master",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/generoi/gds-block-animations.git",
-                "reference": "372519315b4667b265a7cd98c0d861beda0f89a6"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/generoi/gds-block-animations/zipball/372519315b4667b265a7cd98c0d861beda0f89a6",
-                "reference": "372519315b4667b265a7cd98c0d861beda0f89a6",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=7.0.0"
-            },
-            "default-branch": true,
-            "type": "wordpress-plugin",
-            "archive": {
-                "exclude": [
-                    ".gitignore"
-                ]
-            },
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Jonatan Storlund",
-                    "email": "storlundjonatan@gmail.com"
-                }
-            ],
-            "description": "Animate WordPress blocks on scroll with customizable settings.",
-            "homepage": "https://github.com/generoi/gds-block-animations",
-            "keywords": [
-                "gutenberg",
-                "wordpress"
-            ],
-            "support": {
-                "issues": "https://github.com/generoi/gds-block-animations/issues",
-                "source": "https://github.com/generoi/gds-block-animations/tree/master"
-            },
-            "time": "2026-10-21T17:32:24+00:00"
         },
         {
             "name": "generoi/gds-llms",
@@ -15876,9 +15831,7 @@
     ],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": {
-        "generoi/gds-block-animations": 20
-    },
+    "stability-flags": {},
     "prefer-stable": true,
     "prefer-lowest": false,
     "platform": {

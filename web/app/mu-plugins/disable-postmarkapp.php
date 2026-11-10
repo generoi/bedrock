@@ -1,9 +1,9 @@
 <?php
 
 /*
-Plugin Name:  Disable PostmarkApp locally
+Plugin Name:  Disable PostmarkApp outside production
 Plugin URI:   https://genero.fi
-Description:  Force the Postmark plugin off in DDEV so local/dev never sends real transactional email. With Postmark disabled, wp_mail falls through to PHP mail() which DDEV captures in Mailpit.
+Description:  Force the Postmark plugin off everywhere but production, so DDEV and staging (which run copies of the production database) never send real transactional email. With Postmark disabled, wp_mail falls through to PHP mail(), which DDEV captures in Mailpit.
 Version:      1.0.0
 Author:       Genero
 Author URI:   https://genero.fi/
@@ -18,11 +18,11 @@ if (! is_blog_installed()) {
 
 // The Postmark plugin reads `postmark_settings` when it loads and, if enabled,
 // overrides wp_mail to deliver through the Postmark API — bypassing Mailpit and
-// sending real email straight from a developer's machine. This mu-plugin loads
-// before regular plugins, so flipping `enabled` off here means Postmark never
-// installs its wp_mail override in DDEV.
+// sending real email to real customers from a developer's machine or from
+// staging. This mu-plugin loads before regular plugins, so flipping `enabled`
+// off here means Postmark never installs its wp_mail override there.
 add_filter('option_postmark_settings', function ($settings) {
-    if (! env('IS_DDEV_PROJECT')) {
+    if (wp_get_environment_type() === 'production') {
         return $settings;
     }
 
