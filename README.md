@@ -26,9 +26,6 @@ composer install:development
 
 ddev start
 ./vendor/bin/robo db:pull @production
-
-# Magic login link
-ddev wp login create <user>
 ```
 
 Uploads missing locally are redirected to production by DDEV's nginx, so

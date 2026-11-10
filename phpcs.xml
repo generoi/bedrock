@@ -18,7 +18,6 @@
   <exclude-pattern>node_modules/</exclude-pattern>
   <exclude-pattern>vendor/</exclude-pattern>
   <exclude-pattern>web/app/mu-plugins/*/*</exclude-pattern>
-  <exclude-pattern>web/app/mu-plugins/wp-cli-login-server.php</exclude-pattern>
 
   <!-- Ignore theme build files -->
   <exclude-pattern>web/app/themes/*/build</exclude-pattern>

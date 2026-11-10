@@ -41,7 +41,6 @@
   ],
   "require": {
     "php": ">=8.5",
-    "aaemnnosttv/wp-cli-login-command": "^1.5",
     "composer/installers": "^2.3",
     "consolidation/robo": "^5.1",
     "cweagans/composer-patches": "^2.0",
@@ -132,9 +131,6 @@
   },
   "extra": {
     "dropin-paths": {
-      "web/app/mu-plugins": [
-        "package:aaemnnosttv/wp-cli-login-command:plugin/wp-cli-login-server.php"
-      ],
       "web/": [
         "package:generoi/genero-status:genero-status.php"
       ]
@@ -186,9 +182,6 @@
     "patches": {
       "generoi/advanced-custom-fields-pro": {
         "Fix get_block_wrapper_attributes not working with ACF preview": "./config/patches/acf-get_block_wrapper_attributes.patch"
-      },
-      "aaemnnosttv/wp-cli-login-command": {
-        "Add support for url prefix": "./config/patches/wp-cli-login-command-add-support-for-url-prefix.patch"
       },
       "wp-plugin/cookiebot": {
         "Print script tags through the core API so they carry the CSP nonce": "./config/patches/cookiebot-support-csp.patch"

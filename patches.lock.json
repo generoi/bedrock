@@ -1,5 +1,5 @@
 {
-    "_hash": "e8593cfcc1226139ae15ff3cec4ea39c2fa695a6d2f26e2eb987e0232448f8da",
+    "_hash": "4d0a08c0f932d6542ba9da409d3ce94f145e5197347efd5c68766855fb2a8db1",
     "patches": {
         "generoi/advanced-custom-fields-pro": [
             {
@@ -7,18 +7,6 @@
                 "description": "Fix get_block_wrapper_attributes not working with ACF preview",
                 "url": "./config/patches/acf-get_block_wrapper_attributes.patch",
                 "sha256": "1a79688fa7dee68bdba3724e9259646202d57e2ab13f2e6f308b52cba7832e65",
-                "depth": 1,
-                "extra": {
-                    "provenance": "root"
-                }
-            }
-        ],
-        "aaemnnosttv/wp-cli-login-command": [
-            {
-                "package": "aaemnnosttv/wp-cli-login-command",
-                "description": "Add support for url prefix",
-                "url": "./config/patches/wp-cli-login-command-add-support-for-url-prefix.patch",
-                "sha256": "2fa7df3eb88165ec76e3b07a9acf7a4d8f5ee6511551bdcb61ebfa9a6170c870",
                 "depth": 1,
                 "extra": {
                     "provenance": "root"

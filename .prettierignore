@@ -6,5 +6,6 @@ web/app/uploads
 web/wp
 **/vendor
 
-# Written by pnpm; formatting it only produces churn pnpm undoes on install.
+# Written by pnpm and Composer; formatting them only produces churn the tools undo.
 pnpm-lock.yaml
+patches.lock.json
