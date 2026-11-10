@@ -207,23 +207,23 @@
     "phpunit": "phpunit",
     "lint": [
       "pint --test",
-      "npm run lint"
+      "pnpm run lint"
     ],
     "lint:fix": [
       "pint --quiet",
-      "npm run lint:fix",
+      "pnpm run lint:fix",
       "pint --quiet web/app/plugins/genero-woocommerce/src/"
     ],
     "ci": [
       "@composer validate --no-check-all",
       "env -u AI_AGENT -u CLAUDECODE pint --format=checkstyle | vendor/bin/cs2pr",
-      "npm run ci:scripts --silent | while read xml; do echo $xml | ./vendor/bin/cs2pr; done",
-      "npm run ci:styles --silent | while read xml; do echo $xml | ./vendor/bin/cs2pr; done"
+      "pnpm run --silent ci:scripts | while read xml; do echo $xml | ./vendor/bin/cs2pr; done",
+      "pnpm run --silent ci:styles | while read xml; do echo $xml | ./vendor/bin/cs2pr; done"
     ],
     "build": [
-      "npm install",
-      "npm run lint",
-      "npm run build:production"
+      "pnpm install",
+      "pnpm run lint",
+      "pnpm run build:production"
     ],
     "claude:install": "[ -f .claude/agency/install.sh ] && bash .claude/agency/install.sh || true",
     "install:development": [
