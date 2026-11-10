@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "48fd060ebb49538b1262ed00903b969f",
+    "content-hash": "fce42f338adc469b71df95081c462991",
     "packages": [
         {
             "name": "aaemnnosttv/wp-cli-login-command",
@@ -57,7 +57,8 @@
                 "issues": "https://github.com/aaemnnosttv/wp-cli-login-command/issues",
                 "source": "https://github.com/aaemnnosttv/wp-cli-login-command/tree/v1.5.0"
             },
-            "time": "2023-06-25T00:57:07+00:00"
+            "time": "2023-06-25T00:57:07+00:00",
+            "published-time": "2023-06-25T01:23:57+00:00"
         },
         {
             "name": "automattic/jetpack-autoloader",
@@ -120,7 +121,8 @@
             "support": {
                 "source": "https://github.com/Automattic/jetpack-autoloader/tree/v6.0.3"
             },
-            "time": "2026-11-02T18:05:06+00:00"
+            "time": "2026-11-02T18:05:06+00:00",
+            "published-time": "2026-11-02T18:05:21+00:00"
         },
         {
             "name": "brick/math",
@@ -180,7 +182,8 @@
                     "type": "github"
                 }
             ],
-            "time": "2026-09-12T10:28:18+00:00"
+            "time": "2026-09-12T10:28:18+00:00",
+            "published-time": "2026-09-12T12:23:30+00:00"
         },
         {
             "name": "carbonphp/carbon-doctrine-types",
@@ -254,7 +257,8 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2026-09-06T14:11:38+00:00"
+            "time": "2026-09-06T14:11:38+00:00",
+            "published-time": "2026-09-06T14:15:00+00:00"
         },
         {
             "name": "composer/ca-bundle",
@@ -326,7 +330,8 @@
                     "type": "github"
                 }
             ],
-            "time": "2026-10-29T14:10:42+00:00"
+            "time": "2026-10-29T14:10:42+00:00",
+            "published-time": "2026-10-29T14:45:12+00:00"
         },
         {
             "name": "composer/class-map-generator",
@@ -395,7 +400,8 @@
                     "type": "github"
                 }
             ],
-            "time": "2026-11-03T10:10:19+00:00"
+            "time": "2026-11-03T10:10:19+00:00",
+            "published-time": "2026-11-03T10:12:49+00:00"
         },
         {
             "name": "composer/composer",
@@ -510,7 +516,8 @@
                     "type": "github"
                 }
             ],
-            "time": "2026-11-10T09:09:37+00:00"
+            "time": "2026-11-10T09:09:37+00:00",
+            "published-time": "2026-11-10T09:12:59+00:00"
         },
         {
             "name": "composer/installers",
@@ -656,7 +663,8 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2024-06-24T20:46:46+00:00"
+            "time": "2024-06-24T20:46:46+00:00",
+            "published-time": "2024-06-24T21:01:36+00:00"
         },
         {
             "name": "composer/metadata-minifier",
@@ -721,7 +729,8 @@
                     "type": "github"
                 }
             ],
-            "time": "2026-06-30T11:34:59+00:00"
+            "time": "2026-06-30T11:34:59+00:00",
+            "published-time": "2026-06-30T11:37:18+00:00"
         },
         {
             "name": "composer/pcre",
@@ -797,7 +806,8 @@
                     "type": "github"
                 }
             ],
-            "time": "2026-06-07T11:47:49+00:00"
+            "time": "2026-06-07T11:47:49+00:00",
+            "published-time": "2026-06-11T12:12:37+00:00"
         },
         {
             "name": "composer/semver",
@@ -874,7 +884,8 @@
                     "type": "github"
                 }
             ],
-            "time": "2026-10-29T09:13:34+00:00"
+            "time": "2026-10-29T09:13:34+00:00",
+            "published-time": "2026-10-29T09:14:11+00:00"
         },
         {
             "name": "composer/spdx-licenses",
@@ -950,7 +961,8 @@
                     "type": "github"
                 }
             ],
-            "time": "2026-04-08T20:18:39+00:00"
+            "time": "2026-04-08T20:18:39+00:00",
+            "published-time": "2026-04-08T20:19:56+00:00"
         },
         {
             "name": "composer/xdebug-handler",
@@ -1016,7 +1028,8 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2024-05-06T16:37:16+00:00"
+            "time": "2024-05-06T16:37:16+00:00",
+            "published-time": "2024-05-06T17:01:42+00:00"
         },
         {
             "name": "consolidation/annotated-command",
@@ -1072,7 +1085,8 @@
                 "issues": "https://github.com/consolidation/annotated-command/issues",
                 "source": "https://github.com/consolidation/annotated-command/tree/4.10.6"
             },
-            "time": "2026-11-05T04:00:25+00:00"
+            "time": "2026-11-05T04:00:25+00:00",
+            "published-time": "2026-11-05T04:01:15+00:00"
         },
         {
             "name": "consolidation/config",
@@ -1132,7 +1146,8 @@
                 "issues": "https://github.com/consolidation/config/issues",
                 "source": "https://github.com/consolidation/config/tree/3.2.2"
             },
-            "time": "2026-11-05T03:58:19+00:00"
+            "time": "2026-11-05T03:58:19+00:00",
+            "published-time": "2026-11-05T03:58:52+00:00"
         },
         {
             "name": "consolidation/log",
@@ -1184,7 +1199,8 @@
                 "issues": "https://github.com/consolidation/log/issues",
                 "source": "https://github.com/consolidation/log/tree/3.1.3"
             },
-            "time": "2026-11-05T01:17:47+00:00"
+            "time": "2026-11-05T01:17:47+00:00",
+            "published-time": "2026-11-05T01:18:24+00:00"
         },
         {
             "name": "consolidation/output-formatters",
@@ -1238,7 +1254,8 @@
                 "issues": "https://github.com/consolidation/output-formatters/issues",
                 "source": "https://github.com/consolidation/output-formatters/tree/4.7.2"
             },
-            "time": "2026-11-05T04:02:33+00:00"
+            "time": "2026-11-05T04:02:33+00:00",
+            "published-time": "2026-11-05T04:03:09+00:00"
         },
         {
             "name": "consolidation/robo",
@@ -1311,7 +1328,8 @@
                 "issues": "https://github.com/consolidation/robo/issues",
                 "source": "https://github.com/consolidation/robo/tree/5.1.1"
             },
-            "time": "2025-11-14T23:30:05+00:00"
+            "time": "2025-11-14T23:30:05+00:00",
+            "published-time": "2025-11-14T23:30:25+00:00"
         },
         {
             "name": "cweagans/composer-configurable-plugin",
@@ -1367,7 +1385,8 @@
                     "type": "github"
                 }
             ],
-            "time": "2023-02-12T04:58:58+00:00"
+            "time": "2023-02-12T04:58:58+00:00",
+            "published-time": "2023-02-12T05:06:43+00:00"
         },
         {
             "name": "cweagans/composer-patches",
@@ -1434,7 +1453,8 @@
                     "type": "github"
                 }
             ],
-            "time": "2025-10-30T23:44:22+00:00"
+            "time": "2025-10-30T23:44:22+00:00",
+            "published-time": "2025-10-31T01:21:00+00:00"
         },
         {
             "name": "dflydev/dot-access-data",
@@ -1509,7 +1529,8 @@
                 "issues": "https://github.com/dflydev/dflydev-dot-access-data/issues",
                 "source": "https://github.com/dflydev/dflydev-dot-access-data/tree/v3.0.3"
             },
-            "time": "2024-07-08T12:26:09+00:00"
+            "time": "2024-07-08T12:26:09+00:00",
+            "published-time": "2024-07-08T12:27:13+00:00"
         },
         {
             "name": "doctrine/inflector",
@@ -1599,7 +1620,8 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2026-10-26T08:14:14+00:00"
+            "time": "2026-10-26T08:14:14+00:00",
+            "published-time": "2026-10-26T20:06:59+00:00"
         },
         {
             "name": "doctrine/lexer",
@@ -1674,7 +1696,8 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2026-10-01T06:59:29+00:00"
+            "time": "2026-10-01T06:59:29+00:00",
+            "published-time": "2026-10-01T07:01:28+00:00"
         },
         {
             "name": "dragonmantank/cron-expression",
@@ -1738,7 +1761,8 @@
                     "type": "github"
                 }
             ],
-            "time": "2026-10-19T17:53:57+00:00"
+            "time": "2026-10-19T17:53:57+00:00",
+            "published-time": "2026-10-19T17:54:31+00:00"
         },
         {
             "name": "eftec/bladeone",
@@ -1796,7 +1820,8 @@
                 "issues": "https://github.com/EFTEC/BladeOne/issues",
                 "source": "https://github.com/EFTEC/BladeOne/tree/3.52"
             },
-            "time": "2021-04-17T13:49:01+00:00"
+            "time": "2021-04-17T13:49:01+00:00",
+            "published-time": "2021-04-17T13:49:42+00:00"
         },
         {
             "name": "egulias/email-validator",
@@ -1863,7 +1888,8 @@
                     "type": "github"
                 }
             ],
-            "time": "2025-03-06T22:45:56+00:00"
+            "time": "2025-03-06T22:45:56+00:00",
+            "published-time": "2025-03-20T21:39:03+00:00"
         },
         {
             "name": "fruitcake/php-cors",
@@ -1934,7 +1960,8 @@
                     "type": "github"
                 }
             ],
-            "time": "2025-12-03T09:33:47+00:00"
+            "time": "2025-12-03T09:33:47+00:00",
+            "published-time": "2025-12-03T09:37:01+00:00"
         },
         {
             "name": "generoi/advanced-custom-fields-pro",
@@ -2031,22 +2058,22 @@
         },
         {
             "name": "generoi/gds-llms",
-            "version": "v0.4.3",
+            "version": "v0.4.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/generoi/gds-llms.git",
-                "reference": "95824124912e8345ff96cf7dc0365572ac88c76c"
+                "reference": "34f857bd0ac87d7dc4f0b1dff3b4d0b8bfeb247e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/generoi/gds-llms/zipball/95824124912e8345ff96cf7dc0365572ac88c76c",
-                "reference": "95824124912e8345ff96cf7dc0365572ac88c76c",
+                "url": "https://api.github.com/repos/generoi/gds-llms/zipball/34f857bd0ac87d7dc4f0b1dff3b4d0b8bfeb247e",
+                "reference": "34f857bd0ac87d7dc4f0b1dff3b4d0b8bfeb247e",
                 "shasum": ""
             },
             "require": {
                 "ext-mbstring": "*",
                 "league/html-to-markdown": "^5.1",
-                "php": ">=8.2"
+                "php": ">=8.4"
             },
             "require-dev": {
                 "laravel/pint": "^1.17",
@@ -2082,9 +2109,10 @@
             "homepage": "https://github.com/generoi/gds-llms",
             "support": {
                 "issues": "https://github.com/generoi/gds-llms/issues",
-                "source": "https://github.com/generoi/gds-llms/tree/v0.4.3"
+                "source": "https://github.com/generoi/gds-llms/tree/v0.4.5"
             },
-            "time": "2026-11-10T11:28:07+00:00"
+            "time": "2026-11-10T13:07:24+00:00",
+            "published-time": "2026-11-10T13:07:38+00:00"
         },
         {
             "name": "generoi/gds-mcp",
@@ -2207,7 +2235,8 @@
                 "issues": "https://github.com/generoi/gds-security-hardening/issues",
                 "source": "https://github.com/generoi/gds-security-hardening/tree/v2.4.1"
             },
-            "time": "2026-10-30T16:07:40+00:00"
+            "time": "2026-10-30T16:07:40+00:00",
+            "published-time": "2026-10-30T16:12:04+00:00"
         },
         {
             "name": "generoi/gravityforms",
@@ -2304,27 +2333,33 @@
                 "issues": "https://github.com/generoi/robo-genero/issues",
                 "source": "https://github.com/generoi/robo-genero/tree/v0.5.3"
             },
-            "time": "2026-11-04T15:36:09+00:00"
+            "time": "2026-11-04T15:36:09+00:00",
+            "published-time": "2026-11-04T15:36:31+00:00"
         },
         {
             "name": "generoi/sage-cachetags",
-            "version": "v2.5.3",
+            "version": "v3.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/generoi/sage-cachetags.git",
-                "reference": "6b35e41b796c567ecd837041b56dbb0d6613c431"
+                "reference": "d91496fc5193e7946605c2c0fff0f0243cc4e8af"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/generoi/sage-cachetags/zipball/6b35e41b796c567ecd837041b56dbb0d6613c431",
-                "reference": "6b35e41b796c567ecd837041b56dbb0d6613c431",
+                "url": "https://api.github.com/repos/generoi/sage-cachetags/zipball/d91496fc5193e7946605c2c0fff0f0243cc4e8af",
+                "reference": "d91496fc5193e7946605c2c0fff0f0243cc4e8af",
                 "shasum": ""
             },
             "require": {
                 "php": ">=8.2"
             },
             "require-dev": {
-                "laravel/pint": "^1.0"
+                "laravel/pint": "^1.0",
+                "phpunit/phpunit": "^9.6",
+                "roots/acorn": "^5.0",
+                "wp-cli/wp-cli": "^2.0",
+                "wp-phpunit/wp-phpunit": "^6.4",
+                "yoast/phpunit-polyfills": "^2.0"
             },
             "suggest": {
                 "roots/acorn": "Required for Sage theme integration. Use Bootstrap class for standalone WordPress usage."
@@ -2355,9 +2390,10 @@
             "homepage": "https://github.com/generoi/sage-cachetags",
             "support": {
                 "issues": "https://github.com/generoi/sage-cachetags/issues",
-                "source": "https://github.com/generoi/sage-cachetags/tree/v2.5.3"
+                "source": "https://github.com/generoi/sage-cachetags/tree/v3.0.0"
             },
-            "time": "2026-06-23T16:13:59+00:00"
+            "time": "2026-11-09T11:55:24+00:00",
+            "published-time": "2026-11-10T14:28:08+00:00"
         },
         {
             "name": "generoi/sage-woocommerce",
@@ -2410,7 +2446,8 @@
                 "issues": "https://github.com/generoi/sage-woocommerce/issues",
                 "source": "https://github.com/generoi/sage-woocommerce/tree/v1.1.7"
             },
-            "time": "2026-11-02T12:54:33+00:00"
+            "time": "2026-11-02T12:54:33+00:00",
+            "published-time": "2026-11-02T12:58:13+00:00"
         },
         {
             "name": "generoi/wp-gutenberg-shy",
@@ -2458,7 +2495,8 @@
                 "issues": "https://github.com/generoi/wp-gutenberg-shy/issues",
                 "source": "https://github.com/generoi/wp-gutenberg-shy/tree/v0.2.1"
             },
-            "time": "2025-07-24T15:10:22+00:00"
+            "time": "2025-07-24T15:10:22+00:00",
+            "published-time": "2025-07-24T15:10:42+00:00"
         },
         {
             "name": "generoi/wp-image-resizer",
@@ -2510,7 +2548,8 @@
                 "issues": "https://github.com/generoi/wp-image-resizer/issues",
                 "source": "https://github.com/generoi/wp-image-resizer/tree/v1.5.2"
             },
-            "time": "2026-07-01T10:41:55+00:00"
+            "time": "2026-07-01T10:41:55+00:00",
+            "published-time": "2026-07-01T10:42:09+00:00"
         },
         {
             "name": "gettext/gettext",
@@ -2591,7 +2630,8 @@
                     "type": "patreon"
                 }
             ],
-            "time": "2024-05-18T10:25:07+00:00"
+            "time": "2024-05-18T10:25:07+00:00",
+            "published-time": "2024-05-18T10:26:21+00:00"
         },
         {
             "name": "gettext/languages",
@@ -2666,7 +2706,8 @@
                     "type": "github"
                 }
             ],
-            "time": "2026-02-23T14:05:50+00:00"
+            "time": "2026-02-23T14:05:50+00:00",
+            "published-time": "2026-02-23T14:07:59+00:00"
         },
         {
             "name": "graham-campbell/result-type",
@@ -2728,7 +2769,8 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2026-08-24T09:06:52+00:00"
+            "time": "2026-08-24T09:06:52+00:00",
+            "published-time": "2026-08-24T09:07:57+00:00"
         },
         {
             "name": "grasmash/expander",
@@ -2780,7 +2822,8 @@
                 "issues": "https://github.com/grasmash/expander/issues",
                 "source": "https://github.com/grasmash/expander/tree/3.0.1"
             },
-            "time": "2024-11-25T23:28:05+00:00"
+            "time": "2024-11-25T23:28:05+00:00",
+            "published-time": "2024-11-25T23:29:47+00:00"
         },
         {
             "name": "guzzlehttp/guzzle",
@@ -2908,7 +2951,8 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2026-10-25T21:35:21+00:00"
+            "time": "2026-10-25T21:35:21+00:00",
+            "published-time": "2026-10-25T21:37:23+00:00"
         },
         {
             "name": "guzzlehttp/promises",
@@ -2992,7 +3036,8 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2026-10-18T12:46:59+00:00"
+            "time": "2026-10-18T12:46:59+00:00",
+            "published-time": "2026-10-18T12:47:39+00:00"
         },
         {
             "name": "guzzlehttp/psr7",
@@ -3111,7 +3156,8 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2026-10-17T23:49:46+00:00"
+            "time": "2026-10-17T23:49:46+00:00",
+            "published-time": "2026-10-17T23:51:00+00:00"
         },
         {
             "name": "guzzlehttp/uri-template",
@@ -3197,7 +3243,8 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2026-08-24T17:13:02+00:00"
+            "time": "2026-08-24T17:13:02+00:00",
+            "published-time": "2026-08-24T17:13:22+00:00"
         },
         {
             "name": "illuminate/auth",
@@ -3255,7 +3302,8 @@
                 "issues": "https://github.com/laravel/framework/issues",
                 "source": "https://github.com/laravel/framework"
             },
-            "time": "2026-10-22T00:28:51+00:00"
+            "time": "2026-10-22T00:28:51+00:00",
+            "published-time": "2026-11-03T15:07:36+00:00"
         },
         {
             "name": "illuminate/bus",
@@ -3309,7 +3357,8 @@
                 "issues": "https://github.com/laravel/framework/issues",
                 "source": "https://github.com/laravel/framework"
             },
-            "time": "2026-10-26T13:34:06+00:00"
+            "time": "2026-10-26T13:34:06+00:00",
+            "published-time": "2026-11-03T15:07:38+00:00"
         },
         {
             "name": "illuminate/cache",
@@ -3371,7 +3420,8 @@
                 "issues": "https://github.com/laravel/framework/issues",
                 "source": "https://github.com/laravel/framework"
             },
-            "time": "2026-10-28T13:00:32+00:00"
+            "time": "2026-10-28T13:00:32+00:00",
+            "published-time": "2026-11-03T15:07:42+00:00"
         },
         {
             "name": "illuminate/collections",
@@ -3431,7 +3481,8 @@
                 "issues": "https://github.com/laravel/framework/issues",
                 "source": "https://github.com/laravel/framework"
             },
-            "time": "2026-10-30T21:24:02+00:00"
+            "time": "2026-10-30T21:24:02+00:00",
+            "published-time": "2026-11-03T15:07:42+00:00"
         },
         {
             "name": "illuminate/conditionable",
@@ -3477,7 +3528,8 @@
                 "issues": "https://github.com/laravel/framework/issues",
                 "source": "https://github.com/laravel/framework"
             },
-            "time": "2026-10-06T02:42:44+00:00"
+            "time": "2026-10-06T02:42:44+00:00",
+            "published-time": "2026-11-03T15:07:44+00:00"
         },
         {
             "name": "illuminate/config",
@@ -3525,7 +3577,8 @@
                 "issues": "https://github.com/laravel/framework/issues",
                 "source": "https://github.com/laravel/framework"
             },
-            "time": "2026-10-06T02:42:44+00:00"
+            "time": "2026-10-06T02:42:44+00:00",
+            "published-time": "2026-11-03T15:07:49+00:00"
         },
         {
             "name": "illuminate/console",
@@ -3592,7 +3645,8 @@
                 "issues": "https://github.com/laravel/framework/issues",
                 "source": "https://github.com/laravel/framework"
             },
-            "time": "2026-10-30T13:45:23+00:00"
+            "time": "2026-10-30T13:45:23+00:00",
+            "published-time": "2026-11-03T15:07:51+00:00"
         },
         {
             "name": "illuminate/container",
@@ -3654,7 +3708,8 @@
                 "issues": "https://github.com/laravel/framework/issues",
                 "source": "https://github.com/laravel/framework"
             },
-            "time": "2026-10-20T10:26:12+00:00"
+            "time": "2026-10-20T10:26:12+00:00",
+            "published-time": "2026-11-03T15:07:52+00:00"
         },
         {
             "name": "illuminate/contracts",
@@ -3702,7 +3757,8 @@
                 "issues": "https://github.com/laravel/framework/issues",
                 "source": "https://github.com/laravel/framework"
             },
-            "time": "2026-10-29T13:51:55+00:00"
+            "time": "2026-10-29T13:51:55+00:00",
+            "published-time": "2026-11-03T15:07:54+00:00"
         },
         {
             "name": "illuminate/cookie",
@@ -3755,7 +3811,8 @@
                 "issues": "https://github.com/laravel/framework/issues",
                 "source": "https://github.com/laravel/framework"
             },
-            "time": "2026-10-29T13:49:09+00:00"
+            "time": "2026-10-29T13:49:09+00:00",
+            "published-time": "2026-11-03T15:07:57+00:00"
         },
         {
             "name": "illuminate/database",
@@ -3829,7 +3886,8 @@
                 "issues": "https://github.com/laravel/framework/issues",
                 "source": "https://github.com/laravel/framework"
             },
-            "time": "2026-11-02T15:52:37+00:00"
+            "time": "2026-11-02T15:52:37+00:00",
+            "published-time": "2026-11-03T15:08:00+00:00"
         },
         {
             "name": "illuminate/encryption",
@@ -3880,7 +3938,8 @@
                 "issues": "https://github.com/laravel/framework/issues",
                 "source": "https://github.com/laravel/framework"
             },
-            "time": "2026-10-20T10:26:12+00:00"
+            "time": "2026-10-20T10:26:12+00:00",
+            "published-time": "2026-11-03T15:08:02+00:00"
         },
         {
             "name": "illuminate/events",
@@ -3936,7 +3995,8 @@
                 "issues": "https://github.com/laravel/framework/issues",
                 "source": "https://github.com/laravel/framework"
             },
-            "time": "2026-10-20T10:26:12+00:00"
+            "time": "2026-10-20T10:26:12+00:00",
+            "published-time": "2026-11-03T15:08:04+00:00"
         },
         {
             "name": "illuminate/filesystem",
@@ -4005,7 +4065,8 @@
                 "issues": "https://github.com/laravel/framework/issues",
                 "source": "https://github.com/laravel/framework"
             },
-            "time": "2026-10-26T13:41:26+00:00"
+            "time": "2026-10-26T13:41:26+00:00",
+            "published-time": "2026-11-03T15:08:06+00:00"
         },
         {
             "name": "illuminate/hashing",
@@ -4053,7 +4114,8 @@
                 "issues": "https://github.com/laravel/framework/issues",
                 "source": "https://github.com/laravel/framework"
             },
-            "time": "2026-10-20T10:26:12+00:00"
+            "time": "2026-10-20T10:26:12+00:00",
+            "published-time": "2026-11-03T15:08:08+00:00"
         },
         {
             "name": "illuminate/http",
@@ -4119,7 +4181,8 @@
                 "issues": "https://github.com/laravel/framework/issues",
                 "source": "https://github.com/laravel/framework"
             },
-            "time": "2026-10-26T13:12:21+00:00"
+            "time": "2026-10-26T13:12:21+00:00",
+            "published-time": "2026-11-03T15:08:12+00:00"
         },
         {
             "name": "illuminate/log",
@@ -4173,7 +4236,8 @@
                 "issues": "https://github.com/laravel/framework/issues",
                 "source": "https://github.com/laravel/framework"
             },
-            "time": "2026-10-21T11:30:00+00:00"
+            "time": "2026-10-21T11:30:00+00:00",
+            "published-time": "2026-11-03T15:08:16+00:00"
         },
         {
             "name": "illuminate/macroable",
@@ -4219,7 +4283,8 @@
                 "issues": "https://github.com/laravel/framework/issues",
                 "source": "https://github.com/laravel/framework"
             },
-            "time": "2026-10-06T02:42:44+00:00"
+            "time": "2026-10-06T02:42:44+00:00",
+            "published-time": "2026-11-03T15:08:15+00:00"
         },
         {
             "name": "illuminate/pagination",
@@ -4269,7 +4334,8 @@
                 "issues": "https://github.com/laravel/framework/issues",
                 "source": "https://github.com/laravel/framework"
             },
-            "time": "2026-10-28T12:55:52+00:00"
+            "time": "2026-10-28T12:55:52+00:00",
+            "published-time": "2026-11-03T15:08:26+00:00"
         },
         {
             "name": "illuminate/pipeline",
@@ -4322,7 +4388,8 @@
                 "issues": "https://github.com/laravel/framework/issues",
                 "source": "https://github.com/laravel/framework"
             },
-            "time": "2026-10-21T11:30:00+00:00"
+            "time": "2026-10-21T11:30:00+00:00",
+            "published-time": "2026-11-03T15:08:26+00:00"
         },
         {
             "name": "illuminate/queue",
@@ -4390,7 +4457,8 @@
                 "issues": "https://github.com/laravel/framework/issues",
                 "source": "https://github.com/laravel/framework"
             },
-            "time": "2026-11-02T15:28:15+00:00"
+            "time": "2026-11-02T15:28:15+00:00",
+            "published-time": "2026-11-03T15:08:30+00:00"
         },
         {
             "name": "illuminate/reflection",
@@ -4441,7 +4509,8 @@
                 "issues": "https://github.com/laravel/framework/issues",
                 "source": "https://github.com/laravel/framework"
             },
-            "time": "2026-10-06T02:42:44+00:00"
+            "time": "2026-10-06T02:42:44+00:00",
+            "published-time": "2026-11-03T15:08:28+00:00"
         },
         {
             "name": "illuminate/routing",
@@ -4509,7 +4578,8 @@
                 "issues": "https://github.com/laravel/framework/issues",
                 "source": "https://github.com/laravel/framework"
             },
-            "time": "2026-10-24T14:28:26+00:00"
+            "time": "2026-10-24T14:28:26+00:00",
+            "published-time": "2026-11-03T15:08:36+00:00"
         },
         {
             "name": "illuminate/session",
@@ -4566,7 +4636,8 @@
                 "issues": "https://github.com/laravel/framework/issues",
                 "source": "https://github.com/laravel/framework"
             },
-            "time": "2026-10-21T12:17:41+00:00"
+            "time": "2026-10-21T12:17:41+00:00",
+            "published-time": "2026-11-03T15:08:37+00:00"
         },
         {
             "name": "illuminate/support",
@@ -4645,7 +4716,8 @@
                 "issues": "https://github.com/laravel/framework/issues",
                 "source": "https://github.com/laravel/framework"
             },
-            "time": "2026-11-02T15:53:26+00:00"
+            "time": "2026-11-02T15:53:26+00:00",
+            "published-time": "2026-11-03T15:08:40+00:00"
         },
         {
             "name": "illuminate/testing",
@@ -4705,7 +4777,8 @@
                 "issues": "https://github.com/laravel/framework/issues",
                 "source": "https://github.com/laravel/framework"
             },
-            "time": "2026-10-21T11:28:51+00:00"
+            "time": "2026-10-21T11:28:51+00:00",
+            "published-time": "2026-11-03T15:08:41+00:00"
         },
         {
             "name": "illuminate/translation",
@@ -4757,7 +4830,8 @@
                 "issues": "https://github.com/laravel/framework/issues",
                 "source": "https://github.com/laravel/framework"
             },
-            "time": "2026-10-21T11:30:00+00:00"
+            "time": "2026-10-21T11:30:00+00:00",
+            "published-time": "2026-11-03T15:08:44+00:00"
         },
         {
             "name": "illuminate/validation",
@@ -4820,7 +4894,8 @@
                 "issues": "https://github.com/laravel/framework/issues",
                 "source": "https://github.com/laravel/framework"
             },
-            "time": "2026-11-02T15:35:02+00:00"
+            "time": "2026-11-02T15:35:02+00:00",
+            "published-time": "2026-11-03T15:08:46+00:00"
         },
         {
             "name": "illuminate/view",
@@ -4876,7 +4951,8 @@
                 "issues": "https://github.com/laravel/framework/issues",
                 "source": "https://github.com/laravel/framework"
             },
-            "time": "2026-10-20T13:42:06+00:00"
+            "time": "2026-10-20T13:42:06+00:00",
+            "published-time": "2026-11-03T15:08:48+00:00"
         },
         {
             "name": "inpsyde/wp-translation-downloader",
@@ -4938,59 +5014,8 @@
                 "issues": "https://github.com/inpsyde/wp-translation-downloader/issues",
                 "source": "https://github.com/inpsyde/wp-translation-downloader/tree/2.6"
             },
-            "time": "2025-05-28T12:02:26+00:00"
-        },
-        {
-            "name": "jjgrainger/posttypes",
-            "version": "v3.0.1",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/jjgrainger/PostTypes.git",
-                "reference": "e94dd6a2a53de29fc8eb1196e36431c2265ec97f"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/jjgrainger/PostTypes/zipball/e94dd6a2a53de29fc8eb1196e36431c2265ec97f",
-                "reference": "e94dd6a2a53de29fc8eb1196e36431c2265ec97f",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=7.2"
-            },
-            "require-dev": {
-                "phpstan/extension-installer": "^1.4",
-                "phpstan/phpstan": "^2.1",
-                "phpunit/phpunit": "^9.6",
-                "squizlabs/php_codesniffer": "3.*",
-                "szepeviktor/phpstan-wordpress": "^2.0"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "PostTypes\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Joe Grainger",
-                    "homepage": "https://jjgrainger.co.uk"
-                }
-            ],
-            "description": "Simple WordPress custom post types.",
-            "homepage": "https://posttypes.jjgrainger.co.uk",
-            "keywords": [
-                "post-types",
-                "wordpress"
-            ],
-            "support": {
-                "issues": "https://github.com/jjgrainger/posttypes/issues",
-                "source": "https://github.com/jjgrainger/posttypes"
-            },
-            "time": "2026-02-18T18:54:41+00:00"
+            "time": "2025-05-28T12:02:26+00:00",
+            "published-time": "2025-05-28T12:03:22+00:00"
         },
         {
             "name": "justinrainbow/json-schema",
@@ -5055,7 +5080,8 @@
                 "issues": "https://github.com/jsonrainbow/json-schema/issues",
                 "source": "https://github.com/jsonrainbow/json-schema/tree/6.14.0"
             },
-            "time": "2026-10-24T08:53:34+00:00"
+            "time": "2026-10-24T08:53:34+00:00",
+            "published-time": "2026-10-24T08:53:38+00:00"
         },
         {
             "name": "kinsta/kinsta-mu-plugins",
@@ -5124,7 +5150,8 @@
                 "issues": "https://github.com/Koodimonni/Composer-Dropin-Installer/issues",
                 "source": "https://github.com/Koodimonni/Composer-Dropin-Installer/tree/1.4"
             },
-            "time": "2022-02-02T11:42:57+00:00"
+            "time": "2022-02-02T11:42:57+00:00",
+            "published-time": "2022-02-10T19:25:48+00:00"
         },
         {
             "name": "laravel/prompts",
@@ -5182,7 +5209,8 @@
             "support": {
                 "source": "https://github.com/laravel/prompts/tree/v0.3.27"
             },
-            "time": "2026-11-09T16:07:10+00:00"
+            "time": "2026-11-09T16:07:10+00:00",
+            "published-time": "2026-11-09T16:09:07+00:00"
         },
         {
             "name": "laravel/serializable-closure",
@@ -5243,7 +5271,8 @@
                 "issues": "https://github.com/laravel/serializable-closure/issues",
                 "source": "https://github.com/laravel/serializable-closure"
             },
-            "time": "2026-09-22T14:32:34+00:00"
+            "time": "2026-09-22T14:32:34+00:00",
+            "published-time": "2026-09-22T14:33:13+00:00"
         },
         {
             "name": "league/container",
@@ -5325,7 +5354,8 @@
                     "type": "github"
                 }
             ],
-            "time": "2025-05-20T12:55:37+00:00"
+            "time": "2025-05-20T12:55:37+00:00",
+            "published-time": "2025-05-20T12:56:10+00:00"
         },
         {
             "name": "league/flysystem",
@@ -5408,7 +5438,8 @@
                 "issues": "https://github.com/thephpleague/flysystem/issues",
                 "source": "https://github.com/thephpleague/flysystem/tree/3.36.0"
             },
-            "time": "2026-09-02T08:00:27+00:00"
+            "time": "2026-09-02T08:00:27+00:00",
+            "published-time": "2026-09-02T08:01:40+00:00"
         },
         {
             "name": "league/flysystem-local",
@@ -5457,7 +5488,8 @@
             "support": {
                 "source": "https://github.com/thephpleague/flysystem-local/tree/3.35.3"
             },
-            "time": "2026-08-12T13:29:21+00:00"
+            "time": "2026-08-12T13:29:21+00:00",
+            "published-time": "2026-08-22T12:57:18+00:00"
         },
         {
             "name": "league/html-to-markdown",
@@ -5547,7 +5579,8 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2026-10-19T04:13:34+00:00"
+            "time": "2026-10-19T04:13:34+00:00",
+            "published-time": "2026-10-19T04:15:03+00:00"
         },
         {
             "name": "league/mime-type-detection",
@@ -5603,7 +5636,8 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2026-07-09T11:49:27+00:00"
+            "time": "2026-07-09T11:49:27+00:00",
+            "published-time": "2026-07-09T11:50:09+00:00"
         },
         {
             "name": "log1x/navi",
@@ -5668,7 +5702,8 @@
                     "type": "github"
                 }
             ],
-            "time": "2026-02-21T00:32:22+00:00"
+            "time": "2026-02-21T00:32:22+00:00",
+            "published-time": "2026-02-21T00:34:26+00:00"
         },
         {
             "name": "log1x/sage-svg",
@@ -5736,7 +5771,8 @@
                     "type": "github"
                 }
             ],
-            "time": "2024-08-29T14:11:41+00:00"
+            "time": "2024-08-29T14:11:41+00:00",
+            "published-time": "2024-10-05T23:43:19+00:00"
         },
         {
             "name": "marc-mabe/php-enum",
@@ -5809,7 +5845,8 @@
                 "issues": "https://github.com/marc-mabe/php-enum/issues",
                 "source": "https://github.com/marc-mabe/php-enum/tree/v4.7.2"
             },
-            "time": "2025-09-14T11:18:39+00:00"
+            "time": "2025-09-14T11:18:39+00:00",
+            "published-time": "2025-09-14T11:32:17+00:00"
         },
         {
             "name": "mck89/peast",
@@ -5859,7 +5896,8 @@
                 "issues": "https://github.com/mck89/peast/issues",
                 "source": "https://github.com/mck89/peast/tree/v1.18.1"
             },
-            "time": "2026-09-15T06:27:15+00:00"
+            "time": "2026-09-15T06:27:15+00:00",
+            "published-time": "2026-09-15T06:27:47+00:00"
         },
         {
             "name": "monolog/monolog",
@@ -5964,7 +6002,8 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2026-09-29T19:21:12+00:00"
+            "time": "2026-09-29T19:21:12+00:00",
+            "published-time": "2026-09-29T19:21:44+00:00"
         },
         {
             "name": "nb/oxymel",
@@ -6009,7 +6048,8 @@
                 "issues": "https://github.com/nb/oxymel/issues",
                 "source": "https://github.com/nb/oxymel/tree/master"
             },
-            "time": "2013-02-24T15:01:54+00:00"
+            "time": "2013-02-24T15:01:54+00:00",
+            "published-time": "2013-06-26T14:49:09+00:00"
         },
         {
             "name": "nesbot/carbon",
@@ -6115,7 +6155,8 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2026-10-25T14:32:48+00:00"
+            "time": "2026-10-25T14:32:48+00:00",
+            "published-time": "2026-10-25T14:41:05+00:00"
         },
         {
             "name": "nunomaduro/termwind",
@@ -6202,7 +6243,8 @@
                     "type": "github"
                 }
             ],
-            "time": "2026-11-07T03:57:16+00:00"
+            "time": "2026-11-07T03:57:16+00:00",
+            "published-time": "2026-11-07T04:01:24+00:00"
         },
         {
             "name": "oscarotero/env",
@@ -6257,7 +6299,8 @@
                 "issues": "https://github.com/oscarotero/env/issues",
                 "source": "https://github.com/oscarotero/env/tree/v2.1.1"
             },
-            "time": "2024-12-03T01:02:28+00:00"
+            "time": "2024-12-03T01:02:28+00:00",
+            "published-time": "2024-12-03T01:03:40+00:00"
         },
         {
             "name": "phootwork/collection",
@@ -6312,7 +6355,8 @@
                 "issues": "https://github.com/phootwork/phootwork/issues",
                 "source": "https://github.com/phootwork/collection/tree/v3.2.3"
             },
-            "time": "2022-08-27T12:51:24+00:00"
+            "time": "2022-08-27T12:51:24+00:00",
+            "published-time": "2024-10-03T15:44:56+00:00"
         },
         {
             "name": "phootwork/lang",
@@ -6361,7 +6405,8 @@
                 "issues": "https://github.com/phootwork/phootwork/issues",
                 "source": "https://github.com/phootwork/lang/tree/v3.2.3"
             },
-            "time": "2024-10-03T13:43:19+00:00"
+            "time": "2024-10-03T13:43:19+00:00",
+            "published-time": "2024-10-03T15:45:01+00:00"
         },
         {
             "name": "phpoption/phpoption",
@@ -6436,7 +6481,8 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2026-08-24T00:54:40+00:00"
+            "time": "2026-08-24T00:54:40+00:00",
+            "published-time": "2026-08-24T01:09:05+00:00"
         },
         {
             "name": "phpowermove/docblock",
@@ -6488,7 +6534,8 @@
                 "issues": "https://github.com/phpowermove/docblock/issues",
                 "source": "https://github.com/phpowermove/docblock/tree/v4.0"
             },
-            "time": "2021-09-22T16:57:06+00:00"
+            "time": "2021-09-22T16:57:06+00:00",
+            "published-time": "2021-09-22T17:03:07+00:00"
         },
         {
             "name": "psr/clock",
@@ -6536,7 +6583,8 @@
                 "issues": "https://github.com/php-fig/clock/issues",
                 "source": "https://github.com/php-fig/clock/tree/1.0.0"
             },
-            "time": "2022-11-25T14:36:26+00:00"
+            "time": "2022-11-25T14:36:26+00:00",
+            "published-time": "2022-11-25T14:59:22+00:00"
         },
         {
             "name": "psr/container",
@@ -6589,7 +6637,8 @@
                 "issues": "https://github.com/php-fig/container/issues",
                 "source": "https://github.com/php-fig/container/tree/2.0.2"
             },
-            "time": "2021-11-05T16:47:00+00:00"
+            "time": "2021-11-05T16:47:00+00:00",
+            "published-time": "2021-11-05T16:53:27+00:00"
         },
         {
             "name": "psr/event-dispatcher",
@@ -6639,7 +6688,8 @@
                 "issues": "https://github.com/php-fig/event-dispatcher/issues",
                 "source": "https://github.com/php-fig/event-dispatcher/tree/1.0.0"
             },
-            "time": "2019-01-08T18:20:26+00:00"
+            "time": "2019-01-08T18:20:26+00:00",
+            "published-time": "2019-03-25T15:31:44+00:00"
         },
         {
             "name": "psr/http-client",
@@ -6691,7 +6741,8 @@
             "support": {
                 "source": "https://github.com/php-fig/http-client"
             },
-            "time": "2023-09-23T14:17:50+00:00"
+            "time": "2023-09-23T14:17:50+00:00",
+            "published-time": "2023-09-23T14:18:12+00:00"
         },
         {
             "name": "psr/http-factory",
@@ -6746,7 +6797,8 @@
             "support": {
                 "source": "https://github.com/php-fig/http-factory"
             },
-            "time": "2024-04-15T12:06:14+00:00"
+            "time": "2024-04-15T12:06:14+00:00",
+            "published-time": "2024-05-10T07:32:19+00:00"
         },
         {
             "name": "psr/http-message",
@@ -6799,7 +6851,8 @@
             "support": {
                 "source": "https://github.com/php-fig/http-message/tree/2.0"
             },
-            "time": "2023-04-04T09:54:51+00:00"
+            "time": "2023-04-04T09:54:51+00:00",
+            "published-time": "2023-04-04T09:55:35+00:00"
         },
         {
             "name": "psr/log",
@@ -6849,7 +6902,8 @@
             "support": {
                 "source": "https://github.com/php-fig/log/tree/3.0.2"
             },
-            "time": "2024-09-11T13:17:53+00:00"
+            "time": "2024-09-11T13:17:53+00:00",
+            "published-time": "2024-09-11T13:21:14+00:00"
         },
         {
             "name": "psr/simple-cache",
@@ -6900,7 +6954,8 @@
             "support": {
                 "source": "https://github.com/php-fig/simple-cache/tree/3.0.0"
             },
-            "time": "2021-10-29T13:26:27+00:00"
+            "time": "2021-10-29T13:26:27+00:00",
+            "published-time": "2021-10-29T13:27:19+00:00"
         },
         {
             "name": "ralouphie/getallheaders",
@@ -6944,7 +6999,8 @@
                 "issues": "https://github.com/ralouphie/getallheaders/issues",
                 "source": "https://github.com/ralouphie/getallheaders/tree/develop"
             },
-            "time": "2019-03-08T08:55:37+00:00"
+            "time": "2019-03-08T08:55:37+00:00",
+            "published-time": "2019-03-08T09:01:32+00:00"
         },
         {
             "name": "ramsey/collection",
@@ -7020,7 +7076,8 @@
                 "issues": "https://github.com/ramsey/collection/issues",
                 "source": "https://github.com/ramsey/collection/tree/2.1.1"
             },
-            "time": "2025-03-22T05:38:12+00:00"
+            "time": "2025-03-22T05:38:12+00:00",
+            "published-time": "2025-03-22T05:39:22+00:00"
         },
         {
             "name": "ramsey/uuid",
@@ -7098,7 +7155,8 @@
                 "issues": "https://github.com/ramsey/uuid/issues",
                 "source": "https://github.com/ramsey/uuid/tree/4.9.4"
             },
-            "time": "2026-09-16T11:39:30+00:00"
+            "time": "2026-09-16T11:39:30+00:00",
+            "published-time": "2026-09-16T11:41:15+00:00"
         },
         {
             "name": "react/promise",
@@ -7171,7 +7229,8 @@
                     "type": "open_collective"
                 }
             ],
-            "time": "2025-08-19T18:57:03+00:00"
+            "time": "2025-08-19T18:57:03+00:00",
+            "published-time": "2025-08-19T19:13:36+00:00"
         },
         {
             "name": "roots/acorn",
@@ -7283,7 +7342,8 @@
                     "type": "github"
                 }
             ],
-            "time": "2026-09-22T14:47:15+00:00"
+            "time": "2026-09-22T14:47:15+00:00",
+            "published-time": "2026-09-22T14:47:20+00:00"
         },
         {
             "name": "roots/bedrock-autoloader",
@@ -7358,7 +7418,8 @@
                     "type": "github"
                 }
             ],
-            "time": "2026-03-09T23:11:00+00:00"
+            "time": "2026-03-09T23:11:00+00:00",
+            "published-time": "2026-03-09T23:15:52+00:00"
         },
         {
             "name": "roots/support",
@@ -7409,7 +7470,8 @@
                     "type": "github"
                 }
             ],
-            "time": "2024-05-08T21:05:03+00:00"
+            "time": "2024-05-08T21:05:03+00:00",
+            "published-time": "2024-05-08T21:07:14+00:00"
         },
         {
             "name": "roots/wordpress",
@@ -7452,7 +7514,8 @@
                     "type": "github"
                 }
             ],
-            "time": "2026-03-22T13:26:54+00:00"
+            "time": "2026-03-22T13:26:54+00:00",
+            "published-time": "2026-10-28T17:16:37+00:00"
         },
         {
             "name": "roots/wordpress-core-installer",
@@ -7519,7 +7582,8 @@
                     "type": "github"
                 }
             ],
-            "time": "2026-03-22T03:17:23+00:00"
+            "time": "2026-03-22T03:17:23+00:00",
+            "published-time": "2026-03-22T03:22:05+00:00"
         },
         {
             "name": "roots/wordpress-no-content",
@@ -7590,7 +7654,8 @@
                     "type": "other"
                 }
             ],
-            "time": "2026-10-28T17:15:58+00:00"
+            "time": "2026-10-28T17:15:58+00:00",
+            "published-time": "2026-10-28T17:16:09+00:00"
         },
         {
             "name": "roots/wp-config",
@@ -7636,7 +7701,8 @@
                 "issues": "https://github.com/roots/wp-config/issues",
                 "source": "https://github.com/roots/wp-config/tree/master"
             },
-            "time": "2018-08-10T14:18:38+00:00"
+            "time": "2018-08-10T14:18:38+00:00",
+            "published-time": "2018-08-11T03:40:51+00:00"
         },
         {
             "name": "seld/jsonlint",
@@ -7700,7 +7766,8 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2026-11-03T10:16:18+00:00"
+            "time": "2026-11-03T10:16:18+00:00",
+            "published-time": "2026-11-03T10:20:37+00:00"
         },
         {
             "name": "seld/phar-utils",
@@ -7748,7 +7815,8 @@
                 "issues": "https://github.com/Seldaek/phar-utils/issues",
                 "source": "https://github.com/Seldaek/phar-utils/tree/1.2.3"
             },
-            "time": "2026-10-01T08:16:23+00:00"
+            "time": "2026-10-01T08:16:23+00:00",
+            "published-time": "2026-10-01T08:17:41+00:00"
         },
         {
             "name": "seld/signal-handler",
@@ -7809,7 +7877,8 @@
                 "issues": "https://github.com/Seldaek/signal-handler/issues",
                 "source": "https://github.com/Seldaek/signal-handler/tree/2.0.2"
             },
-            "time": "2023-09-03T09:24:00+00:00"
+            "time": "2023-09-03T09:24:00+00:00",
+            "published-time": "2023-09-03T09:24:36+00:00"
         },
         {
             "name": "spatie/laravel-csp",
@@ -7895,7 +7964,8 @@
                     "type": "custom"
                 }
             ],
-            "time": "2026-11-06T10:49:09+00:00"
+            "time": "2026-11-06T10:49:09+00:00",
+            "published-time": "2026-11-06T10:53:01+00:00"
         },
         {
             "name": "spatie/laravel-google-fonts",
@@ -7977,7 +8047,8 @@
                     "type": "github"
                 }
             ],
-            "time": "2026-08-20T09:32:39+00:00"
+            "time": "2026-08-20T09:32:39+00:00",
+            "published-time": "2026-08-20T09:33:16+00:00"
         },
         {
             "name": "spatie/laravel-package-tools",
@@ -8038,7 +8109,8 @@
                     "type": "github"
                 }
             ],
-            "time": "2026-09-28T07:16:50+00:00"
+            "time": "2026-09-28T07:16:50+00:00",
+            "published-time": "2026-09-28T07:17:01+00:00"
         },
         {
             "name": "symfony/clock",
@@ -8115,7 +8187,8 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2026-10-12T14:32:04+00:00"
+            "time": "2026-10-12T14:32:04+00:00",
+            "published-time": "2026-10-14T06:48:32+00:00"
         },
         {
             "name": "symfony/console",
@@ -8213,7 +8286,8 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2026-11-03T21:47:07+00:00"
+            "time": "2026-11-03T21:47:07+00:00",
+            "published-time": "2026-11-04T11:27:31+00:00"
         },
         {
             "name": "symfony/deprecation-contracts",
@@ -8284,7 +8358,8 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2026-09-16T14:15:10+00:00"
+            "time": "2026-09-16T14:15:10+00:00",
+            "published-time": "2026-11-04T11:25:34+00:00"
         },
         {
             "name": "symfony/error-handler",
@@ -8365,7 +8440,8 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2026-10-25T14:40:25+00:00"
+            "time": "2026-10-25T14:40:25+00:00",
+            "published-time": "2026-10-28T18:24:13+00:00"
         },
         {
             "name": "symfony/event-dispatcher",
@@ -8450,7 +8526,8 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2026-08-21T17:40:08+00:00"
+            "time": "2026-08-21T17:40:08+00:00",
+            "published-time": "2026-08-22T13:44:01+00:00"
         },
         {
             "name": "symfony/event-dispatcher-contracts",
@@ -8530,7 +8607,8 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2026-09-16T14:15:10+00:00"
+            "time": "2026-09-16T14:15:10+00:00",
+            "published-time": "2026-11-04T11:25:36+00:00"
         },
         {
             "name": "symfony/filesystem",
@@ -8600,7 +8678,8 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2026-11-04T08:27:22+00:00"
+            "time": "2026-11-04T08:27:22+00:00",
+            "published-time": "2026-11-04T11:28:00+00:00"
         },
         {
             "name": "symfony/finder",
@@ -8668,7 +8747,8 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2026-11-02T10:56:49+00:00"
+            "time": "2026-11-02T10:56:49+00:00",
+            "published-time": "2026-11-04T11:28:12+00:00"
         },
         {
             "name": "symfony/http-foundation",
@@ -8749,7 +8829,8 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2026-11-04T08:39:20+00:00"
+            "time": "2026-11-04T08:39:20+00:00",
+            "published-time": "2026-11-04T11:31:54+00:00"
         },
         {
             "name": "symfony/http-kernel",
@@ -8859,7 +8940,8 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2026-11-04T11:29:46+00:00"
+            "time": "2026-11-04T11:29:46+00:00",
+            "published-time": "2026-11-04T11:32:19+00:00"
         },
         {
             "name": "symfony/mime",
@@ -8945,7 +9027,8 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2026-10-28T17:58:38+00:00"
+            "time": "2026-10-28T17:58:38+00:00",
+            "published-time": "2026-10-28T18:23:55+00:00"
         },
         {
             "name": "symfony/polyfill-ctype",
@@ -9028,7 +9111,8 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2026-04-10T16:19:22+00:00"
+            "time": "2026-04-10T16:19:22+00:00",
+            "published-time": "2026-04-26T14:44:50+00:00"
         },
         {
             "name": "symfony/polyfill-deepclone",
@@ -9115,7 +9199,8 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2026-10-14T07:17:09+00:00"
+            "time": "2026-10-14T07:17:09+00:00",
+            "published-time": "2026-10-14T09:42:25+00:00"
         },
         {
             "name": "symfony/polyfill-intl-grapheme",
@@ -9197,7 +9282,8 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2026-10-15T09:18:53+00:00"
+            "time": "2026-10-15T09:18:53+00:00",
+            "published-time": "2026-10-28T10:07:44+00:00"
         },
         {
             "name": "symfony/polyfill-intl-idn",
@@ -9284,7 +9370,8 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2026-09-23T14:40:04+00:00"
+            "time": "2026-09-23T14:40:04+00:00",
+            "published-time": "2026-09-30T10:23:39+00:00"
         },
         {
             "name": "symfony/polyfill-intl-normalizer",
@@ -9369,7 +9456,8 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2026-09-23T22:02:09+00:00"
+            "time": "2026-09-23T22:02:09+00:00",
+            "published-time": "2026-09-30T10:23:47+00:00"
         },
         {
             "name": "symfony/polyfill-mbstring",
@@ -9454,7 +9542,8 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2026-10-28T09:35:49+00:00"
+            "time": "2026-10-28T09:35:49+00:00",
+            "published-time": "2026-10-28T10:07:45+00:00"
         },
         {
             "name": "symfony/polyfill-php73",
@@ -9534,7 +9623,8 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2024-09-09T11:45:10+00:00"
+            "time": "2024-09-09T11:45:10+00:00",
+            "published-time": "2026-04-26T14:44:49+00:00"
         },
         {
             "name": "symfony/polyfill-php80",
@@ -9618,7 +9708,8 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2026-09-25T15:50:05+00:00"
+            "time": "2026-09-25T15:50:05+00:00",
+            "published-time": "2026-09-30T10:23:35+00:00"
         },
         {
             "name": "symfony/polyfill-php81",
@@ -9698,7 +9789,8 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2026-05-26T12:45:58+00:00"
+            "time": "2026-05-26T12:45:58+00:00",
+            "published-time": "2026-05-26T13:40:34+00:00"
         },
         {
             "name": "symfony/polyfill-php84",
@@ -9778,7 +9870,8 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2026-09-23T22:01:09+00:00"
+            "time": "2026-09-23T22:01:09+00:00",
+            "published-time": "2026-09-30T10:23:33+00:00"
         },
         {
             "name": "symfony/polyfill-php85",
@@ -9858,7 +9951,8 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2026-09-25T15:46:47+00:00"
+            "time": "2026-09-25T15:46:47+00:00",
+            "published-time": "2026-09-30T10:23:32+00:00"
         },
         {
             "name": "symfony/polyfill-php86",
@@ -9938,7 +10032,8 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2026-09-25T15:46:47+00:00"
+            "time": "2026-09-25T15:46:47+00:00",
+            "published-time": "2026-09-30T10:23:43+00:00"
         },
         {
             "name": "symfony/polyfill-time",
@@ -10021,7 +10116,8 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2026-08-07T13:08:13+00:00"
+            "time": "2026-08-07T13:08:13+00:00",
+            "published-time": "2026-08-24T11:45:15+00:00"
         },
         {
             "name": "symfony/process",
@@ -10086,7 +10182,8 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2026-10-25T14:40:16+00:00"
+            "time": "2026-10-25T14:40:16+00:00",
+            "published-time": "2026-10-28T18:21:18+00:00"
         },
         {
             "name": "symfony/routing",
@@ -10166,7 +10263,8 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2026-11-04T08:39:20+00:00"
+            "time": "2026-11-04T08:39:20+00:00",
+            "published-time": "2026-11-04T11:30:59+00:00"
         },
         {
             "name": "symfony/service-contracts",
@@ -10253,7 +10351,8 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2026-10-20T17:38:25+00:00"
+            "time": "2026-10-20T17:38:25+00:00",
+            "published-time": "2026-11-04T11:25:33+00:00"
         },
         {
             "name": "symfony/string",
@@ -10343,7 +10442,8 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2026-10-23T17:06:53+00:00"
+            "time": "2026-10-23T17:06:53+00:00",
+            "published-time": "2026-10-28T18:24:27+00:00"
         },
         {
             "name": "symfony/translation",
@@ -10436,7 +10536,8 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2026-11-01T22:27:46+00:00"
+            "time": "2026-11-01T22:27:46+00:00",
+            "published-time": "2026-11-04T11:31:54+00:00"
         },
         {
             "name": "symfony/translation-contracts",
@@ -10518,7 +10619,8 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2026-10-03T08:17:19+00:00"
+            "time": "2026-10-03T08:17:19+00:00",
+            "published-time": "2026-11-04T11:25:31+00:00"
         },
         {
             "name": "symfony/var-dumper",
@@ -10605,7 +10707,8 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2026-10-26T21:55:04+00:00"
+            "time": "2026-10-26T21:55:04+00:00",
+            "published-time": "2026-10-28T18:25:26+00:00"
         },
         {
             "name": "symfony/var-exporter",
@@ -10688,7 +10791,8 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2026-10-22T14:30:01+00:00"
+            "time": "2026-10-22T14:30:01+00:00",
+            "published-time": "2026-10-28T18:24:08+00:00"
         },
         {
             "name": "symfony/yaml",
@@ -10764,7 +10868,8 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2026-11-04T08:27:22+00:00"
+            "time": "2026-11-04T08:27:22+00:00",
+            "published-time": "2026-11-04T11:28:41+00:00"
         },
         {
             "name": "vlucas/phpdotenv",
@@ -10848,7 +10953,8 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2026-10-25T16:26:19+00:00"
+            "time": "2026-10-25T16:26:19+00:00",
+            "published-time": "2026-10-25T16:26:50+00:00"
         },
         {
             "name": "voku/portable-ascii",
@@ -10922,7 +11028,8 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2026-04-26T05:33:54+00:00"
+            "time": "2026-04-26T05:33:54+00:00",
+            "published-time": "2026-04-26T05:43:38+00:00"
         },
         {
             "name": "wordpress/mcp-adapter",
@@ -10994,7 +11101,8 @@
                 "issues": "https://github.com/wordpress/mcp-adapter/issues",
                 "source": "https://github.com/wordpress/mcp-adapter"
             },
-            "time": "2026-10-16T08:58:28+00:00"
+            "time": "2026-10-16T08:58:28+00:00",
+            "published-time": "2026-10-16T09:09:39+00:00"
         },
         {
             "name": "wordpress/php-mcp-schema",
@@ -11041,7 +11149,8 @@
                 "php",
                 "schema"
             ],
-            "time": "2026-09-11T10:17:52+00:00"
+            "time": "2026-09-11T10:17:52+00:00",
+            "published-time": "2026-09-11T10:18:17+00:00"
         },
         {
             "name": "wp-cli/cache-command",
@@ -11120,7 +11229,8 @@
                 "issues": "https://github.com/wp-cli/cache-command/issues",
                 "source": "https://github.com/wp-cli/cache-command/tree/v2.2.1"
             },
-            "time": "2025-11-11T13:30:39+00:00"
+            "time": "2025-11-11T13:30:39+00:00",
+            "published-time": "2025-12-09T15:56:26+00:00"
         },
         {
             "name": "wp-cli/checksum-command",
@@ -11179,7 +11289,8 @@
                 "issues": "https://github.com/wp-cli/checksum-command/issues",
                 "source": "https://github.com/wp-cli/checksum-command/tree/v2.3.2"
             },
-            "time": "2025-11-11T13:30:40+00:00"
+            "time": "2025-11-11T13:30:40+00:00",
+            "published-time": "2025-12-09T15:56:31+00:00"
         },
         {
             "name": "wp-cli/config-command",
@@ -11253,7 +11364,8 @@
                 "issues": "https://github.com/wp-cli/config-command/issues",
                 "source": "https://github.com/wp-cli/config-command/tree/v2.4.0"
             },
-            "time": "2025-11-11T13:30:41+00:00"
+            "time": "2025-11-11T13:30:41+00:00",
+            "published-time": "2025-12-09T15:56:37+00:00"
         },
         {
             "name": "wp-cli/core-command",
@@ -11324,7 +11436,8 @@
                 "issues": "https://github.com/wp-cli/core-command/issues",
                 "source": "https://github.com/wp-cli/core-command/tree/v2.1.23"
             },
-            "time": "2026-01-10T09:57:36+00:00"
+            "time": "2026-01-10T09:57:36+00:00",
+            "published-time": "2026-01-10T10:29:47+00:00"
         },
         {
             "name": "wp-cli/cron-command",
@@ -11393,7 +11506,8 @@
                 "issues": "https://github.com/wp-cli/cron-command/issues",
                 "source": "https://github.com/wp-cli/cron-command/tree/v2.3.2"
             },
-            "time": "2025-04-02T11:55:20+00:00"
+            "time": "2025-04-02T11:55:20+00:00",
+            "published-time": "2025-04-29T08:15:49+00:00"
         },
         {
             "name": "wp-cli/db-command",
@@ -11467,7 +11581,8 @@
                 "issues": "https://github.com/wp-cli/db-command/issues",
                 "source": "https://github.com/wp-cli/db-command/tree/v2.1.3"
             },
-            "time": "2025-04-10T11:02:04+00:00"
+            "time": "2025-04-10T11:02:04+00:00",
+            "published-time": "2025-04-29T08:15:53+00:00"
         },
         {
             "name": "wp-cli/embed-command",
@@ -11534,7 +11649,8 @@
                 "issues": "https://github.com/wp-cli/embed-command/issues",
                 "source": "https://github.com/wp-cli/embed-command/tree/v2.1.0"
             },
-            "time": "2025-11-11T13:30:46+00:00"
+            "time": "2025-11-11T13:30:46+00:00",
+            "published-time": "2025-12-09T15:57:00+00:00"
         },
         {
             "name": "wp-cli/entity-command",
@@ -11771,7 +11887,8 @@
                 "issues": "https://github.com/wp-cli/entity-command/issues",
                 "source": "https://github.com/wp-cli/entity-command/tree/v2.8.4"
             },
-            "time": "2025-05-06T16:12:49+00:00"
+            "time": "2025-05-06T16:12:49+00:00",
+            "published-time": "2025-05-06T18:37:55+00:00"
         },
         {
             "name": "wp-cli/eval-command",
@@ -11829,7 +11946,8 @@
                 "issues": "https://github.com/wp-cli/eval-command/issues",
                 "source": "https://github.com/wp-cli/eval-command/tree/v2.2.9"
             },
-            "time": "2026-03-18T09:03:46+00:00"
+            "time": "2026-03-18T09:03:46+00:00",
+            "published-time": "2026-03-19T10:35:39+00:00"
         },
         {
             "name": "wp-cli/export-command",
@@ -11892,7 +12010,8 @@
                 "issues": "https://github.com/wp-cli/export-command/issues",
                 "source": "https://github.com/wp-cli/export-command/tree/v2.1.16"
             },
-            "time": "2026-03-17T08:25:40+00:00"
+            "time": "2026-03-17T08:25:40+00:00",
+            "published-time": "2026-03-19T10:34:50+00:00"
         },
         {
             "name": "wp-cli/extension-command",
@@ -11990,7 +12109,8 @@
                 "issues": "https://github.com/wp-cli/extension-command/issues",
                 "source": "https://github.com/wp-cli/extension-command/tree/v2.1.24"
             },
-            "time": "2025-05-06T19:17:53+00:00"
+            "time": "2025-05-06T19:17:53+00:00",
+            "published-time": "2025-05-06T19:18:39+00:00"
         },
         {
             "name": "wp-cli/i18n-command",
@@ -12060,7 +12180,8 @@
                 "issues": "https://github.com/wp-cli/i18n-command/issues",
                 "source": "https://github.com/wp-cli/i18n-command/tree/v2.7.0"
             },
-            "time": "2026-03-16T17:13:39+00:00"
+            "time": "2026-03-16T17:13:39+00:00",
+            "published-time": "2026-03-17T18:03:01+00:00"
         },
         {
             "name": "wp-cli/import-command",
@@ -12121,7 +12242,8 @@
                 "issues": "https://github.com/wp-cli/import-command/issues",
                 "source": "https://github.com/wp-cli/import-command/tree/v2.0.16"
             },
-            "time": "2026-03-16T15:17:43+00:00"
+            "time": "2026-03-16T15:17:43+00:00",
+            "published-time": "2026-03-17T21:29:29+00:00"
         },
         {
             "name": "wp-cli/language-command",
@@ -12201,7 +12323,8 @@
                 "issues": "https://github.com/wp-cli/language-command/issues",
                 "source": "https://github.com/wp-cli/language-command/tree/v2.0.25"
             },
-            "time": "2025-09-04T10:30:12+00:00"
+            "time": "2025-09-04T10:30:12+00:00",
+            "published-time": "2025-09-05T11:09:39+00:00"
         },
         {
             "name": "wp-cli/maintenance-mode-command",
@@ -12262,7 +12385,8 @@
                 "issues": "https://github.com/wp-cli/maintenance-mode-command/issues",
                 "source": "https://github.com/wp-cli/maintenance-mode-command/tree/v2.1.3"
             },
-            "time": "2024-11-24T17:26:30+00:00"
+            "time": "2024-11-24T17:26:30+00:00",
+            "published-time": "2025-04-29T08:16:32+00:00"
         },
         {
             "name": "wp-cli/media-command",
@@ -12325,7 +12449,8 @@
                 "issues": "https://github.com/wp-cli/media-command/issues",
                 "source": "https://github.com/wp-cli/media-command/tree/v2.2.5"
             },
-            "time": "2026-03-04T13:53:32+00:00"
+            "time": "2026-03-04T13:53:32+00:00",
+            "published-time": "2026-03-04T14:39:42+00:00"
         },
         {
             "name": "wp-cli/mustache",
@@ -12377,7 +12502,8 @@
             "support": {
                 "source": "https://github.com/wp-cli/mustache.php/tree/v2.14.99"
             },
-            "time": "2025-05-06T16:15:37+00:00"
+            "time": "2025-05-06T16:15:37+00:00",
+            "published-time": "2025-05-06T18:29:58+00:00"
         },
         {
             "name": "wp-cli/mustangostang-spyc",
@@ -12428,7 +12554,8 @@
             "support": {
                 "source": "https://github.com/wp-cli/spyc/tree/0.6.7"
             },
-            "time": "2026-10-06T08:59:48+00:00"
+            "time": "2026-10-06T08:59:48+00:00",
+            "published-time": "2026-10-06T09:00:14+00:00"
         },
         {
             "name": "wp-cli/package-command",
@@ -12493,7 +12620,8 @@
                 "issues": "https://github.com/wp-cli/package-command/issues",
                 "source": "https://github.com/wp-cli/package-command/tree/v2.6.1"
             },
-            "time": "2025-08-25T13:32:31+00:00"
+            "time": "2025-08-25T13:32:31+00:00",
+            "published-time": "2025-09-05T12:43:26+00:00"
         },
         {
             "name": "wp-cli/php-cli-tools",
@@ -12556,7 +12684,8 @@
                 "issues": "https://github.com/wp-cli/php-cli-tools/issues",
                 "source": "https://github.com/wp-cli/php-cli-tools/tree/v0.12.9"
             },
-            "time": "2026-03-29T11:12:54+00:00"
+            "time": "2026-03-29T11:12:54+00:00",
+            "published-time": "2026-03-29T20:04:18+00:00"
         },
         {
             "name": "wp-cli/rewrite-command",
@@ -12617,7 +12746,8 @@
                 "issues": "https://github.com/wp-cli/rewrite-command/issues",
                 "source": "https://github.com/wp-cli/rewrite-command/tree/v2.0.16"
             },
-            "time": "2025-11-11T13:30:58+00:00"
+            "time": "2025-11-11T13:30:58+00:00",
+            "published-time": "2025-12-09T16:03:17+00:00"
         },
         {
             "name": "wp-cli/role-command",
@@ -12683,7 +12813,8 @@
                 "issues": "https://github.com/wp-cli/role-command/issues",
                 "source": "https://github.com/wp-cli/role-command/tree/v2.0.16"
             },
-            "time": "2025-04-02T12:24:15+00:00"
+            "time": "2025-04-02T12:24:15+00:00",
+            "published-time": "2025-04-29T08:16:56+00:00"
         },
         {
             "name": "wp-cli/scaffold-command",
@@ -12749,7 +12880,8 @@
                 "issues": "https://github.com/wp-cli/scaffold-command/issues",
                 "source": "https://github.com/wp-cli/scaffold-command/tree/v2.5.2"
             },
-            "time": "2026-01-09T14:41:03+00:00"
+            "time": "2026-01-09T14:41:03+00:00",
+            "published-time": "2026-01-10T10:24:50+00:00"
         },
         {
             "name": "wp-cli/search-replace-command",
@@ -12809,7 +12941,8 @@
                 "issues": "https://github.com/wp-cli/search-replace-command/issues",
                 "source": "https://github.com/wp-cli/search-replace-command/tree/v2.1.11"
             },
-            "time": "2026-03-18T08:50:38+00:00"
+            "time": "2026-03-18T08:50:38+00:00",
+            "published-time": "2026-03-19T10:32:28+00:00"
         },
         {
             "name": "wp-cli/server-command",
@@ -12867,7 +13000,8 @@
                 "issues": "https://github.com/wp-cli/server-command/issues",
                 "source": "https://github.com/wp-cli/server-command/tree/v2.0.15"
             },
-            "time": "2025-04-10T11:03:13+00:00"
+            "time": "2025-04-10T11:03:13+00:00",
+            "published-time": "2025-04-29T08:17:07+00:00"
         },
         {
             "name": "wp-cli/shell-command",
@@ -12924,7 +13058,8 @@
                 "issues": "https://github.com/wp-cli/shell-command/issues",
                 "source": "https://github.com/wp-cli/shell-command/tree/v2.0.16"
             },
-            "time": "2025-04-11T09:39:33+00:00"
+            "time": "2025-04-11T09:39:33+00:00",
+            "published-time": "2025-04-29T08:17:10+00:00"
         },
         {
             "name": "wp-cli/super-admin-command",
@@ -12985,7 +13120,8 @@
                 "issues": "https://github.com/wp-cli/super-admin-command/issues",
                 "source": "https://github.com/wp-cli/super-admin-command/tree/v2.0.16"
             },
-            "time": "2025-04-02T13:07:32+00:00"
+            "time": "2025-04-02T13:07:32+00:00",
+            "published-time": "2025-04-29T08:17:13+00:00"
         },
         {
             "name": "wp-cli/widget-command",
@@ -13055,7 +13191,8 @@
                 "issues": "https://github.com/wp-cli/widget-command/issues",
                 "source": "https://github.com/wp-cli/widget-command/tree/v2.2.1"
             },
-            "time": "2026-03-17T12:28:44+00:00"
+            "time": "2026-03-17T12:28:44+00:00",
+            "published-time": "2026-03-17T17:57:37+00:00"
         },
         {
             "name": "wp-cli/wp-cli",
@@ -13124,7 +13261,8 @@
                 "issues": "https://github.com/wp-cli/wp-cli/issues",
                 "source": "https://github.com/wp-cli/wp-cli"
             },
-            "time": "2025-05-07T01:16:12+00:00"
+            "time": "2025-05-07T01:16:12+00:00",
+            "published-time": "2025-05-07T01:16:59+00:00"
         },
         {
             "name": "wp-cli/wp-cli-bundle",
@@ -13197,7 +13335,8 @@
                 "issues": "https://github.com/wp-cli/wp-cli-bundle/issues",
                 "source": "https://github.com/wp-cli/wp-cli-bundle"
             },
-            "time": "2024-08-08T03:29:34+00:00"
+            "time": "2024-08-08T03:29:34+00:00",
+            "published-time": "2024-08-08T03:30:17+00:00"
         },
         {
             "name": "wp-cli/wp-config-transformer",
@@ -13246,7 +13385,8 @@
                 "issues": "https://github.com/wp-cli/wp-config-transformer/issues",
                 "source": "https://github.com/wp-cli/wp-config-transformer/tree/v1.4.7"
             },
-            "time": "2026-10-06T06:18:26+00:00"
+            "time": "2026-10-06T06:18:26+00:00",
+            "published-time": "2026-10-07T08:35:54+00:00"
         },
         {
             "name": "wp-plugin/cookiebot",
@@ -13277,7 +13417,8 @@
                 "issues": "https://wordpress.org/support/plugin/cookiebot",
                 "source": "https://plugins.svn.wordpress.org/cookiebot"
             },
-            "time": "2026-11-10T11:58:10+00:00"
+            "time": "2026-11-10T11:58:10+00:00",
+            "published-time": "2026-11-10T11:58:10+00:00"
         },
         {
             "name": "wp-plugin/limit-login-attempts-reloaded",
@@ -13307,7 +13448,8 @@
                 "issues": "https://wordpress.org/support/plugin/limit-login-attempts-reloaded",
                 "source": "https://plugins.svn.wordpress.org/limit-login-attempts-reloaded"
             },
-            "time": "2026-11-06T10:32:17+00:00"
+            "time": "2026-11-06T10:32:17+00:00",
+            "published-time": "2026-11-06T10:32:17+00:00"
         },
         {
             "name": "wp-plugin/postmark-approved-wordpress-plugin",
@@ -13338,7 +13480,8 @@
                 "issues": "https://wordpress.org/support/plugin/postmark-approved-wordpress-plugin",
                 "source": "https://plugins.svn.wordpress.org/postmark-approved-wordpress-plugin"
             },
-            "time": "2026-09-29T13:03:58+00:00"
+            "time": "2026-09-29T13:03:58+00:00",
+            "published-time": "2026-09-29T13:03:58+00:00"
         },
         {
             "name": "wp-plugin/safe-redirect-manager",
@@ -13369,7 +13512,8 @@
                 "issues": "https://wordpress.org/support/plugin/safe-redirect-manager",
                 "source": "https://plugins.svn.wordpress.org/safe-redirect-manager"
             },
-            "time": "2026-09-29T13:03:58+00:00"
+            "time": "2026-09-29T13:03:58+00:00",
+            "published-time": "2026-09-29T13:03:58+00:00"
         },
         {
             "name": "wp-plugin/safe-svg",
@@ -13400,7 +13544,8 @@
                 "issues": "https://wordpress.org/support/plugin/safe-svg",
                 "source": "https://plugins.svn.wordpress.org/safe-svg"
             },
-            "time": "2026-10-26T22:32:07+00:00"
+            "time": "2026-10-26T22:32:07+00:00",
+            "published-time": "2026-10-26T22:32:07+00:00"
         },
         {
             "name": "wp-plugin/show-environment-in-admin-bar",
@@ -13431,7 +13576,8 @@
                 "issues": "https://wordpress.org/support/plugin/show-environment-in-admin-bar",
                 "source": "https://plugins.svn.wordpress.org/show-environment-in-admin-bar"
             },
-            "time": "2026-09-29T13:03:58+00:00"
+            "time": "2026-09-29T13:03:58+00:00",
+            "published-time": "2026-09-29T13:03:58+00:00"
         },
         {
             "name": "wp-plugin/theme-translation-for-polylang",
@@ -13461,7 +13607,8 @@
                 "issues": "https://wordpress.org/support/plugin/theme-translation-for-polylang",
                 "source": "https://plugins.svn.wordpress.org/theme-translation-for-polylang"
             },
-            "time": "2026-09-29T13:03:58+00:00"
+            "time": "2026-09-29T13:03:58+00:00",
+            "published-time": "2026-09-29T13:03:58+00:00"
         },
         {
             "name": "wp-plugin/user-switching",
@@ -13492,7 +13639,8 @@
                 "issues": "https://wordpress.org/support/plugin/user-switching",
                 "source": "https://plugins.svn.wordpress.org/user-switching"
             },
-            "time": "2026-09-29T13:03:58+00:00"
+            "time": "2026-09-29T13:03:58+00:00",
+            "published-time": "2026-09-29T13:03:58+00:00"
         },
         {
             "name": "wp-plugin/woocommerce",
@@ -13523,7 +13671,8 @@
                 "issues": "https://wordpress.org/support/plugin/woocommerce",
                 "source": "https://plugins.svn.wordpress.org/woocommerce"
             },
-            "time": "2026-11-04T21:34:49+00:00"
+            "time": "2026-11-04T21:34:49+00:00",
+            "published-time": "2026-11-04T21:34:49+00:00"
         },
         {
             "name": "wp-plugin/wordpress-seo",
@@ -13554,7 +13703,8 @@
                 "issues": "https://wordpress.org/support/plugin/wordpress-seo",
                 "source": "https://plugins.svn.wordpress.org/wordpress-seo"
             },
-            "time": "2026-10-27T06:18:09+00:00"
+            "time": "2026-10-27T06:18:09+00:00",
+            "published-time": "2026-10-27T06:18:09+00:00"
         },
         {
             "name": "wp-plugin/wp-sanitize-file-name-plus",
@@ -13585,7 +13735,8 @@
                 "issues": "https://wordpress.org/support/plugin/wp-sanitize-file-name-plus",
                 "source": "https://plugins.svn.wordpress.org/wp-sanitize-file-name-plus"
             },
-            "time": "2026-09-29T13:03:58+00:00"
+            "time": "2026-09-29T13:03:58+00:00",
+            "published-time": "2026-09-29T13:03:58+00:00"
         }
     ],
     "packages-dev": [
@@ -13660,7 +13811,8 @@
                 "issues": "https://github.com/BrainMaestro/composer-git-hooks/issues",
                 "source": "https://github.com/BrainMaestro/composer-git-hooks/tree/v3.0.0"
             },
-            "time": "2024-06-22T09:17:59+00:00"
+            "time": "2024-06-22T09:17:59+00:00",
+            "published-time": "2024-06-22T09:18:13+00:00"
         },
         {
             "name": "deployer/deployer",
@@ -13725,7 +13877,8 @@
                     "type": "github"
                 }
             ],
-            "time": "2026-05-18T16:59:34+00:00"
+            "time": "2026-05-18T16:59:34+00:00",
+            "published-time": "2026-05-18T17:00:43+00:00"
         },
         {
             "name": "doctrine/instantiator",
@@ -13794,7 +13947,8 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2026-01-05T06:47:08+00:00"
+            "time": "2026-01-05T06:47:08+00:00",
+            "published-time": "2026-01-06T07:25:40+00:00"
         },
         {
             "name": "generoi/deployer-genero",
@@ -13837,7 +13991,8 @@
                 "issues": "https://github.com/generoi/deployer-genero/issues",
                 "source": "https://github.com/generoi/deployer-genero/tree/v0.4.5"
             },
-            "time": "2026-11-07T21:31:57+00:00"
+            "time": "2026-11-07T21:31:57+00:00",
+            "published-time": "2026-11-07T21:32:23+00:00"
         },
         {
             "name": "ifsnop/mysqldump-php",
@@ -13896,7 +14051,8 @@
                 "issues": "https://github.com/ifsnop/mysqldump-php/issues",
                 "source": "https://github.com/ifsnop/mysqldump-php/tree/v2.13"
             },
-            "time": "2026-08-02T19:39:47+00:00"
+            "time": "2026-08-02T19:39:47+00:00",
+            "published-time": "2026-08-02T19:42:28+00:00"
         },
         {
             "name": "laravel/pint",
@@ -13966,7 +14122,8 @@
                 "issues": "https://github.com/laravel/pint/issues",
                 "source": "https://github.com/laravel/pint"
             },
-            "time": "2026-09-10T10:47:55+00:00"
+            "time": "2026-09-10T10:47:55+00:00",
+            "published-time": "2026-09-10T10:48:31+00:00"
         },
         {
             "name": "makers99/wp-cli-db-export-clean",
@@ -14038,7 +14195,8 @@
                 "issues": "https://github.com/makers99/wp-cli-db-export-clean/issues",
                 "source": "https://github.com/makers99/wp-cli-db-export-clean/tree/1.0.1"
             },
-            "time": "2026-09-04T10:48:46+00:00"
+            "time": "2026-09-04T10:48:46+00:00",
+            "published-time": "2026-09-04T10:52:16+00:00"
         },
         {
             "name": "maml/maml",
@@ -14092,7 +14250,8 @@
                 "issues": "https://github.com/maml-dev/maml-php/issues",
                 "source": "https://github.com/maml-dev/maml-php/tree/v3.2.0"
             },
-            "time": "2026-04-12T16:50:36+00:00"
+            "time": "2026-04-12T16:50:36+00:00",
+            "published-time": "2026-04-12T17:04:07+00:00"
         },
         {
             "name": "myclabs/deep-copy",
@@ -14152,7 +14311,8 @@
                     "type": "github"
                 }
             ],
-            "time": "2026-08-11T10:17:44+00:00"
+            "time": "2026-08-11T10:17:44+00:00",
+            "published-time": "2026-08-11T10:29:20+00:00"
         },
         {
             "name": "nikic/php-parser",
@@ -14209,7 +14369,8 @@
                 "issues": "https://github.com/nikic/PHP-Parser/issues",
                 "source": "https://github.com/nikic/PHP-Parser/tree/v5.9.0"
             },
-            "time": "2026-09-13T18:51:52+00:00"
+            "time": "2026-09-13T18:51:52+00:00",
+            "published-time": "2026-09-13T18:53:16+00:00"
         },
         {
             "name": "phar-io/manifest",
@@ -14276,7 +14437,8 @@
                     "type": "github"
                 }
             ],
-            "time": "2024-03-03T12:33:53+00:00"
+            "time": "2024-03-03T12:33:53+00:00",
+            "published-time": "2024-03-03T12:39:44+00:00"
         },
         {
             "name": "phar-io/version",
@@ -14327,7 +14489,8 @@
                 "issues": "https://github.com/phar-io/version/issues",
                 "source": "https://github.com/phar-io/version/tree/3.2.1"
             },
-            "time": "2022-02-21T01:04:05+00:00"
+            "time": "2022-02-21T01:04:05+00:00",
+            "published-time": "2022-02-21T01:04:30+00:00"
         },
         {
             "name": "phpunit/php-code-coverage",
@@ -14405,7 +14568,8 @@
                     "type": "github"
                 }
             ],
-            "time": "2024-08-22T04:23:01+00:00"
+            "time": "2024-08-22T04:23:01+00:00",
+            "published-time": "2024-08-22T04:23:58+00:00"
         },
         {
             "name": "phpunit/php-file-iterator",
@@ -14465,7 +14629,8 @@
                     "type": "github"
                 }
             ],
-            "time": "2021-12-02T12:48:52+00:00"
+            "time": "2021-12-02T12:48:52+00:00",
+            "published-time": "2021-12-02T12:54:16+00:00"
         },
         {
             "name": "phpunit/php-invoker",
@@ -14528,7 +14693,8 @@
                     "type": "github"
                 }
             ],
-            "time": "2020-09-28T05:58:55+00:00"
+            "time": "2020-09-28T05:58:55+00:00",
+            "published-time": "2020-09-28T05:59:12+00:00"
         },
         {
             "name": "phpunit/php-text-template",
@@ -14587,7 +14753,8 @@
                     "type": "github"
                 }
             ],
-            "time": "2020-10-26T05:33:50+00:00"
+            "time": "2020-10-26T05:33:50+00:00",
+            "published-time": "2020-10-26T05:34:19+00:00"
         },
         {
             "name": "phpunit/php-timer",
@@ -14646,7 +14813,8 @@
                     "type": "github"
                 }
             ],
-            "time": "2020-10-26T13:16:10+00:00"
+            "time": "2020-10-26T13:16:10+00:00",
+            "published-time": "2020-10-26T13:16:41+00:00"
         },
         {
             "name": "phpunit/phpunit",
@@ -14741,7 +14909,8 @@
                     "type": "other"
                 }
             ],
-            "time": "2026-10-05T05:44:26+00:00"
+            "time": "2026-10-05T05:44:26+00:00",
+            "published-time": "2026-10-05T05:45:23+00:00"
         },
         {
             "name": "sebastian/cli-parser",
@@ -14797,7 +14966,8 @@
                     "type": "github"
                 }
             ],
-            "time": "2024-03-02T06:27:43+00:00"
+            "time": "2024-03-02T06:27:43+00:00",
+            "published-time": "2024-03-02T06:28:53+00:00"
         },
         {
             "name": "sebastian/code-unit",
@@ -14853,7 +15023,8 @@
                     "type": "github"
                 }
             ],
-            "time": "2020-10-26T13:08:54+00:00"
+            "time": "2020-10-26T13:08:54+00:00",
+            "published-time": "2020-10-26T13:09:16+00:00"
         },
         {
             "name": "sebastian/code-unit-reverse-lookup",
@@ -14908,7 +15079,8 @@
                     "type": "github"
                 }
             ],
-            "time": "2020-09-28T05:30:19+00:00"
+            "time": "2020-09-28T05:30:19+00:00",
+            "published-time": "2020-09-28T05:30:37+00:00"
         },
         {
             "name": "sebastian/comparator",
@@ -14994,7 +15166,8 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2026-01-24T09:22:56+00:00"
+            "time": "2026-01-24T09:22:56+00:00",
+            "published-time": "2026-01-24T09:23:33+00:00"
         },
         {
             "name": "sebastian/complexity",
@@ -15051,7 +15224,8 @@
                     "type": "github"
                 }
             ],
-            "time": "2023-12-22T06:19:30+00:00"
+            "time": "2023-12-22T06:19:30+00:00",
+            "published-time": "2023-12-22T06:19:59+00:00"
         },
         {
             "name": "sebastian/diff",
@@ -15117,7 +15291,8 @@
                     "type": "github"
                 }
             ],
-            "time": "2024-03-02T06:30:58+00:00"
+            "time": "2024-03-02T06:30:58+00:00",
+            "published-time": "2024-03-02T06:31:28+00:00"
         },
         {
             "name": "sebastian/environment",
@@ -15180,7 +15355,8 @@
                     "type": "github"
                 }
             ],
-            "time": "2023-02-03T06:03:51+00:00"
+            "time": "2023-02-03T06:03:51+00:00",
+            "published-time": "2023-02-03T07:02:10+00:00"
         },
         {
             "name": "sebastian/exporter",
@@ -15269,7 +15445,8 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2026-08-11T04:55:59+00:00"
+            "time": "2026-08-11T04:55:59+00:00",
+            "published-time": "2026-08-11T04:56:24+00:00"
         },
         {
             "name": "sebastian/global-state",
@@ -15345,7 +15522,8 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2025-08-10T07:10:35+00:00"
+            "time": "2025-08-10T07:10:35+00:00",
+            "published-time": "2025-08-10T07:11:13+00:00"
         },
         {
             "name": "sebastian/lines-of-code",
@@ -15402,7 +15580,8 @@
                     "type": "github"
                 }
             ],
-            "time": "2023-12-22T06:20:34+00:00"
+            "time": "2023-12-22T06:20:34+00:00",
+            "published-time": "2023-12-22T06:20:48+00:00"
         },
         {
             "name": "sebastian/object-enumerator",
@@ -15459,7 +15638,8 @@
                     "type": "github"
                 }
             ],
-            "time": "2020-10-26T13:12:34+00:00"
+            "time": "2020-10-26T13:12:34+00:00",
+            "published-time": "2020-10-26T13:12:54+00:00"
         },
         {
             "name": "sebastian/object-reflector",
@@ -15514,7 +15694,8 @@
                     "type": "github"
                 }
             ],
-            "time": "2020-10-26T13:14:26+00:00"
+            "time": "2020-10-26T13:14:26+00:00",
+            "published-time": "2020-10-26T13:14:45+00:00"
         },
         {
             "name": "sebastian/recursion-context",
@@ -15589,7 +15770,8 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2026-08-11T05:25:24+00:00"
+            "time": "2026-08-11T05:25:24+00:00",
+            "published-time": "2026-08-11T05:25:42+00:00"
         },
         {
             "name": "sebastian/resource-operations",
@@ -15643,7 +15825,8 @@
                     "type": "github"
                 }
             ],
-            "time": "2024-03-14T16:00:52+00:00"
+            "time": "2024-03-14T16:00:52+00:00",
+            "published-time": "2024-03-14T16:01:11+00:00"
         },
         {
             "name": "sebastian/type",
@@ -15699,7 +15882,8 @@
                     "type": "github"
                 }
             ],
-            "time": "2023-02-03T06:13:03+00:00"
+            "time": "2023-02-03T06:13:03+00:00",
+            "published-time": "2023-02-03T07:09:48+00:00"
         },
         {
             "name": "sebastian/version",
@@ -15752,7 +15936,8 @@
                     "type": "github"
                 }
             ],
-            "time": "2020-09-28T06:39:44+00:00"
+            "time": "2020-09-28T06:39:44+00:00",
+            "published-time": "2020-09-28T06:40:08+00:00"
         },
         {
             "name": "staabm/annotate-pull-request-from-checkstyle",
@@ -15804,7 +15989,8 @@
                     "type": "github"
                 }
             ],
-            "time": "2026-05-05T12:33:44+00:00"
+            "time": "2026-05-05T12:33:44+00:00",
+            "published-time": "2026-05-05T12:34:27+00:00"
         },
         {
             "name": "theseer/tokenizer",
@@ -15854,7 +16040,8 @@
                     "type": "github"
                 }
             ],
-            "time": "2025-11-17T20:03:58+00:00"
+            "time": "2025-11-17T20:03:58+00:00",
+            "published-time": "2025-11-17T20:04:52+00:00"
         },
         {
             "name": "wp-phpunit/wp-phpunit",
@@ -15902,7 +16089,8 @@
                 "issues": "https://github.com/wp-phpunit/issues",
                 "source": "https://github.com/wp-phpunit/wp-phpunit"
             },
-            "time": "2026-08-20T00:59:59+00:00"
+            "time": "2026-08-20T00:59:59+00:00",
+            "published-time": "2026-10-27T06:11:56+00:00"
         },
         {
             "name": "yoast/phpunit-polyfills",
@@ -15965,7 +16153,8 @@
                 "security": "https://github.com/Yoast/PHPUnit-Polyfills/security/policy",
                 "source": "https://github.com/Yoast/PHPUnit-Polyfills"
             },
-            "time": "2025-02-09T18:58:54+00:00"
+            "time": "2025-02-09T18:58:54+00:00",
+            "published-time": "2025-02-09T19:10:16+00:00"
         }
     ],
     "aliases": [],
@@ -15980,5 +16169,5 @@
     "platform-overrides": {
         "php": "8.5.0"
     },
-    "plugin-api-version": "2.9.0"
+    "plugin-api-version": "2.11.0"
 }

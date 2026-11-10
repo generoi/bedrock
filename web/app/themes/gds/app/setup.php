@@ -207,6 +207,13 @@ add_action('after_setup_theme', function () {
      */
     add_theme_support('block-templates');
 
+    /**
+     * Pages have an excerpt, used by teasers and as the meta description
+     * fallback. Custom post types each get their own gds-{slug} mu-plugin
+     * (see the /new-cpt skill).
+     */
+    add_post_type_support('page', 'excerpt');
+
     remove_theme_support('core-block-patterns');
 
     add_image_size('tiny', 50, 50, true);
