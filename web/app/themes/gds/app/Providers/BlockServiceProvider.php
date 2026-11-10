@@ -21,13 +21,11 @@ class BlockServiceProvider extends ServiceProvider
     public function register()
     {
         add_action('init', [$this, 'registerBlocks']);
+        add_action('init', [$this, 'registerBlockStyles']);
         add_action('init', [$this, 'registerBlockSupports']);
         add_action('wp_enqueue_scripts', [$this, 'enqueueBlockStyles'], 10, 0);
         add_action('enqueue_block_editor_assets', [$this, 'enqueueBlockStyles'], 10, 0);
         add_filter('theme_file_uri', [$this, 'filterBlockAssetUri'], 10, 2);
-
-        $this->attachBladeDirective();
-        $this->addViewNamespace();
     }
 
     public function registerBlocks(?string $blocksDir = null)
@@ -98,7 +96,37 @@ class BlockServiceProvider extends ServiceProvider
      *
      * @return void
      */
-    public function boot() {}
+    public function boot()
+    {
+        // Resolve the view service during boot, not register — the `view`
+        // binding is not available until all providers have registered.
+        $this->attachBladeDirective();
+        $this->addViewNamespace();
+    }
+
+    public function registerBlockStyles(): void
+    {
+        register_block_style('core/list', [
+            'name' => 'spacious',
+            'label' => __('Spacious', 'gds'),
+        ]);
+        register_block_style('core/columns', [
+            'name' => 'media-text',
+            'label' => __('Media & Text', 'gds'),
+        ]);
+        register_block_style('core/post-title', [
+            'name' => 'underline',
+            'label' => __('Underline', 'gds'),
+        ]);
+        register_block_style('core/post-time-to-read', [
+            'name' => 'with-label',
+            'label' => __('With Label', 'gds'),
+        ]);
+        register_block_style('core/post-date', [
+            'name' => 'with-label',
+            'label' => __('With Label', 'gds'),
+        ]);
+    }
 
     public function registerBlockSupports(): void
     {
