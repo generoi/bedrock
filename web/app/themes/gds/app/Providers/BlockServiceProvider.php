@@ -7,6 +7,7 @@ use Illuminate\Support\ServiceProvider;
 use Symfony\Component\Finder\Finder;
 use WP_Block_Supports;
 use WP_Block_Type;
+use WP_Block_Type_Registry;
 
 class BlockServiceProvider extends ServiceProvider
 {
@@ -180,6 +181,17 @@ class BlockServiceProvider extends ServiceProvider
                     'path' => $asset->path(),
                     'ver' => $version,
                 ]);
+
+                // wp_enqueue_block_style hooks the handle behind a
+                // render_block filter — it never appears in the block type's
+                // style_handles array, so pre-enqueue paths (e.g.
+                // PerformanceServiceProvider) can't discover it via the
+                // registry. Mirror it onto style_handles so the registry
+                // stays the single source of truth.
+                $type = WP_Block_Type_Registry::get_instance()->get_registered("$collection/$blockName");
+                if ($type && ! in_array($handle, (array) $type->style_handles, true)) {
+                    $type->style_handles[] = $handle;
+                }
             });
     }
 
