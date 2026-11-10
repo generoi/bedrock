@@ -118,14 +118,6 @@ class BlockServiceProvider extends ServiceProvider
             'name' => 'underline',
             'label' => __('Underline', 'gds'),
         ]);
-        register_block_style('core/post-time-to-read', [
-            'name' => 'with-label',
-            'label' => __('With Label', 'gds'),
-        ]);
-        register_block_style('core/post-date', [
-            'name' => 'with-label',
-            'label' => __('With Label', 'gds'),
-        ]);
     }
 
     public function registerBlockSupports(): void
