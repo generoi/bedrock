@@ -52,19 +52,7 @@
 
         <!-- wp:woocommerce/add-to-cart-form {"quantitySelectorStyle":"stepper"} /-->
 
-        <!-- wp:woocommerce/product-meta -->
-        <div class="wp-block-woocommerce-product-meta">
-          <!-- wp:group {"layout":{"type":"flex","flexWrap":"nowrap"}} -->
-          <div class="wp-block-group">
-            <!-- wp:woocommerce/product-sku /-->
-
-            <!-- wp:post-terms {"term":"product_cat","prefix":"Category: "} /-->
-
-            <!-- wp:post-terms {"term":"product_tag","prefix":"Tags: "} /-->
-          </div>
-          <!-- /wp:group -->
-        </div>
-        <!-- /wp:woocommerce/product-meta -->
+        <!-- wp:pattern {"slug":"gds/product-meta"} /-->
       </div>
       <!-- /wp:column -->
     </div>
@@ -73,6 +61,8 @@
     <!-- wp:post-content {"layout":{"type":"default"}} /-->
 
     <!-- wp:genero-woocommerce/woo-product-tabs /-->
+
+    <!-- wp:pattern {"slug":"gds/product-upsells"} /-->
 
     <!-- wp:pattern {"slug":"woocommerce-blocks/related-products"} /-->
   </main>
