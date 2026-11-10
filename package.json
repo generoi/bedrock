@@ -21,7 +21,10 @@
     "translate:pot": "pnpm -r --if-present run translate:pot",
     "translate:js": "pnpm -r --if-present run translate:js",
     "e2e:install": "pnpm install --ignore-workspace --no-lockfile --ignore-scripts",
-    "e2e:test": "npx playwright test --config=./test/e2e/playwright.config.js"
+    "e2e:test": "npx playwright test '^(?!.*(visual|editor)).*\\.spec\\.js' --config=./test/e2e/playwright.config.js",
+    "e2e:editor": "npx playwright test editor.spec.js --config=./test/e2e/playwright.config.js",
+    "e2e:visual": "npx playwright test visual.spec.js --config=./test/e2e/playwright.config.js",
+    "e2e:visual:update": "npx playwright test visual.spec.js --config=./test/e2e/playwright.config.js --update-snapshots"
   },
   "devDependencies": {
     "@playwright/test": "^1.47.0",

@@ -82,5 +82,10 @@ wp-cli.local.yml
 screenshot.jpg
 test-results
 
+# Playwright: visual baselines are generated locally (e2e:visual:update), and
+# the cache-bypass cookie jar is written by test/e2e/global-setup.js.
+test/e2e/snapshots/
+state.json
+
 # Theme
 web/app/themes/*/build
