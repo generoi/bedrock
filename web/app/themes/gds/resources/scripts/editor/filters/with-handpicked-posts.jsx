@@ -45,10 +45,13 @@ function HandPickedPostsControl({setAttributes, attributes}) {
   const selectedPostIds = query?.include;
   const postType = query?.postType;
 
-  const formatPostName =
-    postType && postType !== 'any' ?
-      (post) => `${post.title || 'Untitled'} (#${post.id})`
-    : (post) => `${post.title || 'Untitled'} (${post.subtype} #${post.id})`;
+  const formatPostName = useCallback(
+    (post) =>
+      postType && postType !== 'any' ?
+        `${post.title || 'Untitled'} (#${post.id})`
+      : `${post.title || 'Untitled'} (${post.subtype} #${post.id})`,
+    [postType],
+  );
 
   const [searchQuery, setSearchQuery] = useState('');
   const {postsMap, postsList} = usePosts(
@@ -60,11 +63,14 @@ function HandPickedPostsControl({setAttributes, attributes}) {
 
   const handleSearch = useDebounce(setSearchQuery, 250);
 
-  const updateQuery = (newQuery) => {
-    setAttributes({
-      query: {...query, ...newQuery},
-    });
-  };
+  const updateQuery = useCallback(
+    (newQuery) => {
+      setAttributes({
+        query: {...query, ...newQuery},
+      });
+    },
+    [query, setAttributes],
+  );
 
   const onTokenChange = useCallback(
     (values) => {
@@ -83,7 +89,7 @@ function HandPickedPostsControl({setAttributes, attributes}) {
         order: 'desc',
       });
     },
-    [postsMap],
+    [postsMap, updateQuery],
   );
 
   const suggestions = useMemo(() => {
@@ -93,7 +99,7 @@ function HandPickedPostsControl({setAttributes, attributes}) {
         .filter((post) => !selectedPostIds?.includes(String(post.id)))
         .map((post) => formatPostName(post))
     );
-  }, [postsList, selectedPostIds]);
+  }, [postsList, selectedPostIds, formatPostName]);
 
   const transformTokenIntoPostName = (token) => {
     const parsedToken = Number(token);

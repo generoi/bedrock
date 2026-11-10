@@ -62,8 +62,6 @@ export function PostPlaceholder({postType, postId, onChange, onSetPostType}) {
   const handleSearch = useDebounce(setSearchQuery, 250);
   const hasResolved = !!postsMap.size;
 
-  console.log('PostPlaceholder');
-  console.log(postTypesOptions);
   return (
     <Placeholder label={__('Search content')}>
       <SearchControl onChange={handleSearch} value={searchQuery} />
