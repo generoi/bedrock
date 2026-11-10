@@ -37,7 +37,11 @@ class Plugin
 
         // After WooCommerce sets product args; still before `init` finishes registration.
         add_filter('register_post_type_args', [$this->woocommerce, 'registerProductBlockTemplate'], 1000, 2);
+        // Registered here rather than in WooCommerce::init() (plugins_loaded) so it
+        // also catches notices raised while the other plugins are still loading.
+        add_filter('doing_it_wrong_trigger_error', [$this->woocommerce, 'fixWooCommerceWidgetsEditor'], 10, 4);
 
+        add_action('init', [$this, 'loadTextdomain'], 0);
         add_action('init', [$this, 'registerApp'], 9);
         add_action('init', [$this, 'registerAssets']);
         add_filter('plugins_url', [$this, 'filterBlockAssetUri'], 10, 3);
@@ -45,6 +49,15 @@ class Plugin
         add_action('wp_enqueue_scripts', [$this, 'enqueueBlockStyles']);
         add_action('enqueue_block_editor_assets', [$this, 'enqueueBlockStyles']);
         add_action('plugins_loaded', [$this->woocommerce, 'init']);
+    }
+
+    public function loadTextdomain(): void
+    {
+        load_plugin_textdomain(
+            'genero-woocommerce',
+            false,
+            dirname(plugin_basename($this->file)).'/resources/lang'
+        );
     }
 
     public function registerApp()

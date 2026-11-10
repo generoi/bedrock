@@ -26,15 +26,62 @@ class WooCommerce
         add_action('woocommerce_init', [$this, 'removeSingleProductTemplateHooks']);
         add_action('woocommerce_archive_description', [$this, 'printArchiveContent']);
         add_filter('woocommerce_get_price_html', [$this, 'changeVariablePriceDisplay'], 10, 2);
-        add_filter('doing_it_wrong_trigger_error', [$this, 'fixWooCommerceWidgetsEditor'], 10, 4);
         add_filter('woocommerce_enqueue_styles', [$this, 'dequeueStylesheets']);
-        add_filter('woocommerce_admin_get_feature_config', [$this, 'filterFeatures']);
+        add_filter('pre_option_woocommerce_show_marketplace_suggestions', [$this, 'disableMarketplaceSuggestions']);
+        // Priority 1: before WooCommerce's do_blocks() at priority 9.
+        add_filter('woocommerce_short_description', [$this, 'stripBlockMarkupFromShortDescription'], 1);
 
         // Prevent server-side block rendering on REST edit requests. The block editor
         // uses content.raw (not content.rendered) for editing; rendering the full
         // WooCommerce block tree (gallery, single-product, add-to-cart…) was causing
         // 10+ second REST responses.
         add_filter('rest_prepare_product', [$this, 'skipRenderedContentInEditContext'], 10, 3);
+
+        add_action('pre_get_posts', [$this, 'excludeHiddenProducts']);
+    }
+
+    /**
+     * WooCommerce applies catalogue visibility to its own archive and to
+     * product-collection blocks with a stock filter, but not to core/query
+     * loops or the REST and AJAX requests that render listings, so a product
+     * hidden from the catalogue still shows up there. Apply it to every
+     * frontend product query.
+     *
+     * WP-CLI is left alone: importers and audits look products up and have to
+     * see the hidden ones. Other lookups that need hidden products pass
+     * `include_hidden_products`.
+     */
+    public function excludeHiddenProducts(\WP_Query $query): void
+    {
+        if ((defined('WP_CLI') && WP_CLI) || $query->get('include_hidden_products')) {
+            return;
+        }
+
+        if ((is_admin() && ! wp_doing_ajax()) || $query->is_singular() || ! function_exists('wc_get_product_visibility_term_ids')) {
+            return;
+        }
+
+        if (! in_array('product', (array) $query->get('post_type'), true)) {
+            return;
+        }
+
+        $visibilityTermIds = wc_get_product_visibility_term_ids();
+        $excluded = $query->is_search()
+            ? $visibilityTermIds['exclude-from-search']
+            : $visibilityTermIds['exclude-from-catalog'];
+
+        if (! $excluded) {
+            return;
+        }
+
+        $taxQuery = (array) $query->get('tax_query');
+        $taxQuery[] = [
+            'taxonomy' => 'product_visibility',
+            'field' => 'term_taxonomy_id',
+            'terms' => [$excluded],
+            'operator' => 'NOT IN',
+        ];
+        $query->set('tax_query', $taxQuery);
     }
 
     public function setShowInRest(array $objectType): array
@@ -152,6 +199,17 @@ class WooCommerce
             return false;
         }
 
+        // WP 6.7+ warns when the `woocommerce` textdomain loads before `init`, which
+        // third-party code commonly triggers indirectly. The message is translated, so
+        // match on the function, version and domain only.
+        if (
+            $functionName === '_load_textdomain_just_in_time'
+            && $version === '6.7.0'
+            && str_contains($message, '<code>woocommerce</code>')
+        ) {
+            return false;
+        }
+
         if (
             $version === '6.3.0'
             && in_array($functionName, ['wp_get_loading_optimization_attributes', 'wp_img_tag_add_loading_optimization_attrs'], true)
@@ -197,12 +255,16 @@ class WooCommerce
         wp_dequeue_style('select2');
     }
 
-    public function filterFeatures(array $features): array
+    /**
+     * Turn off WooCommerce's phone-home suggestions. Since WooCommerce 11.1 the
+     * remote inbox notifications, free extension recommendations and payment
+     * gateway suggestions are no longer feature flags; this option is what
+     * stops them fetching specs from woocommerce.com and wordpress.com on admin
+     * page loads and background queue runs. Configured gateways are unaffected.
+     */
+    public function disableMarketplaceSuggestions(): string
     {
-        // Adds custom fonts to the site
-        unset($features['launch-your-store']);
-
-        return $features;
+        return 'no';
     }
 
     /**
@@ -222,6 +284,20 @@ class WooCommerce
         }
 
         return $response;
+    }
+
+    /**
+     * Drop block markup before do_blocks() renders it without post context.
+     *
+     * wc_format_content() runs both the short description and the description
+     * (post_content) through this filter, e.g. for the Store API cart. Products
+     * here are built from blocks, so the description is block markup, and
+     * rendering WooCommerce blocks there without a postId crashes the request.
+     * Hand-written short descriptions carry no block comments and pass through.
+     */
+    public function stripBlockMarkupFromShortDescription(string $description): string
+    {
+        return str_contains($description, '<!-- wp:') ? '' : $description;
     }
 
     /**
