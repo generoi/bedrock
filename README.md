@@ -129,6 +129,16 @@ pnpm run e2e:visual:update    # baseline
 pnpm run e2e:visual           # compare
 ```
 
+- `e2e:test` is the smoke suite the deploy workflows run against staging and
+  production. It sends fake logged-in cookies (`global-setup.js`), so Kinsta
+  serves the new deploy instead of cached HTML.
+- Specs find their pages from the Yoast `page` and `product` sitemaps
+  (`discover.js`) and skip where a site has none.
+- `e2e:editor` is local only: it creates and deletes a throwaway admin and a
+  draft page through WP-CLI (`WP_CLI`, default `ddev wp`), and skips without it.
+- Visual baselines are not committed (`test/e2e/snapshots/` is gitignored): take
+  them on `master` with `e2e:visual:update`, then compare your branch.
+
 ## Create a new project
 
 Name the project after the site's domain (`www.my-site.fi` → `my-site`); the
