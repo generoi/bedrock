@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "fce42f338adc469b71df95081c462991",
+    "content-hash": "f6694ba750f5f7490394ee29c3b03ecd",
     "packages": [
         {
             "name": "aaemnnosttv/wp-cli-login-command",
@@ -2338,16 +2338,16 @@
         },
         {
             "name": "generoi/sage-cachetags",
-            "version": "v3.0.0",
+            "version": "v3.0.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/generoi/sage-cachetags.git",
-                "reference": "d91496fc5193e7946605c2c0fff0f0243cc4e8af"
+                "reference": "fee2beae9b4b0a7bd5c6b50151450944e9eb4078"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/generoi/sage-cachetags/zipball/d91496fc5193e7946605c2c0fff0f0243cc4e8af",
-                "reference": "d91496fc5193e7946605c2c0fff0f0243cc4e8af",
+                "url": "https://api.github.com/repos/generoi/sage-cachetags/zipball/fee2beae9b4b0a7bd5c6b50151450944e9eb4078",
+                "reference": "fee2beae9b4b0a7bd5c6b50151450944e9eb4078",
                 "shasum": ""
             },
             "require": {
@@ -2390,10 +2390,10 @@
             "homepage": "https://github.com/generoi/sage-cachetags",
             "support": {
                 "issues": "https://github.com/generoi/sage-cachetags/issues",
-                "source": "https://github.com/generoi/sage-cachetags/tree/v3.0.0"
+                "source": "https://github.com/generoi/sage-cachetags/tree/v3.0.1"
             },
-            "time": "2026-11-09T11:55:24+00:00",
-            "published-time": "2026-11-10T14:28:08+00:00"
+            "time": "2026-11-10T14:49:58+00:00",
+            "published-time": "2026-11-10T14:53:24+00:00"
         },
         {
             "name": "generoi/sage-woocommerce",

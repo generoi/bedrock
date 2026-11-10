@@ -2,13 +2,10 @@
 
 use Genero\Sage\CacheTags\Actions\Core;
 use Genero\Sage\CacheTags\Actions\DebugComment;
-use Genero\Sage\CacheTags\Actions\Gravityform;
 use Genero\Sage\CacheTags\Actions\HttpHeader;
 use Genero\Sage\CacheTags\Actions\Nonce;
-use Genero\Sage\CacheTags\Actions\Polylang;
 use Genero\Sage\CacheTags\Actions\RestApi;
 use Genero\Sage\CacheTags\Actions\Site;
-use Genero\Sage\CacheTags\Actions\WooCommerce;
 use Genero\Sage\CacheTags\Invalidators\CloudflareCacheInvalidator;
 use Genero\Sage\CacheTags\Invalidators\FastlySoftCacheInvalidator;
 use Genero\Sage\CacheTags\Invalidators\KinstaGroupCacheInvalidator;
@@ -49,16 +46,11 @@ return [
         // Tags REST API reads too, so blocks and scripts that fetch over REST
         // are purged with the content they show.
         RestApi::class,
-        // Listed rather than left to 'auto-detect-actions': Acorn boots from a
-        // must-use plugin, before these plugins load, so detection misses them.
-        // Each hooks only its own plugin's events and is inert without it.
-        // Cart, checkout and account stay uncached; product changes purge.
-        WooCommerce::class,
-        // Purges follow translations.
-        Polylang::class,
-        // Purges pages showing a form when it is saved; prepopulated forms stay
-        // uncached.
-        Gravityform::class,
+
+        // Added automatically while their plugin is active ('auto-detect-actions'):
+        // WooCommerce (cart, checkout and account stay uncached), Polylang
+        // (purges follow translations) and Gravity Forms (prepopulated forms
+        // stay uncached).
 
         // Opt in where a site needs them:
         // Tag every post and term a query fetches, instead of per template or block.
