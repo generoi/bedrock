@@ -26,4 +26,4 @@ jobs:
     needs: deploy
     uses: ./.github/workflows/e2e.yml
     with:
-      url: 'https://staging-gdsbedrock.kinsta.cloud'
+      url: 'https://stg-gdsbedrock-staging.kinsta.cloud'
