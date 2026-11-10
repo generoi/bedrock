@@ -164,6 +164,10 @@ Config::define('DISALLOW_FILE_MODS', true);
 Config::define('FS_METHOD', 'direct');
 // Do not connect Jetpack to a WP account.
 Config::define('JETPACK_DEV_DEBUG', true);
+// MCP Adapter classes come from the root Composer autoloader, not the plugin's own vendor/
+Config::define('WP_MCP_AUTOLOAD', false);
+// Let Claude connect to the site's MCP server by URL, signing in with a WordPress account
+Config::define('GDS_MCP_OAUTH', env('GDS_MCP_OAUTH') ?? true);
 // Fix Kinsta MU Plugins URL path with Bedrock
 Config::define('KINSTAMU_CUSTOM_MUPLUGIN_URL', Config::get('WP_CONTENT_URL').'/mu-plugins/kinsta-mu-plugins');
 // 10up/wpcli-vulnerability-scanner
