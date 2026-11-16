@@ -48,9 +48,7 @@ return [
         // (purges follow translations) and Gravity Forms (prepopulated forms
         // stay uncached).
 
-        // Opt in where a site needs them:
-        // Tag every post and term a query fetches, instead of per template or block.
-        // \Genero\Sage\CacheTags\Actions\AutoTag::class,
+        // Opt in where a site needs it:
         // Serve cached pages to logged-in customers when no markup is per user.
         // \Genero\Sage\CacheTags\Actions\CacheCustomers::class,
     ],
