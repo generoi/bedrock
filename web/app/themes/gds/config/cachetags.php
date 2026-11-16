@@ -3,7 +3,6 @@
 use Genero\Sage\CacheTags\Actions\Core;
 use Genero\Sage\CacheTags\Actions\DebugComment;
 use Genero\Sage\CacheTags\Actions\HttpHeader;
-use Genero\Sage\CacheTags\Actions\Nonce;
 use Genero\Sage\CacheTags\Actions\RestApi;
 use Genero\Sage\CacheTags\Actions\Site;
 use Genero\Sage\CacheTags\Invalidators\CloudflareCacheInvalidator;
@@ -36,9 +35,6 @@ return [
         Core::class,
         DebugComment::class,
         HttpHeader::class,
-        // Purges pages tagged 'nonce' twice a day, so a cached page never
-        // serves an expired nonce.
-        Nonce::class,
         // Prefixes every tag with the site, so a flush purges this site's tags
         // rather than everything in a shared CDN zone, and multisite sites
         // can't purge each other.

@@ -51,6 +51,24 @@ if (in_array(wp_get_environment_type(), ['development', 'local'], true)) {
 add_filter('gform_default_notification', '__return_false');
 
 /**
+ * Keep Gravity Forms' state token valid longer than any cache can serve a page
+ * (Kinsta's s-maxage of up to a year plus 30 days of stale-while-revalidate).
+ * The 48h default rejected every submission from older cached pages. Field
+ * values stay signed and checked; only the token's age limit goes, which bots
+ * get round by fetching a fresh page anyway.
+ */
+add_filter('gform_state_lifespan', fn () => 395 * DAY_IN_SECONDS);
+
+/**
+ * The same for the nonce on Gravity Forms' multi-file uploads, which are sent
+ * before the form is: by default a cached page's nonce stops working after
+ * 12-24h and the visitor gets "Your session has expired". Only for logged-out
+ * visitors, whose nonce is shared and comes fresh with any page, so the age
+ * limit protects nothing. No other nonce changes.
+ */
+add_filter('nonce_life', fn ($life, $action = '') => ! is_user_logged_in() && str_starts_with((string) $action, 'gform_file_upload_') ? 395 * DAY_IN_SECONDS : $life, 10, 2);
+
+/**
  * Remove accents from media uploads
  */
 add_filter('sanitize_file_name', 'remove_accents', 10, 1);
