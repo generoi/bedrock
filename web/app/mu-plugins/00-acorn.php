@@ -46,6 +46,23 @@ if (! function_exists('\Roots\bootloader')) {
 }
 
 /**
+ * Keep WordPress notices from becoming fatal under WP_DEBUG.
+ *
+ * _doing_it_wrong() and _deprecated_*() raise E_USER_NOTICE/E_USER_DEPRECATED.
+ * Acorn's debug error handler, registered here before plugins load, would turn
+ * them into exceptions, so one early __() in a plugin (Yoast 28.8's upgrade
+ * routine, WooCommerce) 500s every request locally. Let PHP report them as
+ * notices instead, as plain WordPress does; warnings and errors still throw.
+ */
+add_filter('acorn/throw_error_exception', function ($throw, $e) {
+    if ($e instanceof \ErrorException && in_array($e->getSeverity(), [E_USER_NOTICE, E_USER_DEPRECATED], true)) {
+        return false;
+    }
+
+    return $throw;
+}, 10, 2);
+
+/**
  * Register providers, modify middleware and boot the application.
  */
 Application::configure()
