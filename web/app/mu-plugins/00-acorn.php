@@ -16,6 +16,7 @@ use Illuminate\Session\Middleware\StartSession;
 use Illuminate\View\Middleware\ShareErrorsFromSession;
 use Roots\Acorn\Application;
 use Roots\Acorn\Configuration\Middleware;
+use Roots\Acorn\Session\Middleware\StartSession as AcornStartSession;
 
 if (! is_blog_installed()) {
     return;
@@ -52,9 +53,14 @@ Application::configure()
     ])
     ->withMiddleware(function (Middleware $middleware) {
         // Remove session cookie
-        $middleware->removeFromGroup('web', [
-            StartSession::class,
-            ShareErrorsFromSession::class,
-        ]);
+        // Acorn's web and wordpress groups use its own StartSession subclass,
+        // so remove that one too, from both groups.
+        foreach (['web', 'wordpress'] as $group) {
+            $middleware->removeFromGroup($group, [
+                StartSession::class,
+                AcornStartSession::class,
+                ShareErrorsFromSession::class,
+            ]);
+        }
     })
     ->boot();
