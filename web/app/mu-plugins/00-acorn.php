@@ -15,6 +15,7 @@ namespace Genero\Site;
 use Illuminate\Session\Middleware\StartSession;
 use Illuminate\View\Middleware\ShareErrorsFromSession;
 use Roots\Acorn\Application;
+use Roots\Acorn\Bootstrap\LoadConfiguration as AcornLoadConfiguration;
 use Roots\Acorn\Configuration\Middleware;
 use Roots\Acorn\Session\Middleware\StartSession as AcornStartSession;
 
@@ -65,7 +66,7 @@ add_filter('acorn/throw_error_exception', function ($throw, $e) {
 /**
  * Register providers, modify middleware and boot the application.
  */
-Application::configure()
+$builder = Application::configure()
     ->withProviders([
     ])
     ->withMiddleware(function (Middleware $middleware) {
@@ -79,5 +80,32 @@ Application::configure()
                 ShareErrorsFromSession::class,
             ]);
         }
-    })
-    ->boot();
+    });
+
+/**
+ * Re-read the config files after Acorn boots from a cached config.
+ *
+ * `acorn optimize` bakes one config array from a single WP-CLI boot, and every
+ * site on the install reads it, so per-site values (a child theme's own config,
+ * WP_HOME, the blog id) would freeze on whichever site built it. The cached
+ * provider list is kept: a cached boot only gets the providers passed to
+ * withProviders() from the cache, so re-reading app.php would drop them.
+ *
+ * create() hands back the application the builder will boot, so binding here
+ * lands before the kernel resolves its bootstrappers.
+ */
+$builder->create()->bind(AcornLoadConfiguration::class, fn () => new class extends AcornLoadConfiguration
+{
+    public function bootstrap($app)
+    {
+        parent::bootstrap($app);
+
+        if ($app->configurationIsCached()) {
+            $providers = $app['config']->get('app.providers');
+            $this->loadConfigurationFiles($app, $app['config']);
+            $app['config']->set('app.providers', $providers);
+        }
+    }
+});
+
+$builder->boot();
