@@ -57,7 +57,7 @@ add_filter('gform_default_notification', '__return_false');
  * values stay signed and checked; only the token's age limit goes, which bots
  * get round by fetching a fresh page anyway.
  */
-add_filter('gform_state_lifespan', fn () => 395 * DAY_IN_SECONDS);
+add_filter('gform_state_lifespan', fn () => 400 * DAY_IN_SECONDS);
 
 /**
  * The same for the nonce on Gravity Forms' multi-file uploads, which are sent
@@ -66,7 +66,18 @@ add_filter('gform_state_lifespan', fn () => 395 * DAY_IN_SECONDS);
  * visitors, whose nonce is shared and comes fresh with any page, so the age
  * limit protects nothing. No other nonce changes.
  */
-add_filter('nonce_life', fn ($life, $action = '') => ! is_user_logged_in() && str_starts_with((string) $action, 'gform_file_upload_') ? 395 * DAY_IN_SECONDS : $life, 10, 2);
+add_filter('nonce_life', fn ($life, $action = '') => ! is_user_logged_in() && str_starts_with((string) $action, 'gform_file_upload_') ? 790 * DAY_IN_SECONDS : $life, 10, 2);
+
+/**
+ * WordPress only guarantees a nonce for half its lifetime (it accepts the
+ * current and the previous half-life tick), so the nonce life above is twice
+ * the longest serve. Gravity Forms' AJAX submissions carry their own nonce,
+ * which the plugin caps at 3 days through gform_nonce_life rather than
+ * nonce_life: a page cached longer answered "Your session has expired" on
+ * submit, and refreshing served the same page again. Logged-out visitors only,
+ * as above.
+ */
+add_filter('gform_nonce_life', fn ($life) => is_user_logged_in() ? $life : 790 * DAY_IN_SECONDS);
 
 /**
  * Remove accents from media uploads
