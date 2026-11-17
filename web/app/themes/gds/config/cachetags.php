@@ -12,8 +12,9 @@ use Genero\Sage\CacheTags\Invalidators\KinstaGroupCacheInvalidator;
 // Each cache layer is purged where it exists. Kinsta hosts staging and
 // production; its mu-plugin also loads locally, where its purge endpoint does
 // not, so the environment decides. A CDN in front is on once its API
-// credentials are in the environment (see .env.example).
-$kinsta = in_array(wp_get_environment_type(), ['staging', 'production'], true);
+// credentials are in the environment (see .env.example). The constant, not
+// wp_get_environment_type(): that turns PHPUnit's 'test' into 'production'.
+$kinsta = in_array(WP_ENVIRONMENT_TYPE, ['staging', 'production'], true);
 $fastly = env('FASTLY_SERVICE_ID') && env('FASTLY_API_KEY');
 $cloudflare = env('CLOUDFLARE_API_TOKEN') && env('CLOUDFLARE_ZONE_IDS');
 
@@ -33,6 +34,9 @@ return [
     ]),
     // Drop Kinsta's full-site clears on term and menu saves: the tag purges cover them.
     'kinsta-remove-term-menu-clears' => true,
+    // Keep a URL's tags longer than an edge can keep the page (Kinsta: about a
+    // year), or the page can no longer be purged by tag.
+    'prune-older-than' => '400d',
     'action' => [
         Core::class,
         DebugComment::class,
