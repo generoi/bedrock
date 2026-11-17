@@ -56,7 +56,10 @@ class Plugin
 
     public function registerApp()
     {
-        app('view')->addNamespace('genero-woocommerce', $this->path.'/resources/views');
+        // `acorn optimize` (view:cache) fails on a registered path that doesn't exist.
+        if (is_dir($this->path.'/resources/views')) {
+            app('view')->addNamespace('genero-woocommerce', $this->path.'/resources/views');
+        }
         app('view')->addNamespace('genero-woocommerce-blocks', $this->path.'/resources/blocks');
         $this->blockServiceProvider->registerBlocks($this->path.'/resources/blocks');
     }
