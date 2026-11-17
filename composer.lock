@@ -2255,16 +2255,16 @@
         },
         {
             "name": "generoi/sage-cachetags",
-            "version": "v3.3.0",
+            "version": "v3.4.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/generoi/sage-cachetags.git",
-                "reference": "db4f578fd3180fd93fa05a0b2614f0d4637806f8"
+                "reference": "393840eeea4b658b772d67d697836f0413af1ca8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/generoi/sage-cachetags/zipball/db4f578fd3180fd93fa05a0b2614f0d4637806f8",
-                "reference": "db4f578fd3180fd93fa05a0b2614f0d4637806f8",
+                "url": "https://api.github.com/repos/generoi/sage-cachetags/zipball/393840eeea4b658b772d67d697836f0413af1ca8",
+                "reference": "393840eeea4b658b772d67d697836f0413af1ca8",
                 "shasum": ""
             },
             "require": {
@@ -2307,9 +2307,9 @@
             "homepage": "https://github.com/generoi/sage-cachetags",
             "support": {
                 "issues": "https://github.com/generoi/sage-cachetags/issues",
-                "source": "https://github.com/generoi/sage-cachetags/tree/v3.3.0"
+                "source": "https://github.com/generoi/sage-cachetags/tree/v3.4.0"
             },
-            "time": "2026-11-16T19:42:14+00:00"
+            "time": "2026-11-17T10:35:34+00:00"
         },
         {
             "name": "generoi/sage-woocommerce",

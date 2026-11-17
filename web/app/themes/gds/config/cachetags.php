@@ -31,6 +31,8 @@ return [
         // header without s-maxage before it can serve stale; until then purge.
         $cloudflare ? CloudflareCacheInvalidator::class : null,
     ]),
+    // Drop Kinsta's full-site clears on term and menu saves: the tag purges cover them.
+    'kinsta-remove-term-menu-clears' => true,
     'action' => [
         Core::class,
         DebugComment::class,
