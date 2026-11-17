@@ -115,6 +115,12 @@ add_action('init', function () {
 });
 
 /**
+ * Don't advertise the oEmbed endpoint: crawlers follow the discovery links and
+ * every request is a full REST boot that ends in a 401 for anonymous visitors.
+ */
+remove_action('wp_head', 'wp_oembed_add_discovery_links');
+
+/**
  * Remove useless capital_P_dangit filter
  */
 remove_filter('wp_title', 'capital_P_dangit', 11);
