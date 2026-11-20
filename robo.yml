@@ -97,4 +97,4 @@ task:
   Wp:
     WpCliStack:
       settings:
-        executable: ./vendor/bin/wp
+        executable: 'WP_CLI_PHP_ARGS="-d error_reporting=0" ./vendor/bin/wp'
