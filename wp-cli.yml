@@ -11,10 +11,11 @@ require:
   path: /var/www/html/web/wp
   url: gdsbedrock.ddev.site
 
+# No url: on remote aliases. An alias that sets one rejects --url ("unknown
+# --url parameter"); without it the site's WP_HOME / DOMAIN_CURRENT_SITE apply,
+# and --url=<site> reaches any other site of a multisite.
 '@staging':
   ssh: gdsbedrock@35.228.245.82:29066/www/gdsbedrock_154/public/current/web/wp
-  url: stg-gdsbedrock-staging.kinsta.cloud
 
 '@production':
   ssh: gdsbedrock@79.76.40.134:34506/www/gdsbedrock_154/public/current/web/wp
-  url: gdsbedrock.kinsta.cloud
