@@ -98,6 +98,24 @@ add_filter('gform_file_path_pre_delete_file', function ($path, $url) {
 }, 10, 2);
 
 /**
+ * Gravity Forms never empties its tmp/ folders: a file uploaded on a form that
+ * is never submitted stays there, readable by anyone with its link. Delete
+ * those on its daily task once no saved draft (Save and Continue) can still
+ * use them.
+ */
+add_action('gravityforms_cron', function () {
+    if (! class_exists('GFFormsModel')) {
+        return;
+    }
+    $days = (int) apply_filters('gform_incomplete_submissions_expiration_days', 30) + 1;
+    foreach (glob(\GFFormsModel::get_upload_root().'*/tmp/*') ?: [] as $file) {
+        if (is_file($file) && basename($file) !== 'index.html' && filemtime($file) < time() - $days * DAY_IN_SECONDS) {
+            unlink($file);
+        }
+    }
+});
+
+/**
  * Remove accents from media uploads
  */
 add_filter('sanitize_file_name', 'remove_accents', 10, 1);
