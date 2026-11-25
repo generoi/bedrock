@@ -80,6 +80,42 @@ add_filter('nonce_life', fn ($life, $action = '') => ! is_user_logged_in() && st
 add_filter('gform_nonce_life', fn ($life) => is_user_logged_in() ? $life : 790 * DAY_IN_SECONDS);
 
 /**
+ * Gravity Forms stores each upload's folder on disk with its entry, and a
+ * deploy puts that inside the release (releases/N/web/app/uploads, linked to
+ * shared/). Once the release is pruned, deleting the entry (retention, or by
+ * hand) looked for the file there, didn't find it and left it in uploads. Find
+ * it from its URL under the current uploads folder instead.
+ */
+add_filter('gform_file_path_pre_delete_file', function ($path, $url) {
+    if (file_exists($path) || ! class_exists('GFFormsModel')) {
+        return $path;
+    }
+    $root = \GFFormsModel::get_upload_url_root();
+
+    return $root && str_starts_with((string) $url, $root)
+        ? \GFFormsModel::get_upload_root().rawurldecode(substr((string) $url, strlen($root)))
+        : $path;
+}, 10, 2);
+
+/**
+ * Gravity Forms never empties its tmp/ folders: a file uploaded on a form that
+ * is never submitted stays there, readable by anyone with its link. Delete
+ * those on its daily task once no saved draft (Save and Continue) can still
+ * use them.
+ */
+add_action('gravityforms_cron', function () {
+    if (! class_exists('GFFormsModel')) {
+        return;
+    }
+    $days = (int) apply_filters('gform_incomplete_submissions_expiration_days', 30) + 1;
+    foreach (glob(\GFFormsModel::get_upload_root().'*/tmp/*') ?: [] as $file) {
+        if (is_file($file) && basename($file) !== 'index.html' && filemtime($file) < time() - $days * DAY_IN_SECONDS) {
+            unlink($file);
+        }
+    }
+});
+
+/**
  * Remove accents from media uploads
  */
 add_filter('sanitize_file_name', 'remove_accents', 10, 1);
