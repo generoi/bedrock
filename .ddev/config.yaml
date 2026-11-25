@@ -20,6 +20,7 @@ performance_mode: none
 web_environment: []
 #  WP_HOME=/var/www
 nodejs_version: "22"
+corepack_enable: true
 provider: default
 upload_dir: web/app/uploads
 hooks:
