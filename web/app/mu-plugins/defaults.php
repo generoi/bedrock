@@ -80,6 +80,24 @@ add_filter('nonce_life', fn ($life, $action = '') => ! is_user_logged_in() && st
 add_filter('gform_nonce_life', fn ($life) => is_user_logged_in() ? $life : 790 * DAY_IN_SECONDS);
 
 /**
+ * Gravity Forms stores each upload's folder on disk with its entry, and a
+ * deploy puts that inside the release (releases/N/web/app/uploads, linked to
+ * shared/). Once the release is pruned, deleting the entry (retention, or by
+ * hand) looked for the file there, didn't find it and left it in uploads. Find
+ * it from its URL under the current uploads folder instead.
+ */
+add_filter('gform_file_path_pre_delete_file', function ($path, $url) {
+    if (file_exists($path) || ! class_exists('GFFormsModel')) {
+        return $path;
+    }
+    $root = \GFFormsModel::get_upload_url_root();
+
+    return $root && str_starts_with((string) $url, $root)
+        ? \GFFormsModel::get_upload_root().rawurldecode(substr((string) $url, strlen($root)))
+        : $path;
+}, 10, 2);
+
+/**
  * Remove accents from media uploads
  */
 add_filter('sanitize_file_name', 'remove_accents', 10, 1);
