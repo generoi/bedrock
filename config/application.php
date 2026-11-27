@@ -30,7 +30,7 @@ if (file_exists($root_dir.'/.env')) {
 
     $dotenv = Dotenv\Dotenv::createUnsafeImmutable($root_dir, $env_files, false);
     $dotenv->load();
-    if (! env('DATABASE_URL')) {
+    if (! env('DATABASE_URL') && ! env('DATABASE_URL__STAGING')) {
         $dotenv->required(['DB_NAME', 'DB_USER', 'DB_PASSWORD']);
     }
 }
@@ -113,8 +113,21 @@ Config::define('DB_CHARSET', 'utf8mb4');
 Config::define('DB_COLLATE', 'utf8mb4_swedish_ci');
 $table_prefix = env('DB_PREFIX') ?: 'wp_';
 
-if (env('DATABASE_URL') || env('IS_DDEV_PROJECT')) {
-    $dsn = (object) parse_url(env('DATABASE_URL') ?: 'mysql://db:db@db/db');
+/**
+ * Staging's database, kept in production's .env too.
+ *
+ * Restoring a live backup to staging in MyKinsta copies production's
+ * shared/.env onto staging along with the files, so staging comes back with
+ * production's DB credentials while Kinsta gave staging a database of its own,
+ * and every request fails with "Error establishing a database connection".
+ * With DATABASE_URL__STAGING in both environments' .env, the restored file
+ * still carries staging's credentials. Staging is told apart by its hostname,
+ * not by .env, so a restored production .env must not set WP_ENVIRONMENT_TYPE.
+ */
+$database_url = (WP_ENVIRONMENT_TYPE === 'staging' ? env('DATABASE_URL__STAGING') : null) ?: env('DATABASE_URL');
+
+if ($database_url || env('IS_DDEV_PROJECT')) {
+    $dsn = (object) parse_url($database_url ?: 'mysql://db:db@db/db');
 
     Config::define('DB_NAME', substr($dsn->path, 1));
     Config::define('DB_USER', $dsn->user);
