@@ -208,12 +208,10 @@
     "ci": [
       "@composer validate --no-check-all",
       "env -u AI_AGENT -u CLAUDECODE pint --format=checkstyle | vendor/bin/cs2pr",
-      "pnpm run --silent ci:scripts | while read xml; do echo $xml | ./vendor/bin/cs2pr; done",
-      "pnpm run --silent ci:styles | while read xml; do echo $xml | ./vendor/bin/cs2pr; done"
+      "pnpm run lint"
     ],
     "build": [
       "pnpm install",
-      "pnpm run lint",
       "pnpm run build:production"
     ],
     "claude:install": "[ -f .claude/agency/install.sh ] && bash .claude/agency/install.sh || true",
